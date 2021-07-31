@@ -11,8 +11,9 @@ namespace Entities
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class UserAccount
+	using System.Data;
+
+	public partial class UserAccount
     {
         public int UserID { get; set; }
         public string RoleID { get; set; }
@@ -28,5 +29,17 @@ namespace Entities
         public DateTime CreatedAt { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime ModifiedAt { get; set; }
+
+		public UserAccount()
+		{
+
+		}
+
+		public UserAccount(DataRow row)
+		{
+            Username = row["Username"].ToString();
+            FullName = row["Fullname"].ToString();
+            RoleID = row["RoleID"].ToString();
+        }
     }
 }

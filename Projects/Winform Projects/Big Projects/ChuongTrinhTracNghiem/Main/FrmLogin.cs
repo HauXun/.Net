@@ -89,6 +89,11 @@ namespace Main
 			{
 				MessageBox.Show("Đăng nhập thành công!", "Thông báo!",
 					MessageBoxButtons.OK, MessageBoxIcon.Information);
+				UserAccount account = AccountBLL.Instance.GetAccountByUserName(username);
+				FrmMain frmMain = new FrmMain(account);
+				this.Hide();
+				frmMain.ShowDialog();
+				this.Show();
 			}
 			else
 			{

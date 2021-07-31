@@ -32,8 +32,8 @@ namespace DataAccessLayer
 
 			try
 			{
-                string query = "UserAccount_CheckExist @Username , @Password";
-                isExist = (int)DataProvider.Instance.ExcuteScalar(query, new object[] { user.Username, user.Password });
+                string query = "EXEC dbo.USP_CheckExistAccount @Username , @Password";
+                isExist = DataProvider.Instance.ExcuteScalar(query, new object[] { user.Username, user.Password }) == null ? 0 : 1;
                 //sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 //SqlDataReader dataReader = sqlCommand.ExecuteReader();
@@ -47,5 +47,38 @@ namespace DataAccessLayer
 			}
             return isExist > 0;
 		}
+
+        public UserAccount GetAccountByUserName(string Username)
+		{
+			try
+			{
+                string query = "EXEC dbo.USP_GetAccountByUserName @Username";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { Username });
+				foreach (DataRow item in data.Rows)
+				{
+                    return new UserAccount(item);
+				}
+            }
+			catch (Exception e)
+			{
+                throw e;
+			}
+            return null;
+		}
+
+        public bool UpdateAccount(string username, string displayname, string pass, string newPass)
+		{
+            int isAccess = 0;
+			try
+            {
+                string query = "EXEC dbo.USP_UpdateAccount @username , @fullName , @password , @newpassword";
+                isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { username, displayname, pass, newPass });
+            }
+			catch (Exception e)
+			{
+                throw e;
+			}
+            return isAccess > 0;
+        }
     }
 }

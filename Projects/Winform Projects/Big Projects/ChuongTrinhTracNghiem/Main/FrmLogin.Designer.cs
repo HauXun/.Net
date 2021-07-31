@@ -45,7 +45,7 @@ namespace Main
 			// 
 			this.btnLogin.AutoSize = true;
 			this.btnLogin.Location = new System.Drawing.Point(65, 158);
-			this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
 			this.btnLogin.Name = "btnLogin";
 			this.btnLogin.Size = new System.Drawing.Size(93, 28);
 			this.btnLogin.TabIndex = 0;
@@ -58,7 +58,7 @@ namespace Main
 			this.btnExit.AutoSize = true;
 			this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnExit.Location = new System.Drawing.Point(276, 158);
-			this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnExit.Margin = new System.Windows.Forms.Padding(4);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(85, 28);
 			this.btnExit.TabIndex = 1;
@@ -81,19 +81,21 @@ namespace Main
 			// tbUserName
 			// 
 			this.tbUserName.Location = new System.Drawing.Point(129, 54);
-			this.tbUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.tbUserName.Margin = new System.Windows.Forms.Padding(4);
 			this.tbUserName.Name = "tbUserName";
 			this.tbUserName.Size = new System.Drawing.Size(263, 23);
 			this.tbUserName.TabIndex = 3;
+			this.tbUserName.Text = "admin";
 			// 
 			// tbPassword
 			// 
 			this.tbPassword.Location = new System.Drawing.Point(129, 102);
-			this.tbPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.tbPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(263, 23);
 			this.tbPassword.TabIndex = 5;
+			this.tbPassword.Text = "admin";
 			// 
 			// label2
 			// 
@@ -136,7 +138,7 @@ namespace Main
 			this.Controls.Add(this.btnExit);
 			this.Controls.Add(this.btnLogin);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(452, 251);
 			this.MinimumSize = new System.Drawing.Size(452, 251);
