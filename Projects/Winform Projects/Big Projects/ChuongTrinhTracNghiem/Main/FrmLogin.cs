@@ -35,14 +35,7 @@ namespace Main
 			}
 		}
 
-		private void btnExit_Click(object sender, EventArgs e)
-		{
-			DialogResult result = MessageBox.Show("Thoát chương trình!", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-			if (result == DialogResult.Yes)
-			{
-				Close();
-			}
-		}
+		#region Methods
 
 		private bool IsValidUser()
 		{
@@ -67,12 +60,15 @@ namespace Main
 			return true;
 		}
 
+		#endregion
+
+		#region Events
+
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
 			// Lấy thông tin từ giao diện
 			string username = tbUserName.Text.Trim();
 			string password = tbPassword.Text.Trim();
-
 			UserAccount user = new UserAccount()
 			{
 				Username = username,
@@ -101,5 +97,17 @@ namespace Main
 					"Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
+
+		private void btnExit_Click(object sender, EventArgs e)
+		{
+			DialogResult result = MessageBox.Show("Thoát chương trình!", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (result == DialogResult.Yes)
+			{
+				Close();
+			}
+		}
+
+		#endregion
+
 	}
 }

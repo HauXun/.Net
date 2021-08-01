@@ -31,28 +31,55 @@ namespace Main
 			Account = account;
 		}
 
-		private void tsmiManageUser_Click(object sender, EventArgs e)
-		{
-			FrmManageUser frm = new FrmManageUser();
-			frm.Show();
-		}
+		#region Methods
 
 		private void ChangeRole(string roleID)
 		{
 			bool isAdmin = roleID.ToLower().Equals("admin");
 			if (!isAdmin)
 			{
-				foreach (ToolStripMenuItem item in msAdmin.Items)
+				tsmiChangePassword.Enabled = false;
+				tsmiRestoreData.Enabled = false;
+				tsmiManageUser.Enabled = false;
+				tsmiFunction.Enabled = false;
+				tsmiManageTeacher.Enabled = false;
+				if (roleID.ToLower().Equals("user"))
 				{
-					item.Visible = false;
+					tsmiReport.Enabled = false;
+					tsmiCategory.Enabled = false;
 				}
+				tsmiHelp.Text = $"{"Trợ giúp"} ({Account.FullName})";
 			}
+		}
+
+		#endregion
+
+		#region Events
+
+		private void tsmiManageUser_Click(object sender, EventArgs e)
+		{
+			FrmManageUser frm = new FrmManageUser();
+			frm.Show();
 		}
 
 		private void tsmiChangePassword_Click(object sender, EventArgs e)
 		{
 			FrmChangePassword frm = new FrmChangePassword(Account);
+			frm.UpdateAccountInfo += Frm_UpdateAccountInfo;
 			frm.ShowDialog();
 		}
+
+		private void Frm_UpdateAccountInfo(object sender, AccountChanged e)
+		{
+			tsmiHelp.Text = $"{"Trợ giúp"} ({e.Account.FullName})";
+			Account = e.Account;
+		}
+
+		private void tsmiExit_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		#endregion
 	}
 }

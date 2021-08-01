@@ -47,9 +47,10 @@ namespace Main
 			}
 		}
 
+		#region Methods
+
 		private void ChangeRole(UserAccount account)
 		{
-
 			tbUserName.Text = account.Username;
 			tbFullName.Text = account.FullName;
 		}
@@ -86,7 +87,7 @@ namespace Main
 			}
 
 			// Kiểm tra mật khẩu mới không được để trống
-			if (string.IsNullOrEmpty(tbNewPassword.Text.Trim()))
+			if (!string.IsNullOrEmpty(tbNewPassword.Text.Trim()))
 			{
 				// Kiểm tra mật khẩu nhập lại không được để trống
 				if (tbRePassword.Text.Trim().Equals(""))
@@ -117,13 +118,51 @@ namespace Main
 
 			if (AccountBLL.Instance.UpdateAccount(username, displayname, password, newPassword))
 			{
-
-			}	
+				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				if (updateAccountInfo != null)
+				{
+					updateAccountInfo(this, new AccountChanged(AccountBLL.Instance.GetAccountByUserName(username)));
+				}
+			}
+			else
+			{
+				MessageBox.Show("Cập nhập không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+			}
 		}
+
+		#endregion
+
+		#region Events
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			UpdateAccount();
+		}
+
+		private event EventHandler<AccountChanged> updateAccountInfo;
+		public event EventHandler<AccountChanged> UpdateAccountInfo
+		{
+			add
+			{
+				updateAccountInfo += value;
+			}
+			remove
+			{
+				updateAccountInfo -= value;
+			}
+		}
+
+		#endregion
+	}
+
+	public class AccountChanged : EventArgs
+	{
+		private UserAccount account;
+
+		public UserAccount Account { get => account; set => account = value; }
+		public AccountChanged(UserAccount account)
+		{
+			Account = account;
 		}
 	}
 }

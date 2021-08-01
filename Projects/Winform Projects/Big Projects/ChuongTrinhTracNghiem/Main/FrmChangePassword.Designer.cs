@@ -54,7 +54,7 @@ namespace Main
 			this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(93, 28);
-			this.btnUpdate.TabIndex = 9;
+			this.btnUpdate.TabIndex = 8;
 			this.btnUpdate.Text = "Cập nhập";
 			this.btnUpdate.UseVisualStyleBackColor = true;
 			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -67,7 +67,7 @@ namespace Main
 			this.btnExit.Margin = new System.Windows.Forms.Padding(4);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(85, 28);
-			this.btnExit.TabIndex = 10;
+			this.btnExit.TabIndex = 9;
 			this.btnExit.Text = "Thoát";
 			this.btnExit.UseVisualStyleBackColor = true;
 			// 
@@ -97,9 +97,8 @@ namespace Main
 			this.tbPassword.Location = new System.Drawing.Point(174, 119);
 			this.tbPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.tbPassword.Name = "tbPassword";
-			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(263, 23);
-			this.tbPassword.TabIndex = 4;
+			this.tbPassword.TabIndex = 3;
 			// 
 			// lbAccount
 			// 
@@ -120,7 +119,7 @@ namespace Main
 			this.lbPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbPassword.Name = "lbPassword";
 			this.lbPassword.Size = new System.Drawing.Size(70, 17);
-			this.lbPassword.TabIndex = 3;
+			this.lbPassword.TabIndex = 2;
 			this.lbPassword.Text = "Mật khẩu:";
 			// 
 			// errorProviderWar
@@ -135,7 +134,7 @@ namespace Main
 			this.lbNewPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbNewPassword.Name = "lbNewPassword";
 			this.lbNewPassword.Size = new System.Drawing.Size(96, 17);
-			this.lbNewPassword.TabIndex = 5;
+			this.lbNewPassword.TabIndex = 4;
 			this.lbNewPassword.Text = "Mật khẩu mới:";
 			// 
 			// tbNewPassword
@@ -143,9 +142,8 @@ namespace Main
 			this.tbNewPassword.Location = new System.Drawing.Point(174, 150);
 			this.tbNewPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.tbNewPassword.Name = "tbNewPassword";
-			this.tbNewPassword.PasswordChar = '*';
 			this.tbNewPassword.Size = new System.Drawing.Size(263, 23);
-			this.tbNewPassword.TabIndex = 6;
+			this.tbNewPassword.TabIndex = 5;
 			// 
 			// lbRePassword
 			// 
@@ -155,7 +153,7 @@ namespace Main
 			this.lbRePassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbRePassword.Name = "lbRePassword";
 			this.lbRePassword.Size = new System.Drawing.Size(122, 17);
-			this.lbRePassword.TabIndex = 7;
+			this.lbRePassword.TabIndex = 6;
 			this.lbRePassword.Text = "Nhập lại mật khẩu";
 			// 
 			// tbRePassword
@@ -163,9 +161,8 @@ namespace Main
 			this.tbRePassword.Location = new System.Drawing.Point(174, 181);
 			this.tbRePassword.Margin = new System.Windows.Forms.Padding(4);
 			this.tbRePassword.Name = "tbRePassword";
-			this.tbRePassword.PasswordChar = '*';
 			this.tbRePassword.Size = new System.Drawing.Size(263, 23);
-			this.tbRePassword.TabIndex = 8;
+			this.tbRePassword.TabIndex = 7;
 			// 
 			// label1
 			// 
@@ -175,7 +172,7 @@ namespace Main
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(87, 17);
-			this.label1.TabIndex = 11;
+			this.label1.TabIndex = 0;
 			this.label1.Text = "Tên hiển thị:";
 			// 
 			// tbFullName
@@ -183,9 +180,8 @@ namespace Main
 			this.tbFullName.Location = new System.Drawing.Point(174, 88);
 			this.tbFullName.Margin = new System.Windows.Forms.Padding(4);
 			this.tbFullName.Name = "tbFullName";
-			this.tbFullName.PasswordChar = '*';
 			this.tbFullName.Size = new System.Drawing.Size(263, 23);
-			this.tbFullName.TabIndex = 12;
+			this.tbFullName.TabIndex = 1;
 			// 
 			// FrmChangePassword
 			// 

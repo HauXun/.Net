@@ -37,9 +37,9 @@ namespace Main
 			this.tsmiManageUser = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiCategory = new System.Windows.Forms.ToolStripMenuItem();
-			this.quảnLýMônThiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.quảnLýCâuHỏiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.quảnLýGiáoViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiManageSubject = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiManageQuestion = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiManageTeacher = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiFunction = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiReport = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,34 +97,35 @@ namespace Main
 			this.tsmiExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
 			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
 			this.tsmiExit.Text = "Thoát";
+			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
 			// 
 			// tsmiCategory
 			// 
 			this.tsmiCategory.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýMônThiToolStripMenuItem,
-            this.quảnLýCâuHỏiToolStripMenuItem,
-            this.quảnLýGiáoViênToolStripMenuItem});
+            this.tsmiManageSubject,
+            this.tsmiManageQuestion,
+            this.tsmiManageTeacher});
 			this.tsmiCategory.Name = "tsmiCategory";
 			this.tsmiCategory.Size = new System.Drawing.Size(74, 20);
 			this.tsmiCategory.Text = "Danh mục";
 			// 
-			// quảnLýMônThiToolStripMenuItem
+			// tsmiManageSubject
 			// 
-			this.quảnLýMônThiToolStripMenuItem.Name = "quảnLýMônThiToolStripMenuItem";
-			this.quảnLýMônThiToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-			this.quảnLýMônThiToolStripMenuItem.Text = "Quản lý môn thi";
+			this.tsmiManageSubject.Name = "tsmiManageSubject";
+			this.tsmiManageSubject.Size = new System.Drawing.Size(180, 22);
+			this.tsmiManageSubject.Text = "Quản lý môn thi";
 			// 
-			// quảnLýCâuHỏiToolStripMenuItem
+			// tsmiManageQuestion
 			// 
-			this.quảnLýCâuHỏiToolStripMenuItem.Name = "quảnLýCâuHỏiToolStripMenuItem";
-			this.quảnLýCâuHỏiToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-			this.quảnLýCâuHỏiToolStripMenuItem.Text = "Quản lý câu hỏi";
+			this.tsmiManageQuestion.Name = "tsmiManageQuestion";
+			this.tsmiManageQuestion.Size = new System.Drawing.Size(180, 22);
+			this.tsmiManageQuestion.Text = "Quản lý câu hỏi";
 			// 
-			// quảnLýGiáoViênToolStripMenuItem
+			// tsmiManageTeacher
 			// 
-			this.quảnLýGiáoViênToolStripMenuItem.Name = "quảnLýGiáoViênToolStripMenuItem";
-			this.quảnLýGiáoViênToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-			this.quảnLýGiáoViênToolStripMenuItem.Text = "Quản lý giáo viên";
+			this.tsmiManageTeacher.Name = "tsmiManageTeacher";
+			this.tsmiManageTeacher.Size = new System.Drawing.Size(180, 22);
+			this.tsmiManageTeacher.Text = "Quản lý giáo viên";
 			// 
 			// tsmiFunction
 			// 
@@ -173,9 +174,9 @@ namespace Main
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageUser;
 		private System.Windows.Forms.ToolStripMenuItem tsmiExit;
 		private System.Windows.Forms.ToolStripMenuItem tsmiCategory;
-		private System.Windows.Forms.ToolStripMenuItem quảnLýMônThiToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem quảnLýCâuHỏiToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem quảnLýGiáoViênToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem tsmiManageSubject;
+		private System.Windows.Forms.ToolStripMenuItem tsmiManageQuestion;
+		private System.Windows.Forms.ToolStripMenuItem tsmiManageTeacher;
 		private System.Windows.Forms.ToolStripMenuItem tsmiFunction;
 		private System.Windows.Forms.ToolStripMenuItem tsmiReport;
 		private System.Windows.Forms.ToolStripMenuItem tsmiHelp;

@@ -152,7 +152,7 @@ namespace Main
 		}
 
 		#endregion
-
+		private System.Windows.Forms.ErrorProvider errorProviderWar;
 		private System.Windows.Forms.Button btnLogin;
 		private System.Windows.Forms.Button btnExit;
 		private System.Windows.Forms.Label label1;
@@ -160,6 +160,5 @@ namespace Main
 		private System.Windows.Forms.TextBox tbPassword;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ErrorProvider errorProviderWar;
 	}
 }

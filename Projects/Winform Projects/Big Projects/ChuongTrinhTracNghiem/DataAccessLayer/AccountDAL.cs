@@ -80,5 +80,33 @@ namespace DataAccessLayer
 			}
             return isAccess > 0;
         }
+
+        public bool InsertAccount(UserAccount account)
+		{
+            int isAccess = 0;
+            try
+            {
+                string query = "EXEC dbo.USP_InsertAccount @RoleID , @Username , @Password , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @CreatedBy , @ModifiedBy";
+                isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
+                    { 
+                        account.RoleID, 
+                        account.Username, 
+                        account.Password, 
+                        account.FullName, 
+                        account.Email, 
+                        account.PhoneNumber, 
+                        account.Address, 
+                        account.Birthday, 
+                        account.Note, 
+                        account.CreatedBy, 
+                        account.ModifiedBy 
+                    });
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return isAccess > 0;
+        }
     }
 }

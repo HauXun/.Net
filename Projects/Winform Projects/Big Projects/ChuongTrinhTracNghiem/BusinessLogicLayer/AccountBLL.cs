@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BusinessLogicLayer
 {
@@ -25,10 +26,10 @@ namespace BusinessLogicLayer
 
         private AccountBLL() { }
 
-        public bool IsExistAccount(UserAccount user)
+		public bool IsExistAccount(UserAccount account)
         {
-            return AccountDAL.Instance.IsExistAccount(user);
-        }
+            return AccountDAL.Instance.IsExistAccount(account);
+		}
 
         public bool UpdateAccount(string username, string displayname, string pass, string newPass)
 		{
@@ -38,6 +39,11 @@ namespace BusinessLogicLayer
         public UserAccount GetAccountByUserName(string Username)
 		{
             return AccountDAL.Instance.GetAccountByUserName(Username);
+		}
+
+        public bool InsertAccount(UserAccount account)
+		{
+            return AccountDAL.Instance.InsertAccount(account);
 		}
     }
 }

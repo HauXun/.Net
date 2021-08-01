@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using BusinessLogicLayer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,8 @@ namespace Main
 				e.Graphics.FillRectangle(brush, rectangle);
 			}
 		}
+
+		#region Methods
 
 		private UserAccount GetUserInfo()
 		{
@@ -134,11 +137,26 @@ namespace Main
 			return true;
 		}
 
+		#endregion
+
+		#region Events
+
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			UserAccount account = GetUserInfo();
 			if (!IsValidUser())
 				return;
+
+			if (AccountBLL.Instance.InsertAccount(account))
+			{
+				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Thêm không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+			}
 		}
+
+		#endregion
 	}
 }
