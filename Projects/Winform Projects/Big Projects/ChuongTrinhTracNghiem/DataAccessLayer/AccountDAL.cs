@@ -145,5 +145,19 @@ namespace DataAccessLayer
                 throw e;
             }
         }
+
+        public bool DeleteAccount(int userID)
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_DeleteAccount @UserID";
+                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { userID });
+                return isAccess > 0;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

@@ -56,5 +56,10 @@ namespace BusinessLogicLayer
 		{
             return AccountDAL.Instance.UpdateUser(account);
 		}
+
+        public bool DeleteAccount(int userID)
+		{
+            return AccountDAL.Instance.DeleteAccount(userID);
+		}
     }
 }

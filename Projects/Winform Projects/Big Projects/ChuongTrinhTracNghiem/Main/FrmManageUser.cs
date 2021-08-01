@@ -68,7 +68,6 @@ namespace Main
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(tbUserID, "");
 			errorProviderWar.SetError(tbRole, "");
 			errorProviderWar.SetError(tbAccount, "");
 			errorProviderWar.SetError(tbFullName, "");
@@ -78,18 +77,20 @@ namespace Main
 			errorProviderWar.SetError(dtpDob, "");
 			errorProviderWar.SetError(tbAddress, "");
 
-			// Kiểm tra	mã người dùng không được để trống
-			if (tbUserID.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbUserID, "Mã người dùng\nkhông được để trống!");
-				return false;
-			}
-
 			// Kiểm tra chức vụ không được để trống
 			if (tbRole.Text.Trim().Equals(""))
 			{
 				errorProviderWar.SetError(tbRole, "Chức vụ không được để trống!");
 				return false;
+			}
+			else
+			{
+				List<string> role = new List<string>() { "admin", "teacher", "user" };
+				if (!role.Contains(tbRole.Text.ToLower().Trim()))
+				{
+					errorProviderWar.SetError(tbRole, "Vui lòng nhập đúng chức vụ!\nAdmin, Teacher, User");
+					return false;
+				}
 			}
 
 			// Kiểm tra tên tài khoản không được để trống
@@ -98,11 +99,32 @@ namespace Main
 				errorProviderWar.SetError(tbAccount, "Tên tài khoản không được để trống!");
 				return false;
 			}
+			else
+			{
+				if (IsUnicode(tbAccount.Text.Trim()))
+				{
+					errorProviderWar.SetError(tbAccount, "Tài khoản không được có dấu!");
+					return false;
+				}
+				else
+				{
+					if (IsSpecialCharacters(tbAccount.Text.Trim()))
+					{
+						errorProviderWar.SetError(tbAccount, "Tài khoản không được chứa ký tự đặc biệt!");
+						return false;
+					}
+				}
+			}
 
 			// Kiểm tra fullname không được để trống
 			if (tbFullName.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(tbFullName, "Họ và tên không được để trống!");
+				errorProviderWar.SetError(tbFullName, "Tên không được để trống!");
+				return false;
+			}
+			else if (IsSpecialCharacters(tbFullName.Text.Trim()))
+			{
+				errorProviderWar.SetError(tbFullName, "Tên không được chứa ký tự đặc biệt!");
 				return false;
 			}
 
@@ -112,12 +134,51 @@ namespace Main
 				errorProviderWar.SetError(tbPassword, "Mật khẩu không được để trống!");
 				return false;
 			}
+			else
+			{
+				if (IsUnicode(tbPassword.Text.Trim()))
+				{
+					errorProviderWar.SetError(tbPassword, "Mật khẩu không được có dấu!");
+					return false;
+				}
+				else if (IsSpaceCharacters(tbPassword.Text.Trim()))
+				{
+					errorProviderWar.SetError(tbPassword, "Mật khẩu không được chứa khoảng trắng!");
+					return false;
+				}
+			}
 
-			// Kiểm tra email khoản không được để trống
+			// Kiểm tra email không được để trống
 			if (tbEmail.Text.Trim().Equals(""))
 			{
 				errorProviderWar.SetError(tbEmail, "Email không được để trống!");
 				return false;
+			}
+			else
+			{
+				if (IsSpaceCharacters(tbEmail.Text.Trim()))
+				{
+					errorProviderWar.SetError(tbEmail, "Email không được chứa khoảng trắng!");
+					return false;
+				}
+				else
+				{
+					if (IsUnicode(tbEmail.Text.Trim()))
+					{
+						errorProviderWar.SetError(tbEmail, "Email không được có dấu!");
+						return false;
+					}
+					else if (IsSpecialCharacters(tbEmail.Text.Trim()))
+					{
+						if (tbEmail.Text.Trim().Contains("@"))
+						{ }
+						else
+						{
+							errorProviderWar.SetError(tbEmail, "Email không được chứa ký tự đặc biệt!");
+							return false;
+						}
+					}
+				}
 			}
 
 			// Kiểm tra số điện thoại khoản không được để trống
@@ -125,6 +186,22 @@ namespace Main
 			{
 				errorProviderWar.SetError(tbPhone, "Số điện thoại không được để trống!");
 				return false;
+			}
+			else
+			{
+				if (IsSpaceCharacters(tbPhone.Text.Trim()))
+				{
+					errorProviderWar.SetError(tbPhone, "Số điện thoại không\nđược chứa khoảng trắng!");
+					return false;
+				}
+				else
+				{
+					if (!IsDigit(tbPhone.Text.Trim()))
+					{
+						errorProviderWar.SetError(tbPhone, "Số điện thoại không được\nchứa ký tự khác ngoài số!");
+						return false;
+					}
+				}
 			}
 
 			// Kiểm tra ngày sinh toàn vẹn giá trị
@@ -140,8 +217,22 @@ namespace Main
 				errorProviderWar.SetError(tbAddress, "Địa chỉ không được để trống!");
 				return false;
 			}
+
 			return true;
 		}
+
+		private bool IsUnicode(string input)
+		{
+			var asciiBytesCount = Encoding.ASCII.GetByteCount(input);
+			var unicodBytesCount = Encoding.UTF8.GetByteCount(input);
+			return asciiBytesCount != unicodBytesCount;
+		}
+
+		private bool IsSpecialCharacters(string input) => input.Any(p => !char.IsLetterOrDigit(p));
+
+		private bool IsSpaceCharacters(string input) => input.Any(char.IsWhiteSpace);
+
+		private bool IsDigit(string input) => input.All(char.IsDigit);
 
 		#endregion
 
@@ -207,12 +298,35 @@ namespace Main
 
 			if (AccountBLL.Instance.UpdateUser(account))
 			{
-				MessageBox.Show("Thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				LoadData();
 			}
 			else
 			{
-				MessageBox.Show("Thêm không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				MessageBox.Show("Cập nhập không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+			}
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			if (!IsValidUser())
+				return;
+			if (!int.TryParse(tbUserID.Text, out int userID))
+			{
+				MessageBox.Show("Vui lòng chọn người dùng cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+			{
+				if (AccountBLL.Instance.DeleteAccount(userID))
+				{
+					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
+				}
+				else
+				{
+					MessageBox.Show("Xóa không thành công!\nVui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				}
 			}
 		}
 	}
