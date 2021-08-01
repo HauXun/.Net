@@ -15,6 +15,7 @@ namespace Main
 {
 	public partial class FrmManageUser : Form
 	{
+		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		public FrmManageUser()
 		{
 			InitializeComponent();
@@ -155,6 +156,7 @@ namespace Main
 			if (AccountBLL.Instance.InsertAccount(account))
 			{
 				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				LoadData();
 			}
 			else
 			{
@@ -172,6 +174,46 @@ namespace Main
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
 		{
 			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+		}
+
+		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.RowIndex < 0)
+				return;
+			try
+			{
+				DataGridViewRow row = dgvData.Rows[e.RowIndex];
+				tbUserID.Text = row.Cells["UserID"].Value.ToString();
+				tbAccount.Text = row.Cells["Username"].Value.ToString();
+				tbPassword.Text = row.Cells["Password"].Value.ToString();
+				tbFullName.Text = row.Cells["FullName"].Value.ToString();
+				tbRole.Text = row.Cells["RoleID"].Value.ToString();
+				tbPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
+				tbAddress.Text = row.Cells["Address"].Value.ToString();
+				tbEmail.Text = row.Cells["Email"].Value.ToString();
+				dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
+
+		private void btnEdit_Click(object sender, EventArgs e)
+		{
+			UserAccount account = GetUserInfo();
+			if (!IsValidUser())
+				return;
+
+			if (AccountBLL.Instance.UpdateUser(account))
+			{
+				MessageBox.Show("Thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				LoadData();
+			}
+			else
+			{
+				MessageBox.Show("Thêm không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+			}
 		}
 	}
 }

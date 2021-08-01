@@ -99,6 +99,7 @@ namespace Main
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.Size = new System.Drawing.Size(263, 23);
 			this.tbPassword.TabIndex = 3;
+			this.tbPassword.UseSystemPasswordChar = true;
 			// 
 			// lbAccount
 			// 
@@ -144,6 +145,7 @@ namespace Main
 			this.tbNewPassword.Name = "tbNewPassword";
 			this.tbNewPassword.Size = new System.Drawing.Size(263, 23);
 			this.tbNewPassword.TabIndex = 5;
+			this.tbNewPassword.UseSystemPasswordChar = true;
 			// 
 			// lbRePassword
 			// 
@@ -163,6 +165,7 @@ namespace Main
 			this.tbRePassword.Name = "tbRePassword";
 			this.tbRePassword.Size = new System.Drawing.Size(263, 23);
 			this.tbRePassword.TabIndex = 7;
+			this.tbRePassword.UseSystemPasswordChar = true;
 			// 
 			// label1
 			// 

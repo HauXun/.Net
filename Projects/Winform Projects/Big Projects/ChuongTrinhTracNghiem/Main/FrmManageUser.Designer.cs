@@ -31,8 +31,8 @@ namespace Main
 		{
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.dgvData = new System.Windows.Forms.DataGridView();
 			this.textBox1 = new System.Windows.Forms.TextBox();
@@ -61,14 +61,16 @@ namespace Main
 			this.tbRole = new System.Windows.Forms.TextBox();
 			this.tbUserID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.RoleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.groupBox1.SuspendLayout();
@@ -86,7 +88,6 @@ namespace Main
 			this.pMain.Controls.Add(this.btnAdd);
 			this.pMain.Controls.Add(this.label1);
 			this.pMain.Controls.Add(this.groupBox1);
-			this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pMain.Location = new System.Drawing.Point(0, 0);
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(1064, 601);
@@ -110,16 +111,19 @@ namespace Main
             this.STT,
             this.FullName,
             this.Username,
+            this.Password,
             this.UserID,
             this.PhoneNumber,
             this.Email,
             this.Address,
-            this.Birthday});
+            this.Birthday,
+            this.RoleID});
 			this.dgvData.Location = new System.Drawing.Point(12, 297);
 			this.dgvData.Name = "dgvData";
 			this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvData.Size = new System.Drawing.Size(1040, 292);
 			this.dgvData.TabIndex = 7;
+			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
 			// 
 			// textBox1
@@ -156,6 +160,7 @@ namespace Main
 			this.btnEdit.TabIndex = 3;
 			this.btnEdit.Text = "Sửa";
 			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
 			// 
 			// btnAdd
 			// 
@@ -354,63 +359,13 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// STT
+			// RoleID
 			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 32.09629F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			// 
-			// FullName
-			// 
-			this.FullName.DataPropertyName = "FullName";
-			this.FullName.FillWeight = 129.0016F;
-			this.FullName.HeaderText = "Họ và tên";
-			this.FullName.Name = "FullName";
-			this.FullName.ReadOnly = true;
-			// 
-			// Username
-			// 
-			this.Username.DataPropertyName = "Username";
-			this.Username.FillWeight = 82.04174F;
-			this.Username.HeaderText = "Tài khoản";
-			this.Username.Name = "Username";
-			this.Username.ReadOnly = true;
-			// 
-			// UserID
-			// 
-			this.UserID.DataPropertyName = "UserID";
-			this.UserID.FillWeight = 82.79251F;
-			this.UserID.HeaderText = "Mã định danh";
-			this.UserID.Name = "UserID";
-			this.UserID.ReadOnly = true;
-			// 
-			// PhoneNumber
-			// 
-			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			this.PhoneNumber.FillWeight = 100.1616F;
-			this.PhoneNumber.HeaderText = "Điện thoại";
-			this.PhoneNumber.Name = "PhoneNumber";
-			this.PhoneNumber.ReadOnly = true;
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.FillWeight = 131.8421F;
-			this.Email.HeaderText = "Email";
-			this.Email.Name = "Email";
-			this.Email.ReadOnly = true;
-			// 
-			// Address
-			// 
-			this.Address.DataPropertyName = "Address";
-			this.Address.FillWeight = 156.3142F;
-			this.Address.HeaderText = "Địa chỉ";
-			this.Address.Name = "Address";
-			this.Address.ReadOnly = true;
+			this.RoleID.DataPropertyName = "RoleID";
+			this.RoleID.HeaderText = "Chức vụ";
+			this.RoleID.Name = "RoleID";
+			this.RoleID.ReadOnly = true;
+			this.RoleID.Visible = false;
 			// 
 			// Birthday
 			// 
@@ -422,6 +377,72 @@ namespace Main
 			this.Birthday.HeaderText = "Ngày sinh";
 			this.Birthday.Name = "Birthday";
 			this.Birthday.ReadOnly = true;
+			// 
+			// Address
+			// 
+			this.Address.DataPropertyName = "Address";
+			this.Address.FillWeight = 156.3142F;
+			this.Address.HeaderText = "Địa chỉ";
+			this.Address.Name = "Address";
+			this.Address.ReadOnly = true;
+			// 
+			// Email
+			// 
+			this.Email.DataPropertyName = "Email";
+			this.Email.FillWeight = 131.8421F;
+			this.Email.HeaderText = "Email";
+			this.Email.Name = "Email";
+			this.Email.ReadOnly = true;
+			// 
+			// PhoneNumber
+			// 
+			this.PhoneNumber.DataPropertyName = "PhoneNumber";
+			this.PhoneNumber.FillWeight = 100.1616F;
+			this.PhoneNumber.HeaderText = "Điện thoại";
+			this.PhoneNumber.Name = "PhoneNumber";
+			this.PhoneNumber.ReadOnly = true;
+			// 
+			// UserID
+			// 
+			this.UserID.DataPropertyName = "UserID";
+			this.UserID.FillWeight = 82.79251F;
+			this.UserID.HeaderText = "Mã định danh";
+			this.UserID.Name = "UserID";
+			this.UserID.ReadOnly = true;
+			// 
+			// Password
+			// 
+			this.Password.DataPropertyName = "Password";
+			this.Password.HeaderText = "Mật khẩu";
+			this.Password.Name = "Password";
+			this.Password.ReadOnly = true;
+			this.Password.Visible = false;
+			// 
+			// Username
+			// 
+			this.Username.DataPropertyName = "Username";
+			this.Username.FillWeight = 82.04174F;
+			this.Username.HeaderText = "Tài khoản";
+			this.Username.Name = "Username";
+			this.Username.ReadOnly = true;
+			// 
+			// FullName
+			// 
+			this.FullName.DataPropertyName = "FullName";
+			this.FullName.FillWeight = 129.0016F;
+			this.FullName.HeaderText = "Họ và tên";
+			this.FullName.Name = "FullName";
+			this.FullName.ReadOnly = true;
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			this.STT.FillWeight = 32.09629F;
+			this.STT.HeaderText = "STT";
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
 			// 
 			// FrmManageUser
 			// 
@@ -477,10 +498,12 @@ namespace Main
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Password;
 		private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Email;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Address;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
+		private System.Windows.Forms.DataGridViewTextBoxColumn RoleID;
 	}
 }

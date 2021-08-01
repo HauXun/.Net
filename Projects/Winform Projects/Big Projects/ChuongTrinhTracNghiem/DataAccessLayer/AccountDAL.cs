@@ -80,11 +80,10 @@ namespace DataAccessLayer
 
         public bool InsertAccount(UserAccount account)
 		{
-            int isAccess = 0;
             try
             {
                 string query = "EXEC dbo.USP_InsertAccount @RoleID , @Username , @Password , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @CreatedBy , @ModifiedBy";
-                isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
+                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
                     { 
                         account.RoleID, 
                         account.Username, 
@@ -98,12 +97,12 @@ namespace DataAccessLayer
                         account.CreatedBy, 
                         account.ModifiedBy 
                     });
+                return isAccess > 0;
             }
             catch (Exception e)
             {
                 throw e;
             }
-            return isAccess > 0;
         }
 
         public DataTable GetAllAccount()
@@ -119,5 +118,32 @@ namespace DataAccessLayer
                 throw e;
 			}
 		}
+
+        public bool UpdateUser(UserAccount account)
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_UpdateUserAccount @UserID , @RoleID , @Username , @Password , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @ModifiedBy";
+                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
+                    {
+                        account.UserID,
+                        account.RoleID,
+                        account.Username,
+                        account.Password,
+                        account.FullName,
+                        account.Email,
+                        account.PhoneNumber,
+                        account.Address,
+                        account.Birthday,
+                        account.Note,
+                        account.ModifiedBy
+                    });
+                return isAccess > 0;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

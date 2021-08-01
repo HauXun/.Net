@@ -51,5 +51,10 @@ namespace BusinessLogicLayer
             data.AutoGenerateColumns = false;
             data.DataSource = AccountDAL.Instance.GetAllAccount();
 		}
+
+        public bool UpdateUser(UserAccount account)
+		{
+            return AccountDAL.Instance.UpdateUser(account);
+		}
     }
 }

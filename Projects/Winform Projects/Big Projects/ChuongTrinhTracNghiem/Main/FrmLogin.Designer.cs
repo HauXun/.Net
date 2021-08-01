@@ -92,10 +92,10 @@ namespace Main
 			this.tbPassword.Location = new System.Drawing.Point(129, 102);
 			this.tbPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.tbPassword.Name = "tbPassword";
-			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(263, 23);
 			this.tbPassword.TabIndex = 5;
 			this.tbPassword.Text = "admin";
+			this.tbPassword.UseSystemPasswordChar = true;
 			// 
 			// label2
 			// 
