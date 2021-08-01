@@ -30,52 +30,55 @@ namespace Main
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.dgvData = new System.Windows.Forms.DataGridView();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.btnSearch = new System.Windows.Forms.Button();
+			this.btnDelete = new System.Windows.Forms.Button();
+			this.btnEdit = new System.Windows.Forms.Button();
+			this.btnAdd = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
-			this.tbUserID = new System.Windows.Forms.TextBox();
-			this.tbRole = new System.Windows.Forms.TextBox();
-			this.tbAccount = new System.Windows.Forms.TextBox();
-			this.lbUserID = new System.Windows.Forms.Label();
-			this.lbRole = new System.Windows.Forms.Label();
-			this.lbAccount = new System.Windows.Forms.Label();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.dtpDob = new System.Windows.Forms.DateTimePicker();
+			this.lbAddress = new System.Windows.Forms.Label();
+			this.lbDob = new System.Windows.Forms.Label();
+			this.lbPhone = new System.Windows.Forms.Label();
+			this.tbAddress = new System.Windows.Forms.TextBox();
+			this.tbPhone = new System.Windows.Forms.TextBox();
 			this.lbEmail = new System.Windows.Forms.Label();
 			this.lbPassword = new System.Windows.Forms.Label();
 			this.lbFullName = new System.Windows.Forms.Label();
 			this.tbEmail = new System.Windows.Forms.TextBox();
 			this.tbPassword = new System.Windows.Forms.TextBox();
 			this.tbFullName = new System.Windows.Forms.TextBox();
-			this.lbAddress = new System.Windows.Forms.Label();
-			this.lbDob = new System.Windows.Forms.Label();
-			this.lbPhone = new System.Windows.Forms.Label();
-			this.tbAddress = new System.Windows.Forms.TextBox();
-			this.tbPhone = new System.Windows.Forms.TextBox();
-			this.dtpDob = new System.Windows.Forms.DateTimePicker();
-			this.btnAdd = new System.Windows.Forms.Button();
-			this.btnEdit = new System.Windows.Forms.Button();
-			this.btnDelete = new System.Windows.Forms.Button();
-			this.btnSearch = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.lbAccount = new System.Windows.Forms.Label();
+			this.lbRole = new System.Windows.Forms.Label();
+			this.lbUserID = new System.Windows.Forms.Label();
+			this.tbAccount = new System.Windows.Forms.TextBox();
+			this.tbRole = new System.Windows.Forms.TextBox();
+			this.tbUserID = new System.Windows.Forms.TextBox();
+			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Account = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.IdentityID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pMain
 			// 
 			this.pMain.BackColor = System.Drawing.Color.Transparent;
-			this.pMain.Controls.Add(this.dataGridView1);
+			this.pMain.Controls.Add(this.dgvData);
 			this.pMain.Controls.Add(this.textBox1);
 			this.pMain.Controls.Add(this.btnSearch);
 			this.pMain.Controls.Add(this.btnDelete);
@@ -88,6 +91,91 @@ namespace Main
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(1064, 601);
 			this.pMain.TabIndex = 0;
+			// 
+			// dgvData
+			// 
+			this.dgvData.AllowUserToAddRows = false;
+			this.dgvData.AllowUserToResizeRows = false;
+			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.FullName,
+            this.Username,
+            this.UserID,
+            this.PhoneNumber,
+            this.Email,
+            this.Address,
+            this.Birthday});
+			this.dgvData.Location = new System.Drawing.Point(12, 297);
+			this.dgvData.Name = "dgvData";
+			this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dgvData.Size = new System.Drawing.Size(1040, 292);
+			this.dgvData.TabIndex = 7;
+			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
+			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(12, 270);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(218, 20);
+			this.textBox1.TabIndex = 5;
+			this.textBox1.Text = "Nhập tên/Tài khoản/...";
+			// 
+			// btnSearch
+			// 
+			this.btnSearch.Location = new System.Drawing.Point(236, 268);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(75, 23);
+			this.btnSearch.TabIndex = 6;
+			this.btnSearch.Text = "Tìm kiếm";
+			this.btnSearch.UseVisualStyleBackColor = true;
+			// 
+			// btnDelete
+			// 
+			this.btnDelete.Location = new System.Drawing.Point(576, 237);
+			this.btnDelete.Name = "btnDelete";
+			this.btnDelete.Size = new System.Drawing.Size(75, 23);
+			this.btnDelete.TabIndex = 4;
+			this.btnDelete.Text = "Xóa";
+			this.btnDelete.UseVisualStyleBackColor = true;
+			// 
+			// btnEdit
+			// 
+			this.btnEdit.Location = new System.Drawing.Point(494, 237);
+			this.btnEdit.Name = "btnEdit";
+			this.btnEdit.Size = new System.Drawing.Size(75, 23);
+			this.btnEdit.TabIndex = 3;
+			this.btnEdit.Text = "Sửa";
+			this.btnEdit.UseVisualStyleBackColor = true;
+			// 
+			// btnAdd
+			// 
+			this.btnAdd.Location = new System.Drawing.Point(413, 238);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(75, 23);
+			this.btnAdd.TabIndex = 2;
+			this.btnAdd.Text = "Thêm";
+			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(404, 14);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(257, 32);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Quản lý người dùng";
 			// 
 			// groupBox1
 			// 
@@ -116,63 +204,54 @@ namespace Main
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Thông tin người dùng";
 			// 
-			// label1
+			// dtpDob
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(404, 14);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(257, 32);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Quản lý người dùng";
+			this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpDob.Location = new System.Drawing.Point(814, 78);
+			this.dtpDob.Name = "dtpDob";
+			this.dtpDob.Size = new System.Drawing.Size(159, 20);
+			this.dtpDob.TabIndex = 11;
 			// 
-			// tbUserID
+			// lbAddress
 			// 
-			this.tbUserID.Location = new System.Drawing.Point(140, 33);
-			this.tbUserID.Name = "tbUserID";
-			this.tbUserID.Size = new System.Drawing.Size(159, 20);
-			this.tbUserID.TabIndex = 1;
+			this.lbAddress.AutoSize = true;
+			this.lbAddress.Location = new System.Drawing.Point(727, 130);
+			this.lbAddress.Name = "lbAddress";
+			this.lbAddress.Size = new System.Drawing.Size(43, 13);
+			this.lbAddress.TabIndex = 16;
+			this.lbAddress.Text = "Địa chỉ:";
 			// 
-			// tbRole
+			// lbDob
 			// 
-			this.tbRole.Location = new System.Drawing.Point(140, 79);
-			this.tbRole.Name = "tbRole";
-			this.tbRole.Size = new System.Drawing.Size(159, 20);
-			this.tbRole.TabIndex = 7;
+			this.lbDob.AutoSize = true;
+			this.lbDob.Location = new System.Drawing.Point(727, 82);
+			this.lbDob.Name = "lbDob";
+			this.lbDob.Size = new System.Drawing.Size(57, 13);
+			this.lbDob.TabIndex = 10;
+			this.lbDob.Text = "Ngày sinh:";
 			// 
-			// tbAccount
+			// lbPhone
 			// 
-			this.tbAccount.Location = new System.Drawing.Point(140, 127);
-			this.tbAccount.Name = "tbAccount";
-			this.tbAccount.Size = new System.Drawing.Size(159, 20);
-			this.tbAccount.TabIndex = 13;
+			this.lbPhone.AutoSize = true;
+			this.lbPhone.Location = new System.Drawing.Point(727, 36);
+			this.lbPhone.Name = "lbPhone";
+			this.lbPhone.Size = new System.Drawing.Size(58, 13);
+			this.lbPhone.TabIndex = 4;
+			this.lbPhone.Text = "Điện thoại:";
 			// 
-			// lbUserID
+			// tbAddress
 			// 
-			this.lbUserID.AutoSize = true;
-			this.lbUserID.Location = new System.Drawing.Point(53, 36);
-			this.lbUserID.Name = "lbUserID";
-			this.lbUserID.Size = new System.Drawing.Size(81, 13);
-			this.lbUserID.TabIndex = 0;
-			this.lbUserID.Text = "Mã người dùng:";
+			this.tbAddress.Location = new System.Drawing.Point(814, 127);
+			this.tbAddress.Name = "tbAddress";
+			this.tbAddress.Size = new System.Drawing.Size(159, 20);
+			this.tbAddress.TabIndex = 17;
 			// 
-			// lbRole
+			// tbPhone
 			// 
-			this.lbRole.AutoSize = true;
-			this.lbRole.Location = new System.Drawing.Point(53, 82);
-			this.lbRole.Name = "lbRole";
-			this.lbRole.Size = new System.Drawing.Size(50, 13);
-			this.lbRole.TabIndex = 6;
-			this.lbRole.Text = "Chức vụ:";
-			// 
-			// lbAccount
-			// 
-			this.lbAccount.AutoSize = true;
-			this.lbAccount.Location = new System.Drawing.Point(53, 130);
-			this.lbAccount.Name = "lbAccount";
-			this.lbAccount.Size = new System.Drawing.Size(58, 13);
-			this.lbAccount.TabIndex = 12;
-			this.lbAccount.Text = "Tài khoản:";
+			this.tbPhone.Location = new System.Drawing.Point(814, 33);
+			this.tbPhone.Name = "tbPhone";
+			this.tbPhone.Size = new System.Drawing.Size(159, 20);
+			this.tbPhone.TabIndex = 5;
 			// 
 			// lbEmail
 			// 
@@ -223,120 +302,63 @@ namespace Main
 			this.tbFullName.Size = new System.Drawing.Size(159, 20);
 			this.tbFullName.TabIndex = 3;
 			// 
-			// lbAddress
+			// lbAccount
 			// 
-			this.lbAddress.AutoSize = true;
-			this.lbAddress.Location = new System.Drawing.Point(727, 130);
-			this.lbAddress.Name = "lbAddress";
-			this.lbAddress.Size = new System.Drawing.Size(43, 13);
-			this.lbAddress.TabIndex = 16;
-			this.lbAddress.Text = "Địa chỉ:";
+			this.lbAccount.AutoSize = true;
+			this.lbAccount.Location = new System.Drawing.Point(53, 130);
+			this.lbAccount.Name = "lbAccount";
+			this.lbAccount.Size = new System.Drawing.Size(58, 13);
+			this.lbAccount.TabIndex = 12;
+			this.lbAccount.Text = "Tài khoản:";
 			// 
-			// lbDob
+			// lbRole
 			// 
-			this.lbDob.AutoSize = true;
-			this.lbDob.Location = new System.Drawing.Point(727, 82);
-			this.lbDob.Name = "lbDob";
-			this.lbDob.Size = new System.Drawing.Size(57, 13);
-			this.lbDob.TabIndex = 10;
-			this.lbDob.Text = "Ngày sinh:";
+			this.lbRole.AutoSize = true;
+			this.lbRole.Location = new System.Drawing.Point(53, 82);
+			this.lbRole.Name = "lbRole";
+			this.lbRole.Size = new System.Drawing.Size(50, 13);
+			this.lbRole.TabIndex = 6;
+			this.lbRole.Text = "Chức vụ:";
 			// 
-			// lbPhone
+			// lbUserID
 			// 
-			this.lbPhone.AutoSize = true;
-			this.lbPhone.Location = new System.Drawing.Point(727, 36);
-			this.lbPhone.Name = "lbPhone";
-			this.lbPhone.Size = new System.Drawing.Size(58, 13);
-			this.lbPhone.TabIndex = 4;
-			this.lbPhone.Text = "Điện thoại:";
+			this.lbUserID.AutoSize = true;
+			this.lbUserID.Location = new System.Drawing.Point(53, 36);
+			this.lbUserID.Name = "lbUserID";
+			this.lbUserID.Size = new System.Drawing.Size(81, 13);
+			this.lbUserID.TabIndex = 0;
+			this.lbUserID.Text = "Mã người dùng:";
 			// 
-			// tbAddress
+			// tbAccount
 			// 
-			this.tbAddress.Location = new System.Drawing.Point(814, 127);
-			this.tbAddress.Name = "tbAddress";
-			this.tbAddress.Size = new System.Drawing.Size(159, 20);
-			this.tbAddress.TabIndex = 17;
+			this.tbAccount.Location = new System.Drawing.Point(140, 127);
+			this.tbAccount.Name = "tbAccount";
+			this.tbAccount.Size = new System.Drawing.Size(159, 20);
+			this.tbAccount.TabIndex = 13;
 			// 
-			// tbPhone
+			// tbRole
 			// 
-			this.tbPhone.Location = new System.Drawing.Point(814, 33);
-			this.tbPhone.Name = "tbPhone";
-			this.tbPhone.Size = new System.Drawing.Size(159, 20);
-			this.tbPhone.TabIndex = 5;
+			this.tbRole.Location = new System.Drawing.Point(140, 79);
+			this.tbRole.Name = "tbRole";
+			this.tbRole.Size = new System.Drawing.Size(159, 20);
+			this.tbRole.TabIndex = 7;
 			// 
-			// dtpDob
+			// tbUserID
 			// 
-			this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpDob.Location = new System.Drawing.Point(814, 78);
-			this.dtpDob.Name = "dtpDob";
-			this.dtpDob.Size = new System.Drawing.Size(159, 20);
-			this.dtpDob.TabIndex = 11;
+			this.tbUserID.Location = new System.Drawing.Point(140, 33);
+			this.tbUserID.Name = "tbUserID";
+			this.tbUserID.Size = new System.Drawing.Size(159, 20);
+			this.tbUserID.TabIndex = 1;
 			// 
-			// btnAdd
+			// errorProviderWar
 			// 
-			this.btnAdd.Location = new System.Drawing.Point(413, 238);
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(75, 23);
-			this.btnAdd.TabIndex = 2;
-			this.btnAdd.Text = "Thêm";
-			this.btnAdd.UseVisualStyleBackColor = true;
-			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-			// 
-			// btnEdit
-			// 
-			this.btnEdit.Location = new System.Drawing.Point(494, 237);
-			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(75, 23);
-			this.btnEdit.TabIndex = 3;
-			this.btnEdit.Text = "Sửa";
-			this.btnEdit.UseVisualStyleBackColor = true;
-			// 
-			// btnDelete
-			// 
-			this.btnDelete.Location = new System.Drawing.Point(576, 237);
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(75, 23);
-			this.btnDelete.TabIndex = 4;
-			this.btnDelete.Text = "Xóa";
-			this.btnDelete.UseVisualStyleBackColor = true;
-			// 
-			// btnSearch
-			// 
-			this.btnSearch.Location = new System.Drawing.Point(236, 268);
-			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.Size = new System.Drawing.Size(75, 23);
-			this.btnSearch.TabIndex = 6;
-			this.btnSearch.Text = "Tìm kiếm";
-			this.btnSearch.UseVisualStyleBackColor = true;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(12, 270);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(218, 20);
-			this.textBox1.TabIndex = 5;
-			this.textBox1.Text = "Nhập tên/Tài khoản/...";
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
-            this.FullName,
-            this.Account,
-            this.IdentityID,
-            this.PhoneNumber,
-            this.Email,
-            this.Address,
-            this.Dob});
-			this.dataGridView1.Location = new System.Drawing.Point(12, 297);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(1040, 292);
-			this.dataGridView1.TabIndex = 7;
+			this.errorProviderWar.ContainerControl = this;
 			// 
 			// STT
 			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
 			this.STT.FillWeight = 32.09629F;
 			this.STT.HeaderText = "STT";
 			this.STT.Name = "STT";
@@ -344,27 +366,31 @@ namespace Main
 			// 
 			// FullName
 			// 
+			this.FullName.DataPropertyName = "FullName";
 			this.FullName.FillWeight = 129.0016F;
 			this.FullName.HeaderText = "Họ và tên";
 			this.FullName.Name = "FullName";
 			this.FullName.ReadOnly = true;
 			// 
-			// Account
+			// Username
 			// 
-			this.Account.FillWeight = 82.04174F;
-			this.Account.HeaderText = "Tài khoản";
-			this.Account.Name = "Account";
-			this.Account.ReadOnly = true;
+			this.Username.DataPropertyName = "Username";
+			this.Username.FillWeight = 82.04174F;
+			this.Username.HeaderText = "Tài khoản";
+			this.Username.Name = "Username";
+			this.Username.ReadOnly = true;
 			// 
-			// IdentityID
+			// UserID
 			// 
-			this.IdentityID.FillWeight = 82.79251F;
-			this.IdentityID.HeaderText = "Mã định danh";
-			this.IdentityID.Name = "IdentityID";
-			this.IdentityID.ReadOnly = true;
+			this.UserID.DataPropertyName = "UserID";
+			this.UserID.FillWeight = 82.79251F;
+			this.UserID.HeaderText = "Mã định danh";
+			this.UserID.Name = "UserID";
+			this.UserID.ReadOnly = true;
 			// 
 			// PhoneNumber
 			// 
+			this.PhoneNumber.DataPropertyName = "PhoneNumber";
 			this.PhoneNumber.FillWeight = 100.1616F;
 			this.PhoneNumber.HeaderText = "Điện thoại";
 			this.PhoneNumber.Name = "PhoneNumber";
@@ -372,6 +398,7 @@ namespace Main
 			// 
 			// Email
 			// 
+			this.Email.DataPropertyName = "Email";
 			this.Email.FillWeight = 131.8421F;
 			this.Email.HeaderText = "Email";
 			this.Email.Name = "Email";
@@ -379,21 +406,22 @@ namespace Main
 			// 
 			// Address
 			// 
+			this.Address.DataPropertyName = "Address";
 			this.Address.FillWeight = 156.3142F;
 			this.Address.HeaderText = "Địa chỉ";
 			this.Address.Name = "Address";
 			this.Address.ReadOnly = true;
 			// 
-			// Dob
+			// Birthday
 			// 
-			this.Dob.FillWeight = 85.74992F;
-			this.Dob.HeaderText = "Ngày sinh";
-			this.Dob.Name = "Dob";
-			this.Dob.ReadOnly = true;
-			// 
-			// errorProviderWar
-			// 
-			this.errorProviderWar.ContainerControl = this;
+			this.Birthday.DataPropertyName = "Birthday";
+			dataGridViewCellStyle3.Format = "d";
+			dataGridViewCellStyle3.NullValue = "dd/MM/yyyy";
+			this.Birthday.DefaultCellStyle = dataGridViewCellStyle3;
+			this.Birthday.FillWeight = 85.74992F;
+			this.Birthday.HeaderText = "Ngày sinh";
+			this.Birthday.Name = "Birthday";
+			this.Birthday.ReadOnly = true;
 			// 
 			// FrmManageUser
 			// 
@@ -405,11 +433,12 @@ namespace Main
 			this.Name = "FrmManageUser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quản lý người dùng";
+			this.Load += new System.EventHandler(this.FrmManageUser_Load);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
 			this.ResumeLayout(false);
 
@@ -438,20 +467,20 @@ namespace Main
 		private System.Windows.Forms.Label lbPhone;
 		private System.Windows.Forms.TextBox tbAddress;
 		private System.Windows.Forms.TextBox tbPhone;
-		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Account;
-		private System.Windows.Forms.DataGridViewTextBoxColumn IdentityID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Dob;
+		private System.Windows.Forms.DataGridView dgvData;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Button btnEdit;
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.ErrorProvider errorProviderWar;
+		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+		private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
 	}
 }

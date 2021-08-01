@@ -45,5 +45,11 @@ namespace BusinessLogicLayer
 		{
             return AccountDAL.Instance.InsertAccount(account);
 		}
+
+        public void GetAllAccount(DataGridView data)
+		{
+            data.AutoGenerateColumns = false;
+            data.DataSource = AccountDAL.Instance.GetAllAccount();
+		}
     }
 }

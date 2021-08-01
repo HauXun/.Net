@@ -28,24 +28,22 @@ namespace DataAccessLayer
 
 		public bool IsExistAccount(UserAccount user)
 		{
-            int isExist = 0;
-
 			try
 			{
                 string query = "EXEC dbo.USP_CheckExistAccount @Username , @Password";
-                isExist = DataProvider.Instance.ExcuteScalar(query, new object[] { user.Username, user.Password }) == null ? 0 : 1;
+                int isExist = DataProvider.Instance.ExcuteScalar(query, new object[] { user.Username, user.Password }) == null ? 0 : 1;
                 //sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 //SqlDataReader dataReader = sqlCommand.ExecuteReader();
                 //if (dataReader.Read())
                 //    isExist = true;
                 //dataReader.Close();
+                return isExist > 0;
             }
 			catch (Exception e)
 			{
 				throw e;
 			}
-            return isExist > 0;
 		}
 
         public UserAccount GetAccountByUserName(string Username)
@@ -68,17 +66,16 @@ namespace DataAccessLayer
 
         public bool UpdateAccount(string username, string displayname, string pass, string newPass)
 		{
-            int isAccess = 0;
 			try
             {
                 string query = "EXEC dbo.USP_UpdateAccount @username , @fullName , @password , @newpassword";
-                isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { username, displayname, pass, newPass });
+                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { username, displayname, pass, newPass });
+                return isAccess > 0;
             }
 			catch (Exception e)
 			{
                 throw e;
 			}
-            return isAccess > 0;
         }
 
         public bool InsertAccount(UserAccount account)
@@ -108,5 +105,19 @@ namespace DataAccessLayer
             }
             return isAccess > 0;
         }
+
+        public DataTable GetAllAccount()
+		{
+			try
+			{
+                string query = "EXEC dbo.USP_SelectAllAccount";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query);
+                return data;
+            }
+			catch (Exception e)
+			{
+                throw e;
+			}
+		}
     }
 }

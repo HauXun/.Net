@@ -37,6 +37,11 @@ namespace Main
 
 		#region Methods
 
+		private void LoadData()
+		{
+			AccountBLL.Instance.GetAllAccount(dgvData);
+		}
+
 		private UserAccount GetUserInfo()
 		{
 			UserAccount account = new UserAccount();
@@ -158,5 +163,15 @@ namespace Main
 		}
 
 		#endregion
+
+		private void FrmManageUser_Load(object sender, EventArgs e)
+		{
+			LoadData();
+		}
+
+		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		{
+			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+		}
 	}
 }
