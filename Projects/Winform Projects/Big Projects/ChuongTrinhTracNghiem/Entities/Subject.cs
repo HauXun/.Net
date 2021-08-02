@@ -9,10 +9,9 @@
 
 namespace Entities
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Subject
+	using System;
+
+	public partial class Subject
     {
         public string SubjectID { get; set; }
         public string SubjectName { get; set; }

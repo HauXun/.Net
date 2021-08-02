@@ -1,12 +1,5 @@
 ﻿using Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Main
@@ -59,13 +52,19 @@ namespace Main
 		private void tsmiManageUser_Click(object sender, EventArgs e)
 		{
 			FrmManageUser frm = new FrmManageUser();
-			frm.Show();
+			frm.ShowDialog();
 		}
 
 		private void tsmiChangePassword_Click(object sender, EventArgs e)
 		{
 			FrmChangePassword frm = new FrmChangePassword(Account);
 			frm.UpdateAccountInfo += Frm_UpdateAccountInfo;
+			frm.ShowDialog();
+		}
+
+		private void tsmiManageSubject_Click(object sender, EventArgs e)
+		{
+			FrmManageSubject frm = new FrmManageSubject();
 			frm.ShowDialog();
 		}
 

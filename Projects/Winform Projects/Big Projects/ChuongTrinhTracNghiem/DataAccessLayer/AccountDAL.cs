@@ -1,15 +1,10 @@
 ﻿using Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
 
 namespace DataAccessLayer
 {
-    public class AccountDAL
+	public class AccountDAL
     {
         private static AccountDAL instance;
 

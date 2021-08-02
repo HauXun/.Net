@@ -1,15 +1,10 @@
 ﻿using DataAccessLayer;
 using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
 {
-    public class AccountBLL
+	public class AccountBLL
     {
         private static AccountBLL instance;
 
@@ -44,17 +39,17 @@ namespace BusinessLogicLayer
         public int GetIDMissing()
 		{
             return AccountDAL.Instance.GetIDMissing();
-		}
+        }
+
+        public void GetAllAccount(DataGridView data)
+        {
+            data.AutoGenerateColumns = false;
+            data.DataSource = AccountDAL.Instance.GetAllAccount();
+        }
 
         public bool InsertAccount(UserAccount account)
 		{
             return AccountDAL.Instance.InsertAccount(account);
-		}
-
-        public void GetAllAccount(DataGridView data)
-		{
-            data.AutoGenerateColumns = false;
-            data.DataSource = AccountDAL.Instance.GetAllAccount();
 		}
 
         public bool UpdateUser(UserAccount account)

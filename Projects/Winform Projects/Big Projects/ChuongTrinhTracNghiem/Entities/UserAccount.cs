@@ -9,8 +9,7 @@
 
 namespace Entities
 {
-    using System;
-    using System.Collections.Generic;
+	using System;
 	using System.Data;
 
 	public partial class UserAccount

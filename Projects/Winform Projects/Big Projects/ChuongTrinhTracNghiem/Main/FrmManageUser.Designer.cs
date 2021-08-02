@@ -30,18 +30,31 @@ namespace Main
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
+			this.btnCancle = new System.Windows.Forms.Button();
+			this.btnSave = new System.Windows.Forms.Button();
 			this.dgvData = new System.Windows.Forms.DataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.RoleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnEdit = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lbTitle = new System.Windows.Forms.Label();
 			this.gbControls = new System.Windows.Forms.GroupBox();
+			this.cbRole = new System.Windows.Forms.ComboBox();
 			this.dtpDob = new System.Windows.Forms.DateTimePicker();
 			this.lbAddress = new System.Windows.Forms.Label();
 			this.lbDob = new System.Windows.Forms.Label();
@@ -60,19 +73,6 @@ namespace Main
 			this.tbAccount = new System.Windows.Forms.TextBox();
 			this.tbUserID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.RoleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btnCancle = new System.Windows.Forms.Button();
-			this.btnSave = new System.Windows.Forms.Button();
-			this.cbRole = new System.Windows.Forms.ComboBox();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -90,26 +90,48 @@ namespace Main
 			this.pMain.Controls.Add(this.btnDelete);
 			this.pMain.Controls.Add(this.btnEdit);
 			this.pMain.Controls.Add(this.btnAdd);
-			this.pMain.Controls.Add(this.label1);
+			this.pMain.Controls.Add(this.lbTitle);
 			this.pMain.Controls.Add(this.gbControls);
 			this.pMain.Location = new System.Drawing.Point(0, 0);
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(1064, 601);
 			this.pMain.TabIndex = 0;
 			// 
+			// btnCancle
+			// 
+			this.btnCancle.Location = new System.Drawing.Point(535, 238);
+			this.btnCancle.Name = "btnCancle";
+			this.btnCancle.Size = new System.Drawing.Size(75, 23);
+			this.btnCancle.TabIndex = 9;
+			this.btnCancle.Text = "Hủy";
+			this.btnCancle.UseVisualStyleBackColor = true;
+			this.btnCancle.Visible = false;
+			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+			// 
+			// btnSave
+			// 
+			this.btnSave.Location = new System.Drawing.Point(454, 238);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(75, 23);
+			this.btnSave.TabIndex = 8;
+			this.btnSave.Text = "Lưu";
+			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Visible = false;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			// 
 			// dgvData
 			// 
 			this.dgvData.AllowUserToAddRows = false;
 			this.dgvData.AllowUserToResizeRows = false;
 			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -129,6 +151,91 @@ namespace Main
 			this.dgvData.TabIndex = 7;
 			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			this.STT.FillWeight = 32.09629F;
+			this.STT.HeaderText = "STT";
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			// 
+			// FullName
+			// 
+			this.FullName.DataPropertyName = "FullName";
+			this.FullName.FillWeight = 129.0016F;
+			this.FullName.HeaderText = "Họ và tên";
+			this.FullName.Name = "FullName";
+			this.FullName.ReadOnly = true;
+			// 
+			// Username
+			// 
+			this.Username.DataPropertyName = "Username";
+			this.Username.FillWeight = 82.04174F;
+			this.Username.HeaderText = "Tài khoản";
+			this.Username.Name = "Username";
+			this.Username.ReadOnly = true;
+			// 
+			// Password
+			// 
+			this.Password.DataPropertyName = "Password";
+			this.Password.HeaderText = "Mật khẩu";
+			this.Password.Name = "Password";
+			this.Password.ReadOnly = true;
+			this.Password.Visible = false;
+			// 
+			// UserID
+			// 
+			this.UserID.DataPropertyName = "UserID";
+			this.UserID.FillWeight = 82.79251F;
+			this.UserID.HeaderText = "Mã định danh";
+			this.UserID.Name = "UserID";
+			this.UserID.ReadOnly = true;
+			// 
+			// PhoneNumber
+			// 
+			this.PhoneNumber.DataPropertyName = "PhoneNumber";
+			this.PhoneNumber.FillWeight = 100.1616F;
+			this.PhoneNumber.HeaderText = "Điện thoại";
+			this.PhoneNumber.Name = "PhoneNumber";
+			this.PhoneNumber.ReadOnly = true;
+			// 
+			// Email
+			// 
+			this.Email.DataPropertyName = "Email";
+			this.Email.FillWeight = 131.8421F;
+			this.Email.HeaderText = "Email";
+			this.Email.Name = "Email";
+			this.Email.ReadOnly = true;
+			// 
+			// Address
+			// 
+			this.Address.DataPropertyName = "Address";
+			this.Address.FillWeight = 156.3142F;
+			this.Address.HeaderText = "Địa chỉ";
+			this.Address.Name = "Address";
+			this.Address.ReadOnly = true;
+			// 
+			// Birthday
+			// 
+			this.Birthday.DataPropertyName = "Birthday";
+			dataGridViewCellStyle3.Format = "d";
+			dataGridViewCellStyle3.NullValue = "dd/MM/yyyy";
+			this.Birthday.DefaultCellStyle = dataGridViewCellStyle3;
+			this.Birthday.FillWeight = 85.74992F;
+			this.Birthday.HeaderText = "Ngày sinh";
+			this.Birthday.Name = "Birthday";
+			this.Birthday.ReadOnly = true;
+			// 
+			// RoleID
+			// 
+			this.RoleID.DataPropertyName = "RoleID";
+			this.RoleID.HeaderText = "Chức vụ";
+			this.RoleID.Name = "RoleID";
+			this.RoleID.ReadOnly = true;
+			this.RoleID.Visible = false;
 			// 
 			// tbSearch
 			// 
@@ -181,15 +288,15 @@ namespace Main
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
-			// label1
+			// lbTitle
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(404, 14);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(257, 32);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Quản lý người dùng";
+			this.lbTitle.AutoSize = true;
+			this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.Location = new System.Drawing.Point(417, 14);
+			this.lbTitle.Name = "lbTitle";
+			this.lbTitle.Size = new System.Drawing.Size(231, 31);
+			this.lbTitle.TabIndex = 0;
+			this.lbTitle.Text = "Quản lý người dùng";
 			// 
 			// gbControls
 			// 
@@ -217,6 +324,14 @@ namespace Main
 			this.gbControls.TabIndex = 1;
 			this.gbControls.TabStop = false;
 			this.gbControls.Text = "Thông tin người dùng";
+			// 
+			// cbRole
+			// 
+			this.cbRole.FormattingEnabled = true;
+			this.cbRole.Location = new System.Drawing.Point(140, 79);
+			this.cbRole.Name = "cbRole";
+			this.cbRole.Size = new System.Drawing.Size(159, 21);
+			this.cbRole.TabIndex = 7;
 			// 
 			// dtpDob
 			// 
@@ -362,121 +477,6 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// RoleID
-			// 
-			this.RoleID.DataPropertyName = "RoleID";
-			this.RoleID.HeaderText = "Chức vụ";
-			this.RoleID.Name = "RoleID";
-			this.RoleID.ReadOnly = true;
-			this.RoleID.Visible = false;
-			// 
-			// Birthday
-			// 
-			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle33.Format = "d";
-			dataGridViewCellStyle33.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle33;
-			this.Birthday.FillWeight = 85.74992F;
-			this.Birthday.HeaderText = "Ngày sinh";
-			this.Birthday.Name = "Birthday";
-			this.Birthday.ReadOnly = true;
-			// 
-			// Address
-			// 
-			this.Address.DataPropertyName = "Address";
-			this.Address.FillWeight = 156.3142F;
-			this.Address.HeaderText = "Địa chỉ";
-			this.Address.Name = "Address";
-			this.Address.ReadOnly = true;
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.FillWeight = 131.8421F;
-			this.Email.HeaderText = "Email";
-			this.Email.Name = "Email";
-			this.Email.ReadOnly = true;
-			// 
-			// PhoneNumber
-			// 
-			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			this.PhoneNumber.FillWeight = 100.1616F;
-			this.PhoneNumber.HeaderText = "Điện thoại";
-			this.PhoneNumber.Name = "PhoneNumber";
-			this.PhoneNumber.ReadOnly = true;
-			// 
-			// UserID
-			// 
-			this.UserID.DataPropertyName = "UserID";
-			this.UserID.FillWeight = 82.79251F;
-			this.UserID.HeaderText = "Mã định danh";
-			this.UserID.Name = "UserID";
-			this.UserID.ReadOnly = true;
-			// 
-			// Password
-			// 
-			this.Password.DataPropertyName = "Password";
-			this.Password.HeaderText = "Mật khẩu";
-			this.Password.Name = "Password";
-			this.Password.ReadOnly = true;
-			this.Password.Visible = false;
-			// 
-			// Username
-			// 
-			this.Username.DataPropertyName = "Username";
-			this.Username.FillWeight = 82.04174F;
-			this.Username.HeaderText = "Tài khoản";
-			this.Username.Name = "Username";
-			this.Username.ReadOnly = true;
-			// 
-			// FullName
-			// 
-			this.FullName.DataPropertyName = "FullName";
-			this.FullName.FillWeight = 129.0016F;
-			this.FullName.HeaderText = "Họ và tên";
-			this.FullName.Name = "FullName";
-			this.FullName.ReadOnly = true;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle32;
-			this.STT.FillWeight = 32.09629F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			// 
-			// btnCancle
-			// 
-			this.btnCancle.Location = new System.Drawing.Point(535, 238);
-			this.btnCancle.Name = "btnCancle";
-			this.btnCancle.Size = new System.Drawing.Size(75, 23);
-			this.btnCancle.TabIndex = 9;
-			this.btnCancle.Text = "Hủy";
-			this.btnCancle.UseVisualStyleBackColor = true;
-			this.btnCancle.Visible = false;
-			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
-			// 
-			// btnSave
-			// 
-			this.btnSave.Location = new System.Drawing.Point(454, 238);
-			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 8;
-			this.btnSave.Text = "Lưu";
-			this.btnSave.UseVisualStyleBackColor = true;
-			this.btnSave.Visible = false;
-			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-			// 
-			// cbRole
-			// 
-			this.cbRole.FormattingEnabled = true;
-			this.cbRole.Location = new System.Drawing.Point(140, 79);
-			this.cbRole.Name = "cbRole";
-			this.cbRole.Size = new System.Drawing.Size(159, 21);
-			this.cbRole.TabIndex = 7;
-			// 
 			// FrmManageUser
 			// 
 			this.AcceptButton = this.btnSearch;
@@ -502,7 +502,7 @@ namespace Main
 		#endregion
 
 		private System.Windows.Forms.Panel pMain;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lbTitle;
 		private System.Windows.Forms.GroupBox gbControls;
 		private System.Windows.Forms.Label lbEmail;
 		private System.Windows.Forms.Label lbPassword;

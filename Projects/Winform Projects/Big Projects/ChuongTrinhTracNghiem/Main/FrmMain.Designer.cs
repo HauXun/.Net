@@ -114,6 +114,7 @@ namespace Main
 			this.tsmiManageSubject.Name = "tsmiManageSubject";
 			this.tsmiManageSubject.Size = new System.Drawing.Size(180, 22);
 			this.tsmiManageSubject.Text = "Quản lý môn thi";
+			this.tsmiManageSubject.Click += new System.EventHandler(this.tsmiManageSubject_Click);
 			// 
 			// tsmiManageQuestion
 			// 

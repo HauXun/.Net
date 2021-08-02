@@ -9,10 +9,9 @@
 
 namespace Entities
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class TestHistory
+	using System;
+
+	public partial class TestHistory
     {
         public int TestID { get; set; }
         public int UserID { get; set; }

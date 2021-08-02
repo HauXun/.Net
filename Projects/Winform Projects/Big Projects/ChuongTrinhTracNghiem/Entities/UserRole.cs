@@ -9,10 +9,9 @@
 
 namespace Entities
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class UserRole
+	using System;
+
+	public partial class UserRole
     {
         public string RoleID { get; set; }
         public string RoleName { get; set; }
