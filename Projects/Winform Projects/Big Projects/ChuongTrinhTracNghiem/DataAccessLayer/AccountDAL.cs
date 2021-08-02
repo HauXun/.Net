@@ -78,13 +78,42 @@ namespace DataAccessLayer
 			}
         }
 
+        public DataTable GetAllAccount()
+        {
+            try
+            {
+                string query = "EXEC dbo.USP_SelectAllAccount";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query);
+                return data;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public int GetIDMissing()
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_GetIDMissing";
+                int isAccess = (int)DataProvider.Instance.ExcuteScalar(query);
+                return isAccess;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public bool InsertAccount(UserAccount account)
 		{
             try
             {
-                string query = "EXEC dbo.USP_InsertAccount @RoleID , @Username , @Password , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @CreatedBy , @ModifiedBy";
+                string query = "EXEC dbo.USP_InsertAccount @UserID , @RoleID , @Username , @Password , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @CreatedBy , @ModifiedBy";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
                     { 
+                        account.UserID,
                         account.RoleID, 
                         account.Username, 
                         account.Password, 
@@ -104,20 +133,6 @@ namespace DataAccessLayer
                 throw e;
             }
         }
-
-        public DataTable GetAllAccount()
-		{
-			try
-			{
-                string query = "EXEC dbo.USP_SelectAllAccount";
-                DataTable data = DataProvider.Instance.ExcuteQuery(query);
-                return data;
-            }
-			catch (Exception e)
-			{
-                throw e;
-			}
-		}
 
         public bool UpdateUser(UserAccount account)
 		{
@@ -153,6 +168,20 @@ namespace DataAccessLayer
                 string query = "EXEC dbo.USP_DeleteAccount @UserID";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { userID });
                 return isAccess > 0;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public DataTable SearchAccount(string keyword)
+        {
+            try
+            {
+                string query = "EXEC dbo.USP_SearchAccount @keyword";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
+                return data;
             }
             catch (Exception e)
             {

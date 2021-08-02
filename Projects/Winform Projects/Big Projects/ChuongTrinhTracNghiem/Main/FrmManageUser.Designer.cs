@@ -30,18 +30,18 @@ namespace Main
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.dgvData = new System.Windows.Forms.DataGridView();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnEdit = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.gbControls = new System.Windows.Forms.GroupBox();
 			this.dtpDob = new System.Windows.Forms.DateTimePicker();
 			this.lbAddress = new System.Windows.Forms.Label();
 			this.lbDob = new System.Windows.Forms.Label();
@@ -58,7 +58,6 @@ namespace Main
 			this.lbRole = new System.Windows.Forms.Label();
 			this.lbUserID = new System.Windows.Forms.Label();
 			this.tbAccount = new System.Windows.Forms.TextBox();
-			this.tbRole = new System.Windows.Forms.TextBox();
 			this.tbUserID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.RoleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,23 +70,28 @@ namespace Main
 			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnCancle = new System.Windows.Forms.Button();
+			this.btnSave = new System.Windows.Forms.Button();
+			this.cbRole = new System.Windows.Forms.ComboBox();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-			this.groupBox1.SuspendLayout();
+			this.gbControls.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pMain
 			// 
 			this.pMain.BackColor = System.Drawing.Color.Transparent;
+			this.pMain.Controls.Add(this.btnCancle);
+			this.pMain.Controls.Add(this.btnSave);
 			this.pMain.Controls.Add(this.dgvData);
-			this.pMain.Controls.Add(this.textBox1);
+			this.pMain.Controls.Add(this.tbSearch);
 			this.pMain.Controls.Add(this.btnSearch);
 			this.pMain.Controls.Add(this.btnDelete);
 			this.pMain.Controls.Add(this.btnEdit);
 			this.pMain.Controls.Add(this.btnAdd);
 			this.pMain.Controls.Add(this.label1);
-			this.pMain.Controls.Add(this.groupBox1);
+			this.pMain.Controls.Add(this.gbControls);
 			this.pMain.Location = new System.Drawing.Point(0, 0);
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(1064, 601);
@@ -98,14 +102,14 @@ namespace Main
 			this.dgvData.AllowUserToAddRows = false;
 			this.dgvData.AllowUserToResizeRows = false;
 			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
 			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -126,13 +130,16 @@ namespace Main
 			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
 			// 
-			// textBox1
+			// tbSearch
 			// 
-			this.textBox1.Location = new System.Drawing.Point(12, 270);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(218, 20);
-			this.textBox1.TabIndex = 5;
-			this.textBox1.Text = "Nhập tên/Tài khoản/...";
+			this.tbSearch.Location = new System.Drawing.Point(12, 270);
+			this.tbSearch.Name = "tbSearch";
+			this.tbSearch.Size = new System.Drawing.Size(218, 20);
+			this.tbSearch.TabIndex = 5;
+			this.tbSearch.Text = "Nhập tên/Tài khoản/...";
+			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
+			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
+			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
 			// 
 			// btnSearch
 			// 
@@ -142,6 +149,7 @@ namespace Main
 			this.btnSearch.TabIndex = 6;
 			this.btnSearch.Text = "Tìm kiếm";
 			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// btnDelete
 			// 
@@ -183,32 +191,32 @@ namespace Main
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Quản lý người dùng";
 			// 
-			// groupBox1
+			// gbControls
 			// 
-			this.groupBox1.Controls.Add(this.dtpDob);
-			this.groupBox1.Controls.Add(this.lbAddress);
-			this.groupBox1.Controls.Add(this.lbDob);
-			this.groupBox1.Controls.Add(this.lbPhone);
-			this.groupBox1.Controls.Add(this.tbAddress);
-			this.groupBox1.Controls.Add(this.tbPhone);
-			this.groupBox1.Controls.Add(this.lbEmail);
-			this.groupBox1.Controls.Add(this.lbPassword);
-			this.groupBox1.Controls.Add(this.lbFullName);
-			this.groupBox1.Controls.Add(this.tbEmail);
-			this.groupBox1.Controls.Add(this.tbPassword);
-			this.groupBox1.Controls.Add(this.tbFullName);
-			this.groupBox1.Controls.Add(this.lbAccount);
-			this.groupBox1.Controls.Add(this.lbRole);
-			this.groupBox1.Controls.Add(this.lbUserID);
-			this.groupBox1.Controls.Add(this.tbAccount);
-			this.groupBox1.Controls.Add(this.tbRole);
-			this.groupBox1.Controls.Add(this.tbUserID);
-			this.groupBox1.Location = new System.Drawing.Point(12, 52);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(1040, 179);
-			this.groupBox1.TabIndex = 1;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Thông tin người dùng";
+			this.gbControls.Controls.Add(this.cbRole);
+			this.gbControls.Controls.Add(this.dtpDob);
+			this.gbControls.Controls.Add(this.lbAddress);
+			this.gbControls.Controls.Add(this.lbDob);
+			this.gbControls.Controls.Add(this.lbPhone);
+			this.gbControls.Controls.Add(this.tbAddress);
+			this.gbControls.Controls.Add(this.tbPhone);
+			this.gbControls.Controls.Add(this.lbEmail);
+			this.gbControls.Controls.Add(this.lbPassword);
+			this.gbControls.Controls.Add(this.lbFullName);
+			this.gbControls.Controls.Add(this.tbEmail);
+			this.gbControls.Controls.Add(this.tbPassword);
+			this.gbControls.Controls.Add(this.tbFullName);
+			this.gbControls.Controls.Add(this.lbAccount);
+			this.gbControls.Controls.Add(this.lbRole);
+			this.gbControls.Controls.Add(this.lbUserID);
+			this.gbControls.Controls.Add(this.tbAccount);
+			this.gbControls.Controls.Add(this.tbUserID);
+			this.gbControls.Location = new System.Drawing.Point(12, 52);
+			this.gbControls.Name = "gbControls";
+			this.gbControls.Size = new System.Drawing.Size(1040, 179);
+			this.gbControls.TabIndex = 1;
+			this.gbControls.TabStop = false;
+			this.gbControls.Text = "Thông tin người dùng";
 			// 
 			// dtpDob
 			// 
@@ -342,13 +350,6 @@ namespace Main
 			this.tbAccount.Size = new System.Drawing.Size(159, 20);
 			this.tbAccount.TabIndex = 13;
 			// 
-			// tbRole
-			// 
-			this.tbRole.Location = new System.Drawing.Point(140, 79);
-			this.tbRole.Name = "tbRole";
-			this.tbRole.Size = new System.Drawing.Size(159, 20);
-			this.tbRole.TabIndex = 7;
-			// 
 			// tbUserID
 			// 
 			this.tbUserID.Location = new System.Drawing.Point(140, 33);
@@ -372,9 +373,9 @@ namespace Main
 			// Birthday
 			// 
 			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle9.Format = "d";
-			dataGridViewCellStyle9.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle33.Format = "d";
+			dataGridViewCellStyle33.NullValue = "dd/MM/yyyy";
+			this.Birthday.DefaultCellStyle = dataGridViewCellStyle33;
 			this.Birthday.FillWeight = 85.74992F;
 			this.Birthday.HeaderText = "Ngày sinh";
 			this.Birthday.Name = "Birthday";
@@ -439,15 +440,46 @@ namespace Main
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle32;
 			this.STT.FillWeight = 32.09629F;
 			this.STT.HeaderText = "STT";
 			this.STT.Name = "STT";
 			this.STT.ReadOnly = true;
 			// 
+			// btnCancle
+			// 
+			this.btnCancle.Location = new System.Drawing.Point(535, 238);
+			this.btnCancle.Name = "btnCancle";
+			this.btnCancle.Size = new System.Drawing.Size(75, 23);
+			this.btnCancle.TabIndex = 9;
+			this.btnCancle.Text = "Hủy";
+			this.btnCancle.UseVisualStyleBackColor = true;
+			this.btnCancle.Visible = false;
+			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+			// 
+			// btnSave
+			// 
+			this.btnSave.Location = new System.Drawing.Point(454, 238);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(75, 23);
+			this.btnSave.TabIndex = 8;
+			this.btnSave.Text = "Lưu";
+			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Visible = false;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			// 
+			// cbRole
+			// 
+			this.cbRole.FormattingEnabled = true;
+			this.cbRole.Location = new System.Drawing.Point(140, 79);
+			this.cbRole.Name = "cbRole";
+			this.cbRole.Size = new System.Drawing.Size(159, 21);
+			this.cbRole.TabIndex = 7;
+			// 
 			// FrmManageUser
 			// 
+			this.AcceptButton = this.btnSearch;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1064, 601);
@@ -460,8 +492,8 @@ namespace Main
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
+			this.gbControls.ResumeLayout(false);
+			this.gbControls.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
 			this.ResumeLayout(false);
 
@@ -471,7 +503,7 @@ namespace Main
 
 		private System.Windows.Forms.Panel pMain;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox gbControls;
 		private System.Windows.Forms.Label lbEmail;
 		private System.Windows.Forms.Label lbPassword;
 		private System.Windows.Forms.Label lbFullName;
@@ -482,7 +514,6 @@ namespace Main
 		private System.Windows.Forms.Label lbRole;
 		private System.Windows.Forms.Label lbUserID;
 		private System.Windows.Forms.TextBox tbAccount;
-		private System.Windows.Forms.TextBox tbRole;
 		private System.Windows.Forms.TextBox tbUserID;
 		private System.Windows.Forms.DateTimePicker dtpDob;
 		private System.Windows.Forms.Label lbAddress;
@@ -491,7 +522,7 @@ namespace Main
 		private System.Windows.Forms.TextBox tbAddress;
 		private System.Windows.Forms.TextBox tbPhone;
 		private System.Windows.Forms.DataGridView dgvData;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox tbSearch;
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Button btnEdit;
@@ -507,5 +538,8 @@ namespace Main
 		private System.Windows.Forms.DataGridViewTextBoxColumn Address;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
 		private System.Windows.Forms.DataGridViewTextBoxColumn RoleID;
+		private System.Windows.Forms.Button btnCancle;
+		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.ComboBox cbRole;
 	}
 }

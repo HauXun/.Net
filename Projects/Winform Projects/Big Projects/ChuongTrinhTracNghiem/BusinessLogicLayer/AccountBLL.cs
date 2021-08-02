@@ -41,6 +41,11 @@ namespace BusinessLogicLayer
             return AccountDAL.Instance.GetAccountByUserName(Username);
 		}
 
+        public int GetIDMissing()
+		{
+            return AccountDAL.Instance.GetIDMissing();
+		}
+
         public bool InsertAccount(UserAccount account)
 		{
             return AccountDAL.Instance.InsertAccount(account);
@@ -60,6 +65,11 @@ namespace BusinessLogicLayer
         public bool DeleteAccount(int userID)
 		{
             return AccountDAL.Instance.DeleteAccount(userID);
+		}
+
+        public void SearchAccount(DataGridView data, string keyword)
+		{
+            data.DataSource = AccountDAL.Instance.SearchAccount(keyword);
 		}
     }
 }
