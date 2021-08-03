@@ -110,7 +110,7 @@ namespace Main
 			if (!IsValidUser())
 				return;
 
-			if (AccountBLL.Instance.UpdateAccount(username, displayname, password, newPassword))
+			if (AccountBLL.Instance.ChangeInfoAccount(username, displayname, password, newPassword))
 			{
 				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				if (updateAccountInfo != null)

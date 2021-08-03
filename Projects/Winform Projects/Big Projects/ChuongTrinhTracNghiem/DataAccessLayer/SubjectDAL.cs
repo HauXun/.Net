@@ -39,16 +39,14 @@ namespace DataAccessLayer
 		{
             try
             {
-                string query = "EXEC dbo.USP_Insertsubject @SubjectID , @SubjectName , @Description , @CreatedBy , @CreatedAt , @ModifiedBy , @ModifiedAt";
+                string query = "EXEC dbo.USP_InsertSubject @SubjectID , @SubjectName , @Description , @CreatedBy , @ModifiedBy";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
                     { 
                         subject.SubjectID,
                         subject.SubjectName, 
                         subject.Description,
                         subject.CreatedBy,
-                        subject.CreatedAt,
-                        subject.ModifiedBy,
-                        subject.ModifiedAt
+                        subject.ModifiedBy
                     });
                 return isAccess > 0;
             }

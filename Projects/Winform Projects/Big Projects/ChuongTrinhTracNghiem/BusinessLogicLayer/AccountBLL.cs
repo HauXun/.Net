@@ -26,9 +26,9 @@ namespace BusinessLogicLayer
             return AccountDAL.Instance.IsExistAccount(account);
 		}
 
-        public bool UpdateAccount(string username, string displayname, string pass, string newPass)
+        public bool ChangeInfoAccount(string username, string displayname, string pass, string newPass)
 		{
-            return AccountDAL.Instance.UpdateAccount(username, displayname, pass, newPass);
+            return AccountDAL.Instance.ChangeInfoAccount(username, displayname, pass, newPass);
 		}
 
         public UserAccount GetAccountByUserName(string Username)
@@ -52,9 +52,9 @@ namespace BusinessLogicLayer
             return AccountDAL.Instance.InsertAccount(account);
 		}
 
-        public bool UpdateUser(UserAccount account)
+        public bool UpdateAccount(UserAccount account)
 		{
-            return AccountDAL.Instance.UpdateUser(account);
+            return AccountDAL.Instance.UpdateAccount(account);
 		}
 
         public bool DeleteAccount(int userID)

@@ -59,11 +59,11 @@ namespace DataAccessLayer
             return null;
 		}
 
-        public bool UpdateAccount(string username, string displayname, string pass, string newPass)
+        public bool ChangeInfoAccount(string username, string displayname, string pass, string newPass)
 		{
 			try
             {
-                string query = "EXEC dbo.USP_UpdateAccount @username , @fullName , @password , @newpassword";
+                string query = "EXEC dbo.USP_ChangeInfoAccount @username , @fullName , @password , @newpassword";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { username, displayname, pass, newPass });
                 return isAccess > 0;
             }
@@ -91,7 +91,7 @@ namespace DataAccessLayer
 		{
             try
             {
-                string query = "EXEC dbo.USP_GetIDMissing";
+                string query = "EXEC dbo.USP_GetAccountIDMissing";
                 int isAccess = (int)DataProvider.Instance.ExcuteScalar(query);
                 return isAccess;
             }
@@ -129,7 +129,7 @@ namespace DataAccessLayer
             }
         }
 
-        public bool UpdateUser(UserAccount account)
+        public bool UpdateAccount(UserAccount account)
 		{
             try
             {

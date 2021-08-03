@@ -80,5 +80,11 @@ namespace Main
 		}
 
 		#endregion
+
+		private void tsmiManageQuestion_Click(object sender, EventArgs e)
+		{
+			FrmManageQuestion frm = new FrmManageQuestion(Account);
+			frm.ShowDialog();
+		}
 	}
 }

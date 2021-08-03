@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QuestionBLL.cs" />
     <Compile Include="SubjectBLL.cs" />
     <Compile Include="AccountBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

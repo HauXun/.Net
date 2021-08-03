@@ -121,6 +121,7 @@ namespace Main
 			this.tsmiManageQuestion.Name = "tsmiManageQuestion";
 			this.tsmiManageQuestion.Size = new System.Drawing.Size(180, 22);
 			this.tsmiManageQuestion.Text = "Quản lý câu hỏi";
+			this.tsmiManageQuestion.Click += new System.EventHandler(this.tsmiManageQuestion_Click);
 			// 
 			// tsmiManageTeacher
 			// 

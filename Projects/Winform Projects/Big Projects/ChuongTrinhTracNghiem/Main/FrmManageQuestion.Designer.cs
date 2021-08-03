@@ -37,16 +37,6 @@ namespace Main
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.dgvData = new System.Windows.Forms.DataGridView();
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.RoleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
@@ -54,28 +44,37 @@ namespace Main
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.gbControls = new System.Windows.Forms.GroupBox();
-			this.cbRole = new System.Windows.Forms.ComboBox();
-			this.dtpDob = new System.Windows.Forms.DateTimePicker();
-			this.lbAddress = new System.Windows.Forms.Label();
-			this.lbDob = new System.Windows.Forms.Label();
-			this.lbPhone = new System.Windows.Forms.Label();
-			this.tbAddress = new System.Windows.Forms.TextBox();
-			this.tbPhone = new System.Windows.Forms.TextBox();
-			this.lbEmail = new System.Windows.Forms.Label();
-			this.lbPassword = new System.Windows.Forms.Label();
-			this.lbFullName = new System.Windows.Forms.Label();
-			this.tbEmail = new System.Windows.Forms.TextBox();
-			this.tbPassword = new System.Windows.Forms.TextBox();
-			this.tbFullName = new System.Windows.Forms.TextBox();
-			this.lbAccount = new System.Windows.Forms.Label();
-			this.lbRole = new System.Windows.Forms.Label();
-			this.lbUserID = new System.Windows.Forms.Label();
-			this.tbAccount = new System.Windows.Forms.TextBox();
-			this.tbUserID = new System.Windows.Forms.TextBox();
+			this.pBQuizTime = new System.Windows.Forms.PictureBox();
+			this.cbSubject = new System.Windows.Forms.ComboBox();
+			this.lbSubjectID = new System.Windows.Forms.Label();
+			this.lbQuestionID = new System.Windows.Forms.Label();
+			this.tbQuestionID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.tbAnswerCorrect = new System.Windows.Forms.TextBox();
+			this.lbAnswerC = new System.Windows.Forms.Label();
+			this.lbContent = new System.Windows.Forms.Label();
+			this.tbAnswerC = new System.Windows.Forms.TextBox();
+			this.tbContent = new System.Windows.Forms.TextBox();
+			this.lbAnswerB = new System.Windows.Forms.Label();
+			this.lbAnswerA = new System.Windows.Forms.Label();
+			this.lbAnswerD = new System.Windows.Forms.Label();
+			this.tbAnswerB = new System.Windows.Forms.TextBox();
+			this.tbAnswerA = new System.Windows.Forms.TextBox();
+			this.tbAnswerD = new System.Windows.Forms.TextBox();
+			this.lbAnswerCorrect = new System.Windows.Forms.Label();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pBQuizTime)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -99,7 +98,7 @@ namespace Main
 			// 
 			// btnCancle
 			// 
-			this.btnCancle.Location = new System.Drawing.Point(535, 238);
+			this.btnCancle.Location = new System.Drawing.Point(535, 317);
 			this.btnCancle.Name = "btnCancle";
 			this.btnCancle.Size = new System.Drawing.Size(75, 23);
 			this.btnCancle.TabIndex = 9;
@@ -110,7 +109,7 @@ namespace Main
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(454, 238);
+			this.btnSave.Location = new System.Drawing.Point(454, 317);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 8;
@@ -135,122 +134,36 @@ namespace Main
 			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
-            this.FullName,
-            this.Username,
-            this.Password,
-            this.UserID,
-            this.PhoneNumber,
-            this.Email,
-            this.Address,
-            this.Birthday,
-            this.RoleID});
-			this.dgvData.Location = new System.Drawing.Point(12, 297);
+            this.QuestionID,
+            this.SubjectID,
+            this.QContent,
+            this.OptionA,
+            this.OptionB,
+            this.OptionC,
+            this.OptionD,
+            this.Answer});
+			this.dgvData.Location = new System.Drawing.Point(12, 374);
 			this.dgvData.Name = "dgvData";
 			this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgvData.Size = new System.Drawing.Size(1040, 292);
+			this.dgvData.Size = new System.Drawing.Size(1040, 215);
 			this.dgvData.TabIndex = 7;
 			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
 			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 32.09629F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			// 
-			// FullName
-			// 
-			this.FullName.DataPropertyName = "FullName";
-			this.FullName.FillWeight = 129.0016F;
-			this.FullName.HeaderText = "Họ và tên";
-			this.FullName.Name = "FullName";
-			this.FullName.ReadOnly = true;
-			// 
-			// Username
-			// 
-			this.Username.DataPropertyName = "Username";
-			this.Username.FillWeight = 82.04174F;
-			this.Username.HeaderText = "Tài khoản";
-			this.Username.Name = "Username";
-			this.Username.ReadOnly = true;
-			// 
-			// Password
-			// 
-			this.Password.DataPropertyName = "Password";
-			this.Password.HeaderText = "Mật khẩu";
-			this.Password.Name = "Password";
-			this.Password.ReadOnly = true;
-			this.Password.Visible = false;
-			// 
-			// UserID
-			// 
-			this.UserID.DataPropertyName = "UserID";
-			this.UserID.FillWeight = 82.79251F;
-			this.UserID.HeaderText = "Mã định danh";
-			this.UserID.Name = "UserID";
-			this.UserID.ReadOnly = true;
-			// 
-			// PhoneNumber
-			// 
-			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			this.PhoneNumber.FillWeight = 100.1616F;
-			this.PhoneNumber.HeaderText = "Điện thoại";
-			this.PhoneNumber.Name = "PhoneNumber";
-			this.PhoneNumber.ReadOnly = true;
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.FillWeight = 131.8421F;
-			this.Email.HeaderText = "Email";
-			this.Email.Name = "Email";
-			this.Email.ReadOnly = true;
-			// 
-			// Address
-			// 
-			this.Address.DataPropertyName = "Address";
-			this.Address.FillWeight = 156.3142F;
-			this.Address.HeaderText = "Địa chỉ";
-			this.Address.Name = "Address";
-			this.Address.ReadOnly = true;
-			// 
-			// Birthday
-			// 
-			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle3.Format = "d";
-			dataGridViewCellStyle3.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle3;
-			this.Birthday.FillWeight = 85.74992F;
-			this.Birthday.HeaderText = "Ngày sinh";
-			this.Birthday.Name = "Birthday";
-			this.Birthday.ReadOnly = true;
-			// 
-			// RoleID
-			// 
-			this.RoleID.DataPropertyName = "RoleID";
-			this.RoleID.HeaderText = "Chức vụ";
-			this.RoleID.Name = "RoleID";
-			this.RoleID.ReadOnly = true;
-			this.RoleID.Visible = false;
-			// 
 			// tbSearch
 			// 
-			this.tbSearch.Location = new System.Drawing.Point(12, 270);
+			this.tbSearch.Location = new System.Drawing.Point(12, 348);
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.Size = new System.Drawing.Size(218, 20);
 			this.tbSearch.TabIndex = 5;
-			this.tbSearch.Text = "Nhập tên/Tài khoản/...";
+			this.tbSearch.Text = "Nhập từ khóa ...";
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Location = new System.Drawing.Point(236, 268);
+			this.btnSearch.Location = new System.Drawing.Point(236, 346);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 23);
 			this.btnSearch.TabIndex = 6;
@@ -260,7 +173,7 @@ namespace Main
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Location = new System.Drawing.Point(576, 237);
+			this.btnDelete.Location = new System.Drawing.Point(576, 316);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(75, 23);
 			this.btnDelete.TabIndex = 4;
@@ -270,7 +183,7 @@ namespace Main
 			// 
 			// btnEdit
 			// 
-			this.btnEdit.Location = new System.Drawing.Point(494, 237);
+			this.btnEdit.Location = new System.Drawing.Point(494, 316);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(75, 23);
 			this.btnEdit.TabIndex = 3;
@@ -280,7 +193,7 @@ namespace Main
 			// 
 			// btnAdd
 			// 
-			this.btnAdd.Location = new System.Drawing.Point(413, 238);
+			this.btnAdd.Location = new System.Drawing.Point(413, 317);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
 			this.btnAdd.TabIndex = 2;
@@ -292,190 +205,260 @@ namespace Main
 			// 
 			this.lbTitle.AutoSize = true;
 			this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTitle.Location = new System.Drawing.Point(417, 14);
+			this.lbTitle.Location = new System.Drawing.Point(438, 14);
 			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(231, 31);
+			this.lbTitle.Size = new System.Drawing.Size(188, 31);
 			this.lbTitle.TabIndex = 0;
-			this.lbTitle.Text = "Quản lý người dùng";
+			this.lbTitle.Text = "Quản lý câu hỏi";
 			// 
 			// gbControls
 			// 
-			this.gbControls.Controls.Add(this.cbRole);
-			this.gbControls.Controls.Add(this.dtpDob);
-			this.gbControls.Controls.Add(this.lbAddress);
-			this.gbControls.Controls.Add(this.lbDob);
-			this.gbControls.Controls.Add(this.lbPhone);
-			this.gbControls.Controls.Add(this.tbAddress);
-			this.gbControls.Controls.Add(this.tbPhone);
-			this.gbControls.Controls.Add(this.lbEmail);
-			this.gbControls.Controls.Add(this.lbPassword);
-			this.gbControls.Controls.Add(this.lbFullName);
-			this.gbControls.Controls.Add(this.tbEmail);
-			this.gbControls.Controls.Add(this.tbPassword);
-			this.gbControls.Controls.Add(this.tbFullName);
-			this.gbControls.Controls.Add(this.lbAccount);
-			this.gbControls.Controls.Add(this.lbRole);
-			this.gbControls.Controls.Add(this.lbUserID);
-			this.gbControls.Controls.Add(this.tbAccount);
-			this.gbControls.Controls.Add(this.tbUserID);
+			this.gbControls.Controls.Add(this.tbAnswerCorrect);
+			this.gbControls.Controls.Add(this.lbAnswerC);
+			this.gbControls.Controls.Add(this.lbContent);
+			this.gbControls.Controls.Add(this.tbAnswerC);
+			this.gbControls.Controls.Add(this.tbContent);
+			this.gbControls.Controls.Add(this.lbAnswerB);
+			this.gbControls.Controls.Add(this.lbAnswerA);
+			this.gbControls.Controls.Add(this.lbAnswerD);
+			this.gbControls.Controls.Add(this.tbAnswerB);
+			this.gbControls.Controls.Add(this.tbAnswerA);
+			this.gbControls.Controls.Add(this.tbAnswerD);
+			this.gbControls.Controls.Add(this.lbAnswerCorrect);
+			this.gbControls.Controls.Add(this.pBQuizTime);
+			this.gbControls.Controls.Add(this.cbSubject);
+			this.gbControls.Controls.Add(this.lbSubjectID);
+			this.gbControls.Controls.Add(this.lbQuestionID);
+			this.gbControls.Controls.Add(this.tbQuestionID);
 			this.gbControls.Location = new System.Drawing.Point(12, 52);
 			this.gbControls.Name = "gbControls";
-			this.gbControls.Size = new System.Drawing.Size(1040, 179);
+			this.gbControls.Size = new System.Drawing.Size(1040, 259);
 			this.gbControls.TabIndex = 1;
 			this.gbControls.TabStop = false;
-			this.gbControls.Text = "Thông tin người dùng";
+			this.gbControls.Text = "Thông tin câu hỏi";
 			// 
-			// cbRole
+			// pBQuizTime
 			// 
-			this.cbRole.FormattingEnabled = true;
-			this.cbRole.Location = new System.Drawing.Point(140, 79);
-			this.cbRole.Name = "cbRole";
-			this.cbRole.Size = new System.Drawing.Size(159, 21);
-			this.cbRole.TabIndex = 7;
+			this.pBQuizTime.BackgroundImage = global::Main.Properties.Resources.Quiz;
+			this.pBQuizTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pBQuizTime.Location = new System.Drawing.Point(36, 95);
+			this.pBQuizTime.Name = "pBQuizTime";
+			this.pBQuizTime.Size = new System.Drawing.Size(243, 143);
+			this.pBQuizTime.TabIndex = 19;
+			this.pBQuizTime.TabStop = false;
 			// 
-			// dtpDob
+			// cbSubject
 			// 
-			this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpDob.Location = new System.Drawing.Point(814, 78);
-			this.dtpDob.Name = "dtpDob";
-			this.dtpDob.Size = new System.Drawing.Size(159, 20);
-			this.dtpDob.TabIndex = 11;
+			this.cbSubject.FormattingEnabled = true;
+			this.cbSubject.Location = new System.Drawing.Point(120, 65);
+			this.cbSubject.Name = "cbSubject";
+			this.cbSubject.Size = new System.Drawing.Size(159, 21);
+			this.cbSubject.TabIndex = 7;
 			// 
-			// lbAddress
+			// lbSubjectID
 			// 
-			this.lbAddress.AutoSize = true;
-			this.lbAddress.Location = new System.Drawing.Point(727, 130);
-			this.lbAddress.Name = "lbAddress";
-			this.lbAddress.Size = new System.Drawing.Size(43, 13);
-			this.lbAddress.TabIndex = 16;
-			this.lbAddress.Text = "Địa chỉ:";
+			this.lbSubjectID.AutoSize = true;
+			this.lbSubjectID.Location = new System.Drawing.Point(33, 68);
+			this.lbSubjectID.Name = "lbSubjectID";
+			this.lbSubjectID.Size = new System.Drawing.Size(45, 13);
+			this.lbSubjectID.TabIndex = 6;
+			this.lbSubjectID.Text = "Môn thi:";
 			// 
-			// lbDob
+			// lbQuestionID
 			// 
-			this.lbDob.AutoSize = true;
-			this.lbDob.Location = new System.Drawing.Point(727, 82);
-			this.lbDob.Name = "lbDob";
-			this.lbDob.Size = new System.Drawing.Size(57, 13);
-			this.lbDob.TabIndex = 10;
-			this.lbDob.Text = "Ngày sinh:";
+			this.lbQuestionID.AutoSize = true;
+			this.lbQuestionID.Location = new System.Drawing.Point(33, 28);
+			this.lbQuestionID.Name = "lbQuestionID";
+			this.lbQuestionID.Size = new System.Drawing.Size(63, 13);
+			this.lbQuestionID.TabIndex = 0;
+			this.lbQuestionID.Text = "Mã câu hỏi:";
 			// 
-			// lbPhone
+			// tbQuestionID
 			// 
-			this.lbPhone.AutoSize = true;
-			this.lbPhone.Location = new System.Drawing.Point(727, 36);
-			this.lbPhone.Name = "lbPhone";
-			this.lbPhone.Size = new System.Drawing.Size(58, 13);
-			this.lbPhone.TabIndex = 4;
-			this.lbPhone.Text = "Điện thoại:";
-			// 
-			// tbAddress
-			// 
-			this.tbAddress.Location = new System.Drawing.Point(814, 127);
-			this.tbAddress.Name = "tbAddress";
-			this.tbAddress.Size = new System.Drawing.Size(159, 20);
-			this.tbAddress.TabIndex = 17;
-			// 
-			// tbPhone
-			// 
-			this.tbPhone.Location = new System.Drawing.Point(814, 33);
-			this.tbPhone.Name = "tbPhone";
-			this.tbPhone.Size = new System.Drawing.Size(159, 20);
-			this.tbPhone.TabIndex = 5;
-			// 
-			// lbEmail
-			// 
-			this.lbEmail.AutoSize = true;
-			this.lbEmail.Location = new System.Drawing.Point(395, 130);
-			this.lbEmail.Name = "lbEmail";
-			this.lbEmail.Size = new System.Drawing.Size(35, 13);
-			this.lbEmail.TabIndex = 14;
-			this.lbEmail.Text = "Email:";
-			// 
-			// lbPassword
-			// 
-			this.lbPassword.AutoSize = true;
-			this.lbPassword.Location = new System.Drawing.Point(395, 82);
-			this.lbPassword.Name = "lbPassword";
-			this.lbPassword.Size = new System.Drawing.Size(55, 13);
-			this.lbPassword.TabIndex = 8;
-			this.lbPassword.Text = "Mật khẩu:";
-			// 
-			// lbFullName
-			// 
-			this.lbFullName.AutoSize = true;
-			this.lbFullName.Location = new System.Drawing.Point(395, 36);
-			this.lbFullName.Name = "lbFullName";
-			this.lbFullName.Size = new System.Drawing.Size(57, 13);
-			this.lbFullName.TabIndex = 2;
-			this.lbFullName.Text = "Họ và tên:";
-			// 
-			// tbEmail
-			// 
-			this.tbEmail.Location = new System.Drawing.Point(482, 127);
-			this.tbEmail.Name = "tbEmail";
-			this.tbEmail.Size = new System.Drawing.Size(159, 20);
-			this.tbEmail.TabIndex = 15;
-			// 
-			// tbPassword
-			// 
-			this.tbPassword.Location = new System.Drawing.Point(482, 79);
-			this.tbPassword.Name = "tbPassword";
-			this.tbPassword.Size = new System.Drawing.Size(159, 20);
-			this.tbPassword.TabIndex = 9;
-			this.tbPassword.UseSystemPasswordChar = true;
-			// 
-			// tbFullName
-			// 
-			this.tbFullName.Location = new System.Drawing.Point(482, 33);
-			this.tbFullName.Name = "tbFullName";
-			this.tbFullName.Size = new System.Drawing.Size(159, 20);
-			this.tbFullName.TabIndex = 3;
-			// 
-			// lbAccount
-			// 
-			this.lbAccount.AutoSize = true;
-			this.lbAccount.Location = new System.Drawing.Point(53, 130);
-			this.lbAccount.Name = "lbAccount";
-			this.lbAccount.Size = new System.Drawing.Size(58, 13);
-			this.lbAccount.TabIndex = 12;
-			this.lbAccount.Text = "Tài khoản:";
-			// 
-			// lbRole
-			// 
-			this.lbRole.AutoSize = true;
-			this.lbRole.Location = new System.Drawing.Point(53, 82);
-			this.lbRole.Name = "lbRole";
-			this.lbRole.Size = new System.Drawing.Size(50, 13);
-			this.lbRole.TabIndex = 6;
-			this.lbRole.Text = "Chức vụ:";
-			// 
-			// lbUserID
-			// 
-			this.lbUserID.AutoSize = true;
-			this.lbUserID.Location = new System.Drawing.Point(53, 36);
-			this.lbUserID.Name = "lbUserID";
-			this.lbUserID.Size = new System.Drawing.Size(81, 13);
-			this.lbUserID.TabIndex = 0;
-			this.lbUserID.Text = "Mã người dùng:";
-			// 
-			// tbAccount
-			// 
-			this.tbAccount.Location = new System.Drawing.Point(140, 127);
-			this.tbAccount.Name = "tbAccount";
-			this.tbAccount.Size = new System.Drawing.Size(159, 20);
-			this.tbAccount.TabIndex = 13;
-			// 
-			// tbUserID
-			// 
-			this.tbUserID.Location = new System.Drawing.Point(140, 33);
-			this.tbUserID.Name = "tbUserID";
-			this.tbUserID.ReadOnly = true;
-			this.tbUserID.Size = new System.Drawing.Size(159, 20);
-			this.tbUserID.TabIndex = 1;
+			this.tbQuestionID.Location = new System.Drawing.Point(120, 25);
+			this.tbQuestionID.Name = "tbQuestionID";
+			this.tbQuestionID.ReadOnly = true;
+			this.tbQuestionID.Size = new System.Drawing.Size(159, 20);
+			this.tbQuestionID.TabIndex = 1;
 			// 
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
+			// 
+			// tbAnswerCorrect
+			// 
+			this.tbAnswerCorrect.Location = new System.Drawing.Point(415, 218);
+			this.tbAnswerCorrect.Name = "tbAnswerCorrect";
+			this.tbAnswerCorrect.Size = new System.Drawing.Size(590, 20);
+			this.tbAnswerCorrect.TabIndex = 54;
+			// 
+			// lbAnswerC
+			// 
+			this.lbAnswerC.AutoSize = true;
+			this.lbAnswerC.Location = new System.Drawing.Point(328, 142);
+			this.lbAnswerC.Name = "lbAnswerC";
+			this.lbAnswerC.Size = new System.Drawing.Size(55, 13);
+			this.lbAnswerC.TabIndex = 52;
+			this.lbAnswerC.Text = "Đáp án C:";
+			// 
+			// lbContent
+			// 
+			this.lbContent.AutoSize = true;
+			this.lbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.lbContent.Location = new System.Drawing.Point(328, 27);
+			this.lbContent.Name = "lbContent";
+			this.lbContent.Size = new System.Drawing.Size(53, 13);
+			this.lbContent.TabIndex = 45;
+			this.lbContent.Text = "Nội dung:";
+			// 
+			// tbAnswerC
+			// 
+			this.tbAnswerC.Location = new System.Drawing.Point(415, 139);
+			this.tbAnswerC.Name = "tbAnswerC";
+			this.tbAnswerC.Size = new System.Drawing.Size(590, 20);
+			this.tbAnswerC.TabIndex = 53;
+			// 
+			// tbContent
+			// 
+			this.tbContent.Location = new System.Drawing.Point(415, 24);
+			this.tbContent.Multiline = true;
+			this.tbContent.Name = "tbContent";
+			this.tbContent.Size = new System.Drawing.Size(590, 57);
+			this.tbContent.TabIndex = 46;
+			// 
+			// lbAnswerB
+			// 
+			this.lbAnswerB.AutoSize = true;
+			this.lbAnswerB.Location = new System.Drawing.Point(328, 116);
+			this.lbAnswerB.Name = "lbAnswerB";
+			this.lbAnswerB.Size = new System.Drawing.Size(55, 13);
+			this.lbAnswerB.TabIndex = 50;
+			this.lbAnswerB.Text = "Đáp án B:";
+			// 
+			// lbAnswerA
+			// 
+			this.lbAnswerA.AutoSize = true;
+			this.lbAnswerA.Location = new System.Drawing.Point(328, 90);
+			this.lbAnswerA.Name = "lbAnswerA";
+			this.lbAnswerA.Size = new System.Drawing.Size(55, 13);
+			this.lbAnswerA.TabIndex = 47;
+			this.lbAnswerA.Text = "Đáp án A:";
+			// 
+			// lbAnswerD
+			// 
+			this.lbAnswerD.AutoSize = true;
+			this.lbAnswerD.Location = new System.Drawing.Point(328, 168);
+			this.lbAnswerD.Name = "lbAnswerD";
+			this.lbAnswerD.Size = new System.Drawing.Size(56, 13);
+			this.lbAnswerD.TabIndex = 43;
+			this.lbAnswerD.Text = "Đáp án D:";
+			// 
+			// tbAnswerB
+			// 
+			this.tbAnswerB.Location = new System.Drawing.Point(415, 113);
+			this.tbAnswerB.Name = "tbAnswerB";
+			this.tbAnswerB.Size = new System.Drawing.Size(590, 20);
+			this.tbAnswerB.TabIndex = 51;
+			// 
+			// tbAnswerA
+			// 
+			this.tbAnswerA.Location = new System.Drawing.Point(415, 87);
+			this.tbAnswerA.Name = "tbAnswerA";
+			this.tbAnswerA.Size = new System.Drawing.Size(590, 20);
+			this.tbAnswerA.TabIndex = 48;
+			// 
+			// tbAnswerD
+			// 
+			this.tbAnswerD.Location = new System.Drawing.Point(415, 165);
+			this.tbAnswerD.Name = "tbAnswerD";
+			this.tbAnswerD.Size = new System.Drawing.Size(590, 20);
+			this.tbAnswerD.TabIndex = 44;
+			// 
+			// lbAnswerCorrect
+			// 
+			this.lbAnswerCorrect.AutoSize = true;
+			this.lbAnswerCorrect.Location = new System.Drawing.Point(328, 221);
+			this.lbAnswerCorrect.Name = "lbAnswerCorrect";
+			this.lbAnswerCorrect.Size = new System.Drawing.Size(73, 13);
+			this.lbAnswerCorrect.TabIndex = 49;
+			this.lbAnswerCorrect.Text = "Đáp án đúng:";
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			this.STT.FillWeight = 36.10833F;
+			this.STT.HeaderText = "STT";
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			// 
+			// QuestionID
+			// 
+			this.QuestionID.DataPropertyName = "QuestionID";
+			this.QuestionID.FillWeight = 89.88013F;
+			this.QuestionID.HeaderText = "Mã câu hỏi";
+			this.QuestionID.Name = "QuestionID";
+			this.QuestionID.ReadOnly = true;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			this.SubjectID.FillWeight = 93.85126F;
+			this.SubjectID.HeaderText = "Mã môn thi";
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			// 
+			// QContent
+			// 
+			this.QContent.DataPropertyName = "QContent";
+			this.QContent.FillWeight = 185.3935F;
+			this.QContent.HeaderText = "Nội dung câu hỏi";
+			this.QContent.Name = "QContent";
+			this.QContent.ReadOnly = true;
+			// 
+			// OptionA
+			// 
+			this.OptionA.DataPropertyName = "OptionA";
+			this.OptionA.FillWeight = 84.1683F;
+			this.OptionA.HeaderText = "Đáp án A";
+			this.OptionA.Name = "OptionA";
+			this.OptionA.ReadOnly = true;
+			// 
+			// OptionB
+			// 
+			this.OptionB.DataPropertyName = "OptionB";
+			this.OptionB.FillWeight = 84.06059F;
+			this.OptionB.HeaderText = "Đáp án B";
+			this.OptionB.Name = "OptionB";
+			this.OptionB.ReadOnly = true;
+			// 
+			// OptionC
+			// 
+			this.OptionC.DataPropertyName = "OptionC";
+			this.OptionC.FillWeight = 85.71218F;
+			this.OptionC.HeaderText = "Đáp án C";
+			this.OptionC.Name = "OptionC";
+			this.OptionC.ReadOnly = true;
+			// 
+			// OptionD
+			// 
+			this.OptionD.DataPropertyName = "OptionD";
+			this.OptionD.FillWeight = 90.38728F;
+			this.OptionD.HeaderText = "Đáp án D";
+			this.OptionD.Name = "OptionD";
+			this.OptionD.ReadOnly = true;
+			// 
+			// Answer
+			// 
+			this.Answer.DataPropertyName = "Answer";
+			dataGridViewCellStyle3.Format = "d";
+			dataGridViewCellStyle3.NullValue = "dd/MM/yyyy";
+			this.Answer.DefaultCellStyle = dataGridViewCellStyle3;
+			this.Answer.FillWeight = 150.4384F;
+			this.Answer.HeaderText = "Đáp án đúng";
+			this.Answer.Name = "Answer";
+			this.Answer.ReadOnly = true;
 			// 
 			// FrmManageQuestion
 			// 
@@ -487,13 +470,14 @@ namespace Main
 			this.MinimumSize = new System.Drawing.Size(1080, 640);
 			this.Name = "FrmManageQuestion";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Quản lý người dùng";
+			this.Text = "Quản lý môn thi";
 			this.Load += new System.EventHandler(this.FrmManageUser_Load);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
 			this.gbControls.ResumeLayout(false);
 			this.gbControls.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pBQuizTime)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
 			this.ResumeLayout(false);
 
@@ -504,23 +488,9 @@ namespace Main
 		private System.Windows.Forms.Panel pMain;
 		private System.Windows.Forms.Label lbTitle;
 		private System.Windows.Forms.GroupBox gbControls;
-		private System.Windows.Forms.Label lbEmail;
-		private System.Windows.Forms.Label lbPassword;
-		private System.Windows.Forms.Label lbFullName;
-		private System.Windows.Forms.TextBox tbEmail;
-		private System.Windows.Forms.TextBox tbPassword;
-		private System.Windows.Forms.TextBox tbFullName;
-		private System.Windows.Forms.Label lbAccount;
-		private System.Windows.Forms.Label lbRole;
-		private System.Windows.Forms.Label lbUserID;
-		private System.Windows.Forms.TextBox tbAccount;
-		private System.Windows.Forms.TextBox tbUserID;
-		private System.Windows.Forms.DateTimePicker dtpDob;
-		private System.Windows.Forms.Label lbAddress;
-		private System.Windows.Forms.Label lbDob;
-		private System.Windows.Forms.Label lbPhone;
-		private System.Windows.Forms.TextBox tbAddress;
-		private System.Windows.Forms.TextBox tbPhone;
+		private System.Windows.Forms.Label lbSubjectID;
+		private System.Windows.Forms.Label lbQuestionID;
+		private System.Windows.Forms.TextBox tbQuestionID;
 		private System.Windows.Forms.DataGridView dgvData;
 		private System.Windows.Forms.TextBox tbSearch;
 		private System.Windows.Forms.Button btnSearch;
@@ -528,18 +498,30 @@ namespace Main
 		private System.Windows.Forms.Button btnEdit;
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.ErrorProvider errorProviderWar;
-		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Username;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-		private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
-		private System.Windows.Forms.DataGridViewTextBoxColumn RoleID;
 		private System.Windows.Forms.Button btnCancle;
 		private System.Windows.Forms.Button btnSave;
-		private System.Windows.Forms.ComboBox cbRole;
+		private System.Windows.Forms.ComboBox cbSubject;
+		private System.Windows.Forms.PictureBox pBQuizTime;
+		private System.Windows.Forms.TextBox tbAnswerCorrect;
+		private System.Windows.Forms.Label lbAnswerC;
+		private System.Windows.Forms.Label lbContent;
+		private System.Windows.Forms.TextBox tbAnswerC;
+		private System.Windows.Forms.TextBox tbContent;
+		private System.Windows.Forms.Label lbAnswerB;
+		private System.Windows.Forms.Label lbAnswerA;
+		private System.Windows.Forms.Label lbAnswerD;
+		private System.Windows.Forms.TextBox tbAnswerB;
+		private System.Windows.Forms.TextBox tbAnswerA;
+		private System.Windows.Forms.TextBox tbAnswerD;
+		private System.Windows.Forms.Label lbAnswerCorrect;
+		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+		private System.Windows.Forms.DataGridViewTextBoxColumn QuestionID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn QContent;
+		private System.Windows.Forms.DataGridViewTextBoxColumn OptionA;
+		private System.Windows.Forms.DataGridViewTextBoxColumn OptionB;
+		private System.Windows.Forms.DataGridViewTextBoxColumn OptionC;
+		private System.Windows.Forms.DataGridViewTextBoxColumn OptionD;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
 	}
 }

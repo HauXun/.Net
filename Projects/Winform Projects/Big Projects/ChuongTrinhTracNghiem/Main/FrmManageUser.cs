@@ -13,6 +13,7 @@ namespace Main
 	{
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
+		private bool isEnable = false;
 		private int rowIndex = 0;
 		private UserAccount account;
 
@@ -60,13 +61,13 @@ namespace Main
 		private void LoadData()
 		{
 			AccountBLL.Instance.GetAllAccount(dgvData);
-			RoleBLL.Instance.GetAllAccount(cbRole);
+			RoleBLL.Instance.GetAllRole(cbRole);
 		}
 
 		private UserAccount GetUserInfo()
 		{
 			UserAccount account = new UserAccount();
-			int.TryParse(tbUserID.Text, out int userId);
+			int.TryParse(tbUserID.Text.Trim(), out int userId);
 			account.UserID = userId;
 			account.RoleID = cbRole.SelectedValue.ToString();
 			account.Username = tbAccount.Text.Trim();
@@ -83,10 +84,18 @@ namespace Main
 
 		private void AddUser()
 		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
 			UserAccount account = GetUserInfo();
 			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {account.CreatedAt}";
 			if (!IsValidUser())
+			{
+				isEnable = true;
 				return;
+			}
 
 			if (AccountBLL.Instance.InsertAccount(account))
 			{
@@ -99,14 +108,22 @@ namespace Main
 			}
 		}
 
-		private void UpdateUser()
+		private void UpdateAccount()
 		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
 			UserAccount account = GetUserInfo();
 			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {account.ModifiedAt}";
 			if (!IsValidUser())
+			{
+				isEnable = true;
 				return;
+			}
 
-			if (AccountBLL.Instance.UpdateUser(account))
+			if (AccountBLL.Instance.UpdateAccount(account))
 			{
 				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				LoadData();
@@ -152,11 +169,29 @@ namespace Main
 			}
 		}
 
+		private bool IsValidComboBoxControl()
+		{
+			errorProviderWar.SetError(cbRole, "");
+			if (cbRole.DataSource == null)
+			{
+				errorProviderWar.SetError(cbRole, "Không có chức vụ!\nVui lòng bổ sung");
+				return false;
+			}
+			else
+			{
+				if (cbRole.SelectedIndex == -1)
+				{
+					errorProviderWar.SetError(cbRole, "Vui lòng chọn chọn chức vụ");
+					return false;
+				}
+			}
+			return true;
+		}
+
 		private bool IsValidUser()
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(cbRole, "");
 			errorProviderWar.SetError(tbAccount, "");
 			errorProviderWar.SetError(tbFullName, "");
 			errorProviderWar.SetError(tbPassword, "");
@@ -164,13 +199,6 @@ namespace Main
 			errorProviderWar.SetError(tbPhone, "");
 			errorProviderWar.SetError(dtpDob, "");
 			errorProviderWar.SetError(tbAddress, "");
-
-			// Kiểm tra chức vụ không được để trống
-			if (cbRole.SelectedIndex == -1)
-			{
-				errorProviderWar.SetError(cbRole, "Vui lòng chọn chứ vụ!");
-				return false;
-			}
 
 			// Kiểm tra tên tài khoản không được để trống
 			if (tbAccount.Text.Trim().Equals(""))
@@ -410,12 +438,13 @@ namespace Main
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			isEnable = false;
 			if (isAddnew)
 				AddUser();
 			else
-				UpdateUser();
-			VisibleButton(false);
-			EnableControl(false);
+				UpdateAccount();
+			VisibleButton(isEnable);
+			EnableControl(isEnable);
 		}
 
 		#endregion

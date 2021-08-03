@@ -13,6 +13,7 @@ namespace Main
 	{
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
+		private bool isEnable = false;
 		private int rowIndex = 0;
 		private UserAccount account;
 
@@ -59,36 +60,42 @@ namespace Main
 
 		private void LoadData()
 		{
-			AccountBLL.Instance.GetAllAccount(dgvData);
-			RoleBLL.Instance.GetAllAccount(cbRole);
+			QuestionBLL.Instance.GetAllQuestion(dgvData);
+			SubjectBLL.Instance.GetAllSubject(cbSubject);
 		}
 
-		private UserAccount GetUserInfo()
+		private Question GetQuestionInfo()
 		{
-			UserAccount account = new UserAccount();
-			int.TryParse(tbUserID.Text, out int userId);
-			account.UserID = userId;
-			account.RoleID = cbRole.SelectedValue.ToString();
-			account.Username = tbAccount.Text.Trim();
-			account.FullName = tbFullName.Text.Trim();
-			account.Password = tbPassword.Text.Trim();
-			account.Email = tbEmail.Text.Trim();
-			account.PhoneNumber = tbPhone.Text.Trim();
-			account.Birthday = dtpDob.Value;
-			account.Address = tbAddress.Text.Trim();
-			account.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			return account;
+			Question question = new Question();
+			int.TryParse(tbQuestionID.Text.Trim(), out int userId);
+			question.QuestionID = userId;
+			question.SubjectID = cbSubject.SelectedValue.ToString();
+			question.QContent = tbContent.Text.Trim();
+			question.OptionA = tbAnswerA.Text.Trim();
+			question.OptionB = tbAnswerB.Text.Trim();
+			question.OptionC = tbAnswerC.Text.Trim();
+			question.OptionD = tbAnswerD.Text.Trim();
+			question.Answer = tbAnswerCorrect.Text.Trim();
+			question.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
+			question.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			return question;
 		}
 
-		private void AddUser()
+		private void AddQuestion()
 		{
-			UserAccount account = GetUserInfo();
-			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {account.CreatedAt}";
-			if (!IsValidUser())
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
 				return;
+			}
+			Question question = GetQuestionInfo();
+			if (!IsValidQuestion())
+			{
+				isEnable = true;
+				return;
+			}
 
-			if (AccountBLL.Instance.InsertAccount(account))
+			if (QuestionBLL.Instance.InsertQuestion(question))
 			{
 				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				LoadData();
@@ -99,14 +106,21 @@ namespace Main
 			}
 		}
 
-		private void UpdateUser()
+		private void UpdateQuestion()
 		{
-			UserAccount account = GetUserInfo();
-			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {account.ModifiedAt}";
-			if (!IsValidUser())
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
 				return;
+			}
+			Question question = GetQuestionInfo();
+			if (!IsValidQuestion())
+			{
+				isEnable = true;
+				return;
+			}
 
-			if (AccountBLL.Instance.UpdateUser(account))
+			if (QuestionBLL.Instance.UpdateQuestion(question))
 			{
 				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				LoadData();
@@ -122,15 +136,14 @@ namespace Main
 			try
 			{
 				DataGridViewRow row = dgvData.Rows[rowIndex];
-				tbUserID.Text = row.Cells["UserID"].Value.ToString();
-				tbAccount.Text = row.Cells["Username"].Value.ToString();
-				tbPassword.Text = row.Cells["Password"].Value.ToString();
-				tbFullName.Text = row.Cells["FullName"].Value.ToString();
-				cbRole.SelectedValue = row.Cells["RoleID"].Value.ToString();
-				tbPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
-				tbAddress.Text = row.Cells["Address"].Value.ToString();
-				tbEmail.Text = row.Cells["Email"].Value.ToString();
-				dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
+				tbQuestionID.Text = row.Cells["QuestionID"].Value.ToString();
+				cbSubject.SelectedValue = row.Cells["SubjectID"].Value.ToString();
+				tbContent.Text = row.Cells["QContent"].Value.ToString();
+				tbAnswerA.Text = row.Cells["OptionA"].Value.ToString();
+				tbAnswerB.Text = row.Cells["OptionB"].Value.ToString();
+				tbAnswerC.Text = row.Cells["OptionC"].Value.ToString();
+				tbAnswerD.Text = row.Cells["OptionD"].Value.ToString();
+				tbAnswerCorrect.Text = row.Cells["Answer"].Value.ToString();
 			}
 			catch (Exception ex)
 			{
@@ -152,149 +165,97 @@ namespace Main
 			}
 		}
 
-		private bool IsValidUser()
+		private bool IsValidComboBoxControl()
+		{
+			errorProviderWar.SetError(cbSubject, "");
+			if (cbSubject.DataSource == null)
+			{
+				errorProviderWar.SetError(cbSubject, "Không có môn thi!\nVui lòng bổ sung");
+				return false;
+			}
+			else
+			{
+				if (cbSubject.SelectedIndex == -1)
+				{
+					errorProviderWar.SetError(cbSubject, "Vui lòng chọn môn thi");
+					return false;
+				}	
+			}
+			return true;
+		}
+
+		private bool IsValidQuestion()
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(cbRole, "");
-			errorProviderWar.SetError(tbAccount, "");
-			errorProviderWar.SetError(tbFullName, "");
-			errorProviderWar.SetError(tbPassword, "");
-			errorProviderWar.SetError(tbEmail, "");
-			errorProviderWar.SetError(tbPhone, "");
-			errorProviderWar.SetError(dtpDob, "");
-			errorProviderWar.SetError(tbAddress, "");
+			errorProviderWar.SetError(tbQuestionID, "");
+			errorProviderWar.SetError(tbContent, "");
+			errorProviderWar.SetError(tbAnswerA, "");
+			errorProviderWar.SetError(tbAnswerB, "");
+			errorProviderWar.SetError(tbAnswerC, "");
+			errorProviderWar.SetError(tbAnswerD, "");
+			errorProviderWar.SetError(tbAnswerCorrect, "");
 
-			// Kiểm tra chức vụ không được để trống
-			if (cbRole.SelectedIndex == -1)
+			// Kiểm tra mã câu hỏi không được để trống
+			if (tbQuestionID.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(cbRole, "Vui lòng chọn chứ vụ!");
-				return false;
-			}
-
-			// Kiểm tra tên tài khoản không được để trống
-			if (tbAccount.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbAccount, "Tên tài khoản không được để trống!");
+				errorProviderWar.SetError(tbQuestionID, "Mã câu hỏi không được để trống!");
 				return false;
 			}
 			else
 			{
-				if (IsUnicode(tbAccount.Text.Trim()))
+				if (!IsDigit(tbQuestionID.Text.Trim()))
 				{
-					errorProviderWar.SetError(tbAccount, "Tài khoản không được có dấu!");
+					errorProviderWar.SetError(tbQuestionID, "Mã câu hỏi không được\nchứa ký tự khác ngoài số!");
+					return false;
+				}
+			}
+
+			// Kiểm tra nội dung câu hỏi không được để trống
+			if (tbContent.Text.Trim().Equals(""))
+			{
+				errorProviderWar.SetError(tbContent, "Nội dung câu hỏi không được để trống!");
+				return false;
+			}
+			else
+			{
+				if (tbAnswerA.Text.Trim().Equals(""))
+				{
+					errorProviderWar.SetError(tbAnswerA, "Nội dung câu trả lời không được để trống!");
 					return false;
 				}
 				else
 				{
-					if (IsSpecialCharacters(tbAccount.Text.Trim()))
+					if (tbAnswerB.Text.Trim().Equals(""))
 					{
-						errorProviderWar.SetError(tbAccount, "Tài khoản không được chứa ký tự đặc biệt!");
+						errorProviderWar.SetError(tbAnswerB, "Nội dung câu trả lời không được để trống!");
 						return false;
 					}
-				}
-			}
-
-			// Kiểm tra fullname không được để trống
-			if (tbFullName.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbFullName, "Tên không được để trống!");
-				return false;
-			}
-			else if (IsSpecialCharacters(tbFullName.Text.Trim()))
-			{
-				errorProviderWar.SetError(tbFullName, "Tên không được chứa ký tự đặc biệt!");
-				return false;
-			}
-
-			// Kiểm tra mật khẩu không được để trống
-			if (tbPassword.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbPassword, "Mật khẩu không được để trống!");
-				return false;
-			}
-			else
-			{
-				if (IsUnicode(tbPassword.Text.Trim()))
-				{
-					errorProviderWar.SetError(tbPassword, "Mật khẩu không được có dấu!");
-					return false;
-				}
-				else if (IsSpaceCharacters(tbPassword.Text.Trim()))
-				{
-					errorProviderWar.SetError(tbPassword, "Mật khẩu không được chứa khoảng trắng!");
-					return false;
-				}
-			}
-
-			// Kiểm tra email không được để trống
-			if (tbEmail.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbEmail, "Email không được để trống!");
-				return false;
-			}
-			else
-			{
-				if (IsSpaceCharacters(tbEmail.Text.Trim()))
-				{
-					errorProviderWar.SetError(tbEmail, "Email không được chứa khoảng trắng!");
-					return false;
-				}
-				else
-				{
-					if (IsUnicode(tbEmail.Text.Trim()))
+					else
 					{
-						errorProviderWar.SetError(tbEmail, "Email không được có dấu!");
-						return false;
-					}
-					else if (IsSpecialCharacters(tbEmail.Text.Trim()))
-					{
-						if (tbEmail.Text.Trim().Contains("@"))
-						{ }
+						if (tbAnswerC.Text.Trim().Equals(""))
+						{
+							errorProviderWar.SetError(tbAnswerC, "Nội dung câu trả lời không được để trống!");
+							return false;
+						}
 						else
 						{
-							errorProviderWar.SetError(tbEmail, "Email không được chứa ký tự đặc biệt!");
-							return false;
+							if (tbAnswerD.Text.Trim().Equals(""))
+							{
+								errorProviderWar.SetError(tbAnswerD, "Nội dung câu trả lời không được để trống!");
+								return false;
+							}
+							else
+							{
+								if (tbAnswerCorrect.Text.Trim().Equals(""))
+								{
+									errorProviderWar.SetError(tbAnswerCorrect, "Nội dung đáp án không được để trống!");
+									return false;
+								}
+							}
 						}
 					}
 				}
-			}
-
-			// Kiểm tra số điện thoại khoản không được để trống
-			if (tbPhone.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbPhone, "Số điện thoại không được để trống!");
-				return false;
-			}
-			else
-			{
-				if (IsSpaceCharacters(tbPhone.Text.Trim()))
-				{
-					errorProviderWar.SetError(tbPhone, "Số điện thoại không\nđược chứa khoảng trắng!");
-					return false;
-				}
-				else
-				{
-					if (!IsDigit(tbPhone.Text.Trim()))
-					{
-						errorProviderWar.SetError(tbPhone, "Số điện thoại không được\nchứa ký tự khác ngoài số!");
-						return false;
-					}
-				}
-			}
-
-			// Kiểm tra ngày sinh toàn vẹn giá trị
-			if (dtpDob.Value.Date.Equals(DateTime.Now.Date))
-			{
-				errorProviderWar.SetError(dtpDob, "Ngày tháng năm sinh có vấn đề!");
-				return false;
-			}
-
-			// Kiểm tra địa chỉ không được để trống
-			if (tbAddress.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbAddress, "Địa chỉ không được để trống!");
-				return false;
 			}
 
 			return true;
@@ -322,7 +283,9 @@ namespace Main
 			isAddnew = true;
 			VisibleButton(true);
 			EnableControl(true);
-			tbUserID.Text = AccountBLL.Instance.GetIDMissing().ToString();
+			tbQuestionID.Text = QuestionBLL.Instance.GetIDMissing().ToString();
+			if (!IsValidComboBoxControl())
+				return;
 		}
 
 		private void FrmManageUser_Load(object sender, EventArgs e)
@@ -353,16 +316,16 @@ namespace Main
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			if (!IsValidUser())
+			if (!IsValidQuestion())
 				return;
-			if (!int.TryParse(tbUserID.Text, out int userID))
+			if (!int.TryParse(tbQuestionID.Text, out int questionID))
 			{
-				MessageBox.Show("Vui lòng chọn người dùng cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Vui lòng chọn câu hỏi dùng cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
 			{
-				if (AccountBLL.Instance.DeleteAccount(userID))
+				if (QuestionBLL.Instance.DeleteQuestion(questionID))
 				{
 					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 					LoadData();
@@ -379,7 +342,7 @@ namespace Main
 			string keyword = tbSearch.Text.Trim();
 			if (keyword.Equals("Nhập tên/Tài khoản/..."))
 				keyword = string.Empty;
-			AccountBLL.Instance.SearchAccount(dgvData, keyword);
+			QuestionBLL.Instance.SearchQuestion(dgvData, keyword);
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -391,7 +354,7 @@ namespace Main
 		{
 			if (string.IsNullOrEmpty(tbSearch.Text.Trim()))
 			{
-				tbSearch.Text = "Nhập tên/Tài khoản/...";
+				tbSearch.Text = "Nhập từ khóa ...";
 			}
 		}
 
@@ -410,12 +373,13 @@ namespace Main
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			isEnable = false;
 			if (isAddnew)
-				AddUser();
+				AddQuestion();
 			else
-				UpdateUser();
-			VisibleButton(false);
-			EnableControl(false);
+				UpdateQuestion();
+			VisibleButton(isEnable);
+			EnableControl(isEnable);
 		}
 
 		#endregion

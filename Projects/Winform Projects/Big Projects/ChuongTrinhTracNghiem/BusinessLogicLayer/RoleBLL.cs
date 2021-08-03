@@ -21,7 +21,7 @@ namespace BusinessLogicLayer
 
         private RoleBLL() { }
 
-        public void GetAllAccount(ComboBox box)
+        public void GetAllRole(ComboBox box)
         {
 			if (UserRoleDAL.Instance.GetAllRole().Rows.Count > 0)
 			{

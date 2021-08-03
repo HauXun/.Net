@@ -27,6 +27,13 @@ namespace BusinessLogicLayer
             data.DataSource = SubjectDAL.Instance.GetAllSubject();
         }
 
+        public void GetAllSubject(ComboBox box)
+        {
+            box.DataSource = SubjectDAL.Instance.GetAllSubject();
+            box.DisplayMember = "SubjectName";
+            box.ValueMember = "SubjectID";
+        }
+
         public bool InsertSubject(Subject subject)
 		{
             return SubjectDAL.Instance.InsertSubject(subject);

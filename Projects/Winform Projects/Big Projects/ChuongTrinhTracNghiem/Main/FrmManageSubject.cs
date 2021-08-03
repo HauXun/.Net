@@ -205,8 +205,6 @@ namespace Main
 			EnableControl(true);
 		}
 
-		#endregion
-
 		private void FrmManageSubject_Load(object sender, EventArgs e)
 		{
 			LoadData();
@@ -300,5 +298,7 @@ namespace Main
 			VisibleButton(false);
 			EnableControl(false);
 		}
+
+		#endregion
 	}
 }
