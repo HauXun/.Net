@@ -14,11 +14,15 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private int rowIndex = 0;
+		private UserAccount account;
 
-		public FrmManageSubject()
+		public UserAccount Account { get => account; set => account = value; }
+
+		public FrmManageSubject(UserAccount account)
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
+			Account = account;
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -64,10 +68,8 @@ namespace Main
 			subject.SubjectID = tbSubjectID.Text.Trim();
 			subject.SubjectName = tbSubjectName.Text.Trim();
 			subject.Description = tbDescription.Text.Trim();
-			subject.CreatedBy = "Cheems";
-			subject.CreatedAt = DateTime.Now;
-			subject.ModifiedBy = "Cheems";
-			subject.ModifiedAt = DateTime.Now;
+			subject.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
+			subject.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			return subject;
 		}
 
@@ -233,16 +235,17 @@ namespace Main
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
+			string subjectID = tbSubjectID.Text.Trim();
 			if (!IsValidSubject())
 				return;
-			if (string.IsNullOrEmpty(tbSubjectID.Text.Trim()))
+			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
 			{
 				MessageBox.Show("Vui lòng chọn môn thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
 			{
-				if (SubjectBLL.Instance.DeleteSubject(tbSubjectID.Text.Trim()))
+				if (SubjectBLL.Instance.DeleteSubject(subjectID))
 				{
 					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 					LoadData();
@@ -256,7 +259,10 @@ namespace Main
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			SubjectBLL.Instance.SearchSubject(dgvData, tbSearch.Text.Trim());
+			string keyword = tbSearch.Text.Trim();
+			if (keyword.Equals("Nhập tên môn ..."))
+				keyword = string.Empty;
+			SubjectBLL.Instance.SearchSubject(dgvData, keyword);
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)

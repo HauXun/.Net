@@ -51,7 +51,7 @@ namespace Main
 
 		private void tsmiManageUser_Click(object sender, EventArgs e)
 		{
-			FrmManageUser frm = new FrmManageUser();
+			FrmManageUser frm = new FrmManageUser(Account);
 			frm.ShowDialog();
 		}
 
@@ -64,7 +64,7 @@ namespace Main
 
 		private void tsmiManageSubject_Click(object sender, EventArgs e)
 		{
-			FrmManageSubject frm = new FrmManageSubject();
+			FrmManageSubject frm = new FrmManageSubject(Account);
 			frm.ShowDialog();
 		}
 

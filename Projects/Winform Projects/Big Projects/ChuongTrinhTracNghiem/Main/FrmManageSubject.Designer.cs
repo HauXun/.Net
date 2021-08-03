@@ -36,6 +36,10 @@ namespace Main
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.dgvData = new System.Windows.Forms.DataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
@@ -43,17 +47,13 @@ namespace Main
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.gbControls = new System.Windows.Forms.GroupBox();
+			this.tbSubjectID = new System.Windows.Forms.TextBox();
+			this.tbDescription = new System.Windows.Forms.TextBox();
 			this.lbDescription = new System.Windows.Forms.Label();
 			this.lbSubjectName = new System.Windows.Forms.Label();
 			this.tbSubjectName = new System.Windows.Forms.TextBox();
 			this.lbSubjectID = new System.Windows.Forms.Label();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.tbDescription = new System.Windows.Forms.TextBox();
-			this.tbSubjectID = new System.Windows.Forms.TextBox();
-			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -126,6 +126,40 @@ namespace Main
 			this.dgvData.TabIndex = 7;
 			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			this.STT.FillWeight = 32.69129F;
+			this.STT.HeaderText = "STT";
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			// 
+			// SubjectName
+			// 
+			this.SubjectName.DataPropertyName = "SubjectName";
+			this.SubjectName.FillWeight = 109.8239F;
+			this.SubjectName.HeaderText = "Tên môn thi";
+			this.SubjectName.Name = "SubjectName";
+			this.SubjectName.ReadOnly = true;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			this.SubjectID.FillWeight = 43.52628F;
+			this.SubjectID.HeaderText = "Mã môn";
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			// 
+			// Description
+			// 
+			this.Description.DataPropertyName = "Description";
+			this.Description.FillWeight = 139.8907F;
+			this.Description.HeaderText = "Mô tả";
+			this.Description.Name = "Description";
+			this.Description.ReadOnly = true;
 			// 
 			// tbSearch
 			// 
@@ -201,7 +235,21 @@ namespace Main
 			this.gbControls.Size = new System.Drawing.Size(1040, 82);
 			this.gbControls.TabIndex = 1;
 			this.gbControls.TabStop = false;
-			this.gbControls.Text = "Thông tin người dùng";
+			this.gbControls.Text = "Thông tin môn thi";
+			// 
+			// tbSubjectID
+			// 
+			this.tbSubjectID.Location = new System.Drawing.Point(60, 33);
+			this.tbSubjectID.Name = "tbSubjectID";
+			this.tbSubjectID.Size = new System.Drawing.Size(239, 20);
+			this.tbSubjectID.TabIndex = 7;
+			// 
+			// tbDescription
+			// 
+			this.tbDescription.Location = new System.Drawing.Point(795, 33);
+			this.tbDescription.Name = "tbDescription";
+			this.tbDescription.Size = new System.Drawing.Size(239, 20);
+			this.tbDescription.TabIndex = 6;
 			// 
 			// lbDescription
 			// 
@@ -240,54 +288,6 @@ namespace Main
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
-			// 
-			// tbDescription
-			// 
-			this.tbDescription.Location = new System.Drawing.Point(795, 33);
-			this.tbDescription.Name = "tbDescription";
-			this.tbDescription.Size = new System.Drawing.Size(239, 20);
-			this.tbDescription.TabIndex = 6;
-			// 
-			// tbSubjectID
-			// 
-			this.tbSubjectID.Location = new System.Drawing.Point(60, 33);
-			this.tbSubjectID.Name = "tbSubjectID";
-			this.tbSubjectID.Size = new System.Drawing.Size(239, 20);
-			this.tbSubjectID.TabIndex = 7;
-			// 
-			// Description
-			// 
-			this.Description.DataPropertyName = "Description";
-			this.Description.FillWeight = 139.8907F;
-			this.Description.HeaderText = "Mô tả";
-			this.Description.Name = "Description";
-			this.Description.ReadOnly = true;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			this.SubjectID.FillWeight = 43.52628F;
-			this.SubjectID.HeaderText = "Mã môn";
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			// 
-			// SubjectName
-			// 
-			this.SubjectName.DataPropertyName = "SubjectName";
-			this.SubjectName.FillWeight = 109.8239F;
-			this.SubjectName.HeaderText = "Tên môn thi";
-			this.SubjectName.Name = "SubjectName";
-			this.SubjectName.ReadOnly = true;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 32.69129F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
 			// 
 			// FrmManageSubject
 			// 

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Main
 {
-	public partial class FrmManageUser : Form
+	public partial class FrmManageQuestion : Form
 	{
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
@@ -18,7 +18,7 @@ namespace Main
 
 		public UserAccount Account { get => account; set => account = value; }
 
-		public FrmManageUser(UserAccount account)
+		public FrmManageQuestion(UserAccount account)
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);

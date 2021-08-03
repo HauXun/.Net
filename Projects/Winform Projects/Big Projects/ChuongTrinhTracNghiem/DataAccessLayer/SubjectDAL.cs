@@ -62,14 +62,11 @@ namespace DataAccessLayer
 		{
             try
             {
-                string query = "EXEC dbo.USP_UpdateSubject @SubjectID , @SubjectName , @Description , @CreatedBy , @CreatedAt , @ModifiedBy , @ModifiedAt";
+                string query = "EXEC dbo.USP_UpdateSubject @SubjectName , @Description , @ModifiedBy , @ModifiedAt";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
                     {
-                        subject.SubjectID,
                         subject.SubjectName,
                         subject.Description,
-                        subject.CreatedBy,
-                        subject.CreatedAt,
                         subject.ModifiedBy,
                         subject.ModifiedAt
                     });
@@ -99,7 +96,7 @@ namespace DataAccessLayer
         {
             try
             {
-                string query = "EXEC dbo.USP_Searchsubject @keyword";
+                string query = "EXEC dbo.USP_SearchSubject @keyword";
                 DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
                 return data;
             }
