@@ -73,6 +73,7 @@ namespace Main
 			this.tbAccount = new System.Windows.Forms.TextBox();
 			this.tbUserID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.cbRoleFilter = new System.Windows.Forms.ComboBox();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -82,6 +83,7 @@ namespace Main
 			// pMain
 			// 
 			this.pMain.BackColor = System.Drawing.Color.Transparent;
+			this.pMain.Controls.Add(this.cbRoleFilter);
 			this.pMain.Controls.Add(this.btnCancle);
 			this.pMain.Controls.Add(this.btnSave);
 			this.pMain.Controls.Add(this.dgvData);
@@ -239,9 +241,9 @@ namespace Main
 			// 
 			// tbSearch
 			// 
-			this.tbSearch.Location = new System.Drawing.Point(12, 270);
+			this.tbSearch.Location = new System.Drawing.Point(89, 270);
 			this.tbSearch.Name = "tbSearch";
-			this.tbSearch.Size = new System.Drawing.Size(218, 20);
+			this.tbSearch.Size = new System.Drawing.Size(141, 20);
 			this.tbSearch.TabIndex = 5;
 			this.tbSearch.Text = "Nhập tên/Tài khoản/...";
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
@@ -477,6 +479,14 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
+			// cbRoleFilter
+			// 
+			this.cbRoleFilter.FormattingEnabled = true;
+			this.cbRoleFilter.Location = new System.Drawing.Point(12, 270);
+			this.cbRoleFilter.Name = "cbRoleFilter";
+			this.cbRoleFilter.Size = new System.Drawing.Size(71, 21);
+			this.cbRoleFilter.TabIndex = 10;
+			// 
 			// FrmManageUser
 			// 
 			this.AcceptButton = this.btnSearch;
@@ -541,5 +551,6 @@ namespace Main
 		private System.Windows.Forms.Button btnCancle;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.ComboBox cbRole;
+		private System.Windows.Forms.ComboBox cbRoleFilter;
 	}
 }

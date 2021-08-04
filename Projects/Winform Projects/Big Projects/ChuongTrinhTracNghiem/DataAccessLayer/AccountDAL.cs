@@ -170,12 +170,12 @@ namespace DataAccessLayer
             }
         }
 
-        public DataTable SearchAccount(string keyword)
+        public DataTable SearchAccount(string keyword, string roleFilter = null)
         {
             try
             {
-                string query = "EXEC dbo.USP_SearchAccount @keyword";
-                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
+                string query = "EXEC dbo.USP_SearchAccount @keyword , @roleFilter";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword, roleFilter });
                 return data;
             }
             catch (Exception e)

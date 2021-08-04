@@ -53,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQuiz.Designer.cs">
+      <DependentUpon>FrmQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmQuizOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQuizOptions.Designer.cs">
+      <DependentUpon>FrmQuizOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +103,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmQuiz.resx">
+      <DependentUpon>FrmQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQuizOptions.resx">
+      <DependentUpon>FrmQuizOptions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmChangePassword.resx">
       <DependentUpon>FrmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,7 +162,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\cat.gif" />
     <Content Include="Resources\Quiz.png" />
+    <None Include="Resources\QuizThumnails.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

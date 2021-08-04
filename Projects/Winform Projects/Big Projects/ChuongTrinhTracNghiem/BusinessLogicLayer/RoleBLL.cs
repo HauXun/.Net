@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -25,9 +26,17 @@ namespace BusinessLogicLayer
         {
 			if (UserRoleDAL.Instance.GetAllRole().Rows.Count > 0)
 			{
-				box.DataSource = UserRoleDAL.Instance.GetAllRole();
+                DataTable data = UserRoleDAL.Instance.GetAllRole();
+                if (box.Name == "cbRoleFilter")
+                {
+                    DataRow row = data.NewRow();
+                    row["RoleName"] = "Tất cả";
+                    row["RoleID"] = "ALL";
+                    data.Rows.InsertAt(row, 0);
+                }
+                box.DataSource = data;
 				box.DisplayMember = "RoleName";
-				box.ValueMember = "RoleID";
+				box.ValueMember = "RoleID";             
 			}
         }
     }

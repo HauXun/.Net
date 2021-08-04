@@ -34,7 +34,7 @@ namespace Main
 				return;
 			if (rectangle.Width == 0 || rectangle.Height == 0)
 				return;
-			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(196, 232, 250), 90F))
+			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(233, 30, 59), 90F))
 			{
 				e.Graphics.FillRectangle(brush, rectangle);
 			}
@@ -62,6 +62,7 @@ namespace Main
 		{
 			AccountBLL.Instance.GetAllAccount(dgvData);
 			RoleBLL.Instance.GetAllRole(cbRole);
+			RoleBLL.Instance.GetAllRole(cbRoleFilter);
 		}
 
 		private UserAccount GetUserInfo()
@@ -163,10 +164,7 @@ namespace Main
 
 		private void EnableControl(bool isEnable = true)
 		{
-			foreach (Control item in gbControls.Controls)
-			{
-				item.Enabled = isEnable;
-			}
+			gbControls.Enabled = isEnable;
 		}
 
 		private bool IsValidComboBoxControl()
@@ -407,7 +405,11 @@ namespace Main
 			string keyword = tbSearch.Text.Trim();
 			if (keyword.Equals("Nhập tên/Tài khoản/..."))
 				keyword = string.Empty;
-			AccountBLL.Instance.SearchAccount(dgvData, keyword);
+
+			string roleFilter = "ALL";
+			if (cbRoleFilter.SelectedValue != null)
+				roleFilter = cbRoleFilter.SelectedValue.ToString();
+			AccountBLL.Instance.SearchAccount(dgvData, keyword, roleFilter);
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
