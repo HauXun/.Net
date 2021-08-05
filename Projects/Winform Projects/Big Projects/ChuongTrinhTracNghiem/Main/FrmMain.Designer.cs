@@ -60,6 +60,7 @@ namespace Main
 			this.tbID = new System.Windows.Forms.TextBox();
 			this.tbDisplayname = new System.Windows.Forms.TextBox();
 			this.pFunction = new System.Windows.Forms.Panel();
+			this.tsmiManageExam = new System.Windows.Forms.ToolStripMenuItem();
 			this.msAdmin.SuspendLayout();
 			this.pNext.SuspendLayout();
 			this.gpInfoAccount.SuspendLayout();
@@ -123,7 +124,8 @@ namespace Main
 			// 
 			this.tsmiCategory.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiManageSubject,
-            this.tsmiManageQuestion});
+            this.tsmiManageQuestion,
+            this.tsmiManageExam});
 			this.tsmiCategory.Name = "tsmiCategory";
 			this.tsmiCategory.Size = new System.Drawing.Size(74, 20);
 			this.tsmiCategory.Text = "Danh mục";
@@ -131,14 +133,14 @@ namespace Main
 			// tsmiManageSubject
 			// 
 			this.tsmiManageSubject.Name = "tsmiManageSubject";
-			this.tsmiManageSubject.Size = new System.Drawing.Size(160, 22);
+			this.tsmiManageSubject.Size = new System.Drawing.Size(180, 22);
 			this.tsmiManageSubject.Text = "Quản lý môn thi";
 			this.tsmiManageSubject.Click += new System.EventHandler(this.tsmiManageSubject_Click);
 			// 
 			// tsmiManageQuestion
 			// 
 			this.tsmiManageQuestion.Name = "tsmiManageQuestion";
-			this.tsmiManageQuestion.Size = new System.Drawing.Size(160, 22);
+			this.tsmiManageQuestion.Size = new System.Drawing.Size(180, 22);
 			this.tsmiManageQuestion.Text = "Quản lý câu hỏi";
 			this.tsmiManageQuestion.Click += new System.EventHandler(this.tsmiManageQuestion_Click);
 			// 
@@ -347,6 +349,7 @@ namespace Main
 			this.tbID.ReadOnly = true;
 			this.tbID.Size = new System.Drawing.Size(192, 20);
 			this.tbID.TabIndex = 3;
+			this.tbID.TabStop = false;
 			// 
 			// tbDisplayname
 			// 
@@ -355,6 +358,7 @@ namespace Main
 			this.tbDisplayname.ReadOnly = true;
 			this.tbDisplayname.Size = new System.Drawing.Size(192, 20);
 			this.tbDisplayname.TabIndex = 1;
+			this.tbDisplayname.TabStop = false;
 			// 
 			// pFunction
 			// 
@@ -367,6 +371,13 @@ namespace Main
 			this.pFunction.Name = "pFunction";
 			this.pFunction.Size = new System.Drawing.Size(451, 184);
 			this.pFunction.TabIndex = 3;
+			// 
+			// tsmiManageExam
+			// 
+			this.tsmiManageExam.Name = "tsmiManageExam";
+			this.tsmiManageExam.Size = new System.Drawing.Size(180, 22);
+			this.tsmiManageExam.Text = "Quản lý đề thi";
+			this.tsmiManageExam.Click += new System.EventHandler(this.tsmiManageExam_Click);
 			// 
 			// FrmMain
 			// 
@@ -434,6 +445,7 @@ namespace Main
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem tsmiTestQuiz;
 		private System.Windows.Forms.ToolStripMenuItem tsmiGuide;
+		private System.Windows.Forms.ToolStripMenuItem tsmiManageExam;
 	}
 }
 

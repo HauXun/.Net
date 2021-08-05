@@ -87,7 +87,6 @@ namespace Main
 			this.tbQuizTime.ReadOnly = true;
 			this.tbQuizTime.Size = new System.Drawing.Size(263, 23);
 			this.tbQuizTime.TabIndex = 3;
-			this.tbQuizTime.UseSystemPasswordChar = true;
 			// 
 			// lbSubject
 			// 
@@ -137,6 +136,19 @@ namespace Main
 			// cbQuestionCount
 			// 
 			this.cbQuestionCount.FormattingEnabled = true;
+			this.cbQuestionCount.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55",
+            "60"});
 			this.cbQuestionCount.Location = new System.Drawing.Point(174, 97);
 			this.cbQuestionCount.Name = "cbQuestionCount";
 			this.cbQuestionCount.Size = new System.Drawing.Size(263, 24);

@@ -35,6 +35,24 @@ namespace DataAccessLayer
             }
         }
 
+        public Subject GetSubjectByID(string subjectID)
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_SelectSubjectByID @SubjectID";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID });
+				foreach (DataRow row in data.Rows)
+				{
+                    return new Subject(row);
+				}
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
+        }
+
         public bool InsertSubject(Subject subject)
 		{
             try

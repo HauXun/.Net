@@ -53,10 +53,12 @@ namespace DataAccessLayer
 		{
             try
             {
-                string query = "EXEC dbo.USP_InsertQuestion @SubjectID , @QContent , @OptionA , @OptionB , @OptionC , @OptionD , @Answer , @CreatedBy , @ModifiedBy";
+                string query = "EXEC dbo.USP_InsertQuestion @QuestionID , @SubjectID , @ExamID , @QContent , @OptionA , @OptionB , @OptionC , @OptionD , @Answer , @CreatedBy , @ModifiedBy";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
                     { 
+                        GetIDMissing(),
                         question.SubjectID,
+                        question.ExamID,
                         question.QContent, 
                         question.OptionA,
                         question.OptionB,
@@ -82,6 +84,7 @@ namespace DataAccessLayer
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
                     {
                         question.SubjectID,
+                        question.ExamID,
                         question.QContent,
                         question.OptionA,
                         question.OptionB,

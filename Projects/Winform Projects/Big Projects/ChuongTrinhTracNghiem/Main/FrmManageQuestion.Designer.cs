@@ -44,12 +44,6 @@ namespace Main
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.gbControls = new System.Windows.Forms.GroupBox();
-			this.pBQuizTime = new System.Windows.Forms.PictureBox();
-			this.cbSubject = new System.Windows.Forms.ComboBox();
-			this.lbSubjectID = new System.Windows.Forms.Label();
-			this.lbQuestionID = new System.Windows.Forms.Label();
-			this.tbQuestionID = new System.Windows.Forms.TextBox();
-			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.tbAnswerCorrect = new System.Windows.Forms.TextBox();
 			this.lbAnswerC = new System.Windows.Forms.Label();
 			this.lbContent = new System.Windows.Forms.Label();
@@ -62,15 +56,24 @@ namespace Main
 			this.tbAnswerA = new System.Windows.Forms.TextBox();
 			this.tbAnswerD = new System.Windows.Forms.TextBox();
 			this.lbAnswerCorrect = new System.Windows.Forms.Label();
+			this.pBQuizTime = new System.Windows.Forms.PictureBox();
+			this.cbSubject = new System.Windows.Forms.ComboBox();
+			this.lbSubjectID = new System.Windows.Forms.Label();
+			this.lbQuestionID = new System.Windows.Forms.Label();
+			this.tbQuestionID = new System.Windows.Forms.TextBox();
+			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.QContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.OptionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.OptionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.OptionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.OptionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.cbExamID = new System.Windows.Forms.ComboBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -136,6 +139,7 @@ namespace Main
             this.STT,
             this.QuestionID,
             this.SubjectID,
+            this.ExamID,
             this.QContent,
             this.OptionA,
             this.OptionB,
@@ -213,6 +217,8 @@ namespace Main
 			// 
 			// gbControls
 			// 
+			this.gbControls.Controls.Add(this.cbExamID);
+			this.gbControls.Controls.Add(this.label1);
 			this.gbControls.Controls.Add(this.tbAnswerCorrect);
 			this.gbControls.Controls.Add(this.lbAnswerC);
 			this.gbControls.Controls.Add(this.lbContent);
@@ -236,54 +242,6 @@ namespace Main
 			this.gbControls.TabIndex = 1;
 			this.gbControls.TabStop = false;
 			this.gbControls.Text = "Thông tin câu hỏi";
-			// 
-			// pBQuizTime
-			// 
-			this.pBQuizTime.BackgroundImage = global::Main.Properties.Resources.Quiz;
-			this.pBQuizTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.pBQuizTime.Location = new System.Drawing.Point(36, 95);
-			this.pBQuizTime.Name = "pBQuizTime";
-			this.pBQuizTime.Size = new System.Drawing.Size(243, 143);
-			this.pBQuizTime.TabIndex = 19;
-			this.pBQuizTime.TabStop = false;
-			// 
-			// cbSubject
-			// 
-			this.cbSubject.FormattingEnabled = true;
-			this.cbSubject.Location = new System.Drawing.Point(120, 65);
-			this.cbSubject.Name = "cbSubject";
-			this.cbSubject.Size = new System.Drawing.Size(159, 21);
-			this.cbSubject.TabIndex = 7;
-			// 
-			// lbSubjectID
-			// 
-			this.lbSubjectID.AutoSize = true;
-			this.lbSubjectID.Location = new System.Drawing.Point(33, 68);
-			this.lbSubjectID.Name = "lbSubjectID";
-			this.lbSubjectID.Size = new System.Drawing.Size(45, 13);
-			this.lbSubjectID.TabIndex = 6;
-			this.lbSubjectID.Text = "Môn thi:";
-			// 
-			// lbQuestionID
-			// 
-			this.lbQuestionID.AutoSize = true;
-			this.lbQuestionID.Location = new System.Drawing.Point(33, 28);
-			this.lbQuestionID.Name = "lbQuestionID";
-			this.lbQuestionID.Size = new System.Drawing.Size(63, 13);
-			this.lbQuestionID.TabIndex = 0;
-			this.lbQuestionID.Text = "Mã câu hỏi:";
-			// 
-			// tbQuestionID
-			// 
-			this.tbQuestionID.Location = new System.Drawing.Point(120, 25);
-			this.tbQuestionID.Name = "tbQuestionID";
-			this.tbQuestionID.ReadOnly = true;
-			this.tbQuestionID.Size = new System.Drawing.Size(159, 20);
-			this.tbQuestionID.TabIndex = 1;
-			// 
-			// errorProviderWar
-			// 
-			this.errorProviderWar.ContainerControl = this;
 			// 
 			// tbAnswerCorrect
 			// 
@@ -383,6 +341,54 @@ namespace Main
 			this.lbAnswerCorrect.TabIndex = 49;
 			this.lbAnswerCorrect.Text = "Đáp án đúng:";
 			// 
+			// pBQuizTime
+			// 
+			this.pBQuizTime.BackgroundImage = global::Main.Properties.Resources.Quiz;
+			this.pBQuizTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pBQuizTime.Location = new System.Drawing.Point(36, 110);
+			this.pBQuizTime.Name = "pBQuizTime";
+			this.pBQuizTime.Size = new System.Drawing.Size(243, 128);
+			this.pBQuizTime.TabIndex = 19;
+			this.pBQuizTime.TabStop = false;
+			// 
+			// cbSubject
+			// 
+			this.cbSubject.FormattingEnabled = true;
+			this.cbSubject.Location = new System.Drawing.Point(120, 78);
+			this.cbSubject.Name = "cbSubject";
+			this.cbSubject.Size = new System.Drawing.Size(159, 21);
+			this.cbSubject.TabIndex = 7;
+			// 
+			// lbSubjectID
+			// 
+			this.lbSubjectID.AutoSize = true;
+			this.lbSubjectID.Location = new System.Drawing.Point(33, 81);
+			this.lbSubjectID.Name = "lbSubjectID";
+			this.lbSubjectID.Size = new System.Drawing.Size(45, 13);
+			this.lbSubjectID.TabIndex = 6;
+			this.lbSubjectID.Text = "Môn thi:";
+			// 
+			// lbQuestionID
+			// 
+			this.lbQuestionID.AutoSize = true;
+			this.lbQuestionID.Location = new System.Drawing.Point(33, 28);
+			this.lbQuestionID.Name = "lbQuestionID";
+			this.lbQuestionID.Size = new System.Drawing.Size(63, 13);
+			this.lbQuestionID.TabIndex = 0;
+			this.lbQuestionID.Text = "Mã câu hỏi:";
+			// 
+			// tbQuestionID
+			// 
+			this.tbQuestionID.Location = new System.Drawing.Point(120, 25);
+			this.tbQuestionID.Name = "tbQuestionID";
+			this.tbQuestionID.ReadOnly = true;
+			this.tbQuestionID.Size = new System.Drawing.Size(159, 20);
+			this.tbQuestionID.TabIndex = 1;
+			// 
+			// errorProviderWar
+			// 
+			this.errorProviderWar.ContainerControl = this;
+			// 
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
@@ -408,6 +414,13 @@ namespace Main
 			this.SubjectID.HeaderText = "Mã môn thi";
 			this.SubjectID.Name = "SubjectID";
 			this.SubjectID.ReadOnly = true;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
 			// 
 			// QContent
 			// 
@@ -459,6 +472,23 @@ namespace Main
 			this.Answer.HeaderText = "Đáp án đúng";
 			this.Answer.Name = "Answer";
 			this.Answer.ReadOnly = true;
+			// 
+			// cbExamID
+			// 
+			this.cbExamID.FormattingEnabled = true;
+			this.cbExamID.Location = new System.Drawing.Point(120, 51);
+			this.cbExamID.Name = "cbExamID";
+			this.cbExamID.Size = new System.Drawing.Size(159, 21);
+			this.cbExamID.TabIndex = 56;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(33, 54);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(41, 13);
+			this.label1.TabIndex = 55;
+			this.label1.Text = "Mã đề:";
 			// 
 			// FrmManageQuestion
 			// 
@@ -517,11 +547,14 @@ namespace Main
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QuestionID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ExamID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QContent;
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionA;
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionB;
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionC;
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
+		private System.Windows.Forms.ComboBox cbExamID;
+		private System.Windows.Forms.Label label1;
 	}
 }

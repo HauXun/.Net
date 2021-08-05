@@ -39,6 +39,7 @@ namespace Entities
             Username = row["Username"].ToString();
             FullName = row["Fullname"].ToString();
             RoleID = row["RoleID"].ToString();
+            Birthday = Convert.ToDateTime(row["Birthday"]);
         }
     }
 }

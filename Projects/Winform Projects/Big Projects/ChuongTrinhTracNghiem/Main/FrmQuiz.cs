@@ -11,11 +11,24 @@ namespace Main
 {
 	public partial class FrmQuiz : Form
 	{
+		private UserAccount account;
+		private string subject;
+		private string questionCount;
+		private string timeQuiz;
+		public UserAccount Account { get => account; set => account = value; }
+		public string Subject { get => subject; set => subject = value; }
+		public string QuestionCount { get => questionCount; set => questionCount = value; }
+		public string TimeQuiz { get => timeQuiz; set => timeQuiz = value; }
+
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
-		public FrmQuiz()
+		public FrmQuiz(UserAccount account, object subject, object questionCount, string timeQuiz)
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
+			Account = account;
+			Subject = subject.ToString();
+			QuestionCount = questionCount == null ? "" : questionCount.ToString();
+			TimeQuiz = timeQuiz;
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -69,13 +82,33 @@ namespace Main
 		#region Events
 
 
-		private void FrmManageUser_Load(object sender, EventArgs e)
+		#endregion
+
+		private void FrmQuiz_Load(object sender, EventArgs e)
 		{
-			//LoadData();
-			//EnableControl(false);
+			tbDisplayname.Text = Account.FullName;
+			tbQuestionCount.Text = QuestionCount;
+			tbSubject.Text = Subject;
+			tbDoB.Text = Account.Birthday.ToString("dd/MM/yyyy");
+			lbTime.Text = TimeQuiz;
 		}
 
+		private void lbFlag_MouseEnter(object sender, EventArgs e)
+		{
+			lbFlag.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Underline);
+		}
 
-		#endregion
+		private void lbFlag_MouseLeave(object sender, EventArgs e)
+		{
+			lbFlag.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Regular);
+		}
+
+		private void lbTime_TextChanged(object sender, EventArgs e)
+		{
+			lbTime.Padding = new Padding(2);
+			lbTime.TextAlign = ContentAlignment.MiddleCenter;
+			//lbTime.Left = (gbTime.ClientSize.Width - lbTime.Width) / 2;
+			//lbTime.Top = (gbTime.ClientSize.Height - lbTime.Height) / 2;
+		}
 	}
 }

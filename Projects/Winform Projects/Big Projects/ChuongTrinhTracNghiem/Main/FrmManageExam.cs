@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -9,16 +10,20 @@ using System.Windows.Forms;
 
 namespace Main
 {
-	public partial class FrmManageSubject : Form
+	public partial class FrmManageExam : Form
 	{
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
+		private bool isEnable = false;
 		private int rowIndex = 0;
+
 		private UserAccount account;
+		private Subject subjectExam;
 
 		public UserAccount Account { get => account; set => account = value; }
+		public Subject SubjectExam { get => subjectExam; set => subjectExam = value; }
 
-		public FrmManageSubject(UserAccount account)
+		public FrmManageExam(UserAccount account)
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
@@ -59,27 +64,33 @@ namespace Main
 
 		private void LoadData()
 		{
-			SubjectBLL.Instance.GetAllSubject(dgvData);
+			SubjectBLL.Instance.GetAllSubject(cbSubject);
+			ExamBLL.Instance.GetAllExam(dgvData);
 		}
 
-		private Subject GetSubjectInfo()
+		private Exam GetExamInfo()
 		{
-			Subject subject = new Subject();
-			subject.SubjectID = tbSubjectID.Text.Trim();
-			subject.SubjectName = tbSubjectName.Text.Trim();
-			subject.Description = tbDescription.Text.Trim();
-			return subject;
+			Exam exam = new Exam();
+			exam.ExamID = tbExamID.Text.Trim();
+			exam.SubjectID = cbSubject.SelectedValue.ToString();
+			exam.ExamTime = (int)nudExamTime.Value;
+			exam.QCount = (int)nudQCount.Value;
+			exam.QCurrentCount = (int)nudQCurrentCount.Value;
+			return exam;
 		}
 
-		private void AddSubject()
+		private void AddExam()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			subject.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			if (!IsValidSubject())
+			Exam exam = GetExamInfo();
+			exam.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
+			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			if (!IsValidExam())
+			{
+				isEnable = true;
 				return;
+			}
 
-			if (SubjectBLL.Instance.InsertSubject(subject))
+			if (ExamBLL.Instance.InsertExam(exam))
 			{
 				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				LoadData();
@@ -90,14 +101,17 @@ namespace Main
 			}
 		}
 
-		private void UpdateSubject()
+		private void UpdateExam()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			if (!IsValidSubject())
+			Exam exam = GetExamInfo();
+			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			if (!IsValidExam())
+			{
+				isEnable = true;
 				return;
+			}
 
-			if (SubjectBLL.Instance.UpdateSubject(subject))
+			if (ExamBLL.Instance.UpdateExam(exam))
 			{
 				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 				LoadData();
@@ -113,17 +127,22 @@ namespace Main
 			try
 			{
 				DataGridViewRow row = dgvData.Rows[rowIndex];
-				tbSubjectID.Text = row.Cells["SubjectID"].Value.ToString();
-				tbSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
-				tbDescription.Text = row.Cells["Description"].Value.ToString();
+				tbExamID.Text = row.Cells["ExamID"].Value.ToString();
+				nudExamTime.Value = int.Parse(row.Cells["ExamTime"].Value.ToString());
+				nudQCount.Value = int.Parse(row.Cells["QCount"].Value.ToString());
+				nudQCurrentCount.Value = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
+				SubjectExam = SubjectBLL.Instance.GetSubjectByID(row.Cells["SubjectID"].Value.ToString());
+				cbSubject.Text = SubjectExam.SubjectName;
 			}
-			catch
+			catch 
 			{
-				//MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				// MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				foreach (Control control in gbControls.Controls)
 				{
 					if (control is TextBox)
 						control.Text = string.Empty;
+					if (control is NumericUpDown)
+						(control as NumericUpDown).Value = 0;
 				}
 			}
 		}
@@ -139,45 +158,61 @@ namespace Main
 			gbControls.Enabled = isEnable;
 		}
 
-		private bool IsValidSubject()
+		private bool IsValidExam()
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(tbSubjectID, "");
-			errorProviderWar.SetError(tbSubjectName, "");
+			errorProviderWar.SetError(tbExamID, "");
+			errorProviderWar.SetError(nudQCount, "");
+			errorProviderWar.SetError(nudExamTime, "");
+			errorProviderWar.SetError(nudQCurrentCount, "");
 
-			// Kiểm tra mã môn thi không được để trống
-			if (tbSubjectID.Text.Trim().Equals(""))
+			// Kiểm tra mã đề thi không được để trống
+			if (tbExamID.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được để trống!");
+				errorProviderWar.SetError(tbExamID, "Mã đề thi không được để trống!");
 				return false;
 			}
 			else
 			{
-				if (IsUnicode(tbSubjectID.Text.Trim()))
+				if (IsUnicode(tbExamID.Text.Trim()))
 				{
-					errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được có dấu!");
+					errorProviderWar.SetError(tbExamID, "Mã đề thi không được có dấu!");
 					return false;
 				}
 				else
 				{
-					if (IsSpecialCharacters(tbSubjectID.Text.Trim()))
+					if (IsSpecialCharacters(tbExamID.Text.Trim()))
 					{
-						errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được chứa ký tự đặc biệt!");
+						errorProviderWar.SetError(tbExamID, "Mã đề thi không được chứa ký tự đặc biệt!");
+						return false;
+					}
+					else if (IsSpaceCharacters(tbExamID.Text.Trim()))
+					{
+						errorProviderWar.SetError(tbExamID, "Mã đề thi không được chứa khoảng trắng!");
 						return false;
 					}
 				}
 			}
 
-			// Kiểm tra tên môn thi không được để trống
-			if (tbSubjectName.Text.Trim().Equals(""))
+			// Kiểm tra thời gian thi không được để trống
+			if (nudQCount.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được để trống!");
+				errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nkhông được để trống!");
 				return false;
 			}
-			else if (IsSpecialCharacters(tbSubjectName.Text.Trim()))
+
+			// Kiểm tra số lượng câu hỏi của đề thi không được để trống
+			if (nudExamTime.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được chứa ký tự đặc biệt!");
+				errorProviderWar.SetError(nudExamTime, "Số lượng câu hỏi của đề thi\nkhông được để trống!");
+				return false;
+			}
+
+			// Kiểm tra số lượng câu hỏi hiện tại của đề thi không được để trống
+			if (nudQCurrentCount.Text.Trim().Equals(""))
+			{
+				errorProviderWar.SetError(nudQCurrentCount, "Số lượng câu hỏi hiện tại của đề thi\nkhông được để trống!");
 				return false;
 			}
 
@@ -208,7 +243,7 @@ namespace Main
 			EnableControl(true);
 		}
 
-		private void FrmManageSubject_Load(object sender, EventArgs e)
+		private void FrmManageExam_Load(object sender, EventArgs e)
 		{
 			LoadData();
 			EnableControl(false);
@@ -236,17 +271,17 @@ namespace Main
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			string subjectID = tbSubjectID.Text.Trim();
-			if (!IsValidSubject())
+			string subjectID = tbExamID.Text.Trim();
+			if (!IsValidExam())
 				return;
 			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
 			{
-				MessageBox.Show("Vui lòng chọn môn thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Vui lòng chọn đề thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
 			{
-				if (SubjectBLL.Instance.DeleteSubject(subjectID))
+				if (ExamBLL.Instance.DeleteExam(subjectID))
 				{
 					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 					LoadData();
@@ -261,9 +296,9 @@ namespace Main
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập tên môn ..."))
+			if (keyword.Equals("Nhập mã đề thi/Mã môn ..."))
 				keyword = string.Empty;
-			SubjectBLL.Instance.SearchSubject(dgvData, keyword);
+			ExamBLL.Instance.SearchExam(dgvData, keyword);
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -275,7 +310,7 @@ namespace Main
 		{
 			if (string.IsNullOrEmpty(tbSearch.Text.Trim()))
 			{
-				tbSearch.Text = "Nhập tên môn ...";
+				tbSearch.Text = "Nhập mã đề thi/Mã môn ...";
 			}
 		}
 
@@ -294,12 +329,13 @@ namespace Main
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			isEnable = false;
 			if (isAddnew)
-				AddSubject();
+				AddExam();
 			else
-				UpdateSubject();
-			VisibleButton(false);
-			EnableControl(false);
+				UpdateExam();
+			VisibleButton(isEnable);
+			EnableControl(isEnable);
 		}
 
 		#endregion

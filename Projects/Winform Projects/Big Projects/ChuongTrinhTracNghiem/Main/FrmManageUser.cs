@@ -78,8 +78,6 @@ namespace Main
 			account.PhoneNumber = tbPhone.Text.Trim();
 			account.Birthday = dtpDob.Value;
 			account.Address = tbAddress.Text.Trim();
-			account.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			return account;
 		}
 
@@ -91,6 +89,8 @@ namespace Main
 				return;
 			}
 			UserAccount account = GetUserInfo();
+			account.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
+			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {account.CreatedAt}";
 			if (!IsValidUser())
 			{
@@ -117,6 +117,7 @@ namespace Main
 				return;
 			}
 			UserAccount account = GetUserInfo();
+			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {account.ModifiedAt}";
 			if (!IsValidUser())
 			{
@@ -150,9 +151,16 @@ namespace Main
 				tbEmail.Text = row.Cells["Email"].Value.ToString();
 				dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
 			}
-			catch (Exception ex)
+			catch 
 			{
-				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				// MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				foreach (Control control in gbControls.Controls)
+				{
+					if (control is TextBox || control is ComboBox)
+						control.Text = string.Empty;
+					if (control is DateTimePicker)
+						(control as DateTimePicker).Value = DateTime.Today;
+				}
 			}
 		}
 

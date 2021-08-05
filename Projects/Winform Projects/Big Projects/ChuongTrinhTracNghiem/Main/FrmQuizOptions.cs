@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using Entities;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -8,10 +9,15 @@ namespace Main
 {
 	public partial class FrmQuizOptions : Form
 	{
-		public FrmQuizOptions()
+		private UserAccount account;
+
+		public UserAccount Account { get => account; set => account = value; }
+
+		public FrmQuizOptions(UserAccount account)
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
+			Account = account;
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -33,6 +39,7 @@ namespace Main
 		private void LoadData()
 		{
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
+			cbSubject.ValueMember = "SubjectName";
 		}
 
 		private bool IsValidComboBoxControl()
@@ -54,7 +61,7 @@ namespace Main
 				}
 			}
 
-			if (cbQuestionCount.DataSource == null)
+			if (cbQuestionCount.Items == null)
 			{
 				errorProviderWar.SetError(cbQuestionCount, "Không rõ số lượng câu hỏi!\nVui lòng bổ sung");
 				return false;
@@ -92,7 +99,7 @@ namespace Main
 				if (!IsValidComboBoxControl())
 					return;
 			}
-			FrmQuiz frm = new FrmQuiz();
+			FrmQuiz frm = new FrmQuiz(Account, cbSubject.SelectedValue, cbQuestionCount.SelectedItem, tbQuizTime.Text);
 			this.Hide();
 			frm.ShowDialog();
 			this.Show();

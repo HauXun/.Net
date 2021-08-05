@@ -145,7 +145,7 @@ namespace Main
 		private void tsmiTraining_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			FrmQuizOptions frm = new FrmQuizOptions();
+			FrmQuizOptions frm = new FrmQuizOptions(Account);
 			frm.ShowDialog();
 			this.Show();
 		}
@@ -153,11 +153,19 @@ namespace Main
 		private void tsmiTestQuiz_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			FrmQuizOptions frm = new FrmQuizOptions();
+			FrmQuizOptions frm = new FrmQuizOptions(Account);
 			frm.tbQuizTime.Enabled = false;
 			frm.cbQuestionCount.Enabled = false;
 			frm.lbTitle.Text = "LÀM BÀI THI";
 			frm.lbTitle.Location = new Point(174, 19);
+			frm.ShowDialog();
+			this.Show();
+		}
+
+		private void tsmiManageExam_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			FrmManageExam frm = new FrmManageExam(Account);
 			frm.ShowDialog();
 			this.Show();
 		}

@@ -76,8 +76,6 @@ namespace Main
 			question.OptionC = tbAnswerC.Text.Trim();
 			question.OptionD = tbAnswerD.Text.Trim();
 			question.Answer = tbAnswerCorrect.Text.Trim();
-			question.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			question.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			return question;
 		}
 
@@ -89,6 +87,8 @@ namespace Main
 				return;
 			}
 			Question question = GetQuestionInfo();
+			question.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
+			question.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			if (!IsValidQuestion())
 			{
 				isEnable = true;
@@ -114,6 +114,7 @@ namespace Main
 				return;
 			}
 			Question question = GetQuestionInfo();
+			question.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			if (!IsValidQuestion())
 			{
 				isEnable = true;
@@ -138,6 +139,7 @@ namespace Main
 				DataGridViewRow row = dgvData.Rows[rowIndex];
 				tbQuestionID.Text = row.Cells["QuestionID"].Value.ToString();
 				cbSubject.SelectedValue = row.Cells["SubjectID"].Value.ToString();
+				cbExamID.SelectedValue = row.Cells["ExamID"].Value.ToString();
 				tbContent.Text = row.Cells["QContent"].Value.ToString();
 				tbAnswerA.Text = row.Cells["OptionA"].Value.ToString();
 				tbAnswerB.Text = row.Cells["OptionB"].Value.ToString();
@@ -145,9 +147,16 @@ namespace Main
 				tbAnswerD.Text = row.Cells["OptionD"].Value.ToString();
 				tbAnswerCorrect.Text = row.Cells["Answer"].Value.ToString();
 			}
-			catch (Exception ex)
+			catch
 			{
-				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				// MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				foreach (Control control in gbControls.Controls)
+				{
+					if (control is TextBox)
+						control.Text = string.Empty;
+					if (control is DateTimePicker)
+						(control as DateTimePicker).Value = DateTime.Today;
+				}
 			}
 		}
 
