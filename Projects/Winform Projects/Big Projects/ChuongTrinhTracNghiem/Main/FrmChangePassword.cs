@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -147,6 +148,22 @@ namespace Main
 		}
 
 		#endregion
+
+		private void btnExit_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			DialogResult result = MessageBox.Show("Thoát chương trình!", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (result == DialogResult.No)
+			{
+				e.Cancel = true;
+			}
+			else
+				base.OnClosing(e);
+		}
 	}
 
 	public class AccountChanged : EventArgs

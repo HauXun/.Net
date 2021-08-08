@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
+using System.Data;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -30,9 +31,13 @@ namespace BusinessLogicLayer
         public void GetAllExam(ComboBox box)
         {
             box.DataSource = ExamDAL.Instance.GetAllExam();
-            box.DisplayMember = "ExamID";
-            box.ValueMember = "ExamID";
         }
+
+        public DataTable GetExamByIDSubject(string subjectID)
+        {
+            return ExamDAL.Instance.GetExamByIDSubject(subjectID);
+        }
+
 
         public bool InsertExam(Exam subject)
 		{

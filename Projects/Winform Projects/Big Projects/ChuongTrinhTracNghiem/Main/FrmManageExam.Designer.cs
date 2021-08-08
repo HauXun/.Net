@@ -30,12 +30,18 @@ namespace Main
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.dgvData = new System.Windows.Forms.DataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QCurrentCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
@@ -45,26 +51,17 @@ namespace Main
 			this.gbControls = new System.Windows.Forms.GroupBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.nudQCount = new System.Windows.Forms.NumericUpDown();
-			this.nudQCurrentCount = new System.Windows.Forms.NumericUpDown();
 			this.nudExamTime = new System.Windows.Forms.NumericUpDown();
 			this.cbSubject = new System.Windows.Forms.ComboBox();
-			this.lbQCurrentCount = new System.Windows.Forms.Label();
 			this.tbExamID = new System.Windows.Forms.TextBox();
 			this.lbExamTime = new System.Windows.Forms.Label();
 			this.lbQCount = new System.Windows.Forms.Label();
 			this.lbExamID = new System.Windows.Forms.Label();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QCurrentCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudQCount)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nudQCurrentCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudExamTime)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
 			this.SuspendLayout();
@@ -115,14 +112,14 @@ namespace Main
 			this.dgvData.AllowUserToAddRows = false;
 			this.dgvData.AllowUserToResizeRows = false;
 			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -138,6 +135,56 @@ namespace Main
 			this.dgvData.TabIndex = 7;
 			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle4;
+			this.STT.FillWeight = 53.39415F;
+			this.STT.HeaderText = "STT";
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			this.ExamID.FillWeight = 92.19705F;
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			this.SubjectID.FillWeight = 92.62172F;
+			this.SubjectID.HeaderText = "Mã môn thi";
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			// 
+			// ExamTime
+			// 
+			this.ExamTime.DataPropertyName = "ExamTime";
+			this.ExamTime.FillWeight = 98.41006F;
+			this.ExamTime.HeaderText = "Thời gian làm bài";
+			this.ExamTime.Name = "ExamTime";
+			this.ExamTime.ReadOnly = true;
+			// 
+			// QCount
+			// 
+			this.QCount.DataPropertyName = "QCount";
+			this.QCount.FillWeight = 93.69563F;
+			this.QCount.HeaderText = "Số lượng câu hỏi";
+			this.QCount.Name = "QCount";
+			this.QCount.ReadOnly = true;
+			// 
+			// QCurrentCount
+			// 
+			this.QCurrentCount.DataPropertyName = "QCurrentCount";
+			this.QCurrentCount.FillWeight = 95.61374F;
+			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiện tại";
+			this.QCurrentCount.Name = "QCurrentCount";
+			this.QCurrentCount.ReadOnly = true;
 			// 
 			// tbSearch
 			// 
@@ -204,10 +251,8 @@ namespace Main
 			// 
 			this.gbControls.Controls.Add(this.label1);
 			this.gbControls.Controls.Add(this.nudQCount);
-			this.gbControls.Controls.Add(this.nudQCurrentCount);
 			this.gbControls.Controls.Add(this.nudExamTime);
 			this.gbControls.Controls.Add(this.cbSubject);
-			this.gbControls.Controls.Add(this.lbQCurrentCount);
 			this.gbControls.Controls.Add(this.tbExamID);
 			this.gbControls.Controls.Add(this.lbExamTime);
 			this.gbControls.Controls.Add(this.lbQCount);
@@ -222,7 +267,7 @@ namespace Main
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(459, 35);
+			this.label1.Location = new System.Drawing.Point(500, 35);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(45, 13);
 			this.label1.TabIndex = 16;
@@ -230,60 +275,39 @@ namespace Main
 			// 
 			// nudQCount
 			// 
-			this.nudQCount.Location = new System.Drawing.Point(726, 72);
+			this.nudQCount.Location = new System.Drawing.Point(551, 72);
 			this.nudQCount.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
 			this.nudQCount.Name = "nudQCount";
-			this.nudQCount.Size = new System.Drawing.Size(66, 20);
+			this.nudQCount.Size = new System.Drawing.Size(186, 20);
 			this.nudQCount.TabIndex = 15;
-			// 
-			// nudQCurrentCount
-			// 
-			this.nudQCurrentCount.Location = new System.Drawing.Point(468, 72);
-			this.nudQCurrentCount.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.nudQCurrentCount.Name = "nudQCurrentCount";
-			this.nudQCurrentCount.Size = new System.Drawing.Size(66, 20);
-			this.nudQCurrentCount.TabIndex = 14;
 			// 
 			// nudExamTime
 			// 
-			this.nudExamTime.Location = new System.Drawing.Point(172, 70);
+			this.nudExamTime.Location = new System.Drawing.Point(227, 72);
 			this.nudExamTime.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
 			this.nudExamTime.Name = "nudExamTime";
-			this.nudExamTime.Size = new System.Drawing.Size(66, 20);
+			this.nudExamTime.Size = new System.Drawing.Size(186, 20);
 			this.nudExamTime.TabIndex = 13;
 			// 
 			// cbSubject
 			// 
 			this.cbSubject.FormattingEnabled = true;
-			this.cbSubject.Location = new System.Drawing.Point(527, 32);
+			this.cbSubject.Location = new System.Drawing.Point(551, 32);
 			this.cbSubject.Name = "cbSubject";
 			this.cbSubject.Size = new System.Drawing.Size(186, 21);
 			this.cbSubject.TabIndex = 12;
 			// 
-			// lbQCurrentCount
-			// 
-			this.lbQCurrentCount.AutoSize = true;
-			this.lbQCurrentCount.Location = new System.Drawing.Point(335, 74);
-			this.lbQCurrentCount.Name = "lbQCurrentCount";
-			this.lbQCurrentCount.Size = new System.Drawing.Size(127, 13);
-			this.lbQCurrentCount.TabIndex = 8;
-			this.lbQCurrentCount.Text = "Số lượng câu hỏi hiện tại:";
-			// 
 			// tbExamID
 			// 
-			this.tbExamID.Location = new System.Drawing.Point(203, 32);
+			this.tbExamID.Location = new System.Drawing.Point(227, 32);
 			this.tbExamID.Name = "tbExamID";
 			this.tbExamID.Size = new System.Drawing.Size(186, 20);
 			this.tbExamID.TabIndex = 7;
@@ -291,7 +315,7 @@ namespace Main
 			// lbExamTime
 			// 
 			this.lbExamTime.AutoSize = true;
-			this.lbExamTime.Location = new System.Drawing.Point(76, 72);
+			this.lbExamTime.Location = new System.Drawing.Point(131, 74);
 			this.lbExamTime.Name = "lbExamTime";
 			this.lbExamTime.Size = new System.Drawing.Size(90, 13);
 			this.lbExamTime.TabIndex = 4;
@@ -300,7 +324,7 @@ namespace Main
 			// lbQCount
 			// 
 			this.lbQCount.AutoSize = true;
-			this.lbQCount.Location = new System.Drawing.Point(630, 74);
+			this.lbQCount.Location = new System.Drawing.Point(455, 74);
 			this.lbQCount.Name = "lbQCount";
 			this.lbQCount.Size = new System.Drawing.Size(90, 13);
 			this.lbQCount.TabIndex = 2;
@@ -309,7 +333,7 @@ namespace Main
 			// lbExamID
 			// 
 			this.lbExamID.AutoSize = true;
-			this.lbExamID.Location = new System.Drawing.Point(156, 35);
+			this.lbExamID.Location = new System.Drawing.Point(180, 35);
 			this.lbExamID.Name = "lbExamID";
 			this.lbExamID.Size = new System.Drawing.Size(41, 13);
 			this.lbExamID.TabIndex = 0;
@@ -318,56 +342,6 @@ namespace Main
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 53.39415F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			// 
-			// ExamID
-			// 
-			this.ExamID.DataPropertyName = "ExamID";
-			this.ExamID.FillWeight = 92.19705F;
-			this.ExamID.HeaderText = "Mã đề";
-			this.ExamID.Name = "ExamID";
-			this.ExamID.ReadOnly = true;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			this.SubjectID.FillWeight = 92.62172F;
-			this.SubjectID.HeaderText = "Mã môn thi";
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			// 
-			// ExamTime
-			// 
-			this.ExamTime.DataPropertyName = "ExamTime";
-			this.ExamTime.FillWeight = 98.41006F;
-			this.ExamTime.HeaderText = "Thời gian làm bài";
-			this.ExamTime.Name = "ExamTime";
-			this.ExamTime.ReadOnly = true;
-			// 
-			// QCount
-			// 
-			this.QCount.DataPropertyName = "QCount";
-			this.QCount.FillWeight = 93.69563F;
-			this.QCount.HeaderText = "Số lượng câu hỏi";
-			this.QCount.Name = "QCount";
-			this.QCount.ReadOnly = true;
-			// 
-			// QCurrentCount
-			// 
-			this.QCurrentCount.DataPropertyName = "QCurrentCount";
-			this.QCurrentCount.FillWeight = 95.61374F;
-			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiện tại";
-			this.QCurrentCount.Name = "QCurrentCount";
-			this.QCurrentCount.ReadOnly = true;
 			// 
 			// FrmManageExam
 			// 
@@ -388,7 +362,6 @@ namespace Main
 			this.gbControls.ResumeLayout(false);
 			this.gbControls.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudQCount)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nudQCurrentCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudExamTime)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
 			this.ResumeLayout(false);
@@ -413,11 +386,9 @@ namespace Main
 		private System.Windows.Forms.Button btnCancle;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.TextBox tbExamID;
-		private System.Windows.Forms.Label lbQCurrentCount;
 		private System.Windows.Forms.NumericUpDown nudExamTime;
 		private System.Windows.Forms.ComboBox cbSubject;
 		private System.Windows.Forms.NumericUpDown nudQCount;
-		private System.Windows.Forms.NumericUpDown nudQCurrentCount;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExamID;

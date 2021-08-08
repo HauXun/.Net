@@ -1,7 +1,6 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -66,6 +65,8 @@ namespace Main
 		{
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
 			ExamBLL.Instance.GetAllExam(dgvData);
+			if (dgvData.Rows.Count > 0)
+				DetailData(0);
 		}
 
 		private Exam GetExamInfo()
@@ -75,12 +76,16 @@ namespace Main
 			exam.SubjectID = cbSubject.SelectedValue.ToString();
 			exam.ExamTime = (int)nudExamTime.Value;
 			exam.QCount = (int)nudQCount.Value;
-			exam.QCurrentCount = (int)nudQCurrentCount.Value;
 			return exam;
 		}
 
 		private void AddExam()
 		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
 			Exam exam = GetExamInfo();
 			exam.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
 			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
@@ -103,6 +108,11 @@ namespace Main
 
 		private void UpdateExam()
 		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
 			Exam exam = GetExamInfo();
 			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 			if (!IsValidExam())
@@ -130,20 +140,13 @@ namespace Main
 				tbExamID.Text = row.Cells["ExamID"].Value.ToString();
 				nudExamTime.Value = int.Parse(row.Cells["ExamTime"].Value.ToString());
 				nudQCount.Value = int.Parse(row.Cells["QCount"].Value.ToString());
-				nudQCurrentCount.Value = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
 				SubjectExam = SubjectBLL.Instance.GetSubjectByID(row.Cells["SubjectID"].Value.ToString());
-				cbSubject.Text = SubjectExam.SubjectName;
+				cbSubject.Text = SubjectExam.SubjectName.Trim();
 			}
-			catch 
+			catch
 			{
 				// MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				foreach (Control control in gbControls.Controls)
-				{
-					if (control is TextBox)
-						control.Text = string.Empty;
-					if (control is NumericUpDown)
-						(control as NumericUpDown).Value = 0;
-				}
+				ClearControl();
 			}
 		}
 
@@ -158,6 +161,40 @@ namespace Main
 			gbControls.Enabled = isEnable;
 		}
 
+		private void ClearControl()
+		{
+			foreach (Control control in gbControls.Controls)
+			{
+				if (control is TextBox || control is ComboBox)
+				{
+					control.Text = "";
+				}
+				if (control is NumericUpDown)
+				{
+					(control as NumericUpDown).Value = 0;
+				}
+			}
+		}
+
+		private bool IsValidComboBoxControl()
+		{
+			errorProviderWar.SetError(cbSubject, "");
+			if (cbSubject.DataSource == null)
+			{
+				errorProviderWar.SetError(cbSubject, "Không có môn thi!\nVui lòng bổ sung");
+				return false;
+			}
+			else
+			{
+				if (cbSubject.SelectedIndex == -1)
+				{
+					errorProviderWar.SetError(cbSubject, "Vui lòng chọn môn thi");
+					return false;
+				}
+			}
+			return true;
+		}
+
 		private bool IsValidExam()
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
@@ -165,7 +202,6 @@ namespace Main
 			errorProviderWar.SetError(tbExamID, "");
 			errorProviderWar.SetError(nudQCount, "");
 			errorProviderWar.SetError(nudExamTime, "");
-			errorProviderWar.SetError(nudQCurrentCount, "");
 
 			// Kiểm tra mã đề thi không được để trống
 			if (tbExamID.Text.Trim().Equals(""))
@@ -201,6 +237,11 @@ namespace Main
 				errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nkhông được để trống!");
 				return false;
 			}
+			else if (nudQCount.Value.Equals(0))
+			{
+				errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nphải lớn hơn 0!");
+				return false;
+			}
 
 			// Kiểm tra số lượng câu hỏi của đề thi không được để trống
 			if (nudExamTime.Text.Trim().Equals(""))
@@ -208,11 +249,9 @@ namespace Main
 				errorProviderWar.SetError(nudExamTime, "Số lượng câu hỏi của đề thi\nkhông được để trống!");
 				return false;
 			}
-
-			// Kiểm tra số lượng câu hỏi hiện tại của đề thi không được để trống
-			if (nudQCurrentCount.Text.Trim().Equals(""))
+			else if (nudExamTime.Value.Equals(0))
 			{
-				errorProviderWar.SetError(nudQCurrentCount, "Số lượng câu hỏi hiện tại của đề thi\nkhông được để trống!");
+				errorProviderWar.SetError(nudExamTime, "Số lượng câu hỏi của đề thi phải lớn hơn 0!");
 				return false;
 			}
 
@@ -241,6 +280,7 @@ namespace Main
 			isAddnew = true;
 			VisibleButton(true);
 			EnableControl(true);
+			ClearControl();
 		}
 
 		private void FrmManageExam_Load(object sender, EventArgs e)
@@ -330,10 +370,17 @@ namespace Main
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
-			if (isAddnew)
-				AddExam();
-			else
-				UpdateExam();
+			try
+			{
+				if (isAddnew)
+					AddExam();
+				else
+					UpdateExam();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
 		}

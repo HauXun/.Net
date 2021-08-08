@@ -80,9 +80,10 @@ namespace DataAccessLayer
 		{
             try
             {
-                string query = "EXEC dbo.USP_UpdateQuestion  @SubjectID , @QContent , @OptionA , @OptionB , @OptionC , @OptionD , @Answer , @ModifiedBy";
+                string query = "EXEC dbo.USP_UpdateQuestion @QuestionID ,  @SubjectID , @ExamID , @QContent , @OptionA , @OptionB , @OptionC , @OptionD , @Answer , @ModifiedBy";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
                     {
+                        question.QuestionID,
                         question.SubjectID,
                         question.ExamID,
                         question.QContent,

@@ -30,13 +30,23 @@ namespace Main
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.dgvData = new System.Windows.Forms.DataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
@@ -44,6 +54,8 @@ namespace Main
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.gbControls = new System.Windows.Forms.GroupBox();
+			this.cbExamID = new System.Windows.Forms.ComboBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.tbAnswerCorrect = new System.Windows.Forms.TextBox();
 			this.lbAnswerC = new System.Windows.Forms.Label();
 			this.lbContent = new System.Windows.Forms.Label();
@@ -62,18 +74,6 @@ namespace Main
 			this.lbQuestionID = new System.Windows.Forms.Label();
 			this.tbQuestionID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.cbExamID = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -126,14 +126,14 @@ namespace Main
 			this.dgvData.AllowUserToAddRows = false;
 			this.dgvData.AllowUserToResizeRows = false;
 			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
 			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -153,6 +153,90 @@ namespace Main
 			this.dgvData.TabIndex = 7;
 			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle8;
+			this.STT.FillWeight = 36.10833F;
+			this.STT.HeaderText = "STT";
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			// 
+			// QuestionID
+			// 
+			this.QuestionID.DataPropertyName = "QuestionID";
+			this.QuestionID.FillWeight = 89.88013F;
+			this.QuestionID.HeaderText = "Mã câu hỏi";
+			this.QuestionID.Name = "QuestionID";
+			this.QuestionID.ReadOnly = true;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			this.SubjectID.FillWeight = 93.85126F;
+			this.SubjectID.HeaderText = "Mã môn thi";
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
+			// 
+			// QContent
+			// 
+			this.QContent.DataPropertyName = "QContent";
+			this.QContent.FillWeight = 185.3935F;
+			this.QContent.HeaderText = "Nội dung câu hỏi";
+			this.QContent.Name = "QContent";
+			this.QContent.ReadOnly = true;
+			// 
+			// OptionA
+			// 
+			this.OptionA.DataPropertyName = "OptionA";
+			this.OptionA.FillWeight = 84.1683F;
+			this.OptionA.HeaderText = "Đáp án A";
+			this.OptionA.Name = "OptionA";
+			this.OptionA.ReadOnly = true;
+			// 
+			// OptionB
+			// 
+			this.OptionB.DataPropertyName = "OptionB";
+			this.OptionB.FillWeight = 84.06059F;
+			this.OptionB.HeaderText = "Đáp án B";
+			this.OptionB.Name = "OptionB";
+			this.OptionB.ReadOnly = true;
+			// 
+			// OptionC
+			// 
+			this.OptionC.DataPropertyName = "OptionC";
+			this.OptionC.FillWeight = 85.71218F;
+			this.OptionC.HeaderText = "Đáp án C";
+			this.OptionC.Name = "OptionC";
+			this.OptionC.ReadOnly = true;
+			// 
+			// OptionD
+			// 
+			this.OptionD.DataPropertyName = "OptionD";
+			this.OptionD.FillWeight = 90.38728F;
+			this.OptionD.HeaderText = "Đáp án D";
+			this.OptionD.Name = "OptionD";
+			this.OptionD.ReadOnly = true;
+			// 
+			// Answer
+			// 
+			this.Answer.DataPropertyName = "Answer";
+			dataGridViewCellStyle9.Format = "d";
+			dataGridViewCellStyle9.NullValue = "dd/MM/yyyy";
+			this.Answer.DefaultCellStyle = dataGridViewCellStyle9;
+			this.Answer.FillWeight = 150.4384F;
+			this.Answer.HeaderText = "Đáp án đúng";
+			this.Answer.Name = "Answer";
+			this.Answer.ReadOnly = true;
 			// 
 			// tbSearch
 			// 
@@ -242,6 +326,23 @@ namespace Main
 			this.gbControls.TabIndex = 1;
 			this.gbControls.TabStop = false;
 			this.gbControls.Text = "Thông tin câu hỏi";
+			// 
+			// cbExamID
+			// 
+			this.cbExamID.FormattingEnabled = true;
+			this.cbExamID.Location = new System.Drawing.Point(120, 78);
+			this.cbExamID.Name = "cbExamID";
+			this.cbExamID.Size = new System.Drawing.Size(159, 21);
+			this.cbExamID.TabIndex = 56;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(33, 81);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(41, 13);
+			this.label1.TabIndex = 55;
+			this.label1.Text = "Mã đề:";
 			// 
 			// tbAnswerCorrect
 			// 
@@ -354,15 +455,16 @@ namespace Main
 			// cbSubject
 			// 
 			this.cbSubject.FormattingEnabled = true;
-			this.cbSubject.Location = new System.Drawing.Point(120, 78);
+			this.cbSubject.Location = new System.Drawing.Point(120, 51);
 			this.cbSubject.Name = "cbSubject";
 			this.cbSubject.Size = new System.Drawing.Size(159, 21);
 			this.cbSubject.TabIndex = 7;
+			this.cbSubject.SelectedValueChanged += new System.EventHandler(this.cbSubject_SelectedValueChanged);
 			// 
 			// lbSubjectID
 			// 
 			this.lbSubjectID.AutoSize = true;
-			this.lbSubjectID.Location = new System.Drawing.Point(33, 81);
+			this.lbSubjectID.Location = new System.Drawing.Point(33, 54);
 			this.lbSubjectID.Name = "lbSubjectID";
 			this.lbSubjectID.Size = new System.Drawing.Size(45, 13);
 			this.lbSubjectID.TabIndex = 6;
@@ -388,107 +490,6 @@ namespace Main
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 36.10833F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			// 
-			// QuestionID
-			// 
-			this.QuestionID.DataPropertyName = "QuestionID";
-			this.QuestionID.FillWeight = 89.88013F;
-			this.QuestionID.HeaderText = "Mã câu hỏi";
-			this.QuestionID.Name = "QuestionID";
-			this.QuestionID.ReadOnly = true;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			this.SubjectID.FillWeight = 93.85126F;
-			this.SubjectID.HeaderText = "Mã môn thi";
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			// 
-			// ExamID
-			// 
-			this.ExamID.DataPropertyName = "ExamID";
-			this.ExamID.HeaderText = "Mã đề";
-			this.ExamID.Name = "ExamID";
-			this.ExamID.ReadOnly = true;
-			// 
-			// QContent
-			// 
-			this.QContent.DataPropertyName = "QContent";
-			this.QContent.FillWeight = 185.3935F;
-			this.QContent.HeaderText = "Nội dung câu hỏi";
-			this.QContent.Name = "QContent";
-			this.QContent.ReadOnly = true;
-			// 
-			// OptionA
-			// 
-			this.OptionA.DataPropertyName = "OptionA";
-			this.OptionA.FillWeight = 84.1683F;
-			this.OptionA.HeaderText = "Đáp án A";
-			this.OptionA.Name = "OptionA";
-			this.OptionA.ReadOnly = true;
-			// 
-			// OptionB
-			// 
-			this.OptionB.DataPropertyName = "OptionB";
-			this.OptionB.FillWeight = 84.06059F;
-			this.OptionB.HeaderText = "Đáp án B";
-			this.OptionB.Name = "OptionB";
-			this.OptionB.ReadOnly = true;
-			// 
-			// OptionC
-			// 
-			this.OptionC.DataPropertyName = "OptionC";
-			this.OptionC.FillWeight = 85.71218F;
-			this.OptionC.HeaderText = "Đáp án C";
-			this.OptionC.Name = "OptionC";
-			this.OptionC.ReadOnly = true;
-			// 
-			// OptionD
-			// 
-			this.OptionD.DataPropertyName = "OptionD";
-			this.OptionD.FillWeight = 90.38728F;
-			this.OptionD.HeaderText = "Đáp án D";
-			this.OptionD.Name = "OptionD";
-			this.OptionD.ReadOnly = true;
-			// 
-			// Answer
-			// 
-			this.Answer.DataPropertyName = "Answer";
-			dataGridViewCellStyle3.Format = "d";
-			dataGridViewCellStyle3.NullValue = "dd/MM/yyyy";
-			this.Answer.DefaultCellStyle = dataGridViewCellStyle3;
-			this.Answer.FillWeight = 150.4384F;
-			this.Answer.HeaderText = "Đáp án đúng";
-			this.Answer.Name = "Answer";
-			this.Answer.ReadOnly = true;
-			// 
-			// cbExamID
-			// 
-			this.cbExamID.FormattingEnabled = true;
-			this.cbExamID.Location = new System.Drawing.Point(120, 51);
-			this.cbExamID.Name = "cbExamID";
-			this.cbExamID.Size = new System.Drawing.Size(159, 21);
-			this.cbExamID.TabIndex = 56;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(33, 54);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(41, 13);
-			this.label1.TabIndex = 55;
-			this.label1.Text = "Mã đề:";
 			// 
 			// FrmManageQuestion
 			// 

@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -94,11 +95,18 @@ namespace Main
 
 		private void btnExit_Click(object sender, EventArgs e)
 		{
+			Close();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
 			DialogResult result = MessageBox.Show("Thoát chương trình!", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-			if (result == DialogResult.Yes)
+			if (result == DialogResult.No)
 			{
-				Close();
+				e.Cancel = true;
 			}
+			else
+				base.OnClosing(e);
 		}
 
 		#endregion

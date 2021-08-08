@@ -1,7 +1,7 @@
 ﻿using Entities;
 using System;
+using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace Main
@@ -71,6 +71,15 @@ namespace Main
 
 		#region Events
 
+		private void FrmMain_Load(object sender, EventArgs e)
+		{
+			if (Account.RoleID.ToLower().Trim().Equals("user"))
+			{
+				tbDisplayname.Text = Account.FullName;
+				tbID.Text = Account.UserID.ToString();
+			}
+		}
+
 		private void tsmiManageUser_Click(object sender, EventArgs e)
 		{
 			this.Hide();
@@ -88,6 +97,12 @@ namespace Main
 			this.Show();
 		}
 
+		private void Frm_UpdateAccountInfo(object sender, AccountChanged e)
+		{
+			tsmiHelp.Text = $"{"Trợ giúp"} ({e.Account.FullName})";
+			Account = e.Account;
+		}
+
 		private void tsmiManageSubject_Click(object sender, EventArgs e)
 		{
 			this.Hide();
@@ -96,50 +111,12 @@ namespace Main
 			this.Show();
 		}
 
-		private void Frm_UpdateAccountInfo(object sender, AccountChanged e)
-		{
-			tsmiHelp.Text = $"{"Trợ giúp"} ({e.Account.FullName})";
-			Account = e.Account;
-		}
-
-		private void tsmiExit_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
-		#endregion
-
 		private void tsmiManageQuestion_Click(object sender, EventArgs e)
 		{
 			this.Hide();
 			FrmManageQuestion frm = new FrmManageQuestion(Account);
 			frm.ShowDialog();
 			this.Show();
-		}
-
-		private void btnTraining_Enter(object sender, EventArgs e)
-		{
-			if (!(sender as Button).Focused)
-			{
-				lbFunctionSelected.Text = (sender as Button).Text;
-			}	
-		}
-
-		private void FrmMain_Load(object sender, EventArgs e)
-		{
-			if (Account.RoleID.ToLower().Trim().Equals("user"))
-			{
-				tbDisplayname.Text = Account.FullName;
-				tbID.Text = Account.UserID.ToString();
-			}
-		}
-
-		private void btnTraining_Click(object sender, EventArgs e)
-		{
-			if ((sender as Button).Focused)
-			{
-				lbFunctionSelected.Text = (sender as Button).Text;
-			}
 		}
 
 		private void tsmiTraining_Click(object sender, EventArgs e)
@@ -169,6 +146,40 @@ namespace Main
 			frm.ShowDialog();
 			this.Show();
 		}
+
+		private void btnTraining_Enter(object sender, EventArgs e)
+		{
+			if (!(sender as Button).Focused)
+			{
+				lbFunctionSelected.Text = (sender as Button).Text;
+			}
+		}
+
+		private void btnTraining_Click(object sender, EventArgs e)
+		{
+			if ((sender as Button).Focused)
+			{
+				lbFunctionSelected.Text = (sender as Button).Text;
+			}
+		}
+
+		private void tsmiExit_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			DialogResult result = MessageBox.Show("Thoát chương trình!", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (result == DialogResult.No)
+			{
+				e.Cancel = true;
+			}
+			else
+				base.OnClosing(e);
+		}
+
+		#endregion
 	}
 
 	public class GlassyPanel : Panel

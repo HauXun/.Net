@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -60,8 +61,11 @@ namespace Main
 
 		private void LoadData()
 		{
-			QuestionBLL.Instance.GetAllQuestion(dgvData);
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
+			ExamBLL.Instance.GetAllExam(cbExamID);
+			QuestionBLL.Instance.GetAllQuestion(dgvData);
+			if (dgvData.Rows.Count > 0)
+				DetailData(0);
 		}
 
 		private Question GetQuestionInfo()
@@ -70,6 +74,7 @@ namespace Main
 			int.TryParse(tbQuestionID.Text.Trim(), out int userId);
 			question.QuestionID = userId;
 			question.SubjectID = cbSubject.SelectedValue.ToString();
+			question.ExamID = cbExamID.SelectedValue.ToString();
 			question.QContent = tbContent.Text.Trim();
 			question.OptionA = tbAnswerA.Text.Trim();
 			question.OptionB = tbAnswerB.Text.Trim();
@@ -139,7 +144,7 @@ namespace Main
 				DataGridViewRow row = dgvData.Rows[rowIndex];
 				tbQuestionID.Text = row.Cells["QuestionID"].Value.ToString();
 				cbSubject.SelectedValue = row.Cells["SubjectID"].Value.ToString();
-				cbExamID.SelectedValue = row.Cells["ExamID"].Value.ToString();
+				cbExamID.SelectedValue = row.Cells["ExamID"].Value;
 				tbContent.Text = row.Cells["QContent"].Value.ToString();
 				tbAnswerA.Text = row.Cells["OptionA"].Value.ToString();
 				tbAnswerB.Text = row.Cells["OptionB"].Value.ToString();
@@ -171,9 +176,22 @@ namespace Main
 			gbControls.Enabled = isEnable;
 		}
 
+		private void ClearControl()
+		{
+			foreach (Control control in gbControls.Controls)
+			{
+				if (control is TextBox || control is ComboBox)
+				{
+					control.Text = "";
+				}
+			}
+		}
+
 		private bool IsValidComboBoxControl()
 		{
 			errorProviderWar.SetError(cbSubject, "");
+			errorProviderWar.SetError(cbExamID, "");
+
 			if (cbSubject.DataSource == null)
 			{
 				errorProviderWar.SetError(cbSubject, "Không có môn thi!\nVui lòng bổ sung");
@@ -185,7 +203,21 @@ namespace Main
 				{
 					errorProviderWar.SetError(cbSubject, "Vui lòng chọn môn thi");
 					return false;
-				}	
+				}
+			}
+
+			if (cbExamID.DataSource == null)
+			{
+				errorProviderWar.SetError(cbExamID, "Không có mã môn cho bộ môn này!\nVui lòng bổ sung");
+				return false;
+			}
+			else
+			{
+				if (cbExamID.SelectedIndex == -1)
+				{
+					errorProviderWar.SetError(cbExamID, "Vui lòng chọn mã môn");
+					return false;
+				}
 			}
 			return true;
 		}
@@ -289,6 +321,7 @@ namespace Main
 			isAddnew = true;
 			VisibleButton(true);
 			EnableControl(true);
+			ClearControl();
 			tbQuestionID.Text = QuestionBLL.Instance.GetIDMissing().ToString();
 			if (!IsValidComboBoxControl())
 				return;
@@ -380,12 +413,37 @@ namespace Main
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
-			if (isAddnew)
-				AddQuestion();
-			else
-				UpdateQuestion();
+			try
+			{
+				if (isAddnew)
+					AddQuestion();
+				else
+					UpdateQuestion();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
+		}
+
+		private void cbSubject_SelectedValueChanged(object sender, EventArgs e)
+		{
+			if (cbSubject.SelectedValue != null)
+			{
+				cbExamID.Text = "";
+				DataTable data = ExamBLL.Instance.GetExamByIDSubject(cbSubject.SelectedValue.ToString());
+				if (data.Rows.Count == 0)
+				{
+					cbExamID.DataSource = null;
+					return;
+				}
+				cbExamID.DisplayMember = "ExamID";
+				cbExamID.ValueMember = "ExamID";
+				cbExamID.DataSource = data;
+			}
 		}
 
 		#endregion

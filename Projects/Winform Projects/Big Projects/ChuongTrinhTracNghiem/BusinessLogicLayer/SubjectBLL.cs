@@ -29,9 +29,9 @@ namespace BusinessLogicLayer
 
         public void GetAllSubject(ComboBox box)
         {
-            box.DataSource = SubjectDAL.Instance.GetAllSubject();
             box.DisplayMember = "SubjectName";
             box.ValueMember = "SubjectID";
+            box.DataSource = SubjectDAL.Instance.GetAllSubject();
         }
 
         public Subject GetSubjectByID(string subjectID)
