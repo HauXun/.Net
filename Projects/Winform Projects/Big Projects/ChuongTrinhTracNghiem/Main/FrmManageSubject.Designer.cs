@@ -167,7 +167,7 @@ namespace Main
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.Size = new System.Drawing.Size(225, 20);
 			this.tbSearch.TabIndex = 5;
-			this.tbSearch.Text = "Nhập tên môn ...";
+			this.tbSearch.Text = "Nhập tên môn/Mã môn ...";
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);

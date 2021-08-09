@@ -71,7 +71,7 @@ namespace DataAccessLayer
 				switch (se.Number)
 				{
 					case 2627:
-						throw new Exception($"Khóa trùng lặp, mã đề {exam.ExamID} và môn thi {SubjectDAL.Instance.GetSubjectByID(exam.SubjectID).SubjectName.Trim()} đã tồn tại trước đó".Trim());
+						throw new Exception($"Khóa trùng lặp, mã đề {exam.ExamID} và môn thi {SubjectDAL.Instance.GetSubjectByID(exam.SubjectID).SubjectName.Trim()} đã tồn tại trước đó. Không thể thực hiện thao tác này!".Trim());
 					default:
 						throw;
 				}
@@ -97,9 +97,19 @@ namespace DataAccessLayer
 					});
 				return isAccess > 0;
 			}
-			catch (Exception e)
+			catch (SqlException se)
 			{
-				throw e;
+				switch (se.Number)
+				{
+					case 2627:
+						throw new Exception($"Khóa trùng lặp, mã đề {exam.ExamID} và môn thi {SubjectDAL.Instance.GetSubjectByID(exam.SubjectID).SubjectName.Trim()} đã tồn tại trước đó. Không thể thực hiện thao tác này!".Trim());
+					default:
+						throw;
+				}
+			}
+			catch (Exception ex)
+			{
+				throw ex;
 			}
 		}
 
@@ -117,12 +127,12 @@ namespace DataAccessLayer
 			}
 		}
 
-		public DataTable SearchExam(string keyword)
+		public DataTable SearchExam(string keyword, string subjectID = null)
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_SearchExam @keyword";
-				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
+				string query = "EXEC dbo.USP_SearchExam @keyword , @SubjectID";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword, subjectID });
 				return data;
 			}
 			catch (Exception e)

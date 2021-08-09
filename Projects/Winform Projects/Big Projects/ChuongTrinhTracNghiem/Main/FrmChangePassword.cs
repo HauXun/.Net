@@ -111,17 +111,20 @@ namespace Main
 			if (!IsValidUser())
 				return;
 
-			if (AccountBLL.Instance.ChangeInfoAccount(username, displayname, password, newPassword))
+			try
 			{
-				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				if (updateAccountInfo != null)
+				if (AccountBLL.Instance.ChangeInfoAccount(username, displayname, password, newPassword))
 				{
-					updateAccountInfo(this, new AccountChanged(AccountBLL.Instance.GetAccountByUserName(username)));
+					MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					if (updateAccountInfo != null)
+					{
+						updateAccountInfo(this, new AccountChanged(AccountBLL.Instance.GetAccountByUserName(username)));
+					}
 				}
 			}
-			else
+			catch (Exception e)
 			{
-				MessageBox.Show("Cập nhập không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				MessageBox.Show("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -132,6 +135,11 @@ namespace Main
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			UpdateAccount();
+		}
+
+		private void btnExit_Click(object sender, EventArgs e)
+		{
+			Close();
 		}
 
 		private event EventHandler<AccountChanged> updateAccountInfo;
@@ -147,13 +155,6 @@ namespace Main
 			}
 		}
 
-		#endregion
-
-		private void btnExit_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
-
 		protected override void OnClosing(CancelEventArgs e)
 		{
 			DialogResult result = MessageBox.Show("Thoát chương trình!", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -164,6 +165,8 @@ namespace Main
 			else
 				base.OnClosing(e);
 		}
+
+		#endregion
 	}
 
 	public class AccountChanged : EventArgs

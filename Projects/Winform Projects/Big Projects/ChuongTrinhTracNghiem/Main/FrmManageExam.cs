@@ -15,6 +15,7 @@ namespace Main
 		private bool isAddnew = false;
 		private bool isEnable = false;
 		private int rowIndex = 0;
+		private int qCurrentCount = 0;
 
 		private UserAccount account;
 		private Subject subjectExam;
@@ -64,6 +65,7 @@ namespace Main
 		private void LoadData()
 		{
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
+			SubjectBLL.Instance.GetAllSubject(cbFilter);
 			ExamBLL.Instance.GetAllExam(dgvData);
 			if (dgvData.Rows.Count > 0)
 				DetailData(0);
@@ -79,59 +81,6 @@ namespace Main
 			return exam;
 		}
 
-		private void AddExam()
-		{
-			if (!IsValidComboBoxControl())
-			{
-				isEnable = true;
-				return;
-			}
-			Exam exam = GetExamInfo();
-			exam.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			if (!IsValidExam())
-			{
-				isEnable = true;
-				return;
-			}
-
-			if (ExamBLL.Instance.InsertExam(exam))
-			{
-				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
-			}
-			else
-			{
-				MessageBox.Show("Thêm không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-			}
-		}
-
-		private void UpdateExam()
-		{
-			if (!IsValidComboBoxControl())
-			{
-				isEnable = true;
-				return;
-			}
-			Exam exam = GetExamInfo();
-			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			if (!IsValidExam())
-			{
-				isEnable = true;
-				return;
-			}
-
-			if (ExamBLL.Instance.UpdateExam(exam))
-			{
-				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
-			}
-			else
-			{
-				MessageBox.Show("Cập nhập không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-			}
-		}
-
 		private void DetailData(int rowIndex)
 		{
 			try
@@ -142,11 +91,75 @@ namespace Main
 				nudQCount.Value = int.Parse(row.Cells["QCount"].Value.ToString());
 				SubjectExam = SubjectBLL.Instance.GetSubjectByID(row.Cells["SubjectID"].Value.ToString());
 				cbSubject.Text = SubjectExam.SubjectName.Trim();
+				qCurrentCount = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
 			}
-			catch
+			catch (Exception ex)
 			{
-				// MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				ClearControl();
+			}
+		}
+
+		private void AddExam()
+		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
+
+			Exam exam = GetExamInfo();
+			exam.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
+			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+
+			if (!IsValidExam())
+			{
+				isEnable = true;
+				return;
+			}
+
+			try
+			{
+				if (ExamBLL.Instance.InsertExam(exam))
+				{
+					MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
+				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+			}
+		}
+
+		private void UpdateExam()
+		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
+
+			Exam exam = GetExamInfo();
+			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+
+			if (!IsValidExam())
+			{
+				isEnable = true;
+				return;
+			}
+
+			try
+			{
+				if (ExamBLL.Instance.UpdateExam(exam))
+				{
+					MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
+				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -158,7 +171,10 @@ namespace Main
 
 		private void EnableControl(bool isEnable = true)
 		{
-			gbControls.Enabled = isEnable;
+			foreach (Control control in gbControls.Controls)
+			{
+				control.Enabled = isEnable;
+			}
 		}
 
 		private void ClearControl()
@@ -174,6 +190,15 @@ namespace Main
 					(control as NumericUpDown).Value = 0;
 				}
 			}
+		}
+
+		private void ClearError()
+		{
+			// Kiểm tra xem thông tin hợp lệ chưa?
+			// Xóa bỏ những thông báo lỗi nếu có
+			errorProviderWar.SetError(tbExamID, "");
+			errorProviderWar.SetError(nudQCount, "");
+			errorProviderWar.SetError(nudExamTime, "");
 		}
 
 		private bool IsValidComboBoxControl()
@@ -197,11 +222,7 @@ namespace Main
 
 		private bool IsValidExam()
 		{
-			// Kiểm tra xem thông tin hợp lệ chưa?
-			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(tbExamID, "");
-			errorProviderWar.SetError(nudQCount, "");
-			errorProviderWar.SetError(nudExamTime, "");
+			ClearError();
 
 			// Kiểm tra mã đề thi không được để trống
 			if (tbExamID.Text.Trim().Equals(""))
@@ -237,10 +258,18 @@ namespace Main
 				errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nkhông được để trống!");
 				return false;
 			}
-			else if (nudQCount.Value.Equals(0))
+			else
 			{
-				errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nphải lớn hơn 0!");
-				return false;
+				if (nudQCount.Value.Equals(0))
+				{
+					errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nphải lớn hơn 0!");
+					return false;
+				}
+				else if (nudQCount.Value < qCurrentCount)
+				{
+					errorProviderWar.SetError(nudQCount, "Số lượng câu hỏi của đề thi\nphải lớn hơn mức câu hỏi hiện có!");
+					return false;
+				}
 			}
 
 			// Kiểm tra số lượng câu hỏi của đề thi không được để trống
@@ -275,6 +304,12 @@ namespace Main
 
 		#region Events
 
+		private void FrmManageExam_Load(object sender, EventArgs e)
+		{
+			LoadData();
+			EnableControl(false);
+		}
+
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
@@ -283,10 +318,55 @@ namespace Main
 			ClearControl();
 		}
 
-		private void FrmManageExam_Load(object sender, EventArgs e)
+		private void btnEdit_Click(object sender, EventArgs e)
 		{
-			LoadData();
-			EnableControl(false);
+			isAddnew = false;
+			VisibleButton(true);
+			EnableControl(true);
+			tbExamID.Enabled = false;
+			cbSubject.Enabled = false;
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			string subjectID = tbExamID.Text.Trim();
+			if (!IsValidExam())
+				return;
+
+			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
+			{
+				MessageBox.Show("Vui lòng chọn đề thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+			{
+				try
+				{
+					if (ExamBLL.Instance.DeleteExam(subjectID))
+					{
+						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+						LoadData();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Xóa không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				}
+			}
+		}
+
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			string keyword = tbSearch.Text.Trim();
+			if (keyword.Equals("Nhập mã đề thi/Mã môn ..."))
+				keyword = string.Empty;
+
+			string roleFilter = "ALL";
+			if (cbFilter.SelectedValue != null)
+				roleFilter = cbFilter.SelectedValue.ToString();
+
+			ExamBLL.Instance.SearchExam(dgvData, keyword, roleFilter);
 		}
 
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -300,45 +380,6 @@ namespace Main
 				return;
 			rowIndex = e.RowIndex;
 			DetailData(rowIndex);
-		}
-
-		private void btnEdit_Click(object sender, EventArgs e)
-		{
-			isAddnew = false;
-			VisibleButton(true);
-			EnableControl(true);
-		}
-
-		private void btnDelete_Click(object sender, EventArgs e)
-		{
-			string subjectID = tbExamID.Text.Trim();
-			if (!IsValidExam())
-				return;
-			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
-			{
-				MessageBox.Show("Vui lòng chọn đề thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
-			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-			{
-				if (ExamBLL.Instance.DeleteExam(subjectID))
-				{
-					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-					LoadData();
-				}
-				else
-				{
-					MessageBox.Show("Xóa không thành công!\nVui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-				}
-			}
-		}
-
-		private void btnSearch_Click(object sender, EventArgs e)
-		{
-			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập mã đề thi/Mã môn ..."))
-				keyword = string.Empty;
-			ExamBLL.Instance.SearchExam(dgvData, keyword);
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -365,6 +406,7 @@ namespace Main
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
+			ClearError();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)

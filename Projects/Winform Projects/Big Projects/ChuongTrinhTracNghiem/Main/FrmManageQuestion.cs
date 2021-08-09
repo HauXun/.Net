@@ -62,6 +62,8 @@ namespace Main
 		private void LoadData()
 		{
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
+			SubjectBLL.Instance.GetAllSubject(cbFilter);
+			ExamBLL.Instance.GetAllExam(cbExamIDFilter);
 			ExamBLL.Instance.GetAllExam(cbExamID);
 			QuestionBLL.Instance.GetAllQuestion(dgvData);
 			if (dgvData.Rows.Count > 0)
@@ -84,6 +86,28 @@ namespace Main
 			return question;
 		}
 
+		private void DetailData(int rowIndex)
+		{
+			try
+			{
+				DataGridViewRow row = dgvData.Rows[rowIndex];
+				tbQuestionID.Text = row.Cells["QuestionID"].Value.ToString();
+				cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
+				cbExamID.SelectedValue = row.Cells["ExamID"].Value;
+				tbContent.Text = row.Cells["QContent"].Value.ToString();
+				tbAnswerA.Text = row.Cells["OptionA"].Value.ToString();
+				tbAnswerB.Text = row.Cells["OptionB"].Value.ToString();
+				tbAnswerC.Text = row.Cells["OptionC"].Value.ToString();
+				tbAnswerD.Text = row.Cells["OptionD"].Value.ToString();
+				tbAnswerCorrect.Text = row.Cells["Answer"].Value.ToString();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+		}
+
 		private void AddQuestion()
 		{
 			if (!IsValidComboBoxControl())
@@ -100,14 +124,17 @@ namespace Main
 				return;
 			}
 
-			if (QuestionBLL.Instance.InsertQuestion(question))
+			try
 			{
-				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
+				if (QuestionBLL.Instance.InsertQuestion(question))
+				{
+					MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
+				}
 			}
-			else
+			catch (Exception e)
 			{
-				MessageBox.Show("Thêm không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				MessageBox.Show("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -126,42 +153,17 @@ namespace Main
 				return;
 			}
 
-			if (QuestionBLL.Instance.UpdateQuestion(question))
-			{
-				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
-			}
-			else
-			{
-				MessageBox.Show("Cập nhập không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-			}
-		}
-
-		private void DetailData(int rowIndex)
-		{
 			try
 			{
-				DataGridViewRow row = dgvData.Rows[rowIndex];
-				tbQuestionID.Text = row.Cells["QuestionID"].Value.ToString();
-				cbSubject.SelectedValue = row.Cells["SubjectID"].Value.ToString();
-				cbExamID.SelectedValue = row.Cells["ExamID"].Value;
-				tbContent.Text = row.Cells["QContent"].Value.ToString();
-				tbAnswerA.Text = row.Cells["OptionA"].Value.ToString();
-				tbAnswerB.Text = row.Cells["OptionB"].Value.ToString();
-				tbAnswerC.Text = row.Cells["OptionC"].Value.ToString();
-				tbAnswerD.Text = row.Cells["OptionD"].Value.ToString();
-				tbAnswerCorrect.Text = row.Cells["Answer"].Value.ToString();
-			}
-			catch
-			{
-				// MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				foreach (Control control in gbControls.Controls)
+				if (QuestionBLL.Instance.UpdateQuestion(question))
 				{
-					if (control is TextBox)
-						control.Text = string.Empty;
-					if (control is DateTimePicker)
-						(control as DateTimePicker).Value = DateTime.Today;
+					MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
 				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -187,10 +189,24 @@ namespace Main
 			}
 		}
 
-		private bool IsValidComboBoxControl()
+		private void ClearError()
 		{
+			// Kiểm tra xem thông tin hợp lệ chưa?
+			// Xóa bỏ những thông báo lỗi nếu có
+			errorProviderWar.SetError(tbQuestionID, "");
+			errorProviderWar.SetError(tbContent, "");
+			errorProviderWar.SetError(tbAnswerA, "");
+			errorProviderWar.SetError(tbAnswerB, "");
+			errorProviderWar.SetError(tbAnswerC, "");
+			errorProviderWar.SetError(tbAnswerD, "");
+			errorProviderWar.SetError(tbAnswerCorrect, "");
 			errorProviderWar.SetError(cbSubject, "");
 			errorProviderWar.SetError(cbExamID, "");
+		}
+
+		private bool IsValidComboBoxControl()
+		{
+			ClearError();
 
 			if (cbSubject.DataSource == null)
 			{
@@ -224,15 +240,7 @@ namespace Main
 
 		private bool IsValidQuestion()
 		{
-			// Kiểm tra xem thông tin hợp lệ chưa?
-			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(tbQuestionID, "");
-			errorProviderWar.SetError(tbContent, "");
-			errorProviderWar.SetError(tbAnswerA, "");
-			errorProviderWar.SetError(tbAnswerB, "");
-			errorProviderWar.SetError(tbAnswerC, "");
-			errorProviderWar.SetError(tbAnswerD, "");
-			errorProviderWar.SetError(tbAnswerCorrect, "");
+			ClearError();
 
 			// Kiểm tra mã câu hỏi không được để trống
 			if (tbQuestionID.Text.Trim().Equals(""))
@@ -316,6 +324,12 @@ namespace Main
 
 		#region Events
 
+		private void FrmManageUser_Load(object sender, EventArgs e)
+		{
+			LoadData();
+			EnableControl(false);
+		}
+
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
@@ -325,25 +339,6 @@ namespace Main
 			tbQuestionID.Text = QuestionBLL.Instance.GetIDMissing().ToString();
 			if (!IsValidComboBoxControl())
 				return;
-		}
-
-		private void FrmManageUser_Load(object sender, EventArgs e)
-		{
-			LoadData();
-			EnableControl(false);
-		}
-
-		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-		{
-			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
-		}
-
-		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
-		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e)
@@ -364,14 +359,17 @@ namespace Main
 			}
 			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
 			{
-				if (QuestionBLL.Instance.DeleteQuestion(questionID))
+				try
 				{
-					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-					LoadData();
+					if (QuestionBLL.Instance.DeleteQuestion(questionID))
+					{
+						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+						LoadData();
+					}
 				}
-				else
+				catch (Exception ex)
 				{
-					MessageBox.Show("Xóa không thành công!\nVui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+					MessageBox.Show("Xóa không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 				}
 			}
 		}
@@ -379,9 +377,30 @@ namespace Main
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập tên/Tài khoản/..."))
+			if (keyword.Equals("Nhập từ khóa ..."))
 				keyword = string.Empty;
-			QuestionBLL.Instance.SearchQuestion(dgvData, keyword);
+
+			string subjectFilter = "ALL";
+			if (cbFilter.SelectedValue != null)
+				subjectFilter = cbFilter.SelectedValue.ToString();
+
+			string examFilter = "Tất cả";
+			if (cbExamIDFilter.SelectedValue != null)
+				examFilter = cbExamIDFilter.SelectedValue.ToString();
+			QuestionBLL.Instance.SearchQuestion(dgvData, keyword, subjectFilter, examFilter);
+		}
+
+		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		{
+			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+		}
+
+		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.RowIndex < 0)
+				return;
+			rowIndex = e.RowIndex;
+			DetailData(rowIndex);
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -408,6 +427,7 @@ namespace Main
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
+			ClearError();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
@@ -429,20 +449,24 @@ namespace Main
 			EnableControl(isEnable);
 		}
 
-		private void cbSubject_SelectedValueChanged(object sender, EventArgs e)
+		private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbSubject.SelectedValue != null)
 			{
-				cbExamID.Text = "";
 				DataTable data = ExamBLL.Instance.GetExamByIDSubject(cbSubject.SelectedValue.ToString());
-				if (data.Rows.Count == 0)
-				{
-					cbExamID.DataSource = null;
-					return;
-				}
-				cbExamID.DisplayMember = "ExamID";
-				cbExamID.ValueMember = "ExamID";
 				cbExamID.DataSource = data;
+			}
+		}
+
+		private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbFilter.SelectedValue != null)
+			{
+				DataTable data = ExamBLL.Instance.GetExamByIDSubject(cbFilter.SelectedValue.ToString());
+				DataRow row = data.NewRow();
+				row["ExamID"] = "Tất cả";
+				data.Rows.InsertAt(row, 0);
+				cbExamIDFilter.DataSource = data;
 			}
 		}
 

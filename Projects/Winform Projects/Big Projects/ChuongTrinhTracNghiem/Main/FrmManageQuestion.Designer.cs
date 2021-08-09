@@ -30,9 +30,9 @@ namespace Main
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
@@ -74,6 +74,8 @@ namespace Main
 			this.lbQuestionID = new System.Windows.Forms.Label();
 			this.tbQuestionID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.cbFilter = new System.Windows.Forms.ComboBox();
+			this.cbExamIDFilter = new System.Windows.Forms.ComboBox();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -84,6 +86,8 @@ namespace Main
 			// pMain
 			// 
 			this.pMain.BackColor = System.Drawing.Color.Transparent;
+			this.pMain.Controls.Add(this.cbExamIDFilter);
+			this.pMain.Controls.Add(this.cbFilter);
 			this.pMain.Controls.Add(this.btnCancle);
 			this.pMain.Controls.Add(this.btnSave);
 			this.pMain.Controls.Add(this.dgvData);
@@ -126,14 +130,14 @@ namespace Main
 			this.dgvData.AllowUserToAddRows = false;
 			this.dgvData.AllowUserToResizeRows = false;
 			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -157,8 +161,8 @@ namespace Main
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle5;
 			this.STT.FillWeight = 36.10833F;
 			this.STT.HeaderText = "STT";
 			this.STT.Name = "STT";
@@ -230,9 +234,9 @@ namespace Main
 			// Answer
 			// 
 			this.Answer.DataPropertyName = "Answer";
-			dataGridViewCellStyle9.Format = "d";
-			dataGridViewCellStyle9.NullValue = "dd/MM/yyyy";
-			this.Answer.DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle6.Format = "d";
+			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
+			this.Answer.DefaultCellStyle = dataGridViewCellStyle6;
 			this.Answer.FillWeight = 150.4384F;
 			this.Answer.HeaderText = "Đáp án đúng";
 			this.Answer.Name = "Answer";
@@ -240,7 +244,7 @@ namespace Main
 			// 
 			// tbSearch
 			// 
-			this.tbSearch.Location = new System.Drawing.Point(12, 348);
+			this.tbSearch.Location = new System.Drawing.Point(365, 348);
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.Size = new System.Drawing.Size(218, 20);
 			this.tbSearch.TabIndex = 5;
@@ -251,7 +255,7 @@ namespace Main
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Location = new System.Drawing.Point(236, 346);
+			this.btnSearch.Location = new System.Drawing.Point(589, 346);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 23);
 			this.btnSearch.TabIndex = 6;
@@ -459,7 +463,7 @@ namespace Main
 			this.cbSubject.Name = "cbSubject";
 			this.cbSubject.Size = new System.Drawing.Size(159, 21);
 			this.cbSubject.TabIndex = 7;
-			this.cbSubject.SelectedValueChanged += new System.EventHandler(this.cbSubject_SelectedValueChanged);
+			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
 			// 
 			// lbSubjectID
 			// 
@@ -490,6 +494,23 @@ namespace Main
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
+			// 
+			// cbFilter
+			// 
+			this.cbFilter.FormattingEnabled = true;
+			this.cbFilter.Location = new System.Drawing.Point(12, 347);
+			this.cbFilter.Name = "cbFilter";
+			this.cbFilter.Size = new System.Drawing.Size(220, 21);
+			this.cbFilter.TabIndex = 10;
+			this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
+			// 
+			// cbExamIDFilter
+			// 
+			this.cbExamIDFilter.FormattingEnabled = true;
+			this.cbExamIDFilter.Location = new System.Drawing.Point(238, 348);
+			this.cbExamIDFilter.Name = "cbExamIDFilter";
+			this.cbExamIDFilter.Size = new System.Drawing.Size(121, 21);
+			this.cbExamIDFilter.TabIndex = 11;
 			// 
 			// FrmManageQuestion
 			// 
@@ -557,5 +578,7 @@ namespace Main
 		private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
 		private System.Windows.Forms.ComboBox cbExamID;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox cbFilter;
+		private System.Windows.Forms.ComboBox cbExamIDFilter;
 	}
 }

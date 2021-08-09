@@ -23,7 +23,7 @@ namespace DataAccessLayer
 
 		// Thực hiện kết nối tới cơ sở dữ liệu và kiểm tra
 		string connectionString
-				= @"server=DESKTOP-UKO3BLT\SQLEXPRESS; database=TestProjectDB; integrated security=true;";
+				= @"server=.\SQLEXPRESS; database=TestProjectDB; integrated security=true;";
 		public DataTable ExcuteQuery(string query, object[] parameter = null)
 		{
 			DataTable data = new DataTable();

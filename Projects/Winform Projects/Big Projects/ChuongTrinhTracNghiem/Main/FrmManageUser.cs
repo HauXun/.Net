@@ -62,7 +62,7 @@ namespace Main
 		{
 			AccountBLL.Instance.GetAllAccount(dgvData);
 			RoleBLL.Instance.GetAllRole(cbRole);
-			RoleBLL.Instance.GetAllRole(cbRoleFilter);
+			RoleBLL.Instance.GetAllRole(cbFilter);
 		}
 
 		private UserAccount GetUserInfo()
@@ -81,61 +81,6 @@ namespace Main
 			return account;
 		}
 
-		private void AddUser()
-		{
-			if (!IsValidComboBoxControl())
-			{
-				isEnable = true;
-				return;
-			}
-			UserAccount account = GetUserInfo();
-			account.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {account.CreatedAt}";
-			if (!IsValidUser())
-			{
-				isEnable = true;
-				return;
-			}
-
-			if (AccountBLL.Instance.InsertAccount(account))
-			{
-				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
-			}
-			else
-			{
-				MessageBox.Show("Thêm không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-			}
-		}
-
-		private void UpdateAccount()
-		{
-			if (!IsValidComboBoxControl())
-			{
-				isEnable = true;
-				return;
-			}
-			UserAccount account = GetUserInfo();
-			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {account.ModifiedAt}";
-			if (!IsValidUser())
-			{
-				isEnable = true;
-				return;
-			}
-
-			if (AccountBLL.Instance.UpdateAccount(account))
-			{
-				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
-			}
-			else
-			{
-				MessageBox.Show("Cập nhập không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-			}
-		}
-
 		private void DetailData(int rowIndex)
 		{
 			try
@@ -151,16 +96,75 @@ namespace Main
 				tbEmail.Text = row.Cells["Email"].Value.ToString();
 				dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
 			}
-			catch 
+			catch (Exception ex)
 			{
-				// MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				foreach (Control control in gbControls.Controls)
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+		}
+
+		private void AddUser()
+		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
+
+			UserAccount account = GetUserInfo();
+			account.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
+			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {account.CreatedAt}";
+
+			if (!IsValidUser())
+			{
+				isEnable = true;
+				return;
+			}
+
+			try
+			{
+				if (AccountBLL.Instance.InsertAccount(account))
 				{
-					if (control is TextBox || control is ComboBox)
-						control.Text = string.Empty;
-					if (control is DateTimePicker)
-						(control as DateTimePicker).Value = DateTime.Today;
+					MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
 				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+			}
+		}
+
+		private void UpdateAccount()
+		{
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
+
+			UserAccount account = GetUserInfo();
+			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {account.ModifiedAt}";
+
+			if (!IsValidUser())
+			{
+				isEnable = true;
+				return;
+			}
+
+			try
+			{
+				if (AccountBLL.Instance.UpdateAccount(account))
+				{
+					MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
+				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -173,6 +177,31 @@ namespace Main
 		private void EnableControl(bool isEnable = true)
 		{
 			gbControls.Enabled = isEnable;
+		}
+
+		private void ClearControl()
+		{
+			foreach (Control control in gbControls.Controls)
+			{
+				if (control is TextBox || control is ComboBox)
+					control.Text = string.Empty;
+				if (control is DateTimePicker)
+					(control as DateTimePicker).Value = DateTime.Today;
+			}
+		}
+
+		private void ClearError()
+		{
+			// Kiểm tra xem thông tin hợp lệ chưa?
+			// Xóa bỏ những thông báo lỗi nếu có
+			errorProviderWar.SetError(tbAccount, "");
+			errorProviderWar.SetError(tbFullName, "");
+			errorProviderWar.SetError(tbPassword, "");
+			errorProviderWar.SetError(tbEmail, "");
+			errorProviderWar.SetError(tbPhone, "");
+			errorProviderWar.SetError(dtpDob, "");
+			errorProviderWar.SetError(tbAddress, "");
+			errorProviderWar.SetError(cbRole, "");
 		}
 
 		private bool IsValidComboBoxControl()
@@ -196,15 +225,7 @@ namespace Main
 
 		private bool IsValidUser()
 		{
-			// Kiểm tra xem thông tin hợp lệ chưa?
-			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(tbAccount, "");
-			errorProviderWar.SetError(tbFullName, "");
-			errorProviderWar.SetError(tbPassword, "");
-			errorProviderWar.SetError(tbEmail, "");
-			errorProviderWar.SetError(tbPhone, "");
-			errorProviderWar.SetError(dtpDob, "");
-			errorProviderWar.SetError(tbAddress, "");
+			ClearError();
 
 			// Kiểm tra tên tài khoản không được để trống
 			if (tbAccount.Text.Trim().Equals(""))
@@ -351,31 +372,19 @@ namespace Main
 
 		#region Events
 
-		private void btnAdd_Click(object sender, EventArgs e)
-		{
-			isAddnew = true;
-			VisibleButton(true);
-			EnableControl(true);
-			tbUserID.Text = AccountBLL.Instance.GetIDMissing().ToString();
-		}
-
 		private void FrmManageUser_Load(object sender, EventArgs e)
 		{
 			LoadData();
 			EnableControl(false);
 		}
 
-		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
-		}
-
-		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
-		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
+			isAddnew = true;
+			VisibleButton(true);
+			EnableControl(true);
+			ClearControl();
+			tbUserID.Text = AccountBLL.Instance.GetIDMissing().ToString();
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e)
@@ -389,21 +398,26 @@ namespace Main
 		{
 			if (!IsValidUser())
 				return;
+
 			if (!int.TryParse(tbUserID.Text, out int userID))
 			{
 				MessageBox.Show("Vui lòng chọn người dùng cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
+
 			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
 			{
-				if (AccountBLL.Instance.DeleteAccount(userID))
+				try
 				{
-					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-					LoadData();
+					if (AccountBLL.Instance.DeleteAccount(userID))
+					{
+						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+						LoadData();
+					}
 				}
-				else
+				catch (Exception ex)
 				{
-					MessageBox.Show("Xóa không thành công!\nVui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+					MessageBox.Show("Xóa không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 				}
 			}
 		}
@@ -415,9 +429,22 @@ namespace Main
 				keyword = string.Empty;
 
 			string roleFilter = "ALL";
-			if (cbRoleFilter.SelectedValue != null)
-				roleFilter = cbRoleFilter.SelectedValue.ToString();
+			if (cbFilter.SelectedValue != null)
+				roleFilter = cbFilter.SelectedValue.ToString();
 			AccountBLL.Instance.SearchAccount(dgvData, keyword, roleFilter);
+		}
+
+		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		{
+			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+		}
+
+		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.RowIndex < 0)
+				return;
+			rowIndex = e.RowIndex;
+			DetailData(rowIndex);
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -444,6 +471,7 @@ namespace Main
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
+			ClearError();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)

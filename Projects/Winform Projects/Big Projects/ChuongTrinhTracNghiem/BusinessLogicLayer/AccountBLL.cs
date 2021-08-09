@@ -21,7 +21,12 @@ namespace BusinessLogicLayer
 
         private AccountBLL() { }
 
-		public bool IsExistAccount(UserAccount account)
+        public int GetIDMissing()
+        {
+            return AccountDAL.Instance.GetIDMissing();
+        }
+
+        public bool IsExistAccount(UserAccount account)
         {
             return AccountDAL.Instance.IsExistAccount(account);
 		}
@@ -35,11 +40,6 @@ namespace BusinessLogicLayer
 		{
             return AccountDAL.Instance.GetAccountByUserName(Username);
 		}
-
-        public int GetIDMissing()
-		{
-            return AccountDAL.Instance.GetIDMissing();
-        }
 
         public void GetAllAccount(DataGridView data)
         {

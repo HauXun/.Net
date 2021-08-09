@@ -116,12 +116,12 @@ namespace DataAccessLayer
             }
         }
 
-        public DataTable SearchQuestion(string keyword)
+        public DataTable SearchQuestion(string keyword, string subjectID = null, string examID = null)
         {
             try
             {
-                string query = "EXEC dbo.USP_SearchQuestion @keyword";
-                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
+                string query = "EXEC dbo.USP_SearchQuestion @keyword , @SubjectID , @ExamID";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword, subjectID, examID });
                 return data;
             }
             catch (Exception e)

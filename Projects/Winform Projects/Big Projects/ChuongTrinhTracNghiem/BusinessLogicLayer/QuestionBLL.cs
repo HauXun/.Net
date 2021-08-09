@@ -47,9 +47,9 @@ namespace BusinessLogicLayer
             return QuestionDAL.Instance.DeleteQuestion(questionID);
 		}
 
-        public void SearchQuestion(DataGridView data, string keyword)
+        public void SearchQuestion(DataGridView data, string keyword, string subjectID = null, string examID = null)
 		{
-            data.DataSource = QuestionDAL.Instance.SearchQuestion(keyword);
+            data.DataSource = QuestionDAL.Instance.SearchQuestion(keyword, subjectID, examID);
 		}
     }
 }

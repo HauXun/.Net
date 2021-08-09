@@ -21,26 +21,6 @@ namespace DataAccessLayer
 
         private AccountDAL() { }
 
-		public bool IsExistAccount(UserAccount user)
-		{
-			try
-			{
-                string query = "EXEC dbo.USP_CheckExistAccount @Username , @Password";
-                int isExist = DataProvider.Instance.ExcuteScalar(query, new object[] { user.Username, user.Password }) == null ? 0 : 1;
-                //sqlCommand.CommandType = CommandType.StoredProcedure;
-
-                //SqlDataReader dataReader = sqlCommand.ExecuteReader();
-                //if (dataReader.Read())
-                //    isExist = true;
-                //dataReader.Close();
-                return isExist > 0;
-            }
-			catch (Exception e)
-			{
-				throw e;
-			}
-		}
-
         public UserAccount GetAccountByUserName(string Username)
 		{
 			try
@@ -57,20 +37,6 @@ namespace DataAccessLayer
                 throw e;
 			}
             return null;
-		}
-
-        public bool ChangeInfoAccount(string username, string displayname, string pass, string newPass)
-		{
-			try
-            {
-                string query = "EXEC dbo.USP_ChangeInfoAccount @username , @fullName , @password , @newpassword";
-                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { username, displayname, pass, newPass });
-                return isAccess > 0;
-            }
-			catch (Exception e)
-			{
-                throw e;
-			}
         }
 
         public DataTable GetAllAccount()
@@ -88,7 +54,7 @@ namespace DataAccessLayer
         }
 
         public int GetIDMissing()
-		{
+        {
             try
             {
                 string query = "EXEC dbo.USP_GetAccountIDMissing";
@@ -99,6 +65,40 @@ namespace DataAccessLayer
             {
                 throw e;
             }
+        }
+
+        public bool IsExistAccount(UserAccount user)
+        {
+            try
+            {
+                string query = "EXEC dbo.USP_CheckExistAccount @Username , @Password";
+                int isExist = DataProvider.Instance.ExcuteScalar(query, new object[] { user.Username, user.Password }) == null ? 0 : 1;
+                //sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                //SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                //if (dataReader.Read())
+                //    isExist = true;
+                //dataReader.Close();
+                return isExist > 0;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public bool ChangeInfoAccount(string username, string displayname, string pass, string newPass)
+		{
+			try
+            {
+                string query = "EXEC dbo.USP_ChangeInfoAccount @username , @fullName , @password , @newpassword";
+                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { username, displayname, pass, newPass });
+                return isAccess > 0;
+            }
+			catch (Exception e)
+			{
+                throw e;
+			}
         }
 
         public bool InsertAccount(UserAccount account)

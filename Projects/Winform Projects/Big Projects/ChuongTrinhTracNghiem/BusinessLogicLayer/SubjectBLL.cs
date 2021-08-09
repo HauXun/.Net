@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
+using System.Data;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -31,7 +32,15 @@ namespace BusinessLogicLayer
         {
             box.DisplayMember = "SubjectName";
             box.ValueMember = "SubjectID";
-            box.DataSource = SubjectDAL.Instance.GetAllSubject();
+            DataTable data = SubjectDAL.Instance.GetAllSubject();
+            if (box.Name == "cbFilter")
+            {
+                DataRow row = data.NewRow();
+                row["SubjectName"] = "Tất cả";
+                row["SubjectID"] = "ALL";
+                data.Rows.InsertAt(row, 0);
+            }
+            box.DataSource = data;
         }
 
         public Subject GetSubjectByID(string subjectID)

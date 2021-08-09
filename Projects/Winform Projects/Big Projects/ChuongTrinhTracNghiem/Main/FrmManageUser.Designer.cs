@@ -34,6 +34,7 @@ namespace Main
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
+			this.cbFilter = new System.Windows.Forms.ComboBox();
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.dgvData = new System.Windows.Forms.DataGridView();
@@ -73,7 +74,6 @@ namespace Main
 			this.tbAccount = new System.Windows.Forms.TextBox();
 			this.tbUserID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.cbRoleFilter = new System.Windows.Forms.ComboBox();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -83,7 +83,7 @@ namespace Main
 			// pMain
 			// 
 			this.pMain.BackColor = System.Drawing.Color.Transparent;
-			this.pMain.Controls.Add(this.cbRoleFilter);
+			this.pMain.Controls.Add(this.cbFilter);
 			this.pMain.Controls.Add(this.btnCancle);
 			this.pMain.Controls.Add(this.btnSave);
 			this.pMain.Controls.Add(this.dgvData);
@@ -98,6 +98,14 @@ namespace Main
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(1064, 601);
 			this.pMain.TabIndex = 0;
+			// 
+			// cbFilter
+			// 
+			this.cbFilter.FormattingEnabled = true;
+			this.cbFilter.Location = new System.Drawing.Point(12, 270);
+			this.cbFilter.Name = "cbFilter";
+			this.cbFilter.Size = new System.Drawing.Size(71, 21);
+			this.cbFilter.TabIndex = 10;
 			// 
 			// btnCancle
 			// 
@@ -479,14 +487,6 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// cbRoleFilter
-			// 
-			this.cbRoleFilter.FormattingEnabled = true;
-			this.cbRoleFilter.Location = new System.Drawing.Point(12, 270);
-			this.cbRoleFilter.Name = "cbRoleFilter";
-			this.cbRoleFilter.Size = new System.Drawing.Size(71, 21);
-			this.cbRoleFilter.TabIndex = 10;
-			// 
 			// FrmManageUser
 			// 
 			this.AcceptButton = this.btnSearch;
@@ -551,6 +551,6 @@ namespace Main
 		private System.Windows.Forms.Button btnCancle;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.ComboBox cbRole;
-		private System.Windows.Forms.ComboBox cbRoleFilter;
+		private System.Windows.Forms.ComboBox cbFilter;
 	}
 }

@@ -27,7 +27,7 @@ namespace BusinessLogicLayer
 			if (UserRoleDAL.Instance.GetAllRole().Rows.Count > 0)
 			{
                 DataTable data = UserRoleDAL.Instance.GetAllRole();
-                if (box.Name == "cbRoleFilter")
+                if (box.Name == "cbFilter")
                 {
                     DataRow row = data.NewRow();
                     row["RoleName"] = "Tất cả";

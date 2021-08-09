@@ -8,17 +8,6 @@ namespace Main
 {
 	public partial class FrmMain : Form
 	{
-		[System.ComponentModel.Browsable(false)]
-		public delegate void LoadCompletedEventHandler();
-		public event LoadCompletedEventHandler LoadCompleted;
-
-		void BaseForm_Shown(object sender, EventArgs e)
-		{
-			Application.DoEvents();
-			if (LoadCompleted != null)
-				LoadCompleted();
-		}
-
 		private UserAccount account;
 
 		public UserAccount Account
@@ -37,16 +26,6 @@ namespace Main
 			Account = account;
 			this.Shown += new EventHandler(BaseForm_Shown);
 			this.LoadCompleted += new LoadCompletedEventHandler(FrmMain_LoadCompleted);
-		}
-
-		private void FrmMain_LoadCompleted()
-		{
-			//GlassyPanel panel1 = new GlassyPanel();
-			//panel1.BackColor = System.Drawing.Color.Transparent;
-			//panel1.Opacity = 50;
-			//panel1.Dock = DockStyle.Fill;
-			//panel1.BackColor = Color.FromArgb(125, Color.Black);
-			//this.Controls.Add(panel1);
 		}
 
 		#region Methods
@@ -177,6 +156,27 @@ namespace Main
 			}
 			else
 				base.OnClosing(e);
+		}
+
+		[System.ComponentModel.Browsable(false)]
+		public delegate void LoadCompletedEventHandler();
+		public event LoadCompletedEventHandler LoadCompleted;
+
+		void BaseForm_Shown(object sender, EventArgs e)
+		{
+			Application.DoEvents();
+			if (LoadCompleted != null)
+				LoadCompleted();
+		}
+
+		private void FrmMain_LoadCompleted()
+		{
+			//GlassyPanel panel1 = new GlassyPanel();
+			//panel1.BackColor = System.Drawing.Color.Transparent;
+			//panel1.Opacity = 50;
+			//panel1.Dock = DockStyle.Fill;
+			//panel1.BackColor = Color.FromArgb(125, Color.Black);
+			//this.Controls.Add(panel1);
 		}
 
 		#endregion

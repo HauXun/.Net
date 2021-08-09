@@ -30,6 +30,8 @@ namespace BusinessLogicLayer
 
         public void GetAllExam(ComboBox box)
         {
+            box.DisplayMember = "ExamID";
+            box.ValueMember = "ExamID";
             box.DataSource = ExamDAL.Instance.GetAllExam();
         }
 
@@ -37,7 +39,6 @@ namespace BusinessLogicLayer
         {
             return ExamDAL.Instance.GetExamByIDSubject(subjectID);
         }
-
 
         public bool InsertExam(Exam subject)
 		{
@@ -54,9 +55,9 @@ namespace BusinessLogicLayer
             return ExamDAL.Instance.DeleteExam(examID);
 		}
 
-        public void SearchExam(DataGridView data, string keyword)
+        public void SearchExam(DataGridView data, string keyword, string subjectID = null)
 		{
-            data.DataSource = ExamDAL.Instance.SearchExam(keyword);
+            data.DataSource = ExamDAL.Instance.SearchExam(keyword, subjectID);
 		}
     }
 }

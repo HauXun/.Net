@@ -76,19 +76,22 @@ namespace Main
 
 			// Kiểm tra tài khoản đăng nhập:
 			// Kết nối tới cơ sở dữ liệu
-			if (AccountBLL.Instance.IsExistAccount(user))
+			try
 			{
-				MessageBox.Show("Đăng nhập thành công!", "Thông báo!",
-					MessageBoxButtons.OK, MessageBoxIcon.Information);
-				UserAccount account = AccountBLL.Instance.GetAccountByUserName(username);
-				FrmMain frmMain = new FrmMain(account);
-				this.Hide();
-				frmMain.ShowDialog();
-				this.Show();
+				if (AccountBLL.Instance.IsExistAccount(user))
+				{
+					MessageBox.Show("Đăng nhập thành công!", "Thông báo!",
+						MessageBoxButtons.OK, MessageBoxIcon.Information);
+					UserAccount account = AccountBLL.Instance.GetAccountByUserName(username);
+					FrmMain frmMain = new FrmMain(account);
+					this.Hide();
+					frmMain.ShowDialog();
+					this.Show();
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				MessageBox.Show("Tài khoản hoặc mật khẩu không đúng\nVui lòng kiểm tra lại!",
+				MessageBox.Show("Tài khoản hoặc mật khẩu không đúng. Vui lòng kiểm tra lại!\n" + ex.Message,
 					"Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}

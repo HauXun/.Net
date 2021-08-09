@@ -71,6 +71,22 @@ namespace Main
 			return subject;
 		}
 
+		private void DetailData(int rowIndex)
+		{
+			try
+			{
+				DataGridViewRow row = dgvData.Rows[rowIndex];
+				tbSubjectID.Text = row.Cells["SubjectID"].Value.ToString();
+				tbSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
+				tbDescription.Text = row.Cells["Description"].Value.ToString();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+		}
+
 		private void AddSubject()
 		{
 			Subject subject = GetSubjectInfo();
@@ -79,14 +95,17 @@ namespace Main
 			if (!IsValidSubject())
 				return;
 
-			if (SubjectBLL.Instance.InsertSubject(subject))
+			try
 			{
-				MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
+				if (SubjectBLL.Instance.InsertSubject(subject))
+				{
+					MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
+				}
 			}
-			else
+			catch (Exception e)
 			{
-				MessageBox.Show("Thêm không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				MessageBox.Show("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -97,34 +116,17 @@ namespace Main
 			if (!IsValidSubject())
 				return;
 
-			if (SubjectBLL.Instance.UpdateSubject(subject))
-			{
-				MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				LoadData();
-			}
-			else
-			{
-				MessageBox.Show("Cập nhập không thành công!\nVui lòng kiểm tra lại dữ liệu", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-			}
-		}
-
-		private void DetailData(int rowIndex)
-		{
 			try
 			{
-				DataGridViewRow row = dgvData.Rows[rowIndex];
-				tbSubjectID.Text = row.Cells["SubjectID"].Value.ToString();
-				tbSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
-				tbDescription.Text = row.Cells["Description"].Value.ToString();
-			}
-			catch
-			{
-				//MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				foreach (Control control in gbControls.Controls)
+				if (SubjectBLL.Instance.UpdateSubject(subject))
 				{
-					if (control is TextBox)
-						control.Text = string.Empty;
+					MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+					LoadData();
 				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -139,12 +141,28 @@ namespace Main
 			gbControls.Enabled = isEnable;
 		}
 
-		private bool IsValidSubject()
+		private void ClearControl()
+		{
+			foreach (Control control in gbControls.Controls)
+			{
+				if (control is TextBox)
+				{
+					control.Text = "";
+				}
+			}
+		}
+
+		private void ClearError()
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
 			errorProviderWar.SetError(tbSubjectID, "");
 			errorProviderWar.SetError(tbSubjectName, "");
+		}
+
+		private bool IsValidSubject()
+		{
+			ClearError();
 
 			// Kiểm tra mã môn thi không được để trống
 			if (tbSubjectID.Text.Trim().Equals(""))
@@ -201,17 +219,63 @@ namespace Main
 
 		#region Events
 
+		private void FrmManageSubject_Load(object sender, EventArgs e)
+		{
+			LoadData();
+			EnableControl(false);
+		}
+
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
 			VisibleButton(true);
 			EnableControl(true);
+			ClearControl();
 		}
 
-		private void FrmManageSubject_Load(object sender, EventArgs e)
+		private void btnEdit_Click(object sender, EventArgs e)
 		{
-			LoadData();
-			EnableControl(false);
+			isAddnew = false;
+			VisibleButton(true);
+			EnableControl(true);
+			tbSubjectID.Enabled = false;
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			string subjectID = tbSubjectID.Text.Trim();
+			if (!IsValidSubject())
+				return;
+
+			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
+			{
+				MessageBox.Show("Vui lòng chọn môn thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+			{
+				try
+				{
+					if (SubjectBLL.Instance.DeleteSubject(subjectID))
+					{
+						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+						LoadData();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Xóa không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				}
+			}
+		}
+
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			string keyword = tbSearch.Text.Trim();
+			if (keyword.Equals("Nhập tên môn/Mã môn ..."))
+				keyword = string.Empty;
+			SubjectBLL.Instance.SearchSubject(dgvData, keyword);
 		}
 
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -227,45 +291,6 @@ namespace Main
 			DetailData(rowIndex);
 		}
 
-		private void btnEdit_Click(object sender, EventArgs e)
-		{
-			isAddnew = false;
-			VisibleButton(true);
-			EnableControl(true);
-		}
-
-		private void btnDelete_Click(object sender, EventArgs e)
-		{
-			string subjectID = tbSubjectID.Text.Trim();
-			if (!IsValidSubject())
-				return;
-			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
-			{
-				MessageBox.Show("Vui lòng chọn môn thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
-			if (MessageBox.Show("Xác nhận xóa!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-			{
-				if (SubjectBLL.Instance.DeleteSubject(subjectID))
-				{
-					MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-					LoadData();
-				}
-				else
-				{
-					MessageBox.Show("Xóa không thành công!\nVui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-				}
-			}
-		}
-
-		private void btnSearch_Click(object sender, EventArgs e)
-		{
-			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập tên môn ..."))
-				keyword = string.Empty;
-			SubjectBLL.Instance.SearchSubject(dgvData, keyword);
-		}
-
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			tbSearch.Clear();
@@ -275,7 +300,7 @@ namespace Main
 		{
 			if (string.IsNullOrEmpty(tbSearch.Text.Trim()))
 			{
-				tbSearch.Text = "Nhập tên môn ...";
+				tbSearch.Text = "Nhập tên môn/Mã môn ...";
 			}
 		}
 
@@ -290,6 +315,7 @@ namespace Main
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
+			ClearError();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
