@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -15,13 +16,11 @@ namespace Main
 		private bool isAddnew = false;
 		private bool isEnable = false;
 		private int rowIndex = 0;
-		private int qCurrentCount = 0;
+		private int questionCurrentCount = 0;
 
 		private UserAccount account;
-		private Subject subjectExam;
 
 		public UserAccount Account { get => account; set => account = value; }
-		public Subject SubjectExam { get => subjectExam; set => subjectExam = value; }
 
 		public FrmManageExam(UserAccount account)
 		{
@@ -64,8 +63,8 @@ namespace Main
 
 		private void LoadData()
 		{
+			RoleBLL.Instance.GetAllRoleExam(cbExamRole);
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
-			SubjectBLL.Instance.GetAllSubject(cbFilter);
 			ExamBLL.Instance.GetAllExam(dgvData);
 			if (dgvData.Rows.Count > 0)
 				DetailData(0);
@@ -76,6 +75,7 @@ namespace Main
 			Exam exam = new Exam();
 			exam.ExamID = tbExamID.Text.Trim();
 			exam.SubjectID = cbSubject.SelectedValue.ToString();
+			exam.ExamRole = cbExamRole.SelectedValue.ToString();
 			exam.ExamTime = (int)nudExamTime.Value;
 			exam.QCount = (int)nudQCount.Value;
 			return exam;
@@ -87,11 +87,11 @@ namespace Main
 			{
 				DataGridViewRow row = dgvData.Rows[rowIndex];
 				tbExamID.Text = row.Cells["ExamID"].Value.ToString();
+				cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
+				cbExamRole.SelectedValue = row.Cells["ExamRole"].Value;
 				nudExamTime.Value = int.Parse(row.Cells["ExamTime"].Value.ToString());
 				nudQCount.Value = int.Parse(row.Cells["QCount"].Value.ToString());
-				SubjectExam = SubjectBLL.Instance.GetSubjectByID(row.Cells["SubjectID"].Value.ToString());
-				cbSubject.Text = SubjectExam.SubjectName.Trim();
-				qCurrentCount = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
+				questionCurrentCount = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
 			}
 			catch (Exception ex)
 			{
@@ -102,7 +102,7 @@ namespace Main
 
 		private void AddExam()
 		{
-			if (!IsValidComboBoxControl())
+			if (!IsValidExam())
 			{
 				isEnable = true;
 				return;
@@ -112,7 +112,7 @@ namespace Main
 			exam.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
 			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 
-			if (!IsValidExam())
+			if (!IsValidComboBoxControl())
 			{
 				isEnable = true;
 				return;
@@ -134,7 +134,7 @@ namespace Main
 
 		private void UpdateExam()
 		{
-			if (!IsValidComboBoxControl())
+			if (!IsValidExam())
 			{
 				isEnable = true;
 				return;
@@ -143,7 +143,7 @@ namespace Main
 			Exam exam = GetExamInfo();
 			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
 
-			if (!IsValidExam())
+			if (!IsValidComboBoxControl())
 			{
 				isEnable = true;
 				return;
@@ -181,13 +181,17 @@ namespace Main
 		{
 			foreach (Control control in gbControls.Controls)
 			{
-				if (control is TextBox || control is ComboBox)
+				if (control is TextBox)
 				{
 					control.Text = "";
 				}
 				if (control is NumericUpDown)
 				{
 					(control as NumericUpDown).Value = 0;
+				}
+				if (control is ComboBox)
+				{
+					(control as ComboBox).SelectedIndex = -1;
 				}
 			}
 		}
@@ -199,12 +203,13 @@ namespace Main
 			errorProviderWar.SetError(tbExamID, "");
 			errorProviderWar.SetError(nudQCount, "");
 			errorProviderWar.SetError(nudExamTime, "");
+			errorProviderWar.SetError(cbSubject, "");
+			errorProviderWar.SetError(cbExamRole, "");
 		}
 
 		private bool IsValidComboBoxControl()
 		{
-			errorProviderWar.SetError(cbSubject, "");
-			if (cbSubject.DataSource == null)
+			if (cbSubject.Items.Count == 0)
 			{
 				errorProviderWar.SetError(cbSubject, "Không có môn thi!\nVui lòng bổ sung");
 				return false;
@@ -213,10 +218,25 @@ namespace Main
 			{
 				if (cbSubject.SelectedIndex == -1)
 				{
-					errorProviderWar.SetError(cbSubject, "Vui lòng chọn môn thi");
+					errorProviderWar.SetError(cbSubject, "Vui lòng chọn môn thi!");
 					return false;
 				}
 			}
+
+			if (cbExamRole.Items.Count == 0)
+			{
+				errorProviderWar.SetError(cbExamRole, "Không có kiểu đề thi!\nVui lòng bổ sung");
+				return false;
+			}
+			else
+			{
+				if (cbExamRole.SelectedIndex == -1)
+				{
+					errorProviderWar.SetError(cbExamRole, "Vui lòng chọn kiểu đề thi!");
+					return false;
+				}
+			}
+
 			return true;
 		}
 
@@ -265,7 +285,7 @@ namespace Main
 					errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nphải lớn hơn 0!");
 					return false;
 				}
-				else if (nudQCount.Value < qCurrentCount)
+				else if (nudQCount.Value < questionCurrentCount)
 				{
 					errorProviderWar.SetError(nudQCount, "Số lượng câu hỏi của đề thi\nphải lớn hơn mức câu hỏi hiện có!");
 					return false;
@@ -329,11 +349,12 @@ namespace Main
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			string subjectID = tbExamID.Text.Trim();
+			string examID = tbExamID.Text.Trim();
+			string subjectID = cbSubject.SelectedValue.ToString().Trim();
 			if (!IsValidExam())
 				return;
 
-			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
+			if ((string.IsNullOrEmpty(examID) && string.IsNullOrEmpty(subjectID)) || rowIndex < 0)
 			{
 				MessageBox.Show("Vui lòng chọn đề thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
@@ -343,7 +364,7 @@ namespace Main
 			{
 				try
 				{
-					if (ExamBLL.Instance.DeleteExam(subjectID))
+					if (ExamBLL.Instance.DeleteExam(examID, subjectID))
 					{
 						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 						LoadData();
@@ -362,11 +383,13 @@ namespace Main
 			if (keyword.Equals("Nhập mã đề thi/Mã môn ..."))
 				keyword = string.Empty;
 
-			string roleFilter = "ALL";
-			if (cbFilter.SelectedValue != null)
-				roleFilter = cbFilter.SelectedValue.ToString();
+			ExamBLL.Instance.SearchExam(dgvData, keyword);
+		}
 
-			ExamBLL.Instance.SearchExam(dgvData, keyword, roleFilter);
+		private void btnFilter_Click(object sender, EventArgs e)
+		{
+			FrmFilter frm = new FrmFilter(dgvData);
+			frm.ShowDialog();
 		}
 
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -428,5 +451,43 @@ namespace Main
 		}
 
 		#endregion
+	}
+
+	public class KDCombo : ComboBox
+	{
+
+		public KDCombo()
+		{
+			BorderColor = Color.DimGray;
+		}
+
+		[Browsable(true)]
+		[Category("Appearance")]
+		[DefaultValue(typeof(Color), "DimGray")]
+		public Color BorderColor { get; set; }
+
+		private const int WM_PAINT = 0xF;
+		private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth;
+		protected override void WndProc(ref Message m)
+		{
+			base.WndProc(ref m);
+			if (m.Msg == WM_PAINT)
+			{
+				using (var g = Graphics.FromHwnd(Handle))
+				{
+					// Uncomment this if you don't want the "highlight border".
+
+					//using (var p = new Pen(this.BackColor, 1))
+					//{
+					//	g.DrawRectangle(p, 0, 0, Width - 1, Height - 1);
+					//}
+
+					using (var p = new Pen(this.BackColor,2))
+					{
+						g.DrawRectangle(p, 0, 0, Width, Height);
+					}
+				}
+			}
+		}
 	}
 }

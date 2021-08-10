@@ -1,5 +1,4 @@
 ﻿using DataAccessLayer;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -22,11 +21,11 @@ namespace BusinessLogicLayer
 
         private RoleBLL() { }
 
-        public void GetAllRole(ComboBox box)
+        public void GetAllRoleUser(ComboBox box)
         {
-			if (UserRoleDAL.Instance.GetAllRole().Rows.Count > 0)
+			if (UserRoleDAL.Instance.GetAllRoleUser().Rows.Count > 0)
 			{
-                DataTable data = UserRoleDAL.Instance.GetAllRole();
+                DataTable data = UserRoleDAL.Instance.GetAllRoleUser();
                 if (box.Name == "cbFilter")
                 {
                     DataRow row = data.NewRow();
@@ -38,6 +37,24 @@ namespace BusinessLogicLayer
 				box.DisplayMember = "RoleName";
 				box.ValueMember = "RoleID";             
 			}
+        }
+
+        public void GetAllRoleExam(ComboBox box)
+        {
+            if (ExamRoleDAL.Instance.GetAllRoleExam().Rows.Count > 0)
+            {
+                box.DisplayMember = "RoleName";
+                box.ValueMember = "RoleID";
+                DataTable data = ExamRoleDAL.Instance.GetAllRoleExam();
+                if (box.Name == "cbExamRoleFilter")
+                {
+                    DataRow row = data.NewRow();
+                    row["RoleName"] = "Tất cả";
+                    row["RoleID"] = "ALL";
+                    data.Rows.InsertAt(row, 0);
+                }
+                box.DataSource = data;
+            }
         }
     }
 }

@@ -11,16 +11,13 @@ namespace Entities
 {
     using System;
 
-    public partial class Exam
+    public partial class ExamRole
     {
-        public string ExamID { get; set; }
-		public string SubjectID { get; set; }
-		public string ExamRole { get; set; }
-		public int ExamTime { get; set; }
-        public int QCount { get; set; }
-        public int QCurrentCount { get; set; }
-		public string CreatedBy { get; set; }
-		public DateTime CreatedAt { get; set; }
+        public string RoleID { get; set; }
+        public string RoleName { get; set; }
+        public string Description { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime ModifiedAt { get; set; }
     }

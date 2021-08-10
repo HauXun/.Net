@@ -116,7 +116,7 @@ namespace DataAccessLayer
             }
         }
 
-        public DataTable SearchQuestion(string keyword, string subjectID = null, string examID = null)
+        public DataTable SearchQuestion(string keyword, string subjectID = "", string examID = "")
         {
             try
             {

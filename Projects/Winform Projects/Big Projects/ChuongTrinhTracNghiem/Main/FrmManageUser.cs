@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -61,8 +62,8 @@ namespace Main
 		private void LoadData()
 		{
 			AccountBLL.Instance.GetAllAccount(dgvData);
-			RoleBLL.Instance.GetAllRole(cbRole);
-			RoleBLL.Instance.GetAllRole(cbFilter);
+			RoleBLL.Instance.GetAllRoleUser(cbRole);
+			RoleBLL.Instance.GetAllRoleUser(cbFilter);
 		}
 
 		private UserAccount GetUserInfo()
@@ -114,7 +115,7 @@ namespace Main
 			UserAccount account = GetUserInfo();
 			account.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
 			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {account.CreatedAt}";
+			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {DateTime.Now}";
 
 			if (!IsValidUser())
 			{
@@ -146,7 +147,7 @@ namespace Main
 
 			UserAccount account = GetUserInfo();
 			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {account.ModifiedAt}";
+			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {DateTime.Now}";
 
 			if (!IsValidUser())
 			{
@@ -183,10 +184,12 @@ namespace Main
 		{
 			foreach (Control control in gbControls.Controls)
 			{
-				if (control is TextBox || control is ComboBox)
+				if (control is TextBox)
 					control.Text = string.Empty;
 				if (control is DateTimePicker)
 					(control as DateTimePicker).Value = DateTime.Today;
+				if (control is ComboBox)
+					(control as ComboBox).SelectedIndex = -1;
 			}
 		}
 
@@ -207,7 +210,7 @@ namespace Main
 		private bool IsValidComboBoxControl()
 		{
 			errorProviderWar.SetError(cbRole, "");
-			if (cbRole.DataSource == null)
+			if (cbRole.Items.Count == 0)
 			{
 				errorProviderWar.SetError(cbRole, "Không có chức vụ!\nVui lòng bổ sung");
 				return false;
@@ -250,16 +253,24 @@ namespace Main
 				}
 			}
 
+			string[] arr = tbFullName.Text.Trim().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
 			// Kiểm tra fullname không được để trống
 			if (tbFullName.Text.Trim().Equals(""))
 			{
 				errorProviderWar.SetError(tbFullName, "Tên không được để trống!");
 				return false;
 			}
-			else if (IsSpecialCharacters(tbFullName.Text.Trim()))
+			else
 			{
-				errorProviderWar.SetError(tbFullName, "Tên không được chứa ký tự đặc biệt!");
-				return false;
+				foreach (var item in arr)
+				{
+					if (IsSpecialCharacters(item))
+					{
+						errorProviderWar.SetError(tbFullName, "Tên không được chứa ký tự đặc biệt!");
+						return false;
+					}
+				}
 			}
 
 			// Kiểm tra mật khẩu không được để trống

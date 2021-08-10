@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -179,6 +180,12 @@ namespace Main
 				}
 				else
 				{
+					if (IsSpaceCharacters(tbSubjectID.Text.Trim()))
+					{
+						errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được chứa khoảng trắng!");
+						return false;
+					}
+
 					if (IsSpecialCharacters(tbSubjectID.Text.Trim()))
 					{
 						errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được chứa ký tự đặc biệt!");
@@ -187,16 +194,23 @@ namespace Main
 				}
 			}
 
+			string[] arr = tbSubjectName.Text.Trim().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 			// Kiểm tra tên môn thi không được để trống
 			if (tbSubjectName.Text.Trim().Equals(""))
 			{
 				errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được để trống!");
 				return false;
 			}
-			else if (IsSpecialCharacters(tbSubjectName.Text.Trim()))
+			else
 			{
-				errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được chứa ký tự đặc biệt!");
-				return false;
+				foreach (var item in arr)
+				{
+					if (IsSpecialCharacters(item))
+					{
+						errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được chứa ký tự đặc biệt!");
+						return false;
+					}
+				}
 			}
 
 			return true;
@@ -315,11 +329,13 @@ namespace Main
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
+			tbSubjectID.Enabled = true;
 			ClearError();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			ClearError();
 			if (isAddnew)
 				AddSubject();
 			else

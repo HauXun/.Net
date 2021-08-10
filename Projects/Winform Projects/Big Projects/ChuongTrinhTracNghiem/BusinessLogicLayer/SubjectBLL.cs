@@ -33,7 +33,7 @@ namespace BusinessLogicLayer
             box.DisplayMember = "SubjectName";
             box.ValueMember = "SubjectID";
             DataTable data = SubjectDAL.Instance.GetAllSubject();
-            if (box.Name == "cbFilter")
+            if (box.Name == "cbSubjectFilter")
             {
                 DataRow row = data.NewRow();
                 row["SubjectName"] = "Tất cả";

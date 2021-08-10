@@ -133,7 +133,7 @@ namespace DataAccessLayer
 		{
             try
             {
-                string query = "EXEC dbo.USP_UpdateUserAccount @UserID , @RoleID , @Username , @Password , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @ModifiedBy";
+                string query = "EXEC dbo.USP_UpdateAccount @UserID , @RoleID , @Username , @Password , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @ModifiedBy";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
                     {
                         account.UserID,

@@ -54,11 +54,12 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_InsertExam @ExamID , @SubjectID , @ExamTime , @QCount , @CreatedBy , @ModifiedBy";
+				string query = "EXEC dbo.USP_InsertExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QCount , @CreatedBy , @ModifiedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
 						exam.ExamID,
 						exam.SubjectID,
+						exam.ExamRole,
 						exam.ExamTime,
 						exam.QCount,
 						exam.CreatedBy,
@@ -86,11 +87,12 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_UpdateExam @ExamID , @SubjectID , @ExamTime , @QCount , @ModifiedBy";
+				string query = "EXEC dbo.USP_UpdateExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QCount , @ModifiedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
 						exam.ExamID,
 						exam.SubjectID,
+						exam.ExamRole,
 						exam.ExamTime,
 						exam.QCount,
 						exam.ModifiedBy
@@ -113,12 +115,12 @@ namespace DataAccessLayer
 			}
 		}
 
-		public bool DeleteExam(string examID)
+		public bool DeleteExam(string examID, string subjectID)
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_DeleteExam @ExamID";
-				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { examID });
+				string query = "EXEC dbo.USP_DeleteExam @ExamID , @SubjectID";
+				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { examID, subjectID });
 				return isAccess > 0;
 			}
 			catch (Exception e)
@@ -127,12 +129,12 @@ namespace DataAccessLayer
 			}
 		}
 
-		public DataTable SearchExam(string keyword, string subjectID = null)
+		public DataTable SearchExam(string keyword, string subjectID = "", string examRole = "")
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_SearchExam @keyword , @SubjectID";
-				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword, subjectID });
+				string query = "EXEC dbo.USP_SearchExam @keyword , @SubjectID , @ExamRole";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword, subjectID, examRole });
 				return data;
 			}
 			catch (Exception e)

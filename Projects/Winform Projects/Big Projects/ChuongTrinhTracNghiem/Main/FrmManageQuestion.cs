@@ -62,8 +62,6 @@ namespace Main
 		private void LoadData()
 		{
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
-			SubjectBLL.Instance.GetAllSubject(cbFilter);
-			ExamBLL.Instance.GetAllExam(cbExamIDFilter);
 			ExamBLL.Instance.GetAllExam(cbExamID);
 			QuestionBLL.Instance.GetAllQuestion(dgvData);
 			if (dgvData.Rows.Count > 0)
@@ -182,10 +180,14 @@ namespace Main
 		{
 			foreach (Control control in gbControls.Controls)
 			{
-				if (control is TextBox || control is ComboBox)
+				if (control is TextBox)
 				{
 					control.Text = "";
 				}
+				if (control is ComboBox)
+				{
+					(control as ComboBox).SelectedIndex = -1;
+				}	
 			}
 		}
 
@@ -208,7 +210,7 @@ namespace Main
 		{
 			ClearError();
 
-			if (cbSubject.DataSource == null)
+			if (cbSubject.Items.Count == 0)
 			{
 				errorProviderWar.SetError(cbSubject, "Không có môn thi!\nVui lòng bổ sung");
 				return false;
@@ -222,7 +224,7 @@ namespace Main
 				}
 			}
 
-			if (cbExamID.DataSource == null)
+			if (cbExamID.Items.Count == 0)
 			{
 				errorProviderWar.SetError(cbExamID, "Không có mã môn cho bộ môn này!\nVui lòng bổ sung");
 				return false;
@@ -235,6 +237,7 @@ namespace Main
 					return false;
 				}
 			}
+
 			return true;
 		}
 
@@ -380,14 +383,14 @@ namespace Main
 			if (keyword.Equals("Nhập từ khóa ..."))
 				keyword = string.Empty;
 
-			string subjectFilter = "ALL";
-			if (cbFilter.SelectedValue != null)
-				subjectFilter = cbFilter.SelectedValue.ToString();
+			QuestionBLL.Instance.SearchQuestion(dgvData, keyword);
+		}
 
-			string examFilter = "Tất cả";
-			if (cbExamIDFilter.SelectedValue != null)
-				examFilter = cbExamIDFilter.SelectedValue.ToString();
-			QuestionBLL.Instance.SearchQuestion(dgvData, keyword, subjectFilter, examFilter);
+		private void btnFilter_Click(object sender, EventArgs e)
+		{
+			FrmFilter frm = new FrmFilter(dgvData);
+			frm.cbExamRoleFilter.Enabled = false;
+			frm.ShowDialog();
 		}
 
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -451,22 +454,11 @@ namespace Main
 
 		private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			cbExamID.Text = string.Empty;
 			if (cbSubject.SelectedValue != null)
 			{
 				DataTable data = ExamBLL.Instance.GetExamByIDSubject(cbSubject.SelectedValue.ToString());
 				cbExamID.DataSource = data;
-			}
-		}
-
-		private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (cbFilter.SelectedValue != null)
-			{
-				DataTable data = ExamBLL.Instance.GetExamByIDSubject(cbFilter.SelectedValue.ToString());
-				DataRow row = data.NewRow();
-				row["ExamID"] = "Tất cả";
-				data.Rows.InsertAt(row, 0);
-				cbExamIDFilter.DataSource = data;
 			}
 		}
 

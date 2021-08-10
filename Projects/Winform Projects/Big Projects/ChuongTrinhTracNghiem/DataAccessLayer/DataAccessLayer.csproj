@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExamRoleDAL.cs" />
     <Compile Include="QuestionDAL.cs" />
     <Compile Include="ExamDAL.cs" />
     <Compile Include="SubjectDAL.cs" />
