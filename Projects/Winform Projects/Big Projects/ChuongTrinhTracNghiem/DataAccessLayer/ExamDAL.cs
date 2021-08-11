@@ -50,6 +50,20 @@ namespace DataAccessLayer
 			}
 		}
 
+		public DataTable GetExamQuiz(string subjectID, string examRole)
+		{
+			try
+			{
+				string query = "EXEC dbo.USP_GetExamQuiz @SubjectID , @ExamRole";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID, examRole });
+				return data;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
 		public bool InsertExam(Exam exam)
 		{
 			try

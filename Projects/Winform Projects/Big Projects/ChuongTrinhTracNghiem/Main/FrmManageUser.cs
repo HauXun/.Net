@@ -91,7 +91,7 @@ namespace Main
 				tbAccount.Text = row.Cells["Username"].Value.ToString();
 				tbPassword.Text = row.Cells["Password"].Value.ToString();
 				tbFullName.Text = row.Cells["FullName"].Value.ToString();
-				cbRole.SelectedValue = row.Cells["RoleID"].Value.ToString();
+				cbRole.SelectedValue = row.Cells["RoleID"].Value;
 				tbPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
 				tbAddress.Text = row.Cells["Address"].Value.ToString();
 				tbEmail.Text = row.Cells["Email"].Value.ToString();
@@ -407,8 +407,6 @@ namespace Main
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			if (!IsValidUser())
-				return;
 
 			if (!int.TryParse(tbUserID.Text, out int userID))
 			{

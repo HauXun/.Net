@@ -182,6 +182,7 @@
   <ItemGroup>
     <Content Include="Resources\cat.gif" />
     <Content Include="Resources\Quiz.png" />
+    <None Include="Resources\QuizInform.png" />
     <None Include="Resources\QuizThumnails.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

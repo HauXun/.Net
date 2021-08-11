@@ -33,14 +33,13 @@ namespace Main
 			this.btnStartQuiz = new System.Windows.Forms.Button();
 			this.btnExit = new System.Windows.Forms.Button();
 			this.lbTitle = new System.Windows.Forms.Label();
-			this.tbQuizTime = new System.Windows.Forms.TextBox();
 			this.lbSubject = new System.Windows.Forms.Label();
-			this.lbQuizTime = new System.Windows.Forms.Label();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.lbQuestionCount = new System.Windows.Forms.Label();
 			this.cbSubject = new System.Windows.Forms.ComboBox();
-			this.cbQuestionCount = new System.Windows.Forms.ComboBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.lbInform = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btnStartQuiz
@@ -79,81 +78,50 @@ namespace Main
 			this.lbTitle.TabIndex = 0;
 			this.lbTitle.Text = "TÙY CHỌN CẤU TRÚC BÀI THI";
 			// 
-			// tbQuizTime
-			// 
-			this.tbQuizTime.Location = new System.Drawing.Point(174, 138);
-			this.tbQuizTime.Margin = new System.Windows.Forms.Padding(4);
-			this.tbQuizTime.Name = "tbQuizTime";
-			this.tbQuizTime.ReadOnly = true;
-			this.tbQuizTime.Size = new System.Drawing.Size(263, 23);
-			this.tbQuizTime.TabIndex = 3;
-			// 
 			// lbSubject
 			// 
 			this.lbSubject.AutoSize = true;
 			this.lbSubject.BackColor = System.Drawing.Color.Transparent;
-			this.lbSubject.Location = new System.Drawing.Point(44, 60);
+			this.lbSubject.Location = new System.Drawing.Point(66, 140);
 			this.lbSubject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbSubject.Name = "lbSubject";
 			this.lbSubject.Size = new System.Drawing.Size(58, 17);
 			this.lbSubject.TabIndex = 1;
 			this.lbSubject.Text = "Môn thi:";
 			// 
-			// lbQuizTime
-			// 
-			this.lbQuizTime.AutoSize = true;
-			this.lbQuizTime.BackColor = System.Drawing.Color.Transparent;
-			this.lbQuizTime.Location = new System.Drawing.Point(44, 141);
-			this.lbQuizTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lbQuizTime.Name = "lbQuizTime";
-			this.lbQuizTime.Size = new System.Drawing.Size(90, 17);
-			this.lbQuizTime.TabIndex = 2;
-			this.lbQuizTime.Text = "Thời gian thi:";
-			// 
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// lbQuestionCount
-			// 
-			this.lbQuestionCount.AutoSize = true;
-			this.lbQuestionCount.BackColor = System.Drawing.Color.Transparent;
-			this.lbQuestionCount.Location = new System.Drawing.Point(44, 100);
-			this.lbQuestionCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lbQuestionCount.Name = "lbQuestionCount";
-			this.lbQuestionCount.Size = new System.Drawing.Size(118, 17);
-			this.lbQuestionCount.TabIndex = 0;
-			this.lbQuestionCount.Text = "Số lượng câu hỏi:";
-			// 
 			// cbSubject
 			// 
 			this.cbSubject.FormattingEnabled = true;
-			this.cbSubject.Location = new System.Drawing.Point(174, 57);
+			this.cbSubject.Location = new System.Drawing.Point(151, 137);
 			this.cbSubject.Name = "cbSubject";
 			this.cbSubject.Size = new System.Drawing.Size(263, 24);
 			this.cbSubject.TabIndex = 10;
+			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
 			// 
-			// cbQuestionCount
+			// pictureBox1
 			// 
-			this.cbQuestionCount.FormattingEnabled = true;
-			this.cbQuestionCount.Items.AddRange(new object[] {
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60"});
-			this.cbQuestionCount.Location = new System.Drawing.Point(174, 97);
-			this.cbQuestionCount.Name = "cbQuestionCount";
-			this.cbQuestionCount.Size = new System.Drawing.Size(263, 24);
-			this.cbQuestionCount.TabIndex = 11;
-			this.cbQuestionCount.SelectedIndexChanged += new System.EventHandler(this.cbQuestionCount_SelectedIndexChanged);
+			this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+			this.pictureBox1.BackgroundImage = global::Main.Properties.Resources.QuizInform;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pictureBox1.Location = new System.Drawing.Point(12, 45);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(100, 78);
+			this.pictureBox1.TabIndex = 11;
+			this.pictureBox1.TabStop = false;
+			// 
+			// lbInform
+			// 
+			this.lbInform.BackColor = System.Drawing.Color.Transparent;
+			this.lbInform.Location = new System.Drawing.Point(148, 67);
+			this.lbInform.Name = "lbInform";
+			this.lbInform.Size = new System.Drawing.Size(300, 40);
+			this.lbInform.TabIndex = 12;
+			this.lbInform.Text = "Chào Cheems! Hãy lựa chọn môn thi của mình để bắt đầu luyện tập ngay nào! 🙇‍♂️🙇" +
+    "‍♂️🙇‍♂️";
 			// 
 			// FrmQuizOptions
 			// 
@@ -162,11 +130,9 @@ namespace Main
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnExit;
 			this.ClientSize = new System.Drawing.Size(481, 227);
-			this.Controls.Add(this.cbQuestionCount);
+			this.Controls.Add(this.lbInform);
+			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.cbSubject);
-			this.Controls.Add(this.lbQuestionCount);
-			this.Controls.Add(this.lbQuizTime);
-			this.Controls.Add(this.tbQuizTime);
 			this.Controls.Add(this.lbSubject);
 			this.Controls.Add(this.lbTitle);
 			this.Controls.Add(this.btnExit);
@@ -181,6 +147,7 @@ namespace Main
 			this.Text = "Cấu trúc bài thi";
 			this.Load += new System.EventHandler(this.FrmQuizOptions_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -191,12 +158,10 @@ namespace Main
 		private System.Windows.Forms.Button btnStartQuiz;
 		private System.Windows.Forms.Button btnExit;
 		private System.Windows.Forms.Label lbSubject;
-		private System.Windows.Forms.Label lbQuizTime;
 		private System.Windows.Forms.ErrorProvider errorProviderWar;
-		private System.Windows.Forms.Label lbQuestionCount;
 		private System.Windows.Forms.ComboBox cbSubject;
-		public System.Windows.Forms.TextBox tbQuizTime;
-		public System.Windows.Forms.ComboBox cbQuestionCount;
 		public System.Windows.Forms.Label lbTitle;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label lbInform;
 	}
 }

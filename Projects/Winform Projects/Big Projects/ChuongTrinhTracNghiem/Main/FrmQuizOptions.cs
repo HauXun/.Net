@@ -9,6 +9,7 @@ namespace Main
 {
 	public partial class FrmQuizOptions : Form
 	{
+		public bool isMockTest = false;
 		private UserAccount account;
 
 		public UserAccount Account { get => account; set => account = value; }
@@ -39,15 +40,13 @@ namespace Main
 		private void LoadData()
 		{
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
-			cbSubject.ValueMember = "SubjectName";
 		}
 
 		private bool IsValidComboBoxControl()
 		{
 			errorProviderWar.SetError(cbSubject, "");
-			errorProviderWar.SetError(cbQuestionCount, "");
 
-			if (cbSubject.DataSource == null)
+			if (cbSubject.Items.Count == 0)
 			{
 				errorProviderWar.SetError(cbSubject, "Không có môn thi!\nVui lòng bổ sung");
 				return false;
@@ -61,20 +60,6 @@ namespace Main
 				}
 			}
 
-			if (cbQuestionCount.Items == null)
-			{
-				errorProviderWar.SetError(cbQuestionCount, "Không rõ số lượng câu hỏi!\nVui lòng bổ sung");
-				return false;
-			}
-			else
-			{
-				if (cbQuestionCount.SelectedIndex == -1)
-				{
-					errorProviderWar.SetError(cbQuestionCount, "Vui lòng chọn số lượng câu hỏi");
-					return false;
-				}
-			}
-
 			return true;
 		}
 
@@ -82,27 +67,32 @@ namespace Main
 
 		#region Events
 
-		private void cbQuestionCount_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			tbQuizTime.Text = cbQuestionCount.Text;
-		}
-
 		private void FrmQuizOptions_Load(object sender, EventArgs e)
 		{
 			LoadData();
+			IsValidComboBoxControl();
+			if (isMockTest == false)
+				lbInform.Text = $"Chào {Account.FullName}! Hãy lựa chọn môn thi của mình để bắt đầu luyện tập ngay nào! 🙇‍♂️🙇‍♂️🙇‍♂️";
+			else
+				lbInform.Text = $"Chào {Account.FullName}! Hãy lựa chọn môn thi của mình để bắt đầu bài thi ngay nào! 🙇‍♂️🙇‍♂️🙇‍♂️";
+		}
+
+		private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			string subjectID = cbSubject.SelectedValue.ToString().Trim();
 		}
 
 		private void btnStartQuiz_Click(object sender, EventArgs e)
 		{
-			if (tbQuizTime.Enabled)
-			{
-				if (!IsValidComboBoxControl())
-					return;
-			}
-			FrmQuiz frm = new FrmQuiz(Account, cbSubject.SelectedValue, cbQuestionCount.SelectedItem, tbQuizTime.Text);
-			this.Hide();
-			frm.ShowDialog();
-			this.Show();
+			//if (tbQuizTime.Enabled)
+			//{
+			//	if (!IsValidComboBoxControl())
+			//		return;
+			//}
+			//FrmQuiz frm = new FrmQuiz(Account, cbSubject.SelectedValue, cbQuestionCount.SelectedItem, tbQuizTime.Text);
+			//this.Hide();
+			//frm.ShowDialog();
+			//this.Show();
 		}
 
 		#endregion

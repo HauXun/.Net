@@ -102,6 +102,7 @@ namespace Main
 		{
 			this.Hide();
 			FrmQuizOptions frm = new FrmQuizOptions(Account);
+			frm.isMockTest = false;
 			frm.ShowDialog();
 			this.Show();
 		}
@@ -110,10 +111,7 @@ namespace Main
 		{
 			this.Hide();
 			FrmQuizOptions frm = new FrmQuizOptions(Account);
-			frm.tbQuizTime.Enabled = false;
-			frm.cbQuestionCount.Enabled = false;
-			frm.lbTitle.Text = "LÀM BÀI THI";
-			frm.lbTitle.Location = new Point(174, 19);
+			frm.isMockTest = true;
 			frm.ShowDialog();
 			this.Show();
 		}

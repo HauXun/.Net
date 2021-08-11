@@ -44,6 +44,11 @@ namespace BusinessLogicLayer
 			box.DataSource = data;
 		}
 
+		public DataTable GetExamQuiz(string subjectID, string examRole)
+		{
+			return ExamDAL.Instance.GetExamQuiz(subjectID, examRole);
+		}
+
 		public DataTable GetExamByIDSubject(string subjectID)
 		{
 			return ExamDAL.Instance.GetExamByIDSubject(subjectID);
