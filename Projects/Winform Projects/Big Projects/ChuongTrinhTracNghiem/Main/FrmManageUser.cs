@@ -91,7 +91,7 @@ namespace Main
 				tbAccount.Text = row.Cells["Username"].Value.ToString();
 				tbPassword.Text = row.Cells["Password"].Value.ToString();
 				tbFullName.Text = row.Cells["FullName"].Value.ToString();
-				cbRole.SelectedValue = row.Cells["RoleID"].Value;
+				cbRole.SelectedValue = row.Cells["UserRole"].Value;
 				tbPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
 				tbAddress.Text = row.Cells["Address"].Value.ToString();
 				tbEmail.Text = row.Cells["Email"].Value.ToString();
