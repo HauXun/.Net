@@ -14,8 +14,8 @@ namespace Entities
 	public partial class Question
     {
         public int QuestionID { get; set; }
+        public string ExamID { get; set; }
         public string SubjectID { get; set; }
-		public string ExamID { get; set; }
 		public string QContent { get; set; }
         public string OptionA { get; set; }
         public string OptionB { get; set; }

@@ -38,6 +38,16 @@ namespace Main
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.dgvData = new System.Windows.Forms.DataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
@@ -64,16 +74,6 @@ namespace Main
 			this.tbAccount = new System.Windows.Forms.TextBox();
 			this.tbUserID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.UserRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -161,6 +161,91 @@ namespace Main
 			this.dgvData.TabIndex = 7;
 			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
 			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			this.STT.FillWeight = 32.09629F;
+			this.STT.HeaderText = "STT";
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			// 
+			// FullName
+			// 
+			this.FullName.DataPropertyName = "FullName";
+			this.FullName.FillWeight = 129.0016F;
+			this.FullName.HeaderText = "Họ và tên";
+			this.FullName.Name = "FullName";
+			this.FullName.ReadOnly = true;
+			// 
+			// Username
+			// 
+			this.Username.DataPropertyName = "Username";
+			this.Username.FillWeight = 82.04174F;
+			this.Username.HeaderText = "Tài khoản";
+			this.Username.Name = "Username";
+			this.Username.ReadOnly = true;
+			// 
+			// Password
+			// 
+			this.Password.DataPropertyName = "Password";
+			this.Password.HeaderText = "Mật khẩu";
+			this.Password.Name = "Password";
+			this.Password.ReadOnly = true;
+			this.Password.Visible = false;
+			// 
+			// UserID
+			// 
+			this.UserID.DataPropertyName = "UserID";
+			this.UserID.FillWeight = 82.79251F;
+			this.UserID.HeaderText = "Mã định danh";
+			this.UserID.Name = "UserID";
+			this.UserID.ReadOnly = true;
+			// 
+			// PhoneNumber
+			// 
+			this.PhoneNumber.DataPropertyName = "PhoneNumber";
+			this.PhoneNumber.FillWeight = 100.1616F;
+			this.PhoneNumber.HeaderText = "Điện thoại";
+			this.PhoneNumber.Name = "PhoneNumber";
+			this.PhoneNumber.ReadOnly = true;
+			// 
+			// Email
+			// 
+			this.Email.DataPropertyName = "Email";
+			this.Email.FillWeight = 131.8421F;
+			this.Email.HeaderText = "Email";
+			this.Email.Name = "Email";
+			this.Email.ReadOnly = true;
+			// 
+			// Address
+			// 
+			this.Address.DataPropertyName = "Address";
+			this.Address.FillWeight = 156.3142F;
+			this.Address.HeaderText = "Địa chỉ";
+			this.Address.Name = "Address";
+			this.Address.ReadOnly = true;
+			// 
+			// Birthday
+			// 
+			this.Birthday.DataPropertyName = "Birthday";
+			dataGridViewCellStyle3.Format = "d";
+			dataGridViewCellStyle3.NullValue = "dd/MM/yyyy";
+			this.Birthday.DefaultCellStyle = dataGridViewCellStyle3;
+			this.Birthday.FillWeight = 85.74992F;
+			this.Birthday.HeaderText = "Ngày sinh";
+			this.Birthday.Name = "Birthday";
+			this.Birthday.ReadOnly = true;
+			// 
+			// UserRole
+			// 
+			this.UserRole.DataPropertyName = "UserRole";
+			this.UserRole.HeaderText = "Chức vụ";
+			this.UserRole.Name = "UserRole";
+			this.UserRole.ReadOnly = true;
+			this.UserRole.Visible = false;
 			// 
 			// tbSearch
 			// 
@@ -401,91 +486,6 @@ namespace Main
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 32.09629F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			// 
-			// FullName
-			// 
-			this.FullName.DataPropertyName = "FullName";
-			this.FullName.FillWeight = 129.0016F;
-			this.FullName.HeaderText = "Họ và tên";
-			this.FullName.Name = "FullName";
-			this.FullName.ReadOnly = true;
-			// 
-			// Username
-			// 
-			this.Username.DataPropertyName = "Username";
-			this.Username.FillWeight = 82.04174F;
-			this.Username.HeaderText = "Tài khoản";
-			this.Username.Name = "Username";
-			this.Username.ReadOnly = true;
-			// 
-			// Password
-			// 
-			this.Password.DataPropertyName = "Password";
-			this.Password.HeaderText = "Mật khẩu";
-			this.Password.Name = "Password";
-			this.Password.ReadOnly = true;
-			this.Password.Visible = false;
-			// 
-			// UserID
-			// 
-			this.UserID.DataPropertyName = "UserID";
-			this.UserID.FillWeight = 82.79251F;
-			this.UserID.HeaderText = "Mã định danh";
-			this.UserID.Name = "UserID";
-			this.UserID.ReadOnly = true;
-			// 
-			// PhoneNumber
-			// 
-			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			this.PhoneNumber.FillWeight = 100.1616F;
-			this.PhoneNumber.HeaderText = "Điện thoại";
-			this.PhoneNumber.Name = "PhoneNumber";
-			this.PhoneNumber.ReadOnly = true;
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.FillWeight = 131.8421F;
-			this.Email.HeaderText = "Email";
-			this.Email.Name = "Email";
-			this.Email.ReadOnly = true;
-			// 
-			// Address
-			// 
-			this.Address.DataPropertyName = "Address";
-			this.Address.FillWeight = 156.3142F;
-			this.Address.HeaderText = "Địa chỉ";
-			this.Address.Name = "Address";
-			this.Address.ReadOnly = true;
-			// 
-			// Birthday
-			// 
-			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle3.Format = "d";
-			dataGridViewCellStyle3.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle3;
-			this.Birthday.FillWeight = 85.74992F;
-			this.Birthday.HeaderText = "Ngày sinh";
-			this.Birthday.Name = "Birthday";
-			this.Birthday.ReadOnly = true;
-			// 
-			// UserRole
-			// 
-			this.UserRole.DataPropertyName = "UserRole";
-			this.UserRole.HeaderText = "Chức vụ";
-			this.UserRole.Name = "UserRole";
-			this.UserRole.ReadOnly = true;
-			this.UserRole.Visible = false;
 			// 
 			// FrmManageUser
 			// 

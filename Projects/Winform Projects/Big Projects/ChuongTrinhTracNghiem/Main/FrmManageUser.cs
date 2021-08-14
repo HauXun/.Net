@@ -71,7 +71,7 @@ namespace Main
 			UserAccount account = new UserAccount();
 			int.TryParse(tbUserID.Text.Trim(), out int userId);
 			account.UserID = userId;
-			account.RoleID = cbRole.SelectedValue.ToString();
+			account.UserRole = cbRole.SelectedValue.ToString();
 			account.Username = tbAccount.Text.Trim();
 			account.FullName = tbFullName.Text.Trim();
 			account.Password = tbPassword.Text.Trim();
@@ -113,9 +113,9 @@ namespace Main
 			}
 
 			UserAccount account = GetUserInfo();
-			account.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.Note = $"Đã được tạo bởi {Account.RoleID} - {Account.FullName} vào {DateTime.Now}";
+			account.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
+			account.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+			account.Note = $"Đã được tạo bởi {Account.UserRole} - {Account.FullName} vào {DateTime.Now}";
 
 			if (!IsValidUser())
 			{
@@ -146,8 +146,8 @@ namespace Main
 			}
 
 			UserAccount account = GetUserInfo();
-			account.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
-			account.Note = $"Đã được sửa bởi {Account.RoleID} - {Account.FullName} vào {DateTime.Now}";
+			account.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+			account.Note = $"Đã được sửa bởi {Account.UserRole} - {Account.FullName} vào {DateTime.Now}";
 
 			if (!IsValidUser())
 			{

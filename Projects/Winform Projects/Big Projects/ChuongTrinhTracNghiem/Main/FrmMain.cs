@@ -16,7 +16,7 @@ namespace Main
 			set
 			{
 				account = value;
-				ChangeRole(account.RoleID);
+				ChangeRole(account.UserRole);
 			}
 		}
 
@@ -52,7 +52,7 @@ namespace Main
 
 		private void FrmMain_Load(object sender, EventArgs e)
 		{
-			if (Account.RoleID.ToLower().Trim().Equals("user"))
+			if (Account.UserRole.ToLower().Trim().Equals("user"))
 			{
 				tbDisplayname.Text = Account.FullName;
 				tbID.Text = Account.UserID.ToString();

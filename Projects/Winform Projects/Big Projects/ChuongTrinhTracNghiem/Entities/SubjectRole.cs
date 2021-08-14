@@ -11,7 +11,7 @@ namespace Entities
 {
     using System;
 
-    public partial class ExamRole
+    public partial class SubjectRole
     {
         public string RoleID { get; set; }
         public string RoleName { get; set; }

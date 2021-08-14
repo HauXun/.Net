@@ -15,8 +15,9 @@ namespace Entities
 	public partial class UserAccount
     {
         public int UserID { get; set; }
-        public string RoleID { get; set; }
-        public string Username { get; set; }
+        public string UserRole { get; set; }
+		public string ClassID { get; set; }
+		public string Username { get; set; }
 		public string Password { get; set; }
 		public string FullName { get; set; }
         public string Email { get; set; }
@@ -36,9 +37,14 @@ namespace Entities
 
 		public UserAccount(DataRow row)
 		{
+            UserID = int.Parse(row["UserID"].ToString());
+            UserRole = row["UserRole"].ToString();
+            ClassID = row["ClassID"].ToString();
             Username = row["Username"].ToString();
             FullName = row["Fullname"].ToString();
-            RoleID = row["RoleID"].ToString();
+            Email = row["Email"].ToString();
+            PhoneNumber = row["PhoneNumber"].ToString();
+            Address = row["Address"].ToString();
             Birthday = Convert.ToDateTime(row["Birthday"]);
         }
     }

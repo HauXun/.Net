@@ -109,8 +109,8 @@ namespace Main
 			}
 
 			Exam exam = GetExamInfo();
-			exam.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			exam.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
+			exam.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
 
 			if (!IsValidComboBoxControl())
 			{
@@ -141,7 +141,7 @@ namespace Main
 			}
 
 			Exam exam = GetExamInfo();
-			exam.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			exam.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
 
 			if (!IsValidComboBoxControl())
 			{

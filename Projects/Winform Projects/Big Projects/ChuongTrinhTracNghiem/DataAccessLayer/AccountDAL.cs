@@ -109,7 +109,7 @@ namespace DataAccessLayer
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
                     { 
                         GetIDMissing(),
-                        account.RoleID, 
+                        account.UserRole, 
                         account.Username, 
                         account.Password, 
                         account.FullName, 
@@ -137,7 +137,7 @@ namespace DataAccessLayer
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
                     {
                         account.UserID,
-                        account.RoleID,
+                        account.UserRole,
                         account.Username,
                         account.Password,
                         account.FullName,

@@ -15,7 +15,11 @@ namespace Entities
 	public partial class Subject
     {
         public string SubjectID { get; set; }
-        public string SubjectName { get; set; }
+		public string SubjectRole { get; set; }
+		public string CourseID { get; set; }
+		public string FacultyID { get; set; }
+		public int SemesterID { get; set; }
+		public string SubjectName { get; set; }
         public string Description { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -29,6 +33,10 @@ namespace Entities
 		public Subject(DataRow row)
 		{
             SubjectID = row["SubjectID"].ToString();
+			SubjectRole = row["SubjectRole"].ToString();
+			CourseID = row["CourseID"].ToString();
+			FacultyID = row["FacultyID"].ToString();
+			SemesterID = int.Parse(row["SemesterID"].ToString());
             SubjectName = row["SubjectName"].ToString();
 		}
     }

@@ -91,8 +91,9 @@ namespace Main
 		private void AddSubject()
 		{
 			Subject subject = GetSubjectInfo();
-			subject.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			subject.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			subject.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
+			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+
 			if (!IsValidSubject())
 				return;
 
@@ -113,7 +114,8 @@ namespace Main
 		private void UpdateSubject()
 		{
 			Subject subject = GetSubjectInfo();
-			subject.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+
 			if (!IsValidSubject())
 				return;
 

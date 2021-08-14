@@ -11,10 +11,10 @@ namespace Entities
 {
     using System;
 
-    public partial class ExamRole
+    public partial class Semester
     {
-        public string RoleID { get; set; }
-        public string RoleName { get; set; }
+        public int SemesterID { get; set; }
+        public string SemesterName { get; set; }
         public string Description { get; set; }
     }
 }

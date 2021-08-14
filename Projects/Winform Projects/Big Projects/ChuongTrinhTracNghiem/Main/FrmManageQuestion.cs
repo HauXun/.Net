@@ -113,9 +113,11 @@ namespace Main
 				isEnable = true;
 				return;
 			}
+
 			Question question = GetQuestionInfo();
-			question.CreatedBy = $"{Account.RoleID} - {Account.FullName}";
-			question.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			question.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
+			question.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+
 			if (!IsValidQuestion())
 			{
 				isEnable = true;
@@ -143,8 +145,10 @@ namespace Main
 				isEnable = true;
 				return;
 			}
+
 			Question question = GetQuestionInfo();
-			question.ModifiedBy = $"{Account.RoleID} - {Account.FullName}";
+			question.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+
 			if (!IsValidQuestion())
 			{
 				isEnable = true;
