@@ -1,5 +1,8 @@
 ﻿using DataAccessLayer;
 using Entities;
+using System;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -36,6 +39,11 @@ namespace BusinessLogicLayer
             return AccountDAL.Instance.ChangeInfoAccount(username, displayname, pass, newPass);
 		}
 
+        public bool ResetPassword(string username)
+		{
+            return AccountDAL.Instance.ResetPassword(username);
+		}
+
         public UserAccount GetAccountByUserName(string Username)
 		{
             return AccountDAL.Instance.GetAccountByUserName(Username);
@@ -45,6 +53,26 @@ namespace BusinessLogicLayer
         {
             data.AutoGenerateColumns = false;
             data.DataSource = AccountDAL.Instance.GetAllAccount();
+        }
+
+        public void GetAllAccount(ComboBox box)
+        {
+            DataTable data = AccountDAL.Instance.GetAllAccount();
+            if (data.Rows.Count > 0)
+			{
+                if (box.Name.Equals("cbClassFilter"))
+				{
+                    DataRow row = data.NewRow();
+                    row["ClassID"] = "Tất cả";
+                    data.Rows.InsertAt(row, 0);
+                    data = data.Rows.Cast<DataRow>()
+                 .Where(x => !string.IsNullOrEmpty(x["ClassID"] as string ?? x["ClassID"].ToString())).CopyToDataTable();
+                    data = data.AsEnumerable().GroupBy(x => x.Field<string>("ClassID")).Select(y => y.First()).CopyToDataTable();
+                }
+                box.DisplayMember = "ClassID";
+                box.ValueMember = "ClassID";
+                box.DataSource = data;
+            }                
         }
 
         public bool InsertAccount(UserAccount account)
@@ -62,9 +90,9 @@ namespace BusinessLogicLayer
             return AccountDAL.Instance.DeleteAccount(userID);
 		}
 
-        public void SearchAccount(DataGridView data, string keyword, string roleFilter = null)
+        public void SearchAccount(DataGridView data, string keyword, string roleFilter = null, string classFilter = null)
 		{
-            data.DataSource = AccountDAL.Instance.SearchAccount(keyword, roleFilter);
+            data.DataSource = AccountDAL.Instance.SearchAccount(keyword, roleFilter, classFilter);
 		}
     }
 }

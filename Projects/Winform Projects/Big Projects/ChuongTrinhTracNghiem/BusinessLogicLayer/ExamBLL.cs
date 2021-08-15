@@ -31,17 +31,20 @@ namespace BusinessLogicLayer
 
 		public void GetAllExam(ComboBox box)
 		{
-			box.DisplayMember = "ExamID";
-			box.ValueMember = "ExamID";
 			DataTable data = ExamDAL.Instance.GetAllExam();
-			if (box.Name == "cbExamIDFilter")
+			if (data.Rows.Count > 0)
 			{
-				DataRow row = data.NewRow();
-				row["ExamID"] = "Tất cả";
-				data.Rows.InsertAt(row, 0);
-				data = data.AsEnumerable().GroupBy(x => x.Field<string>("ExamID")).Select(y => y.First()).CopyToDataTable();
+				if (box.Name == "cbExamIDFilter")
+				{
+					DataRow row = data.NewRow();
+					row["ExamID"] = "Tất cả";
+					data.Rows.InsertAt(row, 0);
+					data = data.AsEnumerable().GroupBy(x => x.Field<string>("ExamID")).Select(y => y.First()).CopyToDataTable();
+				}
+				box.DisplayMember = "ExamID";
+				box.ValueMember = "ExamID";
+				box.DataSource = data;
 			}
-			box.DataSource = data;
 		}
 
 		public DataTable GetExamQuiz(string subjectID, string examRole)

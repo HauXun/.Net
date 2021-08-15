@@ -23,9 +23,9 @@ namespace BusinessLogicLayer
 
         public void GetAllRoleUser(ComboBox box)
         {
-			if (UserRoleDAL.Instance.GetAllRoleUser().Rows.Count > 0)
+            DataTable data = UserRoleDAL.Instance.GetAllRoleUser();
+            if (data.Rows.Count > 0)
 			{
-                DataTable data = UserRoleDAL.Instance.GetAllRoleUser();
                 if (box.Name == "cbFilter")
                 {
                     DataRow row = data.NewRow();
@@ -41,11 +41,11 @@ namespace BusinessLogicLayer
 
         public void GetAllRoleExam(ComboBox box)
         {
-            if (ExamRoleDAL.Instance.GetAllRoleExam().Rows.Count > 0)
+            DataTable data = ExamRoleDAL.Instance.GetAllRoleExam();
+            if (data.Rows.Count > 0)
             {
                 box.DisplayMember = "RoleName";
                 box.ValueMember = "RoleID";
-                DataTable data = ExamRoleDAL.Instance.GetAllRoleExam();
                 if (box.Name == "cbExamRoleFilter")
                 {
                     DataRow row = data.NewRow();

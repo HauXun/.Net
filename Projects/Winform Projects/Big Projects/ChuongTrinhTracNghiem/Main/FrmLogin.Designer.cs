@@ -129,7 +129,7 @@ namespace Main
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnExit;
-			this.ClientSize = new System.Drawing.Size(436, 212);
+			this.ClientSize = new System.Drawing.Size(436, 211);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.tbPassword);
 			this.Controls.Add(this.label2);
@@ -140,8 +140,8 @@ namespace Main
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(452, 251);
-			this.MinimumSize = new System.Drawing.Size(452, 251);
+			this.MaximumSize = new System.Drawing.Size(452, 250);
+			this.MinimumSize = new System.Drawing.Size(452, 250);
 			this.Name = "FrmLogin";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Hệ thống thi trắc nghiệm";

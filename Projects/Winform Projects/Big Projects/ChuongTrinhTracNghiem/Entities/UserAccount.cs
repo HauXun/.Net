@@ -46,6 +46,7 @@ namespace Entities
             PhoneNumber = row["PhoneNumber"].ToString();
             Address = row["Address"].ToString();
             Birthday = Convert.ToDateTime(row["Birthday"]);
+            Note = row["Note"].ToString();
         }
     }
 }

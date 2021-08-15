@@ -1,7 +1,6 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -15,6 +14,7 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
+		private string username;
 		private int rowIndex = 0;
 		private UserAccount account;
 
@@ -41,29 +41,15 @@ namespace Main
 			}
 		}
 
-		protected override void WndProc(ref Message m)
-		{
-			const int WM_SYSCOMMAND = 0x0112;
-			const int SC_MOVE = 0xF010;
-
-			switch (m.Msg)
-			{
-				case WM_SYSCOMMAND:
-					int command = m.WParam.ToInt32() & 0xfff0;
-					if (command == SC_MOVE)
-						return;
-					break;
-			}
-			base.WndProc(ref m);
-		}
-
 		#region Methods
 
 		private void LoadData()
 		{
+			AccountBLL.Instance.GetAllAccount(cbClassFilter);
 			AccountBLL.Instance.GetAllAccount(dgvData);
 			RoleBLL.Instance.GetAllRoleUser(cbRole);
 			RoleBLL.Instance.GetAllRoleUser(cbFilter);
+			UserClassBLL.Instance.GetAllUserClass(cbClassID);
 		}
 
 		private UserAccount GetUserInfo()
@@ -72,9 +58,9 @@ namespace Main
 			int.TryParse(tbUserID.Text.Trim(), out int userId);
 			account.UserID = userId;
 			account.UserRole = cbRole.SelectedValue.ToString();
+			account.ClassID = cbClassID.SelectedValue.ToString();
 			account.Username = tbAccount.Text.Trim();
 			account.FullName = tbFullName.Text.Trim();
-			account.Password = tbPassword.Text.Trim();
 			account.Email = tbEmail.Text.Trim();
 			account.PhoneNumber = tbPhone.Text.Trim();
 			account.Birthday = dtpDob.Value;
@@ -88,14 +74,15 @@ namespace Main
 			{
 				DataGridViewRow row = dgvData.Rows[rowIndex];
 				tbUserID.Text = row.Cells["UserID"].Value.ToString();
-				tbAccount.Text = row.Cells["Username"].Value.ToString();
-				tbPassword.Text = row.Cells["Password"].Value.ToString();
-				tbFullName.Text = row.Cells["FullName"].Value.ToString();
 				cbRole.SelectedValue = row.Cells["UserRole"].Value;
+				cbClassID.SelectedValue = row.Cells["ClassID"].Value;
+				tbAccount.Text = row.Cells["Username"].Value.ToString();
+				tbFullName.Text = row.Cells["FullName"].Value.ToString();
 				tbPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
 				tbAddress.Text = row.Cells["Address"].Value.ToString();
 				tbEmail.Text = row.Cells["Email"].Value.ToString();
 				dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
+				username = row.Cells["Username"].Value.ToString();
 			}
 			catch (Exception ex)
 			{
@@ -178,6 +165,8 @@ namespace Main
 		private void EnableControl(bool isEnable = true)
 		{
 			gbControls.Enabled = isEnable;
+			if (dgvData.Rows.Count == 0)
+				btnResetPassword.Enabled = false;
 		}
 
 		private void ClearControl()
@@ -199,17 +188,18 @@ namespace Main
 			// Xóa bỏ những thông báo lỗi nếu có
 			errorProviderWar.SetError(tbAccount, "");
 			errorProviderWar.SetError(tbFullName, "");
-			errorProviderWar.SetError(tbPassword, "");
 			errorProviderWar.SetError(tbEmail, "");
 			errorProviderWar.SetError(tbPhone, "");
 			errorProviderWar.SetError(dtpDob, "");
 			errorProviderWar.SetError(tbAddress, "");
 			errorProviderWar.SetError(cbRole, "");
+			errorProviderWar.SetError(cbClassID, "");
 		}
 
 		private bool IsValidComboBoxControl()
 		{
-			errorProviderWar.SetError(cbRole, "");
+			ClearError();
+
 			if (cbRole.Items.Count == 0)
 			{
 				errorProviderWar.SetError(cbRole, "Không có chức vụ!\nVui lòng bổ sung");
@@ -219,10 +209,28 @@ namespace Main
 			{
 				if (cbRole.SelectedIndex == -1)
 				{
-					errorProviderWar.SetError(cbRole, "Vui lòng chọn chọn chức vụ");
+					errorProviderWar.SetError(cbRole, "Vui lòng chọn chức vụ");
 					return false;
 				}
 			}
+
+			if (cbRole.SelectedValue.ToString().Trim().Equals("User"))
+			{
+				if (cbClassID.Items.Count == 0)
+				{
+					errorProviderWar.SetError(cbClassID, "Không có lớp!\nVui lòng bổ sung");
+					return false;
+				}
+				else
+				{
+					if (cbClassID.SelectedIndex == -1)
+					{
+						errorProviderWar.SetError(cbClassID, "Vui lòng chọn lớp");
+						return false;
+					}
+				}
+			}
+
 			return true;
 		}
 
@@ -270,26 +278,6 @@ namespace Main
 						errorProviderWar.SetError(tbFullName, "Tên không được chứa ký tự đặc biệt!");
 						return false;
 					}
-				}
-			}
-
-			// Kiểm tra mật khẩu không được để trống
-			if (tbPassword.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbPassword, "Mật khẩu không được để trống!");
-				return false;
-			}
-			else
-			{
-				if (IsUnicode(tbPassword.Text.Trim()))
-				{
-					errorProviderWar.SetError(tbPassword, "Mật khẩu không được có dấu!");
-					return false;
-				}
-				else if (IsSpaceCharacters(tbPassword.Text.Trim()))
-				{
-					errorProviderWar.SetError(tbPassword, "Mật khẩu không được chứa khoảng trắng!");
-					return false;
 				}
 			}
 
@@ -440,7 +428,12 @@ namespace Main
 			string roleFilter = "ALL";
 			if (cbFilter.SelectedValue != null)
 				roleFilter = cbFilter.SelectedValue.ToString();
-			AccountBLL.Instance.SearchAccount(dgvData, keyword, roleFilter);
+
+			string classFilter = "Tất cả";
+			if (cbClassFilter.SelectedValue != null)
+				classFilter = cbClassFilter.SelectedValue.ToString();
+
+			AccountBLL.Instance.SearchAccount(dgvData, keyword, roleFilter, classFilter);
 		}
 
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -492,6 +485,55 @@ namespace Main
 				UpdateAccount();
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
+		}
+
+		private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbRole.SelectedValue != null)
+			{
+				if (cbRole.SelectedValue.ToString().Trim().Equals("User"))
+				{
+					cbClassID.Enabled = true;
+				}
+				else
+				{
+					cbClassID.Enabled = false;	
+				}
+			}
+		}
+
+		private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbFilter.SelectedValue != null)
+			{
+				if (cbFilter.SelectedValue.ToString().Trim().Equals("User"))
+				{
+					cbClassFilter.Enabled = true;
+				}
+				else
+				{
+					cbClassFilter.Enabled = false;
+				}
+			}
+		}
+
+		private void btnResetPassword_Click(object sender, EventArgs e)
+		{
+			if (MessageBox.Show("Xác nhận thay đổi!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+			{
+				try
+				{
+					if (AccountBLL.Instance.ResetPassword(username))
+					{
+						MessageBox.Show("Thay đổi thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+						LoadData();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Thay đổi không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				}
+			}
 		}
 
 		#endregion

@@ -30,17 +30,20 @@ namespace BusinessLogicLayer
 
         public void GetAllSubject(ComboBox box)
         {
-            box.DisplayMember = "SubjectName";
-            box.ValueMember = "SubjectID";
             DataTable data = SubjectDAL.Instance.GetAllSubject();
-            if (box.Name == "cbSubjectFilter")
+            if (data.Rows.Count > 0)
             {
-                DataRow row = data.NewRow();
-                row["SubjectName"] = "Tất cả";
-                row["SubjectID"] = "ALL";
-                data.Rows.InsertAt(row, 0);
+                if (box.Name == "cbSubjectFilter")
+                {
+                    DataRow row = data.NewRow();
+                    row["SubjectName"] = "Tất cả";
+                    row["SubjectID"] = "ALL";
+                    data.Rows.InsertAt(row, 0);
+                }
+                box.DisplayMember = "SubjectName";
+                box.ValueMember = "SubjectID";
+                box.DataSource = data;
             }
-            box.DataSource = data;
         }
 
         public Subject GetSubjectByID(string subjectID)

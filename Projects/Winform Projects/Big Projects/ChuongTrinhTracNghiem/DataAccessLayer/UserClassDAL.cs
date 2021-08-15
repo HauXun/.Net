@@ -3,28 +3,31 @@ using System.Data;
 
 namespace DataAccessLayer
 {
-	public class UserRoleDAL
-	{
-        private static UserRoleDAL instance;
+	public class UserClassDAL
+    {
+        private static UserClassDAL instance;
 
-        public static UserRoleDAL Instance
+        public static UserClassDAL Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new UserRoleDAL();
+                    instance = new UserClassDAL();
                 return instance;
             }
             private set => instance = value;
         }
 
-        private UserRoleDAL() { }
+		private UserClassDAL()
+		{
 
-        public DataTable GetAllRoleUser()
+		}
+
+        public DataTable GetAllUserClass()
         {
             try
             {
-                string query = "EXEC dbo.USP_SelectAllUserRole";
+                string query = "EXEC dbo.USP_SelectAllUserClass";
                 DataTable data = DataProvider.Instance.ExcuteQuery(query);
                 return data;
             }
