@@ -39,6 +39,24 @@ namespace BusinessLogicLayer
 			}
         }
 
+        public void GetAllTrainingRole(ComboBox box)
+        {
+            DataTable data = TrainingRoleDAL.Instance.GetAllTrainingRole();
+            if (data.Rows.Count > 0)
+            {
+                box.DisplayMember = "TrainingName";
+                box.ValueMember = "TrainingID";
+                if (box.Name == "cbTrainingFilter")
+                {
+                    DataRow row = data.NewRow();
+                    row["TrainingName"] = "Tất cả";
+                    row["TrainingID"] = "ALL";
+                    data.Rows.InsertAt(row, 0);
+                }
+                box.DataSource = data;
+            }
+        }
+
         public void GetAllRoleExam(ComboBox box)
         {
             DataTable data = ExamRoleDAL.Instance.GetAllRoleExam();

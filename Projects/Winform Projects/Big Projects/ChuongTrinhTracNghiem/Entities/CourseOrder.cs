@@ -16,8 +16,6 @@ namespace Entities
 		public string CourseID { get; set; }
 		public string FacultyID { get; set; }
 		public string TrainingID { get; set; }
-		public int ProgFrom { get; set; }
-        public int ProgTo { get; set; }
         public string Description { get; set; }
     }
 }

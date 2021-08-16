@@ -1,7 +1,6 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -451,43 +450,5 @@ namespace Main
 		}
 
 		#endregion
-	}
-
-	public class KDCombo : ComboBox
-	{
-
-		public KDCombo()
-		{
-			BorderColor = Color.DimGray;
-		}
-
-		[Browsable(true)]
-		[Category("Appearance")]
-		[DefaultValue(typeof(Color), "DimGray")]
-		public Color BorderColor { get; set; }
-
-		private const int WM_PAINT = 0xF;
-		private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth;
-		protected override void WndProc(ref Message m)
-		{
-			base.WndProc(ref m);
-			if (m.Msg == WM_PAINT)
-			{
-				using (var g = Graphics.FromHwnd(Handle))
-				{
-					// Uncomment this if you don't want the "highlight border".
-
-					//using (var p = new Pen(this.BackColor, 1))
-					//{
-					//	g.DrawRectangle(p, 0, 0, Width - 1, Height - 1);
-					//}
-
-					using (var p = new Pen(this.BackColor,2))
-					{
-						g.DrawRectangle(p, 0, 0, Width, Height);
-					}
-				}
-			}
-		}
 	}
 }

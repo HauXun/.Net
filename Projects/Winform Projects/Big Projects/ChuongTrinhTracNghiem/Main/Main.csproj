@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControl.cs" />
     <Compile Include="FrmFilter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +65,18 @@
     </Compile>
     <Compile Include="FrmManageExam.Designer.cs">
       <DependentUpon>FrmManageExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmManageCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManageCourse.Designer.cs">
+      <DependentUpon>FrmManageCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmManageFaculty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManageFaculty.Designer.cs">
+      <DependentUpon>FrmManageFaculty.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmQuiz.cs">
       <SubType>Form</SubType>
@@ -120,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManageExam.resx">
       <DependentUpon>FrmManageExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmManageCourse.resx">
+      <DependentUpon>FrmManageCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmManageFaculty.resx">
+      <DependentUpon>FrmManageFaculty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmQuiz.resx">
       <DependentUpon>FrmQuiz.cs</DependentUpon>

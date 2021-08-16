@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseBLL.cs" />
     <Compile Include="QuestionBLL.cs" />
     <Compile Include="ExamBLL.cs" />
+    <Compile Include="FacultyBLL.cs" />
     <Compile Include="SubjectBLL.cs" />
     <Compile Include="AccountBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -41,13 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseDAL.cs" />
     <Compile Include="ExamRoleDAL.cs" />
+    <Compile Include="FacultyDAL.cs" />
     <Compile Include="QuestionDAL.cs" />
     <Compile Include="ExamDAL.cs" />
     <Compile Include="SubjectDAL.cs" />
     <Compile Include="AccountDAL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrainingRoleDAL.cs" />
     <Compile Include="UserClassDAL.cs" />
     <Compile Include="UserRoleDAL.cs" />
   </ItemGroup>

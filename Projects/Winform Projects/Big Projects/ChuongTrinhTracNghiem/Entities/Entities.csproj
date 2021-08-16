@@ -61,7 +61,6 @@
     <Compile Include="Subject.cs" />
     <Compile Include="SubjectRole.cs" />
     <Compile Include="TestHistory.cs" />
-    <Compile Include="TrainingProg.cs" />
     <Compile Include="TrainingRole.cs" />
     <Compile Include="UserAccount.cs" />
     <Compile Include="UserClass.cs" />

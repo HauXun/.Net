@@ -9,21 +9,17 @@ using System.Windows.Forms;
 
 namespace Main
 {
-	public partial class FrmManageSubject : Form
+	public partial class FrmManageCourse : Form
 	{
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
 		private int rowIndex = 0;
-		private UserAccount account;
 
-		public UserAccount Account { get => account; set => account = value; }
-
-		public FrmManageSubject(UserAccount account)
+		public FrmManageCourse()
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
-			Account = account;
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -40,38 +36,25 @@ namespace Main
 			}
 		}
 
-		protected override void WndProc(ref Message m)
-		{
-			const int WM_SYSCOMMAND = 0x0112;
-			const int SC_MOVE = 0xF010;
-
-			switch (m.Msg)
-			{
-				case WM_SYSCOMMAND:
-					int command = m.WParam.ToInt32() & 0xfff0;
-					if (command == SC_MOVE)
-						return;
-					break;
-			}
-			base.WndProc(ref m);
-		}
-
 		#region Methods
 
 		private void LoadData()
 		{
-			SubjectBLL.Instance.GetAllSubject(dgvData);
+			FacultyBLL.Instance.GetAllFaculty(cbFaculty);
+			RoleBLL.Instance.GetAllTrainingRole(cbTrainingRole);
+			CourseBLL.Instance.GetAllCourse(dgvData);
 			if (dgvData.Rows.Count > 0)
 				DetailData(0);
 		}
 
-		private Subject GetSubjectInfo()
+		private CourseOrder GetCourseOrderInfo()
 		{
-			Subject subject = new Subject();
-			subject.SubjectID = tbSubjectID.Text.Trim();
-			subject.SubjectName = tbSubjectName.Text.Trim();
-			subject.Description = tbDescription.Text.Trim();
-			return subject;
+			CourseOrder course = new CourseOrder();
+			course.CourseID = tbCourseID.Text.Trim();
+			course.FacultyID = cbFaculty.SelectedValue.ToString();
+			course.TrainingID = cbTrainingRole.SelectedValue.ToString();
+			course.Description = tbDescription.Text.Trim();
+			return course;
 		}
 
 		private void DetailData(int rowIndex)
@@ -79,8 +62,9 @@ namespace Main
 			try
 			{
 				DataGridViewRow row = dgvData.Rows[rowIndex];
-				tbSubjectID.Text = row.Cells["SubjectID"].Value.ToString();
-				tbSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
+				tbCourseID.Text = row.Cells["CourseID"].Value.ToString();
+				cbFaculty.SelectedValue = row.Cells["FacultyID"].Value;
+				cbTrainingRole.SelectedValue = row.Cells["TrainingID"].Value;
 				tbDescription.Text = row.Cells["Description"].Value.ToString();
 			}
 			catch (Exception ex)
@@ -90,13 +74,17 @@ namespace Main
 			}
 		}
 
-		private void AddSubject()
+		private void AddCourseOrder()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
-			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
 
-			if (!IsValidSubject())
+			CourseOrder course = GetCourseOrderInfo();
+
+			if (!IsValidCourseOrder())
 			{
 				isEnable = true;
 				return;
@@ -104,7 +92,7 @@ namespace Main
 
 			try
 			{
-				if (SubjectBLL.Instance.InsertSubject(subject))
+				if (CourseBLL.Instance.InsertCourse(course))
 				{
 					MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 					LoadData();
@@ -116,12 +104,17 @@ namespace Main
 			}
 		}
 
-		private void UpdateSubject()
+		private void UpdateCourseOrder()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+			if (!IsValidComboBoxControl())
+			{
+				isEnable = true;
+				return;
+			}
 
-			if (!IsValidSubject())
+			CourseOrder course = GetCourseOrderInfo();
+
+			if (!IsValidCourseOrder())
 			{
 				isEnable = true;
 				return;
@@ -129,7 +122,7 @@ namespace Main
 
 			try
 			{
-				if (SubjectBLL.Instance.UpdateSubject(subject))
+				if (CourseBLL.Instance.UpdateCourse(course))
 				{
 					MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 					LoadData();
@@ -160,6 +153,10 @@ namespace Main
 				{
 					control.Text = "";
 				}
+				if (control is ComboBox)
+				{
+					(control as ComboBox).SelectedIndex = -1;
+				}	
 			}
 		}
 
@@ -167,57 +164,74 @@ namespace Main
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(tbSubjectID, "");
-			errorProviderWar.SetError(tbSubjectName, "");
+			errorProviderWar.SetError(tbCourseID, "");
+			errorProviderWar.SetError(cbFaculty, "");
+			errorProviderWar.SetError(cbTrainingRole, "");
 		}
 
-		private bool IsValidSubject()
+		private bool IsValidComboBoxControl()
 		{
-			ClearError();
+			ClearControl();
 
-			// Kiểm tra mã môn thi không được để trống
-			if (tbSubjectID.Text.Trim().Equals(""))
+			if (cbFaculty.Items.Count == 0)
 			{
-				errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được để trống!");
+				errorProviderWar.SetError(cbFaculty, "Không có khoa!\nVui lòng bổ sung");
 				return false;
 			}
 			else
 			{
-				if (IsUnicode(tbSubjectID.Text.Trim()))
+				if (cbFaculty.SelectedIndex == -1)
 				{
-					errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được có dấu!");
+					errorProviderWar.SetError(cbFaculty, "Vui lòng chọn khoa!");
+					return false;
+				}
+			}
+
+			if (cbTrainingRole.Items.Count == 0)
+			{
+				errorProviderWar.SetError(cbTrainingRole, "Không có loại hình đào tạo!\nVui lòng bổ sung");
+				return false;
+			}
+			else
+			{
+				if (cbTrainingRole.SelectedIndex == -1)
+				{
+					errorProviderWar.SetError(cbTrainingRole, "Vui lòng chọn loại hình đào tạo!");
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		private bool IsValidCourseOrder()
+		{
+			ClearError();
+
+			// Kiểm tra mã khoa không được để trống
+			if (tbCourseID.Text.Trim().Equals(""))
+			{
+				errorProviderWar.SetError(tbCourseID, "Mã khoa không được để trống!");
+				return false;
+			}
+			else
+			{
+				if (IsUnicode(tbCourseID.Text.Trim()))
+				{
+					errorProviderWar.SetError(tbCourseID, "Mã khoa không được có dấu!");
 					return false;
 				}
 				else
 				{
-					if (IsSpaceCharacters(tbSubjectID.Text.Trim()))
+					if (IsSpaceCharacters(tbCourseID.Text.Trim()))
 					{
-						errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được chứa khoảng trắng!");
+						errorProviderWar.SetError(tbCourseID, "Mã khoa không được chứa khoảng trắng!");
 						return false;
 					}
 
-					if (IsSpecialCharacters(tbSubjectID.Text.Trim()))
+					if (IsSpecialCharacters(tbCourseID.Text.Trim()))
 					{
-						errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được chứa ký tự đặc biệt!");
-						return false;
-					}
-				}
-			}
-
-			string[] arr = tbSubjectName.Text.Trim().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-			// Kiểm tra tên môn thi không được để trống
-			if (tbSubjectName.Text.Trim().Equals(""))
-			{
-				errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được để trống!");
-				return false;
-			}
-			else
-			{
-				foreach (var item in arr)
-				{
-					if (IsSpecialCharacters(item))
-					{
-						errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được chứa ký tự đặc biệt!");
+						errorProviderWar.SetError(tbCourseID, "Mã khoa không được chứa ký tự đặc biệt!");
 						return false;
 					}
 				}
@@ -243,7 +257,7 @@ namespace Main
 
 		#region Events
 
-		private void FrmManageSubject_Load(object sender, EventArgs e)
+		private void FrmManageTrainingProg_Load(object sender, EventArgs e)
 		{
 			LoadData();
 			EnableControl(false);
@@ -262,18 +276,17 @@ namespace Main
 			isAddnew = false;
 			VisibleButton(true);
 			EnableControl(true);
-			tbSubjectID.Enabled = false;
 		}
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			string subjectID = tbSubjectID.Text.Trim();
-			if (!IsValidSubject())
+			string subjectID = tbCourseID.Text.Trim();
+			if (!IsValidCourseOrder())
 				return;
 
 			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
 			{
-				MessageBox.Show("Vui lòng chọn môn thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Vui lòng chọn khóa học cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
@@ -281,7 +294,7 @@ namespace Main
 			{
 				try
 				{
-					if (SubjectBLL.Instance.DeleteSubject(subjectID))
+					if (CourseBLL.Instance.DeleteCourse(subjectID))
 					{
 						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 						LoadData();
@@ -297,9 +310,9 @@ namespace Main
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập tên môn/Mã môn ..."))
+			if (keyword.Equals("Nhập tên khoa/Mã khoa ..."))
 				keyword = string.Empty;
-			SubjectBLL.Instance.SearchSubject(dgvData, keyword);
+			CourseBLL.Instance.SearchCourse(dgvData, keyword);
 		}
 
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -324,7 +337,7 @@ namespace Main
 		{
 			if (string.IsNullOrEmpty(tbSearch.Text.Trim()))
 			{
-				tbSearch.Text = "Nhập tên môn/Mã môn ...";
+				tbSearch.Text = "Nhập tên khoa/Mã khoa ...";
 			}
 		}
 
@@ -339,7 +352,6 @@ namespace Main
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
-			tbSubjectID.Enabled = true;
 			ClearError();
 		}
 
@@ -349,9 +361,9 @@ namespace Main
 			try
 			{
 				if (isAddnew)
-					AddSubject();
+					AddCourseOrder();
 				else
-					UpdateSubject();
+					UpdateCourseOrder();
 			}
 			catch (Exception ex)
 			{

@@ -9,21 +9,17 @@ using System.Windows.Forms;
 
 namespace Main
 {
-	public partial class FrmManageSubject : Form
+	public partial class FrmManageFaculty : Form
 	{
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
 		private int rowIndex = 0;
-		private UserAccount account;
 
-		public UserAccount Account { get => account; set => account = value; }
-
-		public FrmManageSubject(UserAccount account)
+		public FrmManageFaculty()
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
-			Account = account;
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -40,38 +36,23 @@ namespace Main
 			}
 		}
 
-		protected override void WndProc(ref Message m)
-		{
-			const int WM_SYSCOMMAND = 0x0112;
-			const int SC_MOVE = 0xF010;
-
-			switch (m.Msg)
-			{
-				case WM_SYSCOMMAND:
-					int command = m.WParam.ToInt32() & 0xfff0;
-					if (command == SC_MOVE)
-						return;
-					break;
-			}
-			base.WndProc(ref m);
-		}
-
 		#region Methods
 
 		private void LoadData()
 		{
-			SubjectBLL.Instance.GetAllSubject(dgvData);
+			FacultyBLL.Instance.GetAllFaculty(dgvData);
 			if (dgvData.Rows.Count > 0)
 				DetailData(0);
 		}
 
-		private Subject GetSubjectInfo()
+		private Faculty GetFacultyInfo()
 		{
-			Subject subject = new Subject();
-			subject.SubjectID = tbSubjectID.Text.Trim();
-			subject.SubjectName = tbSubjectName.Text.Trim();
-			subject.Description = tbDescription.Text.Trim();
-			return subject;
+			Faculty faculty = new Faculty();
+			faculty.FacultyID = tbFacultyID.Text.Trim();
+			faculty.FacultyName = tbFacultyName.Text.Trim();
+			faculty.FoundingDate = dtpFoundingDate.Value;
+			faculty.Description = tbDescription.Text.Trim();
+			return faculty;
 		}
 
 		private void DetailData(int rowIndex)
@@ -79,8 +60,9 @@ namespace Main
 			try
 			{
 				DataGridViewRow row = dgvData.Rows[rowIndex];
-				tbSubjectID.Text = row.Cells["SubjectID"].Value.ToString();
-				tbSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
+				tbFacultyID.Text = row.Cells["FacultyID"].Value.ToString();
+				tbFacultyName.Text = row.Cells["FacultyName"].Value.ToString();
+				dtpFoundingDate.Text = row.Cells["FoundingDate"].FormattedValue.ToString();
 				tbDescription.Text = row.Cells["Description"].Value.ToString();
 			}
 			catch (Exception ex)
@@ -90,13 +72,11 @@ namespace Main
 			}
 		}
 
-		private void AddSubject()
+		private void AddFaculty()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
-			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+			Faculty faculty = GetFacultyInfo();
 
-			if (!IsValidSubject())
+			if (!IsValidFaculty())
 			{
 				isEnable = true;
 				return;
@@ -104,7 +84,7 @@ namespace Main
 
 			try
 			{
-				if (SubjectBLL.Instance.InsertSubject(subject))
+				if (FacultyBLL.Instance.InsertFaculty(faculty))
 				{
 					MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 					LoadData();
@@ -116,12 +96,11 @@ namespace Main
 			}
 		}
 
-		private void UpdateSubject()
+		private void UpdateFaculty()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+			Faculty faculty = GetFacultyInfo();
 
-			if (!IsValidSubject())
+			if (!IsValidFaculty())
 			{
 				isEnable = true;
 				return;
@@ -129,7 +108,7 @@ namespace Main
 
 			try
 			{
-				if (SubjectBLL.Instance.UpdateSubject(subject))
+				if (FacultyBLL.Instance.UpdateFaculty(faculty))
 				{
 					MessageBox.Show("Cập nhập thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 					LoadData();
@@ -160,6 +139,10 @@ namespace Main
 				{
 					control.Text = "";
 				}
+				if (control is DateTimePicker)
+				{
+					(control as DateTimePicker).Value = DateTime.Today;
+				}	
 			}
 		}
 
@@ -167,48 +150,48 @@ namespace Main
 		{
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(tbSubjectID, "");
-			errorProviderWar.SetError(tbSubjectName, "");
+			errorProviderWar.SetError(tbFacultyID, "");
+			errorProviderWar.SetError(tbFacultyName, "");
 		}
 
-		private bool IsValidSubject()
+		private bool IsValidFaculty()
 		{
 			ClearError();
 
-			// Kiểm tra mã môn thi không được để trống
-			if (tbSubjectID.Text.Trim().Equals(""))
+			// Kiểm tra mã khoa không được để trống
+			if (tbFacultyID.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được để trống!");
+				errorProviderWar.SetError(tbFacultyID, "Mã khoa không được để trống!");
 				return false;
 			}
 			else
 			{
-				if (IsUnicode(tbSubjectID.Text.Trim()))
+				if (IsUnicode(tbFacultyID.Text.Trim()))
 				{
-					errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được có dấu!");
+					errorProviderWar.SetError(tbFacultyID, "Mã khoa không được có dấu!");
 					return false;
 				}
 				else
 				{
-					if (IsSpaceCharacters(tbSubjectID.Text.Trim()))
+					if (IsSpaceCharacters(tbFacultyID.Text.Trim()))
 					{
-						errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được chứa khoảng trắng!");
+						errorProviderWar.SetError(tbFacultyID, "Mã khoa không được chứa khoảng trắng!");
 						return false;
 					}
 
-					if (IsSpecialCharacters(tbSubjectID.Text.Trim()))
+					if (IsSpecialCharacters(tbFacultyID.Text.Trim()))
 					{
-						errorProviderWar.SetError(tbSubjectID, "Mã môn thi không được chứa ký tự đặc biệt!");
+						errorProviderWar.SetError(tbFacultyID, "Mã khoa không được chứa ký tự đặc biệt!");
 						return false;
 					}
 				}
 			}
 
-			string[] arr = tbSubjectName.Text.Trim().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-			// Kiểm tra tên môn thi không được để trống
-			if (tbSubjectName.Text.Trim().Equals(""))
+			string[] arr = tbFacultyName.Text.Trim().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+			// Kiểm tra tên khoa không được để trống
+			if (tbFacultyName.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được để trống!");
+				errorProviderWar.SetError(tbFacultyName, "Tên khoa không được để trống!");
 				return false;
 			}
 			else
@@ -217,7 +200,7 @@ namespace Main
 				{
 					if (IsSpecialCharacters(item))
 					{
-						errorProviderWar.SetError(tbSubjectName, "Tên môn thi không được chứa ký tự đặc biệt!");
+						errorProviderWar.SetError(tbFacultyName, "Tên khoa không được chứa ký tự đặc biệt!");
 						return false;
 					}
 				}
@@ -243,7 +226,7 @@ namespace Main
 
 		#region Events
 
-		private void FrmManageSubject_Load(object sender, EventArgs e)
+		private void FrmManageFaculty_Load(object sender, EventArgs e)
 		{
 			LoadData();
 			EnableControl(false);
@@ -262,18 +245,18 @@ namespace Main
 			isAddnew = false;
 			VisibleButton(true);
 			EnableControl(true);
-			tbSubjectID.Enabled = false;
+			tbFacultyID.Enabled = false;
 		}
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			string subjectID = tbSubjectID.Text.Trim();
-			if (!IsValidSubject())
+			string facultyID = tbFacultyID.Text.Trim();
+			if (!IsValidFaculty())
 				return;
 
-			if (string.IsNullOrEmpty(subjectID) || rowIndex < 0)
+			if (string.IsNullOrEmpty(facultyID) || rowIndex < 0)
 			{
-				MessageBox.Show("Vui lòng chọn môn thi cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Vui lòng chọn khoa cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
@@ -281,7 +264,7 @@ namespace Main
 			{
 				try
 				{
-					if (SubjectBLL.Instance.DeleteSubject(subjectID))
+					if (FacultyBLL.Instance.DeleteFaculty(facultyID))
 					{
 						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 						LoadData();
@@ -297,9 +280,9 @@ namespace Main
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập tên môn/Mã môn ..."))
+			if (keyword.Equals("Nhập tên khoa/Mã khoa ..."))
 				keyword = string.Empty;
-			SubjectBLL.Instance.SearchSubject(dgvData, keyword);
+			FacultyBLL.Instance.SearchFaculty(dgvData, keyword);
 		}
 
 		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -324,7 +307,7 @@ namespace Main
 		{
 			if (string.IsNullOrEmpty(tbSearch.Text.Trim()))
 			{
-				tbSearch.Text = "Nhập tên môn/Mã môn ...";
+				tbSearch.Text = "Nhập tên khoa/Mã khoa ...";
 			}
 		}
 
@@ -339,7 +322,7 @@ namespace Main
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
-			tbSubjectID.Enabled = true;
+			tbFacultyID.Enabled = true;
 			ClearError();
 		}
 
@@ -349,9 +332,9 @@ namespace Main
 			try
 			{
 				if (isAddnew)
-					AddSubject();
+					AddFaculty();
 				else
-					UpdateSubject();
+					UpdateFaculty();
 			}
 			catch (Exception ex)
 			{

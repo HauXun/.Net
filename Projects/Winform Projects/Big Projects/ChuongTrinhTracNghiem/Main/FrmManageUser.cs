@@ -46,10 +46,12 @@ namespace Main
 		private void LoadData()
 		{
 			AccountBLL.Instance.GetAllAccount(cbClassFilter);
-			AccountBLL.Instance.GetAllAccount(dgvData);
 			RoleBLL.Instance.GetAllRoleUser(cbRole);
 			RoleBLL.Instance.GetAllRoleUser(cbFilter);
 			UserClassBLL.Instance.GetAllUserClass(cbClassID);
+			AccountBLL.Instance.GetAllAccount(dgvData);
+			if (dgvData.Rows.Count > 0)
+				DetailData(0);
 		}
 
 		private UserAccount GetUserInfo()
