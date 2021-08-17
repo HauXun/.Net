@@ -32,11 +32,15 @@ namespace Main
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
-			this.btnFilter = new System.Windows.Forms.Button();
-			this.btnCancle = new System.Windows.Forms.Button();
-			this.btnSave = new System.Windows.Forms.Button();
-			this.dgvData = new System.Windows.Forms.DataGridView();
+			this.btnClearFilter = new System.Windows.Forms.Button();
+			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +48,8 @@ namespace Main
 			this.ExamTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.QCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.QCurrentCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnCancle = new System.Windows.Forms.Button();
+			this.btnSave = new System.Windows.Forms.Button();
 			this.tbSearch = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
@@ -63,7 +69,7 @@ namespace Main
 			this.lbExamID = new System.Windows.Forms.Label();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.pMain.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.gbControls.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudQCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudExamTime)).BeginInit();
@@ -73,10 +79,10 @@ namespace Main
 			// pMain
 			// 
 			this.pMain.BackColor = System.Drawing.Color.Transparent;
-			this.pMain.Controls.Add(this.btnFilter);
+			this.pMain.Controls.Add(this.btnClearFilter);
+			this.pMain.Controls.Add(this.aDgvdata);
 			this.pMain.Controls.Add(this.btnCancle);
 			this.pMain.Controls.Add(this.btnSave);
-			this.pMain.Controls.Add(this.dgvData);
 			this.pMain.Controls.Add(this.tbSearch);
 			this.pMain.Controls.Add(this.btnSearch);
 			this.pMain.Controls.Add(this.btnDelete);
@@ -87,22 +93,148 @@ namespace Main
 			this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pMain.Location = new System.Drawing.Point(0, 0);
 			this.pMain.Name = "pMain";
-			this.pMain.Size = new System.Drawing.Size(892, 484);
+			this.pMain.Size = new System.Drawing.Size(1264, 681);
 			this.pMain.TabIndex = 0;
 			// 
-			// btnFilter
+			// btnClearFilter
 			// 
-			this.btnFilter.Location = new System.Drawing.Point(277, 227);
-			this.btnFilter.Name = "btnFilter";
-			this.btnFilter.Size = new System.Drawing.Size(75, 23);
-			this.btnFilter.TabIndex = 10;
-			this.btnFilter.Text = "Lọc";
-			this.btnFilter.UseVisualStyleBackColor = true;
-			this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+			this.btnClearFilter.Location = new System.Drawing.Point(277, 258);
+			this.btnClearFilter.Name = "btnClearFilter";
+			this.btnClearFilter.Size = new System.Drawing.Size(75, 23);
+			this.btnClearFilter.TabIndex = 12;
+			this.btnClearFilter.Text = "Clear Filter";
+			this.btnClearFilter.UseVisualStyleBackColor = true;
+			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			// 
+			// aDgvdata
+			// 
+			this.aDgvdata.AllowUserToAddRows = false;
+			this.aDgvdata.AutoGenerateContextFilters = true;
+			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.ExamID,
+            this.SubjectID,
+            this.ExamRole,
+            this.ExamTime,
+            this.QCount,
+            this.QCurrentCount});
+			this.aDgvdata.DateWithTime = false;
+			this.aDgvdata.Location = new System.Drawing.Point(12, 287);
+			this.aDgvdata.MultiSelect = false;
+			this.aDgvdata.Name = "aDgvdata";
+			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
+			this.aDgvdata.Size = new System.Drawing.Size(1240, 382);
+			this.aDgvdata.TabIndex = 11;
+			this.aDgvdata.TimeFilter = false;
+			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
+			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
+			this.aDgvdata.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.aDgvdata_RowEnter);
+			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			this.STT.FillWeight = 35.08772F;
+			this.STT.HeaderText = "STT";
+			this.STT.MinimumWidth = 22;
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.ExamID.DefaultCellStyle = dataGridViewCellStyle3;
+			this.ExamID.FillWeight = 105.9323F;
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.MinimumWidth = 22;
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
+			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.SubjectID.FillWeight = 101.6086F;
+			this.SubjectID.HeaderText = "Môn thi";
+			this.SubjectID.MinimumWidth = 22;
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamRole
+			// 
+			this.ExamRole.DataPropertyName = "ExamRole";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.ExamRole.DefaultCellStyle = dataGridViewCellStyle5;
+			this.ExamRole.FillWeight = 98.90372F;
+			this.ExamRole.HeaderText = "Loại đề";
+			this.ExamRole.MinimumWidth = 22;
+			this.ExamRole.Name = "ExamRole";
+			this.ExamRole.ReadOnly = true;
+			this.ExamRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamTime
+			// 
+			this.ExamTime.DataPropertyName = "ExamTime";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.ExamTime.DefaultCellStyle = dataGridViewCellStyle6;
+			this.ExamTime.FillWeight = 98.84013F;
+			this.ExamTime.HeaderText = "Thời gian làm bài";
+			this.ExamTime.MinimumWidth = 22;
+			this.ExamTime.Name = "ExamTime";
+			this.ExamTime.ReadOnly = true;
+			this.ExamTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QCount
+			// 
+			this.QCount.DataPropertyName = "QCount";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.QCount.DefaultCellStyle = dataGridViewCellStyle7;
+			this.QCount.FillWeight = 108.2887F;
+			this.QCount.HeaderText = "Số lượng câu hỏi";
+			this.QCount.MinimumWidth = 22;
+			this.QCount.Name = "QCount";
+			this.QCount.ReadOnly = true;
+			this.QCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QCurrentCount
+			// 
+			this.QCurrentCount.DataPropertyName = "QCurrentCount";
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.QCurrentCount.DefaultCellStyle = dataGridViewCellStyle8;
+			this.QCurrentCount.FillWeight = 151.3388F;
+			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiên tại";
+			this.QCurrentCount.MinimumWidth = 22;
+			this.QCurrentCount.Name = "QCurrentCount";
+			this.QCurrentCount.ReadOnly = true;
+			this.QCurrentCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// btnCancle
 			// 
-			this.btnCancle.Location = new System.Drawing.Point(449, 190);
+			this.btnCancle.Location = new System.Drawing.Point(635, 225);
 			this.btnCancle.Name = "btnCancle";
 			this.btnCancle.Size = new System.Drawing.Size(75, 23);
 			this.btnCancle.TabIndex = 9;
@@ -113,7 +245,7 @@ namespace Main
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(368, 190);
+			this.btnSave.Location = new System.Drawing.Point(554, 225);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 8;
@@ -122,108 +254,20 @@ namespace Main
 			this.btnSave.Visible = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
-			// dgvData
-			// 
-			this.dgvData.AllowUserToAddRows = false;
-			this.dgvData.AllowUserToResizeRows = false;
-			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
-            this.ExamID,
-            this.SubjectID,
-            this.ExamRole,
-            this.ExamTime,
-            this.QCount,
-            this.QCurrentCount});
-			this.dgvData.Location = new System.Drawing.Point(12, 255);
-			this.dgvData.Name = "dgvData";
-			this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgvData.Size = new System.Drawing.Size(868, 219);
-			this.dgvData.TabIndex = 7;
-			this.dgvData.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_RowEnter);
-			this.dgvData.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvData_RowPrePaint);
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 30.5609F;
-			this.STT.HeaderText = "STT";
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			// 
-			// ExamID
-			// 
-			this.ExamID.DataPropertyName = "ExamID";
-			this.ExamID.FillWeight = 95.21561F;
-			this.ExamID.HeaderText = "Mã đề";
-			this.ExamID.Name = "ExamID";
-			this.ExamID.ReadOnly = true;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			this.SubjectID.FillWeight = 95.14208F;
-			this.SubjectID.HeaderText = "Mã môn thi";
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			// 
-			// ExamRole
-			// 
-			this.ExamRole.DataPropertyName = "ExamRole";
-			this.ExamRole.FillWeight = 95.14271F;
-			this.ExamRole.HeaderText = "Loại đề";
-			this.ExamRole.Name = "ExamRole";
-			this.ExamRole.ReadOnly = true;
-			// 
-			// ExamTime
-			// 
-			this.ExamTime.DataPropertyName = "ExamTime";
-			this.ExamTime.FillWeight = 96.24572F;
-			this.ExamTime.HeaderText = "Thời gian làm bài";
-			this.ExamTime.Name = "ExamTime";
-			this.ExamTime.ReadOnly = true;
-			// 
-			// QCount
-			// 
-			this.QCount.DataPropertyName = "QCount";
-			this.QCount.FillWeight = 96.95071F;
-			this.QCount.HeaderText = "Số lượng câu hỏi";
-			this.QCount.Name = "QCount";
-			this.QCount.ReadOnly = true;
-			// 
-			// QCurrentCount
-			// 
-			this.QCurrentCount.DataPropertyName = "QCurrentCount";
-			this.QCurrentCount.FillWeight = 121.0609F;
-			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiện tại";
-			this.QCurrentCount.Name = "QCurrentCount";
-			this.QCurrentCount.ReadOnly = true;
-			// 
 			// tbSearch
 			// 
-			this.tbSearch.Location = new System.Drawing.Point(12, 229);
+			this.tbSearch.Location = new System.Drawing.Point(12, 260);
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.Size = new System.Drawing.Size(178, 20);
 			this.tbSearch.TabIndex = 5;
-			this.tbSearch.Text = "Nhập mã đề thi/Mã môn ...";
+			this.tbSearch.Text = "Nhập từ khóa ...";
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Location = new System.Drawing.Point(196, 227);
+			this.btnSearch.Location = new System.Drawing.Point(196, 258);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 23);
 			this.btnSearch.TabIndex = 6;
@@ -233,7 +277,7 @@ namespace Main
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Location = new System.Drawing.Point(490, 189);
+			this.btnDelete.Location = new System.Drawing.Point(676, 224);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(75, 23);
 			this.btnDelete.TabIndex = 4;
@@ -243,7 +287,7 @@ namespace Main
 			// 
 			// btnEdit
 			// 
-			this.btnEdit.Location = new System.Drawing.Point(408, 189);
+			this.btnEdit.Location = new System.Drawing.Point(594, 224);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(75, 23);
 			this.btnEdit.TabIndex = 3;
@@ -253,7 +297,7 @@ namespace Main
 			// 
 			// btnAdd
 			// 
-			this.btnAdd.Location = new System.Drawing.Point(327, 190);
+			this.btnAdd.Location = new System.Drawing.Point(513, 225);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
 			this.btnAdd.TabIndex = 2;
@@ -265,7 +309,7 @@ namespace Main
 			// 
 			this.lbTitle.AutoSize = true;
 			this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTitle.Location = new System.Drawing.Point(361, 14);
+			this.lbTitle.Location = new System.Drawing.Point(547, 14);
 			this.lbTitle.Name = "lbTitle";
 			this.lbTitle.Size = new System.Drawing.Size(170, 31);
 			this.lbTitle.TabIndex = 0;
@@ -285,7 +329,7 @@ namespace Main
 			this.gbControls.Controls.Add(this.lbExamID);
 			this.gbControls.Location = new System.Drawing.Point(12, 52);
 			this.gbControls.Name = "gbControls";
-			this.gbControls.Size = new System.Drawing.Size(868, 132);
+			this.gbControls.Size = new System.Drawing.Size(1240, 159);
 			this.gbControls.TabIndex = 1;
 			this.gbControls.TabStop = false;
 			this.gbControls.Text = "Thông tin môn thi";
@@ -293,7 +337,7 @@ namespace Main
 			// lbExamRole
 			// 
 			this.lbExamRole.AutoSize = true;
-			this.lbExamRole.Location = new System.Drawing.Point(111, 94);
+			this.lbExamRole.Location = new System.Drawing.Point(297, 106);
 			this.lbExamRole.Name = "lbExamRole";
 			this.lbExamRole.Size = new System.Drawing.Size(46, 13);
 			this.lbExamRole.TabIndex = 17;
@@ -303,7 +347,7 @@ namespace Main
 			// 
 			this.cbExamRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbExamRole.FormattingEnabled = true;
-			this.cbExamRole.Location = new System.Drawing.Point(163, 91);
+			this.cbExamRole.Location = new System.Drawing.Point(349, 103);
 			this.cbExamRole.Name = "cbExamRole";
 			this.cbExamRole.Size = new System.Drawing.Size(186, 21);
 			this.cbExamRole.TabIndex = 13;
@@ -311,7 +355,7 @@ namespace Main
 			// lbSubject
 			// 
 			this.lbSubject.AutoSize = true;
-			this.lbSubject.Location = new System.Drawing.Point(112, 62);
+			this.lbSubject.Location = new System.Drawing.Point(298, 74);
 			this.lbSubject.Name = "lbSubject";
 			this.lbSubject.Size = new System.Drawing.Size(45, 13);
 			this.lbSubject.TabIndex = 16;
@@ -319,7 +363,7 @@ namespace Main
 			// 
 			// nudQCount
 			// 
-			this.nudQCount.Location = new System.Drawing.Point(571, 55);
+			this.nudQCount.Location = new System.Drawing.Point(757, 67);
 			this.nudQCount.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -331,7 +375,7 @@ namespace Main
 			// 
 			// nudExamTime
 			// 
-			this.nudExamTime.Location = new System.Drawing.Point(571, 27);
+			this.nudExamTime.Location = new System.Drawing.Point(757, 39);
 			this.nudExamTime.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -346,14 +390,14 @@ namespace Main
 			this.cbSubject.BackColor = System.Drawing.Color.White;
 			this.cbSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbSubject.FormattingEnabled = true;
-			this.cbSubject.Location = new System.Drawing.Point(163, 59);
+			this.cbSubject.Location = new System.Drawing.Point(349, 71);
 			this.cbSubject.Name = "cbSubject";
 			this.cbSubject.Size = new System.Drawing.Size(186, 21);
 			this.cbSubject.TabIndex = 12;
 			// 
 			// tbExamID
 			// 
-			this.tbExamID.Location = new System.Drawing.Point(163, 26);
+			this.tbExamID.Location = new System.Drawing.Point(349, 38);
 			this.tbExamID.Name = "tbExamID";
 			this.tbExamID.Size = new System.Drawing.Size(186, 20);
 			this.tbExamID.TabIndex = 7;
@@ -361,7 +405,7 @@ namespace Main
 			// lbExamTime
 			// 
 			this.lbExamTime.AutoSize = true;
-			this.lbExamTime.Location = new System.Drawing.Point(475, 29);
+			this.lbExamTime.Location = new System.Drawing.Point(661, 41);
 			this.lbExamTime.Name = "lbExamTime";
 			this.lbExamTime.Size = new System.Drawing.Size(90, 13);
 			this.lbExamTime.TabIndex = 4;
@@ -370,7 +414,7 @@ namespace Main
 			// lbQCount
 			// 
 			this.lbQCount.AutoSize = true;
-			this.lbQCount.Location = new System.Drawing.Point(475, 57);
+			this.lbQCount.Location = new System.Drawing.Point(661, 69);
 			this.lbQCount.Name = "lbQCount";
 			this.lbQCount.Size = new System.Drawing.Size(90, 13);
 			this.lbQCount.TabIndex = 2;
@@ -379,7 +423,7 @@ namespace Main
 			// lbExamID
 			// 
 			this.lbExamID.AutoSize = true;
-			this.lbExamID.Location = new System.Drawing.Point(116, 29);
+			this.lbExamID.Location = new System.Drawing.Point(302, 41);
 			this.lbExamID.Name = "lbExamID";
 			this.lbExamID.Size = new System.Drawing.Size(41, 13);
 			this.lbExamID.TabIndex = 0;
@@ -394,17 +438,15 @@ namespace Main
 			this.AcceptButton = this.btnSearch;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(892, 484);
+			this.ClientSize = new System.Drawing.Size(1264, 681);
 			this.Controls.Add(this.pMain);
-			this.MaximumSize = new System.Drawing.Size(908, 523);
-			this.MinimumSize = new System.Drawing.Size(908, 523);
 			this.Name = "FrmManageExam";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quản lý đề thi";
 			this.Load += new System.EventHandler(this.FrmManageExam_Load);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
 			this.gbControls.ResumeLayout(false);
 			this.gbControls.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudQCount)).EndInit();
@@ -422,7 +464,6 @@ namespace Main
 		private System.Windows.Forms.Label lbQCount;
 		private System.Windows.Forms.Label lbExamID;
 		private System.Windows.Forms.Label lbExamTime;
-		private System.Windows.Forms.DataGridView dgvData;
 		private System.Windows.Forms.TextBox tbSearch;
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.Button btnDelete;
@@ -438,6 +479,7 @@ namespace Main
 		private System.Windows.Forms.Label lbSubject;
 		private System.Windows.Forms.Label lbExamRole;
 		private System.Windows.Forms.ComboBox cbExamRole;
+		private ADGV.AdvancedDataGridView aDgvdata;
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExamID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
@@ -445,6 +487,6 @@ namespace Main
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExamTime;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCount;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCurrentCount;
-		private System.Windows.Forms.Button btnFilter;
+		private System.Windows.Forms.Button btnClearFilter;
 	}
 }

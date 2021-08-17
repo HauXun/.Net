@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -64,8 +65,8 @@ namespace Main
 		{
 			RoleBLL.Instance.GetAllRoleExam(cbExamRole);
 			SubjectBLL.Instance.GetAllSubject(cbSubject);
-			ExamBLL.Instance.GetAllExam(dgvData);
-			if (dgvData.Rows.Count > 0)
+			ExamBLL.Instance.GetAllExam(aDgvdata);
+			if (aDgvdata.Rows.Count > 0)
 				DetailData(0);
 		}
 
@@ -84,7 +85,7 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = dgvData.Rows[rowIndex];
+				DataGridViewRow row = aDgvdata.Rows[rowIndex];
 				tbExamID.Text = row.Cells["ExamID"].Value.ToString();
 				cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
 				cbExamRole.SelectedValue = row.Cells["ExamRole"].Value;
@@ -208,6 +209,8 @@ namespace Main
 
 		private bool IsValidComboBoxControl()
 		{
+			ClearError();
+
 			if (cbSubject.Items.Count == 0)
 			{
 				errorProviderWar.SetError(cbSubject, "Không có môn thi!\nVui lòng bổ sung");
@@ -379,24 +382,53 @@ namespace Main
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập mã đề thi/Mã môn ..."))
+			if (keyword.Equals("Nhập từ khóa ..."))
 				keyword = string.Empty;
 
-			ExamBLL.Instance.SearchExam(dgvData, keyword);
+			ExamBLL.Instance.SearchExam(aDgvdata, keyword);
 		}
 
-		private void btnFilter_Click(object sender, EventArgs e)
+		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
 		{
-			FrmFilter frm = new FrmFilter(dgvData);
-			frm.ShowDialog();
+			if (!aDgvdata.SortString.Contains("STT"))
+			{
+				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Sort = aDgvdata.SortString };
+				aDgvdata.DataSource = source.DataSource;
+			}
+			else
+			{
+				if (aDgvdata.SortString.Split(' ')[1].Equals("DESC"))
+				{
+					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Descending);
+				}
+				else if (aDgvdata.SortString.Split(' ')[1].Equals("ASC"))
+				{
+					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Ascending);
+				}
+			}
 		}
 
-		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		private void aDgvdata_FilterStringChanged(object sender, EventArgs e)
 		{
-			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+			if (!aDgvdata.FilterString.Contains("STT"))
+			{
+				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Filter = aDgvdata.FilterString };
+				aDgvdata.DataSource = source.DataSource;
+			}
 		}
 
-		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
+		private void btnClearFilter_Click(object sender, EventArgs e)
+		{
+			aDgvdata.ClearFilter();
+			aDgvdata_FilterStringChanged(sender, e);
+		}
+
+		private void aDgvdata_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		{
+			aDgvdata["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+		}
+
+		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0)
 				return;
@@ -413,7 +445,7 @@ namespace Main
 		{
 			if (string.IsNullOrEmpty(tbSearch.Text.Trim()))
 			{
-				tbSearch.Text = "Nhập mã đề thi/Mã môn ...";
+				tbSearch.Text = "Nhập từ khóa ...";
 			}
 		}
 

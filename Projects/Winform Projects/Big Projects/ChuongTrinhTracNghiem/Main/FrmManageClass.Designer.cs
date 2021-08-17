@@ -1,7 +1,7 @@
 ﻿
 namespace Main
 {
-	partial class FrmManageFaculty
+	partial class FrmManageClass
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -39,9 +39,9 @@ namespace Main
 			this.btnClearFilter = new System.Windows.Forms.Button();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ClassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FacultyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FoundingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CourseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
@@ -52,14 +52,14 @@ namespace Main
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.gbControls = new System.Windows.Forms.GroupBox();
+			this.cbFaculty = new System.Windows.Forms.ComboBox();
+			this.cbCourseID = new System.Windows.Forms.ComboBox();
 			this.lbDescription = new System.Windows.Forms.Label();
-			this.dtpFoundingDate = new System.Windows.Forms.DateTimePicker();
-			this.tbFacultyID = new System.Windows.Forms.TextBox();
+			this.tbClassID = new System.Windows.Forms.TextBox();
 			this.tbDescription = new System.Windows.Forms.TextBox();
-			this.lbFoudingDate = new System.Windows.Forms.Label();
-			this.lbFacultyName = new System.Windows.Forms.Label();
-			this.tbFacultyName = new System.Windows.Forms.TextBox();
-			this.lbFacultyID = new System.Windows.Forms.Label();
+			this.lbCourse = new System.Windows.Forms.Label();
+			this.lbFaculty = new System.Windows.Forms.Label();
+			this.lbClassID = new System.Windows.Forms.Label();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
@@ -92,7 +92,7 @@ namespace Main
 			this.btnClearFilter.Location = new System.Drawing.Point(324, 259);
 			this.btnClearFilter.Name = "btnClearFilter";
 			this.btnClearFilter.Size = new System.Drawing.Size(75, 23);
-			this.btnClearFilter.TabIndex = 14;
+			this.btnClearFilter.TabIndex = 13;
 			this.btnClearFilter.Text = "Clear Filter";
 			this.btnClearFilter.UseVisualStyleBackColor = true;
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
@@ -113,9 +113,9 @@ namespace Main
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
-            this.FacultyName,
+            this.ClassID,
             this.FacultyID,
-            this.FoundingDate,
+            this.CourseID,
             this.Description});
 			this.aDgvdata.DateWithTime = false;
 			this.aDgvdata.Location = new System.Drawing.Point(12, 287);
@@ -123,7 +123,7 @@ namespace Main
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
 			this.aDgvdata.Size = new System.Drawing.Size(1240, 382);
-			this.aDgvdata.TabIndex = 11;
+			this.aDgvdata.TabIndex = 10;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
 			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
@@ -136,25 +136,25 @@ namespace Main
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 25.06265F;
+			this.STT.FillWeight = 25.06266F;
 			this.STT.HeaderText = "STT";
 			this.STT.MinimumWidth = 22;
 			this.STT.Name = "STT";
 			this.STT.ReadOnly = true;
 			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// FacultyName
+			// ClassID
 			// 
-			this.FacultyName.DataPropertyName = "FacultyName";
+			this.ClassID.DataPropertyName = "ClassID";
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle3;
-			this.FacultyName.FillWeight = 121.7771F;
-			this.FacultyName.HeaderText = "Tên khoa";
-			this.FacultyName.MinimumWidth = 22;
-			this.FacultyName.Name = "FacultyName";
-			this.FacultyName.ReadOnly = true;
-			this.FacultyName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.ClassID.DefaultCellStyle = dataGridViewCellStyle3;
+			this.ClassID.FillWeight = 50.48768F;
+			this.ClassID.HeaderText = "Mã lớp";
+			this.ClassID.MinimumWidth = 22;
+			this.ClassID.Name = "ClassID";
+			this.ClassID.ReadOnly = true;
+			this.ClassID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// FacultyID
 			// 
@@ -162,32 +162,30 @@ namespace Main
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.FacultyID.FillWeight = 48.15578F;
+			this.FacultyID.FillWeight = 64.4019F;
 			this.FacultyID.HeaderText = "Mã khoa";
 			this.FacultyID.MinimumWidth = 22;
 			this.FacultyID.Name = "FacultyID";
 			this.FacultyID.ReadOnly = true;
 			this.FacultyID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// FoundingDate
+			// CourseID
 			// 
-			this.FoundingDate.DataPropertyName = "FoundingDate";
+			this.CourseID.DataPropertyName = "CourseID";
 			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.Format = "d";
-			dataGridViewCellStyle5.NullValue = "dd/MM/yyyy";
 			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.FoundingDate.DefaultCellStyle = dataGridViewCellStyle5;
-			this.FoundingDate.FillWeight = 53.76955F;
-			this.FoundingDate.HeaderText = "Ngày thành lập";
-			this.FoundingDate.MinimumWidth = 22;
-			this.FoundingDate.Name = "FoundingDate";
-			this.FoundingDate.ReadOnly = true;
-			this.FoundingDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.CourseID.DefaultCellStyle = dataGridViewCellStyle5;
+			this.CourseID.FillWeight = 105.8699F;
+			this.CourseID.HeaderText = "Khóa";
+			this.CourseID.MinimumWidth = 22;
+			this.CourseID.Name = "CourseID";
+			this.CourseID.ReadOnly = true;
+			this.CourseID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// Description
 			// 
 			this.Description.DataPropertyName = "Description";
-			this.Description.FillWeight = 251.2348F;
+			this.Description.FillWeight = 254.1778F;
 			this.Description.HeaderText = "Mô tả";
 			this.Description.MinimumWidth = 22;
 			this.Description.Name = "Description";
@@ -271,22 +269,22 @@ namespace Main
 			// 
 			this.lbTitle.AutoSize = true;
 			this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTitle.Location = new System.Drawing.Point(552, 14);
+			this.lbTitle.Location = new System.Drawing.Point(560, 14);
 			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(161, 31);
+			this.lbTitle.Size = new System.Drawing.Size(144, 31);
 			this.lbTitle.TabIndex = 0;
-			this.lbTitle.Text = "Quản lý khoa";
+			this.lbTitle.Text = "Quản lý lớp";
 			// 
 			// gbControls
 			// 
+			this.gbControls.Controls.Add(this.cbFaculty);
+			this.gbControls.Controls.Add(this.cbCourseID);
 			this.gbControls.Controls.Add(this.lbDescription);
-			this.gbControls.Controls.Add(this.dtpFoundingDate);
-			this.gbControls.Controls.Add(this.tbFacultyID);
+			this.gbControls.Controls.Add(this.tbClassID);
 			this.gbControls.Controls.Add(this.tbDescription);
-			this.gbControls.Controls.Add(this.lbFoudingDate);
-			this.gbControls.Controls.Add(this.lbFacultyName);
-			this.gbControls.Controls.Add(this.tbFacultyName);
-			this.gbControls.Controls.Add(this.lbFacultyID);
+			this.gbControls.Controls.Add(this.lbCourse);
+			this.gbControls.Controls.Add(this.lbFaculty);
+			this.gbControls.Controls.Add(this.lbClassID);
 			this.gbControls.Location = new System.Drawing.Point(12, 52);
 			this.gbControls.Name = "gbControls";
 			this.gbControls.Size = new System.Drawing.Size(1240, 145);
@@ -294,78 +292,78 @@ namespace Main
 			this.gbControls.TabStop = false;
 			this.gbControls.Text = "Thông tin môn thi";
 			// 
+			// cbFaculty
+			// 
+			this.cbFaculty.FormattingEnabled = true;
+			this.cbFaculty.Location = new System.Drawing.Point(814, 94);
+			this.cbFaculty.Name = "cbFaculty";
+			this.cbFaculty.Size = new System.Drawing.Size(239, 21);
+			this.cbFaculty.TabIndex = 11;
+			// 
+			// cbCourseID
+			// 
+			this.cbCourseID.FormattingEnabled = true;
+			this.cbCourseID.Location = new System.Drawing.Point(814, 36);
+			this.cbCourseID.Name = "cbCourseID";
+			this.cbCourseID.Size = new System.Drawing.Size(239, 21);
+			this.cbCourseID.TabIndex = 10;
+			// 
 			// lbDescription
 			// 
 			this.lbDescription.AutoSize = true;
-			this.lbDescription.Location = new System.Drawing.Point(759, 97);
+			this.lbDescription.Location = new System.Drawing.Point(187, 97);
 			this.lbDescription.Name = "lbDescription";
 			this.lbDescription.Size = new System.Drawing.Size(37, 13);
 			this.lbDescription.TabIndex = 9;
 			this.lbDescription.Text = "Mô tả:";
 			// 
-			// dtpFoundingDate
+			// tbClassID
 			// 
-			this.dtpFoundingDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpFoundingDate.Location = new System.Drawing.Point(858, 36);
-			this.dtpFoundingDate.Name = "dtpFoundingDate";
-			this.dtpFoundingDate.Size = new System.Drawing.Size(239, 20);
-			this.dtpFoundingDate.TabIndex = 8;
-			// 
-			// tbFacultyID
-			// 
-			this.tbFacultyID.Location = new System.Drawing.Point(215, 46);
-			this.tbFacultyID.Name = "tbFacultyID";
-			this.tbFacultyID.ReadOnly = true;
-			this.tbFacultyID.Size = new System.Drawing.Size(239, 20);
-			this.tbFacultyID.TabIndex = 7;
+			this.tbClassID.Location = new System.Drawing.Point(259, 37);
+			this.tbClassID.Name = "tbClassID";
+			this.tbClassID.Size = new System.Drawing.Size(239, 20);
+			this.tbClassID.TabIndex = 7;
 			// 
 			// tbDescription
 			// 
-			this.tbDescription.Location = new System.Drawing.Point(858, 94);
+			this.tbDescription.Location = new System.Drawing.Point(259, 94);
 			this.tbDescription.Multiline = true;
 			this.tbDescription.Name = "tbDescription";
 			this.tbDescription.Size = new System.Drawing.Size(239, 20);
 			this.tbDescription.TabIndex = 6;
 			// 
-			// lbFoudingDate
+			// lbCourse
 			// 
-			this.lbFoudingDate.AutoSize = true;
-			this.lbFoudingDate.Location = new System.Drawing.Point(759, 39);
-			this.lbFoudingDate.Name = "lbFoudingDate";
-			this.lbFoudingDate.Size = new System.Drawing.Size(82, 13);
-			this.lbFoudingDate.TabIndex = 4;
-			this.lbFoudingDate.Text = "Ngày thành lập:";
+			this.lbCourse.AutoSize = true;
+			this.lbCourse.Location = new System.Drawing.Point(755, 39);
+			this.lbCourse.Name = "lbCourse";
+			this.lbCourse.Size = new System.Drawing.Size(35, 13);
+			this.lbCourse.TabIndex = 4;
+			this.lbCourse.Text = "Khóa:";
 			// 
-			// lbFacultyName
+			// lbFaculty
 			// 
-			this.lbFacultyName.AutoSize = true;
-			this.lbFacultyName.Location = new System.Drawing.Point(143, 97);
-			this.lbFacultyName.Name = "lbFacultyName";
-			this.lbFacultyName.Size = new System.Drawing.Size(56, 13);
-			this.lbFacultyName.TabIndex = 2;
-			this.lbFacultyName.Text = "Tên khoa:";
+			this.lbFaculty.AutoSize = true;
+			this.lbFaculty.Location = new System.Drawing.Point(755, 97);
+			this.lbFaculty.Name = "lbFaculty";
+			this.lbFaculty.Size = new System.Drawing.Size(35, 13);
+			this.lbFaculty.TabIndex = 2;
+			this.lbFaculty.Text = "Khoa:";
 			// 
-			// tbFacultyName
+			// lbClassID
 			// 
-			this.tbFacultyName.Location = new System.Drawing.Point(215, 94);
-			this.tbFacultyName.Name = "tbFacultyName";
-			this.tbFacultyName.Size = new System.Drawing.Size(239, 20);
-			this.tbFacultyName.TabIndex = 3;
-			// 
-			// lbFacultyID
-			// 
-			this.lbFacultyID.AutoSize = true;
-			this.lbFacultyID.Location = new System.Drawing.Point(143, 49);
-			this.lbFacultyID.Name = "lbFacultyID";
-			this.lbFacultyID.Size = new System.Drawing.Size(52, 13);
-			this.lbFacultyID.TabIndex = 0;
-			this.lbFacultyID.Text = "Mã khoa:";
+			this.lbClassID.AutoSize = true;
+			this.lbClassID.Location = new System.Drawing.Point(187, 40);
+			this.lbClassID.Name = "lbClassID";
+			this.lbClassID.Size = new System.Drawing.Size(42, 13);
+			this.lbClassID.TabIndex = 0;
+			this.lbClassID.Text = "Mã lớp:";
 			// 
 			// errorProviderWar
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// FrmManageFaculty
+			// FrmManageClass
 			// 
 			this.AcceptButton = this.btnSearch;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,10 +371,10 @@ namespace Main
 			this.ClientSize = new System.Drawing.Size(1264, 681);
 			this.Controls.Add(this.pMain);
 			this.MinimumSize = new System.Drawing.Size(1280, 720);
-			this.Name = "FrmManageFaculty";
+			this.Name = "FrmManageClass";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Quản lý khoa";
-			this.Load += new System.EventHandler(this.FrmManageFaculty_Load);
+			this.Text = "Quản lý lớp";
+			this.Load += new System.EventHandler(this.FrmManageTrainingProg_Load);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
@@ -392,10 +390,9 @@ namespace Main
 		private System.Windows.Forms.Panel pMain;
 		private System.Windows.Forms.Label lbTitle;
 		private System.Windows.Forms.GroupBox gbControls;
-		private System.Windows.Forms.Label lbFacultyName;
-		private System.Windows.Forms.TextBox tbFacultyName;
-		private System.Windows.Forms.Label lbFacultyID;
-		private System.Windows.Forms.Label lbFoudingDate;
+		private System.Windows.Forms.Label lbFaculty;
+		private System.Windows.Forms.Label lbClassID;
+		private System.Windows.Forms.Label lbCourse;
 		private System.Windows.Forms.TextBox tbSearch;
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.Button btnDelete;
@@ -404,16 +401,17 @@ namespace Main
 		private System.Windows.Forms.ErrorProvider errorProviderWar;
 		private System.Windows.Forms.Button btnCancle;
 		private System.Windows.Forms.Button btnSave;
-		private System.Windows.Forms.TextBox tbFacultyID;
+		private System.Windows.Forms.TextBox tbClassID;
 		private System.Windows.Forms.TextBox tbDescription;
 		private System.Windows.Forms.Label lbDescription;
-		private System.Windows.Forms.DateTimePicker dtpFoundingDate;
+		private System.Windows.Forms.ComboBox cbCourseID;
+		private System.Windows.Forms.ComboBox cbFaculty;
 		private ADGV.AdvancedDataGridView aDgvdata;
-		private System.Windows.Forms.Button btnClearFilter;
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ClassID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn FoundingDate;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CourseID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+		private System.Windows.Forms.Button btnClearFilter;
 	}
 }

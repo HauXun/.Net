@@ -37,7 +37,7 @@ namespace Main
 			this.tsmiManageUser = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiManageFaculty = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiManageCourse = new System.Windows.Forms.ToolStripMenuItem();
-			this.quảnLýLớpSinhViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiManageUserClass = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiStatisticalTrainingProg = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiRestoreData = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,7 +125,7 @@ namespace Main
             this.tsmiManageUser,
             this.tsmiManageFaculty,
             this.tsmiManageCourse,
-            this.quảnLýLớpSinhViênToolStripMenuItem});
+            this.tsmiManageUserClass});
 			this.tsmiManage.Name = "tsmiManage";
 			this.tsmiManage.Size = new System.Drawing.Size(238, 22);
 			this.tsmiManage.Text = "Quản lý";
@@ -133,29 +133,30 @@ namespace Main
 			// tsmiManageUser
 			// 
 			this.tsmiManageUser.Name = "tsmiManageUser";
-			this.tsmiManageUser.Size = new System.Drawing.Size(193, 22);
+			this.tsmiManageUser.Size = new System.Drawing.Size(185, 22);
 			this.tsmiManageUser.Text = "Quản lý người dùng";
 			this.tsmiManageUser.Click += new System.EventHandler(this.tsmiManageUser_Click);
 			// 
 			// tsmiManageFaculty
 			// 
 			this.tsmiManageFaculty.Name = "tsmiManageFaculty";
-			this.tsmiManageFaculty.Size = new System.Drawing.Size(193, 22);
+			this.tsmiManageFaculty.Size = new System.Drawing.Size(185, 22);
 			this.tsmiManageFaculty.Text = "Quản lý khoa";
 			this.tsmiManageFaculty.Click += new System.EventHandler(this.tsmiManageFaculty_Click);
 			// 
 			// tsmiManageCourse
 			// 
 			this.tsmiManageCourse.Name = "tsmiManageCourse";
-			this.tsmiManageCourse.Size = new System.Drawing.Size(193, 22);
-			this.tsmiManageCourse.Text = "Quản lý niên khóa học";
+			this.tsmiManageCourse.Size = new System.Drawing.Size(185, 22);
+			this.tsmiManageCourse.Text = "Quản lý khóa học";
 			this.tsmiManageCourse.Click += new System.EventHandler(this.tsmiManageCourse_Click);
 			// 
-			// quảnLýLớpSinhViênToolStripMenuItem
+			// tsmiManageUserClass
 			// 
-			this.quảnLýLớpSinhViênToolStripMenuItem.Name = "quảnLýLớpSinhViênToolStripMenuItem";
-			this.quảnLýLớpSinhViênToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-			this.quảnLýLớpSinhViênToolStripMenuItem.Text = "Quản lý lớp sinh viên";
+			this.tsmiManageUserClass.Name = "tsmiManageUserClass";
+			this.tsmiManageUserClass.Size = new System.Drawing.Size(185, 22);
+			this.tsmiManageUserClass.Text = "Quản lý lớp sinh viên";
+			this.tsmiManageUserClass.Click += new System.EventHandler(this.tsmiManageUserClass_Click);
 			// 
 			// tsmiStatisticalTrainingProg
 			// 
@@ -552,7 +553,7 @@ namespace Main
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageUser;
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageFaculty;
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageCourse;
-		private System.Windows.Forms.ToolStripMenuItem quảnLýLớpSinhViênToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem tsmiManageUserClass;
 	}
 }
 

@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer;
-using System;
+using Entities;
 using System.Data;
 using System.Windows.Forms;
 
@@ -20,9 +20,15 @@ namespace BusinessLogicLayer
             private set => instance = value;
         }
 
-        public void GetAllUserClass(ComboBox box)
+        public void GetAllClass(DataGridView data)
         {
-            DataTable data = UserClassDAL.Instance.GetAllUserClass();
+            data.AutoGenerateColumns = false;
+            data.DataSource = UserClassDAL.Instance.GetAllClass();
+        }
+
+        public void GetAllClass(ComboBox box)
+        {
+            DataTable data = UserClassDAL.Instance.GetAllClass();
             if (data.Rows.Count > 0)
             {
                 if (box.Name == "cbClassFilter")
@@ -36,5 +42,30 @@ namespace BusinessLogicLayer
                 box.ValueMember = "ClassID";
             }
         }
+
+        //public Class GetClassByID(string subjectID)
+        //{
+        //    return ClassDAL.Instance.GetClassByID(subjectID);
+        //}
+
+        public bool InsertClass(UserClass subject)
+		{
+            return UserClassDAL.Instance.InsertClass(subject);
+		}
+
+        public bool UpdateClass(UserClass subject)
+		{
+            return UserClassDAL.Instance.UpdateClass(subject);
+		}
+
+        public bool DeleteClass(string facultyID)
+		{
+            return UserClassDAL.Instance.DeleteClass(facultyID);
+		}
+
+        public void SearchClass(DataGridView data, string keyword)
+		{
+            data.DataSource = UserClassDAL.Instance.SearchClass(keyword);
+		}
     }
 }

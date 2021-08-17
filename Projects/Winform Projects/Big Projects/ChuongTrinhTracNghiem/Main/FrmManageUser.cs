@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
-		private string username;
+		private string user;
 		private int rowIndex = 0;
 		private UserAccount account;
 
@@ -45,12 +46,11 @@ namespace Main
 
 		private void LoadData()
 		{
-			AccountBLL.Instance.GetAllAccount(cbClassFilter);
 			RoleBLL.Instance.GetAllRoleUser(cbRole);
 			RoleBLL.Instance.GetAllRoleUser(cbFilter);
-			UserClassBLL.Instance.GetAllUserClass(cbClassID);
-			AccountBLL.Instance.GetAllAccount(dgvData);
-			if (dgvData.Rows.Count > 0)
+			UserClassBLL.Instance.GetAllClass(cbClassID);
+			AccountBLL.Instance.GetAllAccount(aDgvdata);
+			if (aDgvdata.Rows.Count > 0)
 				DetailData(0);
 		}
 
@@ -74,7 +74,7 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = dgvData.Rows[rowIndex];
+				DataGridViewRow row = aDgvdata.Rows[rowIndex];
 				tbUserID.Text = row.Cells["UserID"].Value.ToString();
 				cbRole.SelectedValue = row.Cells["UserRole"].Value;
 				cbClassID.SelectedValue = row.Cells["ClassID"].Value;
@@ -84,7 +84,7 @@ namespace Main
 				tbAddress.Text = row.Cells["Address"].Value.ToString();
 				tbEmail.Text = row.Cells["Email"].Value.ToString();
 				dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
-				username = row.Cells["Username"].Value.ToString();
+				user = row.Cells["Username"].Value.ToString();
 			}
 			catch (Exception ex)
 			{
@@ -167,7 +167,7 @@ namespace Main
 		private void EnableControl(bool isEnable = true)
 		{
 			gbControls.Enabled = isEnable;
-			if (dgvData.Rows.Count == 0)
+			if (aDgvdata.Rows.Count == 0)
 				btnResetPassword.Enabled = false;
 		}
 
@@ -424,26 +424,57 @@ namespace Main
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập tên/Tài khoản/..."))
+			if (keyword.Equals("Nhập từ khóa ..."))
 				keyword = string.Empty;
 
 			string roleFilter = "ALL";
 			if (cbFilter.SelectedValue != null)
 				roleFilter = cbFilter.SelectedValue.ToString();
 
-			string classFilter = "Tất cả";
-			if (cbClassFilter.SelectedValue != null)
-				classFilter = cbClassFilter.SelectedValue.ToString();
-
-			AccountBLL.Instance.SearchAccount(dgvData, keyword, roleFilter, classFilter);
+			AccountBLL.Instance.SearchAccount(aDgvdata, keyword, roleFilter);
 		}
 
-		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
 		{
-			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+			if (!aDgvdata.SortString.Contains("STT"))
+			{
+				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Sort = aDgvdata.SortString };
+				aDgvdata.DataSource = source.DataSource;
+			}
+			else
+			{
+				if (aDgvdata.SortString.Split(' ')[1].Equals("DESC"))
+				{
+					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Descending);
+				}
+				else if (aDgvdata.SortString.Split(' ')[1].Equals("ASC"))
+				{
+					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Ascending);
+				}
+			}
 		}
 
-		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
+		private void aDgvdata_FilterStringChanged(object sender, EventArgs e)
+		{
+			if (!aDgvdata.FilterString.Contains("STT"))
+			{
+				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Filter = aDgvdata.FilterString };
+				aDgvdata.DataSource = source.DataSource;
+			}
+		}
+
+		private void btnClearFilter_Click(object sender, EventArgs e)
+		{
+			aDgvdata.ClearFilter();
+			aDgvdata_FilterStringChanged(sender, e);
+		}
+
+		private void aDgvdata_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		{
+			aDgvdata["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+		}
+
+		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0)
 				return;
@@ -504,28 +535,13 @@ namespace Main
 			}
 		}
 
-		private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (cbFilter.SelectedValue != null)
-			{
-				if (cbFilter.SelectedValue.ToString().Trim().Equals("User"))
-				{
-					cbClassFilter.Enabled = true;
-				}
-				else
-				{
-					cbClassFilter.Enabled = false;
-				}
-			}
-		}
-
 		private void btnResetPassword_Click(object sender, EventArgs e)
 		{
 			if (MessageBox.Show("Xác nhận thay đổi!", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
 			{
 				try
 				{
-					if (AccountBLL.Instance.ResetPassword(username))
+					if (AccountBLL.Instance.ResetPassword(user))
 					{
 						MessageBox.Show("Thay đổi thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 						LoadData();

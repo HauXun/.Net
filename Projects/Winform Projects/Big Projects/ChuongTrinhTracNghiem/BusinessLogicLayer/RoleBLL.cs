@@ -74,5 +74,16 @@ namespace BusinessLogicLayer
                 box.DataSource = data;
             }
         }
+
+        public void GetAllSubjectRole(ComboBox box)
+		{
+            DataTable data = SubjectRoleDAL.Instance.GetAllSubjectRole();
+            if (data.Rows.Count > 0)
+            {
+                box.DisplayMember = "RoleName";
+                box.ValueMember = "RoleID";
+                box.DataSource = data;
+            }
+        }
     }
 }

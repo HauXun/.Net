@@ -17,6 +17,9 @@ namespace Entities
         public string CourseID { get; set; }
         public string FacultyID { get; set; }
         public string Description { get; set; }
-        public DateTime FoundingDate { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string ModifiedBy { get; set; }
+        public DateTime ModifiedAt { get; set; }
     }
 }

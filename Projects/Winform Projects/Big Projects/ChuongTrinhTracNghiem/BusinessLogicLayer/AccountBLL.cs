@@ -90,9 +90,9 @@ namespace BusinessLogicLayer
             return AccountDAL.Instance.DeleteAccount(userID);
 		}
 
-        public void SearchAccount(DataGridView data, string keyword, string roleFilter = null, string classFilter = null)
+        public void SearchAccount(DataGridView data, string keyword, string roleFilter = null)
 		{
-            data.DataSource = AccountDAL.Instance.SearchAccount(keyword, roleFilter, classFilter);
+            data.DataSource = AccountDAL.Instance.SearchAccount(keyword, roleFilter);
 		}
     }
 }

@@ -221,6 +221,21 @@ namespace Main
 			this.Show();
 		}
 
+		private void tsmiManageUserClass_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			try
+			{
+				FrmManageClass frm = new FrmManageClass(Account);
+				frm.ShowDialog();
+			}
+			catch
+			{
+				this.Show();
+			}
+			this.Show();
+		}
+
 		private void tsmiExit_Click(object sender, EventArgs e)
 		{
 			Close();

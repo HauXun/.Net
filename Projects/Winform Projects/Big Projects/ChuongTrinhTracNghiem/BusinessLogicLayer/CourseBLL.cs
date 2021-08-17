@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using Entities;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -26,6 +27,24 @@ namespace BusinessLogicLayer
         {
             data.AutoGenerateColumns = false;
             data.DataSource = CourseDAL.Instance.GetAllCourse();
+        }
+
+        public void GetAllCourse(ComboBox box)
+        {
+            DataTable data = CourseDAL.Instance.GetAllCourse();
+            if (data.Rows.Count > 0)
+            {
+                if (box.Name == "cbCourseFilter")
+                {
+                    DataRow row = data.NewRow();
+                    row["CourseID"] = "Tất cả";
+                    data.Rows.InsertAt(row, 0);
+                }
+                data = data.AsEnumerable().GroupBy(x => x.Field<string>("CourseID")).Select(y => y.First()).CopyToDataTable();
+                box.DisplayMember = "CourseID";
+                box.ValueMember = "CourseID";
+                box.DataSource = data;
+            }
         }
 
         //public Course GetCourseByID(string subjectID)

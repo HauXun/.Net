@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms">
       <HintPath>..\..\..\Small Projects\QuanLyQuanCafe\packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
@@ -54,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControl.cs" />
-    <Compile Include="FrmFilter.cs">
+    <Compile Include="FrmManageClass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmFilter.Designer.cs">
-      <DependentUpon>FrmFilter.cs</DependentUpon>
+    <Compile Include="FrmManageClass.Designer.cs">
+      <DependentUpon>FrmManageClass.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmManageExam.cs">
       <SubType>Form</SubType>
@@ -128,8 +131,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmFilter.resx">
-      <DependentUpon>FrmFilter.cs</DependentUpon>
+    <EmbeddedResource Include="FrmManageClass.resx">
+      <DependentUpon>FrmManageClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManageExam.resx">
       <DependentUpon>FrmManageExam.cs</DependentUpon>
@@ -174,6 +177,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

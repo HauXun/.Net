@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -40,8 +41,8 @@ namespace Main
 
 		private void LoadData()
 		{
-			FacultyBLL.Instance.GetAllFaculty(dgvData);
-			if (dgvData.Rows.Count > 0)
+			FacultyBLL.Instance.GetAllFaculty(aDgvdata);
+			if (aDgvdata.Rows.Count > 0)
 				DetailData(0);
 		}
 
@@ -59,7 +60,7 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = dgvData.Rows[rowIndex];
+				DataGridViewRow row = aDgvdata.Rows[rowIndex];
 				tbFacultyID.Text = row.Cells["FacultyID"].Value.ToString();
 				tbFacultyName.Text = row.Cells["FacultyName"].Value.ToString();
 				dtpFoundingDate.Text = row.Cells["FoundingDate"].FormattedValue.ToString();
@@ -280,17 +281,52 @@ namespace Main
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập tên khoa/Mã khoa ..."))
+			if (keyword.Equals("Nhập từ khóa ..."))
 				keyword = string.Empty;
-			FacultyBLL.Instance.SearchFaculty(dgvData, keyword);
+			FacultyBLL.Instance.SearchFaculty(aDgvdata, keyword);
 		}
 
-		private void dgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
 		{
-			dgvData["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+			if (!aDgvdata.SortString.Contains("STT"))
+			{
+				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Sort = aDgvdata.SortString };
+				aDgvdata.DataSource = source.DataSource;
+			}
+			else
+			{
+				if (aDgvdata.SortString.Split(' ')[1].Equals("DESC"))
+				{
+					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Descending);
+				}
+				else if (aDgvdata.SortString.Split(' ')[1].Equals("ASC"))
+				{
+					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Ascending);
+				}
+			}
 		}
 
-		private void dgvData_RowEnter(object sender, DataGridViewCellEventArgs e)
+		private void aDgvdata_FilterStringChanged(object sender, EventArgs e)
+		{
+			if (!aDgvdata.FilterString.Contains("STT"))
+			{
+				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Filter = aDgvdata.FilterString };
+				aDgvdata.DataSource = source.DataSource;
+			}
+		}
+
+		private void btnClearFilter_Click(object sender, EventArgs e)
+		{
+			aDgvdata.ClearFilter();
+			aDgvdata_FilterStringChanged(sender, e);
+		}
+
+		private void aDgvdata_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+		{
+			aDgvdata["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
+		}
+
+		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0)
 				return;
