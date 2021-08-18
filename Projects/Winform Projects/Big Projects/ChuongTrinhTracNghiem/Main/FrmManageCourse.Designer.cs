@@ -30,11 +30,11 @@ namespace Main
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnClearFilter = new System.Windows.Forms.Button();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
@@ -102,14 +102,14 @@ namespace Main
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -133,9 +133,9 @@ namespace Main
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle7;
 			this.STT.FillWeight = 25.06266F;
 			this.STT.HeaderText = "STT";
 			this.STT.MinimumWidth = 22;
@@ -146,9 +146,9 @@ namespace Main
 			// CourseID
 			// 
 			this.CourseID.DataPropertyName = "CourseID";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.CourseID.DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.CourseID.DefaultCellStyle = dataGridViewCellStyle8;
 			this.CourseID.FillWeight = 50.48768F;
 			this.CourseID.HeaderText = "Mã khóa";
 			this.CourseID.MinimumWidth = 22;
@@ -159,9 +159,9 @@ namespace Main
 			// FacultyID
 			// 
 			this.FacultyID.DataPropertyName = "FacultyID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle9;
 			this.FacultyID.FillWeight = 64.4019F;
 			this.FacultyID.HeaderText = "Mã khoa";
 			this.FacultyID.MinimumWidth = 22;
@@ -172,9 +172,9 @@ namespace Main
 			// TrainingID
 			// 
 			this.TrainingID.DataPropertyName = "TrainingID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.TrainingID.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.TrainingID.DefaultCellStyle = dataGridViewCellStyle10;
 			this.TrainingID.FillWeight = 105.8699F;
 			this.TrainingID.HeaderText = "Hình thức đào tạo";
 			this.TrainingID.MinimumWidth = 22;
@@ -295,7 +295,7 @@ namespace Main
 			// cbFaculty
 			// 
 			this.cbFaculty.FormattingEnabled = true;
-			this.cbFaculty.Location = new System.Drawing.Point(836, 94);
+			this.cbFaculty.Location = new System.Drawing.Point(836, 37);
 			this.cbFaculty.Name = "cbFaculty";
 			this.cbFaculty.Size = new System.Drawing.Size(239, 21);
 			this.cbFaculty.TabIndex = 11;
@@ -303,7 +303,7 @@ namespace Main
 			// cbTrainingRole
 			// 
 			this.cbTrainingRole.FormattingEnabled = true;
-			this.cbTrainingRole.Location = new System.Drawing.Point(836, 36);
+			this.cbTrainingRole.Location = new System.Drawing.Point(836, 94);
 			this.cbTrainingRole.Name = "cbTrainingRole";
 			this.cbTrainingRole.Size = new System.Drawing.Size(239, 21);
 			this.cbTrainingRole.TabIndex = 10;
@@ -335,7 +335,7 @@ namespace Main
 			// lbTrainingRole
 			// 
 			this.lbTrainingRole.AutoSize = true;
-			this.lbTrainingRole.Location = new System.Drawing.Point(734, 39);
+			this.lbTrainingRole.Location = new System.Drawing.Point(734, 97);
 			this.lbTrainingRole.Name = "lbTrainingRole";
 			this.lbTrainingRole.Size = new System.Drawing.Size(96, 13);
 			this.lbTrainingRole.TabIndex = 4;
@@ -344,7 +344,7 @@ namespace Main
 			// lbFaculty
 			// 
 			this.lbFaculty.AutoSize = true;
-			this.lbFaculty.Location = new System.Drawing.Point(734, 97);
+			this.lbFaculty.Location = new System.Drawing.Point(734, 40);
 			this.lbFaculty.Name = "lbFaculty";
 			this.lbFaculty.Size = new System.Drawing.Size(35, 13);
 			this.lbFaculty.TabIndex = 2;

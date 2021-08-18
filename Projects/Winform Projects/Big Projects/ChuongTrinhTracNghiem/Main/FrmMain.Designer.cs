@@ -163,6 +163,7 @@ namespace Main
 			this.tsmiStatisticalTrainingProg.Name = "tsmiStatisticalTrainingProg";
 			this.tsmiStatisticalTrainingProg.Size = new System.Drawing.Size(238, 22);
 			this.tsmiStatisticalTrainingProg.Text = "Thống kê chương trình đào tạo";
+			this.tsmiStatisticalTrainingProg.Click += new System.EventHandler(this.tsmiStatisticalTrainingProg_Click);
 			// 
 			// toolStripMenuItem2
 			// 

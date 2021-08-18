@@ -274,5 +274,20 @@ namespace Main
 		}
 
 		#endregion
+
+		private void tsmiStatisticalTrainingProg_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			try
+			{
+				FrmManageStatistical frm = new FrmManageStatistical();
+				frm.ShowDialog();
+			}
+			catch
+			{
+				this.Show();
+			}
+			this.Show();
+		}
 	}
 }

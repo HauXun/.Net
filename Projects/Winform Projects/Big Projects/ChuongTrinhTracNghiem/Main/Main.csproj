@@ -81,6 +81,12 @@
     <Compile Include="FrmManageFaculty.Designer.cs">
       <DependentUpon>FrmManageFaculty.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmManageStatistical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManageStatistical.Designer.cs">
+      <DependentUpon>FrmManageStatistical.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmQuiz.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManageFaculty.resx">
       <DependentUpon>FrmManageFaculty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmManageStatistical.resx">
+      <DependentUpon>FrmManageStatistical.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmQuiz.resx">
       <DependentUpon>FrmQuiz.cs</DependentUpon>
