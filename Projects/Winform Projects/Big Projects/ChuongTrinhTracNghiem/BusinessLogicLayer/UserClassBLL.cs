@@ -31,15 +31,20 @@ namespace BusinessLogicLayer
             DataTable data = UserClassDAL.Instance.GetAllClass();
             if (data.Rows.Count > 0)
             {
-                if (box.Name == "cbClassFilter")
-                {
-                    DataRow row = data.NewRow();
-                    row["ClassID"] = "Tất cả";
-                    data.Rows.InsertAt(row, 0);
-                }
-                box.DataSource = data;
                 box.DisplayMember = "ClassID";
                 box.ValueMember = "ClassID";
+                box.DataSource = data;
+            }
+        }
+
+        public void GetAllClassByCourseID(ComboBox box, string courseID)
+		{
+            DataTable data = UserClassDAL.Instance.GetAllClassByCourseID(courseID);
+            if (data.Rows.Count > 0)
+            {
+                box.DisplayMember = "ClassID";
+                box.ValueMember = "ClassID";
+                box.DataSource = data;
             }
         }
 

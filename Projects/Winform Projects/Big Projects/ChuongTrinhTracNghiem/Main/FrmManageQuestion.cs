@@ -150,6 +150,7 @@ namespace Main
 			Question question = GetQuestionInfo();
 			question.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
 
+
 			if (!IsValidQuestion())
 			{
 				isEnable = true;
@@ -345,8 +346,6 @@ namespace Main
 			EnableControl(true);
 			ClearControl();
 			tbQuestionID.Text = QuestionBLL.Instance.GetIDMissing().ToString();
-			if (!IsValidComboBoxControl())
-				return;
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e)

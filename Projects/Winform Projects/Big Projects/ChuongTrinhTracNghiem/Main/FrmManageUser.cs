@@ -48,6 +48,8 @@ namespace Main
 		{
 			RoleBLL.Instance.GetAllRoleUser(cbRole);
 			RoleBLL.Instance.GetAllRoleUser(cbFilter);
+			CourseBLL.Instance.GetAllCourse(cbCourseID);
+			cbCourseID.SelectedIndex = -1;
 			UserClassBLL.Instance.GetAllClass(cbClassID);
 			AccountBLL.Instance.GetAllAccount(aDgvdata);
 			if (aDgvdata.Rows.Count > 0)
@@ -526,12 +528,22 @@ namespace Main
 			{
 				if (cbRole.SelectedValue.ToString().Trim().Equals("User"))
 				{
+					cbCourseID.Enabled = true;
 					cbClassID.Enabled = true;
 				}
 				else
 				{
+					cbCourseID.Enabled = false;
 					cbClassID.Enabled = false;	
 				}
+			}
+		}
+
+		private void cbCourseID_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbCourseID.SelectedValue != null)
+			{
+				UserClassBLL.Instance.GetAllClassByCourseID(cbClassID, cbCourseID.SelectedValue.ToString());
 			}
 		}
 

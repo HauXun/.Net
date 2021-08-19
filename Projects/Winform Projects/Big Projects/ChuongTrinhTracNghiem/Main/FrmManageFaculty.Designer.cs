@@ -121,7 +121,7 @@ namespace Main
 			this.aDgvdata.Location = new System.Drawing.Point(12, 287);
 			this.aDgvdata.MultiSelect = false;
 			this.aDgvdata.Name = "aDgvdata";
-			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
+			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.aDgvdata.Size = new System.Drawing.Size(1240, 382);
 			this.aDgvdata.TabIndex = 11;
 			this.aDgvdata.TimeFilter = false;
