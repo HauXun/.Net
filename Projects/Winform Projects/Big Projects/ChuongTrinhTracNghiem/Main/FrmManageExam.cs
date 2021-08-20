@@ -15,6 +15,7 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
+		private bool isFunc = true;
 		private int rowIndex = 0;
 		private int questionCurrentCount = 0;
 
@@ -63,22 +64,39 @@ namespace Main
 
 		private void LoadData()
 		{
-			RoleBLL.Instance.GetAllRoleExam(cbExamRole);
-			SubjectBLL.Instance.GetAllSubject(cbSubject);
-			ExamBLL.Instance.GetAllExam(aDgvdata);
-			if (aDgvdata.Rows.Count > 0)
-				DetailData(0);
+			try
+			{
+				RoleBLL.Instance.GetAllRoleExam(cbExamRole);
+				SubjectBLL.Instance.GetAllSubject(cbSubject);
+				ExamBLL.Instance.GetAllExam(aDgvdata);
+				if (aDgvdata.Rows.Count > 0)
+					DetailData(0);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
 		}
 
 		private Exam GetExamInfo()
 		{
-			Exam exam = new Exam();
-			exam.ExamID = tbExamID.Text.Trim();
-			exam.SubjectID = cbSubject.SelectedValue.ToString();
-			exam.ExamRole = cbExamRole.SelectedValue.ToString();
-			exam.ExamTime = (int)nudExamTime.Value;
-			exam.QCount = (int)nudQCount.Value;
-			return exam;
+			try
+			{
+				Exam exam = new Exam();
+				exam.ExamID = tbExamID.Text.Trim();
+				exam.SubjectID = cbSubject.SelectedValue.ToString();
+				exam.ExamRole = cbExamRole.SelectedValue.ToString();
+				exam.ExamTime = (int)nudExamTime.Value;
+				exam.QCount = (int)nudQCount.Value;
+				return exam;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+			return null;
 		}
 
 		private void DetailData(int rowIndex)
@@ -335,6 +353,7 @@ namespace Main
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
@@ -343,6 +362,7 @@ namespace Main
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			isAddnew = false;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			tbExamID.Enabled = false;
@@ -430,10 +450,13 @@ namespace Main
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
+			if (isFunc)
+			{
+				if (e.RowIndex < 0)
+					return;
+				rowIndex = e.RowIndex;
+				DetailData(rowIndex);
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -456,6 +479,7 @@ namespace Main
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			isFunc = true;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
@@ -466,6 +490,7 @@ namespace Main
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
+			isFunc = true;
 			try
 			{
 				if (isAddnew)

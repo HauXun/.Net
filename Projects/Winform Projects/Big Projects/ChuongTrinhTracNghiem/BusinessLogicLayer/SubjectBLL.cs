@@ -46,11 +46,6 @@ namespace BusinessLogicLayer
             }
         }
 
-        public Subject GetSubjectByID(string subjectID)
-        {
-            return SubjectDAL.Instance.GetSubjectByID(subjectID);
-        }
-
         public bool InsertSubject(Subject subject)
 		{
             return SubjectDAL.Instance.InsertSubject(subject);

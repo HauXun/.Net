@@ -6,71 +6,63 @@ using System.Windows.Forms;
 namespace BusinessLogicLayer
 {
 	public class UserClassBLL
-    {
-        private static UserClassBLL instance;
+	{
+		private static UserClassBLL instance;
 
-        public static UserClassBLL Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new UserClassBLL();
-                return instance;
-            }
-            private set => instance = value;
-        }
-
-        public void GetAllClass(DataGridView data)
-        {
-            data.AutoGenerateColumns = false;
-            data.DataSource = UserClassDAL.Instance.GetAllClass();
-        }
-
-        public void GetAllClass(ComboBox box)
-        {
-            DataTable data = UserClassDAL.Instance.GetAllClass();
-            if (data.Rows.Count > 0)
-            {
-                box.DisplayMember = "ClassID";
-                box.ValueMember = "ClassID";
-                box.DataSource = data;
-            }
-        }
-
-        public void GetAllClassByCourseID(ComboBox box, string courseID)
+		public static UserClassBLL Instance
 		{
-            DataTable data = UserClassDAL.Instance.GetAllClassByCourseID(courseID);
-            if (data.Rows.Count > 0)
-            {
-                box.DisplayMember = "ClassID";
-                box.ValueMember = "ClassID";
-                box.DataSource = data;
-            }
-        }
-
-        //public Class GetClassByID(string subjectID)
-        //{
-        //    return ClassDAL.Instance.GetClassByID(subjectID);
-        //}
-
-        public bool InsertClass(UserClass subject)
-		{
-            return UserClassDAL.Instance.InsertClass(subject);
+			get
+			{
+				if (instance == null)
+					instance = new UserClassBLL();
+				return instance;
+			}
+			private set => instance = value;
 		}
 
-        public bool UpdateClass(UserClass subject)
+		public void GetAllClass(DataGridView data)
 		{
-            return UserClassDAL.Instance.UpdateClass(subject);
+			data.AutoGenerateColumns = false;
+			data.DataSource = UserClassDAL.Instance.GetAllClass();
 		}
 
-        public bool DeleteClass(string facultyID)
+		public void GetAllClass(ComboBox box)
 		{
-            return UserClassDAL.Instance.DeleteClass(facultyID);
+			DataTable data = UserClassDAL.Instance.GetAllClass();
+			if (data.Rows.Count > 0)
+			{
+				box.DisplayMember = "ClassID";
+				box.ValueMember = "ClassID";
+				box.DataSource = data;
+			}
 		}
 
-        public void SearchClass(DataGridView data, string keyword)
+		public void GetAllClassByCourseID(ComboBox box, string courseID)
 		{
-            data.DataSource = UserClassDAL.Instance.SearchClass(keyword);
+			DataTable data = UserClassDAL.Instance.GetAllClassByCourseID(courseID);
+			box.DisplayMember = "ClassID";
+			box.ValueMember = "ClassID";
+			box.DataSource = data;
 		}
-    }
+
+		public bool InsertClass(UserClass subject)
+		{
+			return UserClassDAL.Instance.InsertClass(subject);
+		}
+
+		public bool UpdateClass(UserClass subject)
+		{
+			return UserClassDAL.Instance.UpdateClass(subject);
+		}
+
+		public bool DeleteClass(string facultyID)
+		{
+			return UserClassDAL.Instance.DeleteClass(facultyID);
+		}
+
+		public void SearchClass(DataGridView data, string keyword)
+		{
+			data.DataSource = UserClassDAL.Instance.SearchClass(keyword);
+		}
+	}
 }

@@ -122,7 +122,7 @@ namespace DataAccessLayer
 				string query = "EXEC dbo.USP_InsertAccount @UserID , @UserRole , @ClassID , @Username , @FullName , @Email , @PhoneNumber , @Address , @Birthday , @Note , @CreatedBy , @ModifiedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
-						GetIDMissing(),
+						account.UserID,
 						account.UserRole,
 						account.ClassID,
 						account.Username,

@@ -21,6 +21,20 @@ namespace DataAccessLayer
 
         private CourseDAL() { }
 
+        public DataTable GetAllCourseByFaculty(string facultyID)
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_SelectAllCourseByFaculty @FacultyID";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { facultyID });
+                return data;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public DataTable GetAllCourse()
         {
             try
@@ -34,24 +48,6 @@ namespace DataAccessLayer
                 throw e;
             }
         }
-
-        //public Course GetCourseByID(string subjectID)
-        //{
-        //    try
-        //    {
-        //        string query = "EXEC dbo.USP_SelectCourseByID @CourseID";
-        //        DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID });
-        //        foreach (DataRow row in data.Rows)
-        //        {
-        //            return new Course(row);
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-        //    return null;
-        //}
 
         public bool InsertCourse(CourseOrder course)
         {

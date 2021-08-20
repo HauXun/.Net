@@ -15,7 +15,9 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
+		private bool isFunc = true;
 		private string user;
+		private int userID = 0;
 		private int rowIndex = 0;
 		private UserAccount account;
 
@@ -46,30 +48,46 @@ namespace Main
 
 		private void LoadData()
 		{
-			RoleBLL.Instance.GetAllRoleUser(cbRole);
-			RoleBLL.Instance.GetAllRoleUser(cbFilter);
-			CourseBLL.Instance.GetAllCourse(cbCourseID);
-			cbCourseID.SelectedIndex = -1;
-			UserClassBLL.Instance.GetAllClass(cbClassID);
-			AccountBLL.Instance.GetAllAccount(aDgvdata);
-			if (aDgvdata.Rows.Count > 0)
-				DetailData(0);
+			try
+			{
+				RoleBLL.Instance.GetAllRoleUser(cbRole);
+				RoleBLL.Instance.GetAllRoleUser(cbFilter);
+				CourseBLL.Instance.GetAllCourse(cbCourseID);
+				cbCourseID.SelectedIndex = -1;
+				UserClassBLL.Instance.GetAllClass(cbClassID);
+				AccountBLL.Instance.GetAllAccount(aDgvdata);
+				if (aDgvdata.Rows.Count > 0)
+					DetailData(0);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
 		}
 
 		private UserAccount GetUserInfo()
 		{
-			UserAccount account = new UserAccount();
-			int.TryParse(tbUserID.Text.Trim(), out int userId);
-			account.UserID = userId;
-			account.UserRole = cbRole.SelectedValue.ToString();
-			account.ClassID = cbClassID.SelectedValue.ToString();
-			account.Username = tbAccount.Text.Trim();
-			account.FullName = tbFullName.Text.Trim();
-			account.Email = tbEmail.Text.Trim();
-			account.PhoneNumber = tbPhone.Text.Trim();
-			account.Birthday = dtpDob.Value;
-			account.Address = tbAddress.Text.Trim();
-			return account;
+			try
+			{
+				UserAccount account = new UserAccount();
+				account.UserID = AccountBLL.Instance.GetIDMissing();
+				account.UserRole = cbRole.SelectedValue.ToString();
+				account.ClassID = cbClassID.SelectedValue.ToString();
+				account.Username = tbAccount.Text.Trim();
+				account.FullName = tbFullName.Text.Trim();
+				account.Email = tbEmail.Text.Trim();
+				account.PhoneNumber = tbPhone.Text.Trim();
+				account.Birthday = dtpDob.Value;
+				account.Address = tbAddress.Text.Trim();
+				return account;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+			return null;
 		}
 
 		private void DetailData(int rowIndex)
@@ -77,7 +95,7 @@ namespace Main
 			try
 			{
 				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				tbUserID.Text = row.Cells["UserID"].Value.ToString();
+				userID = int.Parse(row.Cells["UserID"].Value.ToString());
 				cbRole.SelectedValue = row.Cells["UserRole"].Value;
 				cbClassID.SelectedValue = row.Cells["ClassID"].Value;
 				tbAccount.Text = row.Cells["Username"].Value.ToString();
@@ -169,6 +187,8 @@ namespace Main
 		private void EnableControl(bool isEnable = true)
 		{
 			gbControls.Enabled = isEnable;
+			cbCourseID.Enabled = false;
+			cbClassID.Enabled = false;
 			if (aDgvdata.Rows.Count == 0)
 				btnResetPassword.Enabled = false;
 		}
@@ -384,23 +404,23 @@ namespace Main
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
-			tbUserID.Text = AccountBLL.Instance.GetIDMissing().ToString();
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			isAddnew = false;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 		}
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-
-			if (!int.TryParse(tbUserID.Text, out int userID))
+			if (userID == 0)
 			{
 				MessageBox.Show("Vui lòng chọn người dùng cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
@@ -478,10 +498,13 @@ namespace Main
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
+			if (isFunc)
+			{
+				if (e.RowIndex < 0)
+					return;
+				rowIndex = e.RowIndex;
+				DetailData(rowIndex);
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -504,6 +527,8 @@ namespace Main
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			isFunc = true;
+			cbCourseID.SelectedIndex = -1;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
@@ -514,10 +539,12 @@ namespace Main
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
+			isFunc = true;
 			if (isAddnew)
 				AddUser();
 			else
 				UpdateAccount();
+			cbCourseID.SelectedIndex = -1;
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
 		}
@@ -526,6 +553,8 @@ namespace Main
 		{
 			if (cbRole.SelectedValue != null)
 			{
+				cbCourseID.Text = string.Empty;
+				cbClassID.Text = string.Empty;
 				if (cbRole.SelectedValue.ToString().Trim().Equals("User"))
 				{
 					cbCourseID.Enabled = true;
@@ -543,7 +572,12 @@ namespace Main
 		{
 			if (cbCourseID.SelectedValue != null)
 			{
+				cbClassID.Text = string.Empty;
 				UserClassBLL.Instance.GetAllClassByCourseID(cbClassID, cbCourseID.SelectedValue.ToString());
+			}
+			else
+			{
+				UserClassBLL.Instance.GetAllClass(cbClassID);
 			}
 		}
 

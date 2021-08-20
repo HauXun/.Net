@@ -7,69 +7,72 @@ using System.Windows.Forms;
 namespace BusinessLogicLayer
 {
 	public class CourseBLL
-    {
-        private static CourseBLL instance;
+	{
+		private static CourseBLL instance;
 
-        public static CourseBLL Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new CourseBLL();
-                return instance;
-            }
-            private set => instance = value;
-        }
-
-        private CourseBLL() { }
-
-        public void GetAllCourse(DataGridView data)
-        {
-            data.AutoGenerateColumns = false;
-            data.DataSource = CourseDAL.Instance.GetAllCourse();
-        }
-
-        public void GetAllCourse(ComboBox box)
-        {
-            DataTable data = CourseDAL.Instance.GetAllCourse();
-            if (data.Rows.Count > 0)
-            {
-                if (box.Name == "cbCourseFilter")
-                {
-                    DataRow row = data.NewRow();
-                    row["CourseID"] = "Tất cả";
-                    data.Rows.InsertAt(row, 0);
-                }
-                data = data.AsEnumerable().GroupBy(x => x.Field<string>("CourseID")).Select(y => y.First()).CopyToDataTable();
-                box.DisplayMember = "CourseID";
-                box.ValueMember = "CourseID";
-                box.DataSource = data;
-            }
-        }
-
-        //public Course GetCourseByID(string subjectID)
-        //{
-        //    return CourseDAL.Instance.GetCourseByID(subjectID);
-        //}
-
-        public bool InsertCourse(CourseOrder subject)
+		public static CourseBLL Instance
 		{
-            return CourseDAL.Instance.InsertCourse(subject);
+			get
+			{
+				if (instance == null)
+					instance = new CourseBLL();
+				return instance;
+			}
+			private set => instance = value;
 		}
 
-        public bool UpdateCourse(CourseOrder subject)
+		private CourseBLL() { }
+
+		public void GetAllCourseByFaculty(ComboBox box, string facultyID)
 		{
-            return CourseDAL.Instance.UpdateCourse(subject);
+			DataTable data = CourseDAL.Instance.GetAllCourseByFaculty(facultyID);
+			box.DisplayMember = "CourseID";
+			box.ValueMember = "CourseID";
+			box.DataSource = data;
 		}
 
-        public bool DeleteCourse(string courseID)
+		public void GetAllCourse(DataGridView data)
 		{
-            return CourseDAL.Instance.DeleteCourse(courseID);
+			data.AutoGenerateColumns = false;
+			data.DataSource = CourseDAL.Instance.GetAllCourse();
 		}
 
-        public void SearchCourse(DataGridView data, string keyword)
+		public void GetAllCourse(ComboBox box)
 		{
-            data.DataSource = CourseDAL.Instance.SearchCourse(keyword);
+			DataTable data = CourseDAL.Instance.GetAllCourse();
+			if (data.Rows.Count > 0)
+			{
+				if (box.Name == "cbCourseFilter")
+				{
+					DataRow row = data.NewRow();
+					row["CourseID"] = "Tất cả";
+					data.Rows.InsertAt(row, 0);
+				}
+				data = data.AsEnumerable().GroupBy(x => x.Field<string>("CourseID")).Select(y => y.First()).CopyToDataTable();
+				box.DisplayMember = "CourseID";
+				box.ValueMember = "CourseID";
+				box.DataSource = data;
+			}
 		}
-    }
+
+		public bool InsertCourse(CourseOrder subject)
+		{
+			return CourseDAL.Instance.InsertCourse(subject);
+		}
+
+		public bool UpdateCourse(CourseOrder subject)
+		{
+			return CourseDAL.Instance.UpdateCourse(subject);
+		}
+
+		public bool DeleteCourse(string courseID)
+		{
+			return CourseDAL.Instance.DeleteCourse(courseID);
+		}
+
+		public void SearchCourse(DataGridView data, string keyword)
+		{
+			data.DataSource = CourseDAL.Instance.SearchCourse(keyword);
+		}
+	}
 }

@@ -15,6 +15,7 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
+		private bool isFunc = true;
 		private int rowIndex = 0;
 
 		public FrmManageFaculty()
@@ -41,19 +42,36 @@ namespace Main
 
 		private void LoadData()
 		{
-			FacultyBLL.Instance.GetAllFaculty(aDgvdata);
-			if (aDgvdata.Rows.Count > 0)
-				DetailData(0);
+			try
+			{
+				FacultyBLL.Instance.GetAllFaculty(aDgvdata);
+				if (aDgvdata.Rows.Count > 0)
+					DetailData(0);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
 		}
 
 		private Faculty GetFacultyInfo()
 		{
-			Faculty faculty = new Faculty();
-			faculty.FacultyID = tbFacultyID.Text.Trim();
-			faculty.FacultyName = tbFacultyName.Text.Trim();
-			faculty.FoundingDate = dtpFoundingDate.Value;
-			faculty.Description = tbDescription.Text.Trim();
-			return faculty;
+			try
+			{
+				Faculty faculty = new Faculty();
+				faculty.FacultyID = tbFacultyID.Text.Trim();
+				faculty.FacultyName = tbFacultyName.Text.Trim();
+				faculty.FoundingDate = dtpFoundingDate.Value;
+				faculty.Description = tbDescription.Text.Trim();
+				return faculty;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+			return null;
 		}
 
 		private void DetailData(int rowIndex)
@@ -236,6 +254,7 @@ namespace Main
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
@@ -244,6 +263,7 @@ namespace Main
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			isAddnew = false;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			tbFacultyID.Enabled = false;
@@ -328,10 +348,13 @@ namespace Main
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
+			if (isFunc)
+			{
+				if (e.RowIndex < 0)
+					return;
+				rowIndex = e.RowIndex;
+				DetailData(rowIndex);
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -359,12 +382,14 @@ namespace Main
 			DetailData(rowIndex);
 			EnableControl(false);
 			tbFacultyID.Enabled = true;
+			isFunc = true;
 			ClearError();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
+			isFunc = true;
 			try
 			{
 				if (isAddnew)

@@ -34,7 +34,14 @@ namespace Main
 
 		private void LoadData()
 		{
-			EduProgBLL.Instance.GetAllEduProg(aDgvdata);
+			try
+			{
+				EduProgBLL.Instance.GetAllEduProg(aDgvdata);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
 		}
 
 		#endregion

@@ -35,24 +35,6 @@ namespace DataAccessLayer
             }
         }
 
-        //public Faculty GetFacultyByID(string subjectID)
-        //{
-        //    try
-        //    {
-        //        string query = "EXEC dbo.USP_SelectFacultyByID @FacultyID";
-        //        DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID });
-        //        foreach (DataRow row in data.Rows)
-        //        {
-        //            return new Faculty(row);
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-        //    return null;
-        //}
-
         public bool InsertFaculty(Faculty faculty)
         {
             try

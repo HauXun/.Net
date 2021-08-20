@@ -52,24 +52,6 @@ namespace DataAccessLayer
 			}
 		}
 
-		//public Class GetClassByID(string subjectID)
-		//{
-		//    try
-		//    {
-		//        string query = "EXEC dbo.USP_SelectClassByID @ClassID";
-		//        DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID });
-		//        foreach (DataRow row in data.Rows)
-		//        {
-		//            return new Class(row);
-		//        }
-		//    }
-		//    catch (Exception e)
-		//    {
-		//        throw e;
-		//    }
-		//    return null;
-		//}
-
 		public bool InsertClass(UserClass userClass)
 		{
 			try

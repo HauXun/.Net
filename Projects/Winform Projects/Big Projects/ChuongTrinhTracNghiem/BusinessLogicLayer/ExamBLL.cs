@@ -52,9 +52,15 @@ namespace BusinessLogicLayer
 			return ExamDAL.Instance.GetExamQuiz(subjectID, examRole);
 		}
 
-		public DataTable GetExamByIDSubject(string subjectID)
+		public void GetExamByIDSubject(ComboBox box, string subjectID)
 		{
-			return ExamDAL.Instance.GetExamByIDSubject(subjectID);
+			DataTable data = ExamDAL.Instance.GetExamByIDSubject(subjectID);
+			if (data.Rows.Count > 0)
+			{
+				box.DisplayMember = "ExamID";
+				box.ValueMember = "ExamID";
+				box.DataSource = data;
+			}	
 		}
 
 		public bool InsertExam(Exam subject)

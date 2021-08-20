@@ -39,11 +39,6 @@ namespace BusinessLogicLayer
             }
         }
 
-        //public Faculty GetFacultyByID(string subjectID)
-        //{
-        //    return FacultyDAL.Instance.GetFacultyByID(subjectID);
-        //}
-
         public bool InsertFaculty(Faculty subject)
 		{
             return FacultyDAL.Instance.InsertFaculty(subject);

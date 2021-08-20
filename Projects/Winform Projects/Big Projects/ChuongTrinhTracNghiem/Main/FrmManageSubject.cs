@@ -15,6 +15,7 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
+		private bool isFunc = true;
 		private int rowIndex = 0;
 		private UserAccount account;
 
@@ -61,26 +62,43 @@ namespace Main
 
 		private void LoadData()
 		{
-			RoleBLL.Instance.GetAllSubjectRole(cbSubjectRole);
-			FacultyBLL.Instance.GetAllFaculty(cbFacultyID);
-			CourseBLL.Instance.GetAllCourse(cbCourseID);
-			SemesterBLL.Instance.GetAllSemester(cbSemesterID);
-			SubjectBLL.Instance.GetAllSubject(aDgvdata);
-			if (aDgvdata.Rows.Count > 0)
-				DetailData(0);
+			try
+			{
+				RoleBLL.Instance.GetAllSubjectRole(cbSubjectRole);
+				FacultyBLL.Instance.GetAllFaculty(cbFacultyID);
+				CourseBLL.Instance.GetAllCourse(cbCourseID);
+				SemesterBLL.Instance.GetAllSemester(cbSemesterID);
+				SubjectBLL.Instance.GetAllSubject(aDgvdata);
+				if (aDgvdata.Rows.Count > 0)
+					DetailData(0);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
 		}
 
 		private Subject GetSubjectInfo()
 		{
-			Subject subject = new Subject();
-			subject.SubjectID = tbSubjectID.Text.Trim();
-			subject.SubjectRole = cbSubjectRole.SelectedValue.ToString();
-			subject.CourseID = cbCourseID.SelectedValue.ToString();
-			subject.FacultyID = cbFacultyID.SelectedValue.ToString();
-			subject.SemesterID = int.Parse(cbSemesterID.SelectedValue.ToString());
-			subject.SubjectName = tbSubjectName.Text.Trim();
-			subject.Description = tbDescription.Text.Trim();
-			return subject;
+			try
+			{
+				Subject subject = new Subject();
+				subject.SubjectID = tbSubjectID.Text.Trim();
+				subject.SubjectRole = cbSubjectRole.SelectedValue.ToString();
+				subject.CourseID = cbCourseID.SelectedValue.ToString();
+				subject.FacultyID = cbFacultyID.SelectedValue.ToString();
+				subject.SemesterID = int.Parse(cbSemesterID.SelectedValue.ToString());
+				subject.SubjectName = tbSubjectName.Text.Trim();
+				subject.Description = tbDescription.Text.Trim();
+				return subject;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+			return null;
 		}
 
 		private void DetailData(int rowIndex)
@@ -105,10 +123,6 @@ namespace Main
 
 		private void AddSubject()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
-			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
-
 			if (!IsValidSubject())
 			{
 				isEnable = true;
@@ -120,6 +134,10 @@ namespace Main
 				isEnable = true;
 				return;
 			}
+
+			Subject subject = GetSubjectInfo();
+			subject.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
+			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
 
 			try
 			{
@@ -137,9 +155,6 @@ namespace Main
 
 		private void UpdateSubject()
 		{
-			Subject subject = GetSubjectInfo();
-			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
-
 			if (!IsValidSubject())
 			{
 				isEnable = true;
@@ -151,6 +166,9 @@ namespace Main
 				isEnable = true;
 				return;
 			}
+
+			Subject subject = GetSubjectInfo();
+			subject.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
 
 			try
 			{
@@ -185,6 +203,10 @@ namespace Main
 				{
 					control.Text = "";
 				}
+				if (control is ComboBox)
+				{
+					(control as ComboBox).SelectedIndex = -1;
+				}	
 			}
 		}
 
@@ -344,6 +366,7 @@ namespace Main
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
@@ -352,6 +375,7 @@ namespace Main
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			isAddnew = false;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			tbSubjectID.Enabled = false;
@@ -436,10 +460,13 @@ namespace Main
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
+			if (isFunc)
+			{
+				if (e.RowIndex < 0)
+					return;
+				rowIndex = e.RowIndex;
+				DetailData(rowIndex);
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -467,12 +494,14 @@ namespace Main
 			DetailData(rowIndex);
 			EnableControl(false);
 			tbSubjectID.Enabled = true;
+			isFunc = true;
 			ClearError();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
+			isFunc = true;
 			try
 			{
 				if (isAddnew)
@@ -486,6 +515,20 @@ namespace Main
 			}
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
+		}
+
+		private void cbFacultyID_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbFacultyID.SelectedValue != null)
+			{
+				CourseBLL.Instance.GetAllCourseByFaculty(cbCourseID, cbFacultyID.SelectedValue.ToString());
+				cbCourseID.SelectedIndex = -1;
+			}
+			else
+			{
+				CourseBLL.Instance.GetAllCourse(cbCourseID);
+				cbCourseID.SelectedIndex = -1;
+			}
 		}
 
 		#endregion

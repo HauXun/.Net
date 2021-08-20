@@ -15,6 +15,7 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
+		private bool isFunc = true;
 		private int rowIndex = 0;
 
 		public FrmManageCourse()
@@ -41,21 +42,38 @@ namespace Main
 
 		private void LoadData()
 		{
-			FacultyBLL.Instance.GetAllFaculty(cbFaculty);
-			RoleBLL.Instance.GetAllTrainingRole(cbTrainingRole);
-			CourseBLL.Instance.GetAllCourse(aDgvdata);
-			if (aDgvdata.Rows.Count > 0)
-				DetailData(0);
+			try
+			{
+				FacultyBLL.Instance.GetAllFaculty(cbFaculty);
+				RoleBLL.Instance.GetAllTrainingRole(cbTrainingRole);
+				CourseBLL.Instance.GetAllCourse(aDgvdata);
+				if (aDgvdata.Rows.Count > 0)
+					DetailData(0);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
 		}
 
 		private CourseOrder GetCourseOrderInfo()
 		{
-			CourseOrder course = new CourseOrder();
-			course.CourseID = tbCourseID.Text.Trim();
-			course.FacultyID = cbFaculty.SelectedValue.ToString();
-			course.TrainingID = cbTrainingRole.SelectedValue.ToString();
-			course.Description = tbDescription.Text.Trim();
-			return course;
+			try
+			{
+				CourseOrder course = new CourseOrder();
+				course.CourseID = tbCourseID.Text.Trim();
+				course.FacultyID = cbFaculty.SelectedValue.ToString();
+				course.TrainingID = cbTrainingRole.SelectedValue.ToString();
+				course.Description = tbDescription.Text.Trim();
+				return course;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+			return null;
 		}
 
 		private void DetailData(int rowIndex)
@@ -267,6 +285,7 @@ namespace Main
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
@@ -275,6 +294,7 @@ namespace Main
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			isAddnew = false;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 		}
@@ -358,10 +378,13 @@ namespace Main
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
+			if (isFunc)
+			{
+				if (e.RowIndex < 0)
+					return;
+				rowIndex = e.RowIndex;
+				DetailData(rowIndex);
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -384,6 +407,7 @@ namespace Main
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			isFunc = true;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
@@ -394,6 +418,7 @@ namespace Main
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
+			isFunc = true;
 			try
 			{
 				if (isAddnew)

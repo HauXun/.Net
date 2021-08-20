@@ -2,7 +2,6 @@
 using Entities;
 using System;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -16,6 +15,7 @@ namespace Main
 		// (varchar|nvarchar|int|datetime|float)(\(\d+\))*
 		private bool isAddnew = false;
 		private bool isEnable = false;
+		private bool isFunc = true;
 		private int rowIndex = 0;
 		private UserAccount account;
 
@@ -62,27 +62,44 @@ namespace Main
 
 		private void LoadData()
 		{
-			SubjectBLL.Instance.GetAllSubject(cbSubject);
-			ExamBLL.Instance.GetAllExam(cbExamID);
-			QuestionBLL.Instance.GetAllQuestion(aDgvdata);
-			if (aDgvdata.Rows.Count > 0)
-				DetailData(0);
+			try
+			{
+				SubjectBLL.Instance.GetAllSubject(cbSubject);
+				ExamBLL.Instance.GetAllExam(cbExamID);
+				QuestionBLL.Instance.GetAllQuestion(aDgvdata);
+				if (aDgvdata.Rows.Count > 0)
+					DetailData(0);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
 		}
 
 		private Question GetQuestionInfo()
 		{
-			Question question = new Question();
-			int.TryParse(tbQuestionID.Text.Trim(), out int userId);
-			question.QuestionID = userId;
-			question.SubjectID = cbSubject.SelectedValue.ToString();
-			question.ExamID = cbExamID.SelectedValue.ToString();
-			question.QContent = tbContent.Text.Trim();
-			question.OptionA = tbAnswerA.Text.Trim();
-			question.OptionB = tbAnswerB.Text.Trim();
-			question.OptionC = tbAnswerC.Text.Trim();
-			question.OptionD = tbAnswerD.Text.Trim();
-			question.Answer = tbAnswerCorrect.Text.Trim();
-			return question;
+			try
+			{
+				Question question = new Question();
+				int.TryParse(tbQuestionID.Text.Trim(), out int userId);
+				question.QuestionID = userId;
+				question.SubjectID = cbSubject.SelectedValue.ToString();
+				question.ExamID = cbExamID.SelectedValue.ToString();
+				question.QContent = tbContent.Text.Trim();
+				question.OptionA = tbAnswerA.Text.Trim();
+				question.OptionB = tbAnswerB.Text.Trim();
+				question.OptionC = tbAnswerC.Text.Trim();
+				question.OptionD = tbAnswerD.Text.Trim();
+				question.Answer = tbAnswerCorrect.Text.Trim();
+				return question;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ClearControl();
+			}
+			return null;
 		}
 
 		private void DetailData(int rowIndex)
@@ -146,6 +163,7 @@ namespace Main
 				isEnable = true;
 				return;
 			}
+
 
 			Question question = GetQuestionInfo();
 			question.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
@@ -342,6 +360,7 @@ namespace Main
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
@@ -351,6 +370,7 @@ namespace Main
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			isAddnew = false;
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 		}
@@ -432,10 +452,13 @@ namespace Main
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex < 0)
-				return;
-			rowIndex = e.RowIndex;
-			DetailData(rowIndex);
+			if (isFunc)
+			{
+				if (e.RowIndex < 0)
+					return;
+				rowIndex = e.RowIndex;
+				DetailData(rowIndex);
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -458,6 +481,7 @@ namespace Main
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			isFunc = true;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
@@ -468,6 +492,7 @@ namespace Main
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
+			isFunc = true;
 			try
 			{
 				if (isAddnew)
@@ -489,8 +514,7 @@ namespace Main
 			cbExamID.Text = string.Empty;
 			if (cbSubject.SelectedValue != null)
 			{
-				DataTable data = ExamBLL.Instance.GetExamByIDSubject(cbSubject.SelectedValue.ToString());
-				cbExamID.DataSource = data;
+				ExamBLL.Instance.GetExamByIDSubject(cbExamID, cbSubject.SelectedValue.ToString());
 			}
 		}
 

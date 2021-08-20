@@ -21,6 +21,24 @@ namespace DataAccessLayer
 
         private SubjectDAL() { }
 
+        public Subject GetSubjectByID(string subjectID)
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_SelectSubjectByID @SubjectID";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID });
+				foreach (DataRow item in data.Rows)
+				{
+                    return new Subject(item);
+				}
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
+        }
+
         public DataTable GetAllSubject()
         {
             try
@@ -35,32 +53,18 @@ namespace DataAccessLayer
             }
         }
 
-        public Subject GetSubjectByID(string subjectID)
-		{
-            try
-            {
-                string query = "EXEC dbo.USP_SelectSubjectByID @SubjectID";
-                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID });
-				foreach (DataRow row in data.Rows)
-				{
-                    return new Subject(row);
-				}
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            return null;
-        }
-
         public bool InsertSubject(Subject subject)
 		{
             try
             {
-                string query = "EXEC dbo.USP_InsertSubject @SubjectID , @SubjectName , @Description , @CreatedBy , @ModifiedBy";
+                string query = "EXEC dbo.USP_InsertSubject @SubjectID , @SubjectRole , @CourseID , @FacultyID , @SemesterID , @SubjectName , @Description , @CreatedBy , @ModifiedBy";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] 
                     { 
                         subject.SubjectID,
+                        subject.SubjectRole,
+                        subject.CourseID,
+                        subject.FacultyID,
+                        subject.SemesterID,
                         subject.SubjectName, 
                         subject.Description,
                         subject.CreatedBy,
@@ -78,10 +82,14 @@ namespace DataAccessLayer
 		{
             try
             {
-                string query = "EXEC dbo.USP_UpdateSubject @SubjectID , @SubjectName , @Description , @ModifiedBy";
+                string query = "EXEC dbo.USP_UpdateSubject @SubjectID , @SubjectRole , @CourseID , @FacultyID , @SemesterID , @SubjectName , @Description , @ModifiedBy";
                 int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
                     {
                         subject.SubjectID,
+                        subject.SubjectRole,
+                        subject.CourseID,
+                        subject.FacultyID,
+                        subject.SemesterID,
                         subject.SubjectName,
                         subject.Description,
                         subject.ModifiedBy
