@@ -106,16 +106,19 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				tbQuestionID.Text = row.Cells["QuestionID"].Value.ToString();
-				cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
-				cbExamID.SelectedValue = row.Cells["ExamID"].Value;
-				tbContent.Text = row.Cells["QContent"].Value.ToString();
-				tbAnswerA.Text = row.Cells["OptionA"].Value.ToString();
-				tbAnswerB.Text = row.Cells["OptionB"].Value.ToString();
-				tbAnswerC.Text = row.Cells["OptionC"].Value.ToString();
-				tbAnswerD.Text = row.Cells["OptionD"].Value.ToString();
-				tbAnswerCorrect.Text = row.Cells["Answer"].Value.ToString();
+				if (aDgvdata.Rows.Count > 0)
+				{
+					DataGridViewRow row = aDgvdata.Rows[rowIndex];
+					tbQuestionID.Text = row.Cells["QuestionID"].Value.ToString();
+					cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
+					cbExamID.SelectedValue = row.Cells["ExamID"].Value;
+					tbContent.Text = row.Cells["QContent"].Value.ToString();
+					tbAnswerA.Text = row.Cells["OptionA"].Value.ToString();
+					tbAnswerB.Text = row.Cells["OptionB"].Value.ToString();
+					tbAnswerC.Text = row.Cells["OptionC"].Value.ToString();
+					tbAnswerD.Text = row.Cells["OptionD"].Value.ToString();
+					tbAnswerCorrect.Text = row.Cells["Answer"].Value.ToString();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -211,7 +214,7 @@ namespace Main
 				if (control is ComboBox)
 				{
 					(control as ComboBox).SelectedIndex = -1;
-				}	
+				}
 			}
 		}
 
@@ -412,42 +415,20 @@ namespace Main
 
 		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
 		{
-			if (!aDgvdata.SortString.Contains("STT"))
-			{
-				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Sort = aDgvdata.SortString };
-				aDgvdata.DataSource = source.DataSource;
-			}
-			else
-			{
-				if (aDgvdata.SortString.Split(' ')[1].Equals("DESC"))
-				{
-					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Descending);
-				}
-				else if (aDgvdata.SortString.Split(' ')[1].Equals("ASC"))
-				{
-					this.aDgvdata.Sort(this.aDgvdata.Columns[1], ListSortDirection.Ascending);
-				}
-			}
+			BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Sort = aDgvdata.SortString };
+			aDgvdata.DataSource = source.DataSource;
 		}
 
 		private void aDgvdata_FilterStringChanged(object sender, EventArgs e)
 		{
-			if (!aDgvdata.FilterString.Contains("STT"))
-			{
-				BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Filter = aDgvdata.FilterString };
-				aDgvdata.DataSource = source.DataSource;
-			}
+			BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Filter = aDgvdata.FilterString };
+			aDgvdata.DataSource = source.DataSource;
 		}
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
 			aDgvdata.ClearFilter();
 			aDgvdata_FilterStringChanged(sender, e);
-		}
-
-		private void aDgvdata_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-		{
-			aDgvdata["STT", e.RowIndex].Value = (e.RowIndex < 9 ? "0" : string.Empty) + (e.RowIndex + 1);
 		}
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)

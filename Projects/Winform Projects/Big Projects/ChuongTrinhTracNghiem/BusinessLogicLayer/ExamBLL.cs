@@ -1,7 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
 using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -23,6 +22,11 @@ namespace BusinessLogicLayer
 
 		private ExamBLL() { }
 
+		public Exam GetExamByRequest(string subjectID, bool isMockTest)
+		{
+			return ExamDAL.Instance.GetExamByRequest(subjectID, isMockTest);
+		}
+
 		public void GetAllExam(DataGridView data)
 		{
 			data.AutoGenerateColumns = false;
@@ -34,13 +38,6 @@ namespace BusinessLogicLayer
 			DataTable data = ExamDAL.Instance.GetAllExam();
 			if (data.Rows.Count > 0)
 			{
-				if (box.Name == "cbExamIDFilter")
-				{
-					DataRow row = data.NewRow();
-					row["ExamID"] = "Tất cả";
-					data.Rows.InsertAt(row, 0);
-					data = data.AsEnumerable().GroupBy(x => x.Field<string>("ExamID")).Select(y => y.First()).CopyToDataTable();
-				}
 				box.DisplayMember = "ExamID";
 				box.ValueMember = "ExamID";
 				box.DataSource = data;

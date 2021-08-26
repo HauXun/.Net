@@ -1,8 +1,6 @@
 ﻿using Entities;
 using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace Main
@@ -133,7 +131,7 @@ namespace Main
 			try
 			{
 				FrmQuizOptions frm = new FrmQuizOptions(Account);
-				frm.isMockTest = false;
+				frm.isMockTest = true;
 				frm.ShowDialog();
 			}
 			catch
@@ -149,7 +147,6 @@ namespace Main
 			try
 			{
 				FrmQuizOptions frm = new FrmQuizOptions(Account);
-				frm.isMockTest = true;
 				frm.ShowDialog();
 			}
 			catch

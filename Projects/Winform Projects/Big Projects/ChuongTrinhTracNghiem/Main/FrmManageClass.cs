@@ -84,11 +84,14 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				tbClassID.Text = row.Cells["ClassID"].Value.ToString();
-				cbCourseID.SelectedValue = row.Cells["CourseID"].Value;
-				cbFaculty.SelectedValue = row.Cells["FacultyID"].Value;
-				tbDescription.Text = row.Cells["Description"].Value.ToString();
+				if (aDgvdata.Rows.Count > 0)
+				{
+					DataGridViewRow row = aDgvdata.Rows[rowIndex];
+					tbClassID.Text = row.Cells["ClassID"].Value.ToString();
+					cbCourseID.SelectedValue = row.Cells["CourseID"].Value;
+					cbFaculty.SelectedValue = row.Cells["FacultyID"].Value;
+					tbDescription.Text = row.Cells["Description"].Value.ToString();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -292,7 +295,7 @@ namespace Main
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			isAddnew = true;
-			isFunc = false;	
+			isFunc = false;
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
@@ -415,13 +418,13 @@ namespace Main
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			isFunc = true;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
 			ClearError();
 			tbClassID.Enabled = true;
-			isFunc = true;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
@@ -441,6 +444,19 @@ namespace Main
 			}
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
+		}
+
+		private void cbFaculty_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbFaculty.SelectedValue != null)
+			{
+				CourseBLL.Instance.GetAllCourseByFaculty(cbCourseID, cbFaculty.SelectedValue.ToString());
+			}
+			else
+			{
+				CourseBLL.Instance.GetAllCourse(cbCourseID);
+			}
+			cbCourseID.SelectedIndex = -1;
 		}
 
 		#endregion

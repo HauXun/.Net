@@ -22,6 +22,22 @@ namespace BusinessLogicLayer
 
         private SubjectBLL() { }
 
+        public void GetSubjectFromEduProg(ComboBox box, int userID)
+        {
+            DataTable data = SubjectDAL.Instance.GetSubjectFromEduProg(userID);
+            if (data.Rows.Count > 0)
+            {
+                box.DisplayMember = "SubjectName";
+                box.ValueMember = "SubjectID";
+                box.DataSource = data;
+            }
+        }
+
+        public Subject GetSubjectByID(string subjectID)
+        {
+            return SubjectDAL.Instance.GetSubjectByID(subjectID);
+        }
+
         public void GetAllSubject(DataGridView data)
         {
             data.AutoGenerateColumns = false;
@@ -33,13 +49,6 @@ namespace BusinessLogicLayer
             DataTable data = SubjectDAL.Instance.GetAllSubject();
             if (data.Rows.Count > 0)
             {
-                if (box.Name == "cbSubjectFilter")
-                {
-                    DataRow row = data.NewRow();
-                    row["SubjectName"] = "Tất cả";
-                    row["SubjectID"] = "ALL";
-                    data.Rows.InsertAt(row, 0);
-                }
                 box.DisplayMember = "SubjectName";
                 box.ValueMember = "SubjectID";
                 box.DataSource = data;

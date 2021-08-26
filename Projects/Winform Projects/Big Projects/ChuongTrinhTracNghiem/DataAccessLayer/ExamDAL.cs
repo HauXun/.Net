@@ -36,6 +36,24 @@ namespace DataAccessLayer
 			}
 		}
 
+		public Exam GetExamByRequest(string subjectID, bool isMockTest)
+		{
+			try
+			{
+				string query = "EXEC dbo.USP_SelectExamByRequest @SubjectID , @IsMockTest";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { subjectID, isMockTest });
+				foreach (DataRow row in data.Rows)
+				{
+					return new Exam(row);
+				}
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+			return null;
+		}
+
 		public DataTable GetExamByIDSubject(string subjectID)
 		{
 			try
@@ -86,9 +104,9 @@ namespace DataAccessLayer
 				switch (se.Number)
 				{
 					case 2627:
-						throw new Exception($"Khóa trùng lặp, mã đề {exam.ExamID} và môn thi {SubjectDAL.Instance.GetSubjectByID(exam.SubjectID).SubjectName.Trim()} đã tồn tại trước đó. Không thể thực hiện thao tác này!".Trim());
+						throw new Exception($"Khóa trùng lặp, mã đề {exam.ExamID} và môn thi {SubjectDAL.Instance.GetSubjectByID(exam.SubjectID).SubjectName} đã tồn tại trước đó, mã đề và môn thi không thể mang các khóa trùng nhau. Không thể thực hiện thao tác này!");
 					default:
-						throw;
+						throw se;
 				}
 			}
 			catch (Exception ex)
@@ -118,9 +136,9 @@ namespace DataAccessLayer
 				switch (se.Number)
 				{
 					case 2627:
-						throw new Exception($"Khóa trùng lặp, mã đề {exam.ExamID} và môn thi {SubjectDAL.Instance.GetSubjectByID(exam.SubjectID).SubjectName.Trim()} đã tồn tại trước đó. Không thể thực hiện thao tác này!".Trim());
+						throw new Exception($"Khóa trùng lặp, mã đề {exam.ExamID} và môn thi {SubjectDAL.Instance.GetSubjectByID(exam.SubjectID).SubjectName} đã tồn tại trước đó, mã đề và môn thi không thể mang các khóa trùng nhau. Không thể thực hiện thao tác này!");
 					default:
-						throw;
+						throw se;
 				}
 			}
 			catch (Exception ex)

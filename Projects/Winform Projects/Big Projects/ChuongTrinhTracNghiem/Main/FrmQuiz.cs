@@ -86,29 +86,16 @@ namespace Main
 
 		private void FrmQuiz_Load(object sender, EventArgs e)
 		{
-			tbDisplayname.Text = Account.FullName;
-			tbQuestionCount.Text = QuestionCount;
-			tbSubject.Text = Subject;
-			tbDoB.Text = Account.Birthday.ToString("dd/MM/yyyy");
-			lbTime.Text = TimeQuiz;
+			timer.Start();
 		}
 
-		private void lbFlag_MouseEnter(object sender, EventArgs e)
+		private void timer_Tick(object sender, EventArgs e)
 		{
-			lbFlag.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Underline);
-		}
-
-		private void lbFlag_MouseLeave(object sender, EventArgs e)
-		{
-			lbFlag.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Regular);
-		}
-
-		private void lbTime_TextChanged(object sender, EventArgs e)
-		{
-			lbTime.Padding = new Padding(2);
-			lbTime.TextAlign = ContentAlignment.MiddleCenter;
-			//lbTime.Left = (gbTime.ClientSize.Width - lbTime.Width) / 2;
-			//lbTime.Top = (gbTime.ClientSize.Height - lbTime.Height) / 2;
+			cPBCountDownTime.Invoke((MethodInvoker)delegate
+			{
+				cPBCountDownTime.Text = DateTime.Now.ToString("hh:mm:ss");
+				cPBCountDownTime.SubscriptText = DateTime.Now.ToString("tt");
+			});
 		}
 	}
 }

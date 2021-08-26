@@ -80,11 +80,14 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				tbCourseID.Text = row.Cells["CourseID"].Value.ToString();
-				cbFaculty.SelectedValue = row.Cells["FacultyID"].Value;
-				cbTrainingRole.SelectedValue = row.Cells["TrainingID"].Value;
-				tbDescription.Text = row.Cells["Description"].Value.ToString();
+				if (aDgvdata.Rows.Count > 0)
+				{
+					DataGridViewRow row = aDgvdata.Rows[rowIndex];
+					tbCourseID.Text = row.Cells["CourseID"].Value.ToString();
+					cbFaculty.SelectedValue = row.Cells["FacultyID"].Value;
+					cbTrainingRole.SelectedValue = row.Cells["TrainingID"].Value;
+					tbDescription.Text = row.Cells["Description"].Value.ToString();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -302,6 +305,7 @@ namespace Main
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			string subjectID = tbCourseID.Text.Trim();
+			string facultyID = cbFaculty.SelectedValue.ToString();
 			if (!IsValidCourseOrder())
 				return;
 
@@ -315,7 +319,7 @@ namespace Main
 			{
 				try
 				{
-					if (CourseBLL.Instance.DeleteCourse(subjectID))
+					if (CourseBLL.Instance.DeleteCourse(subjectID, facultyID))
 					{
 						MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 						LoadData();

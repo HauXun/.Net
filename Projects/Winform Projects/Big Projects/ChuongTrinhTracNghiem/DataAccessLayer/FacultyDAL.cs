@@ -1,6 +1,7 @@
 ﻿using Entities;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
@@ -20,6 +21,24 @@ namespace DataAccessLayer
         }
 
         private FacultyDAL() { }
+
+        public Faculty GetFacultyByID(string facultyID)
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_SelectFacultyByID @FacultyID";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { facultyID });
+				foreach (DataRow row in data.Rows)
+				{
+                    return new Faculty(row);
+				}
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
+        }
 
         public DataTable GetAllFaculty()
         {
@@ -49,6 +68,16 @@ namespace DataAccessLayer
                     });
                 return isAccess > 0;
             }
+            catch (SqlException se)
+            {
+                switch (se.Number)
+                {
+                    case 2627:
+                        throw new Exception($"Khóa trùng lặp, mã Khoa {faculty.FacultyID} đã tồn tại trước đó, các Khoa không thể mang các khoa trùng nhau. Không thể thực hiện thao tác này!");
+                    default:
+                        throw se;
+                }
+            }
             catch (Exception e)
             {
                 throw e;
@@ -68,6 +97,16 @@ namespace DataAccessLayer
                         faculty.Description
                     });
                 return isAccess > 0;
+            }
+            catch (SqlException se)
+            {
+                switch (se.Number)
+                {
+                    case 2627:
+                        throw new Exception($"Khóa trùng lặp, mã Khoa {faculty.FacultyID} đã tồn tại trước đó, các Khoa không thể mang các khoa trùng nhau. Không thể thực hiện thao tác này!");
+                    default:
+                        throw se;
+                }
             }
             catch (Exception e)
             {

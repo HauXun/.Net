@@ -54,7 +54,7 @@ namespace Main
 				RoleBLL.Instance.GetAllRoleUser(cbFilter);
 				CourseBLL.Instance.GetAllCourse(cbCourseID);
 				cbCourseID.SelectedIndex = -1;
-				UserClassBLL.Instance.GetAllClass(cbClassID);
+				//UserClassBLL.Instance.GetAllClass(cbClassID);
 				AccountBLL.Instance.GetAllAccount(aDgvdata);
 				if (aDgvdata.Rows.Count > 0)
 					DetailData(0);
@@ -94,17 +94,21 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				userID = int.Parse(row.Cells["UserID"].Value.ToString());
-				cbRole.SelectedValue = row.Cells["UserRole"].Value;
-				cbClassID.SelectedValue = row.Cells["ClassID"].Value;
-				tbAccount.Text = row.Cells["Username"].Value.ToString();
-				tbFullName.Text = row.Cells["FullName"].Value.ToString();
-				tbPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
-				tbAddress.Text = row.Cells["Address"].Value.ToString();
-				tbEmail.Text = row.Cells["Email"].Value.ToString();
-				dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
-				user = row.Cells["Username"].Value.ToString();
+				if (aDgvdata.Rows.Count > 0)
+				{
+					DataGridViewRow row = aDgvdata.Rows[rowIndex];
+					userID = int.Parse(row.Cells["UserID"].Value.ToString());
+					cbRole.SelectedValue = row.Cells["UserRole"].Value;
+					cbCourseID.SelectedIndex = -1;
+					cbClassID.SelectedValue = row.Cells["ClassID"].Value;
+					tbAccount.Text = row.Cells["Username"].Value.ToString();
+					tbFullName.Text = row.Cells["FullName"].Value.ToString();
+					tbPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
+					tbAddress.Text = row.Cells["Address"].Value.ToString();
+					tbEmail.Text = row.Cells["Email"].Value.ToString();
+					dtpDob.Text = row.Cells["Birthday"].FormattedValue.ToString();
+					user = row.Cells["Username"].Value.ToString();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -528,7 +532,6 @@ namespace Main
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
 			isFunc = true;
-			cbCourseID.SelectedIndex = -1;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
@@ -540,11 +543,17 @@ namespace Main
 		{
 			isEnable = false;
 			isFunc = true;
-			if (isAddnew)
-				AddUser();
-			else
-				UpdateAccount();
-			cbCourseID.SelectedIndex = -1;
+			try
+			{
+				if (isAddnew)
+					AddUser();
+				else
+					UpdateAccount();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
 		}
@@ -572,13 +581,13 @@ namespace Main
 		{
 			if (cbCourseID.SelectedValue != null)
 			{
-				cbClassID.Text = string.Empty;
 				UserClassBLL.Instance.GetAllClassByCourseID(cbClassID, cbCourseID.SelectedValue.ToString());
 			}
 			else
 			{
 				UserClassBLL.Instance.GetAllClass(cbClassID);
 			}
+			cbClassID.SelectedIndex = -1;
 		}
 
 		private void btnResetPassword_Click(object sender, EventArgs e)

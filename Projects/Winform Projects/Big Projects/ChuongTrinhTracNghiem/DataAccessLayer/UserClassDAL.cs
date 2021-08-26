@@ -1,6 +1,7 @@
 ﻿using System;
 using Entities;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
@@ -68,6 +69,16 @@ namespace DataAccessLayer
 					});
 				return isAccess > 0;
 			}
+			catch (SqlException se)
+			{
+				switch (se.Number)
+				{
+					case 2627:
+						throw new Exception($"Khóa trùng lặp, mã lớp {userClass.ClassID} đã tồn tại trước đó, các lớp không thể mang các khoa trùng nhau. Không thể thực hiện thao tác này!");
+					default:
+						throw se;
+				}
+			}
 			catch (Exception e)
 			{
 				throw e;
@@ -89,6 +100,16 @@ namespace DataAccessLayer
 					});
 				return isAccess > 0;
 			}
+			catch (SqlException se)
+			{
+				switch (se.Number)
+				{
+					case 2627:
+						throw new Exception($"Khóa trùng lặp, mã lớp {userClass.ClassID} đã tồn tại trước đó, các lớp không thể mang các khoa trùng nhau. Không thể thực hiện thao tác này!");
+					default:
+						throw se;
+				}
+			}
 			catch (Exception e)
 			{
 				throw e;
@@ -99,9 +120,23 @@ namespace DataAccessLayer
 		{
 			try
 			{
+				if (DataProvider.Instance.ExcuteScalar("EXEC dbo.USP_IsExistContraintClass @ClassID", new object[] { classID }) != null)
+				{
+					throw new Exception($"Không thể xóa Lớp {classID} vì tồn tại dữ liệu ràng buộc liên quan!");
+				}	
 				string query = "EXEC dbo.USP_DeleteClass @ClassID";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { classID });
 				return isAccess > 0;
+			}
+			catch (SqlException se)
+			{
+				switch (se.Number)
+				{
+					case 547:
+						throw new Exception($"Không thể xóa Lớp {classID} vì tồn tại dữ liệu ràng buộc liên quan!");
+					default:
+						throw se;
+				}
 			}
 			catch (Exception e)
 			{

@@ -1,6 +1,7 @@
 ﻿using Entities;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
@@ -20,6 +21,20 @@ namespace DataAccessLayer
         }
 
         private SubjectDAL() { }
+
+        public DataTable GetSubjectFromEduProg(int userID)
+		{
+            try
+            {
+                string query = "EXEC dbo.USP_SelectSubjectFromEduProg @UserID";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { userID });
+                return data;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public Subject GetSubjectByID(string subjectID)
 		{
@@ -72,6 +87,16 @@ namespace DataAccessLayer
                     });
                 return isAccess > 0;
             }
+            catch (SqlException se)
+            {
+                switch (se.Number)
+                {
+                    case 2627:
+                        throw new Exception($"Khóa trùng lặp, mã môn thi {subject.SubjectID} đã tồn tại trước đó, các môn thi không thể mang các khoa trùng nhau. Không thể thực hiện thao tác này!");
+                    default:
+                        throw se;
+                }
+            }
             catch (Exception e)
             {
                 throw e;
@@ -95,6 +120,16 @@ namespace DataAccessLayer
                         subject.ModifiedBy
                     });
                 return isAccess > 0;
+            }
+            catch (SqlException se)
+            {
+                switch (se.Number)
+                {
+                    case 2627:
+                        throw new Exception($"Khóa trùng lặp, mã môn thi {subject.SubjectID} đã tồn tại trước đó, các môn thi không thể mang các khoa trùng nhau. Không thể thực hiện thao tác này!");
+                    default:
+                        throw se;
+                }
             }
             catch (Exception e)
             {

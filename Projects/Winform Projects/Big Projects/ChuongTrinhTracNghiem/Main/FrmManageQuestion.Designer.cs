@@ -34,20 +34,9 @@ namespace Main
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnClearFilter = new System.Windows.Forms.Button();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.OptionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.tbSearch = new System.Windows.Forms.TextBox();
@@ -77,6 +66,15 @@ namespace Main
 			this.lbQuestionID = new System.Windows.Forms.Label();
 			this.tbQuestionID = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.OptionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.gbControls.SuspendLayout();
@@ -129,7 +127,6 @@ namespace Main
 			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
             this.QuestionID,
             this.ExamID,
             this.SubjectID,
@@ -150,121 +147,6 @@ namespace Main
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
 			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
 			this.aDgvdata.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.aDgvdata_RowEnter);
-			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 50.12531F;
-			this.STT.HeaderText = "STT";
-			this.STT.MinimumWidth = 22;
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QuestionID
-			// 
-			this.QuestionID.DataPropertyName = "QuestionID";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.QuestionID.DefaultCellStyle = dataGridViewCellStyle3;
-			this.QuestionID.FillWeight = 88.00108F;
-			this.QuestionID.HeaderText = "Mã câu hỏi";
-			this.QuestionID.MinimumWidth = 22;
-			this.QuestionID.Name = "QuestionID";
-			this.QuestionID.ReadOnly = true;
-			this.QuestionID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamID
-			// 
-			this.ExamID.DataPropertyName = "ExamID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.ExamID.FillWeight = 94.60631F;
-			this.ExamID.HeaderText = "Mã đề";
-			this.ExamID.MinimumWidth = 22;
-			this.ExamID.Name = "ExamID";
-			this.ExamID.ReadOnly = true;
-			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.Format = "d";
-			dataGridViewCellStyle5.NullValue = "dd/MM/yyyy";
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.SubjectID.FillWeight = 96.78584F;
-			this.SubjectID.HeaderText = "Mã môn thi";
-			this.SubjectID.MinimumWidth = 22;
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QContent
-			// 
-			this.QContent.DataPropertyName = "QContent";
-			this.QContent.FillWeight = 171.2383F;
-			this.QContent.HeaderText = "Nội dung câu hỏi";
-			this.QContent.MinimumWidth = 22;
-			this.QContent.Name = "QContent";
-			this.QContent.ReadOnly = true;
-			this.QContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionA
-			// 
-			this.OptionA.DataPropertyName = "OptionA";
-			this.OptionA.FillWeight = 84.15929F;
-			this.OptionA.HeaderText = "Đáp án A";
-			this.OptionA.MinimumWidth = 22;
-			this.OptionA.Name = "OptionA";
-			this.OptionA.ReadOnly = true;
-			this.OptionA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionB
-			// 
-			this.OptionB.DataPropertyName = "OptionB";
-			this.OptionB.FillWeight = 86.47492F;
-			this.OptionB.HeaderText = "Đáp án B";
-			this.OptionB.MinimumWidth = 22;
-			this.OptionB.Name = "OptionB";
-			this.OptionB.ReadOnly = true;
-			this.OptionB.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionC
-			// 
-			this.OptionC.DataPropertyName = "OptionC";
-			this.OptionC.FillWeight = 89.49125F;
-			this.OptionC.HeaderText = "Đáp án C";
-			this.OptionC.MinimumWidth = 22;
-			this.OptionC.Name = "OptionC";
-			this.OptionC.ReadOnly = true;
-			this.OptionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionD
-			// 
-			this.OptionD.DataPropertyName = "OptionD";
-			this.OptionD.FillWeight = 94.93061F;
-			this.OptionD.HeaderText = "Đáp án D";
-			this.OptionD.MinimumWidth = 22;
-			this.OptionD.Name = "OptionD";
-			this.OptionD.ReadOnly = true;
-			this.OptionD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Answer
-			// 
-			this.Answer.DataPropertyName = "Answer";
-			this.Answer.FillWeight = 144.187F;
-			this.Answer.HeaderText = "Đáp án đúng";
-			this.Answer.MinimumWidth = 22;
-			this.Answer.Name = "Answer";
-			this.Answer.ReadOnly = true;
-			this.Answer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// btnCancle
 			// 
@@ -543,6 +425,107 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
+			// QuestionID
+			// 
+			this.QuestionID.DataPropertyName = "QuestionID";
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.QuestionID.DefaultCellStyle = dataGridViewCellStyle2;
+			this.QuestionID.FillWeight = 88.00108F;
+			this.QuestionID.HeaderText = "Mã câu hỏi";
+			this.QuestionID.MinimumWidth = 22;
+			this.QuestionID.Name = "QuestionID";
+			this.QuestionID.ReadOnly = true;
+			this.QuestionID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.ExamID.DefaultCellStyle = dataGridViewCellStyle3;
+			this.ExamID.FillWeight = 94.60631F;
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.MinimumWidth = 22;
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
+			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.Format = "d";
+			dataGridViewCellStyle4.NullValue = "dd/MM/yyyy";
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.SubjectID.FillWeight = 96.78584F;
+			this.SubjectID.HeaderText = "Mã môn thi";
+			this.SubjectID.MinimumWidth = 22;
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QContent
+			// 
+			this.QContent.DataPropertyName = "QContent";
+			this.QContent.FillWeight = 171.2383F;
+			this.QContent.HeaderText = "Nội dung câu hỏi";
+			this.QContent.MinimumWidth = 22;
+			this.QContent.Name = "QContent";
+			this.QContent.ReadOnly = true;
+			this.QContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionA
+			// 
+			this.OptionA.DataPropertyName = "OptionA";
+			this.OptionA.FillWeight = 84.15929F;
+			this.OptionA.HeaderText = "Đáp án A";
+			this.OptionA.MinimumWidth = 22;
+			this.OptionA.Name = "OptionA";
+			this.OptionA.ReadOnly = true;
+			this.OptionA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionB
+			// 
+			this.OptionB.DataPropertyName = "OptionB";
+			this.OptionB.FillWeight = 86.47492F;
+			this.OptionB.HeaderText = "Đáp án B";
+			this.OptionB.MinimumWidth = 22;
+			this.OptionB.Name = "OptionB";
+			this.OptionB.ReadOnly = true;
+			this.OptionB.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionC
+			// 
+			this.OptionC.DataPropertyName = "OptionC";
+			this.OptionC.FillWeight = 89.49125F;
+			this.OptionC.HeaderText = "Đáp án C";
+			this.OptionC.MinimumWidth = 22;
+			this.OptionC.Name = "OptionC";
+			this.OptionC.ReadOnly = true;
+			this.OptionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionD
+			// 
+			this.OptionD.DataPropertyName = "OptionD";
+			this.OptionD.FillWeight = 94.93061F;
+			this.OptionD.HeaderText = "Đáp án D";
+			this.OptionD.MinimumWidth = 22;
+			this.OptionD.Name = "OptionD";
+			this.OptionD.ReadOnly = true;
+			this.OptionD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Answer
+			// 
+			this.Answer.DataPropertyName = "Answer";
+			this.Answer.FillWeight = 144.187F;
+			this.Answer.HeaderText = "Đáp án đúng";
+			this.Answer.MinimumWidth = 22;
+			this.Answer.Name = "Answer";
+			this.Answer.ReadOnly = true;
+			this.Answer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
 			// FrmManageQuestion
 			// 
 			this.AcceptButton = this.btnSearch;
@@ -599,7 +582,7 @@ namespace Main
 		private System.Windows.Forms.ComboBox cbExamID;
 		private System.Windows.Forms.Label label1;
 		private ADGV.AdvancedDataGridView aDgvdata;
-		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+		private System.Windows.Forms.Button btnClearFilter;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QuestionID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExamID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
@@ -609,6 +592,5 @@ namespace Main
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionC;
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
-		private System.Windows.Forms.Button btnClearFilter;
 	}
 }

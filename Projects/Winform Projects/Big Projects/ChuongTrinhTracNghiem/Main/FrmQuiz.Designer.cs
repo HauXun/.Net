@@ -32,13 +32,10 @@ namespace Main
 			this.components = new System.ComponentModel.Container();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.gbTime = new System.Windows.Forms.GroupBox();
-			this.lbTime = new System.Windows.Forms.Label();
-			this.lbRemainTime = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.btnEnd = new System.Windows.Forms.Button();
 			this.btnReset = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.lbFlag = new System.Windows.Forms.Label();
 			this.btnLastQuestion = new System.Windows.Forms.Button();
 			this.btnNextQuestion = new System.Windows.Forms.Button();
 			this.btnPreviousQuestion = new System.Windows.Forms.Button();
@@ -55,15 +52,9 @@ namespace Main
 			this.rtbQuestionContent = new System.Windows.Forms.RichTextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.toolTipTicked = new System.Windows.Forms.ToolTip(this.components);
-			this.lbSubject = new System.Windows.Forms.Label();
-			this.tbDisplayname = new System.Windows.Forms.TextBox();
-			this.tbQuestionCount = new System.Windows.Forms.TextBox();
-			this.lbDisplayname = new System.Windows.Forms.Label();
-			this.lbDoB = new System.Windows.Forms.Label();
-			this.lbQuestionCount = new System.Windows.Forms.Label();
-			this.tbSubject = new System.Windows.Forms.TextBox();
-			this.tbDoB = new System.Windows.Forms.TextBox();
-			this.gbUserInfo = new System.Windows.Forms.GroupBox();
+			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.cPBCountDownTime = new CircularProgressBar.CircularProgressBar();
+			this.timer = new System.Windows.Forms.Timer(this.components);
 			this.pMain.SuspendLayout();
 			this.gbTime.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -72,7 +63,6 @@ namespace Main
 			this.gbProgressQuestion.SuspendLayout();
 			this.gbQuestionInfo.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
-			this.gbUserInfo.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pMain
@@ -83,7 +73,6 @@ namespace Main
 			this.pMain.Controls.Add(this.panel1);
 			this.pMain.Controls.Add(this.gbAnswer);
 			this.pMain.Controls.Add(this.gbProgressQuestion);
-			this.pMain.Controls.Add(this.gbUserInfo);
 			this.pMain.Controls.Add(this.gbQuestionInfo);
 			this.pMain.Location = new System.Drawing.Point(0, 0);
 			this.pMain.Name = "pMain";
@@ -95,39 +84,13 @@ namespace Main
 			this.gbTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbTime.BackColor = System.Drawing.Color.White;
-			this.gbTime.Controls.Add(this.lbTime);
-			this.gbTime.Controls.Add(this.lbRemainTime);
-			this.gbTime.Location = new System.Drawing.Point(707, 12);
+			this.gbTime.Controls.Add(this.cPBCountDownTime);
+			this.gbTime.Location = new System.Drawing.Point(704, 329);
 			this.gbTime.Name = "gbTime";
-			this.gbTime.Size = new System.Drawing.Size(342, 75);
+			this.gbTime.Size = new System.Drawing.Size(348, 225);
 			this.gbTime.TabIndex = 7;
 			this.gbTime.TabStop = false;
 			this.gbTime.Text = "Thời gian";
-			// 
-			// lbTime
-			// 
-			this.lbTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.lbTime.AutoSize = true;
-			this.lbTime.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTime.ForeColor = System.Drawing.Color.Red;
-			this.lbTime.Location = new System.Drawing.Point(137, 41);
-			this.lbTime.Name = "lbTime";
-			this.lbTime.Size = new System.Drawing.Size(68, 26);
-			this.lbTime.TabIndex = 1;
-			this.lbTime.Text = "00:00";
-			this.lbTime.TextChanged += new System.EventHandler(this.lbTime_TextChanged);
-			// 
-			// lbRemainTime
-			// 
-			this.lbRemainTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.lbRemainTime.AutoSize = true;
-			this.lbRemainTime.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbRemainTime.ForeColor = System.Drawing.Color.MediumBlue;
-			this.lbRemainTime.Location = new System.Drawing.Point(97, 16);
-			this.lbRemainTime.Name = "lbRemainTime";
-			this.lbRemainTime.Size = new System.Drawing.Size(148, 22);
-			this.lbRemainTime.TabIndex = 0;
-			this.lbRemainTime.Text = "Thời gian còn lại";
 			// 
 			// panel2
 			// 
@@ -164,7 +127,7 @@ namespace Main
 			// 
 			this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.panel1.BackColor = System.Drawing.Color.White;
-			this.panel1.Controls.Add(this.lbFlag);
+			this.panel1.Controls.Add(this.linkLabel1);
 			this.panel1.Controls.Add(this.btnLastQuestion);
 			this.panel1.Controls.Add(this.btnNextQuestion);
 			this.panel1.Controls.Add(this.btnPreviousQuestion);
@@ -173,21 +136,6 @@ namespace Main
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(683, 29);
 			this.panel1.TabIndex = 2;
-			// 
-			// lbFlag
-			// 
-			this.lbFlag.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.lbFlag.AutoSize = true;
-			this.lbFlag.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.lbFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbFlag.Location = new System.Drawing.Point(545, 8);
-			this.lbFlag.Name = "lbFlag";
-			this.lbFlag.Size = new System.Drawing.Size(54, 13);
-			this.lbFlag.TabIndex = 3;
-			this.lbFlag.Text = "Đánh dấu";
-			this.toolTipTicked.SetToolTip(this.lbFlag, "Tích để đánh dấu câu hỏi hiện tại!");
-			this.lbFlag.MouseEnter += new System.EventHandler(this.lbFlag_MouseEnter);
-			this.lbFlag.MouseLeave += new System.EventHandler(this.lbFlag_MouseLeave);
 			// 
 			// btnLastQuestion
 			// 
@@ -245,9 +193,10 @@ namespace Main
 			this.gbAnswer.Controls.Add(this.rbAnswerA);
 			this.gbAnswer.Location = new System.Drawing.Point(12, 329);
 			this.gbAnswer.Name = "gbAnswer";
-			this.gbAnswer.Size = new System.Drawing.Size(683, 225);
+			this.gbAnswer.Size = new System.Drawing.Size(686, 225);
 			this.gbAnswer.TabIndex = 0;
 			this.gbAnswer.TabStop = false;
+			this.gbAnswer.Text = "Trả lời";
 			// 
 			// rbAnswerD
 			// 
@@ -303,9 +252,9 @@ namespace Main
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbProgressQuestion.BackColor = System.Drawing.Color.White;
 			this.gbProgressQuestion.Controls.Add(this.lvData);
-			this.gbProgressQuestion.Location = new System.Drawing.Point(704, 93);
+			this.gbProgressQuestion.Location = new System.Drawing.Point(704, 12);
 			this.gbProgressQuestion.Name = "gbProgressQuestion";
-			this.gbProgressQuestion.Size = new System.Drawing.Size(348, 461);
+			this.gbProgressQuestion.Size = new System.Drawing.Size(348, 311);
 			this.gbProgressQuestion.TabIndex = 1;
 			this.gbProgressQuestion.TabStop = false;
 			this.gbProgressQuestion.Text = "Tiến độ câu hỏi";
@@ -317,7 +266,7 @@ namespace Main
 			this.lvData.HideSelection = false;
 			this.lvData.Location = new System.Drawing.Point(3, 16);
 			this.lvData.Name = "lvData";
-			this.lvData.Size = new System.Drawing.Size(342, 442);
+			this.lvData.Size = new System.Drawing.Size(342, 292);
 			this.lvData.TabIndex = 0;
 			this.lvData.UseCompatibleStateImageBehavior = false;
 			// 
@@ -329,9 +278,9 @@ namespace Main
 			this.gbQuestionInfo.BackColor = System.Drawing.Color.White;
 			this.gbQuestionInfo.Controls.Add(this.lbNumberQuestion);
 			this.gbQuestionInfo.Controls.Add(this.rtbQuestionContent);
-			this.gbQuestionInfo.Location = new System.Drawing.Point(12, 93);
+			this.gbQuestionInfo.Location = new System.Drawing.Point(12, 12);
 			this.gbQuestionInfo.Name = "gbQuestionInfo";
-			this.gbQuestionInfo.Size = new System.Drawing.Size(686, 230);
+			this.gbQuestionInfo.Size = new System.Drawing.Size(686, 311);
 			this.gbQuestionInfo.TabIndex = 1;
 			this.gbQuestionInfo.TabStop = false;
 			this.gbQuestionInfo.Text = "Thông tin câu hỏi";
@@ -353,7 +302,7 @@ namespace Main
 			this.rtbQuestionContent.Location = new System.Drawing.Point(6, 42);
 			this.rtbQuestionContent.Name = "rtbQuestionContent";
 			this.rtbQuestionContent.ReadOnly = true;
-			this.rtbQuestionContent.Size = new System.Drawing.Size(674, 156);
+			this.rtbQuestionContent.Size = new System.Drawing.Size(674, 263);
 			this.rtbQuestionContent.TabIndex = 46;
 			this.rtbQuestionContent.TabStop = false;
 			this.rtbQuestionContent.Text = "Nội dung câu hỏi";
@@ -369,108 +318,55 @@ namespace Main
 			this.toolTipTicked.ReshowDelay = 100;
 			this.toolTipTicked.ToolTipTitle = "Nhắc nhở!";
 			// 
-			// lbSubject
+			// linkLabel1
 			// 
-			this.lbSubject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.lbSubject.AutoSize = true;
-			this.lbSubject.Location = new System.Drawing.Point(41, 49);
-			this.lbSubject.Name = "lbSubject";
-			this.lbSubject.Size = new System.Drawing.Size(45, 13);
-			this.lbSubject.TabIndex = 6;
-			this.lbSubject.Text = "Môn thi:";
+			this.linkLabel1.AutoSize = true;
+			this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkLabel1.LinkColor = System.Drawing.Color.Red;
+			this.linkLabel1.Location = new System.Drawing.Point(544, 8);
+			this.linkLabel1.Name = "linkLabel1";
+			this.linkLabel1.Size = new System.Drawing.Size(54, 13);
+			this.linkLabel1.TabIndex = 5;
+			this.linkLabel1.TabStop = true;
+			this.linkLabel1.Text = "Đánh dấu";
 			// 
-			// tbDisplayname
+			// cPBCountDownTime
 			// 
-			this.tbDisplayname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbDisplayname.BackColor = System.Drawing.Color.White;
-			this.tbDisplayname.Location = new System.Drawing.Point(104, 17);
-			this.tbDisplayname.Name = "tbDisplayname";
-			this.tbDisplayname.ReadOnly = true;
-			this.tbDisplayname.Size = new System.Drawing.Size(159, 20);
-			this.tbDisplayname.TabIndex = 8;
-			this.tbDisplayname.TabStop = false;
+			this.cPBCountDownTime.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+			this.cPBCountDownTime.AnimationSpeed = 500;
+			this.cPBCountDownTime.BackColor = System.Drawing.Color.Transparent;
+			this.cPBCountDownTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+			this.cPBCountDownTime.ForeColor = System.Drawing.Color.White;
+			this.cPBCountDownTime.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+			this.cPBCountDownTime.InnerMargin = 2;
+			this.cPBCountDownTime.InnerWidth = -1;
+			this.cPBCountDownTime.Location = new System.Drawing.Point(76, 26);
+			this.cPBCountDownTime.MarqueeAnimationSpeed = 2000;
+			this.cPBCountDownTime.Name = "cPBCountDownTime";
+			this.cPBCountDownTime.OuterColor = System.Drawing.Color.Gray;
+			this.cPBCountDownTime.OuterMargin = -25;
+			this.cPBCountDownTime.OuterWidth = 26;
+			this.cPBCountDownTime.ProgressColor = System.Drawing.Color.RoyalBlue;
+			this.cPBCountDownTime.ProgressWidth = 15;
+			this.cPBCountDownTime.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+			this.cPBCountDownTime.Size = new System.Drawing.Size(196, 182);
+			this.cPBCountDownTime.StartAngle = 270;
+			this.cPBCountDownTime.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+			this.cPBCountDownTime.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+			this.cPBCountDownTime.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+			this.cPBCountDownTime.SubscriptText = ".23";
+			this.cPBCountDownTime.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+			this.cPBCountDownTime.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+			this.cPBCountDownTime.SuperscriptText = "00";
+			this.cPBCountDownTime.TabIndex = 2;
+			this.cPBCountDownTime.Text = "00:00:00";
+			this.cPBCountDownTime.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+			this.cPBCountDownTime.Value = 68;
 			// 
-			// tbQuestionCount
+			// timer
 			// 
-			this.tbQuestionCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbQuestionCount.BackColor = System.Drawing.Color.White;
-			this.tbQuestionCount.Location = new System.Drawing.Point(474, 47);
-			this.tbQuestionCount.Name = "tbQuestionCount";
-			this.tbQuestionCount.ReadOnly = true;
-			this.tbQuestionCount.Size = new System.Drawing.Size(159, 20);
-			this.tbQuestionCount.TabIndex = 10;
-			this.tbQuestionCount.TabStop = false;
-			// 
-			// lbDisplayname
-			// 
-			this.lbDisplayname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.lbDisplayname.AutoSize = true;
-			this.lbDisplayname.Location = new System.Drawing.Point(41, 20);
-			this.lbDisplayname.Name = "lbDisplayname";
-			this.lbDisplayname.Size = new System.Drawing.Size(57, 13);
-			this.lbDisplayname.TabIndex = 11;
-			this.lbDisplayname.Text = "Họ và tên:";
-			// 
-			// lbDoB
-			// 
-			this.lbDoB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.lbDoB.AutoSize = true;
-			this.lbDoB.Location = new System.Drawing.Point(411, 20);
-			this.lbDoB.Name = "lbDoB";
-			this.lbDoB.Size = new System.Drawing.Size(57, 13);
-			this.lbDoB.TabIndex = 12;
-			this.lbDoB.Text = "Ngày sinh:";
-			// 
-			// lbQuestionCount
-			// 
-			this.lbQuestionCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.lbQuestionCount.AutoSize = true;
-			this.lbQuestionCount.Location = new System.Drawing.Point(378, 50);
-			this.lbQuestionCount.Name = "lbQuestionCount";
-			this.lbQuestionCount.Size = new System.Drawing.Size(90, 13);
-			this.lbQuestionCount.TabIndex = 13;
-			this.lbQuestionCount.Text = "Số lượng câu hỏi:";
-			// 
-			// tbSubject
-			// 
-			this.tbSubject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSubject.BackColor = System.Drawing.Color.White;
-			this.tbSubject.Location = new System.Drawing.Point(104, 46);
-			this.tbSubject.Name = "tbSubject";
-			this.tbSubject.ReadOnly = true;
-			this.tbSubject.Size = new System.Drawing.Size(159, 20);
-			this.tbSubject.TabIndex = 14;
-			this.tbSubject.TabStop = false;
-			// 
-			// tbDoB
-			// 
-			this.tbDoB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbDoB.BackColor = System.Drawing.Color.White;
-			this.tbDoB.Location = new System.Drawing.Point(474, 17);
-			this.tbDoB.Name = "tbDoB";
-			this.tbDoB.ReadOnly = true;
-			this.tbDoB.Size = new System.Drawing.Size(159, 20);
-			this.tbDoB.TabIndex = 15;
-			this.tbDoB.TabStop = false;
-			// 
-			// gbUserInfo
-			// 
-			this.gbUserInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.gbUserInfo.BackColor = System.Drawing.Color.White;
-			this.gbUserInfo.Controls.Add(this.tbDoB);
-			this.gbUserInfo.Controls.Add(this.tbSubject);
-			this.gbUserInfo.Controls.Add(this.lbQuestionCount);
-			this.gbUserInfo.Controls.Add(this.lbDoB);
-			this.gbUserInfo.Controls.Add(this.lbDisplayname);
-			this.gbUserInfo.Controls.Add(this.tbQuestionCount);
-			this.gbUserInfo.Controls.Add(this.tbDisplayname);
-			this.gbUserInfo.Controls.Add(this.lbSubject);
-			this.gbUserInfo.Location = new System.Drawing.Point(12, 12);
-			this.gbUserInfo.Name = "gbUserInfo";
-			this.gbUserInfo.Size = new System.Drawing.Size(683, 75);
-			this.gbUserInfo.TabIndex = 2;
-			this.gbUserInfo.TabStop = false;
-			this.gbUserInfo.Text = "Thông tin thí sinh";
+			this.timer.Interval = 1000;
+			this.timer.Tick += new System.EventHandler(this.timer_Tick);
 			// 
 			// FrmQuiz
 			// 
@@ -485,7 +381,6 @@ namespace Main
 			this.Load += new System.EventHandler(this.FrmQuiz_Load);
 			this.pMain.ResumeLayout(false);
 			this.gbTime.ResumeLayout(false);
-			this.gbTime.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
@@ -495,8 +390,6 @@ namespace Main
 			this.gbQuestionInfo.ResumeLayout(false);
 			this.gbQuestionInfo.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
-			this.gbUserInfo.ResumeLayout(false);
-			this.gbUserInfo.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -520,22 +413,13 @@ namespace Main
 		private System.Windows.Forms.Label lbNumberQuestion;
 		private System.Windows.Forms.RichTextBox rtbQuestionContent;
 		private System.Windows.Forms.GroupBox gbTime;
-		private System.Windows.Forms.Label lbTime;
-		private System.Windows.Forms.Label lbRemainTime;
 		private System.Windows.Forms.Button btnEnd;
 		private System.Windows.Forms.Button btnReset;
-		private System.Windows.Forms.Label lbFlag;
 		private System.Windows.Forms.ToolTip toolTipTicked;
 		private System.Windows.Forms.GroupBox gbProgressQuestion;
 		private System.Windows.Forms.ListView lvData;
-		private System.Windows.Forms.GroupBox gbUserInfo;
-		private System.Windows.Forms.TextBox tbDoB;
-		private System.Windows.Forms.TextBox tbSubject;
-		private System.Windows.Forms.Label lbQuestionCount;
-		private System.Windows.Forms.Label lbDoB;
-		private System.Windows.Forms.Label lbDisplayname;
-		private System.Windows.Forms.TextBox tbQuestionCount;
-		private System.Windows.Forms.TextBox tbDisplayname;
-		private System.Windows.Forms.Label lbSubject;
+		private System.Windows.Forms.LinkLabel linkLabel1;
+		private CircularProgressBar.CircularProgressBar cPBCountDownTime;
+		private System.Windows.Forms.Timer timer;
 	}
 }

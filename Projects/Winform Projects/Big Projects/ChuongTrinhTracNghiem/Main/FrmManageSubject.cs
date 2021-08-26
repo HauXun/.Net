@@ -66,7 +66,8 @@ namespace Main
 			{
 				RoleBLL.Instance.GetAllSubjectRole(cbSubjectRole);
 				FacultyBLL.Instance.GetAllFaculty(cbFacultyID);
-				CourseBLL.Instance.GetAllCourse(cbCourseID);
+				cbFacultyID.SelectedIndex = -1;
+				//CourseBLL.Instance.GetAllCourse(cbCourseID);
 				SemesterBLL.Instance.GetAllSemester(cbSemesterID);
 				SubjectBLL.Instance.GetAllSubject(aDgvdata);
 				if (aDgvdata.Rows.Count > 0)
@@ -105,14 +106,17 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				tbSubjectID.Text = row.Cells["SubjectID"].Value.ToString();
-				tbSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
-				cbSubjectRole.SelectedValue = row.Cells["SubjectRole"].Value;
-				cbFacultyID.SelectedValue = row.Cells["FacultyID"].Value;
-				cbCourseID.SelectedValue = row.Cells["CourseID"].Value;
-				cbSemesterID.SelectedValue = row.Cells["SemesterID"].Value;
-				tbDescription.Text = row.Cells["Description"].Value.ToString();
+				if (aDgvdata.Rows.Count > 0)
+				{
+					DataGridViewRow row = aDgvdata.Rows[rowIndex];
+					tbSubjectID.Text = row.Cells["SubjectID"].Value.ToString();
+					tbSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
+					cbSubjectRole.SelectedValue = row.Cells["SubjectRole"].Value;
+					cbFacultyID.SelectedValue = row.Cells["FacultyID"].Value;
+					cbCourseID.SelectedValue = row.Cells["CourseID"].Value;
+					cbSemesterID.SelectedValue = row.Cells["SemesterID"].Value;
+					tbDescription.Text = row.Cells["Description"].Value.ToString();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -489,13 +493,13 @@ namespace Main
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			isFunc = true;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
-			tbSubjectID.Enabled = true;
-			isFunc = true;
 			ClearError();
+			tbSubjectID.Enabled = true;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
@@ -522,13 +526,12 @@ namespace Main
 			if (cbFacultyID.SelectedValue != null)
 			{
 				CourseBLL.Instance.GetAllCourseByFaculty(cbCourseID, cbFacultyID.SelectedValue.ToString());
-				cbCourseID.SelectedIndex = -1;
 			}
 			else
 			{
 				CourseBLL.Instance.GetAllCourse(cbCourseID);
-				cbCourseID.SelectedIndex = -1;
 			}
+			cbCourseID.SelectedIndex = -1;
 		}
 
 		#endregion

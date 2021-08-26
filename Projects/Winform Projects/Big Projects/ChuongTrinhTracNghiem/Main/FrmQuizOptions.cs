@@ -10,6 +10,10 @@ namespace Main
 	public partial class FrmQuizOptions : Form
 	{
 		public bool isMockTest = false;
+		private bool wasLoad = false;
+		private string test;
+		string subjectID;
+		Exam exam;
 		private UserAccount account;
 
 		public UserAccount Account { get => account; set => account = value; }
@@ -39,7 +43,9 @@ namespace Main
 
 		private void LoadData()
 		{
-			SubjectBLL.Instance.GetAllSubject(cbSubject);
+			SubjectBLL.Instance.GetSubjectFromEduProg(cbSubject, Account.UserID);
+			wasLoad = true;
+			test = (isMockTest == true) ? "đề thi thử" : "đề thi";
 		}
 
 		private bool IsValidComboBoxControl()
@@ -71,7 +77,7 @@ namespace Main
 		{
 			LoadData();
 			IsValidComboBoxControl();
-			if (isMockTest == false)
+			if (isMockTest == true)
 				lbInform.Text = $"Chào {Account.FullName}! Hãy lựa chọn môn thi của mình để bắt đầu luyện tập ngay nào! 🙇‍♂️🙇‍♂️🙇‍♂️";
 			else
 				lbInform.Text = $"Chào {Account.FullName}! Hãy lựa chọn môn thi của mình để bắt đầu bài thi ngay nào! 🙇‍♂️🙇‍♂️🙇‍♂️";
@@ -79,16 +85,30 @@ namespace Main
 
 		private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			string subjectID = cbSubject.SelectedValue.ToString().Trim();
+			subjectID = cbSubject.SelectedValue.ToString();
+			try
+			{
+				exam = ExamBLL.Instance.GetExamByRequest(subjectID, isMockTest);
+				if (exam == null && wasLoad)
+				{
+					MessageBox.Show($"Hiện tại không có {test} cho môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!\nThử môn khác xem nào 🚀🚀🚀",
+						"Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Có lỗi xảy ra! Vui lòng kiểm tra lại dữ liệu!" + ex.Message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+			}
+			btnStartQuiz.Focus();
 		}
 
 		private void btnStartQuiz_Click(object sender, EventArgs e)
 		{
-			//if (tbQuizTime.Enabled)
-			//{
-			//	if (!IsValidComboBoxControl())
-			//		return;
-			//}
+			if (!IsValidComboBoxControl())
+				return;
+
+			QuestionBLL.Instance.GetQuestionByRequest(exam.ExamID, subjectID);
+
 			//FrmQuiz frm = new FrmQuiz(Account, cbSubject.SelectedValue, cbQuestionCount.SelectedItem, tbQuizTime.Text);
 			//this.Hide();
 			//frm.ShowDialog();

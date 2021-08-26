@@ -295,15 +295,16 @@ namespace Main
 			// cbFaculty
 			// 
 			this.cbFaculty.FormattingEnabled = true;
-			this.cbFaculty.Location = new System.Drawing.Point(814, 94);
+			this.cbFaculty.Location = new System.Drawing.Point(814, 37);
 			this.cbFaculty.Name = "cbFaculty";
 			this.cbFaculty.Size = new System.Drawing.Size(239, 21);
 			this.cbFaculty.TabIndex = 11;
+			this.cbFaculty.SelectedIndexChanged += new System.EventHandler(this.cbFaculty_SelectedIndexChanged);
 			// 
 			// cbCourseID
 			// 
 			this.cbCourseID.FormattingEnabled = true;
-			this.cbCourseID.Location = new System.Drawing.Point(814, 36);
+			this.cbCourseID.Location = new System.Drawing.Point(814, 94);
 			this.cbCourseID.Name = "cbCourseID";
 			this.cbCourseID.Size = new System.Drawing.Size(239, 21);
 			this.cbCourseID.TabIndex = 10;
@@ -335,7 +336,7 @@ namespace Main
 			// lbCourse
 			// 
 			this.lbCourse.AutoSize = true;
-			this.lbCourse.Location = new System.Drawing.Point(755, 39);
+			this.lbCourse.Location = new System.Drawing.Point(755, 97);
 			this.lbCourse.Name = "lbCourse";
 			this.lbCourse.Size = new System.Drawing.Size(35, 13);
 			this.lbCourse.TabIndex = 4;
@@ -344,7 +345,7 @@ namespace Main
 			// lbFaculty
 			// 
 			this.lbFaculty.AutoSize = true;
-			this.lbFaculty.Location = new System.Drawing.Point(755, 97);
+			this.lbFaculty.Location = new System.Drawing.Point(755, 40);
 			this.lbFaculty.Name = "lbFaculty";
 			this.lbFaculty.Size = new System.Drawing.Size(35, 13);
 			this.lbFaculty.TabIndex = 2;

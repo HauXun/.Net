@@ -46,13 +46,6 @@ namespace BusinessLogicLayer
             {
                 box.DisplayMember = "TrainingName";
                 box.ValueMember = "TrainingID";
-                if (box.Name == "cbTrainingFilter")
-                {
-                    DataRow row = data.NewRow();
-                    row["TrainingName"] = "Tất cả";
-                    row["TrainingID"] = "ALL";
-                    data.Rows.InsertAt(row, 0);
-                }
                 box.DataSource = data;
             }
         }
@@ -64,13 +57,6 @@ namespace BusinessLogicLayer
             {
                 box.DisplayMember = "RoleName";
                 box.ValueMember = "RoleID";
-                if (box.Name == "cbExamRoleFilter")
-                {
-                    DataRow row = data.NewRow();
-                    row["RoleName"] = "Tất cả";
-                    row["RoleID"] = "ALL";
-                    data.Rows.InsertAt(row, 0);
-                }
                 box.DataSource = data;
             }
         }

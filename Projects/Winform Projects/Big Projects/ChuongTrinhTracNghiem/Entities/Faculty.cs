@@ -9,13 +9,27 @@
 
 namespace Entities
 {
-    using System;
+	using System;
+	using System.Data;
 
-    public partial class Faculty
-    {
-        public string FacultyID { get; set; }
-        public string FacultyName { get; set; }
+	public partial class Faculty
+	{
+		public string FacultyID { get; set; }
+		public string FacultyName { get; set; }
 		public DateTime FoundingDate { get; set; }
 		public string Description { get; set; }
-    }
+
+		public Faculty()
+		{
+
+		}
+
+		public Faculty(DataRow row)
+		{
+			FacultyID = row["FacultyID"].ToString();
+			FacultyName = row["FacultyName"].ToString();
+			FoundingDate = Convert.ToDateTime(row["FoundingDate"]);
+			Description = row["Description"].ToString();
+		}
+	}
 }

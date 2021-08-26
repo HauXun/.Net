@@ -315,7 +315,6 @@ namespace Main
 			// 
 			this.tbFacultyID.Location = new System.Drawing.Point(215, 46);
 			this.tbFacultyID.Name = "tbFacultyID";
-			this.tbFacultyID.ReadOnly = true;
 			this.tbFacultyID.Size = new System.Drawing.Size(239, 20);
 			this.tbFacultyID.TabIndex = 7;
 			// 

@@ -24,7 +24,7 @@ namespace Main
 				return;
 			if (rectangle.Width == 0 || rectangle.Height == 0)
 				return;
-			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(230, 110, 130), 90F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
+			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(196, 232, 250), 90F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
 			{
 				e.Graphics.FillRectangle(brush, rectangle);
 			}
@@ -76,22 +76,19 @@ namespace Main
 
 			// Kiểm tra tài khoản đăng nhập:
 			// Kết nối tới cơ sở dữ liệu
-			try
+			if (AccountBLL.Instance.IsExistAccount(user))
 			{
-				if (AccountBLL.Instance.IsExistAccount(user))
-				{
-					MessageBox.Show("Đăng nhập thành công!", "Thông báo!",
-						MessageBoxButtons.OK, MessageBoxIcon.Information);
-					UserAccount account = AccountBLL.Instance.GetAccountByUserName(username);
-					FrmMain frmMain = new FrmMain(account);
-					this.Hide();
-					frmMain.ShowDialog();
-					this.Show();
-				}
+				MessageBox.Show("Đăng nhập thành công!", "Thông báo!",
+					MessageBoxButtons.OK, MessageBoxIcon.Information);
+				UserAccount account = AccountBLL.Instance.GetAccountByUserName(username);
+				FrmMain frmMain = new FrmMain(account);
+				this.Hide();
+				frmMain.ShowDialog();
+				this.Show();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Tài khoản hoặc mật khẩu không đúng. Vui lòng kiểm tra lại!\n" + ex.Message,
+				MessageBox.Show("Tài khoản hoặc mật khẩu không đúng. Vui lòng kiểm tra lại!\n",
 					"Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}

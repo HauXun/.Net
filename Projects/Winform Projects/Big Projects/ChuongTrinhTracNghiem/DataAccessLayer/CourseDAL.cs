@@ -1,6 +1,7 @@
 ﻿using Entities;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
@@ -63,6 +64,16 @@ namespace DataAccessLayer
                     });
                 return isAccess > 0;
             }
+            catch (SqlException se)
+            {
+                switch (se.Number)
+                {
+                    case 2627:
+                        throw new Exception($"Khóa trùng lặp, mã Khóa {course.CourseID} và Khoa {FacultyDAL.Instance.GetFacultyByID(course.FacultyID).FacultyName} đã tồn tại trước đó. Không thể thực hiện thao tác này!");
+                    default:
+                        throw se;
+                }
+            }
             catch (Exception e)
             {
                 throw e;
@@ -83,19 +94,39 @@ namespace DataAccessLayer
                     });
                 return isAccess > 0;
             }
+            catch (SqlException se)
+            {
+                switch (se.Number)
+                {
+                    case 2627:
+                        throw new Exception($"Khóa trùng lặp, mã Khóa {course.CourseID} và Khoa {FacultyDAL.Instance.GetFacultyByID(course.FacultyID).FacultyName} đã tồn tại trước đó. Không thể thực hiện thao tác này!");
+                    default:
+                        throw se;
+                }
+            } 
             catch (Exception e)
             {
                 throw e;
             }
         }
 
-        public bool DeleteCourse(string courseID)
+        public bool DeleteCourse(string courseID, string facultyID)
         {
             try
             {
-                string query = "EXEC dbo.USP_DeleteCourse @CourseID";
-                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { courseID });
+                string query = "EXEC dbo.USP_DeleteCourse @CourseID , @FacultyID";
+                int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { courseID, facultyID });
                 return isAccess > 0;
+            }
+            catch (SqlException se)
+            {
+                switch (se.Number)
+                {
+                    case 547:
+                        throw new Exception($"Không thể xóa Khóa {courseID} của Khoa {FacultyDAL.Instance.GetFacultyByID(facultyID).FacultyName} vì tồn tại dữ liệu ràng buộc liên quan!");
+                    default:
+                        throw se;
+                }
             }
             catch (Exception e)
             {

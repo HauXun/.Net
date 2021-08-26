@@ -78,11 +78,14 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				tbFacultyID.Text = row.Cells["FacultyID"].Value.ToString();
-				tbFacultyName.Text = row.Cells["FacultyName"].Value.ToString();
-				dtpFoundingDate.Text = row.Cells["FoundingDate"].FormattedValue.ToString();
-				tbDescription.Text = row.Cells["Description"].Value.ToString();
+				if (aDgvdata.Rows.Count > 0)
+				{
+					DataGridViewRow row = aDgvdata.Rows[rowIndex];
+					tbFacultyID.Text = row.Cells["FacultyID"].Value.ToString();
+					tbFacultyName.Text = row.Cells["FacultyName"].Value.ToString();
+					dtpFoundingDate.Text = row.Cells["FoundingDate"].FormattedValue.ToString();
+					tbDescription.Text = row.Cells["Description"].Value.ToString();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -258,6 +261,7 @@ namespace Main
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
+			tbFacultyID.Enabled = true;
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e)
@@ -377,12 +381,11 @@ namespace Main
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			isFunc = true;
 			VisibleButton(false);
 			// Restore
 			DetailData(rowIndex);
 			EnableControl(false);
-			tbFacultyID.Enabled = true;
-			isFunc = true;
 			ClearError();
 		}
 

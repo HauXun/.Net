@@ -103,13 +103,16 @@ namespace Main
 		{
 			try
 			{
-				DataGridViewRow row = aDgvdata.Rows[rowIndex];
-				tbExamID.Text = row.Cells["ExamID"].Value.ToString();
-				cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
-				cbExamRole.SelectedValue = row.Cells["ExamRole"].Value;
-				nudExamTime.Value = int.Parse(row.Cells["ExamTime"].Value.ToString());
-				nudQCount.Value = int.Parse(row.Cells["QCount"].Value.ToString());
-				questionCurrentCount = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
+				if (aDgvdata.Rows.Count > 0)
+				{
+					DataGridViewRow row = aDgvdata.Rows[rowIndex];
+					tbExamID.Text = row.Cells["ExamID"].Value.ToString();
+					cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
+					cbExamRole.SelectedValue = row.Cells["ExamRole"].Value;
+					nudExamTime.Value = int.Parse(row.Cells["ExamTime"].Value.ToString());
+					nudQCount.Value = int.Parse(row.Cells["QCount"].Value.ToString());
+					questionCurrentCount = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
+				}
 			}
 			catch (Exception ex)
 			{

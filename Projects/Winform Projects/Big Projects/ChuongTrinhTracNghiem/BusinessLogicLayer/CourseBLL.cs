@@ -42,12 +42,6 @@ namespace BusinessLogicLayer
 			DataTable data = CourseDAL.Instance.GetAllCourse();
 			if (data.Rows.Count > 0)
 			{
-				if (box.Name == "cbCourseFilter")
-				{
-					DataRow row = data.NewRow();
-					row["CourseID"] = "Tất cả";
-					data.Rows.InsertAt(row, 0);
-				}
 				data = data.AsEnumerable().GroupBy(x => x.Field<string>("CourseID")).Select(y => y.First()).CopyToDataTable();
 				box.DisplayMember = "CourseID";
 				box.ValueMember = "CourseID";
@@ -65,9 +59,9 @@ namespace BusinessLogicLayer
 			return CourseDAL.Instance.UpdateCourse(subject);
 		}
 
-		public bool DeleteCourse(string courseID)
+		public bool DeleteCourse(string courseID, string facultyID)
 		{
-			return CourseDAL.Instance.DeleteCourse(courseID);
+			return CourseDAL.Instance.DeleteCourse(courseID, facultyID);
 		}
 
 		public void SearchCourse(DataGridView data, string keyword)

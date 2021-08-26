@@ -56,8 +56,7 @@ namespace BusinessLogicLayer
         }
 
         //DataTable data = AccountDAL.Instance.GetAllAccount();
-        //data = data.Rows.Cast<DataRow>()
-        // .Where(x => !string.IsNullOrEmpty(x["ClassID"] as string ?? x["ClassID"].ToString())).CopyToDataTable();
+        //data = data.Rows.Cast<DataRow>().Where(x => !string.IsNullOrEmpty(x["ClassID"] as string ?? x["ClassID"].ToString())).CopyToDataTable();
         //data = data.AsEnumerable().GroupBy(x => x.Field<string>("ClassID")).Select(y => y.First()).CopyToDataTable();
 
         public bool InsertAccount(UserAccount account)

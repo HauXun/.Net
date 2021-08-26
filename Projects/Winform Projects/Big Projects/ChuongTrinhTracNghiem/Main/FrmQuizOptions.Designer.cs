@@ -49,7 +49,7 @@ namespace Main
 			this.btnStartQuiz.Margin = new System.Windows.Forms.Padding(4);
 			this.btnStartQuiz.Name = "btnStartQuiz";
 			this.btnStartQuiz.Size = new System.Drawing.Size(93, 28);
-			this.btnStartQuiz.TabIndex = 8;
+			this.btnStartQuiz.TabIndex = 3;
 			this.btnStartQuiz.Text = "Bắt đầu thi";
 			this.btnStartQuiz.UseVisualStyleBackColor = true;
 			this.btnStartQuiz.Click += new System.EventHandler(this.btnStartQuiz_Click);
@@ -62,7 +62,7 @@ namespace Main
 			this.btnExit.Margin = new System.Windows.Forms.Padding(4);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(85, 28);
-			this.btnExit.TabIndex = 9;
+			this.btnExit.TabIndex = 4;
 			this.btnExit.Text = "Thoát";
 			this.btnExit.UseVisualStyleBackColor = true;
 			// 
@@ -86,7 +86,7 @@ namespace Main
 			this.lbSubject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbSubject.Name = "lbSubject";
 			this.lbSubject.Size = new System.Drawing.Size(58, 17);
-			this.lbSubject.TabIndex = 1;
+			this.lbSubject.TabIndex = 2;
 			this.lbSubject.Text = "Môn thi:";
 			// 
 			// errorProviderWar
@@ -99,7 +99,7 @@ namespace Main
 			this.cbSubject.Location = new System.Drawing.Point(151, 137);
 			this.cbSubject.Name = "cbSubject";
 			this.cbSubject.Size = new System.Drawing.Size(263, 24);
-			this.cbSubject.TabIndex = 10;
+			this.cbSubject.TabIndex = 5;
 			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
 			// 
 			// pictureBox1
@@ -119,7 +119,7 @@ namespace Main
 			this.lbInform.Location = new System.Drawing.Point(148, 67);
 			this.lbInform.Name = "lbInform";
 			this.lbInform.Size = new System.Drawing.Size(300, 40);
-			this.lbInform.TabIndex = 12;
+			this.lbInform.TabIndex = 1;
 			this.lbInform.Text = "Chào Cheems! Hãy lựa chọn môn thi của mình để bắt đầu luyện tập ngay nào! 🙇‍♂️🙇" +
     "‍♂️🙇‍♂️";
 			// 

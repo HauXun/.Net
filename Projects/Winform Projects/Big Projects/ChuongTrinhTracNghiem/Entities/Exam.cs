@@ -10,8 +10,9 @@
 namespace Entities
 {
     using System;
+	using System.Data;
 
-    public partial class Exam
+	public partial class Exam
     {
         public string ExamID { get; set; }
 		public string SubjectID { get; set; }
@@ -23,5 +24,14 @@ namespace Entities
 		public DateTime CreatedAt { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime ModifiedAt { get; set; }
-    }
+
+		public Exam()
+		{
+
+		}
+		public Exam(DataRow row)
+		{
+			ExamID = row["ExamID"].ToString();
+		}
+	}
 }
