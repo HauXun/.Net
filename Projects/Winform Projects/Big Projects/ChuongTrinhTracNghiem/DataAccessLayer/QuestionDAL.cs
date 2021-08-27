@@ -1,5 +1,6 @@
 ﻿using Entities;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DataAccessLayer
@@ -21,13 +22,38 @@ namespace DataAccessLayer
 
 		private QuestionDAL() { }
 
-		public DataTable GetQuestionByRequest(string examID, string subjectID)
+		public Question GetQuestionByID(int questionID)
+		{
+			try
+			{
+				string query = "EXEC dbo.USP_SelectQuestionByID @QuestionID";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { questionID });
+				foreach (DataRow row in data.Rows)
+				{
+					return new Question(row);
+				}
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+			return null;
+		}
+
+		public List<Question> GetQuestionByRequest(string examID, string subjectID)
 		{
 			try
 			{
 				string query = "EXEC dbo.USP_SelectQuestionByRequest @ExamID , @SubjectID";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { examID, subjectID });
-				return data;
+				List<Question> questions = new List<Question>();
+				foreach (DataRow row in data.Rows)
+				{
+					Question question = new Question(row);
+					question.QuestionIdx = row["QuestionIdx"].ToString();
+					questions.Add(question);
+				}
+				return questions == null ? null : questions;
 			}
 			catch (Exception e)
 			{

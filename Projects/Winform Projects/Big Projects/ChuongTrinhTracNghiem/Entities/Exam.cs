@@ -32,6 +32,10 @@ namespace Entities
 		public Exam(DataRow row)
 		{
 			ExamID = row["ExamID"].ToString();
+			SubjectID = row["SubjectID"].ToString();
+			ExamTime = int.Parse(row["ExamTime"].ToString());
+			QCount = int.Parse(row["QCount"].ToString());
+			QCurrentCount = int.Parse(row["QCurrentCount"].ToString());
 		}
 	}
 }

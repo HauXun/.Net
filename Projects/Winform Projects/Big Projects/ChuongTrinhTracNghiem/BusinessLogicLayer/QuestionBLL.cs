@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -22,11 +23,15 @@ namespace BusinessLogicLayer
 
         private QuestionBLL() { }
 
-        public DataTable GetQuestionByRequest(string examID, string subjectID)
+        public Question GetQuestionByID(int questionID)
+		{
+            return QuestionDAL.Instance.GetQuestionByID(questionID);
+		}
+
+        public List<Question> GetQuestionByRequest(string examID, string subjectID)
         {
             return QuestionDAL.Instance.GetQuestionByRequest(examID, subjectID);
         }
-
 
         public void GetAllQuestion(DataGridView data)
         {

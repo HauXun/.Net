@@ -118,7 +118,7 @@ namespace Main
 			this.lbInform.BackColor = System.Drawing.Color.Transparent;
 			this.lbInform.Location = new System.Drawing.Point(148, 67);
 			this.lbInform.Name = "lbInform";
-			this.lbInform.Size = new System.Drawing.Size(300, 40);
+			this.lbInform.Size = new System.Drawing.Size(300, 56);
 			this.lbInform.TabIndex = 1;
 			this.lbInform.Text = "Chào Cheems! Hãy lựa chọn môn thi của mình để bắt đầu luyện tập ngay nào! 🙇‍♂️🙇" +
     "‍♂️🙇‍♂️";

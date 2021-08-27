@@ -10,10 +10,12 @@
 namespace Entities
 {
 	using System;
+	using System.Data;
 
 	public partial class Question
     {
-        public int QuestionID { get; set; }
+		public string QuestionIdx { get; set; }
+		public int QuestionID { get; set; }
         public string ExamID { get; set; }
         public string SubjectID { get; set; }
 		public string QContent { get; set; }
@@ -26,5 +28,23 @@ namespace Entities
         public DateTime CreatedAt { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime ModifiedAt { get; set; }
+
+		public Question()
+		{
+
+		}
+
+		public Question(DataRow row)
+        {
+            QuestionID = int.Parse(row["QuestionID"].ToString());
+            ExamID = row["ExamID"].ToString();
+            SubjectID = row["SubjectID"].ToString();
+            QContent = row["QContent"].ToString();
+            OptionA = row["OptionA"].ToString();
+            OptionB = row["OptionB"].ToString();
+            OptionC = row["OptionC"].ToString();
+            OptionD = row["OptionD"].ToString();
+            Answer = row["Answer"].ToString();
+        }
     }
 }

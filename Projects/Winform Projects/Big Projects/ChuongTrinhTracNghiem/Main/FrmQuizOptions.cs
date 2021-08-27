@@ -10,13 +10,14 @@ namespace Main
 	public partial class FrmQuizOptions : Form
 	{
 		public bool isMockTest = false;
-		private bool wasLoad = false;
 		private string test;
-		string subjectID;
+		private string subjectID;
+
 		Exam exam;
 		private UserAccount account;
 
 		public UserAccount Account { get => account; set => account = value; }
+		public Exam Exam { get => exam; set => exam = value; }
 
 		public FrmQuizOptions(UserAccount account)
 		{
@@ -44,7 +45,6 @@ namespace Main
 		private void LoadData()
 		{
 			SubjectBLL.Instance.GetSubjectFromEduProg(cbSubject, Account.UserID);
-			wasLoad = true;
 			test = (isMockTest == true) ? "đề thi thử" : "đề thi";
 		}
 
@@ -88,12 +88,7 @@ namespace Main
 			subjectID = cbSubject.SelectedValue.ToString();
 			try
 			{
-				exam = ExamBLL.Instance.GetExamByRequest(subjectID, isMockTest);
-				if (exam == null && wasLoad)
-				{
-					MessageBox.Show($"Hiện tại không có {test} cho môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!\nThử môn khác xem nào 🚀🚀🚀",
-						"Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-				}
+				Exam = ExamBLL.Instance.GetExamByRequest(subjectID, isMockTest);
 			}
 			catch (Exception ex)
 			{
@@ -107,12 +102,22 @@ namespace Main
 			if (!IsValidComboBoxControl())
 				return;
 
-			QuestionBLL.Instance.GetQuestionByRequest(exam.ExamID, subjectID);
-
-			//FrmQuiz frm = new FrmQuiz(Account, cbSubject.SelectedValue, cbQuestionCount.SelectedItem, tbQuizTime.Text);
-			//this.Hide();
-			//frm.ShowDialog();
-			//this.Show();
+			if (Exam == null)
+			{
+				MessageBox.Show($"Hiện tại không có {test} cho môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. Thử môn khác xem nào! 🚀🚀🚀",
+					"Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				return;
+			}
+			else if (Exam.QCurrentCount == 0)
+			{
+				MessageBox.Show($"Hiện tại không có câu hỏi cho {test} của môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. Thử lại khi khác nhé! 🚀🚀🚀",
+					"Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+				return;
+			}	
+			FrmQuiz frm = new FrmQuiz(Account, Exam);
+			this.Hide();
+			frm.ShowDialog();	
+			this.Show();
 		}
 
 		#endregion
