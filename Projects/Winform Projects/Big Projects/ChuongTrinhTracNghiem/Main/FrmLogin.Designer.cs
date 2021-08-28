@@ -85,7 +85,7 @@ namespace Main
 			this.tbUserName.Name = "tbUserName";
 			this.tbUserName.Size = new System.Drawing.Size(263, 23);
 			this.tbUserName.TabIndex = 3;
-			this.tbUserName.Text = "admin";
+			this.tbUserName.Text = "2011379";
 			// 
 			// tbPassword
 			// 
@@ -94,7 +94,7 @@ namespace Main
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.Size = new System.Drawing.Size(263, 23);
 			this.tbPassword.TabIndex = 5;
-			this.tbPassword.Text = "admin";
+			this.tbPassword.Text = "P@ssw0rd";
 			this.tbPassword.UseSystemPasswordChar = true;
 			// 
 			// label2

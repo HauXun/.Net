@@ -141,6 +141,12 @@
     <Compile Include="FrmManageUser.Designer.cs">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmQuizResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQuizResult.Designer.cs">
+      <DependentUpon>FrmQuizResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmManageClass.resx">
@@ -182,6 +188,9 @@
     <EmbeddedResource Include="FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmQuizResult.resx">
+      <DependentUpon>FrmQuizResult.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -218,7 +227,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\cat.gif" />
+    <None Include="Resources\warning.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\checked.png" />
     <Content Include="Resources\Quiz.png" />
     <None Include="Resources\QuizInform.png" />
     <None Include="Resources\QuizThumnails.png" />

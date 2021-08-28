@@ -295,17 +295,17 @@ namespace Main
 				}
 			}
 
-			// Kiểm tra thời gian thi không được để trống
+			// Kiểm tra số lượng câu hỏi của đề thi không được để trống
 			if (nudQCount.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nkhông được để trống!");
+				errorProviderWar.SetError(nudQCount, "Số lượng câu hỏi của đề thi\nkhông được để trống!");
 				return false;
 			}
 			else
 			{
 				if (nudQCount.Value.Equals(0))
 				{
-					errorProviderWar.SetError(nudQCount, "Thời gian của đề thi\nphải lớn hơn 0!");
+					errorProviderWar.SetError(nudQCount, "Số lượng câu hỏi của đề thi phải lớn hơn 0!"); 
 					return false;
 				}
 				else if (nudQCount.Value < questionCurrentCount)
@@ -315,15 +315,15 @@ namespace Main
 				}
 			}
 
-			// Kiểm tra số lượng câu hỏi của đề thi không được để trống
+			// Kiểm tra thời gian thi không được để trống
 			if (nudExamTime.Text.Trim().Equals(""))
 			{
-				errorProviderWar.SetError(nudExamTime, "Số lượng câu hỏi của đề thi\nkhông được để trống!");
+				errorProviderWar.SetError(nudExamTime, "Thời gian của đề thi\nkhông được để trống!");
 				return false;
 			}
 			else if (nudExamTime.Value.Equals(0))
 			{
-				errorProviderWar.SetError(nudExamTime, "Số lượng câu hỏi của đề thi phải lớn hơn 0!");
+				errorProviderWar.SetError(nudExamTime, "Thời gian của đề thi\nphải lớn hơn 0!");
 				return false;
 			}
 

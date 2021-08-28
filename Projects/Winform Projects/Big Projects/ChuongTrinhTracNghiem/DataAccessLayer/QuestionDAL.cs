@@ -1,6 +1,5 @@
 ﻿using Entities;
 using System;
-using System.Collections.Generic;
 using System.Data;
 
 namespace DataAccessLayer
@@ -40,20 +39,13 @@ namespace DataAccessLayer
 			return null;
 		}
 
-		public List<Question> GetQuestionByRequest(string examID, string subjectID)
+		public DataTable GetQuestionByRequest(string examID, string subjectID)
 		{
 			try
 			{
 				string query = "EXEC dbo.USP_SelectQuestionByRequest @ExamID , @SubjectID";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { examID, subjectID });
-				List<Question> questions = new List<Question>();
-				foreach (DataRow row in data.Rows)
-				{
-					Question question = new Question(row);
-					question.QuestionIdx = row["QuestionIdx"].ToString();
-					questions.Add(question);
-				}
-				return questions == null ? null : questions;
+				return data;
 			}
 			catch (Exception e)
 			{

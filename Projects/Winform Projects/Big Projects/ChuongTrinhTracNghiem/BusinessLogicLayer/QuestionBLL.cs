@@ -28,7 +28,7 @@ namespace BusinessLogicLayer
             return QuestionDAL.Instance.GetQuestionByID(questionID);
 		}
 
-        public List<Question> GetQuestionByRequest(string examID, string subjectID)
+        public DataTable GetQuestionByRequest(string examID, string subjectID)
         {
             return QuestionDAL.Instance.GetQuestionByRequest(examID, subjectID);
         }

@@ -90,7 +90,7 @@ namespace Main
 			this.gbTime.Size = new System.Drawing.Size(288, 225);
 			this.gbTime.TabIndex = 7;
 			this.gbTime.TabStop = false;
-			this.gbTime.Text = "Thời gian";
+			this.gbTime.Text = "Thời gian làm bài";
 			// 
 			// cPBCountDownTime
 			// 
@@ -145,6 +145,7 @@ namespace Main
 			this.btnEnd.TabIndex = 1;
 			this.btnEnd.Text = "Nộp bài";
 			this.btnEnd.UseVisualStyleBackColor = true;
+			this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
 			// 
 			// btnReset
 			// 
@@ -254,7 +255,6 @@ namespace Main
 			this.rbAnswerD.Name = "rbAnswerD";
 			this.rbAnswerD.Size = new System.Drawing.Size(71, 17);
 			this.rbAnswerD.TabIndex = 3;
-			this.rbAnswerD.TabStop = true;
 			this.rbAnswerD.Text = "Đáp án D";
 			this.rbAnswerD.UseVisualStyleBackColor = true;
 			// 
@@ -266,7 +266,6 @@ namespace Main
 			this.rbAnswerC.Name = "rbAnswerC";
 			this.rbAnswerC.Size = new System.Drawing.Size(70, 17);
 			this.rbAnswerC.TabIndex = 2;
-			this.rbAnswerC.TabStop = true;
 			this.rbAnswerC.Text = "Đáp án C";
 			this.rbAnswerC.UseVisualStyleBackColor = true;
 			// 
@@ -278,7 +277,6 @@ namespace Main
 			this.rbAnswerB.Name = "rbAnswerB";
 			this.rbAnswerB.Size = new System.Drawing.Size(70, 17);
 			this.rbAnswerB.TabIndex = 1;
-			this.rbAnswerB.TabStop = true;
 			this.rbAnswerB.Text = "Đáp án B";
 			this.rbAnswerB.UseVisualStyleBackColor = true;
 			// 
@@ -290,7 +288,6 @@ namespace Main
 			this.rbAnswerA.Name = "rbAnswerA";
 			this.rbAnswerA.Size = new System.Drawing.Size(70, 17);
 			this.rbAnswerA.TabIndex = 0;
-			this.rbAnswerA.TabStop = true;
 			this.rbAnswerA.Text = "Đáp án A";
 			this.rbAnswerA.UseVisualStyleBackColor = true;
 			// 
@@ -305,7 +302,7 @@ namespace Main
 			this.gbProgressQuestion.Size = new System.Drawing.Size(288, 311);
 			this.gbProgressQuestion.TabIndex = 1;
 			this.gbProgressQuestion.TabStop = false;
-			this.gbProgressQuestion.Text = "Tiến độ câu hỏi";
+			this.gbProgressQuestion.Text = "Sơ đồ câu hỏi";
 			// 
 			// fLPdata
 			// 
