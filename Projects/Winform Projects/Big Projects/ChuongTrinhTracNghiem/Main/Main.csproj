@@ -230,6 +230,7 @@
     <None Include="Resources\warning.png" />
     <None Include="Resources\cancel.png" />
     <None Include="Resources\checked.png" />
+    <None Include="Resources\flags.png" />
     <Content Include="Resources\Quiz.png" />
     <None Include="Resources\QuizInform.png" />
     <None Include="Resources\QuizThumnails.png" />

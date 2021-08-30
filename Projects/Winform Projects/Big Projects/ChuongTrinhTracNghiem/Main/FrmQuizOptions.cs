@@ -115,9 +115,13 @@ namespace Main
 				return;
 			}	
 			FrmQuiz frm = new FrmQuiz(Account, Exam);
-			this.Hide();
-			frm.ShowDialog();	
-			this.Show();
+			this.Close();
+			frm.ShowDialog();
+		}
+
+		private void btnExit_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 
 		#endregion

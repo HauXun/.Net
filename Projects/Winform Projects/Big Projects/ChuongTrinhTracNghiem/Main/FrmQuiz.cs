@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Main
@@ -30,6 +32,7 @@ namespace Main
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			Account = account;
 			Exam = exam;
+			
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -80,8 +83,7 @@ namespace Main
 			lbNumberQuestion.Text = ((sender as Button).Tag as Question).QuestionIdx + ':';
 
 			SaveCurrentSelected();
-
-			rbAnswerA.Checked = rbAnswerB.Checked = rbAnswerC.Checked = rbAnswerD.Checked = false;
+			ClearChecked();
 			selectedIndex = (sender as Button).Name;
 			ShowQuestion(questionID);
 			NavigationButton();
@@ -90,9 +92,30 @@ namespace Main
 
 		private void SaveCurrentSelected()
 		{
-			if (int.TryParse(selectedIndex, out int idx) && idx >= 0 && idx < Exam.QCount)
+			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCount)
 			{
-				Data.Rows[idx - 1]["SelectedOption"] = GetSelectedOption();
+				string answer = GetSelectedOption();
+				Data.Rows[idx - 1]["SelectedOption"] = answer;
+
+				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx).ToString())).FirstOrDefault();
+				if (!button.CausesValidation)
+				{
+					button.Image = null;
+					button.TextImageRelation = TextImageRelation.Overlay;
+					button.BackColor = Color.White;
+					button.Font = new Font("Arial", 9, FontStyle.Regular);
+					button.FlatAppearance.BorderSize = 1;
+					if (answer.Equals(string.Empty))
+					{
+						button.FlatStyle = FlatStyle.Standard;
+						button.FlatAppearance.BorderColor = Color.Blue;
+					}
+					else
+					{
+						button.FlatStyle = FlatStyle.Flat;
+						button.FlatAppearance.BorderColor = Color.Lime;
+					}
+				}
 			}
 		}
 
@@ -107,13 +130,14 @@ namespace Main
 				question.QuestionIdx = row["QuestionIdx"].ToString();
 				Button button = new Button()
 				{
-					Width = 38,
-					Height = 38,
+					Width = 47,
+					Height = 47,
 					Name = i.ToString(),
-					Text = $"C{i++}",
+					Text = $"Câu {i++}",
 					TextAlign = ContentAlignment.MiddleCenter,
-					Font = new Font("Arial", 6.5F, FontStyle.Regular),
-					Tag = question
+					Font = new Font("Arial", 9, FontStyle.Regular),
+					Tag = question,
+					CausesValidation = false
 				};
 				button.Click += Button_Click;
 				fLPdata.Controls.Add(button);
@@ -146,7 +170,7 @@ namespace Main
 		private void NavigationButton()
 		{
 			btnFirstQuestion.Enabled = btnPreviousQuestion.Enabled = (int.TryParse(selectedIndex, out int idx) && idx - 1 > 0);
-			btnLastQuestion.Enabled = btnNextQuestion.Enabled = (int.TryParse(selectedIndex, out int idx2) && idx2 + 1 <= Exam.QCount);
+			btnLastQuestion.Enabled = btnNextQuestion.Enabled = (int.TryParse(selectedIndex, out idx) && idx + 1 <= Exam.QCount);
 		}
 
 		private void FinishQuiz()
@@ -169,16 +193,31 @@ namespace Main
 
 			mark = (float)correctAnswer * 10 / Exam.QCount;
 
-			FrmQuizResult frm = new FrmQuizResult(Data);
-			this.Close();
+			FrmQuizResult frm = new FrmQuizResult(Data, Exam, mark, correctAnswer, this);
+			//new Thread(() =>
+			//{
+			//	this.Invoke((MethodInvoker)delegate
+			//	{
+			//		this.Dispose();
+			//	});
+			//}).Start();
+			frm.Activated += Frm_Activated;
 			frm.ShowDialog();
-		}	
+		}
+
+		private void Frm_Activated(object sender, EventArgs e)
+		{
+			this.Dispose();
+		}
+
+		private void ClearChecked()
+		{
+			rbAnswerA.Checked = rbAnswerB.Checked = rbAnswerC.Checked = rbAnswerD.Checked = false;
+		}
 
 		#endregion
 
 		#region Events
-
-		#endregion
 
 		private void FrmQuiz_Load(object sender, EventArgs e)
 		{
@@ -266,5 +305,61 @@ namespace Main
 
 			FinishQuiz();
 		}
+
+		private void lLuncheck_MouseEnter(object sender, EventArgs e)
+		{
+			lLuncheck.LinkBehavior = LinkBehavior.SystemDefault;
+		}
+
+		private void lLuncheck_Click(object sender, EventArgs e)
+		{
+			ClearChecked();
+			SaveCurrentSelected();
+		}
+
+		private void lLuncheck_MouseLeave(object sender, EventArgs e)
+		{
+			lLuncheck.LinkBehavior = LinkBehavior.NeverUnderline;
+		}
+
+		private void lLflag_MouseEnter(object sender, EventArgs e)
+		{
+			lLflag.LinkBehavior = LinkBehavior.SystemDefault;
+		}
+
+		private void lLflag_MouseLeave(object sender, EventArgs e)
+		{
+			lLflag.LinkBehavior = LinkBehavior.NeverUnderline;
+			lLflag.BackColor = Color.White;
+		}
+
+		private void lLflag_Click(object sender, EventArgs e)
+		{
+			lLflag.BackColor = Color.Gainsboro;
+			if (int.TryParse(selectedIndex, out int idx) && idx >= 0 && idx < Exam.QCount)
+			{
+				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx).ToString())).FirstOrDefault();
+
+				if (!button.CausesValidation)
+				{
+					button.Image = new Bitmap(Properties.Resources.flags, new Size(15, 15));
+					button.TextImageRelation = TextImageRelation.ImageAboveText;
+					button.BackColor = Color.MistyRose;
+					button.Font = new Font("Arial", 7, FontStyle.Regular);
+					button.FlatStyle = FlatStyle.Flat;
+					button.FlatAppearance.BorderSize = 2;
+					button.FlatAppearance.BorderColor = Color.Red;
+
+					button.CausesValidation = true;
+				}
+				else
+				{
+					button.CausesValidation = false;
+					SaveCurrentSelected();
+				}
+			}
+		}
+
+		#endregion
 	}
 }

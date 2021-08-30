@@ -37,7 +37,8 @@ namespace Main
 			this.btnEnd = new System.Windows.Forms.Button();
 			this.btnReset = new System.Windows.Forms.Button();
 			this.pNavigation = new System.Windows.Forms.Panel();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.lLuncheck = new System.Windows.Forms.LinkLabel();
+			this.lLflag = new System.Windows.Forms.LinkLabel();
 			this.btnLastQuestion = new System.Windows.Forms.Button();
 			this.btnNextQuestion = new System.Windows.Forms.Button();
 			this.btnPreviousQuestion = new System.Windows.Forms.Button();
@@ -53,8 +54,8 @@ namespace Main
 			this.lbNumberQuestion = new System.Windows.Forms.Label();
 			this.rtbQuestionContent = new System.Windows.Forms.RichTextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.toolTipTicked = new System.Windows.Forms.ToolTip(this.components);
 			this.timer = new System.Windows.Forms.Timer(this.components);
+			this.toolTipCheck = new System.Windows.Forms.ToolTip(this.components);
 			this.pMain.SuspendLayout();
 			this.gbTime.SuspendLayout();
 			this.pNavigationQuiz.SuspendLayout();
@@ -161,7 +162,8 @@ namespace Main
 			// 
 			this.pNavigation.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.pNavigation.BackColor = System.Drawing.Color.White;
-			this.pNavigation.Controls.Add(this.linkLabel1);
+			this.pNavigation.Controls.Add(this.lLuncheck);
+			this.pNavigation.Controls.Add(this.lLflag);
 			this.pNavigation.Controls.Add(this.btnLastQuestion);
 			this.pNavigation.Controls.Add(this.btnNextQuestion);
 			this.pNavigation.Controls.Add(this.btnPreviousQuestion);
@@ -171,17 +173,40 @@ namespace Main
 			this.pNavigation.Size = new System.Drawing.Size(746, 29);
 			this.pNavigation.TabIndex = 2;
 			// 
-			// linkLabel1
+			// lLuncheck
 			// 
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.linkLabel1.LinkColor = System.Drawing.Color.Red;
-			this.linkLabel1.Location = new System.Drawing.Point(605, 8);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(54, 13);
-			this.linkLabel1.TabIndex = 5;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "Đánh dấu";
+			this.lLuncheck.AutoSize = true;
+			this.lLuncheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lLuncheck.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+			this.lLuncheck.LinkColor = System.Drawing.Color.Black;
+			this.lLuncheck.Location = new System.Drawing.Point(235, 8);
+			this.lLuncheck.Name = "lLuncheck";
+			this.lLuncheck.Size = new System.Drawing.Size(53, 13);
+			this.lLuncheck.TabIndex = 6;
+			this.lLuncheck.TabStop = true;
+			this.lLuncheck.Text = "Hủy chọn";
+			this.toolTipCheck.SetToolTip(this.lLuncheck, "Hủy đáp án đã chọn");
+			this.lLuncheck.Click += new System.EventHandler(this.lLuncheck_Click);
+			this.lLuncheck.MouseEnter += new System.EventHandler(this.lLuncheck_MouseEnter);
+			this.lLuncheck.MouseLeave += new System.EventHandler(this.lLuncheck_MouseLeave);
+			// 
+			// lLflag
+			// 
+			this.lLflag.ActiveLinkColor = System.Drawing.Color.Black;
+			this.lLflag.AutoSize = true;
+			this.lLflag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lLflag.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+			this.lLflag.LinkColor = System.Drawing.Color.Red;
+			this.lLflag.Location = new System.Drawing.Point(616, 8);
+			this.lLflag.Name = "lLflag";
+			this.lLflag.Size = new System.Drawing.Size(43, 13);
+			this.lLflag.TabIndex = 5;
+			this.lLflag.TabStop = true;
+			this.lLflag.Text = "Cắm cờ";
+			this.toolTipCheck.SetToolTip(this.lLflag, "Đánh dấu câu hỏi");
+			this.lLflag.Click += new System.EventHandler(this.lLflag_Click);
+			this.lLflag.MouseEnter += new System.EventHandler(this.lLflag_MouseEnter);
+			this.lLflag.MouseLeave += new System.EventHandler(this.lLflag_MouseLeave);
 			// 
 			// btnLastQuestion
 			// 
@@ -354,17 +379,19 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// toolTipTicked
-			// 
-			this.toolTipTicked.AutoPopDelay = 10000;
-			this.toolTipTicked.InitialDelay = 0;
-			this.toolTipTicked.ReshowDelay = 100;
-			this.toolTipTicked.ToolTipTitle = "Nhắc nhở!";
-			// 
 			// timer
 			// 
 			this.timer.Interval = 1000;
 			this.timer.Tick += new System.EventHandler(this.timer_Tick);
+			// 
+			// toolTipCheck
+			// 
+			this.toolTipCheck.AutomaticDelay = 0;
+			this.toolTipCheck.AutoPopDelay = 10000;
+			this.toolTipCheck.InitialDelay = 0;
+			this.toolTipCheck.ReshowDelay = 110;
+			this.toolTipCheck.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTipCheck.ToolTipTitle = "Nhắc nhở!";
 			// 
 			// FrmQuiz
 			// 
@@ -414,11 +441,12 @@ namespace Main
 		private System.Windows.Forms.GroupBox gbTime;
 		private System.Windows.Forms.Button btnEnd;
 		private System.Windows.Forms.Button btnReset;
-		private System.Windows.Forms.ToolTip toolTipTicked;
 		private System.Windows.Forms.GroupBox gbProgressQuestion;
-		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.LinkLabel lLflag;
 		private CircularProgressBar.CircularProgressBar cPBCountDownTime;
 		private System.Windows.Forms.Timer timer;
 		private System.Windows.Forms.FlowLayoutPanel fLPdata;
+		private System.Windows.Forms.LinkLabel lLuncheck;
+		private System.Windows.Forms.ToolTip toolTipCheck;
 	}
 }

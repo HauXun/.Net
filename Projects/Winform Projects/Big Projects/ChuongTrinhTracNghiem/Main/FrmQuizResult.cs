@@ -1,30 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Entities;
+using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Main
 {
 	public partial class FrmQuizResult : Form
 	{
+        private Form form;
+        private float mark;
+        private byte correct;
 		private DataTable data;
+        private Exam exam;
 
 		public DataTable Data { get => data; set => data = value; }
+		public Exam Exam { get => exam; set => exam = value; }
+		public Form Form { get => form; set => form = value; }
 
-		public FrmQuizResult(DataTable data)
+		public FrmQuizResult(DataTable data, Exam exam, float mark, byte correct, Form form)
 		{
 			InitializeComponent();
 			Data = data;
+            Exam = exam;
+            this.mark = mark;
+            this.correct = correct;
+            Form = form;
 		}
 
 		#region Methods
 
-		private void LoadStateQuestion(CheckState check, byte i, string answer)
+		private void LoadStateQuestion(CheckState check, ref byte i, string answer)
 		{
 			ToolTip tip = new ToolTip()
 			{ 
@@ -71,15 +79,23 @@ namespace Main
 			fLPdata.Controls.Add(button);
 		}
 
-        private void LoadStateResult(byte correctAnswer, byte failAnswer, byte notyetAnswer)
+		private enum State
 		{
+            Check,
+            Uncheck,
+            Indeterminate
+		}
+
+        private void LoadStateResult(byte value, byte length, State state)
+		{
+            int vLength = value.ToString().Length;
+
             Button button = new Button()
             {
                 AutoSize = true,
                 Width = 110,
                 Height = 45,
-                Name = "btnCorrectAnswer",
-                Text = "".PadRight(3) + $"{1000} Câu",
+                Text = "".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu",
                 TextImageRelation = TextImageRelation.ImageBeforeText,
                 Font = new Font("Arial", 9, FontStyle.Regular),
                 BackColor = Color.Transparent,
@@ -88,7 +104,6 @@ namespace Main
 
             button.FlatAppearance.BorderSize = 0;
             button.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-            button.Image = new Bitmap(Properties.Resources._checked, new Size(20, 20));
 
             RJProgressBar bar = new RJProgressBar()
             {
@@ -98,73 +113,32 @@ namespace Main
                 ForeColor = Color.Black,
                 ShowMaximun = true,
                 ShowValue = TextPosition.Center,
-                Value = 20,
-                Size = new Size(210, 27)
+                Value = (int)((float)value * 10 / Exam.QCount * 10),
+                Size = new Size(210, 27),
+                ChannelColor = Color.Gainsboro
             };
+
+			switch (state)
+			{
+				case State.Check:
+                    button.Image = new Bitmap(Properties.Resources._checked, new Size(20, 20));
+                    bar.SliderColor = Color.Lime;
+                    break;
+				case State.Uncheck:
+                    button.Image = new Bitmap(Properties.Resources.cancel, new Size(20, 20));
+                    bar.SliderColor = Color.Red;
+                    break;
+				case State.Indeterminate:
+                    button.Image = new Bitmap(Properties.Resources.warning, new Size(20, 20));
+                    bar.SliderColor = Color.Gold;
+                    break;
+				default:
+					break;
+			}
+
             fLPResult.Controls.Add(button);
             fLPResult.Controls.Add(bar);
 
-            Button button2 = new Button()
-            {
-                AutoSize = true,
-                Width = 110,
-                Height = 45,
-                Name = "btnCorrectAnswer",
-                Text = "".PadRight(3) + $"{100} Câu",
-                TextImageRelation = TextImageRelation.ImageBeforeText,
-                Font = new Font("Arial", 9, FontStyle.Regular),
-                BackColor = Color.Transparent,
-                FlatStyle = FlatStyle.Flat
-            };
-
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-            button2.Image = new Bitmap(Properties.Resources.cancel, new Size(20, 20));
-
-            RJProgressBar bar2 = new RJProgressBar()
-            {
-                SliderHeight = 10,
-                ChannelHeight = 8,
-                ForeBackColor = Color.Transparent,
-                ForeColor = Color.Black,
-                ShowMaximun = true,
-                ShowValue = TextPosition.Center,
-                Value = 20,
-                Size = new Size(210, 27)
-            };
-            fLPResult.Controls.Add(button2);
-            fLPResult.Controls.Add(bar2);
-
-            Button button3 = new Button()
-            {
-                AutoSize = true,
-                Width = 110,
-                Height = 45,
-                Name = "btnCorrectAnswer",
-                Text = "".PadRight(3) + $"{10} Câu",
-                TextImageRelation = TextImageRelation.ImageBeforeText,
-                Font = new Font("Arial", 9, FontStyle.Regular),
-                BackColor = Color.Transparent,
-                FlatStyle = FlatStyle.Flat
-            };
-
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-            button3.Image = new Bitmap(Properties.Resources.warning, new Size(20, 20));
-
-            RJProgressBar bar3 = new RJProgressBar()
-            {
-                SliderHeight = 10,
-                ChannelHeight = 8,
-                ForeBackColor = Color.Transparent,
-                ForeColor = Color.Black,
-                ShowMaximun = true,
-                ShowValue = TextPosition.Center,
-                Value = 20,
-                Size = new Size(210, 27)
-            };
-            fLPResult.Controls.Add(button3);
-            fLPResult.Controls.Add(bar3);
         }
 
 		private void LoadState()
@@ -175,7 +149,9 @@ namespace Main
             byte notyetAnswer = 0;
 			string answer;
 			string selectedOption;
+
 			CheckBox check = new CheckBox();
+
 			foreach (DataRow row in Data.Rows)
 			{
 				answer = row["Answer"].ToString();
@@ -197,10 +173,24 @@ namespace Main
 					check.CheckState = CheckState.Unchecked;
                     failAnswer++;
 				}
-				LoadStateQuestion(check.CheckState, i, answer);
+				LoadStateQuestion(check.CheckState, ref i, answer);
 			}
-            LoadStateResult(correctAnswer, failAnswer, notyetAnswer);
 
+            byte cLength = (byte)correctAnswer.ToString().Length;
+            byte fLength = (byte)failAnswer.ToString().Length;
+            byte nyLength = (byte)notyetAnswer.ToString().Length;
+            byte length = (cLength > fLength) ? (cLength > nyLength ? cLength : nyLength) : (fLength > nyLength ? fLength : nyLength);
+
+            LoadStateResult(correctAnswer, length, State.Check);
+            LoadStateResult(failAnswer, length, State.Uncheck);
+            LoadStateResult(notyetAnswer, length, State.Indeterminate);
+        }
+
+        private void LoadMark()
+        {
+            string sCorrect = (correct < 9) ? $"0{correct}" : correct.ToString();
+            string sQCount = (Exam.QCount < 9) ? $"0{Exam.QCount}" : Exam.QCount.ToString();
+            lbCorrectNumber.Text = $"{sCorrect}/{sQCount}";
         }
 
 		#endregion
@@ -210,9 +200,20 @@ namespace Main
 		private void FrmQuizResult_Load(object sender, EventArgs e)
 		{
 			LoadState();
+            LoadMark();
 		}
 
 		#endregion
+
+		private void btnHome_Click(object sender, EventArgs e)
+		{
+            this.Close();
+		}
+
+		private void FrmQuizResult_FormClosing(object sender, FormClosingEventArgs e)
+		{
+           // Form.Dispose();
+		}
 	}
 
 	public enum TextPosition
