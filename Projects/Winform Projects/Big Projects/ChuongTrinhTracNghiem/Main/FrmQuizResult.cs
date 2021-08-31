@@ -3,14 +3,12 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Main
 {
-	public partial class FrmQuizResult : Form
-	{
-        private Form form;
+    public partial class FrmQuizResult : Form
+    {
         private float mark;
         private byte correct;
 		private DataTable data;
@@ -18,17 +16,15 @@ namespace Main
 
 		public DataTable Data { get => data; set => data = value; }
 		public Exam Exam { get => exam; set => exam = value; }
-		public Form Form { get => form; set => form = value; }
 
-		public FrmQuizResult(DataTable data, Exam exam, float mark, byte correct, Form form)
+		public FrmQuizResult(DataTable data, Exam exam, float mark, byte correct)
 		{
 			InitializeComponent();
 			Data = data;
             Exam = exam;
             this.mark = mark;
             this.correct = correct;
-            Form = form;
-		}
+        }
 
 		#region Methods
 
@@ -201,20 +197,15 @@ namespace Main
 		{
 			LoadState();
             LoadMark();
-		}
+        }
 
-		#endregion
-
-		private void btnHome_Click(object sender, EventArgs e)
-		{
+        private void btnHome_Click(object sender, EventArgs e)
+        {
             this.Close();
-		}
+        }
 
-		private void FrmQuizResult_FormClosing(object sender, FormClosingEventArgs e)
-		{
-           // Form.Dispose();
-		}
-	}
+        #endregion
+    }
 
 	public enum TextPosition
     {

@@ -183,7 +183,6 @@ namespace Main
 			this.Name = "FrmQuizResult";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmQuizResult";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmQuizResult_FormClosing);
 			this.Load += new System.EventHandler(this.FrmQuizResult_Load);
 			this.gbProgressQuestion.ResumeLayout(false);
 			this.splitContainer1.Panel1.ResumeLayout(false);

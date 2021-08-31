@@ -54,7 +54,6 @@ namespace Main
 			this.lbNumberQuestion = new System.Windows.Forms.Label();
 			this.rtbQuestionContent = new System.Windows.Forms.RichTextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.timer = new System.Windows.Forms.Timer(this.components);
 			this.toolTipCheck = new System.Windows.Forms.ToolTip(this.components);
 			this.pMain.SuspendLayout();
 			this.gbTime.SuspendLayout();
@@ -379,11 +378,6 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// timer
-			// 
-			this.timer.Interval = 1000;
-			this.timer.Tick += new System.EventHandler(this.timer_Tick);
-			// 
 			// toolTipCheck
 			// 
 			this.toolTipCheck.AutomaticDelay = 0;
@@ -403,7 +397,6 @@ namespace Main
 			this.Name = "FrmQuiz";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quản lý môn thi";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmQuiz_FormClosing);
 			this.Load += new System.EventHandler(this.FrmQuiz_Load);
 			this.pMain.ResumeLayout(false);
 			this.gbTime.ResumeLayout(false);
@@ -444,7 +437,6 @@ namespace Main
 		private System.Windows.Forms.GroupBox gbProgressQuestion;
 		private System.Windows.Forms.LinkLabel lLflag;
 		private CircularProgressBar.CircularProgressBar cPBCountDownTime;
-		private System.Windows.Forms.Timer timer;
 		private System.Windows.Forms.FlowLayoutPanel fLPdata;
 		private System.Windows.Forms.LinkLabel lLuncheck;
 		private System.Windows.Forms.ToolTip toolTipCheck;

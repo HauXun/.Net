@@ -143,10 +143,10 @@ namespace Main
 
 		private void tsmiTestQuiz_Click(object sender, EventArgs e)
 		{
-			this.Hide();
 			try
 			{
 				FrmQuizOptions frm = new FrmQuizOptions(Account);
+				this.Hide();
 				frm.ShowDialog();
 			}
 			catch
@@ -233,6 +233,21 @@ namespace Main
 			this.Show();
 		}
 
+		private void tsmiStatisticalTrainingProg_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			try
+			{
+				FrmManageStatistical frm = new FrmManageStatistical();
+				frm.ShowDialog();
+			}
+			catch
+			{
+				this.Show();
+			}
+			this.Show();
+		}
+
 		private void tsmiExit_Click(object sender, EventArgs e)
 		{
 			Close();
@@ -270,21 +285,7 @@ namespace Main
 			//this.Controls.Add(panel1);
 		}
 
-		#endregion
 
-		private void tsmiStatisticalTrainingProg_Click(object sender, EventArgs e)
-		{
-			this.Hide();
-			try
-			{
-				FrmManageStatistical frm = new FrmManageStatistical();
-				frm.ShowDialog();
-			}
-			catch
-			{
-				this.Show();
-			}
-			this.Show();
-		}
+		#endregion
 	}
 }

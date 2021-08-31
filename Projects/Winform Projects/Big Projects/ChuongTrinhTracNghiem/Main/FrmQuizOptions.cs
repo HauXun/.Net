@@ -115,8 +115,14 @@ namespace Main
 				return;
 			}	
 			FrmQuiz frm = new FrmQuiz(Account, Exam);
-			this.Close();
+			this.Hide();
+			frm.FormClosing += Frm_FormClosing;
 			frm.ShowDialog();
+		}
+
+		private void Frm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			this.Dispose();
 		}
 
 		private void btnExit_Click(object sender, EventArgs e)

@@ -5,8 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Main
@@ -14,7 +12,6 @@ namespace Main
 	public partial class FrmQuiz : Form
 	{
 		private string selectedIndex = "1";
-		private int remainTime = 0;
 
 		private UserAccount account;
 		private Exam exam;
@@ -32,7 +29,7 @@ namespace Main
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			Account = account;
 			Exam = exam;
-			
+
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -193,21 +190,10 @@ namespace Main
 
 			mark = (float)correctAnswer * 10 / Exam.QCount;
 
-			FrmQuizResult frm = new FrmQuizResult(Data, Exam, mark, correctAnswer, this);
-			//new Thread(() =>
-			//{
-			//	this.Invoke((MethodInvoker)delegate
-			//	{
-			//		this.Dispose();
-			//	});
-			//}).Start();
-			frm.Activated += Frm_Activated;
+			FrmQuizResult frm = new FrmQuizResult(Data, Exam, mark, correctAnswer);
+			this.Hide();
+			frm.FormClosing += Frm_FormClosing;
 			frm.ShowDialog();
-		}
-
-		private void Frm_Activated(object sender, EventArgs e)
-		{
-			this.Dispose();
 		}
 
 		private void ClearChecked()
@@ -225,29 +211,27 @@ namespace Main
 			btnFirstQuestion_Click(this, e);
 			NavigationButton();
 			pNavigation.Enabled = fLPdata.Controls.Count > 0;
-			remainTime = Exam.ExamTime * 60;    //Convert to second
+			CountDownTimer();
+
+		}
+
+		private void CountDownTimer()
+		{
+			CountDownTimer timer = new CountDownTimer();
+			timer.SetTime(Exam.ExamTime, 0);
 			timer.Start();
-		}
-
-		private void FrmQuiz_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			timer.Stop();
-		}
-
-		private void timer_Tick(object sender, EventArgs e)
-		{
-			remainTime--;
-			string gio = ((remainTime / 3600 > 0 && remainTime / 3600 < 9) ? "00" : string.Empty) + ((remainTime / 3600 > 0) ? remainTime / 3600 : 0).ToString(); ;
-			string phut = (remainTime / 60 < 9) ? "0" : string.Empty + (remainTime / 60).ToString();
-			string giay = (remainTime % 60).ToString();
-
-			cPBCountDownTime.Invoke((MethodInvoker)delegate
+			timer.TimeChanged += (() =>
 			{
-				cPBCountDownTime.Text = $"{gio}:{phut}:{giay}";
+				cPBCountDownTime.Text = timer.TimeLeftMsStr;
+				cPBCountDownTime.SuperscriptText = timer.TimeLeftMil;
 			});
-
-			if (remainTime <= 0)
+			timer.CountDownFinished += () =>
+			{
+				cPBCountDownTime.Text = "Finish!";
+				timer.Stop();
 				FinishQuiz();
+			};
+			timer.StepMs = 77;
 		}
 
 		private void Button_Click(object sender, EventArgs e)
@@ -358,6 +342,11 @@ namespace Main
 					SaveCurrentSelected();
 				}
 			}
+		}
+
+		private void Frm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			this.Dispose();
 		}
 
 		#endregion
