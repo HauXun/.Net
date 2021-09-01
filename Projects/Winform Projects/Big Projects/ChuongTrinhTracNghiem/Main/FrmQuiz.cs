@@ -13,9 +13,13 @@ namespace Main
 	{
 		private string selectedIndex = "1";
 
+		byte correctAnswer = 0;
+		float mark = 0;
+
 		private UserAccount account;
 		private Exam exam;
 		private DataTable data;
+		CountDownTimer timer = new CountDownTimer();
 
 		public UserAccount Account { get => account; set => account = value; }
 		public Exam Exam { get => exam; set => exam = value; }
@@ -172,11 +176,20 @@ namespace Main
 
 		private void FinishQuiz()
 		{
+			timer.Stop();
 			SaveCurrentSelected();
+			SavePoint();
+			SaveTestHistory();
 
-			byte correctAnswer = 0;
-			float mark = 0;
+			FrmQuizResult frm = new FrmQuizResult(Data, Exam, mark, correctAnswer);
+			frm.cPBCountDownTime.Text = (!timer.MustStop) ? this.cPBCountDownTime.Text : "Finished";
+			this.Hide();
+			frm.FormClosing += Frm_FormClosing;
+			frm.ShowDialog();
+		}
 
+		private void SavePoint()
+		{
 			foreach (DataRow row in Data.Rows)
 			{
 				string answer = row["Answer"].ToString();
@@ -189,16 +202,54 @@ namespace Main
 			}
 
 			mark = (float)correctAnswer * 10 / Exam.QCount;
+		}
 
-			FrmQuizResult frm = new FrmQuizResult(Data, Exam, mark, correctAnswer);
-			this.Hide();
-			frm.FormClosing += Frm_FormClosing;
-			frm.ShowDialog();
+		private void SaveTestHistory()
+		{
+			TestHistory history = new TestHistory()
+			{
+				ExamID = Exam.ExamID,
+				SubjectID = Exam.SubjectID,
+				UserID = Account.UserID,
+				SemesterID = int.Parse(SubjectBLL.Instance.GetSubjectFromEduProg(Account.UserID).Rows[0]["SemesterID"].ToString()),
+				CorrectAnswer = correctAnswer,
+				TotalQuestion = Exam.QCount,
+				Mark = mark,
+				Success = (mark <= 2) ? false : true,
+				CreatedBy = Account.FullName
+			};
+
+			try
+			{
+				TestHistoryBLL.Instance.SaveTestHistory(history);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 
 		private void ClearChecked()
 		{
 			rbAnswerA.Checked = rbAnswerB.Checked = rbAnswerC.Checked = rbAnswerD.Checked = false;
+		}
+
+		private void CountDownTimer()
+		{
+			timer.SetTime(Exam.ExamTime, 0);
+			timer.Start();
+			timer.TimeChanged += (() =>
+			{
+				cPBCountDownTime.Text = timer.TimeLeftMsStr;
+				cPBCountDownTime.SuperscriptText = timer.TimeLeftMil;
+			});
+			timer.CountDownFinished += () =>
+			{
+				cPBCountDownTime.SuperscriptText = "Finish!";
+				timer.Stop();
+				FinishQuiz();
+			};
+			timer.StepMs = 77;
 		}
 
 		#endregion
@@ -213,25 +264,6 @@ namespace Main
 			pNavigation.Enabled = fLPdata.Controls.Count > 0;
 			CountDownTimer();
 
-		}
-
-		private void CountDownTimer()
-		{
-			CountDownTimer timer = new CountDownTimer();
-			timer.SetTime(Exam.ExamTime, 0);
-			timer.Start();
-			timer.TimeChanged += (() =>
-			{
-				cPBCountDownTime.Text = timer.TimeLeftMsStr;
-				cPBCountDownTime.SuperscriptText = timer.TimeLeftMil;
-			});
-			timer.CountDownFinished += () =>
-			{
-				cPBCountDownTime.Text = "Finish!";
-				timer.Stop();
-				FinishQuiz();
-			};
-			timer.StepMs = 77;
 		}
 
 		private void Button_Click(object sender, EventArgs e)
@@ -320,7 +352,7 @@ namespace Main
 		private void lLflag_Click(object sender, EventArgs e)
 		{
 			lLflag.BackColor = Color.Gainsboro;
-			if (int.TryParse(selectedIndex, out int idx) && idx >= 0 && idx < Exam.QCount)
+			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCount)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx).ToString())).FirstOrDefault();
 

@@ -248,6 +248,51 @@ namespace Main
 			this.Show();
 		}
 
+		private void tsmiTestHistory_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			try
+			{
+				FrmTestHistory frm = new FrmTestHistory(Account);
+				frm.ShowDialog();
+			}
+			catch
+			{
+				this.Show();
+			}
+			this.Show();
+		}
+
+		private void tsmiLeaderBoard_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			try
+			{
+				FrmLeaderBoard frm = new FrmLeaderBoard();
+				frm.ShowDialog();
+			}
+			catch
+			{
+				this.Show();
+			}
+			this.Show();
+		}
+
+		private void tsmiEduProg_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			try
+			{
+				FrmEduProg frm = new FrmEduProg(Account);
+				frm.ShowDialog();
+			}
+			catch
+			{
+				this.Show();
+			}
+			this.Show();
+		}
+
 		private void tsmiExit_Click(object sender, EventArgs e)
 		{
 			Close();
@@ -284,8 +329,6 @@ namespace Main
 			//panel1.BackColor = Color.FromArgb(125, Color.Black);
 			//this.Controls.Add(panel1);
 		}
-
-
 		#endregion
 	}
 }

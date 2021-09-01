@@ -20,6 +20,11 @@ namespace BusinessLogicLayer
 			private set => instance = value;
 		}
 
+		private UserClassBLL()
+		{
+
+		}
+
 		public void GetAllClass(DataGridView data)
 		{
 			data.AutoGenerateColumns = false;

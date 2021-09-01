@@ -97,5 +97,10 @@ namespace QuanLyQuanCafe
 					"Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
+
+		private void bunifuButton1_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

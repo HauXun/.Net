@@ -36,6 +36,9 @@
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPages">
+      <HintPath>C:\Users\ADMIN\Downloads\Tech4Each\Bunifu_UI_WinForms_1.11.5.1\Bunifu_UI_WinForms_1.11.5.1\Bunifu_UI_WinForms_1.11.5.1\Bunifu.UI.WinForms.BunifuPages.dll</HintPath>
+    </Reference>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
@@ -63,6 +66,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControl.cs" />
+    <Compile Include="FrmEduProg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEduProg.Designer.cs">
+      <DependentUpon>FrmEduProg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTestHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTestHistory.Designer.cs">
+      <DependentUpon>FrmTestHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmManageClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +101,12 @@
     </Compile>
     <Compile Include="FrmManageFaculty.Designer.cs">
       <DependentUpon>FrmManageFaculty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLeaderBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLeaderBoard.Designer.cs">
+      <DependentUpon>FrmLeaderBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmManageStatistical.cs">
       <SubType>Form</SubType>
@@ -149,6 +170,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmEduProg.resx">
+      <DependentUpon>FrmEduProg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTestHistory.resx">
+      <DependentUpon>FrmTestHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmManageClass.resx">
       <DependentUpon>FrmManageClass.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManageFaculty.resx">
       <DependentUpon>FrmManageFaculty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLeaderBoard.resx">
+      <DependentUpon>FrmLeaderBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManageStatistical.resx">
       <DependentUpon>FrmManageStatistical.cs</DependentUpon>

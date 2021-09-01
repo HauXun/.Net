@@ -396,7 +396,7 @@ namespace Main
 			this.MinimumSize = new System.Drawing.Size(1080, 640);
 			this.Name = "FrmQuiz";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Quản lý môn thi";
+			this.Text = "Quiz";
 			this.Load += new System.EventHandler(this.FrmQuiz_Load);
 			this.pMain.ResumeLayout(false);
 			this.gbTime.ResumeLayout(false);

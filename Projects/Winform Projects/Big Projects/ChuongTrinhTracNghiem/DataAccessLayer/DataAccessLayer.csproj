@@ -55,6 +55,7 @@
     <Compile Include="SubjectRoleDAL.cs" />
     <Compile Include="TrainingRoleDAL.cs" />
     <Compile Include="UserClassDAL.cs" />
+    <Compile Include="TestHistoryDAL.cs" />
     <Compile Include="UserRoleDAL.cs" />
   </ItemGroup>
   <ItemGroup>

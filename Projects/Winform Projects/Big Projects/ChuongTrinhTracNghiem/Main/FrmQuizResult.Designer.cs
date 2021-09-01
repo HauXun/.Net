@@ -182,7 +182,7 @@ namespace Main
 			this.Controls.Add(this.splitContainer1);
 			this.Name = "FrmQuizResult";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "FrmQuizResult";
+			this.Text = "Kết quả bài thi";
 			this.Load += new System.EventHandler(this.FrmQuizResult_Load);
 			this.gbProgressQuestion.ResumeLayout(false);
 			this.splitContainer1.Panel1.ResumeLayout(false);
@@ -202,7 +202,7 @@ namespace Main
 		private System.Windows.Forms.Label lbCongratulation;
 		private System.Windows.Forms.Label lbCorrectNumber;
 		private System.Windows.Forms.Label lbTitleResult;
-		private CircularProgressBar.CircularProgressBar cPBCountDownTime;
 		private System.Windows.Forms.FlowLayoutPanel fLPResult;
+		public CircularProgressBar.CircularProgressBar cPBCountDownTime;
 	}
 }

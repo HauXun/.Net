@@ -1,7 +1,7 @@
 ﻿
 namespace Main
 {
-	partial class FrmManageStatistical
+	partial class FrmTestHistory
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -36,17 +36,19 @@ namespace Main
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnClearFilter = new System.Windows.Forms.Button();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
-			this.SemesterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.RoleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CourseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CreateAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CorrectAnswer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TotalQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
@@ -89,12 +91,13 @@ namespace Main
 			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SemesterID,
+            this.STT,
             this.SubjectName,
             this.SubjectID,
-            this.RoleName,
-            this.FacultyName,
-            this.CourseID});
+            this.CreateAt,
+            this.CorrectAnswer,
+            this.TotalQuestion,
+            this.Mark});
 			this.aDgvdata.DateWithTime = false;
 			this.aDgvdata.Location = new System.Drawing.Point(12, 91);
 			this.aDgvdata.MultiSelect = false;
@@ -105,24 +108,39 @@ namespace Main
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
 			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
+			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
 			// 
-			// SemesterID
+			// lbTitle
 			// 
-			this.SemesterID.DataPropertyName = "SemesterID";
+			this.lbTitle.AutoSize = true;
+			this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.Location = new System.Drawing.Point(467, 14);
+			this.lbTitle.Name = "lbTitle";
+			this.lbTitle.Size = new System.Drawing.Size(131, 31);
+			this.lbTitle.TabIndex = 0;
+			this.lbTitle.Text = "Lịch sử thi";
+			// 
+			// errorProviderWar
+			// 
+			this.errorProviderWar.ContainerControl = this;
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.SemesterID.DefaultCellStyle = dataGridViewCellStyle2;
-			this.SemesterID.FillWeight = 55.29652F;
-			this.SemesterID.HeaderText = "Học kì";
-			this.SemesterID.MinimumWidth = 22;
-			this.SemesterID.Name = "SemesterID";
-			this.SemesterID.ReadOnly = true;
-			this.SemesterID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
+			this.STT.FillWeight = 63.92004F;
+			this.STT.HeaderText = "STT";
+			this.STT.MinimumWidth = 22;
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// SubjectName
 			// 
 			this.SubjectName.DataPropertyName = "SubjectName";
-			this.SubjectName.FillWeight = 179.8584F;
+			this.SubjectName.FillWeight = 216.417F;
 			this.SubjectName.HeaderText = "Tên môn thi";
 			this.SubjectName.MinimumWidth = 22;
 			this.SubjectName.Name = "SubjectName";
@@ -135,77 +153,74 @@ namespace Main
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle3;
-			this.SubjectID.FillWeight = 73.41696F;
-			this.SubjectID.HeaderText = "Mã môn thi";
+			this.SubjectID.FillWeight = 66.0579F;
+			this.SubjectID.HeaderText = "Mã môn";
 			this.SubjectID.MinimumWidth = 22;
 			this.SubjectID.Name = "SubjectID";
 			this.SubjectID.ReadOnly = true;
 			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// RoleName
+			// CreateAt
 			// 
-			this.RoleName.DataPropertyName = "RoleName";
+			this.CreateAt.DataPropertyName = "CreateAt";
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.Format = "dd/MM/yyy";
+			dataGridViewCellStyle4.NullValue = null;
 			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.RoleName.DefaultCellStyle = dataGridViewCellStyle4;
-			this.RoleName.FillWeight = 71.68496F;
-			this.RoleName.HeaderText = "Kiểu môn";
-			this.RoleName.MinimumWidth = 22;
-			this.RoleName.Name = "RoleName";
-			this.RoleName.ReadOnly = true;
-			this.RoleName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.CreateAt.DefaultCellStyle = dataGridViewCellStyle4;
+			this.CreateAt.FillWeight = 84.47741F;
+			this.CreateAt.HeaderText = "Ngày thi";
+			this.CreateAt.MinimumWidth = 22;
+			this.CreateAt.Name = "CreateAt";
+			this.CreateAt.ReadOnly = true;
+			this.CreateAt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// FacultyName
+			// CorrectAnswer
 			// 
-			this.FacultyName.DataPropertyName = "FacultyName";
+			this.CorrectAnswer.DataPropertyName = "CorrectAnswer";
 			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle5;
-			this.FacultyName.FillWeight = 112.2296F;
-			this.FacultyName.HeaderText = "Học phần cho sinh viên khoa";
-			this.FacultyName.MinimumWidth = 22;
-			this.FacultyName.Name = "FacultyName";
-			this.FacultyName.ReadOnly = true;
-			this.FacultyName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle5;
+			this.CorrectAnswer.FillWeight = 70.06837F;
+			this.CorrectAnswer.HeaderText = "Số câu đúng";
+			this.CorrectAnswer.MinimumWidth = 22;
+			this.CorrectAnswer.Name = "CorrectAnswer";
+			this.CorrectAnswer.ReadOnly = true;
+			this.CorrectAnswer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// CourseID
+			// TotalQuestion
 			// 
-			this.CourseID.DataPropertyName = "CourseID";
 			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.CourseID.DefaultCellStyle = dataGridViewCellStyle6;
-			this.CourseID.FillWeight = 58.8199F;
-			this.CourseID.HeaderText = "Dành cho khóa";
-			this.CourseID.MinimumWidth = 22;
-			this.CourseID.Name = "CourseID";
-			this.CourseID.ReadOnly = true;
-			this.CourseID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle6;
+			this.TotalQuestion.FillWeight = 66.0443F;
+			this.TotalQuestion.HeaderText = "Tổng số câu";
+			this.TotalQuestion.MinimumWidth = 22;
+			this.TotalQuestion.Name = "TotalQuestion";
+			this.TotalQuestion.ReadOnly = true;
+			this.TotalQuestion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// lbTitle
+			// Mark
 			// 
-			this.lbTitle.AutoSize = true;
-			this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTitle.Location = new System.Drawing.Point(357, 14);
-			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(351, 31);
-			this.lbTitle.TabIndex = 0;
-			this.lbTitle.Text = "Thống kê chương trình đào tạo";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Mark.DefaultCellStyle = dataGridViewCellStyle7;
+			this.Mark.FillWeight = 70.29788F;
+			this.Mark.HeaderText = "Điểm";
+			this.Mark.MinimumWidth = 22;
+			this.Mark.Name = "Mark";
+			this.Mark.ReadOnly = true;
+			this.Mark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// errorProviderWar
-			// 
-			this.errorProviderWar.ContainerControl = this;
-			// 
-			// FrmManageStatistical
+			// FrmTestHistory
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1064, 601);
 			this.Controls.Add(this.pMain);
 			this.MinimumSize = new System.Drawing.Size(1080, 640);
-			this.Name = "FrmManageStatistical";
+			this.Name = "FrmTestHistory";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Thống kê chương trình đào tạo";
-			this.Load += new System.EventHandler(this.FrmManageStatistical_Load);
+			this.Text = "Lịch sử thi";
+			this.Load += new System.EventHandler(this.FrmTestHistory_Load);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
@@ -221,11 +236,12 @@ namespace Main
 		private System.Windows.Forms.ErrorProvider errorProviderWar;
 		private ADGV.AdvancedDataGridView aDgvdata;
 		private System.Windows.Forms.Button btnClearFilter;
-		private System.Windows.Forms.DataGridViewTextBoxColumn SemesterID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn RoleName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CourseID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CreateAt;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CorrectAnswer;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuestion;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Mark;
 	}
 }

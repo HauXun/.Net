@@ -25,5 +25,11 @@ namespace BusinessLogicLayer
             data.AutoGenerateColumns = false;
             data.DataSource = EduProgDAL.Instance.GetAllEduProg();
         }
-	}
+
+        public void GetEduProgUser(DataGridView data, int userID)
+        {
+            data.AutoGenerateColumns = false;
+            data.DataSource = EduProgDAL.Instance.GetEduProgUser(userID);
+        }
+    }
 }

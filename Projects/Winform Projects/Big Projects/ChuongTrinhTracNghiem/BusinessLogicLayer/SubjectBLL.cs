@@ -33,6 +33,11 @@ namespace BusinessLogicLayer
             }
         }
 
+        public DataTable GetSubjectFromEduProg(int userID)
+        {
+            return SubjectDAL.Instance.GetSubjectFromEduProg(userID);
+        }
+
         public Subject GetSubjectByID(string subjectID)
         {
             return SubjectDAL.Instance.GetSubjectByID(subjectID);
