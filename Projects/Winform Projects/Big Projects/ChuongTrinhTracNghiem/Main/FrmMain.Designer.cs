@@ -309,6 +309,8 @@ namespace Main
 			// 
 			// btnTraining
 			// 
+			this.btnTraining.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnTraining.BackColor = System.Drawing.Color.OrangeRed;
 			this.btnTraining.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnTraining.ForeColor = System.Drawing.Color.White;
@@ -323,6 +325,8 @@ namespace Main
 			// 
 			// btnShowTop
 			// 
+			this.btnShowTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnShowTop.BackColor = System.Drawing.Color.OrangeRed;
 			this.btnShowTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnShowTop.ForeColor = System.Drawing.Color.White;
@@ -337,6 +341,8 @@ namespace Main
 			// 
 			// btnGuide
 			// 
+			this.btnGuide.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnGuide.BackColor = System.Drawing.Color.OrangeRed;
 			this.btnGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnGuide.ForeColor = System.Drawing.Color.White;
@@ -351,6 +357,8 @@ namespace Main
 			// 
 			// btnTestQuiz
 			// 
+			this.btnTestQuiz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnTestQuiz.BackColor = System.Drawing.Color.Crimson;
 			this.btnTestQuiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnTestQuiz.ForeColor = System.Drawing.Color.White;
@@ -365,6 +373,7 @@ namespace Main
 			// 
 			// pNext
 			// 
+			this.pNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.pNext.BackColor = System.Drawing.Color.Transparent;
 			this.pNext.Controls.Add(this.lbNext);
 			this.pNext.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -375,6 +384,7 @@ namespace Main
 			// 
 			// lbNext
 			// 
+			this.lbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbNext.AutoSize = true;
 			this.lbNext.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbNext.ForeColor = System.Drawing.Color.White;
@@ -386,6 +396,7 @@ namespace Main
 			// 
 			// lbFunctionSelected
 			// 
+			this.lbFunctionSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbFunctionSelected.AutoSize = true;
 			this.lbFunctionSelected.BackColor = System.Drawing.Color.Transparent;
 			this.lbFunctionSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -397,6 +408,7 @@ namespace Main
 			// 
 			// lbFunction
 			// 
+			this.lbFunction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbFunction.AutoSize = true;
 			this.lbFunction.BackColor = System.Drawing.Color.Transparent;
 			this.lbFunction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -409,6 +421,7 @@ namespace Main
 			// 
 			// lbFIcon
 			// 
+			this.lbFIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbFIcon.AutoSize = true;
 			this.lbFIcon.BackColor = System.Drawing.Color.Transparent;
 			this.lbFIcon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -421,6 +434,8 @@ namespace Main
 			// 
 			// lbDisplayname
 			// 
+			this.lbDisplayname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbDisplayname.AutoSize = true;
 			this.lbDisplayname.BackColor = System.Drawing.Color.Transparent;
 			this.lbDisplayname.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -433,6 +448,8 @@ namespace Main
 			// 
 			// lbID
 			// 
+			this.lbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.lbID.AutoSize = true;
 			this.lbID.BackColor = System.Drawing.Color.Transparent;
 			this.lbID.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -445,6 +462,9 @@ namespace Main
 			// 
 			// gpInfoAccount
 			// 
+			this.gpInfoAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.gpInfoAccount.BackColor = System.Drawing.Color.Transparent;
 			this.gpInfoAccount.Controls.Add(this.tbID);
 			this.gpInfoAccount.Controls.Add(this.tbDisplayname);
@@ -459,6 +479,8 @@ namespace Main
 			// 
 			// tbID
 			// 
+			this.tbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbID.Location = new System.Drawing.Point(161, 50);
 			this.tbID.Name = "tbID";
 			this.tbID.ReadOnly = true;
@@ -468,6 +490,8 @@ namespace Main
 			// 
 			// tbDisplayname
 			// 
+			this.tbDisplayname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbDisplayname.Location = new System.Drawing.Point(161, 24);
 			this.tbDisplayname.Name = "tbDisplayname";
 			this.tbDisplayname.ReadOnly = true;
@@ -477,6 +501,8 @@ namespace Main
 			// 
 			// pFunction
 			// 
+			this.pFunction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.pFunction.BackColor = System.Drawing.Color.Transparent;
 			this.pFunction.Controls.Add(this.btnTraining);
 			this.pFunction.Controls.Add(this.btnShowTop);
