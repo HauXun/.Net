@@ -28,6 +28,11 @@ namespace Main
 			SetStyle(ControlStyles.ResizeRedraw, true);
 		}
 
+		public FrmChangePassword()
+		{
+
+		}
+
 		// -------------- Set color for background gradient ---------------
 		protected override void OnPaintBackground(PaintEventArgs e)
 		{

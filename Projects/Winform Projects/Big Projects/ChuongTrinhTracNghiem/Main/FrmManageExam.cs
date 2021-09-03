@@ -30,6 +30,11 @@ namespace Main
 			Account = account;
 		}
 
+		public FrmManageExam()
+		{
+
+		}
+
 		// -------------- Set color for background gradient ---------------
 		protected override void OnPaintBackground(PaintEventArgs e)
 		{

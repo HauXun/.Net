@@ -17,7 +17,7 @@ namespace Main
 			Application.Run(new FrmLogin());
 		}
 
-		public static bool IsInDesignMode(ContainerControl container)
+		public static bool IsInDesignMode(this ContainerControl container)
 		{
 			if (Application.ExecutablePath.IndexOf("devenv.exe", StringComparison.OrdinalIgnoreCase) > -1)
 			{

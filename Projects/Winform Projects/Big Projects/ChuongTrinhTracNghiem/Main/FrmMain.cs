@@ -8,9 +8,8 @@ namespace Main
 	public partial class FrmMain : Form
 	{
 		private UserAccount account;
-
 		public UserAccount Account
-		{ 
+		{
 			get => account;
 			set
 			{
@@ -18,6 +17,23 @@ namespace Main
 				ChangeRole(account.UserRole);
 			}
 		}
+		#region Form
+		FrmManageUser frmManageUser = new FrmManageUser();
+		FrmChangePassword frmChangePassword = new FrmChangePassword();
+		FrmManageSubject frmManageSubject = new FrmManageSubject();
+		FrmManageQuestion frmManageQuestion = new FrmManageQuestion();
+		FrmQuizOptions frmQuizOptions = new FrmQuizOptions();
+		FrmManageExam frmManageExam = new FrmManageExam();
+		FrmManageFaculty frmManageFaculty = new FrmManageFaculty();
+		FrmManageCourse frmManageCourse = new FrmManageCourse();
+		FrmManageClass frmManageClass = new FrmManageClass();
+		FrmManageStatistical frmManageStatistical = new FrmManageStatistical();
+		FrmTestHistory frmTestHistorys = new FrmTestHistory();
+		FrmLeaderBoard frmLeaderBoard = new FrmLeaderBoard();
+		FrmEduProg frmEduProg = new FrmEduProg();
+
+		#endregion
+
 
 		public FrmMain(UserAccount account)
 		{

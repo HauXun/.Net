@@ -26,6 +26,11 @@ namespace Main
 			Account = account;
 		}
 
+		public FrmQuizOptions()
+		{
+
+		}
+
 		// -------------- Set color for background gradient ---------------
 		protected override void OnPaintBackground(PaintEventArgs e)
 		{
