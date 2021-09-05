@@ -41,19 +41,32 @@ namespace Main
 			userManage = new UserManage();
 			changePassword = new ChangePassword();
 			InitializeComponent();
-			this.Load += FrmTestPages_Load;
+			//this.Load += FrmTestPages_Load;
 		}
 
 		private void FrmTestPages_Load(object sender, EventArgs e)
 		{
-			bP.SelectedIndex = 1;
-			bP.TabPages[0].Controls.Add(changePassword);
-			bP.TabPages[1].Controls.Add(userManage);
-			this.Refresh();
-			foreach (Control control in this.Controls)
-			{
-				control.Refresh();
-			}
+			//new Thread(() =>
+			//{
+			//	bP.Invoke((MethodInvoker)delegate
+			//	{
+			//		this.SuspendLayout();
+			//		bP.SelectedIndex = 1;
+			//		bP.TabPages[0].Controls.Add(changePassword);
+			//		bP.TabPages[1].Controls.Add(userManage);
+			//		this.Refresh();
+			//		foreach (Control control in this.Controls)
+			//		{
+			//			control.Refresh();
+			//		}
+			//		foreach (Control control in bP.TabPages)
+			//		{
+			//			control.Refresh();
+			//		}
+			//	});
+			//}).Start();
+			//Thread.Sleep(1);
+			//this.ResumeLayout();
 		}
 
 		private void btnPrevious_Click(object sender, EventArgs e)
@@ -61,15 +74,28 @@ namespace Main
 			int index = bP.SelectedIndex;
 			if (index > 0)
 			{
-				bP.Invoke((MethodInvoker)delegate
+				new Thread(() =>
 				{
-					bP.SelectedIndex = index - 1;
-					this.Refresh();
-					foreach (Control control in this.Controls)
+					this.SuspendLayout();
+					bP.Invoke((MethodInvoker)delegate
 					{
-						control.Refresh();
-					}
-				});
+						bP.Hide();
+						bP.SelectedIndex = index - 1;
+						this.Refresh();
+						foreach (Control control in this.Controls)
+						{
+							control.Refresh();
+						}
+						foreach (Control control in bP.TabPages)
+						{
+							control.Refresh();
+						}
+						Thread.Sleep(1);
+						bP.Show();
+					});
+				}).Start();
+				Thread.Sleep(1);
+				this.ResumeLayout();
 			}
 		}
 
@@ -78,15 +104,29 @@ namespace Main
 			int index = bP.SelectedIndex;
 			if (index < bP.TabPages.Count - 1)
 			{
-				bP.Invoke((MethodInvoker)delegate
+				new Thread(() =>
 				{
-					bP.SelectedIndex = index + 1;
-					this.Refresh();
-					foreach (Control control in this.Controls)
+					this.SuspendLayout();
+					bP.Invoke((MethodInvoker)delegate
 					{
-						control.Refresh();
-					}
-				});
+						bP.Hide();
+						bP.SelectedIndex = index + 1;
+						this.Refresh();
+						foreach (Control control in this.Controls)
+						{
+							control.Refresh();
+
+						}
+						foreach (Control control in bP.TabPages)
+						{
+							control.Refresh();
+						}
+						Thread.Sleep(1);
+						bP.Show();
+					});
+				}).Start();
+				Thread.Sleep(1);
+				this.ResumeLayout();
 			}
 		}
 	}

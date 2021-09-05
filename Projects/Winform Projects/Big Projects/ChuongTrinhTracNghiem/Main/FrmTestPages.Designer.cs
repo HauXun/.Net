@@ -29,7 +29,6 @@ namespace Main
 		/// </summary>
 		private void InitializeComponent()
 		{
-			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTestPages));
 			Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
 			Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
@@ -37,161 +36,26 @@ namespace Main
 			Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
 			Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
 			Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
+			this.btnPrevious = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+			this.btnNext = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
 			this.bunifuShadowPanel1 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
 			this.bP = new Bunifu.UI.WinForms.BunifuPages();
 			this.tPManageUser = new System.Windows.Forms.TabPage();
+			this.userManage1 = new Main.Page.UserManage();
 			this.tPChangePassword = new System.Windows.Forms.TabPage();
+			this.changePassword1 = new Main.Page.ChangePassword();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.tabPage6 = new System.Windows.Forms.TabPage();
-			this.btnPrevious = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-			this.btnNext = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
 			this.bunifuShadowPanel1.SuspendLayout();
 			this.bP.SuspendLayout();
+			this.tPManageUser.SuspendLayout();
+			this.tPChangePassword.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// bunifuShadowPanel1
-			// 
-			this.bunifuShadowPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.bunifuShadowPanel1.BackColor = System.Drawing.Color.Gainsboro;
-			this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.DimGray;
-			this.bunifuShadowPanel1.Controls.Add(this.bP);
-			this.bunifuShadowPanel1.Location = new System.Drawing.Point(12, 63);
-			this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
-			this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
-			this.bunifuShadowPanel1.ShadowDept = 2;
-			this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
-			this.bunifuShadowPanel1.Size = new System.Drawing.Size(1298, 760);
-			this.bunifuShadowPanel1.TabIndex = 0;
-			// 
-			// bP
-			// 
-			this.bP.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-			this.bP.AllowTransitions = false;
-			this.bP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.bP.Controls.Add(this.tPManageUser);
-			this.bP.Controls.Add(this.tPChangePassword);
-			this.bP.Controls.Add(this.tabPage1);
-			this.bP.Controls.Add(this.tabPage2);
-			this.bP.Controls.Add(this.tabPage3);
-			this.bP.Controls.Add(this.tabPage4);
-			this.bP.Controls.Add(this.tabPage5);
-			this.bP.Controls.Add(this.tabPage6);
-			this.bP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.bP.Location = new System.Drawing.Point(3, 3);
-			this.bP.Multiline = true;
-			this.bP.Name = "bP";
-			this.bP.Page = this.tPManageUser;
-			this.bP.PageIndex = 0;
-			this.bP.PageName = "tPManageUser";
-			this.bP.PageTitle = "ieu";
-			this.bP.SelectedIndex = 0;
-			this.bP.Size = new System.Drawing.Size(1288, 749);
-			this.bP.TabIndex = 0;
-			animation1.AnimateOnlyDifferences = false;
-			animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-			animation1.LeafCoeff = 0F;
-			animation1.MaxTime = 1F;
-			animation1.MinTime = 0F;
-			animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-			animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-			animation1.MosaicSize = 0;
-			animation1.Padding = new System.Windows.Forms.Padding(0);
-			animation1.RotateCoeff = 0F;
-			animation1.RotateLimit = 0F;
-			animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-			animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-			animation1.TimeCoeff = 0F;
-			animation1.TransparencyCoeff = 0F;
-			this.bP.Transition = animation1;
-			this.bP.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
-			// 
-			// tPManageUser
-			// 
-			this.tPManageUser.BackColor = System.Drawing.Color.Gainsboro;
-			this.tPManageUser.Location = new System.Drawing.Point(4, 4);
-			this.tPManageUser.Name = "tPManageUser";
-			this.tPManageUser.Padding = new System.Windows.Forms.Padding(3);
-			this.tPManageUser.Size = new System.Drawing.Size(1280, 720);
-			this.tPManageUser.TabIndex = 0;
-			this.tPManageUser.Text = "ieu";
-			// 
-			// tPChangePassword
-			// 
-			this.tPChangePassword.BackColor = System.Drawing.Color.Gainsboro;
-			this.tPChangePassword.Location = new System.Drawing.Point(4, 4);
-			this.tPChangePassword.Name = "tPChangePassword";
-			this.tPChangePassword.Padding = new System.Windows.Forms.Padding(3);
-			this.tPChangePassword.Size = new System.Drawing.Size(1280, 720);
-			this.tPChangePassword.TabIndex = 1;
-			this.tPChangePassword.Text = "Đổi mật khẩu";
-			// 
-			// tabPage1
-			// 
-			this.tabPage1.Location = new System.Drawing.Point(4, 4);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(1280, 720);
-			this.tabPage1.TabIndex = 2;
-			this.tabPage1.Text = "tabPage1";
-			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// tabPage2
-			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 4);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(1280, 720);
-			this.tabPage2.TabIndex = 3;
-			this.tabPage2.Text = "tabPage2";
-			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
-			// tabPage3
-			// 
-			this.tabPage3.Location = new System.Drawing.Point(4, 4);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(1280, 720);
-			this.tabPage3.TabIndex = 4;
-			this.tabPage3.Text = "tabPage3";
-			this.tabPage3.UseVisualStyleBackColor = true;
-			// 
-			// tabPage4
-			// 
-			this.tabPage4.Location = new System.Drawing.Point(4, 4);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(1280, 720);
-			this.tabPage4.TabIndex = 5;
-			this.tabPage4.Text = "tabPage4";
-			this.tabPage4.UseVisualStyleBackColor = true;
-			// 
-			// tabPage5
-			// 
-			this.tabPage5.Location = new System.Drawing.Point(4, 4);
-			this.tabPage5.Name = "tabPage5";
-			this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage5.Size = new System.Drawing.Size(1280, 720);
-			this.tabPage5.TabIndex = 6;
-			this.tabPage5.Text = "tabPage5";
-			this.tabPage5.UseVisualStyleBackColor = true;
-			// 
-			// tabPage6
-			// 
-			this.tabPage6.Location = new System.Drawing.Point(4, 4);
-			this.tabPage6.Name = "tabPage6";
-			this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage6.Size = new System.Drawing.Size(1280, 720);
-			this.tabPage6.TabIndex = 7;
-			this.tabPage6.Text = "tabPage6";
-			this.tabPage6.UseVisualStyleBackColor = true;
 			// 
 			// btnPrevious
 			// 
@@ -199,7 +63,7 @@ namespace Main
 			this.btnPrevious.AnimationSpeed = 200;
 			this.btnPrevious.AutoGenerateColors = false;
 			this.btnPrevious.BackColor = System.Drawing.Color.Transparent;
-			this.btnPrevious.BackColor1 = System.Drawing.Color.DodgerBlue;
+			this.btnPrevious.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnPrevious.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrevious.BackgroundImage")));
 			this.btnPrevious.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnPrevious.ButtonText = "Previous";
@@ -218,15 +82,15 @@ namespace Main
 			this.btnPrevious.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
 			this.btnPrevious.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
 			this.btnPrevious.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-			this.btnPrevious.ForeColor = System.Drawing.Color.White;
+			this.btnPrevious.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnPrevious.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
 			this.btnPrevious.IconMarginLeft = 11;
 			this.btnPrevious.IconPadding = 10;
 			this.btnPrevious.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-			this.btnPrevious.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+			this.btnPrevious.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnPrevious.IdleBorderRadius = 3;
 			this.btnPrevious.IdleBorderThickness = 1;
-			this.btnPrevious.IdleFillColor = System.Drawing.Color.DodgerBlue;
+			this.btnPrevious.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnPrevious.IdleIconLeftImage = null;
 			this.btnPrevious.IdleIconRightImage = null;
 			this.btnPrevious.IndicateFocus = false;
@@ -263,7 +127,7 @@ namespace Main
 			this.btnNext.AnimationSpeed = 200;
 			this.btnNext.AutoGenerateColors = false;
 			this.btnNext.BackColor = System.Drawing.Color.Transparent;
-			this.btnNext.BackColor1 = System.Drawing.Color.DodgerBlue;
+			this.btnNext.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
 			this.btnNext.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnNext.ButtonText = "Next";
@@ -282,15 +146,15 @@ namespace Main
 			this.btnNext.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
 			this.btnNext.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
 			this.btnNext.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-			this.btnNext.ForeColor = System.Drawing.Color.White;
+			this.btnNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnNext.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
 			this.btnNext.IconMarginLeft = 11;
 			this.btnNext.IconPadding = 10;
 			this.btnNext.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-			this.btnNext.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+			this.btnNext.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnNext.IdleBorderRadius = 3;
 			this.btnNext.IdleBorderThickness = 1;
-			this.btnNext.IdleFillColor = System.Drawing.Color.DodgerBlue;
+			this.btnNext.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.btnNext.IdleIconLeftImage = null;
 			this.btnNext.IdleIconRightImage = null;
 			this.btnNext.IndicateFocus = false;
@@ -321,11 +185,168 @@ namespace Main
 			this.btnNext.UseDefaultRadiusAndThickness = true;
 			this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
 			// 
+			// bunifuShadowPanel1
+			// 
+			this.bunifuShadowPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.bunifuShadowPanel1.BackColor = System.Drawing.Color.Gainsboro;
+			this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.DimGray;
+			this.bunifuShadowPanel1.Controls.Add(this.bP);
+			this.bunifuShadowPanel1.Location = new System.Drawing.Point(12, 63);
+			this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
+			this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
+			this.bunifuShadowPanel1.ShadowDept = 2;
+			this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
+			this.bunifuShadowPanel1.Size = new System.Drawing.Size(1298, 728);
+			this.bunifuShadowPanel1.TabIndex = 0;
+			// 
+			// bP
+			// 
+			this.bP.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+			this.bP.AllowTransitions = false;
+			this.bP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.bP.Controls.Add(this.tPManageUser);
+			this.bP.Controls.Add(this.tPChangePassword);
+			this.bP.Controls.Add(this.tabPage1);
+			this.bP.Controls.Add(this.tabPage2);
+			this.bP.Controls.Add(this.tabPage3);
+			this.bP.Controls.Add(this.tabPage4);
+			this.bP.Controls.Add(this.tabPage5);
+			this.bP.Controls.Add(this.tabPage6);
+			this.bP.Location = new System.Drawing.Point(3, 3);
+			this.bP.Multiline = true;
+			this.bP.Name = "bP";
+			this.bP.Page = this.tPManageUser;
+			this.bP.PageIndex = 0;
+			this.bP.PageName = "tPManageUser";
+			this.bP.PageTitle = "Quản lý người dùng";
+			this.bP.SelectedIndex = 0;
+			this.bP.Size = new System.Drawing.Size(1288, 717);
+			this.bP.TabIndex = 0;
+			animation1.AnimateOnlyDifferences = false;
+			animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+			animation1.LeafCoeff = 0F;
+			animation1.MaxTime = 1F;
+			animation1.MinTime = 0F;
+			animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+			animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+			animation1.MosaicSize = 0;
+			animation1.Padding = new System.Windows.Forms.Padding(0);
+			animation1.RotateCoeff = 0F;
+			animation1.RotateLimit = 0F;
+			animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+			animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+			animation1.TimeCoeff = 0F;
+			animation1.TransparencyCoeff = 0F;
+			this.bP.Transition = animation1;
+			this.bP.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
+			// 
+			// tPManageUser
+			// 
+			this.tPManageUser.BackColor = System.Drawing.Color.Gainsboro;
+			this.tPManageUser.Controls.Add(this.userManage1);
+			this.tPManageUser.Location = new System.Drawing.Point(4, 4);
+			this.tPManageUser.Name = "tPManageUser";
+			this.tPManageUser.Padding = new System.Windows.Forms.Padding(3);
+			this.tPManageUser.Size = new System.Drawing.Size(1280, 691);
+			this.tPManageUser.TabIndex = 0;
+			this.tPManageUser.Text = "Quản lý người dùng";
+			// 
+			// userManage1
+			// 
+			this.userManage1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.userManage1.Location = new System.Drawing.Point(3, 3);
+			this.userManage1.Name = "userManage1";
+			this.userManage1.Size = new System.Drawing.Size(1274, 685);
+			this.userManage1.TabIndex = 0;
+			// 
+			// tPChangePassword
+			// 
+			this.tPChangePassword.BackColor = System.Drawing.Color.Gainsboro;
+			this.tPChangePassword.Controls.Add(this.changePassword1);
+			this.tPChangePassword.Location = new System.Drawing.Point(4, 4);
+			this.tPChangePassword.Name = "tPChangePassword";
+			this.tPChangePassword.Padding = new System.Windows.Forms.Padding(3);
+			this.tPChangePassword.Size = new System.Drawing.Size(1280, 691);
+			this.tPChangePassword.TabIndex = 1;
+			this.tPChangePassword.Text = "Đổi mật khẩu";
+			// 
+			// changePassword1
+			// 
+			this.changePassword1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.changePassword1.Location = new System.Drawing.Point(3, 3);
+			this.changePassword1.Name = "changePassword1";
+			this.changePassword1.Size = new System.Drawing.Size(1274, 685);
+			this.changePassword1.TabIndex = 0;
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.Location = new System.Drawing.Point(4, 4);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(1280, 691);
+			this.tabPage1.TabIndex = 2;
+			this.tabPage1.Text = "tabPage1";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// tabPage2
+			// 
+			this.tabPage2.Location = new System.Drawing.Point(4, 4);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(1280, 691);
+			this.tabPage2.TabIndex = 3;
+			this.tabPage2.Text = "tabPage2";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// tabPage3
+			// 
+			this.tabPage3.Location = new System.Drawing.Point(4, 4);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(1280, 691);
+			this.tabPage3.TabIndex = 4;
+			this.tabPage3.Text = "tabPage3";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// tabPage4
+			// 
+			this.tabPage4.Location = new System.Drawing.Point(4, 4);
+			this.tabPage4.Name = "tabPage4";
+			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage4.Size = new System.Drawing.Size(1280, 691);
+			this.tabPage4.TabIndex = 5;
+			this.tabPage4.Text = "tabPage4";
+			this.tabPage4.UseVisualStyleBackColor = true;
+			// 
+			// tabPage5
+			// 
+			this.tabPage5.Location = new System.Drawing.Point(4, 4);
+			this.tabPage5.Name = "tabPage5";
+			this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage5.Size = new System.Drawing.Size(1280, 691);
+			this.tabPage5.TabIndex = 6;
+			this.tabPage5.Text = "tabPage5";
+			this.tabPage5.UseVisualStyleBackColor = true;
+			// 
+			// tabPage6
+			// 
+			this.tabPage6.Location = new System.Drawing.Point(4, 4);
+			this.tabPage6.Name = "tabPage6";
+			this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage6.Size = new System.Drawing.Size(1280, 691);
+			this.tabPage6.TabIndex = 7;
+			this.tabPage6.Text = "tabPage6";
+			this.tabPage6.UseVisualStyleBackColor = true;
+			// 
 			// FrmTestPages
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1321, 832);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.ClientSize = new System.Drawing.Size(1321, 800);
 			this.Controls.Add(this.btnNext);
 			this.Controls.Add(this.btnPrevious);
 			this.Controls.Add(this.bunifuShadowPanel1);
@@ -333,23 +354,26 @@ namespace Main
 			this.Text = "FrmTestPages";
 			this.bunifuShadowPanel1.ResumeLayout(false);
 			this.bP.ResumeLayout(false);
+			this.tPManageUser.ResumeLayout(false);
+			this.tPChangePassword.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
+		private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPrevious;
+		private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnNext;
 		private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel bunifuShadowPanel1;
 		private Bunifu.UI.WinForms.BunifuPages bP;
 		private System.Windows.Forms.TabPage tPManageUser;
 		private System.Windows.Forms.TabPage tPChangePassword;
-		private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPrevious;
-		private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnNext;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.TabPage tabPage3;
 		private System.Windows.Forms.TabPage tabPage4;
 		private System.Windows.Forms.TabPage tabPage5;
 		private System.Windows.Forms.TabPage tabPage6;
+		private Page.ChangePassword changePassword1;
+		private Page.UserManage userManage1;
 	}
 }

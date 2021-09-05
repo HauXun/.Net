@@ -187,8 +187,7 @@ namespace Main.Page
 			// 
 			// ChangePassword
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.tbFullName);
 			this.Controls.Add(this.lbRePassword);
