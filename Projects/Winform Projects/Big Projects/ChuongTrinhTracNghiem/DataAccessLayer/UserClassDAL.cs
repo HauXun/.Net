@@ -57,12 +57,14 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_InsertClass @ClassID , @CourseID , @FacultyID , @Description , @CreatedBy , @ModifiedBy";
+				string query = "EXEC dbo.USP_InsertClass @ClassID , @CourseID , @FacultyID , @AdmissionYear , @NofTrainingSemester , @Description , @CreatedBy , @ModifiedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
 						userClass.ClassID,
 						userClass.CourseID,
 						userClass.FacultyID,
+						userClass.AdmissionYear,
+						userClass.NofTrainingSemester,
 						userClass.Description,
 						userClass.CreatedBy,
 						userClass.ModifiedBy
@@ -89,12 +91,14 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_UpdateClass @ClassID , @CourseID , @FacultyID , @Description , @ModifiedBy";
+				string query = "EXEC dbo.USP_UpdateClass @ClassID , @CourseID , @FacultyID , @AdmissionYear , @NofTrainingSemester , @Description , @ModifiedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
 						userClass.ClassID,
 						userClass.CourseID,
 						userClass.FacultyID,
+						userClass.AdmissionYear,
+						userClass.NofTrainingSemester,
 						userClass.Description,
 						userClass.ModifiedBy
 					});

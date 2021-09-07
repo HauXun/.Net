@@ -156,6 +156,7 @@ namespace Main
 			this.btnReset.TabIndex = 0;
 			this.btnReset.Text = "Làm lại";
 			this.btnReset.UseVisualStyleBackColor = true;
+			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 			// 
 			// pNavigation
 			// 

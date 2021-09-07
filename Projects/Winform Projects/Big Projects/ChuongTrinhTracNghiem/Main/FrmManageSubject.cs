@@ -72,7 +72,7 @@ namespace Main
 				RoleBLL.Instance.GetAllSubjectRole(cbSubjectRole);
 				FacultyBLL.Instance.GetAllFaculty(cbFacultyID);
 				cbFacultyID.SelectedIndex = -1;
-				//CourseBLL.Instance.GetAllCourse(cbCourseID);
+				CourseBLL.Instance.GetAllCourse(cbCourseID);
 				SemesterBLL.Instance.GetAllSemester(cbSemesterID);
 				SubjectBLL.Instance.GetAllSubject(aDgvdata);
 				if (aDgvdata.Rows.Count > 0)
@@ -94,7 +94,7 @@ namespace Main
 				subject.SubjectRole = cbSubjectRole.SelectedValue.ToString();
 				subject.CourseID = cbCourseID.SelectedValue.ToString();
 				subject.FacultyID = cbFacultyID.SelectedValue.ToString();
-				subject.SemesterID = int.Parse(cbSemesterID.SelectedValue.ToString());
+				subject.SemesterID = byte.Parse(cbSemesterID.SelectedValue.ToString());
 				subject.SubjectName = tbSubjectName.Text.Trim();
 				subject.Description = tbDescription.Text.Trim();
 				return subject;
@@ -528,15 +528,15 @@ namespace Main
 
 		private void cbFacultyID_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbFacultyID.SelectedValue != null)
+			if (!isFunc && cbFacultyID.SelectedValue != null)
 			{
 				CourseBLL.Instance.GetAllCourseByFaculty(cbCourseID, cbFacultyID.SelectedValue.ToString());
+				cbCourseID.SelectedIndex = -1;
 			}
-			else
+			else if (!isAddnew)
 			{
 				CourseBLL.Instance.GetAllCourse(cbCourseID);
 			}
-			cbCourseID.SelectedIndex = -1;
 		}
 
 		#endregion

@@ -42,15 +42,15 @@ namespace Main
 			this.bunifuShadowPanel1 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
 			this.bP = new Bunifu.UI.WinForms.BunifuPages();
 			this.tPManageUser = new System.Windows.Forms.TabPage();
-			this.userManage1 = new Main.Page.UserManage();
 			this.tPChangePassword = new System.Windows.Forms.TabPage();
-			this.changePassword1 = new Main.Page.ChangePassword();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.tabPage6 = new System.Windows.Forms.TabPage();
+			this.userManage1 = new Main.Page.UserManage();
+			this.changePassword1 = new Main.Page.ChangePassword();
 			this.bunifuShadowPanel1.SuspendLayout();
 			this.bP.SuspendLayout();
 			this.tPManageUser.SuspendLayout();
@@ -219,10 +219,10 @@ namespace Main
 			this.bP.Location = new System.Drawing.Point(3, 3);
 			this.bP.Multiline = true;
 			this.bP.Name = "bP";
-			this.bP.Page = this.tPManageUser;
-			this.bP.PageIndex = 0;
-			this.bP.PageName = "tPManageUser";
-			this.bP.PageTitle = "Quản lý người dùng";
+			this.bP.Page = this.tabPage1;
+			this.bP.PageIndex = 2;
+			this.bP.PageName = "tabPage1";
+			this.bP.PageTitle = "tabPage1";
 			this.bP.SelectedIndex = 0;
 			this.bP.Size = new System.Drawing.Size(1288, 717);
 			this.bP.TabIndex = 0;
@@ -255,14 +255,6 @@ namespace Main
 			this.tPManageUser.TabIndex = 0;
 			this.tPManageUser.Text = "Quản lý người dùng";
 			// 
-			// userManage1
-			// 
-			this.userManage1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.userManage1.Location = new System.Drawing.Point(3, 3);
-			this.userManage1.Name = "userManage1";
-			this.userManage1.Size = new System.Drawing.Size(1274, 685);
-			this.userManage1.TabIndex = 0;
-			// 
 			// tPChangePassword
 			// 
 			this.tPChangePassword.BackColor = System.Drawing.Color.Gainsboro;
@@ -273,14 +265,6 @@ namespace Main
 			this.tPChangePassword.Size = new System.Drawing.Size(1280, 691);
 			this.tPChangePassword.TabIndex = 1;
 			this.tPChangePassword.Text = "Đổi mật khẩu";
-			// 
-			// changePassword1
-			// 
-			this.changePassword1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.changePassword1.Location = new System.Drawing.Point(3, 3);
-			this.changePassword1.Name = "changePassword1";
-			this.changePassword1.Size = new System.Drawing.Size(1274, 685);
-			this.changePassword1.TabIndex = 0;
 			// 
 			// tabPage1
 			// 
@@ -341,6 +325,22 @@ namespace Main
 			this.tabPage6.TabIndex = 7;
 			this.tabPage6.Text = "tabPage6";
 			this.tabPage6.UseVisualStyleBackColor = true;
+			// 
+			// userManage1
+			// 
+			this.userManage1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.userManage1.Location = new System.Drawing.Point(3, 3);
+			this.userManage1.Name = "userManage1";
+			this.userManage1.Size = new System.Drawing.Size(1274, 685);
+			this.userManage1.TabIndex = 0;
+			// 
+			// changePassword1
+			// 
+			this.changePassword1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.changePassword1.Location = new System.Drawing.Point(3, 3);
+			this.changePassword1.Name = "changePassword1";
+			this.changePassword1.Size = new System.Drawing.Size(1274, 685);
+			this.changePassword1.TabIndex = 0;
 			// 
 			// FrmTestPages
 			// 

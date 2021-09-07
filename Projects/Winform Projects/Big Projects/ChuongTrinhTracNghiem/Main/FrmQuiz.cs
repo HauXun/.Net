@@ -13,8 +13,8 @@ namespace Main
 	{
 		private string selectedIndex = "1";
 
-		byte correctAnswer = 0;
-		float mark = 0;
+		private int correctAnswer = 0;
+		private float mark = 0;
 
 		private UserAccount account;
 		private Exam exam;
@@ -168,6 +168,14 @@ namespace Main
 			return string.Empty;
 		}
 
+		private void ClearAnswerData()
+		{
+			foreach (DataRow row in Data.Rows)
+			{
+				row["SelectedOption"] = string.Empty;
+			}
+		}
+
 		private void NavigationButton()
 		{
 			btnFirstQuestion.Enabled = btnPreviousQuestion.Enabled = (int.TryParse(selectedIndex, out int idx) && idx - 1 > 0);
@@ -181,7 +189,7 @@ namespace Main
 			SavePoint();
 			SaveTestHistory();
 
-			FrmQuizResult frm = new FrmQuizResult(Data, Exam, mark, correctAnswer);
+			FrmQuizResult frm = new FrmQuizResult(Data, Exam, (ushort)correctAnswer);
 			frm.cPBCountDownTime.Text = (!timer.MustStop) ? this.cPBCountDownTime.Text : "Finished";
 			this.Hide();
 			frm.FormClosing += Frm_FormClosing;
@@ -211,7 +219,7 @@ namespace Main
 				ExamID = Exam.ExamID,
 				SubjectID = Exam.SubjectID,
 				UserID = Account.UserID,
-				SemesterID = int.Parse(SubjectBLL.Instance.GetSubjectFromEduProg(Account.UserID).Rows[0]["SemesterID"].ToString()),
+				SemesterID = byte.Parse(SubjectBLL.Instance.GetSubjectFromEduProg(Account.UserID).Rows[0]["SemesterID"].ToString()),
 				CorrectAnswer = correctAnswer,
 				TotalQuestion = Exam.QCount,
 				Mark = mark,
@@ -379,6 +387,17 @@ namespace Main
 		private void Frm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			this.Dispose();
+		}
+
+		private void btnReset_Click(object sender, EventArgs e)
+		{
+			fLPdata.Controls.Clear();
+			ClearAnswerData();
+			ClearChecked();
+			LoadQuestion();
+			btnFirstQuestion_Click(this, e);
+			NavigationButton();
+			pNavigation.Enabled = fLPdata.Controls.Count > 0;
 		}
 
 		#endregion

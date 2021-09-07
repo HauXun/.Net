@@ -582,15 +582,15 @@ namespace Main
 
 		private void cbCourseID_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbCourseID.SelectedValue != null)
+			if (!isFunc && cbCourseID.SelectedValue != null)
 			{
 				UserClassBLL.Instance.GetAllClassByCourseID(cbClassID, cbCourseID.SelectedValue.ToString());
+				cbClassID.SelectedIndex = -1;
 			}
-			else
+			else if (!isAddnew)
 			{
 				UserClassBLL.Instance.GetAllClass(cbClassID);
 			}
-			cbClassID.SelectedIndex = -1;
 		}
 
 		private void btnResetPassword_Click(object sender, EventArgs e)

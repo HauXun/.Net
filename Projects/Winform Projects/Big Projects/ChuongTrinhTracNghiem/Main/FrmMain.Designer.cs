@@ -38,7 +38,6 @@ namespace Main
 			this.tsmiManageFaculty = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiManageCourse = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiManageUserClass = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmiStatisticalTrainingProg = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiRestoreData = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,9 +54,8 @@ namespace Main
 			this.tsmiTestHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiLeaderBoard = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-			this.tsmiEduProg = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiProfile = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmiReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiStatiscical = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnTraining = new System.Windows.Forms.Button();
 			this.btnShowTop = new System.Windows.Forms.Button();
@@ -74,6 +72,8 @@ namespace Main
 			this.tbID = new System.Windows.Forms.TextBox();
 			this.tbDisplayname = new System.Windows.Forms.TextBox();
 			this.pFunction = new System.Windows.Forms.Panel();
+			this.tsmiStatisticalTrainingProg = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiEduProg = new System.Windows.Forms.ToolStripMenuItem();
 			this.msAdmin.SuspendLayout();
 			this.pNext.SuspendLayout();
 			this.gpInfoAccount.SuspendLayout();
@@ -86,7 +86,7 @@ namespace Main
             this.tsmiSystem,
             this.tsmiCategory,
             this.tsmiFunction,
-            this.tsmiReport,
+            this.tsmiStatiscical,
             this.tsmiHelp});
 			this.msAdmin.Location = new System.Drawing.Point(0, 0);
 			this.msAdmin.Name = "msAdmin";
@@ -100,7 +100,6 @@ namespace Main
             this.tsmiChangePassword,
             this.toolStripMenuItem1,
             this.tsmiManage,
-            this.tsmiStatisticalTrainingProg,
             this.toolStripMenuItem2,
             this.tsmiRestoreData,
             this.tsmiExit});
@@ -111,14 +110,14 @@ namespace Main
 			// tsmiChangePassword
 			// 
 			this.tsmiChangePassword.Name = "tsmiChangePassword";
-			this.tsmiChangePassword.Size = new System.Drawing.Size(238, 22);
+			this.tsmiChangePassword.Size = new System.Drawing.Size(180, 22);
 			this.tsmiChangePassword.Text = "Đổi mật khẩu";
 			this.tsmiChangePassword.Click += new System.EventHandler(this.tsmiChangePassword_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(235, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiManage
 			// 
@@ -128,7 +127,7 @@ namespace Main
             this.tsmiManageCourse,
             this.tsmiManageUserClass});
 			this.tsmiManage.Name = "tsmiManage";
-			this.tsmiManage.Size = new System.Drawing.Size(238, 22);
+			this.tsmiManage.Size = new System.Drawing.Size(180, 22);
 			this.tsmiManage.Text = "Quản lý";
 			// 
 			// tsmiManageUser
@@ -159,29 +158,22 @@ namespace Main
 			this.tsmiManageUserClass.Text = "Quản lý lớp sinh viên";
 			this.tsmiManageUserClass.Click += new System.EventHandler(this.tsmiManageUserClass_Click);
 			// 
-			// tsmiStatisticalTrainingProg
-			// 
-			this.tsmiStatisticalTrainingProg.Name = "tsmiStatisticalTrainingProg";
-			this.tsmiStatisticalTrainingProg.Size = new System.Drawing.Size(238, 22);
-			this.tsmiStatisticalTrainingProg.Text = "Thống kê chương trình đào tạo";
-			this.tsmiStatisticalTrainingProg.Click += new System.EventHandler(this.tsmiStatisticalTrainingProg_Click);
-			// 
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(235, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiRestoreData
 			// 
 			this.tsmiRestoreData.Name = "tsmiRestoreData";
-			this.tsmiRestoreData.Size = new System.Drawing.Size(238, 22);
+			this.tsmiRestoreData.Size = new System.Drawing.Size(180, 22);
 			this.tsmiRestoreData.Text = "Phục hồi dữ liệu";
 			// 
 			// tsmiExit
 			// 
 			this.tsmiExit.Name = "tsmiExit";
 			this.tsmiExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-			this.tsmiExit.Size = new System.Drawing.Size(238, 22);
+			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
 			this.tsmiExit.Text = "Thoát";
 			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
 			// 
@@ -227,7 +219,6 @@ namespace Main
             this.tsmiTestHistory,
             this.tsmiLeaderBoard,
             this.toolStripMenuItem4,
-            this.tsmiEduProg,
             this.tsmiProfile});
 			this.tsmiFunction.Name = "tsmiFunction";
 			this.tsmiFunction.Size = new System.Drawing.Size(77, 20);
@@ -236,70 +227,66 @@ namespace Main
 			// tsmiTraining
 			// 
 			this.tsmiTraining.Name = "tsmiTraining";
-			this.tsmiTraining.Size = new System.Drawing.Size(188, 22);
+			this.tsmiTraining.Size = new System.Drawing.Size(180, 22);
 			this.tsmiTraining.Text = "Thi thử luyện tập";
 			this.tsmiTraining.Click += new System.EventHandler(this.tsmiTraining_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiTestQuiz
 			// 
 			this.tsmiTestQuiz.Name = "tsmiTestQuiz";
-			this.tsmiTestQuiz.Size = new System.Drawing.Size(188, 22);
+			this.tsmiTestQuiz.Size = new System.Drawing.Size(180, 22);
 			this.tsmiTestQuiz.Text = "Thi ngay";
 			this.tsmiTestQuiz.Click += new System.EventHandler(this.tsmiTestQuiz_Click);
 			// 
 			// tsmiGuide
 			// 
 			this.tsmiGuide.Name = "tsmiGuide";
-			this.tsmiGuide.Size = new System.Drawing.Size(188, 22);
+			this.tsmiGuide.Size = new System.Drawing.Size(180, 22);
 			this.tsmiGuide.Text = "Hướng dẫn thi";
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(185, 6);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiTestHistory
 			// 
 			this.tsmiTestHistory.Name = "tsmiTestHistory";
-			this.tsmiTestHistory.Size = new System.Drawing.Size(188, 22);
+			this.tsmiTestHistory.Size = new System.Drawing.Size(180, 22);
 			this.tsmiTestHistory.Text = "Lịch sử thi";
 			this.tsmiTestHistory.Click += new System.EventHandler(this.tsmiTestHistory_Click);
 			// 
 			// tsmiLeaderBoard
 			// 
 			this.tsmiLeaderBoard.Name = "tsmiLeaderBoard";
-			this.tsmiLeaderBoard.Size = new System.Drawing.Size(188, 22);
+			this.tsmiLeaderBoard.Size = new System.Drawing.Size(180, 22);
 			this.tsmiLeaderBoard.Text = "Bảng xếp hạng";
 			this.tsmiLeaderBoard.Click += new System.EventHandler(this.tsmiLeaderBoard_Click);
 			// 
 			// toolStripMenuItem4
 			// 
 			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			this.toolStripMenuItem4.Size = new System.Drawing.Size(185, 6);
-			// 
-			// tsmiEduProg
-			// 
-			this.tsmiEduProg.Name = "tsmiEduProg";
-			this.tsmiEduProg.Size = new System.Drawing.Size(188, 22);
-			this.tsmiEduProg.Text = "Chương trình đạo tạo";
-			this.tsmiEduProg.Click += new System.EventHandler(this.tsmiEduProg_Click);
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiProfile
 			// 
 			this.tsmiProfile.Name = "tsmiProfile";
-			this.tsmiProfile.Size = new System.Drawing.Size(188, 22);
+			this.tsmiProfile.Size = new System.Drawing.Size(180, 22);
 			this.tsmiProfile.Text = "Thông tin cá nhân";
 			// 
-			// tsmiReport
+			// tsmiStatiscical
 			// 
-			this.tsmiReport.Name = "tsmiReport";
-			this.tsmiReport.Size = new System.Drawing.Size(113, 20);
-			this.tsmiReport.Text = "Thống kê báo cáo";
+			this.tsmiStatiscical.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiStatisticalTrainingProg,
+            this.tsmiEduProg});
+			this.tsmiStatiscical.Name = "tsmiStatiscical";
+			this.tsmiStatiscical.Size = new System.Drawing.Size(68, 20);
+			this.tsmiStatiscical.Text = "Thống kê";
 			// 
 			// tsmiHelp
 			// 
@@ -513,6 +500,20 @@ namespace Main
 			this.pFunction.Size = new System.Drawing.Size(451, 184);
 			this.pFunction.TabIndex = 3;
 			// 
+			// tsmiStatisticalTrainingProg
+			// 
+			this.tsmiStatisticalTrainingProg.Name = "tsmiStatisticalTrainingProg";
+			this.tsmiStatisticalTrainingProg.Size = new System.Drawing.Size(238, 22);
+			this.tsmiStatisticalTrainingProg.Text = "Thống kê chương trình đào tạo";
+			this.tsmiStatisticalTrainingProg.Click += new System.EventHandler(this.tsmiStatisticalTrainingProg_Click);
+			// 
+			// tsmiEduProg
+			// 
+			this.tsmiEduProg.Name = "tsmiEduProg";
+			this.tsmiEduProg.Size = new System.Drawing.Size(238, 22);
+			this.tsmiEduProg.Text = "Chương trình đào tạo";
+			this.tsmiEduProg.Click += new System.EventHandler(this.tsmiEduProg_Click);
+			// 
 			// FrmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -557,7 +558,7 @@ namespace Main
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageSubject;
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageQuestion;
 		private System.Windows.Forms.ToolStripMenuItem tsmiFunction;
-		private System.Windows.Forms.ToolStripMenuItem tsmiReport;
+		private System.Windows.Forms.ToolStripMenuItem tsmiStatiscical;
 		private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
 		private System.Windows.Forms.Button btnTraining;
 		private System.Windows.Forms.Button btnShowTop;
@@ -580,12 +581,10 @@ namespace Main
 		private System.Windows.Forms.ToolStripMenuItem tsmiGuide;
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageExam;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem tsmiStatisticalTrainingProg;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem tsmiTestHistory;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-		private System.Windows.Forms.ToolStripMenuItem tsmiEduProg;
 		private System.Windows.Forms.ToolStripMenuItem tsmiProfile;
 		private System.Windows.Forms.ToolStripMenuItem tsmiManage;
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageUser;
@@ -593,6 +592,8 @@ namespace Main
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageCourse;
 		private System.Windows.Forms.ToolStripMenuItem tsmiManageUserClass;
 		private System.Windows.Forms.ToolStripMenuItem tsmiLeaderBoard;
+		private System.Windows.Forms.ToolStripMenuItem tsmiStatisticalTrainingProg;
+		private System.Windows.Forms.ToolStripMenuItem tsmiEduProg;
 	}
 }
 

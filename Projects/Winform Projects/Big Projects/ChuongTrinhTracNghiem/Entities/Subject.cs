@@ -18,7 +18,7 @@ namespace Entities
 		public string SubjectRole { get; set; }
 		public string CourseID { get; set; }
 		public string FacultyID { get; set; }
-		public int SemesterID { get; set; }
+		public byte SemesterID { get; set; }
 		public string SubjectName { get; set; }
         public string Description { get; set; }
         public string CreatedBy { get; set; }
@@ -36,7 +36,7 @@ namespace Entities
 			SubjectRole = row["SubjectRole"].ToString();
 			CourseID = row["CourseID"].ToString();
 			FacultyID = row["FacultyID"].ToString();
-			SemesterID = int.Parse(row["SemesterID"].ToString());
+			SemesterID = byte.Parse(row["SemesterID"].ToString());
             SubjectName = row["SubjectName"].ToString();
 		}
     }

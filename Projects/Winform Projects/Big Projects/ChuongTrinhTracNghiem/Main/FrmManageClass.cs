@@ -56,6 +56,8 @@ namespace Main
 				UserClassBLL.Instance.GetAllClass(aDgvdata);
 				CourseBLL.Instance.GetAllCourse(cbCourseID);
 				FacultyBLL.Instance.GetAllFaculty(cbFaculty);
+				SemesterBLL.Instance.GetAllSemester(cbNumberOfTrainingSemester);
+				cbNumberOfTrainingSemester.DisplayMember = "SemesterID";
 				if (aDgvdata.Rows.Count > 0)
 					DetailData(0);
 			}
@@ -74,6 +76,8 @@ namespace Main
 				userClass.ClassID = tbClassID.Text.Trim();
 				userClass.CourseID = cbCourseID.SelectedValue.ToString();
 				userClass.FacultyID = cbFaculty.SelectedValue.ToString();
+				userClass.AdmissionYear = (int)nudAdmissionYear.Value;
+				userClass.NofTrainingSemester = byte.Parse(cbNumberOfTrainingSemester.SelectedValue.ToString());
 				userClass.Description = tbDescription.Text.Trim();
 				return userClass;
 			}
@@ -93,8 +97,10 @@ namespace Main
 				{
 					DataGridViewRow row = aDgvdata.Rows[rowIndex];
 					tbClassID.Text = row.Cells["ClassID"].Value.ToString();
-					cbCourseID.SelectedValue = row.Cells["CourseID"].Value;
 					cbFaculty.SelectedValue = row.Cells["FacultyID"].Value;
+					cbCourseID.SelectedValue = row.Cells["CourseID"].Value;
+					nudAdmissionYear.Value = ushort.Parse(row.Cells["AdmissionYear"].Value.ToString());
+					cbNumberOfTrainingSemester.SelectedValue = row.Cells["NofTrainingSemester"].Value;
 					tbDescription.Text = row.Cells["Description"].Value.ToString();
 				}
 			}
@@ -191,6 +197,10 @@ namespace Main
 				{
 					(control as ComboBox).SelectedIndex = -1;
 				}
+				if (control is NumericUpDown)
+				{
+					(control as NumericUpDown).Value = 0;
+				}	
 			}
 		}
 
@@ -268,6 +278,36 @@ namespace Main
 						errorProviderWar.SetError(tbClassID, "Mã lớp không được chứa ký tự đặc biệt!");
 						return false;
 					}
+				}
+			}
+
+			// Kiểm tra năm nhập học không được để trống
+			if (nudAdmissionYear.Text.Trim().Equals(""))
+			{
+				errorProviderWar.SetError(nudAdmissionYear, "Năm nhập học không được để trống!");
+				return false;
+			}
+			else
+			{
+				if (nudAdmissionYear.Value.Equals(0))
+				{
+					errorProviderWar.SetError(nudAdmissionYear, "Năm nhập học phải lớn hơn 0!");
+					return false;
+				}
+			}
+
+			// Kiểm tra số học kì đào tạo không được để trống
+			if (nudAdmissionYear.Text.Trim().Equals(""))
+			{
+				errorProviderWar.SetError(nudAdmissionYear, "Số học kì đào tạo\nkhông được để trống!");
+				return false;
+			}
+			else
+			{
+				if (nudAdmissionYear.Value.Equals(0))
+				{
+					errorProviderWar.SetError(nudAdmissionYear, "Số học kì đào tạo\nphải lớn hơn 0!");
+					return false;
 				}
 			}
 
@@ -453,15 +493,15 @@ namespace Main
 
 		private void cbFaculty_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbFaculty.SelectedValue != null)
+			if (!isFunc && cbFaculty.SelectedValue != null)
 			{
 				CourseBLL.Instance.GetAllCourseByFaculty(cbCourseID, cbFaculty.SelectedValue.ToString());
+				cbCourseID.SelectedIndex = -1;
 			}
-			else
+			else if (!isAddnew)
 			{
 				CourseBLL.Instance.GetAllCourse(cbCourseID);
 			}
-			cbCourseID.SelectedIndex = -1;
 		}
 
 		#endregion

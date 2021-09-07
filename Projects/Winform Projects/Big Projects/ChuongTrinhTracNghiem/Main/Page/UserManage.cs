@@ -17,6 +17,19 @@ namespace Main.Page
 			if (this.IsInDesignMode())
 				return;
 			InitializeComponent();
+
+			for (int i = 0; i < 10; i++)
+			{
+				dataGridView1.Rows.Add(new object[]
+					{
+						$"A00{i}",
+						"",
+						"Item name",
+						"Item description here",
+						"Electronics",
+						DateTime.Now.ToLongDateString()
+					});
+			}
 		}
 	}
 }

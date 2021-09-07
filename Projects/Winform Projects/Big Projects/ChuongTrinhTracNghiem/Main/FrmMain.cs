@@ -17,23 +17,6 @@ namespace Main
 				ChangeRole(account.UserRole);
 			}
 		}
-		#region Form
-		FrmManageUser frmManageUser = new FrmManageUser();
-		FrmChangePassword frmChangePassword = new FrmChangePassword();
-		FrmManageSubject frmManageSubject = new FrmManageSubject();
-		FrmManageQuestion frmManageQuestion = new FrmManageQuestion();
-		FrmQuizOptions frmQuizOptions = new FrmQuizOptions();
-		FrmManageExam frmManageExam = new FrmManageExam();
-		FrmManageFaculty frmManageFaculty = new FrmManageFaculty();
-		FrmManageCourse frmManageCourse = new FrmManageCourse();
-		FrmManageClass frmManageClass = new FrmManageClass();
-		FrmManageStatistical frmManageStatistical = new FrmManageStatistical();
-		FrmTestHistory frmTestHistorys = new FrmTestHistory();
-		FrmLeaderBoard frmLeaderBoard = new FrmLeaderBoard();
-		FrmEduProg frmEduProg = new FrmEduProg();
-
-		#endregion
-
 
 		public FrmMain(UserAccount account)
 		{
@@ -50,15 +33,23 @@ namespace Main
 			bool isAdmin = roleID.ToLower().Equals("admin");
 			if (!isAdmin)
 			{
-				tsmiRestoreData.Enabled = false;
-				tsmiManageUser.Enabled = false;
+				tsmiSystem.Visible = false;
+				tsmiFunction.Visible = false;
+				tsmiStatiscical.Visible = false;
 				if (roleID.ToLower().Equals("user"))
 				{
-					tsmiReport.Enabled = false;
-					tsmiCategory.Enabled = false;
+					tsmiFunction.Visible = true;
+					tsmiStatiscical.Visible = true;
+					tsmiStatisticalTrainingProg.Visible = false;
+					tsmiCategory.Visible = false;
 				}
 				tsmiHelp.Text = $"{"Trợ giúp"} ({Account.FullName})";
 			}
+			else
+			{
+				tsmiFunction.Visible = false;
+				tsmiCategory.Visible = false;
+			}	
 		}
 
 		#endregion
@@ -197,10 +188,7 @@ namespace Main
 
 		private void btnTraining_Click(object sender, EventArgs e)
 		{
-			if ((sender as Button).Focused)
-			{
-				lbFunctionSelected.Text = (sender as Button).Text;
-			}
+			btnTraining_Enter(sender, e);
 		}
 
 		private void tsmiManageFaculty_Click(object sender, EventArgs e)

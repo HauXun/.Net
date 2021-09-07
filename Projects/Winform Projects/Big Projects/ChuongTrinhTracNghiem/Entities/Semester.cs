@@ -13,7 +13,7 @@ namespace Entities
 
     public partial class Semester
     {
-        public int SemesterID { get; set; }
+        public byte SemesterID { get; set; }
         public string SemesterName { get; set; }
         public string Description { get; set; }
     }

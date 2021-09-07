@@ -35,6 +35,8 @@ namespace Main
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnClearFilter = new System.Windows.Forms.Button();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
@@ -42,6 +44,8 @@ namespace Main
 			this.ClassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FacultyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CourseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.AdmissionYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NofTrainingSemester = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnCancle = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
@@ -52,18 +56,23 @@ namespace Main
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.gbControls = new System.Windows.Forms.GroupBox();
+			this.nudAdmissionYear = new System.Windows.Forms.NumericUpDown();
+			this.lbDescription = new System.Windows.Forms.Label();
+			this.tbDescription = new System.Windows.Forms.TextBox();
+			this.lbNumberOfTrainingSemester = new System.Windows.Forms.Label();
 			this.cbFaculty = new System.Windows.Forms.ComboBox();
 			this.cbCourseID = new System.Windows.Forms.ComboBox();
-			this.lbDescription = new System.Windows.Forms.Label();
+			this.lbAdmissionYear = new System.Windows.Forms.Label();
 			this.tbClassID = new System.Windows.Forms.TextBox();
-			this.tbDescription = new System.Windows.Forms.TextBox();
 			this.lbCourse = new System.Windows.Forms.Label();
 			this.lbFaculty = new System.Windows.Forms.Label();
 			this.lbClassID = new System.Windows.Forms.Label();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.cbNumberOfTrainingSemester = new System.Windows.Forms.ComboBox();
 			this.pMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.gbControls.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudAdmissionYear)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -89,7 +98,7 @@ namespace Main
 			// 
 			// btnClearFilter
 			// 
-			this.btnClearFilter.Location = new System.Drawing.Point(324, 259);
+			this.btnClearFilter.Location = new System.Drawing.Point(324, 315);
 			this.btnClearFilter.Name = "btnClearFilter";
 			this.btnClearFilter.Size = new System.Drawing.Size(75, 23);
 			this.btnClearFilter.TabIndex = 13;
@@ -116,13 +125,15 @@ namespace Main
             this.ClassID,
             this.FacultyID,
             this.CourseID,
+            this.AdmissionYear,
+            this.NofTrainingSemester,
             this.Description});
 			this.aDgvdata.DateWithTime = false;
-			this.aDgvdata.Location = new System.Drawing.Point(12, 287);
+			this.aDgvdata.Location = new System.Drawing.Point(12, 344);
 			this.aDgvdata.MultiSelect = false;
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1240, 382);
+			this.aDgvdata.Size = new System.Drawing.Size(1240, 325);
 			this.aDgvdata.TabIndex = 10;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -136,7 +147,7 @@ namespace Main
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.STT.DefaultCellStyle = dataGridViewCellStyle2;
-			this.STT.FillWeight = 25.06266F;
+			this.STT.FillWeight = 35.08772F;
 			this.STT.HeaderText = "STT";
 			this.STT.MinimumWidth = 22;
 			this.STT.Name = "STT";
@@ -149,7 +160,7 @@ namespace Main
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.ClassID.DefaultCellStyle = dataGridViewCellStyle3;
-			this.ClassID.FillWeight = 50.48768F;
+			this.ClassID.FillWeight = 69.79253F;
 			this.ClassID.HeaderText = "Mã lớp";
 			this.ClassID.MinimumWidth = 22;
 			this.ClassID.Name = "ClassID";
@@ -162,7 +173,7 @@ namespace Main
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.FacultyID.FillWeight = 64.4019F;
+			this.FacultyID.FillWeight = 87.48241F;
 			this.FacultyID.HeaderText = "Mã khoa";
 			this.FacultyID.MinimumWidth = 22;
 			this.FacultyID.Name = "FacultyID";
@@ -175,17 +186,43 @@ namespace Main
 			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.CourseID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.CourseID.FillWeight = 105.8699F;
+			this.CourseID.FillWeight = 85.29697F;
 			this.CourseID.HeaderText = "Khóa";
 			this.CourseID.MinimumWidth = 22;
 			this.CourseID.Name = "CourseID";
 			this.CourseID.ReadOnly = true;
 			this.CourseID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
+			// AdmissionYear
+			// 
+			this.AdmissionYear.DataPropertyName = "AdmissionYear";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.AdmissionYear.DefaultCellStyle = dataGridViewCellStyle6;
+			this.AdmissionYear.FillWeight = 89.7178F;
+			this.AdmissionYear.HeaderText = "Năm nhập học";
+			this.AdmissionYear.MinimumWidth = 22;
+			this.AdmissionYear.Name = "AdmissionYear";
+			this.AdmissionYear.ReadOnly = true;
+			this.AdmissionYear.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// NofTrainingSemester
+			// 
+			this.NofTrainingSemester.DataPropertyName = "NofTrainingSemester";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.NofTrainingSemester.DefaultCellStyle = dataGridViewCellStyle7;
+			this.NofTrainingSemester.FillWeight = 85.76849F;
+			this.NofTrainingSemester.HeaderText = "Số học kì đào tạo";
+			this.NofTrainingSemester.MinimumWidth = 22;
+			this.NofTrainingSemester.Name = "NofTrainingSemester";
+			this.NofTrainingSemester.ReadOnly = true;
+			this.NofTrainingSemester.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
 			// Description
 			// 
 			this.Description.DataPropertyName = "Description";
-			this.Description.FillWeight = 254.1778F;
+			this.Description.FillWeight = 246.8541F;
 			this.Description.HeaderText = "Mô tả";
 			this.Description.MinimumWidth = 22;
 			this.Description.Name = "Description";
@@ -194,7 +231,7 @@ namespace Main
 			// 
 			// btnCancle
 			// 
-			this.btnCancle.Location = new System.Drawing.Point(635, 216);
+			this.btnCancle.Location = new System.Drawing.Point(635, 279);
 			this.btnCancle.Name = "btnCancle";
 			this.btnCancle.Size = new System.Drawing.Size(75, 23);
 			this.btnCancle.TabIndex = 9;
@@ -205,7 +242,7 @@ namespace Main
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(554, 216);
+			this.btnSave.Location = new System.Drawing.Point(554, 279);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 8;
@@ -216,7 +253,7 @@ namespace Main
 			// 
 			// tbSearch
 			// 
-			this.tbSearch.Location = new System.Drawing.Point(12, 261);
+			this.tbSearch.Location = new System.Drawing.Point(12, 317);
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.Size = new System.Drawing.Size(225, 20);
 			this.tbSearch.TabIndex = 5;
@@ -227,7 +264,7 @@ namespace Main
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Location = new System.Drawing.Point(243, 259);
+			this.btnSearch.Location = new System.Drawing.Point(243, 315);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 23);
 			this.btnSearch.TabIndex = 6;
@@ -237,7 +274,7 @@ namespace Main
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Location = new System.Drawing.Point(676, 215);
+			this.btnDelete.Location = new System.Drawing.Point(676, 278);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(75, 23);
 			this.btnDelete.TabIndex = 4;
@@ -247,7 +284,7 @@ namespace Main
 			// 
 			// btnEdit
 			// 
-			this.btnEdit.Location = new System.Drawing.Point(594, 215);
+			this.btnEdit.Location = new System.Drawing.Point(594, 278);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(75, 23);
 			this.btnEdit.TabIndex = 3;
@@ -257,7 +294,7 @@ namespace Main
 			// 
 			// btnAdd
 			// 
-			this.btnAdd.Location = new System.Drawing.Point(513, 216);
+			this.btnAdd.Location = new System.Drawing.Point(513, 279);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
 			this.btnAdd.TabIndex = 2;
@@ -277,20 +314,62 @@ namespace Main
 			// 
 			// gbControls
 			// 
+			this.gbControls.Controls.Add(this.cbNumberOfTrainingSemester);
+			this.gbControls.Controls.Add(this.nudAdmissionYear);
+			this.gbControls.Controls.Add(this.lbDescription);
+			this.gbControls.Controls.Add(this.tbDescription);
+			this.gbControls.Controls.Add(this.lbNumberOfTrainingSemester);
 			this.gbControls.Controls.Add(this.cbFaculty);
 			this.gbControls.Controls.Add(this.cbCourseID);
-			this.gbControls.Controls.Add(this.lbDescription);
+			this.gbControls.Controls.Add(this.lbAdmissionYear);
 			this.gbControls.Controls.Add(this.tbClassID);
-			this.gbControls.Controls.Add(this.tbDescription);
 			this.gbControls.Controls.Add(this.lbCourse);
 			this.gbControls.Controls.Add(this.lbFaculty);
 			this.gbControls.Controls.Add(this.lbClassID);
 			this.gbControls.Location = new System.Drawing.Point(12, 52);
 			this.gbControls.Name = "gbControls";
-			this.gbControls.Size = new System.Drawing.Size(1240, 145);
+			this.gbControls.Size = new System.Drawing.Size(1240, 209);
 			this.gbControls.TabIndex = 1;
 			this.gbControls.TabStop = false;
 			this.gbControls.Text = "Thông tin môn thi";
+			// 
+			// nudAdmissionYear
+			// 
+			this.nudAdmissionYear.Location = new System.Drawing.Point(259, 94);
+			this.nudAdmissionYear.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+			this.nudAdmissionYear.Name = "nudAdmissionYear";
+			this.nudAdmissionYear.Size = new System.Drawing.Size(239, 20);
+			this.nudAdmissionYear.TabIndex = 16;
+			// 
+			// lbDescription
+			// 
+			this.lbDescription.AutoSize = true;
+			this.lbDescription.Location = new System.Drawing.Point(187, 155);
+			this.lbDescription.Name = "lbDescription";
+			this.lbDescription.Size = new System.Drawing.Size(37, 13);
+			this.lbDescription.TabIndex = 14;
+			this.lbDescription.Text = "Mô tả:";
+			// 
+			// tbDescription
+			// 
+			this.tbDescription.Location = new System.Drawing.Point(259, 152);
+			this.tbDescription.Multiline = true;
+			this.tbDescription.Name = "tbDescription";
+			this.tbDescription.Size = new System.Drawing.Size(239, 20);
+			this.tbDescription.TabIndex = 13;
+			// 
+			// lbNumberOfTrainingSemester
+			// 
+			this.lbNumberOfTrainingSemester.AutoSize = true;
+			this.lbNumberOfTrainingSemester.Location = new System.Drawing.Point(695, 155);
+			this.lbNumberOfTrainingSemester.Name = "lbNumberOfTrainingSemester";
+			this.lbNumberOfTrainingSemester.Size = new System.Drawing.Size(95, 13);
+			this.lbNumberOfTrainingSemester.TabIndex = 12;
+			this.lbNumberOfTrainingSemester.Text = "Số học kì đào tạo:";
 			// 
 			// cbFaculty
 			// 
@@ -309,14 +388,14 @@ namespace Main
 			this.cbCourseID.Size = new System.Drawing.Size(239, 21);
 			this.cbCourseID.TabIndex = 10;
 			// 
-			// lbDescription
+			// lbAdmissionYear
 			// 
-			this.lbDescription.AutoSize = true;
-			this.lbDescription.Location = new System.Drawing.Point(187, 97);
-			this.lbDescription.Name = "lbDescription";
-			this.lbDescription.Size = new System.Drawing.Size(37, 13);
-			this.lbDescription.TabIndex = 9;
-			this.lbDescription.Text = "Mô tả:";
+			this.lbAdmissionYear.AutoSize = true;
+			this.lbAdmissionYear.Location = new System.Drawing.Point(149, 97);
+			this.lbAdmissionYear.Name = "lbAdmissionYear";
+			this.lbAdmissionYear.Size = new System.Drawing.Size(80, 13);
+			this.lbAdmissionYear.TabIndex = 9;
+			this.lbAdmissionYear.Text = "Năm nhập học:";
 			// 
 			// tbClassID
 			// 
@@ -324,14 +403,6 @@ namespace Main
 			this.tbClassID.Name = "tbClassID";
 			this.tbClassID.Size = new System.Drawing.Size(239, 20);
 			this.tbClassID.TabIndex = 7;
-			// 
-			// tbDescription
-			// 
-			this.tbDescription.Location = new System.Drawing.Point(259, 94);
-			this.tbDescription.Multiline = true;
-			this.tbDescription.Name = "tbDescription";
-			this.tbDescription.Size = new System.Drawing.Size(239, 20);
-			this.tbDescription.TabIndex = 6;
 			// 
 			// lbCourse
 			// 
@@ -364,6 +435,14 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
+			// cbNumberOfTrainingSemester
+			// 
+			this.cbNumberOfTrainingSemester.FormattingEnabled = true;
+			this.cbNumberOfTrainingSemester.Location = new System.Drawing.Point(814, 155);
+			this.cbNumberOfTrainingSemester.Name = "cbNumberOfTrainingSemester";
+			this.cbNumberOfTrainingSemester.Size = new System.Drawing.Size(239, 21);
+			this.cbNumberOfTrainingSemester.TabIndex = 17;
+			// 
 			// FrmManageClass
 			// 
 			this.AcceptButton = this.btnSearch;
@@ -381,6 +460,7 @@ namespace Main
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
 			this.gbControls.ResumeLayout(false);
 			this.gbControls.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudAdmissionYear)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
 			this.ResumeLayout(false);
 
@@ -403,16 +483,22 @@ namespace Main
 		private System.Windows.Forms.Button btnCancle;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.TextBox tbClassID;
-		private System.Windows.Forms.TextBox tbDescription;
-		private System.Windows.Forms.Label lbDescription;
+		private System.Windows.Forms.Label lbAdmissionYear;
 		private System.Windows.Forms.ComboBox cbCourseID;
 		private System.Windows.Forms.ComboBox cbFaculty;
 		private ADGV.AdvancedDataGridView aDgvdata;
+		private System.Windows.Forms.Button btnClearFilter;
+		private System.Windows.Forms.Label lbDescription;
+		private System.Windows.Forms.TextBox tbDescription;
+		private System.Windows.Forms.Label lbNumberOfTrainingSemester;
+		private System.Windows.Forms.NumericUpDown nudAdmissionYear;
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ClassID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CourseID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn AdmissionYear;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NofTrainingSemester;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-		private System.Windows.Forms.Button btnClearFilter;
+		private System.Windows.Forms.ComboBox cbNumberOfTrainingSemester;
 	}
 }

@@ -17,7 +17,7 @@ namespace Entities
         public int UserID { get; set; }
 		public string CourseID { get; set; }
 		public string FacultyID { get; set; }
-        public int Semester { get; set; }
+        public byte Semester { get; set; }
 		public string SubjectID { get; set; }
 		public bool Success { get; set; }
 	}

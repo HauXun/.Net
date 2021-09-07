@@ -92,8 +92,8 @@ namespace Main
 				exam.ExamID = tbExamID.Text.Trim();
 				exam.SubjectID = cbSubject.SelectedValue.ToString();
 				exam.ExamRole = cbExamRole.SelectedValue.ToString();
-				exam.ExamTime = (int)nudExamTime.Value;
-				exam.QCount = (int)nudQCount.Value;
+				exam.ExamTime = (byte)nudExamTime.Value;
+				exam.QCount = (ushort)nudQCount.Value;
 				return exam;
 			}
 			catch (Exception ex)
@@ -114,9 +114,9 @@ namespace Main
 					tbExamID.Text = row.Cells["ExamID"].Value.ToString();
 					cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
 					cbExamRole.SelectedValue = row.Cells["ExamRole"].Value;
-					nudExamTime.Value = int.Parse(row.Cells["ExamTime"].Value.ToString());
-					nudQCount.Value = int.Parse(row.Cells["QCount"].Value.ToString());
-					questionCurrentCount = int.Parse(row.Cells["QCurrentCount"].Value.ToString());
+					nudExamTime.Value = ushort.Parse(row.Cells["ExamTime"].Value.ToString());
+					nudQCount.Value = ushort.Parse(row.Cells["QCount"].Value.ToString());
+					questionCurrentCount = ushort.Parse(row.Cells["QCurrentCount"].Value.ToString());
 				}
 			}
 			catch (Exception ex)

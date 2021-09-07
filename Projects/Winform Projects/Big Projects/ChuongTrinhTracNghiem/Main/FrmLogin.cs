@@ -81,8 +81,8 @@ namespace Main
 				MessageBox.Show("Đăng nhập thành công!", "Thông báo!",
 					MessageBoxButtons.OK, MessageBoxIcon.Information);
 				UserAccount account = AccountBLL.Instance.GetAccountByUserName(username);
-				FrmTestPages frm = new FrmTestPages();
-				//FrmMain frmMain = new FrmMain(account);
+				//FrmTestPages frm = new FrmTestPages();
+				FrmMain frm = new FrmMain(account);
 				this.Hide();
 				frm.ShowDialog();
 				//frmMain.ShowDialog();

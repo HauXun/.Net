@@ -30,29 +30,11 @@ namespace Main.Page
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btnClearFilter = new System.Windows.Forms.Button();
-			this.aDgvdata = new ADGV.AdvancedDataGridView();
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.UserRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ClassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnResetPassword = new System.Windows.Forms.Button();
 			this.cbFilter = new System.Windows.Forms.ComboBox();
 			this.btnCancle = new System.Windows.Forms.Button();
@@ -83,17 +65,24 @@ namespace Main.Page
 			this.lbRole = new System.Windows.Forms.Label();
 			this.tbAccount = new System.Windows.Forms.TextBox();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.Column1 = new System.Windows.Forms.DataGridViewLinkColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pMain.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.gbControls.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pMain
 			// 
 			this.pMain.BackColor = System.Drawing.Color.Transparent;
+			this.pMain.Controls.Add(this.dataGridView1);
 			this.pMain.Controls.Add(this.btnClearFilter);
-			this.pMain.Controls.Add(this.aDgvdata);
 			this.pMain.Controls.Add(this.btnResetPassword);
 			this.pMain.Controls.Add(this.cbFilter);
 			this.pMain.Controls.Add(this.btnCancle);
@@ -118,177 +107,6 @@ namespace Main.Page
 			this.btnClearFilter.TabIndex = 15;
 			this.btnClearFilter.Text = "Clear Filter";
 			this.btnClearFilter.UseVisualStyleBackColor = true;
-			// 
-			// aDgvdata
-			// 
-			this.aDgvdata.AllowUserToAddRows = false;
-			this.aDgvdata.AutoGenerateContextFilters = true;
-			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
-            this.UserRole,
-            this.FullName,
-            this.ClassID,
-            this.Username,
-            this.UserID,
-            this.PhoneNumber,
-            this.Email,
-            this.Address,
-            this.Birthday,
-            this.Note});
-			this.aDgvdata.DateWithTime = false;
-			this.aDgvdata.Location = new System.Drawing.Point(12, 324);
-			this.aDgvdata.MultiSelect = false;
-			this.aDgvdata.Name = "aDgvdata";
-			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1253, 382);
-			this.aDgvdata.TabIndex = 13;
-			this.aDgvdata.TimeFilter = false;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle11;
-			this.STT.FillWeight = 50.12531F;
-			this.STT.HeaderText = "STT";
-			this.STT.MinimumWidth = 22;
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// UserRole
-			// 
-			this.UserRole.DataPropertyName = "UserRole";
-			this.UserRole.HeaderText = "Vai trò";
-			this.UserRole.MinimumWidth = 22;
-			this.UserRole.Name = "UserRole";
-			this.UserRole.ReadOnly = true;
-			this.UserRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			this.UserRole.Visible = false;
-			// 
-			// FullName
-			// 
-			this.FullName.DataPropertyName = "FullName";
-			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.FullName.DefaultCellStyle = dataGridViewCellStyle12;
-			this.FullName.FillWeight = 97.65189F;
-			this.FullName.HeaderText = "Họ và tên";
-			this.FullName.MinimumWidth = 22;
-			this.FullName.Name = "FullName";
-			this.FullName.ReadOnly = true;
-			this.FullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ClassID
-			// 
-			this.ClassID.DataPropertyName = "ClassID";
-			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.ClassID.DefaultCellStyle = dataGridViewCellStyle13;
-			this.ClassID.FillWeight = 99.65179F;
-			this.ClassID.HeaderText = "Lớp";
-			this.ClassID.MinimumWidth = 22;
-			this.ClassID.Name = "ClassID";
-			this.ClassID.ReadOnly = true;
-			this.ClassID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Username
-			// 
-			this.Username.DataPropertyName = "Username";
-			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle14.Format = "d";
-			dataGridViewCellStyle14.NullValue = "dd/MM/yyyy";
-			dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.Username.DefaultCellStyle = dataGridViewCellStyle14;
-			this.Username.FillWeight = 93.53768F;
-			this.Username.HeaderText = "Tài khoản";
-			this.Username.MinimumWidth = 22;
-			this.Username.Name = "Username";
-			this.Username.ReadOnly = true;
-			this.Username.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// UserID
-			// 
-			this.UserID.DataPropertyName = "UserID";
-			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.UserID.DefaultCellStyle = dataGridViewCellStyle15;
-			this.UserID.FillWeight = 90.15208F;
-			this.UserID.HeaderText = "Mã định danh";
-			this.UserID.MinimumWidth = 22;
-			this.UserID.Name = "UserID";
-			this.UserID.ReadOnly = true;
-			this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// PhoneNumber
-			// 
-			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.PhoneNumber.DefaultCellStyle = dataGridViewCellStyle16;
-			this.PhoneNumber.FillWeight = 105.437F;
-			this.PhoneNumber.HeaderText = "Điện thoại";
-			this.PhoneNumber.MinimumWidth = 22;
-			this.PhoneNumber.Name = "PhoneNumber";
-			this.PhoneNumber.ReadOnly = true;
-			this.PhoneNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.FillWeight = 103.6769F;
-			this.Email.HeaderText = "Email";
-			this.Email.MinimumWidth = 22;
-			this.Email.Name = "Email";
-			this.Email.ReadOnly = true;
-			this.Email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Address
-			// 
-			this.Address.DataPropertyName = "Address";
-			dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.Address.DefaultCellStyle = dataGridViewCellStyle17;
-			this.Address.FillWeight = 103.8357F;
-			this.Address.HeaderText = "Địa chỉ";
-			this.Address.MinimumWidth = 22;
-			this.Address.Name = "Address";
-			this.Address.ReadOnly = true;
-			this.Address.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Birthday
-			// 
-			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle18.Format = "d";
-			dataGridViewCellStyle18.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle18;
-			this.Birthday.FillWeight = 103.1073F;
-			this.Birthday.HeaderText = "Ngày sinh";
-			this.Birthday.MinimumWidth = 22;
-			this.Birthday.Name = "Birthday";
-			this.Birthday.ReadOnly = true;
-			this.Birthday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Note
-			// 
-			this.Note.DataPropertyName = "Note";
-			this.Note.FillWeight = 152.8243F;
-			this.Note.HeaderText = "Ghi chú";
-			this.Note.MinimumWidth = 22;
-			this.Note.Name = "Note";
-			this.Note.ReadOnly = true;
-			this.Note.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// btnResetPassword
 			// 
@@ -561,6 +379,93 @@ namespace Main.Page
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AllowUserToOrderColumns = true;
+			this.dataGridView1.AllowUserToResizeRows = false;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
+			this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+			this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.dataGridView1.ColumnHeadersHeight = 30;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+			this.dataGridView1.EnableHeadersVisualStyles = false;
+			this.dataGridView1.Location = new System.Drawing.Point(12, 324);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			this.dataGridView1.RowHeadersVisible = false;
+			this.dataGridView1.RowTemplate.Height = 50;
+			this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView1.Size = new System.Drawing.Size(1253, 393);
+			this.dataGridView1.TabIndex = 16;
+			// 
+			// Column1
+			// 
+			this.Column1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(183)))), ((int)(((byte)(144)))));
+			this.Column1.FillWeight = 30F;
+			this.Column1.HeaderText = "ID";
+			this.Column1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(183)))), ((int)(((byte)(144)))));
+			this.Column1.Name = "Column1";
+			this.Column1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(183)))), ((int)(((byte)(144)))));
+			// 
+			// Column2
+			// 
+			this.Column2.FillWeight = 200F;
+			this.Column2.HeaderText = "CODE";
+			this.Column2.Name = "Column2";
+			// 
+			// Column3
+			// 
+			this.Column3.FillWeight = 200F;
+			this.Column3.HeaderText = "CATEGORY";
+			this.Column3.Name = "Column3";
+			// 
+			// Column4
+			// 
+			this.Column4.HeaderText = "NAME";
+			this.Column4.Name = "Column4";
+			// 
+			// Column5
+			// 
+			this.Column5.FillWeight = 200F;
+			this.Column5.HeaderText = "DESCRIPTION";
+			this.Column5.Name = "Column5";
+			// 
+			// Column6
+			// 
+			this.Column6.FillWeight = 200F;
+			this.Column6.HeaderText = "CREATED AT";
+			this.Column6.Name = "Column6";
+			// 
 			// UserManage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -572,10 +477,10 @@ namespace Main.Page
 			this.Size = new System.Drawing.Size(1280, 720);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
 			this.gbControls.ResumeLayout(false);
 			this.gbControls.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -611,20 +516,15 @@ namespace Main.Page
 		private System.Windows.Forms.ComboBox cbClassID;
 		private System.Windows.Forms.Label lbClass;
 		private System.Windows.Forms.Button btnResetPassword;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private System.Windows.Forms.Button btnClearFilter;
-		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-		private System.Windows.Forms.DataGridViewTextBoxColumn UserRole;
-		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ClassID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Username;
-		private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Note;
 		private System.Windows.Forms.ComboBox cbCourseID;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridViewLinkColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
 	}
 }

@@ -8,26 +8,24 @@ namespace Main
 {
 	public partial class FrmQuizResult : Form
     {
-        private float mark;
-        private byte correct;
+        private ushort correctAnswer;
 		private DataTable data;
         private Exam exam;
 
 		public DataTable Data { get => data; set => data = value; }
 		public Exam Exam { get => exam; set => exam = value; }
 
-		public FrmQuizResult(DataTable data, Exam exam, float mark, byte correct)
+		public FrmQuizResult(DataTable data, Exam exam, ushort correctAnswer)
 		{
 			InitializeComponent();
 			Data = data;
             Exam = exam;
-            this.mark = mark;
-            this.correct = correct;
+            this.correctAnswer = correctAnswer;
         }
 
 		#region Methods
 
-		private void LoadStateQuestion(CheckState check, ref byte i, string answer)
+		private void LoadStateQuestion(CheckState check, ref ushort i, string answer)
 		{
 			ToolTip tip = new ToolTip()
 			{ 
@@ -81,9 +79,9 @@ namespace Main
             Indeterminate
 		}
 
-        private void LoadStateResult(byte value, byte length, State state)
+        private void LoadStateResult(ushort value, ushort length, State state)
 		{
-            int vLength = value.ToString().Length;
+			ushort vLength = (ushort)value.ToString().Length;
 
             Button button = new Button()
             {
@@ -138,10 +136,10 @@ namespace Main
 
 		private void LoadState()
 		{
-			byte i = 1;
-            byte correctAnswer = 0;
-            byte failAnswer = 0;
-            byte notyetAnswer = 0;
+			ushort i = 1;
+			ushort correctAnswer = 0;
+			ushort failAnswer = 0;
+			ushort notyetAnswer = 0;
 			string answer;
 			string selectedOption;
 
@@ -171,10 +169,10 @@ namespace Main
 				LoadStateQuestion(check.CheckState, ref i, answer);
 			}
 
-            byte cLength = (byte)correctAnswer.ToString().Length;
-            byte fLength = (byte)failAnswer.ToString().Length;
-            byte nyLength = (byte)notyetAnswer.ToString().Length;
-            byte length = (cLength > fLength) ? (cLength > nyLength ? cLength : nyLength) : (fLength > nyLength ? fLength : nyLength);
+			ushort cLength = (ushort)correctAnswer.ToString().Length;
+			ushort fLength = (ushort)failAnswer.ToString().Length;
+			ushort nyLength = (ushort)notyetAnswer.ToString().Length;
+			ushort length = (cLength > fLength) ? (cLength > nyLength ? cLength : nyLength) : (fLength > nyLength ? fLength : nyLength);
 
             LoadStateResult(correctAnswer, length, State.Check);
             LoadStateResult(failAnswer, length, State.Uncheck);
@@ -183,7 +181,7 @@ namespace Main
 
         private void LoadMark()
         {
-            string sCorrect = (correct < 9) ? $"0{correct}" : correct.ToString();
+            string sCorrect = (correctAnswer < 9) ? $"0{correctAnswer}" : correctAnswer.ToString();
             string sQCount = (Exam.QCount < 9) ? $"0{Exam.QCount}" : Exam.QCount.ToString();
             lbCorrectNumber.Text = $"{sCorrect}/{sQCount}";
         }
