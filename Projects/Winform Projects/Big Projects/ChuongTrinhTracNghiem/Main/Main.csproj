@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9FEB602-56FE-4862-9A5E-DE9697888BF6}</ProjectGuid>
+    <ProjectGuid>{9978DA6B-29A8-4E09-8978-2184E6008C33}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Main</RootNamespace>
     <AssemblyName>Main</AssemblyName>
@@ -12,7 +12,6 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="AdvancedDataGridView">
       <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.Core">
@@ -115,15 +114,18 @@
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.ReportViewer.WinForms">
-      <HintPath>..\..\..\Small Projects\QuanLyQuanCafe\packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.2.0, Culture=neutral, PublicKeyToken=e4b9cdd7b4cde4b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.2\lib\net40\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Services" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -138,199 +140,275 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControl.cs" />
-    <Compile Include="FrmEduProg.cs">
+    <Compile Include="BusinessLogicLayer\AccountBLL.cs" />
+    <Compile Include="BusinessLogicLayer\CourseBLL.cs" />
+    <Compile Include="BusinessLogicLayer\EduProgBLL.cs" />
+    <Compile Include="BusinessLogicLayer\ExamBLL.cs" />
+    <Compile Include="BusinessLogicLayer\FacultyBLL.cs" />
+    <Compile Include="BusinessLogicLayer\QuestionBLL.cs" />
+    <Compile Include="BusinessLogicLayer\RoleBLL.cs" />
+    <Compile Include="BusinessLogicLayer\SemesterBLL.cs" />
+    <Compile Include="BusinessLogicLayer\SubjectBLL.cs" />
+    <Compile Include="BusinessLogicLayer\TestHistoryBLL.cs" />
+    <Compile Include="BusinessLogicLayer\UserClassBLL.cs" />
+    <Compile Include="ChildForm\MsgBox.cs" />
+    <Compile Include="ChildForm\OkMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEduProg.Designer.cs">
-      <DependentUpon>FrmEduProg.cs</DependentUpon>
+    <Compile Include="ChildForm\OkMessageBox.designer.cs">
+      <DependentUpon>OkMessageBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTestHistory.cs">
+    <Compile Include="ChildForm\SelectExamForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTestHistory.Designer.cs">
-      <DependentUpon>FrmTestHistory.cs</DependentUpon>
+    <Compile Include="ChildForm\SelectExamForm.Designer.cs">
+      <DependentUpon>SelectExamForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmManageClass.cs">
+    <Compile Include="ChildForm\YesNoMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmManageClass.Designer.cs">
-      <DependentUpon>FrmManageClass.cs</DependentUpon>
+    <Compile Include="ChildForm\YesNoMessageBox.designer.cs">
+      <DependentUpon>YesNoMessageBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmManageExam.cs">
+    <Compile Include="DataAccessLayer\AccountDAL.cs" />
+    <Compile Include="DataAccessLayer\CourseDAL.cs" />
+    <Compile Include="DataAccessLayer\DataProvider.cs" />
+    <Compile Include="DataAccessLayer\EduProgDAL.cs" />
+    <Compile Include="DataAccessLayer\ExamDAL.cs" />
+    <Compile Include="DataAccessLayer\ExamRoleDAL.cs" />
+    <Compile Include="DataAccessLayer\FacultyDAL.cs" />
+    <Compile Include="DataAccessLayer\QuestionDAL.cs" />
+    <Compile Include="DataAccessLayer\SemesterDAL.cs" />
+    <Compile Include="DataAccessLayer\SubjectDAL.cs" />
+    <Compile Include="DataAccessLayer\SubjectRoleDAL.cs" />
+    <Compile Include="DataAccessLayer\TestHistoryDAL.cs" />
+    <Compile Include="DataAccessLayer\TrainingRoleDAL.cs" />
+    <Compile Include="DataAccessLayer\UserClassDAL.cs" />
+    <Compile Include="DataAccessLayer\UserRoleDAL.cs" />
+    <Compile Include="Entities\CourseOrder.cs" />
+    <Compile Include="Entities\EduProg.cs" />
+    <Compile Include="Entities\Exam.cs" />
+    <Compile Include="Entities\ExamRole.cs" />
+    <Compile Include="Entities\Faculty.cs" />
+    <Compile Include="Entities\Question.cs" />
+    <Compile Include="Entities\Semester.cs" />
+    <Compile Include="Entities\Subject.cs" />
+    <Compile Include="Entities\SubjectRole.cs" />
+    <Compile Include="Entities\TestHistory.cs" />
+    <Compile Include="Entities\TrainingRole.cs" />
+    <Compile Include="Entities\UserAccount.cs" />
+    <Compile Include="Entities\UserClass.cs" />
+    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmManageExam.Designer.cs">
-      <DependentUpon>FrmManageExam.cs</DependentUpon>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmManageCourse.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmManageCourse.Designer.cs">
-      <DependentUpon>FrmManageCourse.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmManageFaculty.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmManageFaculty.Designer.cs">
-      <DependentUpon>FrmManageFaculty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmLeaderBoard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLeaderBoard.Designer.cs">
-      <DependentUpon>FrmLeaderBoard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmManageStatistical.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmManageStatistical.Designer.cs">
-      <DependentUpon>FrmManageStatistical.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmQuiz.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmQuiz.Designer.cs">
-      <DependentUpon>FrmQuiz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmQuizOptions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmQuizOptions.Designer.cs">
-      <DependentUpon>FrmQuizOptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmChangePassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmChangePassword.Designer.cs">
-      <DependentUpon>FrmChangePassword.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmManageSubject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmManageSubject.Designer.cs">
-      <DependentUpon>FrmManageSubject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmManageQuestion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmManageQuestion.Designer.cs">
-      <DependentUpon>FrmManageQuestion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmManageUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmManageUser.Designer.cs">
-      <DependentUpon>FrmManageUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmQuizResult.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmQuizResult.Designer.cs">
-      <DependentUpon>FrmQuizResult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTestPages.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTestPages.Designer.cs">
-      <DependentUpon>FrmTestPages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Page\ChangePassword.cs">
+    <Compile Include="Pages\About.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Page\ChangePassword.Designer.cs">
-      <DependentUpon>ChangePassword.cs</DependentUpon>
+    <Compile Include="Pages\About.designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="Page\UserManage.cs">
+    <Compile Include="Pages\BackupRestore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Page\UserManage.Designer.cs">
-      <DependentUpon>UserManage.cs</DependentUpon>
+    <Compile Include="Pages\BackupRestore.designer.cs">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EduProg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\EduProg.designer.cs">
+      <DependentUpon>EduProg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Guide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Guide.designer.cs">
+      <DependentUpon>Guide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LeaderBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\LeaderBoard.designer.cs">
+      <DependentUpon>LeaderBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\MainMenu.designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ManageClass.designer.cs">
+      <DependentUpon>ManageClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageCourse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ManageCourse.designer.cs">
+      <DependentUpon>ManageCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageExam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ManageExam.designer.cs">
+      <DependentUpon>ManageExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageFaculty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ManageFaculty.designer.cs">
+      <DependentUpon>ManageFaculty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageQuestion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ManageQuestion.designer.cs">
+      <DependentUpon>ManageQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageSubject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ManageSubject.designer.cs">
+      <DependentUpon>ManageSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ManageUser.designer.cs">
+      <DependentUpon>ManageUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile.designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\QuizResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\QuizResult.designer.cs">
+      <DependentUpon>QuizResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\QuizTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\QuizTest.designer.cs">
+      <DependentUpon>QuizTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Statistical.designer.cs">
+      <DependentUpon>Statistical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TestHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\TestHistory.designer.cs">
+      <DependentUpon>TestHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partial\CountDownTimer.cs" />
+    <Compile Include="Partial\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partial\RJProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Partial\Session.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmEduProg.resx">
-      <DependentUpon>FrmEduProg.cs</DependentUpon>
+    <EmbeddedResource Include="ChildForm\OkMessageBox.resx">
+      <DependentUpon>OkMessageBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTestHistory.resx">
-      <DependentUpon>FrmTestHistory.cs</DependentUpon>
+    <EmbeddedResource Include="ChildForm\SelectExamForm.resx">
+      <DependentUpon>SelectExamForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageClass.resx">
-      <DependentUpon>FrmManageClass.cs</DependentUpon>
+    <EmbeddedResource Include="ChildForm\YesNoMessageBox.resx">
+      <DependentUpon>YesNoMessageBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageExam.resx">
-      <DependentUpon>FrmManageExam.cs</DependentUpon>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageCourse.resx">
-      <DependentUpon>FrmManageCourse.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageFaculty.resx">
-      <DependentUpon>FrmManageFaculty.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLeaderBoard.resx">
-      <DependentUpon>FrmLeaderBoard.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\BackupRestore.resx">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageStatistical.resx">
-      <DependentUpon>FrmManageStatistical.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\EduProg.resx">
+      <DependentUpon>EduProg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmQuiz.resx">
-      <DependentUpon>FrmQuiz.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Guide.resx">
+      <DependentUpon>Guide.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmQuizOptions.resx">
-      <DependentUpon>FrmQuizOptions.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\LeaderBoard.resx">
+      <DependentUpon>LeaderBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmChangePassword.resx">
-      <DependentUpon>FrmChangePassword.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\ManageClass.resx">
+      <DependentUpon>ManageClass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\ManageCourse.resx">
+      <DependentUpon>ManageCourse.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageSubject.resx">
-      <DependentUpon>FrmManageSubject.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\ManageExam.resx">
+      <DependentUpon>ManageExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageQuestion.resx">
-      <DependentUpon>FrmManageQuestion.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\ManageFaculty.resx">
+      <DependentUpon>ManageFaculty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmManageUser.resx">
-      <DependentUpon>FrmManageUser.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\ManageQuestion.resx">
+      <DependentUpon>ManageQuestion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmQuizResult.resx">
-      <DependentUpon>FrmQuizResult.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\ManageSubject.resx">
+      <DependentUpon>ManageSubject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTestPages.resx">
-      <DependentUpon>FrmTestPages.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\ManageUser.resx">
+      <DependentUpon>ManageUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Page\ChangePassword.resx">
-      <DependentUpon>ChangePassword.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Page\UserManage.resx">
-      <DependentUpon>UserManage.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\QuizResult.resx">
+      <DependentUpon>QuizResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\QuizTest.resx">
+      <DependentUpon>QuizTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Statistical.resx">
+      <DependentUpon>Statistical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\TestHistory.resx">
+      <DependentUpon>TestHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <None Include="packages.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -346,24 +424,31 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
-      <Project>{c0ece0df-7506-40b8-9a13-03209d7949c5}</Project>
-      <Name>BusinessLogicLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{049ac2b3-92dc-49f8-9f4e-40a2fa2b2ea5}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
+    <None Include="Resources\Logo1.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SelectExam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flags.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warning.png" />
-    <None Include="Resources\cancel.png" />
-    <None Include="Resources\checked.png" />
-    <None Include="Resources\flags.png" />
-    <Content Include="Resources\Quiz.png" />
-    <None Include="Resources\QuizInform.png" />
-    <None Include="Resources\QuizThumnails.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

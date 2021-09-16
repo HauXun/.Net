@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Main
@@ -14,23 +13,22 @@ namespace Main
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new FrmLogin());
+			Start();
 		}
 
-		public static bool IsInDesignMode(this ContainerControl container)
+		//static void Main(string[] args)
+		//{
+		//	var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+		//	var filename = Path.Combine(path, "Main.exe");
+		//	var assembly = Assembly.LoadFile(filename);
+		//	var programType = assembly.GetTypes().FirstOrDefault(c => c.Name == "Program"); // <-- if you don't know the full namespace and when it is unique.
+		//	var method = programType.GetMethod("Start", BindingFlags.Public | BindingFlags.Static);
+		//	method.Invoke(null, new object[] { });
+		//}
+
+		public static void Start()
 		{
-			if (Application.ExecutablePath.IndexOf("devenv.exe", StringComparison.OrdinalIgnoreCase) > -1)
-			{
-				container.Controls.Add(new Label()
-				{
-					Text = container.GetType().Name,
-					AutoSize = false,
-					TextAlign = ContentAlignment.MiddleCenter,
-					Dock = DockStyle.Fill
-				});
-				return true;
-			}
-			return false;
+			Application.Run(new LoginForm());
 		}
 	}
 }
