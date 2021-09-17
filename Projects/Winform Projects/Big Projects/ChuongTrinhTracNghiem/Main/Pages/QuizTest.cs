@@ -72,7 +72,8 @@ namespace Main.Pages
             btnLastQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnLastQuestion.Width, btnLastQuestion.Height, 5, 5));
             btnPreviousQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnPreviousQuestion.Width, btnPreviousQuestion.Height, 5, 5));
             btnNextQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextQuestion.Width, btnNextQuestion.Height, 5, 5));
-        }
+			btnFlags.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnFlags.Width, btnFlags.Height, 5, 5));
+		}
 
 		#endregion
 
@@ -213,6 +214,7 @@ namespace Main.Pages
 
 		private void SavePoint()
 		{
+			correctAnswer = 0;
 			foreach (DataRow row in Data.Rows)
 			{
 				string answer = row["Answer"].ToString();
@@ -234,7 +236,7 @@ namespace Main.Pages
 				ExamID = Exam.ExamID,
 				SubjectID = Exam.SubjectID,
 				UserID = Account.UserID,
-				SemesterID = byte.Parse(SubjectBLL.Instance.GetSubjectFromEduProg(Account.UserID).Rows[0]["SemesterID"].ToString()),
+				SemesterID = SubjectBLL.Instance.GetSubjectByID(Exam.SubjectID).SemesterID,
 				CorrectAnswer = correctAnswer,
 				TotalQuestion = Exam.QCount,
 				Mark = mark,
@@ -269,8 +271,8 @@ namespace Main.Pages
 			timer.CountDownFinished += () =>
 			{
 				cPBCountDownTime.SuperscriptText = "Finish!";
-				timer.Stop();
 				FinishQuiz();
+				Session.Submit?.Invoke();
 			};
 			timer.StepMs = 77;
 		}
@@ -339,7 +341,10 @@ namespace Main.Pages
 		{
 			if (MsgBox.ShowMessage("Bạn có chắn chắn muốn nộp bài!", "Amazing Quiz Application",
 				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.No)
+			{
+				Session.Data = null;
 				return;
+			}
 
 			FinishQuiz();
 		}
@@ -362,7 +367,6 @@ namespace Main.Pages
 
 		private void btnFlags_Click(object sender, EventArgs e)
 		{
-			btnFlags.BackColor = Color.DarkGray;
 			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCount)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx).ToString())).FirstOrDefault();
@@ -399,5 +403,15 @@ namespace Main.Pages
 		}
 
 		#endregion
+
+		private void btnFlags_MouseEnter(object sender, EventArgs e)
+		{
+			btnFlags.BackColor = Color.DarkGray;
+		}
+
+		private void btnFlags_MouseLeave(object sender, EventArgs e)
+		{
+			btnFlags.BackColor = Color.FromArgb(0, 255, 255, 255);
+		}
 	}
 }

@@ -1,17 +1,26 @@
 ﻿using Main.Partial;
 using System;
+using System.Data;
+using System.Data.Sql;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace Main.Pages
 {
 	public partial class BackupRestore : UserControl
 	{
+		string selectedPath = "";
+		DataTable instances;
+
 		public BackupRestore()
 		{
 			InitializeComponent();
 			RoundedControls();
+			instances = SqlDataSourceEnumerator.Instance.GetDataSources();
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -30,8 +39,21 @@ namespace Main.Pages
 
 		private void btnBrowser_Click(object sender, EventArgs e)
 		{
-			FolderBrowserDialog brows = new FolderBrowserDialog();
-			brows.ShowDialog();
+			Thread thread = new Thread((ThreadStart)(() =>
+			{
+				OpenFileDialog dialog = new OpenFileDialog();
+				if (dialog.ShowDialog() == DialogResult.OK)
+				{
+					if (dialog.FileName != null)
+					{
+						selectedPath = dialog.FileName;
+					}
+				}
+			}));
+			thread.SetApartmentState(ApartmentState.STA);
+			thread.Start();
+			thread.Join();
+			tbDatabase.Text = selectedPath;
 		}
 
 		//Bo tròn góc các Control
@@ -47,5 +69,27 @@ namespace Main.Pages
 			btnPassword.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnPassword.Width, btnPassword.Height, 6, 6));
 		}
 		#endregion
+
+		private void GetDataSources()
+		{	
+			string ServerName = Environment.MachineName;
+			RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
+			using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
+			{
+				RegistryKey instanceKey = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL", false);
+				if (instanceKey != null)
+				{
+					foreach (var instanceName in instanceKey.GetValueNames())
+					{
+						cbSever.Items.Add(ServerName + "\\" + instanceName);
+					}
+				}
+			}
+		}
+
+		private void BackupRestore_Load(object sender, EventArgs e)
+		{
+			GetDataSources();
+		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using Bunifu.UI.Winforms;
-using Entities;
+﻿using Entities;
 using Main.Partial;
 using System;
 using System.Data;
@@ -17,6 +16,7 @@ namespace Main.Pages
 
         public DataTable Data { get => data; set => data = value; }
         public Exam Exam { get => exam; set => exam = value; }
+
         public QuizResult()
 		{
 			InitializeComponent();
@@ -46,7 +46,6 @@ namespace Main.Pages
             fLPdata.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, fLPdata.Width, fLPdata.Height, 10, 10));
             //Panels Shadow
             pnlKetQuaShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlKetQuaShadow.Width, pnlKetQuaShadow.Height, 10, 10));
-            flpCChiTietKetQuaShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, flpCChiTietKetQuaShadow.Width, flpCChiTietKetQuaShadow.Height, 10, 10));
         }
 		#endregion
 
@@ -65,8 +64,8 @@ namespace Main.Pages
 			Button button = new Button()
 			{
 				AutoSize = true,
-				Width = 45,
-				Height = 45,
+				Width = 55,
+				Height = 55,
 				Text = $"Câu {i++}",
 				TextImageRelation = TextImageRelation.TextAboveImage,
 				Font = new Font("Arial", 8, FontStyle.Regular),
@@ -91,8 +90,6 @@ namespace Main.Pages
 					button.Image = new Bitmap(Properties.Resources.warning, new Size(40, 40));
 					tip.ToolTipIcon = ToolTipIcon.Warning;
 					break;
-				default:
-					break;
 			}
 
 			tip.SetToolTip(button, answer);
@@ -116,27 +113,22 @@ namespace Main.Pages
 					btnCheck.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 					btnCheck.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
 					btnCheck.Image = new Bitmap(Properties.Resources._checked, new Size(25, 25));
-					barCheck.ProgressColorLeft = Color.FromArgb(0, 192, 0);
 					barCheck.Value = value * 10 / Exam.QCount * 10;
-					lbCheck.Text = ((float)value * 10 / Exam.QCount * 10).ToString() + "%";
+					lbCheck.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
 					break;
 				case State.Uncheck:
 					btnUncheck.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 					btnUncheck.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
 					btnUncheck.Image = new Bitmap(Properties.Resources.cancel, new Size(25, 25));
-					barUncheck.ProgressColorLeft = Color.FromArgb(210, 20, 20);
 					barUncheck.Value = value * 10 / Exam.QCount * 10;
-					lbUncheck.Text = ((float)value * 10 / Exam.QCount * 10).ToString() + "%";
+					lbUncheck.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
 					break;
 				case State.Indeterminate:
 					btnIndeterminate.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 					btnIndeterminate.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
 					btnIndeterminate.Image = new Bitmap(Properties.Resources.warning, new Size(25, 25));
-					barIndeterminate.ProgressColorLeft = Color.FromArgb(255, 210, 0);
 					barIndeterminate.Value = value * 10 / Exam.QCount * 10;
-					lbIndeterminate.Text = ((float)value * 10 / Exam.QCount * 10).ToString() + "%";
-					break;
-				default:
+					lbIndeterminate.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
 					break;
 			}
 		}
@@ -144,7 +136,6 @@ namespace Main.Pages
 		private void LoadState()
 		{
 			ushort i = 1;
-			ushort correctAnswer = 0;
 			ushort failAnswer = 0;
 			ushort notyetAnswer = 0;
 			string answer;
@@ -197,8 +188,9 @@ namespace Main.Pages
 
 		#region Events
 
-		private void FrmQuizResult_Load(object sender, EventArgs e)
+		public void FrmQuizResult_Load(object sender, EventArgs e)
 		{
+			fLPdata.Controls.Clear();
 			LoadState();
 			LoadMark();
 		}

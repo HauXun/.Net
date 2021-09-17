@@ -29,26 +29,26 @@ namespace Main.Pages
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.aDgvdata = new ADGV.AdvancedDataGridView();
+			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
-			this.aDgvdata = new ADGV.AdvancedDataGridView();
-			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CreateAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CorrectAnswer = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TotalQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +65,84 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridView.TabIndex = 34;
+			// 
+			// aDgvdata
+			// 
+			this.aDgvdata.AllowUserToAddRows = false;
+			this.aDgvdata.AllowUserToDeleteRows = false;
+			this.aDgvdata.AllowUserToResizeRows = false;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.aDgvdata.AutoGenerateContextFilters = true;
+			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
+			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.aDgvdata.ColumnHeadersHeight = 40;
+			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.FullName,
+            this.SubjectName,
+            this.SubjectID,
+            this.CreatedAt,
+            this.CorrectAnswer,
+            this.TotalQuestion,
+            this.Mark});
+			this.aDgvdata.DateWithTime = false;
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
+			this.aDgvdata.EnableHeadersVisualStyles = false;
+			this.aDgvdata.Location = new System.Drawing.Point(14, 55);
+			this.aDgvdata.Name = "aDgvdata";
+			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			this.aDgvdata.RowHeadersVisible = false;
+			this.aDgvdata.RowTemplate.Height = 50;
+			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
+			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.aDgvdata.Size = new System.Drawing.Size(1498, 665);
+			this.aDgvdata.TabIndex = 10;
+			this.aDgvdata.TimeFilter = false;
+			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
+			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
+			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
+			// 
+			// btnClearFilter
+			// 
+			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnClearFilter.FlatAppearance.BorderSize = 0;
+			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnClearFilter.ForeColor = System.Drawing.Color.White;
+			this.btnClearFilter.IconChar = FontAwesome.Sharp.IconChar.FunnelDollar;
+			this.btnClearFilter.IconColor = System.Drawing.SystemColors.WindowText;
+			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnClearFilter.IconSize = 25;
+			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnClearFilter.Location = new System.Drawing.Point(1456, 9);
+			this.btnClearFilter.Name = "btnClearFilter";
+			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
+			this.btnClearFilter.TabIndex = 9;
+			this.btnClearFilter.TabStop = false;
+			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btnClearFilter.UseVisualStyleBackColor = false;
+			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
 			// 
 			// iconTitle
 			// 
@@ -105,89 +183,11 @@ namespace Main.Pages
 			this.pnlDataGridViewShadow.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridViewShadow.TabIndex = 37;
 			// 
-			// aDgvdata
-			// 
-			this.aDgvdata.AllowUserToAddRows = false;
-			this.aDgvdata.AllowUserToDeleteRows = false;
-			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-			this.aDgvdata.AutoGenerateContextFilters = true;
-			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
-			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-			this.aDgvdata.ColumnHeadersHeight = 40;
-			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
-            this.FullName,
-            this.SubjectName,
-            this.SubjectID,
-            this.CreateAt,
-            this.CorrectAnswer,
-            this.TotalQuestion,
-            this.Mark});
-			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle18;
-			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(14, 55);
-			this.aDgvdata.Name = "aDgvdata";
-			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			this.aDgvdata.RowHeadersVisible = false;
-			this.aDgvdata.RowTemplate.Height = 50;
-			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1498, 665);
-			this.aDgvdata.TabIndex = 10;
-			this.aDgvdata.TimeFilter = false;
-			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
-			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
-			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
-			// 
-			// btnClearFilter
-			// 
-			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnClearFilter.FlatAppearance.BorderSize = 0;
-			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnClearFilter.ForeColor = System.Drawing.Color.White;
-			this.btnClearFilter.IconChar = FontAwesome.Sharp.IconChar.FunnelDollar;
-			this.btnClearFilter.IconColor = System.Drawing.SystemColors.WindowText;
-			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnClearFilter.IconSize = 25;
-			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(1456, 9);
-			this.btnClearFilter.Name = "btnClearFilter";
-			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
-			this.btnClearFilter.TabIndex = 9;
-			this.btnClearFilter.TabStop = false;
-			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.btnClearFilter.UseVisualStyleBackColor = false;
-			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
-			// 
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle12;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
 			this.STT.FillWeight = 40F;
 			this.STT.HeaderText = "STT";
 			this.STT.MinimumWidth = 22;
@@ -218,8 +218,8 @@ namespace Main.Pages
 			// SubjectID
 			// 
 			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle13;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
 			this.SubjectID.FillWeight = 60F;
 			this.SubjectID.HeaderText = "Mã môn";
 			this.SubjectID.MinimumWidth = 22;
@@ -227,25 +227,25 @@ namespace Main.Pages
 			this.SubjectID.ReadOnly = true;
 			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
-			// CreateAt
+			// CreatedAt
 			// 
-			this.CreateAt.DataPropertyName = "CreateAt";
-			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle14.Format = "d";
-			dataGridViewCellStyle14.NullValue = "dd/MM/yyy";
-			this.CreateAt.DefaultCellStyle = dataGridViewCellStyle14;
-			this.CreateAt.FillWeight = 60F;
-			this.CreateAt.HeaderText = "Ngày thi";
-			this.CreateAt.MinimumWidth = 22;
-			this.CreateAt.Name = "CreateAt";
-			this.CreateAt.ReadOnly = true;
-			this.CreateAt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.CreatedAt.DataPropertyName = "CreatedAt";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle5.Format = "d";
+			dataGridViewCellStyle5.NullValue = "dd/MM/yyyy";
+			this.CreatedAt.DefaultCellStyle = dataGridViewCellStyle5;
+			this.CreatedAt.FillWeight = 60F;
+			this.CreatedAt.HeaderText = "Ngày thi";
+			this.CreatedAt.MinimumWidth = 22;
+			this.CreatedAt.Name = "CreatedAt";
+			this.CreatedAt.ReadOnly = true;
+			this.CreatedAt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// CorrectAnswer
 			// 
 			this.CorrectAnswer.DataPropertyName = "CorrectAnswer";
-			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle15;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle6;
 			this.CorrectAnswer.FillWeight = 40F;
 			this.CorrectAnswer.HeaderText = "Số câu đúng";
 			this.CorrectAnswer.MinimumWidth = 22;
@@ -256,8 +256,8 @@ namespace Main.Pages
 			// TotalQuestion
 			// 
 			this.TotalQuestion.DataPropertyName = "TotalQuestion";
-			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle16;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle7;
 			this.TotalQuestion.FillWeight = 40F;
 			this.TotalQuestion.HeaderText = "Tổng số câu";
 			this.TotalQuestion.MinimumWidth = 22;
@@ -268,8 +268,8 @@ namespace Main.Pages
 			// Mark
 			// 
 			this.Mark.DataPropertyName = "Mark";
-			dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Mark.DefaultCellStyle = dataGridViewCellStyle17;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Mark.DefaultCellStyle = dataGridViewCellStyle8;
 			this.Mark.FillWeight = 40F;
 			this.Mark.HeaderText = "Điểm";
 			this.Mark.MinimumWidth = 22;
@@ -307,7 +307,7 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CreateAt;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CreatedAt;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CorrectAnswer;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuestion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Mark;

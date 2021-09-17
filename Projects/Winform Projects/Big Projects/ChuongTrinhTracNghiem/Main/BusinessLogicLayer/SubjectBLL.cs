@@ -22,9 +22,9 @@ namespace BusinessLogicLayer
 
         private SubjectBLL() { }
 
-        public void GetSubjectFromEduProg(ComboBox box, int userID)
+        public void GetSubjectFromEduProg(ComboBox box, int userID, bool isMockTest)
         {
-            DataTable data = SubjectDAL.Instance.GetSubjectFromEduProg(userID);
+            DataTable data = SubjectDAL.Instance.GetSubjectFromEduProg(userID, isMockTest);
             if (data.Rows.Count > 0)
             {
                 box.DisplayMember = "SubjectName";
@@ -35,11 +35,6 @@ namespace BusinessLogicLayer
 			{
                 box.DataSource = null;
 			}
-        }
-
-        public DataTable GetSubjectFromEduProg(int userID)
-        {
-            return SubjectDAL.Instance.GetSubjectFromEduProg(userID);
         }
 
         public Subject GetSubjectByID(string subjectID)

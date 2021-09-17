@@ -46,7 +46,7 @@ namespace Main
 		private void LoadData()
 		{
 			if (Account != null)
-				SubjectBLL.Instance.GetSubjectFromEduProg(cbSubject, Account.UserID);
+				SubjectBLL.Instance.GetSubjectFromEduProg(cbSubject, Account.UserID, isMockTest);
 			test = (isMockTest == true) ? "đề thi thử" : "đề thi";
 		}
 

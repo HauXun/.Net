@@ -22,12 +22,12 @@ namespace DataAccessLayer
 
         private SubjectDAL() { }
 
-        public DataTable GetSubjectFromEduProg(int userID)
+        public DataTable GetSubjectFromEduProg(int userID, bool isMockTest)
 		{
             try
             {
-                string query = "EXEC dbo.USP_SelectSubjectFromEduProg @UserID";
-                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { userID });
+                string query = "EXEC dbo.USP_SelectSubjectFromEduProg @UserID , @IsMockTest";
+                DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { userID, isMockTest });
                 return data;
             }
             catch (Exception e)

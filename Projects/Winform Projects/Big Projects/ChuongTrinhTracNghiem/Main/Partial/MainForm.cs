@@ -102,6 +102,7 @@ namespace Main
 				{
 					Session.bP.SetPage((int)Session.TabPage.ManageClass);
 					MainAction = manageClassUC.HomeFunc;
+					manageClassUC.ManageClass_Load(manageClassUC, e);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -401,22 +402,7 @@ namespace Main
 		/// <param name="e"></param>
 		private void btnNopBai_Click(object sender, EventArgs e)
 		{
-			if (MsgBox.ShowMessage("Xác nhận nộp bài!", "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
-			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
-				{
-					quizResultUC.cPBCountDownTime.Text = (!quizTestUC.timer.MustStop) ? quizTestUC.cPBCountDownTime.Text : "Finished";
-					quizResultUC.Data = Session.Data;
-					quizResultUC.Exam = Session.Exam;
-					if (quizResultUC.Data != null && quizResultUC.Exam != null)
-						quizResultUC.FrmQuizResult_Load(quizResultUC, e);
-					Session.bP.SetPage((int)Session.TabPage.QuizResult);
-				});
-				#endregion
-				pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
-			}
+			Submit?.Invoke();
 		}
 
 		#endregion
@@ -535,6 +521,26 @@ namespace Main
 				SettingControls();
 				Session.bP = this.bP;
 			});
+
+			Submit = () =>
+			{
+				if (Session.Data != null)
+				{
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						quizResultUC.cPBCountDownTime.Text = (!quizTestUC.timer.MustStop) ? quizTestUC.cPBCountDownTime.Text : "Finished";
+						quizResultUC.Data = Session.Data;
+						quizResultUC.Exam = Session.Exam;
+						if (quizResultUC.fLPdata.Controls.Count > 0)
+							quizResultUC.FrmQuizResult_Load(quizResultUC, e);
+						Session.bP.SetPage((int)Session.TabPage.QuizResult);
+					});
+					#endregion
+					pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
+				}
+			};
+			Session.Submit = this.Submit;
 		}
 	}
 }

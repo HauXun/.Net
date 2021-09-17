@@ -532,12 +532,15 @@ namespace Main.Pages
 			this.btnFlags.IconColor = System.Drawing.Color.Firebrick;
 			this.btnFlags.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnFlags.IconSize = 30;
+			this.btnFlags.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.btnFlags.Location = new System.Drawing.Point(127, 11);
 			this.btnFlags.Name = "btnFlags";
 			this.btnFlags.Size = new System.Drawing.Size(40, 40);
 			this.btnFlags.TabIndex = 2;
 			this.btnFlags.UseVisualStyleBackColor = true;
 			this.btnFlags.Click += new System.EventHandler(this.btnFlags_Click);
+			this.btnFlags.MouseEnter += new System.EventHandler(this.btnFlags_MouseEnter);
+			this.btnFlags.MouseLeave += new System.EventHandler(this.btnFlags_MouseLeave);
 			// 
 			// pnlDieuKhienShadow
 			// 

@@ -8,6 +8,8 @@ namespace Main.Partial
 {
 	public static class Session
 	{
+		public static Action Submit;
+
 		public static DataTable Data;
 		public static Exam Exam;
 		public static BunifuPages bP = new BunifuPages();

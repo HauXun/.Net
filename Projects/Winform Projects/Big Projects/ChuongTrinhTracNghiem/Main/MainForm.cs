@@ -17,6 +17,7 @@ namespace Main
 
 		private Color mainColor = Color.FromArgb(83, 107, 190);
 		private Action MainAction;
+		private Action Submit;
 		private UserAccount account;
 		public UserAccount Account
 		{

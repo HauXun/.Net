@@ -32,9 +32,9 @@ namespace Main.Pages
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.pnlSaoLuu = new System.Windows.Forms.Panel();
+			this.cbSever = new Bunifu.UI.WinForms.BunifuDropdown();
 			this.tbPassword = new Guna.UI2.WinForms.Guna2TextBox();
 			this.tbUsername = new Guna.UI2.WinForms.Guna2TextBox();
-			this.tbSever = new Guna.UI2.WinForms.Guna2TextBox();
 			this.tbDatabase = new Guna.UI2.WinForms.Guna2TextBox();
 			this.btnSaoLuu = new FontAwesome.Sharp.IconButton();
 			this.btnPassword = new FontAwesome.Sharp.IconButton();
@@ -83,9 +83,9 @@ namespace Main.Pages
 			// pnlSaoLuu
 			// 
 			this.pnlSaoLuu.BackColor = System.Drawing.Color.White;
+			this.pnlSaoLuu.Controls.Add(this.cbSever);
 			this.pnlSaoLuu.Controls.Add(this.tbPassword);
 			this.pnlSaoLuu.Controls.Add(this.tbUsername);
-			this.pnlSaoLuu.Controls.Add(this.tbSever);
 			this.pnlSaoLuu.Controls.Add(this.tbDatabase);
 			this.pnlSaoLuu.Controls.Add(this.btnSaoLuu);
 			this.pnlSaoLuu.Controls.Add(this.btnPassword);
@@ -102,6 +102,37 @@ namespace Main.Pages
 			this.pnlSaoLuu.Size = new System.Drawing.Size(600, 473);
 			this.pnlSaoLuu.TabIndex = 0;
 			// 
+			// cbSever
+			// 
+			this.cbSever.BackColor = System.Drawing.Color.White;
+			this.cbSever.BorderRadius = 4;
+			this.cbSever.Color = System.Drawing.Color.Gray;
+			this.cbSever.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+			this.cbSever.DisabledColor = System.Drawing.Color.Gray;
+			this.cbSever.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.cbSever.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbSever.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbSever.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+			this.cbSever.FillDropDown = false;
+			this.cbSever.FillIndicator = false;
+			this.cbSever.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cbSever.ForeColor = System.Drawing.Color.Black;
+			this.cbSever.FormattingEnabled = true;
+			this.cbSever.Icon = null;
+			this.cbSever.IndicatorColor = System.Drawing.Color.Gray;
+			this.cbSever.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+			this.cbSever.ItemBackColor = System.Drawing.Color.White;
+			this.cbSever.ItemBorderColor = System.Drawing.Color.White;
+			this.cbSever.ItemForeColor = System.Drawing.Color.DimGray;
+			this.cbSever.ItemHeight = 30;
+			this.cbSever.ItemHighLightColor = System.Drawing.Color.Gainsboro;
+			this.cbSever.Location = new System.Drawing.Point(164, 23);
+			this.cbSever.Name = "cbSever";
+			this.cbSever.Size = new System.Drawing.Size(393, 36);
+			this.cbSever.Sorted = true;
+			this.cbSever.TabIndex = 21;
+			this.cbSever.Text = null;
+			// 
 			// tbPassword
 			// 
 			this.tbPassword.BorderColor = System.Drawing.Color.Gray;
@@ -113,20 +144,22 @@ namespace Main.Pages
 			this.tbPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
 			this.tbPassword.DisabledState.Parent = this.tbPassword;
 			this.tbPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.tbPassword.Enabled = false;
 			this.tbPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbPassword.FocusedState.Parent = this.tbPassword;
 			this.tbPassword.Font = new System.Drawing.Font("Arial", 11.25F);
 			this.tbPassword.ForeColor = System.Drawing.Color.Black;
 			this.tbPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbPassword.HoverState.Parent = this.tbPassword;
-			this.tbPassword.Location = new System.Drawing.Point(138, 202);
+			this.tbPassword.Location = new System.Drawing.Point(162, 201);
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '\0';
 			this.tbPassword.PlaceholderText = "";
 			this.tbPassword.SelectedText = "";
 			this.tbPassword.ShadowDecoration.Parent = this.tbPassword;
-			this.tbPassword.Size = new System.Drawing.Size(393, 39);
+			this.tbPassword.Size = new System.Drawing.Size(393, 36);
 			this.tbPassword.TabIndex = 20;
+			this.tbPassword.UseSystemPasswordChar = true;
 			// 
 			// tbUsername
 			// 
@@ -145,40 +178,14 @@ namespace Main.Pages
 			this.tbUsername.ForeColor = System.Drawing.Color.Black;
 			this.tbUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbUsername.HoverState.Parent = this.tbUsername;
-			this.tbUsername.Location = new System.Drawing.Point(139, 144);
+			this.tbUsername.Location = new System.Drawing.Point(163, 141);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.PasswordChar = '\0';
 			this.tbUsername.PlaceholderText = "(nếu có)";
 			this.tbUsername.SelectedText = "";
 			this.tbUsername.ShadowDecoration.Parent = this.tbUsername;
-			this.tbUsername.Size = new System.Drawing.Size(393, 39);
+			this.tbUsername.Size = new System.Drawing.Size(393, 36);
 			this.tbUsername.TabIndex = 18;
-			// 
-			// tbSever
-			// 
-			this.tbSever.BorderColor = System.Drawing.Color.Gray;
-			this.tbSever.BorderRadius = 5;
-			this.tbSever.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.tbSever.DefaultText = "";
-			this.tbSever.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-			this.tbSever.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-			this.tbSever.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.tbSever.DisabledState.Parent = this.tbSever;
-			this.tbSever.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.tbSever.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.tbSever.FocusedState.Parent = this.tbSever;
-			this.tbSever.Font = new System.Drawing.Font("Arial", 11.25F);
-			this.tbSever.ForeColor = System.Drawing.Color.Black;
-			this.tbSever.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.tbSever.HoverState.Parent = this.tbSever;
-			this.tbSever.Location = new System.Drawing.Point(141, 28);
-			this.tbSever.Name = "tbSever";
-			this.tbSever.PasswordChar = '\0';
-			this.tbSever.PlaceholderText = "";
-			this.tbSever.SelectedText = "";
-			this.tbSever.ShadowDecoration.Parent = this.tbSever;
-			this.tbSever.Size = new System.Drawing.Size(393, 39);
-			this.tbSever.TabIndex = 15;
 			// 
 			// tbDatabase
 			// 
@@ -197,13 +204,13 @@ namespace Main.Pages
 			this.tbDatabase.ForeColor = System.Drawing.Color.Black;
 			this.tbDatabase.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbDatabase.HoverState.Parent = this.tbDatabase;
-			this.tbDatabase.Location = new System.Drawing.Point(140, 86);
+			this.tbDatabase.Location = new System.Drawing.Point(164, 81);
 			this.tbDatabase.Name = "tbDatabase";
 			this.tbDatabase.PasswordChar = '\0';
 			this.tbDatabase.PlaceholderText = "";
 			this.tbDatabase.SelectedText = "";
 			this.tbDatabase.ShadowDecoration.Parent = this.tbDatabase;
-			this.tbDatabase.Size = new System.Drawing.Size(393, 39);
+			this.tbDatabase.Size = new System.Drawing.Size(393, 36);
 			this.tbDatabase.TabIndex = 13;
 			// 
 			// btnSaoLuu
@@ -255,7 +262,7 @@ namespace Main.Pages
 			// 
 			this.btnBrowser.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnBrowser.Location = new System.Drawing.Point(542, 91);
+			this.btnBrowser.Location = new System.Drawing.Point(566, 91);
 			this.btnBrowser.Name = "btnBrowser";
 			this.btnBrowser.Size = new System.Drawing.Size(28, 24);
 			this.btnBrowser.TabIndex = 6;
@@ -275,19 +282,18 @@ namespace Main.Pages
 			// 
 			// progressBar1
 			// 
-			this.progressBar1.Location = new System.Drawing.Point(39, 269);
+			this.progressBar1.Location = new System.Drawing.Point(63, 269);
 			this.progressBar1.Name = "progressBar1";
 			this.progressBar1.Size = new System.Drawing.Size(493, 35);
 			this.progressBar1.TabIndex = 5;
 			// 
 			// lbStatus
 			// 
-			this.lbStatus.AutoSize = true;
 			this.lbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbStatus.ForeColor = System.Drawing.Color.Black;
-			this.lbStatus.Location = new System.Drawing.Point(35, 402);
+			this.lbStatus.Location = new System.Drawing.Point(61, 415);
 			this.lbStatus.Name = "lbStatus";
-			this.lbStatus.Size = new System.Drawing.Size(65, 24);
+			this.lbStatus.Size = new System.Drawing.Size(495, 49);
 			this.lbStatus.TabIndex = 4;
 			this.lbStatus.Text = "Status:";
 			// 
@@ -296,18 +302,18 @@ namespace Main.Pages
 			this.lbDatabase.AutoSize = true;
 			this.lbDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbDatabase.ForeColor = System.Drawing.Color.Black;
-			this.lbDatabase.Location = new System.Drawing.Point(42, 91);
+			this.lbDatabase.Location = new System.Drawing.Point(10, 87);
 			this.lbDatabase.Name = "lbDatabase";
-			this.lbDatabase.Size = new System.Drawing.Size(93, 24);
+			this.lbDatabase.Size = new System.Drawing.Size(149, 24);
 			this.lbDatabase.TabIndex = 3;
-			this.lbDatabase.Text = "Database:";
+			this.lbDatabase.Text = "Database Name:";
 			// 
 			// lbUsername
 			// 
 			this.lbUsername.AutoSize = true;
 			this.lbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbUsername.ForeColor = System.Drawing.Color.Black;
-			this.lbUsername.Location = new System.Drawing.Point(35, 149);
+			this.lbUsername.Location = new System.Drawing.Point(57, 147);
 			this.lbUsername.Name = "lbUsername";
 			this.lbUsername.Size = new System.Drawing.Size(102, 24);
 			this.lbUsername.TabIndex = 2;
@@ -318,7 +324,7 @@ namespace Main.Pages
 			this.lbPassword.AutoSize = true;
 			this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbPassword.ForeColor = System.Drawing.Color.Black;
-			this.lbPassword.Location = new System.Drawing.Point(35, 207);
+			this.lbPassword.Location = new System.Drawing.Point(62, 207);
 			this.lbPassword.Name = "lbPassword";
 			this.lbPassword.Size = new System.Drawing.Size(97, 24);
 			this.lbPassword.TabIndex = 1;
@@ -329,7 +335,7 @@ namespace Main.Pages
 			this.lbServer.AutoSize = true;
 			this.lbServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbServer.ForeColor = System.Drawing.Color.Black;
-			this.lbServer.Location = new System.Drawing.Point(64, 33);
+			this.lbServer.Location = new System.Drawing.Point(89, 27);
 			this.lbServer.Name = "lbServer";
 			this.lbServer.Size = new System.Drawing.Size(70, 24);
 			this.lbServer.TabIndex = 0;
@@ -352,6 +358,7 @@ namespace Main.Pages
 			this.Controls.Add(this.lbTitle);
 			this.Name = "BackupRestore";
 			this.Size = new System.Drawing.Size(1670, 882);
+			this.Load += new System.EventHandler(this.BackupRestore_Load);
 			this.pnlSaoLuu.ResumeLayout(false);
 			this.pnlSaoLuu.PerformLayout();
 			this.ResumeLayout(false);
@@ -375,9 +382,9 @@ namespace Main.Pages
 		private System.Windows.Forms.Panel pnlSaoLuuShadow;
 		private FontAwesome.Sharp.IconButton btnSaoLuu;
 		public FontAwesome.Sharp.IconButton btnPassword;
-		private Guna.UI2.WinForms.Guna2TextBox tbSever;
 		private Guna.UI2.WinForms.Guna2TextBox tbDatabase;
 		private Guna.UI2.WinForms.Guna2TextBox tbUsername;
 		private Guna.UI2.WinForms.Guna2TextBox tbPassword;
+		private Bunifu.UI.WinForms.BunifuDropdown cbSever;
 	}
 }
