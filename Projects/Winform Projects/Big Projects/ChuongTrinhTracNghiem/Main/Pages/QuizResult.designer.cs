@@ -58,6 +58,7 @@ namespace Main.Pages
 			// pnlLineDSCH
 			// 
 			this.pnlLineDSCH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlLineDSCH.BackColor = System.Drawing.Color.Transparent;
 			this.pnlLineDSCH.Controls.Add(this.Line);
 			this.pnlLineDSCH.Controls.Add(this.lbDanhSachCauHoi);
 			this.pnlLineDSCH.Location = new System.Drawing.Point(1093, 3);
@@ -75,6 +76,7 @@ namespace Main.Pages
 			// 
 			// lbDanhSachCauHoi
 			// 
+			this.lbDanhSachCauHoi.BackColor = System.Drawing.Color.Transparent;
 			this.lbDanhSachCauHoi.Font = new System.Drawing.Font("Arial", 18F);
 			this.lbDanhSachCauHoi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.lbDanhSachCauHoi.Location = new System.Drawing.Point(3, 0);
@@ -238,10 +240,11 @@ namespace Main.Pages
 			// 
 			// fLPdata
 			// 
+			this.fLPdata.AutoScroll = true;
 			this.fLPdata.BackColor = System.Drawing.Color.White;
-			this.fLPdata.Location = new System.Drawing.Point(1120, 60);
+			this.fLPdata.Location = new System.Drawing.Point(1114, 60);
 			this.fLPdata.Name = "fLPdata";
-			this.fLPdata.Size = new System.Drawing.Size(400, 738);
+			this.fLPdata.Size = new System.Drawing.Size(413, 738);
 			this.fLPdata.TabIndex = 27;
 			// 
 			// cPBCountDownTime
@@ -349,9 +352,9 @@ namespace Main.Pages
 			// pnlDataShadow
 			// 
 			this.pnlDataShadow.BackColor = System.Drawing.Color.Silver;
-			this.pnlDataShadow.Location = new System.Drawing.Point(1123, 63);
+			this.pnlDataShadow.Location = new System.Drawing.Point(1117, 63);
 			this.pnlDataShadow.Name = "pnlDataShadow";
-			this.pnlDataShadow.Size = new System.Drawing.Size(400, 738);
+			this.pnlDataShadow.Size = new System.Drawing.Size(413, 738);
 			this.pnlDataShadow.TabIndex = 36;
 			// 
 			// QuizResult

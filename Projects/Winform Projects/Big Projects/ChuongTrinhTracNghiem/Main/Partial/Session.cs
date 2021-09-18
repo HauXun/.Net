@@ -14,6 +14,9 @@ namespace Main.Partial
 		public static Exam Exam;
 		public static BunifuPages bP = new BunifuPages();
 
+		public static string connectionString
+				= @"server=.\SQLEXPRESS; database=TestProjectDB; integrated security=true;";
+
 		public enum TabPage
 		{
 			MainMenu = 0,

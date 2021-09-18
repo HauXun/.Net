@@ -85,7 +85,7 @@ namespace Main
 			{
 				if (AccountBLL.Instance.IsExistAccount(user))
 				{
-					pControl.Visible = false;
+					pControl.Visible = btnLogin.Enabled = false;
 					//Task.Run(() =>
 					new Thread(() =>
 					{
@@ -114,7 +114,7 @@ namespace Main
 		{
 			this.BeginInvoke((MethodInvoker)delegate
 			{
-				pControl.Visible = true;
+				pControl.Visible = btnLogin.Enabled = true;
 				tbUsername.Text = string.Empty;
 				tbPassword.Text = string.Empty;
 				this.Show();
