@@ -5,20 +5,22 @@ using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using Microsoft.SqlServer.Management.Smo;
-using Microsoft.SqlServer.Management.Common;
 using System.Text;
-using Guna.UI2.WinForms;
 using Bunifu.UI.WinForms;
 using System.Linq;
+using System.Net;
+using Main.BusinessLogicLayer;
+using Microsoft.SqlServer.Management.Smo;
+using Microsoft.SqlServer.Management.Common;
 using System.Data.SqlClient;
+using DataAccessLayer;
+using System.Text.RegularExpressions;
 
 namespace Main.Pages
 {
 	public partial class BackupRestore : UserControl
 	{
-		private string server;
-		private string database;
+		SqlConnection connection = new SqlConnection(DataProvider.connectionString);
 
 		private bool isRestore = false;
 		private bool isEnable = false;
@@ -28,12 +30,6 @@ namespace Main.Pages
 		{
 			InitializeComponent();
 			RoundedControls();
-			SqlConnectionStringBuilder connBuilder = new SqlConnectionStringBuilder(Session.connectionString);
-			SqlConnection sqlConnection = new SqlConnection(Session.connectionString);
-			
-
-			server = sqlConnection.DataSource;           //-> this gives you the Server name.
-			database = sqlConnection.Database;     //-> this gives you the Db name.
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -71,6 +67,16 @@ namespace Main.Pages
 				if (isRestore)
 				{
 					OpenFileDialog dialog = new OpenFileDialog();
+					dialog.InitialDirectory = @"C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\Backup";
+					dialog.CheckFileExists = true;
+					dialog.CheckPathExists = true;
+					dialog.DefaultExt = "BAK";
+					dialog.Filter = "Backup Files(*.bak)|*.bak|All Files(*.*)| (*.*)";
+					dialog.Title = "Database Restore";
+					dialog.FilterIndex = 0;
+					dialog.RestoreDirectory = true;
+					dialog.ReadOnlyChecked = true;
+					dialog.ShowReadOnly = true;
 					if (dialog.ShowDialog() == DialogResult.OK)
 					{
 						if (dialog.FileName != null)
@@ -82,6 +88,7 @@ namespace Main.Pages
 				else
 				{
 					FolderBrowserDialog dialog = new FolderBrowserDialog();
+					dialog.SelectedPath = @"C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\Backup";
 					if (dialog.ShowDialog() == DialogResult.OK)
 					{
 						if (dialog.SelectedPath != null)
@@ -111,7 +118,6 @@ namespace Main.Pages
 						cbSever.Items.Add($@"{ServerName}\{instanceName}");
 					}
 				}
-				cbSever.Items.Add(server);
 			}
 		}
 
@@ -145,7 +151,8 @@ namespace Main.Pages
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
-			lbFunc.Text = "Database:";
+			EnableProcess(false);
+			lbFunc.Text = "Database Path:";
 		}
 
 		private void btnSaoLuu_Click(object sender, EventArgs e)
@@ -153,7 +160,8 @@ namespace Main.Pages
 			VisibleButton(true);
 			EnableControl(true);
 			ClearControl();
-			lbFunc.Text = "Save As:";
+			EnableProcess(false);
+			lbFunc.Text = "Backup Path:";
 		}
 
 		private void btnCancle_Click(object sender, EventArgs e)
@@ -173,29 +181,23 @@ namespace Main.Pages
 
 		private void EnableControl(bool isEnable = true)
 		{
-			pnlControls.Enabled = isEnable;
+			gpServer.Enabled = gpDB.Enabled = gpAccount.Enabled = isEnable;
 		}
 
 		private void EnableProcess(bool isEnable = true)
 		{
-			barFunc.Visible = lbFunc.Visible = isEnable;
+			barFunc.Visible = lbPercent.Visible = isEnable;
 			barFunc.Value = 0;
 			lbPercent.Text = "0%";
+			lbStatus.Text = "Status: ";
 		}
 
 		private void ClearControl()
 		{
-			foreach (Control control in pnlControls.Controls)
-			{
-				if (control is Guna2TextBox)
-				{
-					(control as Guna2TextBox).Text = "";
-				}
-				if (control is BunifuDropdown)
-				{
-					(control as BunifuDropdown).SelectedIndex = -1;
-				}
-			}
+			cbSever.SelectedIndex = -1;
+			tbFunc.Text = string.Empty;
+			tbUsername.Text = string.Empty;
+			tbPassword.Text = string.Empty;
 		}
 
 		private void ClearError()
@@ -292,32 +294,62 @@ namespace Main.Pages
 
 		private void Backup()
 		{
-			//if (!IsValidData())
-			//{
-			//	isEnable = true;
-			//	return;
-			//}
+			if (!IsValidData())
+			{
+				isEnable = true;
+				return;
+			}
 
-			//try
-			//{
-			//	if (cbSever.SelectedItem != null)
-			//	{
-			//		EnableProcess();
-			//		string cmd = $"BACKUP DATABASE [{database}] TO DISK '{selectedPath}\\database-{DateTime.Now.ToString("yyyy-MM-dd--HH--mm--ss")}.bak'";
-			//		Server dbServer = new Server(server);
-			//		Backup dbBackup = new Backup()
-			//		{
-			//			Action = BackupActionType.Database,
-			//			Database = database
-			//		};
-			//	}
-			//}
-			//catch (Exception ex)
-			//{
-			//	MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			//}
+			try
+			{
+				if (cbSever.SelectedItem != null)
+				{
+					EnableProcess();
+					string server = connection.DataSource;
+					string database = connection.Database;
+					Server dbServer = new Server(new ServerConnection(cbSever.SelectedItem.ToString()));
+					Microsoft.SqlServer.Management.Smo.Backup dbBackup = new Backup()
+					{
+						Action = BackupActionType.Database,
+						Database = database
+					};
+					dbBackup.Devices.AddDevice($"{tbFunc.Text.Trim()}\\{database}_BACKUP({RandomString(5)}).bak", DeviceType.File);
+					dbBackup.Initialize = true;
+					dbBackup.PercentComplete += DbBackup_PercentComplete;
+					dbBackup.Complete += DbBackup_Complete;
+					dbBackup.SqlBackupAsync(dbServer);
+				}
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 
-			MsgBox.ShowMessage($"Server = {server}, Database = {database}", "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			//MsgBox.ShowMessage($"Server = {server}, Database = {database}", "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+		}
+
+		private void DbBackup_Complete(object sender, ServerMessageEventArgs e)
+		{
+			if (e.Error != null)
+			{
+				lbStatus.Invoke((MethodInvoker)delegate
+				{
+					lbStatus.Text = $"Status: {e.Error.Message}";
+				});
+			}	
+		}
+
+		private void DbBackup_PercentComplete(object sender, PercentCompleteEventArgs e)
+		{
+			barFunc.Invoke((MethodInvoker)delegate
+			{
+				barFunc.Value = e.Percent;
+				barFunc.Update();
+			});
+			lbPercent.Invoke((MethodInvoker)delegate
+			{
+				lbPercent.Text = $"{e.Percent}%";
+			});
 		}
 
 		private void Restore()
@@ -328,30 +360,32 @@ namespace Main.Pages
 				return;
 			}
 
-			//EnableProcess();
-			//try
-			//{
-			//	if (cbSever.SelectedItem != null)
-			//	{
-			//		Server dbServer = new Server(new ServerConnection(cbSever.SelectedItem.ToString(), tbUsername.Text, tbPassword.Text));
-			//		Restore dbRestore = new Restore()
-			//		{
-			//			Action = RestoreActionType.Database,
-			//			Database = database,
-			//			ReplaceDatabase = true,
-			//			NoRecovery = false
-			//		};
-			//		dbRestore.Devices.AddDevice(selectedPath, DeviceType.File);
-			//		dbRestore.PercentComplete += DbRestore_PercentComplete;
-			//		dbRestore.Complete += DbRestore_Complete;
-			//		dbRestore.SqlRestoreAsync(dbServer);
-			//	}
-			//}
-			//catch (Exception ex)
-			//{
-			//	MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			//}
-			MsgBox.ShowMessage("OK", "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			try
+			{
+				if (cbSever.SelectedItem != null)
+				{
+					EnableProcess();
+					string server = connection.DataSource;
+					string database = connection.Database;
+
+					Server dbServer = new Server(new ServerConnection(cbSever.SelectedItem.ToString()));
+					Microsoft.SqlServer.Management.Smo.Restore dbRestore = new Restore()
+					{
+						Action = RestoreActionType.Database,
+						Database = database,
+						ReplaceDatabase = true,
+						NoRecovery = false
+					};
+					dbRestore.Devices.AddDevice($"{tbFunc.Text.Trim()}\\{database}_BACKUP({RandomString(5)}).bak", DeviceType.File);
+					dbRestore.PercentComplete += DbRestore_PercentComplete;
+					dbRestore.Complete += DbRestore_Complete;
+					dbRestore.SqlRestoreAsync(dbServer);
+				}
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void DbRestore_Complete(object sender, ServerMessageEventArgs e)
@@ -360,7 +394,7 @@ namespace Main.Pages
 			{
 				lbStatus.Invoke((MethodInvoker)delegate
 				{
-					lbStatus.Text = e.Error.Message;
+					lbStatus.Text = $"Status: {e.Error.Message}";
 				});
 			}
 		}
@@ -374,13 +408,8 @@ namespace Main.Pages
 			});
 			lbPercent.Invoke((MethodInvoker)delegate
 			{
-				lbPercent.Text = $"Status: {e.Percent}%";
+				lbPercent.Text = $"{e.Percent}%";
 			});
-			if (lbPercent.Text.Equals("100%"))
-			{
-				MsgBox.ShowMessage("Khôi phục dữ liệu thành công", "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
-				EnableProcess(false);
-			}
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
@@ -410,10 +439,32 @@ namespace Main.Pages
 				tbPassword.Enabled = false;
 		}
 
+		private void DefaultSettings()
+		{
+			cbSever.Text = Dns.GetHostName().ToUpper() + @"\SQLEXPRESS";
+			tbFunc.Text = @"C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\Backup";
+			tbUsername.Text = tbPassword.Text = " ";
+		}	
+
 		private void BackupRestore_Load(object sender, EventArgs e)
 		{
 			GetDataSources();
 			EnableControl(false);
+			EnableProcess(false);
+			DefaultSettings();
+		}
+
+		private void btnConnect_Click(object sender, EventArgs e)
+		{
+			//try
+			//{
+			//	BackupRestoreBLL.Instance.ListOfDatabase(bunifuDropdown1);
+			//}
+			//catch (Exception ex)
+			//{
+			//	MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+			//   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			//}
 		}
 	}
 }

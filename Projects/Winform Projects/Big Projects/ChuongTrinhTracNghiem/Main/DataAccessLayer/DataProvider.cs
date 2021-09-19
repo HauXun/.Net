@@ -23,7 +23,7 @@ namespace DataAccessLayer
 		private DataProvider() { }
 
 		// Thực hiện kết nối tới cơ sở dữ liệu và kiểm tra
-		static string connectionString
+		public static string connectionString
 				= @"server=.\SQLEXPRESS; database=TestProjectDB; integrated security=true;";
 		public DataTable ExcuteQuery(string query, object[] parameter = null)
 		{

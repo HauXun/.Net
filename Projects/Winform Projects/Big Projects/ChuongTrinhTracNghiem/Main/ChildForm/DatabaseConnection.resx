@@ -118,22 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="barFunc.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tbUsername.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAT4AAAAXCAYAAACS7CN6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFRSURBVHhe7dyhTsNQFIDhSiQSN7XbBQPJbgkOJI4EbgkO
-        HqUOOTnJIyAnkUgeAYnsI8C55Ji7npBK7uH/ky9bstPKk25p1xARERERERH9o5Zdf9p2/dDGtAsxfcr7
-        LwD4w8bQ9a/yOrTr20tdZfP7OdA+MQBUQS7Ynhcn14e61n5PN6Z5IgCoiSy/j+OuP9L1ZieDXOkB8CWm
-        na64aauzu3PzIACo36OuujL5YLM3CAA+xPSiq66M3/YAeJXvTNFVVyYfjvvDAOCFrroyaxAAvNBVV2YN
-        AoAXuurKrEEA8EJXXVkb07s1DAAOjLrqykJMW2MYAKon++1NV13ZMqZ76wAAqF5MT7rqpnEvHwBv8vO6
-        i4uHA11z0/LDvDLI/XwA/JjzF1VhfbPK34fNEwBAJfLTGqFLV7ra5iUHDnz1BVCbfOEmtrP/i4+IiIiI
-        XNU03yC83EYOGOLhAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAARUAAAAjCAYAAAC6up7mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVHhe7daxTcNAGIbhKxmNBRiBIagcxUpiJ1R0niAL
+        pGAFV2xAShcUFhLCEi4MVq6hw8pP9zzSV5zu6leXAP5FURS3dV2/rFaryczsr5u7sdls7nNKLna73V3T
+        NP35fJ4Alpi7cTwe36uqeshJSenn8Np1XX4CsMwwDFNZlp85KSnNXxiAa8wdyUkRFeB6ogKEEhUglKgA
+        oUQFCCUqQChRAUKJChBKVIBQogKEEhUglKgAoUQFCCUqQChRAUKJChBKVIBQogKEEhUglKgAoUQFCCUq
+        QChRAUKJChBKVIBQogKE+hWV7Xb71vd9vgJYZhzHab1ejzkpKe33+8fT6fSR7wEWadv263A4POekXNR1
+        /TR/X8zMlm4OSlEUNzknAFFS+gaXGqY8fjTBQAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>163, 17</value>
-  </metadata>
-  <metadata name="errorProviderWar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="tbPassword.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAARUAAAAjCAYAAAC6up7mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVHhe7daxTcNAGIbhKxmNBRiBIagcxUpiJ1R0niAL
+        pGAFV2xAShcUFhLCEi4MVq6hw8pP9zzSV5zu6leXAP5FURS3dV2/rFaryczsr5u7sdls7nNKLna73V3T
+        NP35fJ4Alpi7cTwe36uqeshJSenn8Np1XX4CsMwwDFNZlp85KSnNXxiAa8wdyUkRFeB6ogKEEhUglKgA
+        oUQFCCUqQChRAUKJChBKVIBQogKEEhUglKgAoUQFCCUqQChRAUKJChBKVIBQogKEEhUglKgAoUQFCCUq
+        QChRAUKJChBKVIBQogKE+hWV7Xb71vd9vgJYZhzHab1ejzkpKe33+8fT6fSR7wEWadv263A4POekXNR1
+        /TR/X8zMlm4OSlEUNzknAFFS+gaXGqY8fjTBQAAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>
