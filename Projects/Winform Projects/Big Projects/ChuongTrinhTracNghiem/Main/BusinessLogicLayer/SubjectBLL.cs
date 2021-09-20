@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer;
 using Entities;
+using Guna.UI2.WinForms;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -22,7 +24,7 @@ namespace BusinessLogicLayer
 
         private SubjectBLL() { }
 
-        public void GetSubjectFromEduProg(ComboBox box, int userID, bool isMockTest)
+        public void GetSubjectFromEduProg(Guna2ComboBox box, int userID, bool isMockTest)
         {
             DataTable data = SubjectDAL.Instance.GetSubjectFromEduProg(userID, isMockTest);
             if (data.Rows.Count > 0)

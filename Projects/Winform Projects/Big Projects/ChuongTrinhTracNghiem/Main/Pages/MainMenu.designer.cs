@@ -244,6 +244,7 @@ namespace Main.Pages
 			// btnThiThu
 			// 
 			this.btnThiThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(147)))), ((int)(((byte)(230)))));
+			this.btnThiThu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(0, 255, 255, 255);
 			this.btnThiThu.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnThiThu.FlatAppearance.BorderSize = 0;
 			this.btnThiThu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

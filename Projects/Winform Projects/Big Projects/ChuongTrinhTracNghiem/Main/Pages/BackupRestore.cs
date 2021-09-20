@@ -1,26 +1,23 @@
-﻿using Main.Partial;
+﻿using DataAccessLayer;
+using Main.Partial;
+using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using System.Text;
-using Bunifu.UI.WinForms;
-using System.Linq;
-using System.Net;
-using Main.BusinessLogicLayer;
-using Microsoft.SqlServer.Management.Smo;
-using Microsoft.SqlServer.Management.Common;
-using System.Data.SqlClient;
-using DataAccessLayer;
-using System.Text.RegularExpressions;
 
 namespace Main.Pages
 {
 	public partial class BackupRestore : UserControl
 	{
-		SqlConnection connection = new SqlConnection(DataProvider.connectionString);
+		DatabaseConnection databaseConnection;
+		SqlConnection connection;
+		string database;
 
 		private bool isRestore = false;
 		private bool isEnable = false;
@@ -30,6 +27,7 @@ namespace Main.Pages
 		{
 			InitializeComponent();
 			RoundedControls();
+			databaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -48,6 +46,7 @@ namespace Main.Pages
 
 		//Bo tròn góc các Control
 		#region Rounded Controls
+
 		private void RoundedControls()
 		{
 			//Panel
@@ -58,7 +57,266 @@ namespace Main.Pages
 			btnBackup.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnBackup.Width, btnBackup.Height, 6, 6));
 			btnRestore.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnRestore.Width, btnRestore.Height, 6, 6));
 		}
+
 		#endregion
+
+		#region Method
+
+		private void Backup()
+		{
+			if (!IsValidData())
+			{
+				isEnable = true;
+				return;
+			}
+
+			try
+			{
+				if (!string.IsNullOrEmpty(tbServer.Text))
+				{
+					EnableProcess();
+					Server dbServer = new Server(new ServerConnection(connection));
+					Microsoft.SqlServer.Management.Smo.Backup dbBackup = new Backup()
+					{
+						Action = BackupActionType.Database,
+						Database = database
+					};
+					dbBackup.Devices.AddDevice($"{tbFunc.Text.Trim()}\\{database}_BACKUP({RandomString(5)}).bak", DeviceType.File);
+					dbBackup.Initialize = true;
+					dbBackup.PercentComplete += DbBackup_PercentComplete;
+					dbBackup.Complete += DbBackup_Complete;
+					dbBackup.SqlBackupAsync(dbServer);
+				}
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				EnableProcess(false);
+			}
+		}
+
+		private void DbBackup_Complete(object sender, ServerMessageEventArgs e)
+		{
+			if (e.Error != null)
+			{
+				lbStatus.Invoke((MethodInvoker)delegate
+				{
+					lbStatus.Text = $"Status: {e.Error.Message}";
+				});
+			}
+		}
+
+		private void DbBackup_PercentComplete(object sender, PercentCompleteEventArgs e)
+		{
+			barFunc.Invoke((MethodInvoker)delegate
+			{
+				barFunc.Value = e.Percent;
+				barFunc.Update();
+			});
+			lbPercent.Invoke((MethodInvoker)delegate
+			{
+				lbPercent.Text = $"{e.Percent}%";
+			});
+		}
+
+		private void Restore()
+		{
+			if (!IsValidData())
+			{
+				isEnable = true;
+				return;
+			}
+
+			try
+			{
+				if (!string.IsNullOrEmpty(tbServer.Text))
+				{
+					EnableProcess();
+
+					Server dbServer = new Server(new ServerConnection(connection));
+					Microsoft.SqlServer.Management.Smo.Restore dbRestore = new Restore()
+					{
+						Action = RestoreActionType.Database,
+						Database = database,
+						ReplaceDatabase = true,
+						NoRecovery = false
+					};
+					dbRestore.Devices.AddDevice($"{tbFunc.Text.Trim()}\\{database}_BACKUP({RandomString(5)}).bak", DeviceType.File);
+					dbRestore.PercentComplete += DbRestore_PercentComplete;
+					dbRestore.Complete += DbRestore_Complete;
+					dbRestore.SqlRestoreAsync(dbServer);
+				}
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				EnableProcess(false);
+			}
+		}
+
+		private void DbRestore_Complete(object sender, ServerMessageEventArgs e)
+		{
+			if (e.Error != null)
+			{
+				lbStatus.Invoke((MethodInvoker)delegate
+				{
+					lbStatus.Text = $"Status: {e.Error.Message}";
+				});
+			}
+		}
+
+		private void DbRestore_PercentComplete(object sender, PercentCompleteEventArgs e)
+		{
+			barFunc.Invoke((MethodInvoker)delegate
+			{
+				barFunc.Value = e.Percent;
+				barFunc.Update();
+			});
+			lbPercent.Invoke((MethodInvoker)delegate
+			{
+				lbPercent.Text = $"{e.Percent}%";
+			});
+		}
+
+		public string RandomString(int size, bool lowerCase = false)
+		{
+
+			Random _random = new Random();
+			var builder = new StringBuilder(size);
+
+			// Unicode/ASCII Letters are divided into two blocks
+			// (Letters 65–90 / 97–122):   
+			// The first group containing the uppercase letters and
+			// the second group containing the lowercase.  
+
+			// char is a single Unicode character  
+			char offset = lowerCase ? 'a' : 'A';
+			const int lettersOffset = 26; // A...Z or a..z: length = 26  
+
+			for (var i = 0; i < size; i++)
+			{
+				var @char = (char)_random.Next(offset, offset + lettersOffset);
+				builder.Append(@char);
+			}
+
+			return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+		}
+
+		private void DefaultSettings()
+		{
+			tbServer.Text = string.Empty;
+			tbFunc.Text = @"C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\Backup";
+		}
+
+		private void VisibleButton(bool isVisibleButton = false)
+		{
+			btnSave.Visible = btnCancle.Visible = isVisibleButton;
+			btnBackup.Visible = btnRestore.Visible = !isVisibleButton;
+		}
+
+		private void EnableControl(bool isEnable = true)
+		{
+			gpDB.Enabled = isEnable;
+		}
+
+		private void EnableProcess(bool isEnable = true)
+		{
+			barFunc.Visible = lbPercent.Visible = isEnable;
+			barFunc.Value = 0;
+			lbPercent.Text = "0%";
+			lbStatus.Text = "Status: ";
+		}
+
+		private void ClearControl()
+		{
+			tbFunc.Text = string.Empty;
+		}
+
+		private void ClearError()
+		{
+			// Kiểm tra xem thông tin hợp lệ chưa?
+			// Xóa bỏ những thông báo lỗi nếu có
+			errorProviderWar.SetError(tbFunc, "");
+		}
+
+		private bool IsValidData()
+		{
+			ClearError();
+
+			if (isRestore)
+			{
+				// Kiểm tra file không được để trống
+				if (string.IsNullOrEmpty(tbFunc.Text))
+				{
+					errorProviderWar.SetError(tbFunc, "Vui lòng chọn file khôi phục dữ liệu!");
+					return false;
+				}
+			}
+			else
+			{
+				// Kiểm tra đường dẫn lưu file không được để trống
+				if (string.IsNullOrEmpty(tbFunc.Text))
+				{
+					errorProviderWar.SetError(tbFunc, "Vui lòng chọn đường dẫn lưu file!");
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		private bool IsUnicode(string input)
+		{
+			var asciiBytesCount = Encoding.ASCII.GetByteCount(input);
+			var unicodBytesCount = Encoding.UTF8.GetByteCount(input);
+			return asciiBytesCount != unicodBytesCount;
+		}
+
+		private bool IsSpecialCharacters(string input) => input.Any(p => !char.IsLetterOrDigit(p));
+
+		private bool IsSpaceCharacters(string input) => input.Any(char.IsWhiteSpace);
+
+		private bool IsDigit(string input) => input.All(char.IsDigit);
+
+		#endregion
+
+		#region Events
+
+		private void btnRestore_Click(object sender, EventArgs e)
+		{
+			if (!databaseConnection.Connected)
+				btnConnect_Click(this, e);
+			else 
+			{
+				isRestore = true;
+				VisibleButton(true);
+				EnableControl(true);
+				EnableProcess(false);
+				lbFunc.Text = "Database Path:";
+			}
+		}
+
+		private void btnSaoLuu_Click(object sender, EventArgs e)
+		{
+			if (!databaseConnection.Connected)
+				btnConnect_Click(this, e);
+			else 
+			{
+				VisibleButton(true);
+				EnableControl(true);
+				EnableProcess(false);
+				lbFunc.Text = "Backup Path:";
+			}
+		}
+
+		private void btnCancle_Click(object sender, EventArgs e)
+		{
+			isRestore = false;
+			VisibleButton(false);
+			ClearControl();
+			EnableControl(false);
+			ClearError();
+		}
 
 		private void btnBrowser_Click(object sender, EventArgs e)
 		{
@@ -104,314 +362,6 @@ namespace Main.Pages
 			tbFunc.Text = selectedPath;
 		}
 
-		private void GetDataSources()
-		{
-			string ServerName = Environment.MachineName;
-			RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
-			using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
-			{
-				RegistryKey instanceKey = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL", false);
-				if (instanceKey != null)
-				{
-					foreach (var instanceName in instanceKey.GetValueNames())
-					{
-						cbSever.Items.Add($@"{ServerName}\{instanceName}");
-					}
-				}
-			}
-		}
-
-		public string RandomString(int size, bool lowerCase = false)
-		{
-
-			Random _random = new Random();
-			var builder = new StringBuilder(size);
-
-			// Unicode/ASCII Letters are divided into two blocks
-			// (Letters 65–90 / 97–122):   
-			// The first group containing the uppercase letters and
-			// the second group containing the lowercase.  
-
-			// char is a single Unicode character  
-			char offset = lowerCase ? 'a' : 'A';
-			const int lettersOffset = 26; // A...Z or a..z: length = 26  
-
-			for (var i = 0; i < size; i++)
-			{
-				var @char = (char)_random.Next(offset, offset + lettersOffset);
-				builder.Append(@char);
-			}
-
-			return lowerCase ? builder.ToString().ToLower() : builder.ToString();
-		}
-
-		private void btnRestore_Click(object sender, EventArgs e)
-		{
-			isRestore = true;
-			VisibleButton(true);
-			EnableControl(true);
-			ClearControl();
-			EnableProcess(false);
-			lbFunc.Text = "Database Path:";
-		}
-
-		private void btnSaoLuu_Click(object sender, EventArgs e)
-		{
-			VisibleButton(true);
-			EnableControl(true);
-			ClearControl();
-			EnableProcess(false);
-			lbFunc.Text = "Backup Path:";
-		}
-
-		private void btnCancle_Click(object sender, EventArgs e)
-		{
-			isRestore = false;
-			VisibleButton(false);
-			ClearControl();
-			EnableControl(false);
-			ClearError();
-		}
-
-		private void VisibleButton(bool isVisibleButton = false)
-		{
-			btnSave.Visible = btnCancle.Visible = isVisibleButton;
-			btnBackup.Visible = btnRestore.Visible = !isVisibleButton;
-		}
-
-		private void EnableControl(bool isEnable = true)
-		{
-			gpServer.Enabled = gpDB.Enabled = gpAccount.Enabled = isEnable;
-		}
-
-		private void EnableProcess(bool isEnable = true)
-		{
-			barFunc.Visible = lbPercent.Visible = isEnable;
-			barFunc.Value = 0;
-			lbPercent.Text = "0%";
-			lbStatus.Text = "Status: ";
-		}
-
-		private void ClearControl()
-		{
-			cbSever.SelectedIndex = -1;
-			tbFunc.Text = string.Empty;
-			tbUsername.Text = string.Empty;
-			tbPassword.Text = string.Empty;
-		}
-
-		private void ClearError()
-		{
-			// Kiểm tra xem thông tin hợp lệ chưa?
-			// Xóa bỏ những thông báo lỗi nếu có
-			errorProviderWar.SetError(cbSever, "");
-			errorProviderWar.SetError(tbFunc, "");
-			errorProviderWar.SetError(tbUsername, "");
-			errorProviderWar.SetError(tbPassword, "");
-		}
-
-		private bool IsValidData()
-		{
-			ClearError();
-
-			if (cbSever.Items.Count == 0)
-			{
-				errorProviderWar.SetError(cbSever, "Không có server để thực hiện thao tác!\n Cài đặt trình cơ sở dữ liệu trước\nkhi thực hiện thao tác này");
-				return false;
-			}
-			else
-			{
-				if (cbSever.SelectedIndex == -1)
-				{
-					errorProviderWar.SetError(cbSever, "Vui lòng chọn server\nđể thực hiện thao tác!");
-					return false;
-				}
-			}
-			if (isRestore)
-			{
-				// Kiểm tra file không được để trống
-				if (string.IsNullOrEmpty(tbFunc.Text))
-				{
-					errorProviderWar.SetError(tbFunc, "Vui lòng chọn file khôi phục dữ liệu!");
-					return false;
-				}
-			}
-			else
-			{
-				// Kiểm tra đường dẫn lưu file không được để trống
-				if (string.IsNullOrEmpty(tbFunc.Text))
-				{
-					errorProviderWar.SetError(tbFunc, "Vui lòng chọn đường dẫn lưu file!");
-					return false;
-				}
-			}
-
-			// Kiểm tra tài khoản
-			if (!string.IsNullOrEmpty(tbUsername.Text))
-			{
-				if (IsUnicode(tbUsername.Text))
-				{
-					errorProviderWar.SetError(tbUsername, "Tài khoản không được có dấu!");
-					return false;
-				}
-				else
-				{
-					if (IsSpaceCharacters(tbUsername.Text))
-					{
-						errorProviderWar.SetError(tbUsername, "Tài khoản không được chứa khoảng trắng!");
-						return false;
-					}
-
-					if (IsSpecialCharacters(tbUsername.Text))
-					{
-						errorProviderWar.SetError(tbUsername, "Tài khoản không được chứa ký tự đặc biệt!");
-						return false;
-					}
-				}
-
-				if (IsUnicode(tbPassword.Text))
-				{
-					errorProviderWar.SetError(tbPassword, "Mật khẩu không được để trống!");
-					return false;
-				}
-			}
-
-			return true;
-		}
-
-		private bool IsUnicode(string input)
-		{
-			var asciiBytesCount = Encoding.ASCII.GetByteCount(input);
-			var unicodBytesCount = Encoding.UTF8.GetByteCount(input);
-			return asciiBytesCount != unicodBytesCount;
-		}
-
-		private bool IsSpecialCharacters(string input) => input.Any(p => !char.IsLetterOrDigit(p));
-
-		private bool IsSpaceCharacters(string input) => input.Any(char.IsWhiteSpace);
-
-		private bool IsDigit(string input) => input.All(char.IsDigit);
-
-		private void Backup()
-		{
-			if (!IsValidData())
-			{
-				isEnable = true;
-				return;
-			}
-
-			try
-			{
-				if (cbSever.SelectedItem != null)
-				{
-					EnableProcess();
-					string server = connection.DataSource;
-					string database = connection.Database;
-					Server dbServer = new Server(new ServerConnection(cbSever.SelectedItem.ToString()));
-					Microsoft.SqlServer.Management.Smo.Backup dbBackup = new Backup()
-					{
-						Action = BackupActionType.Database,
-						Database = database
-					};
-					dbBackup.Devices.AddDevice($"{tbFunc.Text.Trim()}\\{database}_BACKUP({RandomString(5)}).bak", DeviceType.File);
-					dbBackup.Initialize = true;
-					dbBackup.PercentComplete += DbBackup_PercentComplete;
-					dbBackup.Complete += DbBackup_Complete;
-					dbBackup.SqlBackupAsync(dbServer);
-				}
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			}
-
-			//MsgBox.ShowMessage($"Server = {server}, Database = {database}", "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-		}
-
-		private void DbBackup_Complete(object sender, ServerMessageEventArgs e)
-		{
-			if (e.Error != null)
-			{
-				lbStatus.Invoke((MethodInvoker)delegate
-				{
-					lbStatus.Text = $"Status: {e.Error.Message}";
-				});
-			}	
-		}
-
-		private void DbBackup_PercentComplete(object sender, PercentCompleteEventArgs e)
-		{
-			barFunc.Invoke((MethodInvoker)delegate
-			{
-				barFunc.Value = e.Percent;
-				barFunc.Update();
-			});
-			lbPercent.Invoke((MethodInvoker)delegate
-			{
-				lbPercent.Text = $"{e.Percent}%";
-			});
-		}
-
-		private void Restore()
-		{
-			if (!IsValidData())
-			{
-				isEnable = true;
-				return;
-			}
-
-			try
-			{
-				if (cbSever.SelectedItem != null)
-				{
-					EnableProcess();
-					string server = connection.DataSource;
-					string database = connection.Database;
-
-					Server dbServer = new Server(new ServerConnection(cbSever.SelectedItem.ToString()));
-					Microsoft.SqlServer.Management.Smo.Restore dbRestore = new Restore()
-					{
-						Action = RestoreActionType.Database,
-						Database = database,
-						ReplaceDatabase = true,
-						NoRecovery = false
-					};
-					dbRestore.Devices.AddDevice($"{tbFunc.Text.Trim()}\\{database}_BACKUP({RandomString(5)}).bak", DeviceType.File);
-					dbRestore.PercentComplete += DbRestore_PercentComplete;
-					dbRestore.Complete += DbRestore_Complete;
-					dbRestore.SqlRestoreAsync(dbServer);
-				}
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			}
-		}
-
-		private void DbRestore_Complete(object sender, ServerMessageEventArgs e)
-		{
-			if (e.Error != null)
-			{
-				lbStatus.Invoke((MethodInvoker)delegate
-				{
-					lbStatus.Text = $"Status: {e.Error.Message}";
-				});
-			}
-		}
-
-		private void DbRestore_PercentComplete(object sender, PercentCompleteEventArgs e)
-		{
-			barFunc.Invoke((MethodInvoker)delegate
-			{
-				barFunc.Value = e.Percent;
-				barFunc.Update();
-			});
-			lbPercent.Invoke((MethodInvoker)delegate
-			{
-				lbPercent.Text = $"{e.Percent}%";
-			});
-		}
-
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			isEnable = false;
@@ -431,24 +381,8 @@ namespace Main.Pages
 			EnableControl(isEnable);
 		}
 
-		private void tbUsername_TextChanged(object sender, EventArgs e)
+		public void BackupRestore_Load(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(tbUsername.Text))
-				tbPassword.Enabled = true;
-			else
-				tbPassword.Enabled = false;
-		}
-
-		private void DefaultSettings()
-		{
-			cbSever.Text = Dns.GetHostName().ToUpper() + @"\SQLEXPRESS";
-			tbFunc.Text = @"C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\Backup";
-			tbUsername.Text = tbPassword.Text = " ";
-		}	
-
-		private void BackupRestore_Load(object sender, EventArgs e)
-		{
-			GetDataSources();
 			EnableControl(false);
 			EnableProcess(false);
 			DefaultSettings();
@@ -456,15 +390,32 @@ namespace Main.Pages
 
 		private void btnConnect_Click(object sender, EventArgs e)
 		{
-			//try
-			//{
-			//	BackupRestoreBLL.Instance.ListOfDatabase(bunifuDropdown1);
-			//}
-			//catch (Exception ex)
-			//{
-			//	MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-			//   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			//}
+			try
+			{
+				databaseConnection.ShowDialog();
+				if (databaseConnection.Connected)
+				{
+					tbServer.Text = databaseConnection.cbServer.SelectedItem.ToString();
+					connection = new SqlConnection(databaseConnection.ConnectionString);
+					database = connection.Database;
+					EnableControl();
+				}	
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
+
+		private void btnDisconnect_Click(object sender, EventArgs e)
+		{
+			ClearControl();
+			EnableControl(false);
+			ClearError();
+			DefaultSettings();
+		}
+
+		#endregion
 	}
 }

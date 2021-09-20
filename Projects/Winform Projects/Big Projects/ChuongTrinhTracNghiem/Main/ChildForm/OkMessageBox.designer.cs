@@ -48,6 +48,7 @@ namespace Main
 			this.pnlTitle.Name = "pnlTitle";
 			this.pnlTitle.Size = new System.Drawing.Size(450, 35);
 			this.pnlTitle.TabIndex = 3;
+			this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBox_MouseDown);
 			// 
 			// lbTitle
 			// 

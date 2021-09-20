@@ -120,6 +120,7 @@ namespace Main
 			this.BeginInvoke((MethodInvoker)delegate
 			{
 				Session.bP.SetPage((int)Session.TabPage.BackupRestore);
+				backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
 			});
 			#endregion
 			ShowHideSubMenu();
@@ -229,7 +230,7 @@ namespace Main
 				#endregion
 				selectExamForm.Hide();
 				if (!selectExamForm.isMockTest)
-					EduProgBLL.Instance.CancleQuizTimes(this.Account.UserID, Session.Exam.SubjectID);
+					ExamBLL.Instance.CancleQuizTimes(Session.Exam.ExamID, Session.Exam.SubjectID);
 				if (pnlNavigation.Visible)
 					ShowHideSubMenu();
 				btnHome.Enabled = btnNav.Enabled = pnlNavigationMini.Enabled = selectExamForm.Visible = false;

@@ -97,7 +97,7 @@ namespace Main
 				MsgBox.ShowMessage("Đang làm thi. Không thể thoát", "Amazing Quiz Application",
 				MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
 				e.Cancel = true;
-			}	
+			}
 			else if (MsgBox.ShowMessage("Thoát chương trình!", "Amazing Quiz Application",
 				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.No)
 			{
@@ -796,7 +796,8 @@ namespace Main
 		private void SelectExam(EventArgs e)
 		{
 			selectExamForm.Account = this.Account;
-			selectExamForm.FrmSelectExam_Load(selectExamForm, e);
+			if (selectExamForm.Exam != null)
+				selectExamForm.FrmSelectExam_Load(null, null);
 			selectExamForm.ShowDialog();
 		}
 

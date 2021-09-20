@@ -168,6 +168,12 @@
     <Compile Include="BusinessLogicLayer\SubjectBLL.cs" />
     <Compile Include="BusinessLogicLayer\TestHistoryBLL.cs" />
     <Compile Include="BusinessLogicLayer\UserClassBLL.cs" />
+    <Compile Include="ChildForm\DatabaseConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildForm\DatabaseConnection.Designer.cs">
+      <DependentUpon>DatabaseConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChildForm\MsgBox.cs" />
     <Compile Include="ChildForm\OkMessageBox.cs">
       <SubType>Form</SubType>
@@ -345,6 +351,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Partial\Session.cs" />
+    <Compile Include="Partial\SqlHelper.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -352,6 +359,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChildForm\DatabaseConnection.resx">
+      <DependentUpon>DatabaseConnection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChildForm\OkMessageBox.resx">
       <DependentUpon>OkMessageBox.cs</DependentUpon>
     </EmbeddedResource>

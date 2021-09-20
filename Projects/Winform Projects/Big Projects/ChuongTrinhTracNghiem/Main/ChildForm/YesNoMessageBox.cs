@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Main.Partial;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -24,5 +25,20 @@ namespace Main
 				e.Graphics.FillRectangle(brush, rectangle);
 			}
 		}
+
+		/// <summary>
+		/// Chức năng di chuyển Form bằng thanh ControlBox
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		#region Drag Form
+
+		private void pnlControlBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			Session.ReleaseCapture();
+			Session.SendMessage(this.Handle, 0x112, 0xf012, 0);
+		}
+
+		#endregion
 	}
 }

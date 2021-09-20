@@ -72,13 +72,14 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_InsertExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QCount , @CreatedBy , @ModifiedBy";
+				string query = "EXEC dbo.USP_InsertExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QuizTimes , @QCount , @CreatedBy , @ModifiedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
 						exam.ExamID,
 						exam.SubjectID,
 						exam.ExamRole,
 						exam.ExamTime,
+						exam.QuizTimes,
 						exam.QCount,
 						exam.CreatedBy,
 						exam.ModifiedBy
@@ -105,13 +106,14 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_UpdateExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QCount , @ModifiedBy";
+				string query = "EXEC dbo.USP_UpdateExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QuizTimes , @QCount , @ModifiedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
 						exam.ExamID,
 						exam.SubjectID,
 						exam.ExamRole,
 						exam.ExamTime,
+						exam.QuizTimes,
 						exam.QCount,
 						exam.ModifiedBy
 					});
@@ -154,6 +156,20 @@ namespace DataAccessLayer
 				string query = "EXEC dbo.USP_SearchExam @keyword , @SubjectID , @ExamRole";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword, subjectID, examRole });
 				return data;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public bool CancleQuizTimes(string examID, string subjectID)
+		{
+			try
+			{
+				string query = "EXEC dbo.USP_CancleQuizTimes @ExamID , @SubjectID";
+				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { examID, subjectID });
+				return isAccess > 0;
 			}
 			catch (Exception e)
 			{

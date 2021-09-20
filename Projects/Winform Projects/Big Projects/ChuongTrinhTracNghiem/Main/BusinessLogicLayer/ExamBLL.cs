@@ -80,5 +80,10 @@ namespace BusinessLogicLayer
 		{
 			data.DataSource = ExamDAL.Instance.SearchExam(keyword, subjectID, examRole);
 		}
+
+		public bool CancleQuizTimes(string examID, string subjectID)
+		{
+			return ExamDAL.Instance.CancleQuizTimes(examID, subjectID);
+		}
 	}
 }

@@ -31,10 +31,5 @@ namespace BusinessLogicLayer
             data.AutoGenerateColumns = false;
             data.DataSource = EduProgDAL.Instance.GetEduProgUser(userID);
         }
-
-        public void CancleQuizTimes(int userID, string subjetID)
-		{
-            EduProgDAL.Instance.CancleQuizTimes(userID, subjetID);
-		}
     }
 }

@@ -114,6 +114,7 @@ namespace Main.Pages
 				exam.SubjectID = cbSubject.SelectedValue.ToString();
 				exam.ExamRole = cbExamRole.SelectedValue.ToString();
 				exam.ExamTime = (byte)nudExamTime.Value;
+				exam.QuizTimes = (byte)nudQuizTimes.Value;
 				exam.QCount = (ushort)nudQCount.Value;
 				return exam;
 			}
@@ -137,6 +138,7 @@ namespace Main.Pages
 					cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
 					cbExamRole.SelectedValue = row.Cells["ExamRole"].Value;
 					nudExamTime.Value = ushort.Parse(row.Cells["ExamTime"].Value.ToString());
+					nudQuizTimes.Value = ushort.Parse(row.Cells["QuizTimes"].Value.ToString());
 					nudQCount.Value = ushort.Parse(row.Cells["QCount"].Value.ToString());
 					questionCurrentCount = ushort.Parse(row.Cells["QCurrentCount"].Value.ToString());
 				}

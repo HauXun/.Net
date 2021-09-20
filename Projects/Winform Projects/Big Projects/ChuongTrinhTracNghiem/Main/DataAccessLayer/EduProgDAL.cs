@@ -47,18 +47,5 @@ namespace DataAccessLayer
 				throw e;
 			}
 		}
-
-		public void CancleQuizTimes(int userID, string subjetID)
-		{
-			try
-			{
-				string query = "EXEC dbo.USP_CancleQuizTimes @UserID , @SubjectID";
-				DataProvider.Instance.ExcuteQuery(query, new object[] { userID, subjetID });
-			}
-			catch (Exception e)
-			{
-				throw e;
-			}
-		}
 	}
 }

@@ -18,7 +18,8 @@ namespace Entities
 		public string SubjectID { get; set; }
 		public string ExamRole { get; set; }
 		public byte ExamTime { get; set; }
-        public int QCount { get; set; }
+		public byte QuizTimes { get; set; }
+		public int QCount { get; set; }
         public int QCurrentCount { get; set; }
 		public string CreatedBy { get; set; }
 		public DateTime CreatedAt { get; set; }
@@ -34,6 +35,7 @@ namespace Entities
 			ExamID = row["ExamID"].ToString();
 			SubjectID = row["SubjectID"].ToString();
 			ExamTime = byte.Parse(row["ExamTime"].ToString());
+			QuizTimes = byte.Parse(row["QuizTimes"].ToString());
 			QCount = int.Parse(row["QCount"].ToString());
 			QCurrentCount = int.Parse(row["QCurrentCount"].ToString());
 		}
