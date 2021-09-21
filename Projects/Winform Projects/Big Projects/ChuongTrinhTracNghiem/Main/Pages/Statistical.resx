@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bScrollBar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB8AAAJxCAYAAAC6z2k6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKMSURBVHhe7ZGxCYBAFMVu/+20dYHr7VVOMkNESOAVqQL/
+        j/gV+7yONdRln/e9hroUR12Koy7FUZfiqEtx1KU46lIcdSmOuhRHXYqjLsVRl+KoS3HUpTjqUhx1KY66
+        FEddiqMuxVGX4qhLcdSlOOpSHHUpjroUR12Koy7FUZfiqEtx1KU46lIcdSmOuhRHXYqjLsVRl+KoS3HU
+        pTjqUhx1KY66FEddiqMuxVGX4qhLcdSlOOpSHHUpjroUR12Koy7FUZfiqEtx1KU46lIcdSmOuhRHXYqj
+        LsVRl+KoS3HUpTjqUhx1KY66FEddiqMuxVGX4qhLcdSlOOpSHHUpjroUR12Koy7FUZfiqEtx1KU46lIc
+        dSmOuhRHXYqjLsVRl+KoS3HUpfh7Bpt+jroUR12Koy7FUZfiqEtx1KU46lIcdSmOuhRHXYqjLsVRl+Ko
+        S3HUpTjqUhx1KY66FEddiqMuxVGX4qhLcdSlOOpSHHUpjroUR12Koy7FUZfiqEtx1KU46lIcdSmOuhRH
+        XYqjLsVRl+KoS3HUpTjqUhx1KY66FEddiqMuxVGX4qhLcdSlOOpSHHUpjroUR12Koy7FUZfiqEtx1KU4
+        6lIcdSmOuhRHXYqjLsVRl+KoS3HUpTjqUhx1KY66FEddiqMuxVGX4qhLcdSlOOpSHHUpjroUR12Koy7F
+        UZfiqEtx1KU46lIcdSmOuhRHXYqjLsVRl+KoS3HUpfh7Bpt+jroUR12Koy7FUZfiqEtx1KU46lIcdSmO
+        uhRHXYqjLsVRl+KoS3HUpTjqUhx1KY66FEddiqMuxVGX4qhLcdSlOOpSHHUpjroUR12Koy7FUZfiqEtx
+        1KU46lIcdfk0vs3rXEPjL4zxAJuH/Goisa0CAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="SemesterID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

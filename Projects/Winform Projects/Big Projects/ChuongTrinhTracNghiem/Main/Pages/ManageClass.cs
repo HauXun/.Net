@@ -629,6 +629,38 @@ namespace Main.Pages
 			}
 		}
 
+		private void aDgvdata_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+		{
+			try
+			{
+				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+			}
+			catch { }
+		}
+
+		private void aDgvdata_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+		{
+			try
+			{
+				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+			}
+			catch { }
+		}
+
+		private void bScrollBar_Scroll(object sender, Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs e)
+		{
+			try
+			{
+				if (e.Value > 6)
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - e.Value - 6].Index;
+				else if (e.Value == 0)
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1)].Index;
+				else
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - 7].Index;
+			}
+			catch { }
+		}
+
 		#endregion
 	}
 }

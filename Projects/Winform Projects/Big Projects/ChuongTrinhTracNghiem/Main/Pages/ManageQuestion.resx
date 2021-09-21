@@ -120,6 +120,18 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>163, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bScrollBar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB8AAAEACAYAAABLWa3DAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVHhe7c2xCYAwAAXR7L+dti6Q3t5I4GY4Ee7BL676
+        I79yzufaI13nXGuPdHVOujonXZ2Trs5JV+ekq3PS1Tnp6px0dU66OiddnZOuzklX56Src9LVOenqnHR1
+        Tro6J12dk67OSVfnpKtz0tU56eqcdHVOujonXZ2Trs5JV+ekq3PS1Tnp6px0dU66OiddnZOuzklX56Sr
+        c9LVOenqnHR1Tro6J12dk67OSVfnpKtz0tU56eqcdHVOujonXZ2Trs5JV+ekq3PS1Tnp6px0dU66Oidd
+        nZOuzklX56Src9LVOenqnHR1Tro6J12dk67OSVfnpKtz0tU56eqcdHVOujonXZ2Trs5JV+ekq3PS1Tnp
+        6px0dU66Oiddn54f87n3yPzFGC8fXENkXBxQmAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="QuestionID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -149,5 +161,8 @@
   </metadata>
   <metadata name="errorProviderWar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>83</value>
   </metadata>
 </root>

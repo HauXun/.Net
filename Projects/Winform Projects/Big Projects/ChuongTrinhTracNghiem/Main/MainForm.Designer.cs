@@ -32,6 +32,7 @@ namespace Main
 			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.pnlControlBox = new System.Windows.Forms.Panel();
+			this.btnMinimized = new FontAwesome.Sharp.IconButton();
 			this.btnExit = new FontAwesome.Sharp.IconButton();
 			this.pbIcon = new System.Windows.Forms.PictureBox();
 			this.pnlMenu = new System.Windows.Forms.Panel();
@@ -86,37 +87,21 @@ namespace Main
 			this.pnlForm = new System.Windows.Forms.Panel();
 			this.bP = new Bunifu.UI.WinForms.BunifuPages();
 			this.tPMainMenu = new System.Windows.Forms.TabPage();
-			this.mainMenuUC = new Main.Pages.MainMenu();
 			this.tPManageUser = new System.Windows.Forms.TabPage();
-			this.manageUserUC = new Main.Pages.ManageUser();
 			this.tPManageFaculty = new System.Windows.Forms.TabPage();
-			this.manageFacultyUC = new Main.Pages.ManageFaculty();
 			this.tPManageCourse = new System.Windows.Forms.TabPage();
-			this.manageCourseUC = new Main.Pages.ManageCourse();
 			this.tPManageClass = new System.Windows.Forms.TabPage();
-			this.manageClassUC = new Main.Pages.ManageClass();
 			this.tpManageSubject = new System.Windows.Forms.TabPage();
-			this.manageSubjectUC = new Main.Pages.ManageSubject();
 			this.tPManageQuestion = new System.Windows.Forms.TabPage();
-			this.manageQuestionUC = new Main.Pages.ManageQuestion();
 			this.tPManageExam = new System.Windows.Forms.TabPage();
-			this.manageExamUC = new Main.Pages.ManageExam();
 			this.tpBackupRestore = new System.Windows.Forms.TabPage();
-			this.backupRestoreUC = new Main.Pages.BackupRestore();
 			this.tPQuizTest = new System.Windows.Forms.TabPage();
-			this.quizTestUC = new Main.Pages.QuizTest();
 			this.tPQuizResult = new System.Windows.Forms.TabPage();
-			this.quizResultUC = new Main.Pages.QuizResult();
 			this.tPTestHistory = new System.Windows.Forms.TabPage();
-			this.testHistoryUC = new Main.Pages.TestHistory();
 			this.tPLeaderBoard = new System.Windows.Forms.TabPage();
-			this.leaderBoardUC = new Main.Pages.LeaderBoard();
 			this.tPProfile = new System.Windows.Forms.TabPage();
-			this.profileUC = new Main.Pages.Profile();
 			this.tPStatistical = new System.Windows.Forms.TabPage();
-			this.statisticalUC = new Main.Pages.Statistical();
 			this.tPEduProg = new System.Windows.Forms.TabPage();
-			this.eduProgUC = new Main.Pages.EduProg();
 			this.tPGuide = new System.Windows.Forms.TabPage();
 			this.tPAbout = new System.Windows.Forms.TabPage();
 			this.pnlNavigationMini = new System.Windows.Forms.Panel();
@@ -145,7 +130,6 @@ namespace Main
 			this.pbTitleLogo = new System.Windows.Forms.PictureBox();
 			this.lblTitle = new System.Windows.Forms.Label();
 			this.btnNav = new FontAwesome.Sharp.IconButton();
-			this.btnMinimized = new FontAwesome.Sharp.IconButton();
 			this.pnlControlBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
 			this.pnlMenu.SuspendLayout();
@@ -165,22 +149,6 @@ namespace Main
 			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
 			this.pnlForm.SuspendLayout();
 			this.bP.SuspendLayout();
-			this.tPMainMenu.SuspendLayout();
-			this.tPManageUser.SuspendLayout();
-			this.tPManageFaculty.SuspendLayout();
-			this.tPManageCourse.SuspendLayout();
-			this.tPManageClass.SuspendLayout();
-			this.tpManageSubject.SuspendLayout();
-			this.tPManageQuestion.SuspendLayout();
-			this.tPManageExam.SuspendLayout();
-			this.tpBackupRestore.SuspendLayout();
-			this.tPQuizTest.SuspendLayout();
-			this.tPQuizResult.SuspendLayout();
-			this.tPTestHistory.SuspendLayout();
-			this.tPLeaderBoard.SuspendLayout();
-			this.tPProfile.SuspendLayout();
-			this.tPStatistical.SuspendLayout();
-			this.tPEduProg.SuspendLayout();
 			this.pnlNavigationMini.SuspendLayout();
 			this.pnlTGMini.SuspendLayout();
 			this.pnlTKBCMini.SuspendLayout();
@@ -206,6 +174,25 @@ namespace Main
 			this.pnlControlBox.TabIndex = 1;
 			this.pnlControlBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBox_MouseDown);
 			// 
+			// btnMinimized
+			// 
+			this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
+			this.btnMinimized.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnMinimized.FlatAppearance.BorderSize = 0;
+			this.btnMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMinimized.IconChar = FontAwesome.Sharp.IconChar.Minus;
+			this.btnMinimized.IconColor = System.Drawing.Color.White;
+			this.btnMinimized.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnMinimized.IconSize = 20;
+			this.btnMinimized.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.btnMinimized.Location = new System.Drawing.Point(1540, 3);
+			this.btnMinimized.Name = "btnMinimized";
+			this.btnMinimized.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+			this.btnMinimized.Size = new System.Drawing.Size(25, 25);
+			this.btnMinimized.TabIndex = 9;
+			this.btnMinimized.UseVisualStyleBackColor = false;
+			this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+			// 
 			// btnExit
 			// 
 			this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
@@ -228,7 +215,7 @@ namespace Main
 			// pbIcon
 			// 
 			this.pbIcon.Image = global::Main.Properties.Resources.Logo;
-			this.pbIcon.Location = new System.Drawing.Point(4, 0);
+			this.pbIcon.Location = new System.Drawing.Point(4, 1);
 			this.pbIcon.Name = "pbIcon";
 			this.pbIcon.Size = new System.Drawing.Size(25, 25);
 			this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1179,10 +1166,10 @@ namespace Main
 			this.bP.Location = new System.Drawing.Point(0, -3);
 			this.bP.Multiline = true;
 			this.bP.Name = "bP";
-			this.bP.Page = this.tPAbout;
-			this.bP.PageIndex = 17;
-			this.bP.PageName = "tPAbout";
-			this.bP.PageTitle = "About";
+			this.bP.Page = this.tPMainMenu;
+			this.bP.PageIndex = 0;
+			this.bP.PageName = "tPMainMenu";
+			this.bP.PageTitle = "";
 			this.bP.SelectedIndex = 0;
 			this.bP.Size = new System.Drawing.Size(1550, 822);
 			this.bP.TabIndex = 0;
@@ -1207,315 +1194,129 @@ namespace Main
 			// 
 			// tPMainMenu
 			// 
-			this.tPMainMenu.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPMainMenu.Location = new System.Drawing.Point(4, 4);
 			this.tPMainMenu.Name = "tPMainMenu";
-			this.tPMainMenu.Padding = new System.Windows.Forms.Padding(3);
 			this.tPMainMenu.Size = new System.Drawing.Size(1542, 793);
 			this.tPMainMenu.TabIndex = 0;
-			this.tPMainMenu.Text = "MainMenu";
-			// 
-			// mainMenuUC
-			// 
-			this.mainMenuUC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(108)))), ((int)(((byte)(190)))));
-			this.mainMenuUC.Cursor = System.Windows.Forms.Cursors.Default;
-			this.mainMenuUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mainMenuUC.Location = new System.Drawing.Point(3, 3);
-			this.mainMenuUC.Name = "mainMenuUC";
-			this.mainMenuUC.Size = new System.Drawing.Size(1536, 787);
-			this.mainMenuUC.TabIndex = 0;
 			// 
 			// tPManageUser
 			// 
-			this.tPManageUser.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPManageUser.Location = new System.Drawing.Point(4, 4);
 			this.tPManageUser.Name = "tPManageUser";
-			this.tPManageUser.Padding = new System.Windows.Forms.Padding(3);
 			this.tPManageUser.Size = new System.Drawing.Size(1542, 793);
 			this.tPManageUser.TabIndex = 1;
-			this.tPManageUser.Text = "ManageUser";
-			// 
-			// manageUserUC
-			// 
-			this.manageUserUC.BackColor = System.Drawing.SystemColors.Control;
-			this.manageUserUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.manageUserUC.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.manageUserUC.Location = new System.Drawing.Point(3, 3);
-			this.manageUserUC.Name = "manageUserUC";
-			this.manageUserUC.Size = new System.Drawing.Size(1536, 787);
-			this.manageUserUC.TabIndex = 0;
 			// 
 			// tPManageFaculty
 			// 
-			this.tPManageFaculty.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPManageFaculty.Location = new System.Drawing.Point(4, 4);
 			this.tPManageFaculty.Name = "tPManageFaculty";
-			this.tPManageFaculty.Padding = new System.Windows.Forms.Padding(3);
 			this.tPManageFaculty.Size = new System.Drawing.Size(1542, 793);
 			this.tPManageFaculty.TabIndex = 2;
-			this.tPManageFaculty.Text = "ManageFaculty";
-			// 
-			// manageFacultyUC
-			// 
-			this.manageFacultyUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.manageFacultyUC.Location = new System.Drawing.Point(3, 3);
-			this.manageFacultyUC.Name = "manageFacultyUC";
-			this.manageFacultyUC.Size = new System.Drawing.Size(1536, 787);
-			this.manageFacultyUC.TabIndex = 0;
 			// 
 			// tPManageCourse
 			// 
-			this.tPManageCourse.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPManageCourse.Location = new System.Drawing.Point(4, 4);
 			this.tPManageCourse.Name = "tPManageCourse";
-			this.tPManageCourse.Padding = new System.Windows.Forms.Padding(3);
 			this.tPManageCourse.Size = new System.Drawing.Size(1542, 793);
 			this.tPManageCourse.TabIndex = 3;
-			this.tPManageCourse.Text = "ManageCourse";
-			// 
-			// manageCourseUC
-			// 
-			this.manageCourseUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.manageCourseUC.Location = new System.Drawing.Point(3, 3);
-			this.manageCourseUC.Name = "manageCourseUC";
-			this.manageCourseUC.Size = new System.Drawing.Size(1536, 787);
-			this.manageCourseUC.TabIndex = 0;
 			// 
 			// tPManageClass
 			// 
-			this.tPManageClass.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPManageClass.Location = new System.Drawing.Point(4, 4);
 			this.tPManageClass.Name = "tPManageClass";
-			this.tPManageClass.Padding = new System.Windows.Forms.Padding(3);
 			this.tPManageClass.Size = new System.Drawing.Size(1542, 793);
 			this.tPManageClass.TabIndex = 4;
-			this.tPManageClass.Text = "ManageClass";
-			// 
-			// manageClassUC
-			// 
-			this.manageClassUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.manageClassUC.Location = new System.Drawing.Point(3, 3);
-			this.manageClassUC.Name = "manageClassUC";
-			this.manageClassUC.Size = new System.Drawing.Size(1536, 787);
-			this.manageClassUC.TabIndex = 0;
 			// 
 			// tpManageSubject
 			// 
-			this.tpManageSubject.BackColor = System.Drawing.Color.Gainsboro;
 			this.tpManageSubject.Location = new System.Drawing.Point(4, 4);
 			this.tpManageSubject.Name = "tpManageSubject";
-			this.tpManageSubject.Padding = new System.Windows.Forms.Padding(3);
 			this.tpManageSubject.Size = new System.Drawing.Size(1542, 793);
 			this.tpManageSubject.TabIndex = 5;
-			this.tpManageSubject.Text = "ManageSubject";
-			// 
-			// manageSubjectUC
-			// 
-			this.manageSubjectUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.manageSubjectUC.Location = new System.Drawing.Point(3, 3);
-			this.manageSubjectUC.Name = "manageSubjectUC";
-			this.manageSubjectUC.Size = new System.Drawing.Size(1536, 787);
-			this.manageSubjectUC.TabIndex = 0;
 			// 
 			// tPManageQuestion
 			// 
-			this.tPManageQuestion.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPManageQuestion.Location = new System.Drawing.Point(4, 4);
 			this.tPManageQuestion.Name = "tPManageQuestion";
-			this.tPManageQuestion.Padding = new System.Windows.Forms.Padding(3);
 			this.tPManageQuestion.Size = new System.Drawing.Size(1542, 793);
 			this.tPManageQuestion.TabIndex = 6;
-			this.tPManageQuestion.Text = "ManageQuestion";
-			// 
-			// manageQuestionUC
-			// 
-			this.manageQuestionUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.manageQuestionUC.Location = new System.Drawing.Point(3, 3);
-			this.manageQuestionUC.Name = "manageQuestionUC";
-			this.manageQuestionUC.Size = new System.Drawing.Size(1536, 787);
-			this.manageQuestionUC.TabIndex = 0;
 			// 
 			// tPManageExam
 			// 
-			this.tPManageExam.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPManageExam.Location = new System.Drawing.Point(4, 4);
 			this.tPManageExam.Name = "tPManageExam";
-			this.tPManageExam.Padding = new System.Windows.Forms.Padding(3);
 			this.tPManageExam.Size = new System.Drawing.Size(1542, 793);
 			this.tPManageExam.TabIndex = 7;
-			this.tPManageExam.Text = "ManageExam";
-			// 
-			// manageExamUC
-			// 
-			this.manageExamUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.manageExamUC.Location = new System.Drawing.Point(3, 3);
-			this.manageExamUC.Name = "manageExamUC";
-			this.manageExamUC.Size = new System.Drawing.Size(1536, 787);
-			this.manageExamUC.TabIndex = 0;
 			// 
 			// tpBackupRestore
 			// 
-			this.tpBackupRestore.BackColor = System.Drawing.Color.Gainsboro;
 			this.tpBackupRestore.Location = new System.Drawing.Point(4, 4);
 			this.tpBackupRestore.Name = "tpBackupRestore";
-			this.tpBackupRestore.Padding = new System.Windows.Forms.Padding(3);
 			this.tpBackupRestore.Size = new System.Drawing.Size(1542, 793);
 			this.tpBackupRestore.TabIndex = 8;
-			this.tpBackupRestore.Text = "BackupRestore";
-			// 
-			// backupRestoreUC
-			// 
-			this.backupRestoreUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.backupRestoreUC.Location = new System.Drawing.Point(3, 3);
-			this.backupRestoreUC.Name = "backupRestoreUC";
-			this.backupRestoreUC.Size = new System.Drawing.Size(1536, 787);
-			this.backupRestoreUC.TabIndex = 0;
 			// 
 			// tPQuizTest
 			// 
-			this.tPQuizTest.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPQuizTest.Location = new System.Drawing.Point(4, 4);
 			this.tPQuizTest.Name = "tPQuizTest";
-			this.tPQuizTest.Padding = new System.Windows.Forms.Padding(3);
 			this.tPQuizTest.Size = new System.Drawing.Size(1542, 793);
 			this.tPQuizTest.TabIndex = 9;
-			this.tPQuizTest.Text = "QuizTest";
-			// 
-			// quizTestUC
-			// 
-			this.quizTestUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.quizTestUC.Location = new System.Drawing.Point(3, 3);
-			this.quizTestUC.Name = "quizTestUC";
-			this.quizTestUC.Size = new System.Drawing.Size(1536, 787);
-			this.quizTestUC.TabIndex = 0;
 			// 
 			// tPQuizResult
 			// 
-			this.tPQuizResult.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPQuizResult.Location = new System.Drawing.Point(4, 4);
 			this.tPQuizResult.Name = "tPQuizResult";
-			this.tPQuizResult.Padding = new System.Windows.Forms.Padding(3);
 			this.tPQuizResult.Size = new System.Drawing.Size(1542, 793);
 			this.tPQuizResult.TabIndex = 10;
-			this.tPQuizResult.Text = "QuizResult";
-			// 
-			// quizResultUC
-			// 
-			this.quizResultUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.quizResultUC.Location = new System.Drawing.Point(3, 3);
-			this.quizResultUC.Name = "quizResultUC";
-			this.quizResultUC.Size = new System.Drawing.Size(1536, 787);
-			this.quizResultUC.TabIndex = 0;
 			// 
 			// tPTestHistory
 			// 
-			this.tPTestHistory.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPTestHistory.Location = new System.Drawing.Point(4, 4);
 			this.tPTestHistory.Name = "tPTestHistory";
-			this.tPTestHistory.Padding = new System.Windows.Forms.Padding(3);
 			this.tPTestHistory.Size = new System.Drawing.Size(1542, 793);
 			this.tPTestHistory.TabIndex = 11;
-			this.tPTestHistory.Text = "TestHistory";
-			// 
-			// testHistoryUC
-			// 
-			this.testHistoryUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.testHistoryUC.Location = new System.Drawing.Point(3, 3);
-			this.testHistoryUC.Name = "testHistoryUC";
-			this.testHistoryUC.Size = new System.Drawing.Size(1536, 787);
-			this.testHistoryUC.TabIndex = 0;
 			// 
 			// tPLeaderBoard
 			// 
-			this.tPLeaderBoard.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPLeaderBoard.Location = new System.Drawing.Point(4, 4);
 			this.tPLeaderBoard.Name = "tPLeaderBoard";
-			this.tPLeaderBoard.Padding = new System.Windows.Forms.Padding(3);
 			this.tPLeaderBoard.Size = new System.Drawing.Size(1542, 793);
 			this.tPLeaderBoard.TabIndex = 12;
-			this.tPLeaderBoard.Text = "LeaderBoard";
-			// 
-			// leaderBoardUC
-			// 
-			this.leaderBoardUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.leaderBoardUC.Location = new System.Drawing.Point(3, 3);
-			this.leaderBoardUC.Name = "leaderBoardUC";
-			this.leaderBoardUC.Size = new System.Drawing.Size(1536, 787);
-			this.leaderBoardUC.TabIndex = 0;
 			// 
 			// tPProfile
 			// 
-			this.tPProfile.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPProfile.Location = new System.Drawing.Point(4, 4);
 			this.tPProfile.Name = "tPProfile";
-			this.tPProfile.Padding = new System.Windows.Forms.Padding(3);
 			this.tPProfile.Size = new System.Drawing.Size(1542, 793);
 			this.tPProfile.TabIndex = 13;
-			this.tPProfile.Text = "Profile";
-			// 
-			// profileUC
-			// 
-			this.profileUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.profileUC.Location = new System.Drawing.Point(3, 3);
-			this.profileUC.Name = "profileUC";
-			this.profileUC.Size = new System.Drawing.Size(1536, 787);
-			this.profileUC.TabIndex = 0;
 			// 
 			// tPStatistical
 			// 
-			this.tPStatistical.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPStatistical.Location = new System.Drawing.Point(4, 4);
 			this.tPStatistical.Name = "tPStatistical";
-			this.tPStatistical.Padding = new System.Windows.Forms.Padding(3);
 			this.tPStatistical.Size = new System.Drawing.Size(1542, 793);
 			this.tPStatistical.TabIndex = 14;
-			this.tPStatistical.Text = "Statistical";
-			// 
-			// statisticalUC
-			// 
-			this.statisticalUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.statisticalUC.Location = new System.Drawing.Point(3, 3);
-			this.statisticalUC.Name = "statisticalUC";
-			this.statisticalUC.Size = new System.Drawing.Size(1536, 787);
-			this.statisticalUC.TabIndex = 0;
 			// 
 			// tPEduProg
 			// 
-			this.tPEduProg.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPEduProg.Location = new System.Drawing.Point(4, 4);
 			this.tPEduProg.Name = "tPEduProg";
-			this.tPEduProg.Padding = new System.Windows.Forms.Padding(3);
 			this.tPEduProg.Size = new System.Drawing.Size(1542, 793);
 			this.tPEduProg.TabIndex = 15;
-			this.tPEduProg.Text = "EduProg";
-			// 
-			// eduProgUC
-			// 
-			this.eduProgUC.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.eduProgUC.Location = new System.Drawing.Point(3, 3);
-			this.eduProgUC.Name = "eduProgUC";
-			this.eduProgUC.Size = new System.Drawing.Size(1536, 787);
-			this.eduProgUC.TabIndex = 0;
 			// 
 			// tPGuide
 			// 
-			this.tPGuide.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPGuide.Location = new System.Drawing.Point(4, 4);
 			this.tPGuide.Name = "tPGuide";
-			this.tPGuide.Padding = new System.Windows.Forms.Padding(3);
 			this.tPGuide.Size = new System.Drawing.Size(1542, 793);
 			this.tPGuide.TabIndex = 16;
-			this.tPGuide.Text = "Guide";
 			// 
 			// tPAbout
 			// 
-			this.tPAbout.BackColor = System.Drawing.Color.Gainsboro;
 			this.tPAbout.Location = new System.Drawing.Point(4, 4);
 			this.tPAbout.Name = "tPAbout";
-			this.tPAbout.Padding = new System.Windows.Forms.Padding(3);
 			this.tPAbout.Size = new System.Drawing.Size(1542, 793);
 			this.tPAbout.TabIndex = 17;
-			this.tPAbout.Text = "About";
 			// 
 			// pnlNavigationMini
 			// 
@@ -1865,25 +1666,6 @@ namespace Main
 			this.btnNav.UseVisualStyleBackColor = false;
 			this.btnNav.Click += new System.EventHandler(this.btnNav_Click);
 			// 
-			// btnMinimized
-			// 
-			this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
-			this.btnMinimized.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnMinimized.FlatAppearance.BorderSize = 0;
-			this.btnMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnMinimized.IconChar = FontAwesome.Sharp.IconChar.Minus;
-			this.btnMinimized.IconColor = System.Drawing.Color.White;
-			this.btnMinimized.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnMinimized.IconSize = 20;
-			this.btnMinimized.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.btnMinimized.Location = new System.Drawing.Point(1540, 3);
-			this.btnMinimized.Name = "btnMinimized";
-			this.btnMinimized.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-			this.btnMinimized.Size = new System.Drawing.Size(25, 25);
-			this.btnMinimized.TabIndex = 9;
-			this.btnMinimized.UseVisualStyleBackColor = false;
-			this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1930,22 +1712,6 @@ namespace Main
 			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
 			this.pnlForm.ResumeLayout(false);
 			this.bP.ResumeLayout(false);
-			this.tPMainMenu.ResumeLayout(false);
-			this.tPManageUser.ResumeLayout(false);
-			this.tPManageFaculty.ResumeLayout(false);
-			this.tPManageCourse.ResumeLayout(false);
-			this.tPManageClass.ResumeLayout(false);
-			this.tpManageSubject.ResumeLayout(false);
-			this.tPManageQuestion.ResumeLayout(false);
-			this.tPManageExam.ResumeLayout(false);
-			this.tpBackupRestore.ResumeLayout(false);
-			this.tPQuizTest.ResumeLayout(false);
-			this.tPQuizResult.ResumeLayout(false);
-			this.tPTestHistory.ResumeLayout(false);
-			this.tPLeaderBoard.ResumeLayout(false);
-			this.tPProfile.ResumeLayout(false);
-			this.tPStatistical.ResumeLayout(false);
-			this.tPEduProg.ResumeLayout(false);
 			this.pnlNavigationMini.ResumeLayout(false);
 			this.pnlTGMini.ResumeLayout(false);
 			this.pnlTKBCMini.ResumeLayout(false);

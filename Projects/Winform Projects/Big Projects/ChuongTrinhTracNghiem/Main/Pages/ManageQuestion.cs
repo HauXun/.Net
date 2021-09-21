@@ -14,19 +14,19 @@ namespace Main.Pages
 {
 	public partial class ManageQuestion : UserControl
 	{
-        private bool isAddnew = false;
-        private bool isEnable = false;
-        private bool isFunc = true;
-        private int rowIndex = 0;
-        private UserAccount account;
+		private bool isAddnew = false;
+		private bool isEnable = false;
+		private bool isFunc = true;
+		private int rowIndex = 0;
+		private UserAccount account;
 
-        public UserAccount Account { get => account; set => account = value; }
+		public UserAccount Account { get => account; set => account = value; }
 		public Action HomeFunc;
 
 		public ManageQuestion()
 		{
 			InitializeComponent();
-            RoundedControls();
+			RoundedControls();
 			HomeFunc = () =>
 			{
 				if (btnSave.Visible && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
@@ -42,45 +42,45 @@ namespace Main.Pages
 			};
 		}
 
-        // -------------- Set color for background gradient ---------------
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            Rectangle rectangle = ClientRectangle;
-            if (rectangle.IsEmpty)
-                return;
-            if (rectangle.Width == 0 || rectangle.Height == 0)
-                return;
-            using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 90F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
-            {
-                e.Graphics.FillRectangle(brush, rectangle);
-            }
-        }
+		// -------------- Set color for background gradient ---------------
+		protected override void OnPaintBackground(PaintEventArgs e)
+		{
+			Rectangle rectangle = ClientRectangle;
+			if (rectangle.IsEmpty)
+				return;
+			if (rectangle.Width == 0 || rectangle.Height == 0)
+				return;
+			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 90F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
+			{
+				e.Graphics.FillRectangle(brush, rectangle);
+			}
+		}
 
-        //Bo tròn góc các Control
-        #region Rounded Controls
+		//Bo tròn góc các Control
+		#region Rounded Controls
 
-        private void RoundedControls()
-        {
-            //Panels
-            pnlInfo1.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlInfo1.Width, pnlInfo1.Height, 5, 5));
-            pnlInfo2.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlInfo2.Width, pnlInfo2.Height, 5, 5));
-            pnlDapAnDung.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDapAnDung.Width, pnlDapAnDung.Height, 5, 5));
-            pnlDataGridView.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDataGridView.Width, pnlDataGridView.Height, 5, 5));
-            //Panels Shadow
-            pnl1Shadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnl1Shadow.Width, pnl1Shadow.Height, 5, 5));
-            pnl2Shadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnl2Shadow.Width, pnl2Shadow.Height, 5, 5));
-            pnlDapAnDungShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDapAnDungShadow.Width, pnlDapAnDungShadow.Height, 5, 5));
-            pnlDataGridViewShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDataGridViewShadow.Width, pnlDataGridViewShadow.Height, 5, 5));
-            //Buttons
-            btnAdd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, 6, 6));
-            btnEdit.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 6, 6));
-            btnDelete.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 6, 6));
-            btnSave.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnSave.Width, btnSave.Height, 6, 6));
-            btnCancle.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnCancle.Width, btnCancle.Height, 6, 6));
-            btnClearFilter.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnClearFilter.Width, btnClearFilter.Height, 6, 6));
-            //DataGridView
-            aDgvdata.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, aDgvdata.Width, aDgvdata.Height, 15, 15));
-        }
+		private void RoundedControls()
+		{
+			//Panels
+			pnlInfo1.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlInfo1.Width, pnlInfo1.Height, 5, 5));
+			pnlInfo2.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlInfo2.Width, pnlInfo2.Height, 5, 5));
+			pnlDapAnDung.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDapAnDung.Width, pnlDapAnDung.Height, 5, 5));
+			pnlDataGridView.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDataGridView.Width, pnlDataGridView.Height, 5, 5));
+			//Panels Shadow
+			pnl1Shadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnl1Shadow.Width, pnl1Shadow.Height, 5, 5));
+			pnl2Shadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnl2Shadow.Width, pnl2Shadow.Height, 5, 5));
+			pnlDapAnDungShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDapAnDungShadow.Width, pnlDapAnDungShadow.Height, 5, 5));
+			pnlDataGridViewShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDataGridViewShadow.Width, pnlDataGridViewShadow.Height, 5, 5));
+			//Buttons
+			btnAdd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, 6, 6));
+			btnEdit.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 6, 6));
+			btnDelete.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 6, 6));
+			btnSave.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnSave.Width, btnSave.Height, 6, 6));
+			btnCancle.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnCancle.Width, btnCancle.Height, 6, 6));
+			btnClearFilter.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnClearFilter.Width, btnClearFilter.Height, 6, 6));
+			//DataGridView
+			aDgvdata.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, aDgvdata.Width, aDgvdata.Height, 15, 15));
+		}
 
 		#endregion
 
@@ -555,6 +555,38 @@ namespace Main.Pages
 			{
 				ExamBLL.Instance.GetAllExam(cbExamID);
 			}
+		}
+
+		private void aDgvdata_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+		{
+			try
+			{
+				bScrollBar.Maximum = aDgvdata.RowCount - 4;
+			}
+			catch { }
+		}
+
+		private void aDgvdata_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+		{
+			try
+			{
+				bScrollBar.Maximum = aDgvdata.RowCount - 4;
+			}
+			catch { }
+		}
+
+		private void bScrollBar_Scroll(object sender, Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs e)
+		{
+			try
+			{
+				if (e.Value > 3)
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - e.Value - 3].Index;
+				else if (e.Value == 0)
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1)].Index;
+				else
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - 4].Index;
+			}
+			catch { }
 		}
 
 		#endregion

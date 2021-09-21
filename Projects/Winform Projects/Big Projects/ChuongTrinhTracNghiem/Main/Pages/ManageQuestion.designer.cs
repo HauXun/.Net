@@ -30,6 +30,7 @@ namespace Main.Pages
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageQuestion));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -67,6 +68,7 @@ namespace Main.Pages
 			this.lbNoiDung = new System.Windows.Forms.Label();
 			this.pnl1Shadow = new System.Windows.Forms.Panel();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -581,6 +583,7 @@ namespace Main.Pages
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.tbSearch);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
 			this.pnlDataGridView.Controls.Add(this.btnClearFilter);
@@ -593,6 +596,60 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 389);
 			this.pnlDataGridView.TabIndex = 38;
+			// 
+			// bScrollBar
+			// 
+			this.bScrollBar.AllowCursorChanges = true;
+			this.bScrollBar.AllowHomeEndKeysDetection = false;
+			this.bScrollBar.AllowIncrementalClickMoves = true;
+			this.bScrollBar.AllowMouseDownEffects = false;
+			this.bScrollBar.AllowMouseHoverEffects = false;
+			this.bScrollBar.AllowScrollingAnimations = true;
+			this.bScrollBar.AllowScrollKeysDetection = true;
+			this.bScrollBar.AllowScrollOptionsMenu = true;
+			this.bScrollBar.AllowShrinkingOnFocusLost = false;
+			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.bScrollBar.AutoScroll = true;
+			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
+			this.bScrollBar.BindingContainer = null;
+			this.bScrollBar.BorderRadius = 2;
+			this.bScrollBar.BorderThickness = 1;
+			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
+			this.bScrollBar.DrawThickBorder = false;
+			this.bScrollBar.DurationBeforeShrink = 2000;
+			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.LargeChange = 10;
+			this.bScrollBar.Location = new System.Drawing.Point(1494, 119);
+			this.bScrollBar.Maximum = 100;
+			this.bScrollBar.Minimum = 0;
+			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
+			this.bScrollBar.MinimumThumbLength = 18;
+			this.bScrollBar.Name = "bScrollBar";
+			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
+			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ShrinkSizeLimit = 3;
+			this.bScrollBar.Size = new System.Drawing.Size(31, 256);
+			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
+			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
+			this.bScrollBar.SmallChange = 1;
+			this.bScrollBar.TabIndex = 9;
+			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
+			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
+			this.bScrollBar.ThumbLength = 25;
+			this.bScrollBar.ThumbMargin = 1;
+			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
+			this.bScrollBar.Value = 100;
+			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
 			// 
 			// tbSearch
 			// 
@@ -667,25 +724,28 @@ namespace Main.Pages
 			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle8;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(14, 79);
+			this.aDgvdata.Location = new System.Drawing.Point(34, 79);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
+			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1498, 296);
+			this.aDgvdata.Size = new System.Drawing.Size(1454, 296);
 			this.aDgvdata.TabIndex = 7;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
 			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
 			this.aDgvdata.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.aDgvdata_RowEnter);
+			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
+			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
 			// 
 			// QuestionID
 			// 
 			this.QuestionID.DataPropertyName = "QuestionID";
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			this.QuestionID.DefaultCellStyle = dataGridViewCellStyle3;
-			this.QuestionID.FillWeight = 40F;
+			this.QuestionID.FillWeight = 60F;
 			this.QuestionID.HeaderText = "Mã câu hỏi";
 			this.QuestionID.MinimumWidth = 22;
 			this.QuestionID.Name = "QuestionID";
@@ -774,6 +834,7 @@ namespace Main.Pages
 			// Answer
 			// 
 			this.Answer.DataPropertyName = "Answer";
+			this.Answer.FillWeight = 80F;
 			this.Answer.HeaderText = "Đáp án đúng";
 			this.Answer.MinimumWidth = 22;
 			this.Answer.Name = "Answer";
@@ -1014,6 +1075,11 @@ namespace Main.Pages
 		public FontAwesome.Sharp.IconButton btnCancle;
 		private FontAwesome.Sharp.IconButton btnSearch;
 		private System.Windows.Forms.Panel pnlDataGridViewShadow;
+		private Bunifu.UI.WinForms.BunifuDropdown cbSubject;
+		private System.Windows.Forms.ErrorProvider errorProviderWar;
+		private Bunifu.UI.WinForms.BunifuDropdown cbExamID;
+		private System.Windows.Forms.ToolTip toolTip;
+		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QuestionID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExamID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
@@ -1023,9 +1089,5 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionC;
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
-		private Bunifu.UI.WinForms.BunifuDropdown cbSubject;
-		private System.Windows.Forms.ErrorProvider errorProviderWar;
-		private Bunifu.UI.WinForms.BunifuDropdown cbExamID;
-		private System.Windows.Forms.ToolTip toolTip;
 	}
 }

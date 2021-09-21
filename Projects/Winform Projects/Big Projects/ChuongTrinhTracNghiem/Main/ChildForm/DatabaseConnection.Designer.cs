@@ -61,7 +61,6 @@ namespace Main
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lbRememberPassword = new System.Windows.Forms.Label();
-			this.checkBoxPassword = new Bunifu.Framework.UI.BunifuCheckbox();
 			this.wP = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
 			this.pnlTitleBar.SuspendLayout();
 			this.pnl1.SuspendLayout();
@@ -267,7 +266,6 @@ namespace Main
 			// pnlAccount
 			// 
 			this.pnlAccount.Controls.Add(this.lbRememberPassword);
-			this.pnlAccount.Controls.Add(this.checkBoxPassword);
 			this.pnlAccount.Controls.Add(this.tbUsername);
 			this.pnlAccount.Controls.Add(this.tbPassword);
 			this.pnlAccount.Controls.Add(this.lbUsername);
@@ -513,21 +511,6 @@ namespace Main
 			this.lbRememberPassword.TabIndex = 8;
 			this.lbRememberPassword.Text = "Remember password";
 			// 
-			// checkBoxPassword
-			// 
-			this.checkBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.checkBoxPassword.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.checkBoxPassword.Checked = true;
-			this.checkBoxPassword.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.checkBoxPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.checkBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.checkBoxPassword.ForeColor = System.Drawing.Color.Black;
-			this.checkBoxPassword.Location = new System.Drawing.Point(148, 113);
-			this.checkBoxPassword.Margin = new System.Windows.Forms.Padding(4);
-			this.checkBoxPassword.Name = "checkBoxPassword";
-			this.checkBoxPassword.Size = new System.Drawing.Size(20, 20);
-			this.checkBoxPassword.TabIndex = 9;
-			// 
 			// wP
 			// 
 			this.wP.AutoStart = true;
@@ -586,7 +569,6 @@ namespace Main
 		public Bunifu.UI.WinForms.BunifuDropdown cbServer;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label lbRememberPassword;
-		private Bunifu.Framework.UI.BunifuCheckbox checkBoxPassword;
 		private Guna.UI2.WinForms.Guna2WinProgressIndicator wP;
 		public FontAwesome.Sharp.IconButton btnConnect;
 	}
