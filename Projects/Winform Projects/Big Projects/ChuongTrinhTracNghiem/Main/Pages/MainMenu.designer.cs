@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace Main.Pages
 {
 	partial class MainMenu
@@ -244,8 +246,8 @@ namespace Main.Pages
 			// btnThiThu
 			// 
 			this.btnThiThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(147)))), ((int)(((byte)(230)))));
-			this.btnThiThu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(0, 255, 255, 255);
 			this.btnThiThu.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnThiThu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnThiThu.FlatAppearance.BorderSize = 0;
 			this.btnThiThu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnThiThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -264,6 +266,7 @@ namespace Main.Pages
 			this.btnThiThu.Text = "Thi thử";
 			this.btnThiThu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThiThu.UseVisualStyleBackColor = false;
+			this.btnThiThu.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// btnHuongDanThi
 			// 
@@ -287,6 +290,7 @@ namespace Main.Pages
 			this.btnHuongDanThi.Text = "Hướng dẫn thi";
 			this.btnHuongDanThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnHuongDanThi.UseVisualStyleBackColor = false;
+			this.btnHuongDanThi.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// btnBangXepHang
 			// 
@@ -310,6 +314,7 @@ namespace Main.Pages
 			this.btnBangXepHang.Text = "Bảng xếp hạng";
 			this.btnBangXepHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnBangXepHang.UseVisualStyleBackColor = false;
+			this.btnBangXepHang.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// pnlThongTinShadow
 			// 
@@ -448,6 +453,7 @@ namespace Main.Pages
 			this.btnQuanLyLop.Text = "Quản lý lớp";
 			this.btnQuanLyLop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyLop.UseVisualStyleBackColor = false;
+			this.btnQuanLyLop.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// groupBox2
 			// 
@@ -572,6 +578,7 @@ namespace Main.Pages
 			this.btnQuanLyNguoiDung.Text = "Quản lý người dùng";
 			this.btnQuanLyNguoiDung.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
+			this.btnQuanLyNguoiDung.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// btnQuanLyKhoaHoc
 			// 
@@ -594,6 +601,7 @@ namespace Main.Pages
 			this.btnQuanLyKhoaHoc.Text = "Quản lý khóa học";
 			this.btnQuanLyKhoaHoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyKhoaHoc.UseVisualStyleBackColor = false;
+			this.btnQuanLyKhoaHoc.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// btnQuanLyKhoa
 			// 
@@ -616,6 +624,7 @@ namespace Main.Pages
 			this.btnQuanLyKhoa.Text = "Quản lý khoa";
 			this.btnQuanLyKhoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyKhoa.UseVisualStyleBackColor = false;
+			this.btnQuanLyKhoa.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// pnlGiaoVien
 			// 
@@ -776,6 +785,7 @@ namespace Main.Pages
 			// 
 			this.btnQuanLyMonThi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(147)))), ((int)(((byte)(230)))));
 			this.btnQuanLyMonThi.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnQuanLyMonThi.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnQuanLyMonThi.FlatAppearance.BorderSize = 0;
 			this.btnQuanLyMonThi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnQuanLyMonThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -793,6 +803,7 @@ namespace Main.Pages
 			this.btnQuanLyMonThi.Text = "Quản lý môn thi";
 			this.btnQuanLyMonThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyMonThi.UseVisualStyleBackColor = false;
+			this.btnQuanLyMonThi.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// btnQuanLyDeThi
 			// 
@@ -815,6 +826,7 @@ namespace Main.Pages
 			this.btnQuanLyDeThi.Text = "Quản lý đề thi";
 			this.btnQuanLyDeThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyDeThi.UseVisualStyleBackColor = false;
+			this.btnQuanLyDeThi.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// btnQuanLyCauHoi
 			// 
@@ -837,6 +849,7 @@ namespace Main.Pages
 			this.btnQuanLyCauHoi.Text = "Quản lý câu hỏi";
 			this.btnQuanLyCauHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyCauHoi.UseVisualStyleBackColor = false;
+			this.btnQuanLyCauHoi.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// MainMenu
 			// 

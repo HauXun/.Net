@@ -58,11 +58,12 @@ namespace Main.Pages
 			// pnlLineDSCH
 			// 
 			this.pnlLineDSCH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlLineDSCH.BackColor = System.Drawing.Color.Transparent;
 			this.pnlLineDSCH.Controls.Add(this.Line);
 			this.pnlLineDSCH.Controls.Add(this.lbDanhSachCauHoi);
-			this.pnlLineDSCH.Location = new System.Drawing.Point(1093, 3);
+			this.pnlLineDSCH.Location = new System.Drawing.Point(1120, 3);
 			this.pnlLineDSCH.Name = "pnlLineDSCH";
-			this.pnlLineDSCH.Size = new System.Drawing.Size(454, 51);
+			this.pnlLineDSCH.Size = new System.Drawing.Size(403, 51);
 			this.pnlLineDSCH.TabIndex = 35;
 			// 
 			// Line
@@ -75,11 +76,13 @@ namespace Main.Pages
 			// 
 			// lbDanhSachCauHoi
 			// 
+			this.lbDanhSachCauHoi.BackColor = System.Drawing.Color.Transparent;
+			this.lbDanhSachCauHoi.Dock = System.Windows.Forms.DockStyle.Top;
 			this.lbDanhSachCauHoi.Font = new System.Drawing.Font("Arial", 18F);
 			this.lbDanhSachCauHoi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.lbDanhSachCauHoi.Location = new System.Drawing.Point(3, 0);
+			this.lbDanhSachCauHoi.Location = new System.Drawing.Point(0, 0);
 			this.lbDanhSachCauHoi.Name = "lbDanhSachCauHoi";
-			this.lbDanhSachCauHoi.Size = new System.Drawing.Size(440, 44);
+			this.lbDanhSachCauHoi.Size = new System.Drawing.Size(403, 44);
 			this.lbDanhSachCauHoi.TabIndex = 25;
 			this.lbDanhSachCauHoi.Text = "Sơ đồ câu hỏi";
 			this.lbDanhSachCauHoi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -165,6 +168,7 @@ namespace Main.Pages
 			this.btnIndeterminate.Text = "Indeterminate";
 			this.btnIndeterminate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnIndeterminate.UseVisualStyleBackColor = false;
+			this.btnIndeterminate.Enter += new System.EventHandler(this.btnCheck_Enter);
 			// 
 			// lbUncheck
 			// 
@@ -190,6 +194,7 @@ namespace Main.Pages
 			this.btnUncheck.Text = "Uncheck";
 			this.btnUncheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnUncheck.UseVisualStyleBackColor = false;
+			this.btnUncheck.Enter += new System.EventHandler(this.btnCheck_Enter);
 			// 
 			// barCheck
 			// 
@@ -235,6 +240,7 @@ namespace Main.Pages
 			this.btnCheck.Text = "Check";
 			this.btnCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnCheck.UseVisualStyleBackColor = false;
+			this.btnCheck.Enter += new System.EventHandler(this.btnCheck_Enter);
 			// 
 			// fLPdata
 			// 
@@ -325,6 +331,7 @@ namespace Main.Pages
 			this.btnTrangChu.TabIndex = 28;
 			this.btnTrangChu.TabStop = false;
 			this.btnTrangChu.Text = "Trang chủ";
+			this.btnTrangChu.Enter += new System.EventHandler(this.btnCheck_Enter);
 			// 
 			// lbCongratulation
 			// 

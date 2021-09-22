@@ -102,7 +102,7 @@ namespace Main.Pages
 			this.pnlThongTin.Controls.Add(this.btnLuuMatKhau);
 			this.pnlThongTin.Controls.Add(this.btnChinhSua);
 			this.pnlThongTin.Controls.Add(this.lbThongTinTaiKhoan);
-			this.pnlThongTin.Location = new System.Drawing.Point(814, 75);
+			this.pnlThongTin.Location = new System.Drawing.Point(815, 75);
 			this.pnlThongTin.Name = "pnlThongTin";
 			this.pnlThongTin.Size = new System.Drawing.Size(700, 700);
 			this.pnlThongTin.TabIndex = 0;
@@ -369,7 +369,7 @@ namespace Main.Pages
 			this.tbClass.ForeColor = System.Drawing.Color.Black;
 			this.tbClass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbClass.HoverState.Parent = this.tbClass;
-			this.tbClass.Location = new System.Drawing.Point(226, 149);
+			this.tbClass.Location = new System.Drawing.Point(238, 149);
 			this.tbClass.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbClass.Name = "tbClass";
 			this.tbClass.PasswordChar = '\0';
@@ -467,7 +467,7 @@ namespace Main.Pages
 			// 
 			this.lbLop.AutoSize = true;
 			this.lbLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbLop.Location = new System.Drawing.Point(236, 119);
+			this.lbLop.Location = new System.Drawing.Point(249, 119);
 			this.lbLop.Name = "lbLop";
 			this.lbLop.Size = new System.Drawing.Size(47, 24);
 			this.lbLop.TabIndex = 38;
@@ -580,11 +580,13 @@ namespace Main.Pages
 			this.btnDoiMatKhau.TabIndex = 14;
 			this.btnDoiMatKhau.Text = "Đổi mật khẩu";
 			this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
+			this.btnDoiMatKhau.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnHuyMatKhau
 			// 
 			this.btnHuyMatKhau.BackColor = System.Drawing.Color.DarkGray;
 			this.btnHuyMatKhau.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnHuyMatKhau.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnHuyMatKhau.FlatAppearance.BorderSize = 0;
 			this.btnHuyMatKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnHuyMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
@@ -604,11 +606,13 @@ namespace Main.Pages
 			this.btnHuyMatKhau.UseVisualStyleBackColor = false;
 			this.btnHuyMatKhau.Visible = false;
 			this.btnHuyMatKhau.Click += new System.EventHandler(this.btnHuyMatKhau_Click);
+			this.btnHuyMatKhau.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnLuuThongTin
 			// 
 			this.btnLuuThongTin.BackColor = System.Drawing.Color.Green;
 			this.btnLuuThongTin.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnLuuThongTin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnLuuThongTin.FlatAppearance.BorderSize = 0;
 			this.btnLuuThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnLuuThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
@@ -628,11 +632,13 @@ namespace Main.Pages
 			this.btnLuuThongTin.UseVisualStyleBackColor = false;
 			this.btnLuuThongTin.Visible = false;
 			this.btnLuuThongTin.Click += new System.EventHandler(this.btnLuuThongTin_Click);
+			this.btnLuuThongTin.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnHuyThongTin
 			// 
 			this.btnHuyThongTin.BackColor = System.Drawing.Color.DarkGray;
 			this.btnHuyThongTin.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnHuyThongTin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnHuyThongTin.FlatAppearance.BorderSize = 0;
 			this.btnHuyThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnHuyThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
@@ -652,11 +658,13 @@ namespace Main.Pages
 			this.btnHuyThongTin.UseVisualStyleBackColor = false;
 			this.btnHuyThongTin.Visible = false;
 			this.btnHuyThongTin.Click += new System.EventHandler(this.btnHuyLuu_Click);
+			this.btnHuyThongTin.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnLuuMatKhau
 			// 
 			this.btnLuuMatKhau.BackColor = System.Drawing.Color.Green;
 			this.btnLuuMatKhau.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnLuuMatKhau.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnLuuMatKhau.FlatAppearance.BorderSize = 0;
 			this.btnLuuMatKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnLuuMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
@@ -676,11 +684,13 @@ namespace Main.Pages
 			this.btnLuuMatKhau.UseVisualStyleBackColor = false;
 			this.btnLuuMatKhau.Visible = false;
 			this.btnLuuMatKhau.Click += new System.EventHandler(this.btnLuuMatKhau_Click);
+			this.btnLuuMatKhau.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnChinhSua
 			// 
 			this.btnChinhSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(108)))), ((int)(((byte)(190)))));
 			this.btnChinhSua.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnChinhSua.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnChinhSua.FlatAppearance.BorderSize = 0;
 			this.btnChinhSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnChinhSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -698,6 +708,7 @@ namespace Main.Pages
 			this.btnChinhSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnChinhSua.UseVisualStyleBackColor = false;
 			this.btnChinhSua.Click += new System.EventHandler(this.btnChinhSua_Click);
+			this.btnChinhSua.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// lbThongTinTaiKhoan
 			// 
@@ -729,12 +740,13 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(1036, 24);
+			this.iconTitle.Location = new System.Drawing.Point(1036, 22);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pbBackground
 			// 

@@ -147,6 +147,11 @@ namespace Main
 			//base.OnClosing(e);
 		}
 
+		private void btnLogin_Enter(object sender, EventArgs e)
+		{
+			background.Focus();
+		}
+
 		#endregion
 	}
 }

@@ -285,7 +285,7 @@ namespace Main.Pages
 				}
 				if (control is Guna2NumericUpDown)
 				{
-					(control as Guna2NumericUpDown).Value = 0;
+					(control as Guna2NumericUpDown).Value = 1900;
 				}
 			}
 		}
@@ -659,6 +659,11 @@ namespace Main.Pages
 					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - 7].Index;
 			}
 			catch { }
+		}
+
+		private void iconTitle_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
 		}
 
 		#endregion

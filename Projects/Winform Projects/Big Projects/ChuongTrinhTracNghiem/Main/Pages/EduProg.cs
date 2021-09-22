@@ -132,16 +132,11 @@ namespace Main.Pages
 			catch { }
 		}
 
-		#endregion
-
 		private void btnClearFilter_Enter(object sender, EventArgs e)
 		{
 			lbTitle.Focus();
 		}
 
-		private void btnClearFilter_KeyDown(object sender, KeyEventArgs e)
-		{
-			lbTitle.Focus();
-		}
+		#endregion
 	}
 }

@@ -60,6 +60,7 @@ namespace Main.Pages
 			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.pnlControls = new System.Windows.Forms.Panel();
 			this.pnlInfo3 = new System.Windows.Forms.Panel();
@@ -95,6 +96,7 @@ namespace Main.Pages
 			// 
 			this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnAdd.FlatAppearance.BorderSize = 0;
 			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,6 +115,7 @@ namespace Main.Pages
 			this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnAdd.UseVisualStyleBackColor = false;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			this.btnAdd.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// lbTitle
 			// 
@@ -137,12 +140,13 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 23);
+			this.iconTitle.Location = new System.Drawing.Point(45, 21);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlDataGridViewShadow
 			// 
@@ -176,11 +180,13 @@ namespace Main.Pages
 			this.btnSearch.TabStop = false;
 			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			this.btnSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnCancle
 			// 
 			this.btnCancle.BackColor = System.Drawing.Color.DarkGray;
 			this.btnCancle.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnCancle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnCancle.FlatAppearance.BorderSize = 0;
 			this.btnCancle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -200,11 +206,13 @@ namespace Main.Pages
 			this.btnCancle.UseVisualStyleBackColor = false;
 			this.btnCancle.Visible = false;
 			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+			this.btnCancle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSave
 			// 
 			this.btnSave.BackColor = System.Drawing.Color.Green;
 			this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnSave.FlatAppearance.BorderSize = 0;
 			this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -225,11 +233,13 @@ namespace Main.Pages
 			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Visible = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			this.btnSave.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnDelete
 			// 
 			this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
 			this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnDelete.FlatAppearance.BorderSize = 0;
 			this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -248,11 +258,13 @@ namespace Main.Pages
 			this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnDelete.UseVisualStyleBackColor = false;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			this.btnDelete.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnEdit
 			// 
 			this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnEdit.FlatAppearance.BorderSize = 0;
 			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,6 +284,7 @@ namespace Main.Pages
 			this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnEdit.UseVisualStyleBackColor = false;
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			this.btnEdit.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnClearFilter
 			// 
@@ -294,6 +307,7 @@ namespace Main.Pages
 			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnClearFilter.UseVisualStyleBackColor = false;
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// aDgvdata
 			// 
@@ -467,6 +481,7 @@ namespace Main.Pages
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.iconSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.tbSearch);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
@@ -480,6 +495,26 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 518);
 			this.pnlDataGridView.TabIndex = 4;
+			// 
+			// iconSearch
+			// 
+			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+			this.iconSearch.FlatAppearance.BorderSize = 0;
+			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconSearch.IconSize = 30;
+			this.iconSearch.Location = new System.Drawing.Point(283, 27);
+			this.iconSearch.Name = "iconSearch";
+			this.iconSearch.Size = new System.Drawing.Size(35, 30);
+			this.iconSearch.TabIndex = 0;
+			this.iconSearch.TabStop = false;
+			this.iconSearch.UseVisualStyleBackColor = false;
+			this.iconSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// bScrollBar
 			// 
@@ -569,7 +604,7 @@ namespace Main.Pages
 			this.cbNumberOfTrainingSemester.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbNumberOfTrainingSemester.DisabledColor = System.Drawing.Color.Gray;
 			this.cbNumberOfTrainingSemester.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbNumberOfTrainingSemester.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbNumberOfTrainingSemester.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbNumberOfTrainingSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbNumberOfTrainingSemester.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbNumberOfTrainingSemester.FillDropDown = false;
@@ -586,9 +621,9 @@ namespace Main.Pages
 			this.cbNumberOfTrainingSemester.ItemForeColor = System.Drawing.Color.Black;
 			this.cbNumberOfTrainingSemester.ItemHeight = 30;
 			this.cbNumberOfTrainingSemester.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbNumberOfTrainingSemester.Location = new System.Drawing.Point(25, 112);
+			this.cbNumberOfTrainingSemester.Location = new System.Drawing.Point(27, 115);
 			this.cbNumberOfTrainingSemester.Name = "cbNumberOfTrainingSemester";
-			this.cbNumberOfTrainingSemester.Size = new System.Drawing.Size(408, 36);
+			this.cbNumberOfTrainingSemester.Size = new System.Drawing.Size(400, 36);
 			this.cbNumberOfTrainingSemester.TabIndex = 38;
 			this.cbNumberOfTrainingSemester.Text = null;
 			// 
@@ -603,7 +638,7 @@ namespace Main.Pages
 			this.nudAdmissionYear.FocusedState.Parent = this.nudAdmissionYear;
 			this.nudAdmissionYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudAdmissionYear.ForeColor = System.Drawing.Color.Black;
-			this.nudAdmissionYear.Location = new System.Drawing.Point(25, 38);
+			this.nudAdmissionYear.Location = new System.Drawing.Point(27, 41);
 			this.nudAdmissionYear.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.nudAdmissionYear.Maximum = new decimal(new int[] {
             3000,
@@ -617,7 +652,7 @@ namespace Main.Pages
             0});
 			this.nudAdmissionYear.Name = "nudAdmissionYear";
 			this.nudAdmissionYear.ShadowDecoration.Parent = this.nudAdmissionYear;
-			this.nudAdmissionYear.Size = new System.Drawing.Size(408, 36);
+			this.nudAdmissionYear.Size = new System.Drawing.Size(400, 35);
 			this.nudAdmissionYear.TabIndex = 0;
 			this.nudAdmissionYear.UpDownButtonFillColor = System.Drawing.Color.DarkGray;
 			this.nudAdmissionYear.Value = new decimal(new int[] {
@@ -630,7 +665,7 @@ namespace Main.Pages
 			// 
 			this.lbSoHKDaoTao.AutoSize = true;
 			this.lbSoHKDaoTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbSoHKDaoTao.Location = new System.Drawing.Point(32, 88);
+			this.lbSoHKDaoTao.Location = new System.Drawing.Point(34, 91);
 			this.lbSoHKDaoTao.Name = "lbSoHKDaoTao";
 			this.lbSoHKDaoTao.Size = new System.Drawing.Size(136, 20);
 			this.lbSoHKDaoTao.TabIndex = 2;
@@ -640,7 +675,7 @@ namespace Main.Pages
 			// 
 			this.lbNamNhapHoc.AutoSize = true;
 			this.lbNamNhapHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbNamNhapHoc.Location = new System.Drawing.Point(32, 14);
+			this.lbNamNhapHoc.Location = new System.Drawing.Point(34, 17);
 			this.lbNamNhapHoc.Name = "lbNamNhapHoc";
 			this.lbNamNhapHoc.Size = new System.Drawing.Size(116, 20);
 			this.lbNamNhapHoc.TabIndex = 0;
@@ -662,7 +697,7 @@ namespace Main.Pages
 			this.pnlInfo2.Controls.Add(this.cbCourseID);
 			this.pnlInfo2.Controls.Add(this.lbKhoa);
 			this.pnlInfo2.Controls.Add(this.lbTenKhoa);
-			this.pnlInfo2.Location = new System.Drawing.Point(523, 23);
+			this.pnlInfo2.Location = new System.Drawing.Point(521, 23);
 			this.pnlInfo2.Name = "pnlInfo2";
 			this.pnlInfo2.Size = new System.Drawing.Size(454, 168);
 			this.pnlInfo2.TabIndex = 33;
@@ -675,7 +710,7 @@ namespace Main.Pages
 			this.cbFaculty.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbFaculty.DisabledColor = System.Drawing.Color.Gray;
 			this.cbFaculty.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbFaculty.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbFaculty.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbFaculty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbFaculty.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbFaculty.FillDropDown = false;
@@ -692,9 +727,9 @@ namespace Main.Pages
 			this.cbFaculty.ItemForeColor = System.Drawing.Color.Black;
 			this.cbFaculty.ItemHeight = 30;
 			this.cbFaculty.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbFaculty.Location = new System.Drawing.Point(25, 112);
+			this.cbFaculty.Location = new System.Drawing.Point(27, 115);
 			this.cbFaculty.Name = "cbFaculty";
-			this.cbFaculty.Size = new System.Drawing.Size(408, 36);
+			this.cbFaculty.Size = new System.Drawing.Size(400, 36);
 			this.cbFaculty.TabIndex = 40;
 			this.cbFaculty.Text = null;
 			this.cbFaculty.SelectedIndexChanged += new System.EventHandler(this.cbFaculty_SelectedIndexChanged);
@@ -707,7 +742,7 @@ namespace Main.Pages
 			this.cbCourseID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbCourseID.DisabledColor = System.Drawing.Color.Gray;
 			this.cbCourseID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbCourseID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbCourseID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbCourseID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbCourseID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbCourseID.FillDropDown = false;
@@ -724,9 +759,9 @@ namespace Main.Pages
 			this.cbCourseID.ItemForeColor = System.Drawing.Color.Black;
 			this.cbCourseID.ItemHeight = 30;
 			this.cbCourseID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbCourseID.Location = new System.Drawing.Point(25, 38);
+			this.cbCourseID.Location = new System.Drawing.Point(27, 41);
 			this.cbCourseID.Name = "cbCourseID";
-			this.cbCourseID.Size = new System.Drawing.Size(408, 36);
+			this.cbCourseID.Size = new System.Drawing.Size(400, 36);
 			this.cbCourseID.TabIndex = 39;
 			this.cbCourseID.Text = null;
 			// 
@@ -734,7 +769,7 @@ namespace Main.Pages
 			// 
 			this.lbKhoa.AutoSize = true;
 			this.lbKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbKhoa.Location = new System.Drawing.Point(32, 14);
+			this.lbKhoa.Location = new System.Drawing.Point(34, 17);
 			this.lbKhoa.Name = "lbKhoa";
 			this.lbKhoa.Size = new System.Drawing.Size(50, 20);
 			this.lbKhoa.TabIndex = 2;
@@ -744,7 +779,7 @@ namespace Main.Pages
 			// 
 			this.lbTenKhoa.AutoSize = true;
 			this.lbTenKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTenKhoa.Location = new System.Drawing.Point(32, 88);
+			this.lbTenKhoa.Location = new System.Drawing.Point(34, 91);
 			this.lbTenKhoa.Name = "lbTenKhoa";
 			this.lbTenKhoa.Size = new System.Drawing.Size(50, 20);
 			this.lbTenKhoa.TabIndex = 0;
@@ -754,7 +789,7 @@ namespace Main.Pages
 			// 
 			this.pnl2Shadow.BackColor = System.Drawing.Color.Silver;
 			this.pnl2Shadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnl2Shadow.Location = new System.Drawing.Point(526, 26);
+			this.pnl2Shadow.Location = new System.Drawing.Point(524, 26);
 			this.pnl2Shadow.Name = "pnl2Shadow";
 			this.pnl2Shadow.Size = new System.Drawing.Size(454, 168);
 			this.pnl2Shadow.TabIndex = 36;
@@ -788,14 +823,14 @@ namespace Main.Pages
 			this.tbDescription.ForeColor = System.Drawing.Color.Black;
 			this.tbDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbDescription.HoverState.Parent = this.tbDescription;
-			this.tbDescription.Location = new System.Drawing.Point(25, 112);
+			this.tbDescription.Location = new System.Drawing.Point(27, 116);
 			this.tbDescription.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbDescription.Name = "tbDescription";
 			this.tbDescription.PasswordChar = '\0';
 			this.tbDescription.PlaceholderText = "";
 			this.tbDescription.SelectedText = "";
 			this.tbDescription.ShadowDecoration.Parent = this.tbDescription;
-			this.tbDescription.Size = new System.Drawing.Size(408, 36);
+			this.tbDescription.Size = new System.Drawing.Size(400, 35);
 			this.tbDescription.TabIndex = 4;
 			// 
 			// tbClassID
@@ -815,21 +850,21 @@ namespace Main.Pages
 			this.tbClassID.ForeColor = System.Drawing.Color.Black;
 			this.tbClassID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbClassID.HoverState.Parent = this.tbClassID;
-			this.tbClassID.Location = new System.Drawing.Point(25, 38);
+			this.tbClassID.Location = new System.Drawing.Point(27, 42);
 			this.tbClassID.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbClassID.Name = "tbClassID";
 			this.tbClassID.PasswordChar = '\0';
 			this.tbClassID.PlaceholderText = "";
 			this.tbClassID.SelectedText = "";
 			this.tbClassID.ShadowDecoration.Parent = this.tbClassID;
-			this.tbClassID.Size = new System.Drawing.Size(408, 36);
+			this.tbClassID.Size = new System.Drawing.Size(400, 35);
 			this.tbClassID.TabIndex = 3;
 			// 
 			// lbMoTa
 			// 
 			this.lbMoTa.AutoSize = true;
 			this.lbMoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMoTa.Location = new System.Drawing.Point(32, 88);
+			this.lbMoTa.Location = new System.Drawing.Point(34, 92);
 			this.lbMoTa.Name = "lbMoTa";
 			this.lbMoTa.Size = new System.Drawing.Size(53, 20);
 			this.lbMoTa.TabIndex = 2;
@@ -839,7 +874,7 @@ namespace Main.Pages
 			// 
 			this.lbMaLop.AutoSize = true;
 			this.lbMaLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMaLop.Location = new System.Drawing.Point(32, 14);
+			this.lbMaLop.Location = new System.Drawing.Point(34, 18);
 			this.lbMaLop.Name = "lbMaLop";
 			this.lbMaLop.Size = new System.Drawing.Size(60, 20);
 			this.lbMaLop.TabIndex = 0;
@@ -928,5 +963,6 @@ namespace Main.Pages
 		private Bunifu.UI.WinForms.BunifuDropdown cbFaculty;
 		private Bunifu.UI.WinForms.BunifuDropdown cbCourseID;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
-	}
+        private FontAwesome.Sharp.IconButton iconSearch;
+    }
 }

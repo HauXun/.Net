@@ -589,6 +589,11 @@ namespace Main.Pages
 			catch { }
 		}
 
+		private void iconTitle_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
+		}
+
 		#endregion
 	}
 }

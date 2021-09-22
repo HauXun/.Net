@@ -30,16 +30,16 @@ namespace Main.Pages
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageUser));
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.btnAdd = new FontAwesome.Sharp.IconButton();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
@@ -71,6 +71,8 @@ namespace Main.Pages
 			this.pnl2Shadow = new System.Windows.Forms.Panel();
 			this.pnl3Shadow = new System.Windows.Forms.Panel();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
+			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.btnResetPassword = new FontAwesome.Sharp.IconButton();
 			this.cbFilter = new Bunifu.UI.WinForms.BunifuDropdown();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
@@ -93,7 +95,6 @@ namespace Main.Pages
 			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.pnlControls.SuspendLayout();
 			this.pnlInfo3.SuspendLayout();
 			this.pnlInfo2.SuspendLayout();
@@ -120,6 +121,7 @@ namespace Main.Pages
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnAdd.FlatAppearance.BorderSize = 0;
 			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -139,6 +141,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnAdd, "Thêm người dùng mới");
 			this.btnAdd.UseVisualStyleBackColor = false;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			this.btnAdd.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// iconTitle
 			// 
@@ -151,12 +154,13 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 23);
+			this.iconTitle.Location = new System.Drawing.Point(45, 21);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlControls
 			// 
@@ -205,14 +209,14 @@ namespace Main.Pages
 			this.tbPhone.ForeColor = System.Drawing.Color.Black;
 			this.tbPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbPhone.HoverState.Parent = this.tbPhone;
-			this.tbPhone.Location = new System.Drawing.Point(25, 38);
+			this.tbPhone.Location = new System.Drawing.Point(29, 43);
 			this.tbPhone.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbPhone.Name = "tbPhone";
 			this.tbPhone.PasswordChar = '\0';
 			this.tbPhone.PlaceholderText = "";
 			this.tbPhone.SelectedText = "";
 			this.tbPhone.ShadowDecoration.Parent = this.tbPhone;
-			this.tbPhone.Size = new System.Drawing.Size(408, 36);
+			this.tbPhone.Size = new System.Drawing.Size(400, 35);
 			this.tbPhone.TabIndex = 5;
 			// 
 			// tbAddress
@@ -232,14 +236,14 @@ namespace Main.Pages
 			this.tbAddress.ForeColor = System.Drawing.Color.Black;
 			this.tbAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbAddress.HoverState.Parent = this.tbAddress;
-			this.tbAddress.Location = new System.Drawing.Point(27, 186);
+			this.tbAddress.Location = new System.Drawing.Point(31, 191);
 			this.tbAddress.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbAddress.Name = "tbAddress";
 			this.tbAddress.PasswordChar = '\0';
 			this.tbAddress.PlaceholderText = "";
 			this.tbAddress.SelectedText = "";
 			this.tbAddress.ShadowDecoration.Parent = this.tbAddress;
-			this.tbAddress.Size = new System.Drawing.Size(408, 36);
+			this.tbAddress.Size = new System.Drawing.Size(400, 35);
 			this.tbAddress.TabIndex = 4;
 			// 
 			// dtpDob
@@ -252,12 +256,12 @@ namespace Main.Pages
 			this.dtpDob.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.dtpDob.HoverState.Parent = this.dtpDob;
-			this.dtpDob.Location = new System.Drawing.Point(25, 112);
+			this.dtpDob.Location = new System.Drawing.Point(29, 117);
 			this.dtpDob.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
 			this.dtpDob.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
 			this.dtpDob.Name = "dtpDob";
 			this.dtpDob.ShadowDecoration.Parent = this.dtpDob;
-			this.dtpDob.Size = new System.Drawing.Size(410, 36);
+			this.dtpDob.Size = new System.Drawing.Size(400, 35);
 			this.dtpDob.TabIndex = 1;
 			this.dtpDob.Value = new System.DateTime(2021, 9, 6, 0, 2, 13, 728);
 			// 
@@ -265,7 +269,7 @@ namespace Main.Pages
 			// 
 			this.lbDiaChi.AutoSize = true;
 			this.lbDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbDiaChi.Location = new System.Drawing.Point(32, 162);
+			this.lbDiaChi.Location = new System.Drawing.Point(36, 167);
 			this.lbDiaChi.Name = "lbDiaChi";
 			this.lbDiaChi.Size = new System.Drawing.Size(61, 20);
 			this.lbDiaChi.TabIndex = 0;
@@ -275,7 +279,7 @@ namespace Main.Pages
 			// 
 			this.lbNgaySinh.AutoSize = true;
 			this.lbNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbNgaySinh.Location = new System.Drawing.Point(32, 88);
+			this.lbNgaySinh.Location = new System.Drawing.Point(36, 93);
 			this.lbNgaySinh.Name = "lbNgaySinh";
 			this.lbNgaySinh.Size = new System.Drawing.Size(82, 20);
 			this.lbNgaySinh.TabIndex = 0;
@@ -285,7 +289,7 @@ namespace Main.Pages
 			// 
 			this.lbDienThoai.AutoSize = true;
 			this.lbDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbDienThoai.Location = new System.Drawing.Point(32, 14);
+			this.lbDienThoai.Location = new System.Drawing.Point(36, 19);
 			this.lbDienThoai.Name = "lbDienThoai";
 			this.lbDienThoai.Size = new System.Drawing.Size(85, 20);
 			this.lbDienThoai.TabIndex = 0;
@@ -302,7 +306,7 @@ namespace Main.Pages
 			this.pnlInfo2.Controls.Add(this.lbEmail);
 			this.pnlInfo2.Controls.Add(this.lbHoVaTen);
 			this.pnlInfo2.Controls.Add(this.lbTaiKhoan);
-			this.pnlInfo2.Location = new System.Drawing.Point(519, 23);
+			this.pnlInfo2.Location = new System.Drawing.Point(518, 23);
 			this.pnlInfo2.Name = "pnlInfo2";
 			this.pnlInfo2.Size = new System.Drawing.Size(460, 245);
 			this.pnlInfo2.TabIndex = 9;
@@ -324,14 +328,14 @@ namespace Main.Pages
 			this.tbEmail.ForeColor = System.Drawing.Color.Black;
 			this.tbEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbEmail.HoverState.Parent = this.tbEmail;
-			this.tbEmail.Location = new System.Drawing.Point(25, 186);
+			this.tbEmail.Location = new System.Drawing.Point(29, 191);
 			this.tbEmail.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbEmail.Name = "tbEmail";
 			this.tbEmail.PasswordChar = '\0';
 			this.tbEmail.PlaceholderText = "";
 			this.tbEmail.SelectedText = "";
 			this.tbEmail.ShadowDecoration.Parent = this.tbEmail;
-			this.tbEmail.Size = new System.Drawing.Size(408, 36);
+			this.tbEmail.Size = new System.Drawing.Size(400, 35);
 			this.tbEmail.TabIndex = 6;
 			// 
 			// tbFullName
@@ -351,14 +355,14 @@ namespace Main.Pages
 			this.tbFullName.ForeColor = System.Drawing.Color.Black;
 			this.tbFullName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbFullName.HoverState.Parent = this.tbFullName;
-			this.tbFullName.Location = new System.Drawing.Point(25, 112);
+			this.tbFullName.Location = new System.Drawing.Point(29, 117);
 			this.tbFullName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbFullName.Name = "tbFullName";
 			this.tbFullName.PasswordChar = '\0';
 			this.tbFullName.PlaceholderText = "";
 			this.tbFullName.SelectedText = "";
 			this.tbFullName.ShadowDecoration.Parent = this.tbFullName;
-			this.tbFullName.Size = new System.Drawing.Size(410, 36);
+			this.tbFullName.Size = new System.Drawing.Size(400, 35);
 			this.tbFullName.TabIndex = 5;
 			// 
 			// tbAccount
@@ -378,21 +382,21 @@ namespace Main.Pages
 			this.tbAccount.ForeColor = System.Drawing.Color.Black;
 			this.tbAccount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbAccount.HoverState.Parent = this.tbAccount;
-			this.tbAccount.Location = new System.Drawing.Point(25, 38);
+			this.tbAccount.Location = new System.Drawing.Point(29, 43);
 			this.tbAccount.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbAccount.Name = "tbAccount";
 			this.tbAccount.PasswordChar = '\0';
 			this.tbAccount.PlaceholderText = "";
 			this.tbAccount.SelectedText = "";
 			this.tbAccount.ShadowDecoration.Parent = this.tbAccount;
-			this.tbAccount.Size = new System.Drawing.Size(410, 36);
+			this.tbAccount.Size = new System.Drawing.Size(400, 35);
 			this.tbAccount.TabIndex = 4;
 			// 
 			// lbEmail
 			// 
 			this.lbEmail.AutoSize = true;
 			this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbEmail.Location = new System.Drawing.Point(32, 162);
+			this.lbEmail.Location = new System.Drawing.Point(36, 167);
 			this.lbEmail.Name = "lbEmail";
 			this.lbEmail.Size = new System.Drawing.Size(57, 20);
 			this.lbEmail.TabIndex = 0;
@@ -402,7 +406,7 @@ namespace Main.Pages
 			// 
 			this.lbHoVaTen.AutoSize = true;
 			this.lbHoVaTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbHoVaTen.Location = new System.Drawing.Point(32, 88);
+			this.lbHoVaTen.Location = new System.Drawing.Point(36, 93);
 			this.lbHoVaTen.Name = "lbHoVaTen";
 			this.lbHoVaTen.Size = new System.Drawing.Size(81, 20);
 			this.lbHoVaTen.TabIndex = 0;
@@ -412,7 +416,7 @@ namespace Main.Pages
 			// 
 			this.lbTaiKhoan.AutoSize = true;
 			this.lbTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTaiKhoan.Location = new System.Drawing.Point(32, 14);
+			this.lbTaiKhoan.Location = new System.Drawing.Point(36, 19);
 			this.lbTaiKhoan.Name = "lbTaiKhoan";
 			this.lbTaiKhoan.Size = new System.Drawing.Size(82, 20);
 			this.lbTaiKhoan.TabIndex = 0;
@@ -444,7 +448,7 @@ namespace Main.Pages
 			this.cbRole.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbRole.DisabledColor = System.Drawing.Color.Gray;
 			this.cbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbRole.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbRole.FillDropDown = false;
@@ -461,9 +465,9 @@ namespace Main.Pages
 			this.cbRole.ItemForeColor = System.Drawing.Color.Black;
 			this.cbRole.ItemHeight = 30;
 			this.cbRole.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbRole.Location = new System.Drawing.Point(247, 38);
+			this.cbRole.Location = new System.Drawing.Point(248, 42);
 			this.cbRole.Name = "cbRole";
-			this.cbRole.Size = new System.Drawing.Size(188, 36);
+			this.cbRole.Size = new System.Drawing.Size(180, 36);
 			this.cbRole.TabIndex = 49;
 			this.cbRole.Text = null;
 			this.cbRole.SelectedIndexChanged += new System.EventHandler(this.cbRole_SelectedIndexChanged);
@@ -476,7 +480,7 @@ namespace Main.Pages
 			this.cbClassID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbClassID.DisabledColor = System.Drawing.Color.Gray;
 			this.cbClassID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbClassID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbClassID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbClassID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbClassID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbClassID.FillDropDown = false;
@@ -493,9 +497,9 @@ namespace Main.Pages
 			this.cbClassID.ItemForeColor = System.Drawing.Color.Black;
 			this.cbClassID.ItemHeight = 30;
 			this.cbClassID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbClassID.Location = new System.Drawing.Point(25, 186);
+			this.cbClassID.Location = new System.Drawing.Point(29, 191);
 			this.cbClassID.Name = "cbClassID";
-			this.cbClassID.Size = new System.Drawing.Size(410, 36);
+			this.cbClassID.Size = new System.Drawing.Size(400, 36);
 			this.cbClassID.TabIndex = 48;
 			this.cbClassID.Text = null;
 			// 
@@ -507,7 +511,7 @@ namespace Main.Pages
 			this.cbCourseID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbCourseID.DisabledColor = System.Drawing.Color.Gray;
 			this.cbCourseID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbCourseID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbCourseID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbCourseID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbCourseID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbCourseID.FillDropDown = false;
@@ -524,9 +528,9 @@ namespace Main.Pages
 			this.cbCourseID.ItemForeColor = System.Drawing.Color.Black;
 			this.cbCourseID.ItemHeight = 30;
 			this.cbCourseID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbCourseID.Location = new System.Drawing.Point(25, 112);
+			this.cbCourseID.Location = new System.Drawing.Point(29, 117);
 			this.cbCourseID.Name = "cbCourseID";
-			this.cbCourseID.Size = new System.Drawing.Size(410, 36);
+			this.cbCourseID.Size = new System.Drawing.Size(400, 36);
 			this.cbCourseID.TabIndex = 47;
 			this.cbCourseID.Text = null;
 			this.cbCourseID.SelectedIndexChanged += new System.EventHandler(this.cbCourseID_SelectedIndexChanged);
@@ -548,7 +552,7 @@ namespace Main.Pages
 			this.tbUserID.ForeColor = System.Drawing.Color.Black;
 			this.tbUserID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbUserID.HoverState.Parent = this.tbUserID;
-			this.tbUserID.Location = new System.Drawing.Point(25, 38);
+			this.tbUserID.Location = new System.Drawing.Point(29, 43);
 			this.tbUserID.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbUserID.Name = "tbUserID";
 			this.tbUserID.PasswordChar = '\0';
@@ -556,14 +560,14 @@ namespace Main.Pages
 			this.tbUserID.ReadOnly = true;
 			this.tbUserID.SelectedText = "";
 			this.tbUserID.ShadowDecoration.Parent = this.tbUserID;
-			this.tbUserID.Size = new System.Drawing.Size(186, 36);
+			this.tbUserID.Size = new System.Drawing.Size(180, 35);
 			this.tbUserID.TabIndex = 4;
 			// 
 			// lbKhoa
 			// 
 			this.lbKhoa.AutoSize = true;
 			this.lbKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbKhoa.Location = new System.Drawing.Point(32, 86);
+			this.lbKhoa.Location = new System.Drawing.Point(36, 91);
 			this.lbKhoa.Name = "lbKhoa";
 			this.lbKhoa.Size = new System.Drawing.Size(50, 20);
 			this.lbKhoa.TabIndex = 0;
@@ -573,7 +577,7 @@ namespace Main.Pages
 			// 
 			this.lbLop.AutoSize = true;
 			this.lbLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbLop.Location = new System.Drawing.Point(32, 160);
+			this.lbLop.Location = new System.Drawing.Point(36, 165);
 			this.lbLop.Name = "lbLop";
 			this.lbLop.Size = new System.Drawing.Size(40, 20);
 			this.lbLop.TabIndex = 0;
@@ -583,7 +587,7 @@ namespace Main.Pages
 			// 
 			this.lbChucVu.AutoSize = true;
 			this.lbChucVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbChucVu.Location = new System.Drawing.Point(255, 14);
+			this.lbChucVu.Location = new System.Drawing.Point(256, 18);
 			this.lbChucVu.Name = "lbChucVu";
 			this.lbChucVu.Size = new System.Drawing.Size(70, 20);
 			this.lbChucVu.TabIndex = 0;
@@ -593,7 +597,7 @@ namespace Main.Pages
 			// 
 			this.lbMaNguoiDung.AutoSize = true;
 			this.lbMaNguoiDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMaNguoiDung.Location = new System.Drawing.Point(32, 12);
+			this.lbMaNguoiDung.Location = new System.Drawing.Point(36, 17);
 			this.lbMaNguoiDung.Name = "lbMaNguoiDung";
 			this.lbMaNguoiDung.Size = new System.Drawing.Size(118, 20);
 			this.lbMaNguoiDung.TabIndex = 0;
@@ -616,7 +620,7 @@ namespace Main.Pages
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnl2Shadow.BackColor = System.Drawing.Color.Silver;
 			this.pnl2Shadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnl2Shadow.Location = new System.Drawing.Point(522, 26);
+			this.pnl2Shadow.Location = new System.Drawing.Point(521, 26);
 			this.pnl2Shadow.Name = "pnl2Shadow";
 			this.pnl2Shadow.Size = new System.Drawing.Size(460, 245);
 			this.pnl2Shadow.TabIndex = 12;
@@ -635,6 +639,7 @@ namespace Main.Pages
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.iconSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.btnResetPassword);
 			this.pnlDataGridView.Controls.Add(this.cbFilter);
@@ -651,10 +656,85 @@ namespace Main.Pages
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 441);
 			this.pnlDataGridView.TabIndex = 40;
 			// 
+			// iconSearch
+			// 
+			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+			this.iconSearch.FlatAppearance.BorderSize = 0;
+			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconSearch.IconSize = 30;
+			this.iconSearch.Location = new System.Drawing.Point(425, 27);
+			this.iconSearch.Name = "iconSearch";
+			this.iconSearch.Size = new System.Drawing.Size(35, 30);
+			this.iconSearch.TabIndex = 51;
+			this.iconSearch.TabStop = false;
+			this.iconSearch.UseVisualStyleBackColor = false;
+			this.iconSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
+			// 
+			// bScrollBar
+			// 
+			this.bScrollBar.AllowCursorChanges = true;
+			this.bScrollBar.AllowHomeEndKeysDetection = false;
+			this.bScrollBar.AllowIncrementalClickMoves = true;
+			this.bScrollBar.AllowMouseDownEffects = false;
+			this.bScrollBar.AllowMouseHoverEffects = false;
+			this.bScrollBar.AllowScrollingAnimations = true;
+			this.bScrollBar.AllowScrollKeysDetection = true;
+			this.bScrollBar.AllowScrollOptionsMenu = true;
+			this.bScrollBar.AllowShrinkingOnFocusLost = false;
+			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.bScrollBar.AutoScroll = true;
+			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
+			this.bScrollBar.BindingContainer = null;
+			this.bScrollBar.BorderRadius = 2;
+			this.bScrollBar.BorderThickness = 1;
+			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
+			this.bScrollBar.DrawThickBorder = false;
+			this.bScrollBar.DurationBeforeShrink = 2000;
+			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.LargeChange = 10;
+			this.bScrollBar.Location = new System.Drawing.Point(1492, 119);
+			this.bScrollBar.Maximum = 100;
+			this.bScrollBar.Minimum = 0;
+			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
+			this.bScrollBar.MinimumThumbLength = 18;
+			this.bScrollBar.Name = "bScrollBar";
+			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
+			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ShrinkSizeLimit = 3;
+			this.bScrollBar.Size = new System.Drawing.Size(31, 311);
+			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
+			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
+			this.bScrollBar.SmallChange = 1;
+			this.bScrollBar.TabIndex = 50;
+			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
+			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
+			this.bScrollBar.ThumbLength = 30;
+			this.bScrollBar.ThumbMargin = 1;
+			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
+			this.bScrollBar.Value = 100;
+			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			// 
 			// btnResetPassword
 			// 
-			this.btnResetPassword.BackColor = System.Drawing.Color.DimGray;
+			this.btnResetPassword.BackColor = System.Drawing.Color.Gainsboro;
 			this.btnResetPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnResetPassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnResetPassword.FlatAppearance.BorderSize = 0;
 			this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -673,6 +753,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnResetPassword, "Đặt lại mật khẩu cho người dùng này");
 			this.btnResetPassword.UseVisualStyleBackColor = false;
 			this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+			this.btnResetPassword.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// cbFilter
 			// 
@@ -682,7 +763,7 @@ namespace Main.Pages
 			this.cbFilter.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbFilter.DisabledColor = System.Drawing.Color.Gray;
 			this.cbFilter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbFilter.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbFilter.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbFilter.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbFilter.FillDropDown = false;
@@ -741,22 +822,22 @@ namespace Main.Pages
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AllowUserToDeleteRows = false;
 			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
 			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			this.aDgvdata.ColumnHeadersHeight = 40;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -770,14 +851,14 @@ namespace Main.Pages
             this.Address,
             this.Birthday});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle18;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(38, 79);
 			this.aDgvdata.Name = "aDgvdata";
@@ -798,8 +879,8 @@ namespace Main.Pages
 			// UserRole
 			// 
 			this.UserRole.DataPropertyName = "UserRole";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.UserRole.DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserRole.DefaultCellStyle = dataGridViewCellStyle12;
 			this.UserRole.FillWeight = 40F;
 			this.UserRole.HeaderText = "Vai trò";
 			this.UserRole.MinimumWidth = 22;
@@ -820,8 +901,8 @@ namespace Main.Pages
 			// ClassID
 			// 
 			this.ClassID.DataPropertyName = "ClassID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ClassID.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ClassID.DefaultCellStyle = dataGridViewCellStyle13;
 			this.ClassID.FillWeight = 50F;
 			this.ClassID.HeaderText = "Lớp (user)";
 			this.ClassID.MinimumWidth = 22;
@@ -842,8 +923,8 @@ namespace Main.Pages
 			// UserID
 			// 
 			this.UserID.DataPropertyName = "UserID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.UserID.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserID.DefaultCellStyle = dataGridViewCellStyle14;
 			this.UserID.FillWeight = 50F;
 			this.UserID.HeaderText = "Mã định danh";
 			this.UserID.MinimumWidth = 22;
@@ -854,8 +935,8 @@ namespace Main.Pages
 			// PhoneNumber
 			// 
 			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.PhoneNumber.DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.PhoneNumber.DefaultCellStyle = dataGridViewCellStyle15;
 			this.PhoneNumber.FillWeight = 50F;
 			this.PhoneNumber.HeaderText = "Điện thoại";
 			this.PhoneNumber.MinimumWidth = 22;
@@ -876,8 +957,8 @@ namespace Main.Pages
 			// Address
 			// 
 			this.Address.DataPropertyName = "Address";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Address.DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Address.DefaultCellStyle = dataGridViewCellStyle16;
 			this.Address.FillWeight = 50F;
 			this.Address.HeaderText = "Địa chỉ";
 			this.Address.MinimumWidth = 22;
@@ -888,10 +969,10 @@ namespace Main.Pages
 			// Birthday
 			// 
 			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle8.Format = "d";
-			dataGridViewCellStyle8.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle17.Format = "d";
+			dataGridViewCellStyle17.NullValue = "dd/MM/yyyy";
+			this.Birthday.DefaultCellStyle = dataGridViewCellStyle17;
 			this.Birthday.FillWeight = 60F;
 			this.Birthday.HeaderText = "Ngày sinh";
 			this.Birthday.MinimumWidth = 22;
@@ -921,11 +1002,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
 			this.btnClearFilter.UseVisualStyleBackColor = false;
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnEdit
 			// 
 			this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnEdit.FlatAppearance.BorderSize = 0;
 			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -946,11 +1029,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnEdit, "Điều chỉnh thông tin người dùng");
 			this.btnEdit.UseVisualStyleBackColor = false;
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			this.btnEdit.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnDelete
 			// 
 			this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
 			this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnDelete.FlatAppearance.BorderSize = 0;
 			this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -970,11 +1055,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnDelete, "Xóa người dùng");
 			this.btnDelete.UseVisualStyleBackColor = false;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			this.btnDelete.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSave
 			// 
 			this.btnSave.BackColor = System.Drawing.Color.Green;
 			this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnSave.FlatAppearance.BorderSize = 0;
 			this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -996,11 +1083,13 @@ namespace Main.Pages
 			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Visible = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			this.btnSave.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnCancle
 			// 
 			this.btnCancle.BackColor = System.Drawing.Color.DarkGray;
 			this.btnCancle.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnCancle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnCancle.FlatAppearance.BorderSize = 0;
 			this.btnCancle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -1021,6 +1110,7 @@ namespace Main.Pages
 			this.btnCancle.UseVisualStyleBackColor = false;
 			this.btnCancle.Visible = false;
 			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+			this.btnCancle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSearch
 			// 
@@ -1046,6 +1136,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
 			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			this.btnSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlDataGridViewShadow
 			// 
@@ -1068,60 +1159,6 @@ namespace Main.Pages
 			this.toolTip.ReshowDelay = 0;
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
-			// 
-			// bScrollBar
-			// 
-			this.bScrollBar.AllowCursorChanges = true;
-			this.bScrollBar.AllowHomeEndKeysDetection = false;
-			this.bScrollBar.AllowIncrementalClickMoves = true;
-			this.bScrollBar.AllowMouseDownEffects = false;
-			this.bScrollBar.AllowMouseHoverEffects = false;
-			this.bScrollBar.AllowScrollingAnimations = true;
-			this.bScrollBar.AllowScrollKeysDetection = true;
-			this.bScrollBar.AllowScrollOptionsMenu = true;
-			this.bScrollBar.AllowShrinkingOnFocusLost = false;
-			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.bScrollBar.AutoScroll = true;
-			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
-			this.bScrollBar.BindingContainer = null;
-			this.bScrollBar.BorderRadius = 2;
-			this.bScrollBar.BorderThickness = 1;
-			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
-			this.bScrollBar.DrawThickBorder = false;
-			this.bScrollBar.DurationBeforeShrink = 2000;
-			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1492, 119);
-			this.bScrollBar.Maximum = 100;
-			this.bScrollBar.Minimum = 0;
-			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
-			this.bScrollBar.MinimumThumbLength = 18;
-			this.bScrollBar.Name = "bScrollBar";
-			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
-			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 311);
-			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
-			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
-			this.bScrollBar.SmallChange = 1;
-			this.bScrollBar.TabIndex = 50;
-			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
-			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
-			this.bScrollBar.ThumbLength = 30;
-			this.bScrollBar.ThumbMargin = 1;
-			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
-			this.bScrollBar.Value = 100;
-			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
 			// 
 			// ManageUser
 			// 
@@ -1207,5 +1244,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
 		private System.Windows.Forms.ToolTip toolTip;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
-	}
+        private FontAwesome.Sharp.IconButton iconSearch;
+    }
 }

@@ -678,8 +678,6 @@ namespace Main.Pages
 				AccountBLL.Instance.SearchAccount(aDgvdata, "", cbFilter.SelectedValue.ToString());
 		}
 
-		#endregion
-
 		private void aDgvdata_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
 		{
 			try
@@ -711,5 +709,12 @@ namespace Main.Pages
 			}
 			catch { }
 		}
+
+		private void iconTitle_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
+		}
+
+		#endregion
 	}
 }

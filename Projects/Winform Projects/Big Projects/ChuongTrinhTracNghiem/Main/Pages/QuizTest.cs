@@ -100,15 +100,7 @@ namespace Main.Pages
 
 		private void ShowDetailQuestion(object sender, EventArgs e)
 		{
-			int questionID = ((sender as Button).Tag as Question).QuestionID;
-			lbNumberQuestion.Text = ((sender as Button).Tag as Question).QuestionIdx;
 
-			SaveCurrentSelected();
-			ClearChecked();
-			selectedIndex = (sender as Button).Name;
-			ShowQuestion(questionID);
-			NavigationButton();
-			LoadPrevSelectedOption();
 		}
 
 		private void SaveCurrentSelected()
@@ -365,32 +357,6 @@ namespace Main.Pages
 			lLuncheck.LinkBehavior = LinkBehavior.NeverUnderline;
 		}
 
-		private void btnFlags_Click(object sender, EventArgs e)
-		{
-			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCount)
-			{
-				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx).ToString())).FirstOrDefault();
-
-				if (!button.CausesValidation)
-				{
-					button.Image = new Bitmap(Properties.Resources.flags, new Size(15, 15));
-					button.TextImageRelation = TextImageRelation.ImageAboveText;
-					button.BackColor = Color.MistyRose;
-					button.Font = new Font("Arial", 7, FontStyle.Regular);
-					button.FlatStyle = FlatStyle.Flat;
-					button.FlatAppearance.BorderSize = 2;
-					button.FlatAppearance.BorderColor = Color.Red;
-
-					button.CausesValidation = true;
-				}
-				else
-				{
-					button.CausesValidation = false;
-					SaveCurrentSelected();
-				}
-			}
-		}
-
 		private void btnReset_Click(object sender, EventArgs e)
 		{
 			if (MsgBox.ShowMessage("Bạn có chắn chắn muốn làm lại bài thi không? Đáp án trước đó sẽ được hủy!", "Amazing Quiz Application",
@@ -402,16 +368,11 @@ namespace Main.Pages
 			}
 		}
 
+		private void btnPreviousQuestion_Enter(object sender, EventArgs e)
+		{
+			lbNoiDungCauHoi.Focus();
+		}
+
 		#endregion
-
-		private void btnFlags_MouseEnter(object sender, EventArgs e)
-		{
-			btnFlags.BackColor = Color.DarkGray;
-		}
-
-		private void btnFlags_MouseLeave(object sender, EventArgs e)
-		{
-			btnFlags.BackColor = Color.FromArgb(0, 255, 255, 255);
-		}
 	}
 }

@@ -29,6 +29,8 @@ namespace Main.Pages
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LeaderBoard));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,8 +40,8 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LeaderBoard));
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +55,7 @@ namespace Main.Pages
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
-			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlDataGridView.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.SuspendLayout();
@@ -64,10 +66,64 @@ namespace Main.Pages
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
 			this.pnlDataGridView.Controls.Add(this.btnClearFilter);
-			this.pnlDataGridView.Location = new System.Drawing.Point(12, 81);
+			this.pnlDataGridView.Location = new System.Drawing.Point(11, 81);
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridView.TabIndex = 34;
+			// 
+			// bScrollBar
+			// 
+			this.bScrollBar.AllowCursorChanges = true;
+			this.bScrollBar.AllowHomeEndKeysDetection = false;
+			this.bScrollBar.AllowIncrementalClickMoves = true;
+			this.bScrollBar.AllowMouseDownEffects = false;
+			this.bScrollBar.AllowMouseHoverEffects = false;
+			this.bScrollBar.AllowScrollingAnimations = true;
+			this.bScrollBar.AllowScrollKeysDetection = true;
+			this.bScrollBar.AllowScrollOptionsMenu = true;
+			this.bScrollBar.AllowShrinkingOnFocusLost = false;
+			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.bScrollBar.AutoScroll = true;
+			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
+			this.bScrollBar.BindingContainer = null;
+			this.bScrollBar.BorderRadius = 2;
+			this.bScrollBar.BorderThickness = 1;
+			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
+			this.bScrollBar.DrawThickBorder = false;
+			this.bScrollBar.DurationBeforeShrink = 2000;
+			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.LargeChange = 10;
+			this.bScrollBar.Location = new System.Drawing.Point(1492, 95);
+			this.bScrollBar.Maximum = 100;
+			this.bScrollBar.Minimum = 0;
+			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
+			this.bScrollBar.MinimumThumbLength = 18;
+			this.bScrollBar.Name = "bScrollBar";
+			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
+			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ShrinkSizeLimit = 3;
+			this.bScrollBar.Size = new System.Drawing.Size(31, 625);
+			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
+			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
+			this.bScrollBar.SmallChange = 1;
+			this.bScrollBar.TabIndex = 11;
+			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
+			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
+			this.bScrollBar.ThumbLength = 61;
+			this.bScrollBar.ThumbMargin = 1;
+			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
+			this.bScrollBar.Value = 100;
+			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
 			// 
 			// aDgvdata
 			// 
@@ -226,6 +282,7 @@ namespace Main.Pages
 			// 
 			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
 			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnClearFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnClearFilter.FlatAppearance.BorderSize = 0;
 			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -241,8 +298,10 @@ namespace Main.Pages
 			this.btnClearFilter.TabIndex = 9;
 			this.btnClearFilter.TabStop = false;
 			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
 			this.btnClearFilter.UseVisualStyleBackColor = false;
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.btnClearFilter_Enter);
 			// 
 			// iconTitle
 			// 
@@ -255,12 +314,13 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 23);
+			this.iconTitle.Location = new System.Drawing.Point(45, 21);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 36;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.btnClearFilter_Enter);
 			// 
 			// lbTitle
 			// 
@@ -283,59 +343,14 @@ namespace Main.Pages
 			this.pnlDataGridViewShadow.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridViewShadow.TabIndex = 37;
 			// 
-			// bScrollBar
+			// toolTip
 			// 
-			this.bScrollBar.AllowCursorChanges = true;
-			this.bScrollBar.AllowHomeEndKeysDetection = false;
-			this.bScrollBar.AllowIncrementalClickMoves = true;
-			this.bScrollBar.AllowMouseDownEffects = false;
-			this.bScrollBar.AllowMouseHoverEffects = false;
-			this.bScrollBar.AllowScrollingAnimations = true;
-			this.bScrollBar.AllowScrollKeysDetection = true;
-			this.bScrollBar.AllowScrollOptionsMenu = true;
-			this.bScrollBar.AllowShrinkingOnFocusLost = false;
-			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.bScrollBar.AutoScroll = true;
-			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
-			this.bScrollBar.BindingContainer = null;
-			this.bScrollBar.BorderRadius = 2;
-			this.bScrollBar.BorderThickness = 1;
-			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
-			this.bScrollBar.DrawThickBorder = false;
-			this.bScrollBar.DurationBeforeShrink = 2000;
-			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1492, 95);
-			this.bScrollBar.Maximum = 100;
-			this.bScrollBar.Minimum = 0;
-			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
-			this.bScrollBar.MinimumThumbLength = 18;
-			this.bScrollBar.Name = "bScrollBar";
-			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
-			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 625);
-			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
-			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
-			this.bScrollBar.SmallChange = 1;
-			this.bScrollBar.TabIndex = 11;
-			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
-			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
-			this.bScrollBar.ThumbLength = 61;
-			this.bScrollBar.ThumbMargin = 1;
-			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
-			this.bScrollBar.Value = 100;
-			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			this.toolTip.AutomaticDelay = 0;
+			this.toolTip.AutoPopDelay = 10000;
+			this.toolTip.InitialDelay = 0;
+			this.toolTip.ReshowDelay = 0;
+			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip.ToolTipTitle = "Suggest";
 			// 
 			// LeaderBoard
 			// 
@@ -371,5 +386,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuestion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Mark;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
+		private System.Windows.Forms.ToolTip toolTip;
 	}
 }

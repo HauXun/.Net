@@ -83,12 +83,12 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 23);
+			this.iconTitle.Location = new System.Drawing.Point(45, 22);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 30;
-			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.btnClearFilter_Enter);
 			// 
 			// pnlDataGridView
 			// 
@@ -308,6 +308,7 @@ namespace Main.Pages
 			// 
 			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
 			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnClearFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnClearFilter.FlatAppearance.BorderSize = 0;
 			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

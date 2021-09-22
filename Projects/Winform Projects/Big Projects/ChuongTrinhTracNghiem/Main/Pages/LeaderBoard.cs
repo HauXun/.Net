@@ -130,6 +130,11 @@ namespace Main.Pages
 			catch { }
 		}
 
+		private void btnClearFilter_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
+		}
+
 		#endregion
 	}
 }

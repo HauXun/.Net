@@ -15,6 +15,7 @@ namespace Main.Pages
 {
 	public partial class BackupRestore : UserControl
 	{
+		public Action HomeFunc;
 		DatabaseConnection databaseConnection;
 		SqlConnection connection;
 		string database;
@@ -27,7 +28,23 @@ namespace Main.Pages
 		{
 			InitializeComponent();
 			RoundedControls();
-			databaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
+			HomeFunc = () =>
+			{
+				if (btnSave.Visible && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
+						MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
+				{
+					if (!databaseConnection.IsDisposed)
+						databaseConnection.Dispose();
+					Session.bP.SetPage((int)Session.TabPage.MainMenu);
+					btnCancle_Click(this, new EventArgs());
+				}
+				else if (!btnSave.Visible)
+				{
+					if (!databaseConnection.IsDisposed)
+						databaseConnection.Dispose();
+					Session.bP.SetPage((int)Session.TabPage.MainMenu);
+				}
+			};
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -56,6 +73,11 @@ namespace Main.Pages
 			//Button
 			btnBackup.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnBackup.Width, btnBackup.Height, 6, 6));
 			btnRestore.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnRestore.Width, btnRestore.Height, 6, 6));
+			btnSave.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnSave.Width, btnSave.Height, 6, 6));
+			btnCancle.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnCancle.Width, btnCancle.Height, 6, 6));
+			btnConnect.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnConnect.Width, btnConnect.Height, 6, 6));
+			btnDisconnect.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnDisconnect.Width, btnDisconnect.Height, 6, 6));
+			btnBrowser.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnBrowser.Width, btnBrowser.Height, 6, 6));
 		}
 
 		#endregion
@@ -285,8 +307,11 @@ namespace Main.Pages
 		private void btnRestore_Click(object sender, EventArgs e)
 		{
 			if (!databaseConnection.Connected)
+			{
 				btnConnect_Click(this, e);
-			else 
+				btnRestore_Click(sender, e);
+			}
+			else
 			{
 				isRestore = true;
 				VisibleButton(true);
@@ -299,8 +324,11 @@ namespace Main.Pages
 		private void btnSaoLuu_Click(object sender, EventArgs e)
 		{
 			if (!databaseConnection.Connected)
+			{
 				btnConnect_Click(this, e);
-			else 
+				btnSaoLuu_Click(sender, e);
+			}
+			else
 			{
 				VisibleButton(true);
 				EnableControl(true);
@@ -383,6 +411,7 @@ namespace Main.Pages
 
 		public void BackupRestore_Load(object sender, EventArgs e)
 		{
+			databaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
 			EnableControl(false);
 			EnableProcess(false);
 			DefaultSettings();
@@ -399,7 +428,7 @@ namespace Main.Pages
 					connection = new SqlConnection(databaseConnection.ConnectionString);
 					database = connection.Database;
 					EnableControl();
-				}	
+				}
 			}
 			catch (Exception ex)
 			{
@@ -414,6 +443,11 @@ namespace Main.Pages
 			EnableControl(false);
 			ClearError();
 			DefaultSettings();
+		}
+
+		private void btnRestore_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
 		}
 
 		#endregion

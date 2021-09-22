@@ -29,6 +29,7 @@ namespace Main.Pages
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.pnlAnswer = new System.Windows.Forms.Panel();
 			this.rbAnswerD = new System.Windows.Forms.RadioButton();
 			this.rbAnswerC = new System.Windows.Forms.RadioButton();
@@ -64,6 +65,7 @@ namespace Main.Pages
 			this.lLuncheck = new System.Windows.Forms.LinkLabel();
 			this.btnFlags = new FontAwesome.Sharp.IconButton();
 			this.pnlDieuKhienShadow = new System.Windows.Forms.Panel();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlAnswer.SuspendLayout();
 			this.pnlCauHoi.SuspendLayout();
 			this.pnlDanhSachCauHoi.SuspendLayout();
@@ -260,6 +262,7 @@ namespace Main.Pages
 			// 
 			this.btnReset.BackColor = System.Drawing.Color.Firebrick;
 			this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnReset.FlatAppearance.BorderSize = 0;
 			this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.2F);
@@ -278,11 +281,13 @@ namespace Main.Pages
 			this.btnReset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnReset.UseVisualStyleBackColor = false;
 			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+			this.btnReset.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// btnEnd
 			// 
 			this.btnEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
 			this.btnEnd.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnEnd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnEnd.FlatAppearance.BorderSize = 0;
 			this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.2F);
@@ -302,6 +307,7 @@ namespace Main.Pages
 			this.btnEnd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnEnd.UseVisualStyleBackColor = false;
 			this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
+			this.btnEnd.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// pnlThoiGian
 			// 
@@ -419,6 +425,7 @@ namespace Main.Pages
 			this.btnPreviousQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnPreviousQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.btnPreviousQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnPreviousQuestion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnPreviousQuestion.FlatAppearance.BorderSize = 0;
 			this.btnPreviousQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnPreviousQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
@@ -434,14 +441,17 @@ namespace Main.Pages
 			this.btnPreviousQuestion.TabIndex = 0;
 			this.btnPreviousQuestion.TabStop = false;
 			this.btnPreviousQuestion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.toolTip.SetToolTip(this.btnPreviousQuestion, "Câu trước đó");
 			this.btnPreviousQuestion.UseVisualStyleBackColor = false;
 			this.btnPreviousQuestion.Click += new System.EventHandler(this.btnPreviousQuestion_Click);
+			this.btnPreviousQuestion.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// btnNextQuestion
 			// 
 			this.btnNextQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnNextQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.btnNextQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnNextQuestion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnNextQuestion.FlatAppearance.BorderSize = 0;
 			this.btnNextQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnNextQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
@@ -457,14 +467,17 @@ namespace Main.Pages
 			this.btnNextQuestion.TabIndex = 1;
 			this.btnNextQuestion.TabStop = false;
 			this.btnNextQuestion.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.toolTip.SetToolTip(this.btnNextQuestion, "Câu tiếp theo");
 			this.btnNextQuestion.UseVisualStyleBackColor = false;
 			this.btnNextQuestion.Click += new System.EventHandler(this.btnNextQuestion_Click);
+			this.btnNextQuestion.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// btnLastQuestion
 			// 
 			this.btnLastQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnLastQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.btnLastQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnLastQuestion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnLastQuestion.FlatAppearance.BorderSize = 0;
 			this.btnLastQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnLastQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
@@ -478,14 +491,17 @@ namespace Main.Pages
 			this.btnLastQuestion.Name = "btnLastQuestion";
 			this.btnLastQuestion.Size = new System.Drawing.Size(50, 40);
 			this.btnLastQuestion.TabIndex = 5;
+			this.toolTip.SetToolTip(this.btnLastQuestion, "Câu cuối");
 			this.btnLastQuestion.UseVisualStyleBackColor = false;
 			this.btnLastQuestion.Click += new System.EventHandler(this.btnLastQuestion_Click);
+			this.btnLastQuestion.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// btnFirstQuestion
 			// 
 			this.btnFirstQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnFirstQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.btnFirstQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnFirstQuestion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnFirstQuestion.FlatAppearance.BorderSize = 0;
 			this.btnFirstQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnFirstQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
@@ -501,8 +517,10 @@ namespace Main.Pages
 			this.btnFirstQuestion.TabIndex = 4;
 			this.btnFirstQuestion.TabStop = false;
 			this.btnFirstQuestion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.toolTip.SetToolTip(this.btnFirstQuestion, "Câu đầu");
 			this.btnFirstQuestion.UseVisualStyleBackColor = false;
 			this.btnFirstQuestion.Click += new System.EventHandler(this.btnFirstQuestion_Click);
+			this.btnFirstQuestion.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// lLuncheck
 			// 
@@ -525,8 +543,8 @@ namespace Main.Pages
 			// btnFlags
 			// 
 			this.btnFlags.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnFlags.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnFlags.FlatAppearance.BorderSize = 0;
-			this.btnFlags.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
 			this.btnFlags.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnFlags.IconChar = FontAwesome.Sharp.IconChar.Flag;
 			this.btnFlags.IconColor = System.Drawing.Color.Firebrick;
@@ -537,10 +555,9 @@ namespace Main.Pages
 			this.btnFlags.Name = "btnFlags";
 			this.btnFlags.Size = new System.Drawing.Size(40, 40);
 			this.btnFlags.TabIndex = 2;
+			this.toolTip.SetToolTip(this.btnFlags, "Cắm cờ (Đánh dấu) câu hỏi hiện tại");
 			this.btnFlags.UseVisualStyleBackColor = true;
-			this.btnFlags.Click += new System.EventHandler(this.btnFlags_Click);
-			this.btnFlags.MouseEnter += new System.EventHandler(this.btnFlags_MouseEnter);
-			this.btnFlags.MouseLeave += new System.EventHandler(this.btnFlags_MouseLeave);
+			this.btnFlags.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// pnlDieuKhienShadow
 			// 
@@ -549,6 +566,15 @@ namespace Main.Pages
 			this.pnlDieuKhienShadow.Name = "pnlDieuKhienShadow";
 			this.pnlDieuKhienShadow.Size = new System.Drawing.Size(1200, 60);
 			this.pnlDieuKhienShadow.TabIndex = 9;
+			// 
+			// toolTip
+			// 
+			this.toolTip.AutomaticDelay = 0;
+			this.toolTip.AutoPopDelay = 10000;
+			this.toolTip.InitialDelay = 0;
+			this.toolTip.ReshowDelay = 0;
+			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip.ToolTipTitle = "Suggest";
 			// 
 			// QuizTest
 			// 
@@ -620,5 +646,6 @@ namespace Main.Pages
 		private System.Windows.Forms.Label label1;
 		public System.Windows.Forms.FlowLayoutPanel fLPdata;
 		public CircularProgressBar.CircularProgressBar cPBCountDownTime;
+		private System.Windows.Forms.ToolTip toolTip;
 	}
 }

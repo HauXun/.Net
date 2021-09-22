@@ -29,14 +29,20 @@ namespace Main
 		/// </summary>
 		private void InitializeComponent()
 		{
-			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
+			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation2 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.pnlControlBox = new System.Windows.Forms.Panel();
 			this.btnMinimized = new FontAwesome.Sharp.IconButton();
 			this.btnExit = new FontAwesome.Sharp.IconButton();
 			this.pbIcon = new System.Windows.Forms.PictureBox();
 			this.pnlMenu = new System.Windows.Forms.Panel();
+			this.pnlMenuTroGiup = new System.Windows.Forms.Panel();
+			this.btnAboutUs = new FontAwesome.Sharp.IconButton();
+			this.btnHuongDanThi = new FontAwesome.Sharp.IconButton();
+			this.pnlButtonTroGIup = new System.Windows.Forms.Panel();
+			this.btnArrowTroGiup = new FontAwesome.Sharp.IconButton();
 			this.btnTroGiup = new FontAwesome.Sharp.IconButton();
+			this.pnlTroGiupStatus = new System.Windows.Forms.Panel();
 			this.pnlMenuThongKe = new System.Windows.Forms.Panel();
 			this.btnXemTiemDoDaoTao = new FontAwesome.Sharp.IconButton();
 			this.btnThongKeCTDT = new FontAwesome.Sharp.IconButton();
@@ -47,7 +53,6 @@ namespace Main
 			this.pnlMenuChucNang = new System.Windows.Forms.Panel();
 			this.btnThongTinCaNhan = new FontAwesome.Sharp.IconButton();
 			this.btnLichSuThi = new FontAwesome.Sharp.IconButton();
-			this.btnHuongDanThi = new FontAwesome.Sharp.IconButton();
 			this.btnThiNgay = new FontAwesome.Sharp.IconButton();
 			this.btnThiThu = new FontAwesome.Sharp.IconButton();
 			this.pnlButtonChucNang = new System.Windows.Forms.Panel();
@@ -104,6 +109,11 @@ namespace Main
 			this.tPEduProg = new System.Windows.Forms.TabPage();
 			this.tPGuide = new System.Windows.Forms.TabPage();
 			this.tPAbout = new System.Windows.Forms.TabPage();
+			this.pnlTitle = new System.Windows.Forms.Panel();
+			this.btnHome = new FontAwesome.Sharp.IconButton();
+			this.pbTitleLogo = new System.Windows.Forms.PictureBox();
+			this.lblTitle = new System.Windows.Forms.Label();
+			this.btnNav = new FontAwesome.Sharp.IconButton();
 			this.pnlNavigationMini = new System.Windows.Forms.Panel();
 			this.pnlTGMini = new System.Windows.Forms.Panel();
 			this.btnTGMini = new FontAwesome.Sharp.IconButton();
@@ -125,14 +135,11 @@ namespace Main
 			this.btnHTMini = new FontAwesome.Sharp.IconButton();
 			this.pnlHTMiniStatus = new System.Windows.Forms.Panel();
 			this.NavMiniTopLine = new System.Windows.Forms.Panel();
-			this.pnlTitle = new System.Windows.Forms.Panel();
-			this.btnHome = new FontAwesome.Sharp.IconButton();
-			this.pbTitleLogo = new System.Windows.Forms.PictureBox();
-			this.lblTitle = new System.Windows.Forms.Label();
-			this.btnNav = new FontAwesome.Sharp.IconButton();
 			this.pnlControlBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
 			this.pnlMenu.SuspendLayout();
+			this.pnlMenuTroGiup.SuspendLayout();
+			this.pnlButtonTroGIup.SuspendLayout();
 			this.pnlMenuThongKe.SuspendLayout();
 			this.pnlButtonThongKe.SuspendLayout();
 			this.pnlMenuChucNang.SuspendLayout();
@@ -149,6 +156,8 @@ namespace Main
 			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
 			this.pnlForm.SuspendLayout();
 			this.bP.SuspendLayout();
+			this.pnlTitle.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbTitleLogo)).BeginInit();
 			this.pnlNavigationMini.SuspendLayout();
 			this.pnlTGMini.SuspendLayout();
 			this.pnlTKBCMini.SuspendLayout();
@@ -156,8 +165,6 @@ namespace Main
 			this.pnlDMMini.SuspendLayout();
 			this.pnlThoatMini.SuspendLayout();
 			this.pnlHTMini.SuspendLayout();
-			this.pnlTitle.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbTitleLogo)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pnlControlBox
@@ -192,6 +199,7 @@ namespace Main
 			this.btnMinimized.TabIndex = 9;
 			this.btnMinimized.UseVisualStyleBackColor = false;
 			this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+			this.btnMinimized.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnExit
 			// 
@@ -200,7 +208,7 @@ namespace Main
 			this.btnExit.FlatAppearance.BorderSize = 0;
 			this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnExit.IconChar = FontAwesome.Sharp.IconChar.Times;
-			this.btnExit.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnExit.IconColor = System.Drawing.Color.White;
 			this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnExit.IconSize = 20;
 			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -211,13 +219,15 @@ namespace Main
 			this.btnExit.TabIndex = 8;
 			this.btnExit.UseVisualStyleBackColor = false;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+			this.btnExit.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pbIcon
 			// 
+			this.pbIcon.Dock = System.Windows.Forms.DockStyle.Left;
 			this.pbIcon.Image = global::Main.Properties.Resources.Logo;
-			this.pbIcon.Location = new System.Drawing.Point(4, 1);
+			this.pbIcon.Location = new System.Drawing.Point(0, 0);
 			this.pbIcon.Name = "pbIcon";
-			this.pbIcon.Size = new System.Drawing.Size(25, 25);
+			this.pbIcon.Size = new System.Drawing.Size(25, 31);
 			this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbIcon.TabIndex = 1;
 			this.pbIcon.TabStop = false;
@@ -226,7 +236,8 @@ namespace Main
 			// 
 			this.pnlMenu.AutoScroll = true;
 			this.pnlMenu.BackColor = System.Drawing.Color.White;
-			this.pnlMenu.Controls.Add(this.btnTroGiup);
+			this.pnlMenu.Controls.Add(this.pnlMenuTroGiup);
+			this.pnlMenu.Controls.Add(this.pnlButtonTroGIup);
 			this.pnlMenu.Controls.Add(this.pnlMenuThongKe);
 			this.pnlMenu.Controls.Add(this.pnlButtonThongKe);
 			this.pnlMenu.Controls.Add(this.pnlMenuChucNang);
@@ -241,11 +252,109 @@ namespace Main
 			this.pnlMenu.Size = new System.Drawing.Size(350, 685);
 			this.pnlMenu.TabIndex = 2;
 			// 
+			// pnlMenuTroGiup
+			// 
+			this.pnlMenuTroGiup.AutoSize = true;
+			this.pnlMenuTroGiup.BackColor = System.Drawing.Color.Transparent;
+			this.pnlMenuTroGiup.Controls.Add(this.btnAboutUs);
+			this.pnlMenuTroGiup.Controls.Add(this.btnHuongDanThi);
+			this.pnlMenuTroGiup.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pnlMenuTroGiup.Location = new System.Drawing.Point(0, 1200);
+			this.pnlMenuTroGiup.Name = "pnlMenuTroGiup";
+			this.pnlMenuTroGiup.Size = new System.Drawing.Size(333, 120);
+			this.pnlMenuTroGiup.TabIndex = 13;
+			this.pnlMenuTroGiup.Visible = false;
+			// 
+			// btnAboutUs
+			// 
+			this.btnAboutUs.BackColor = System.Drawing.Color.Transparent;
+			this.btnAboutUs.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnAboutUs.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnAboutUs.FlatAppearance.BorderSize = 0;
+			this.btnAboutUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAboutUs.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnAboutUs.ForeColor = System.Drawing.Color.Black;
+			this.btnAboutUs.IconChar = FontAwesome.Sharp.IconChar.Rocketchat;
+			this.btnAboutUs.IconColor = System.Drawing.Color.Black;
+			this.btnAboutUs.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnAboutUs.IconSize = 30;
+			this.btnAboutUs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAboutUs.Location = new System.Drawing.Point(0, 60);
+			this.btnAboutUs.Name = "btnAboutUs";
+			this.btnAboutUs.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+			this.btnAboutUs.Size = new System.Drawing.Size(333, 60);
+			this.btnAboutUs.TabIndex = 7;
+			this.btnAboutUs.Text = "About us";
+			this.btnAboutUs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btnAboutUs.UseVisualStyleBackColor = false;
+			this.btnAboutUs.Click += new System.EventHandler(this.btnAboutUs_Click);
+			this.btnAboutUs.Enter += new System.EventHandler(this.btnHeThong_Enter);
+			// 
+			// btnHuongDanThi
+			// 
+			this.btnHuongDanThi.BackColor = System.Drawing.Color.Transparent;
+			this.btnHuongDanThi.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnHuongDanThi.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnHuongDanThi.FlatAppearance.BorderSize = 0;
+			this.btnHuongDanThi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnHuongDanThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnHuongDanThi.ForeColor = System.Drawing.Color.Black;
+			this.btnHuongDanThi.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
+			this.btnHuongDanThi.IconColor = System.Drawing.Color.Black;
+			this.btnHuongDanThi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnHuongDanThi.IconSize = 30;
+			this.btnHuongDanThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnHuongDanThi.Location = new System.Drawing.Point(0, 0);
+			this.btnHuongDanThi.Name = "btnHuongDanThi";
+			this.btnHuongDanThi.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+			this.btnHuongDanThi.Size = new System.Drawing.Size(333, 60);
+			this.btnHuongDanThi.TabIndex = 8;
+			this.btnHuongDanThi.Text = "Hướng dẫn";
+			this.btnHuongDanThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btnHuongDanThi.UseVisualStyleBackColor = false;
+			this.btnHuongDanThi.Click += new System.EventHandler(this.btnHuongDan_Click);
+			this.btnHuongDanThi.Enter += new System.EventHandler(this.btnHeThong_Enter);
+			// 
+			// pnlButtonTroGIup
+			// 
+			this.pnlButtonTroGIup.BackColor = System.Drawing.Color.Transparent;
+			this.pnlButtonTroGIup.Controls.Add(this.btnArrowTroGiup);
+			this.pnlButtonTroGIup.Controls.Add(this.btnTroGiup);
+			this.pnlButtonTroGIup.Controls.Add(this.pnlTroGiupStatus);
+			this.pnlButtonTroGIup.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pnlButtonTroGIup.Location = new System.Drawing.Point(0, 1140);
+			this.pnlButtonTroGIup.Name = "pnlButtonTroGIup";
+			this.pnlButtonTroGIup.Size = new System.Drawing.Size(333, 60);
+			this.pnlButtonTroGIup.TabIndex = 12;
+			// 
+			// btnArrowTroGiup
+			// 
+			this.btnArrowTroGiup.AutoSize = true;
+			this.btnArrowTroGiup.BackColor = System.Drawing.Color.Transparent;
+			this.btnArrowTroGiup.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnArrowTroGiup.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnArrowTroGiup.FlatAppearance.BorderSize = 0;
+			this.btnArrowTroGiup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnArrowTroGiup.IconChar = FontAwesome.Sharp.IconChar.ChevronDown;
+			this.btnArrowTroGiup.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.btnArrowTroGiup.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnArrowTroGiup.IconSize = 30;
+			this.btnArrowTroGiup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnArrowTroGiup.Location = new System.Drawing.Point(285, 0);
+			this.btnArrowTroGiup.Name = "btnArrowTroGiup";
+			this.btnArrowTroGiup.Size = new System.Drawing.Size(48, 60);
+			this.btnArrowTroGiup.TabIndex = 3;
+			this.btnArrowTroGiup.UseVisualStyleBackColor = false;
+			this.btnArrowTroGiup.Click += new System.EventHandler(this.btnArrowTroGiup_Click);
+			this.btnArrowTroGiup.Enter += new System.EventHandler(this.btnHeThong_Enter);
+			this.btnArrowTroGiup.MouseEnter += new System.EventHandler(this.btnArrowTroGiup_MouseEnter);
+			this.btnArrowTroGiup.MouseLeave += new System.EventHandler(this.btnArrowTroGiup_MouseLeave);
+			// 
 			// btnTroGiup
 			// 
 			this.btnTroGiup.BackColor = System.Drawing.Color.Transparent;
 			this.btnTroGiup.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnTroGiup.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnTroGiup.Dock = System.Windows.Forms.DockStyle.Left;
 			this.btnTroGiup.FlatAppearance.BorderSize = 0;
 			this.btnTroGiup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnTroGiup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -255,16 +364,27 @@ namespace Main
 			this.btnTroGiup.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnTroGiup.IconSize = 30;
 			this.btnTroGiup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnTroGiup.Location = new System.Drawing.Point(0, 1200);
+			this.btnTroGiup.Location = new System.Drawing.Point(5, 0);
 			this.btnTroGiup.Name = "btnTroGiup";
-			this.btnTroGiup.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-			this.btnTroGiup.Size = new System.Drawing.Size(333, 60);
-			this.btnTroGiup.TabIndex = 7;
+			this.btnTroGiup.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+			this.btnTroGiup.Size = new System.Drawing.Size(280, 60);
+			this.btnTroGiup.TabIndex = 1;
 			this.btnTroGiup.Text = "TRỢ GIÚP";
+			this.btnTroGiup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnTroGiup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnTroGiup.UseVisualStyleBackColor = false;
 			this.btnTroGiup.Click += new System.EventHandler(this.btnTroGiup_Click);
+			this.btnTroGiup.Enter += new System.EventHandler(this.btnHeThong_Enter);
+			this.btnTroGiup.MouseEnter += new System.EventHandler(this.btnTroGiup_MouseEnter);
 			this.btnTroGiup.MouseLeave += new System.EventHandler(this.btnTroGiup_MouseLeave);
+			// 
+			// pnlTroGiupStatus
+			// 
+			this.pnlTroGiupStatus.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pnlTroGiupStatus.Location = new System.Drawing.Point(0, 0);
+			this.pnlTroGiupStatus.Name = "pnlTroGiupStatus";
+			this.pnlTroGiupStatus.Size = new System.Drawing.Size(5, 60);
+			this.pnlTroGiupStatus.TabIndex = 4;
 			// 
 			// pnlMenuThongKe
 			// 
@@ -273,7 +393,7 @@ namespace Main
 			this.pnlMenuThongKe.Controls.Add(this.btnXemTiemDoDaoTao);
 			this.pnlMenuThongKe.Controls.Add(this.btnThongKeCTDT);
 			this.pnlMenuThongKe.Dock = System.Windows.Forms.DockStyle.Top;
-			this.pnlMenuThongKe.Location = new System.Drawing.Point(0, 1080);
+			this.pnlMenuThongKe.Location = new System.Drawing.Point(0, 1020);
 			this.pnlMenuThongKe.Name = "pnlMenuThongKe";
 			this.pnlMenuThongKe.Size = new System.Drawing.Size(333, 120);
 			this.pnlMenuThongKe.TabIndex = 10;
@@ -302,6 +422,7 @@ namespace Main
 			this.btnXemTiemDoDaoTao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnXemTiemDoDaoTao.UseVisualStyleBackColor = false;
 			this.btnXemTiemDoDaoTao.Click += new System.EventHandler(this.btnXemTiemDoDaoTao_Click);
+			this.btnXemTiemDoDaoTao.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnThongKeCTDT
 			// 
@@ -326,6 +447,7 @@ namespace Main
 			this.btnThongKeCTDT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThongKeCTDT.UseVisualStyleBackColor = false;
 			this.btnThongKeCTDT.Click += new System.EventHandler(this.btnThongKeCTDT_Click);
+			this.btnThongKeCTDT.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlButtonThongKe
 			// 
@@ -334,7 +456,7 @@ namespace Main
 			this.pnlButtonThongKe.Controls.Add(this.btnThongKe);
 			this.pnlButtonThongKe.Controls.Add(this.pnlThongKeStatus);
 			this.pnlButtonThongKe.Dock = System.Windows.Forms.DockStyle.Top;
-			this.pnlButtonThongKe.Location = new System.Drawing.Point(0, 1020);
+			this.pnlButtonThongKe.Location = new System.Drawing.Point(0, 960);
 			this.pnlButtonThongKe.Name = "pnlButtonThongKe";
 			this.pnlButtonThongKe.Size = new System.Drawing.Size(333, 60);
 			this.pnlButtonThongKe.TabIndex = 11;
@@ -358,6 +480,7 @@ namespace Main
 			this.btnArrowThongKe.TabIndex = 3;
 			this.btnArrowThongKe.UseVisualStyleBackColor = false;
 			this.btnArrowThongKe.Click += new System.EventHandler(this.btnThongKeArrow_Click);
+			this.btnArrowThongKe.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnArrowThongKe.MouseEnter += new System.EventHandler(this.btnThongKeArrow_MouseEnter);
 			this.btnArrowThongKe.MouseLeave += new System.EventHandler(this.btnThongKeArrow_MouseLeave);
 			// 
@@ -385,6 +508,7 @@ namespace Main
 			this.btnThongKe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThongKe.UseVisualStyleBackColor = false;
 			this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+			this.btnThongKe.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnThongKe.MouseEnter += new System.EventHandler(this.btnThongKe_MouseEnter);
 			this.btnThongKe.MouseLeave += new System.EventHandler(this.btnThongKe_MouseLeave);
 			// 
@@ -402,13 +526,12 @@ namespace Main
 			this.pnlMenuChucNang.BackColor = System.Drawing.Color.Transparent;
 			this.pnlMenuChucNang.Controls.Add(this.btnThongTinCaNhan);
 			this.pnlMenuChucNang.Controls.Add(this.btnLichSuThi);
-			this.pnlMenuChucNang.Controls.Add(this.btnHuongDanThi);
 			this.pnlMenuChucNang.Controls.Add(this.btnThiNgay);
 			this.pnlMenuChucNang.Controls.Add(this.btnThiThu);
 			this.pnlMenuChucNang.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlMenuChucNang.Location = new System.Drawing.Point(0, 720);
 			this.pnlMenuChucNang.Name = "pnlMenuChucNang";
-			this.pnlMenuChucNang.Size = new System.Drawing.Size(333, 300);
+			this.pnlMenuChucNang.Size = new System.Drawing.Size(333, 240);
 			this.pnlMenuChucNang.TabIndex = 4;
 			this.pnlMenuChucNang.Visible = false;
 			// 
@@ -426,7 +549,7 @@ namespace Main
 			this.btnThongTinCaNhan.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnThongTinCaNhan.IconSize = 30;
 			this.btnThongTinCaNhan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnThongTinCaNhan.Location = new System.Drawing.Point(0, 240);
+			this.btnThongTinCaNhan.Location = new System.Drawing.Point(0, 180);
 			this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
 			this.btnThongTinCaNhan.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
 			this.btnThongTinCaNhan.Size = new System.Drawing.Size(333, 60);
@@ -435,6 +558,7 @@ namespace Main
 			this.btnThongTinCaNhan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
 			this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
+			this.btnThongTinCaNhan.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnLichSuThi
 			// 
@@ -450,7 +574,7 @@ namespace Main
 			this.btnLichSuThi.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnLichSuThi.IconSize = 30;
 			this.btnLichSuThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnLichSuThi.Location = new System.Drawing.Point(0, 180);
+			this.btnLichSuThi.Location = new System.Drawing.Point(0, 120);
 			this.btnLichSuThi.Name = "btnLichSuThi";
 			this.btnLichSuThi.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
 			this.btnLichSuThi.Size = new System.Drawing.Size(333, 60);
@@ -459,30 +583,7 @@ namespace Main
 			this.btnLichSuThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnLichSuThi.UseVisualStyleBackColor = false;
 			this.btnLichSuThi.Click += new System.EventHandler(this.btnLichSuThi_Click);
-			// 
-			// btnHuongDanThi
-			// 
-			this.btnHuongDanThi.BackColor = System.Drawing.Color.Transparent;
-			this.btnHuongDanThi.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnHuongDanThi.Dock = System.Windows.Forms.DockStyle.Top;
-			this.btnHuongDanThi.FlatAppearance.BorderSize = 0;
-			this.btnHuongDanThi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnHuongDanThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnHuongDanThi.ForeColor = System.Drawing.Color.Black;
-			this.btnHuongDanThi.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
-			this.btnHuongDanThi.IconColor = System.Drawing.Color.Black;
-			this.btnHuongDanThi.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnHuongDanThi.IconSize = 30;
-			this.btnHuongDanThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnHuongDanThi.Location = new System.Drawing.Point(0, 120);
-			this.btnHuongDanThi.Name = "btnHuongDanThi";
-			this.btnHuongDanThi.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-			this.btnHuongDanThi.Size = new System.Drawing.Size(333, 60);
-			this.btnHuongDanThi.TabIndex = 4;
-			this.btnHuongDanThi.Text = "Hướng dẫn thi";
-			this.btnHuongDanThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.btnHuongDanThi.UseVisualStyleBackColor = false;
-			this.btnHuongDanThi.Click += new System.EventHandler(this.btnHuongDanThi_Click);
+			this.btnLichSuThi.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnThiNgay
 			// 
@@ -507,6 +608,7 @@ namespace Main
 			this.btnThiNgay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThiNgay.UseVisualStyleBackColor = false;
 			this.btnThiNgay.Click += new System.EventHandler(this.btnThiNgay_Click);
+			this.btnThiNgay.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnThiThu
 			// 
@@ -531,6 +633,7 @@ namespace Main
 			this.btnThiThu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThiThu.UseVisualStyleBackColor = false;
 			this.btnThiThu.Click += new System.EventHandler(this.btnThiNgay_Click);
+			this.btnThiThu.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlButtonChucNang
 			// 
@@ -563,6 +666,7 @@ namespace Main
 			this.btnArrowChucNang.TabIndex = 3;
 			this.btnArrowChucNang.UseVisualStyleBackColor = false;
 			this.btnArrowChucNang.Click += new System.EventHandler(this.btnArrowChucNang_Click);
+			this.btnArrowChucNang.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnArrowChucNang.MouseEnter += new System.EventHandler(this.btnArrowChucNang_MouseEnter);
 			this.btnArrowChucNang.MouseLeave += new System.EventHandler(this.btnArrowChucNang_MouseLeave);
 			// 
@@ -590,6 +694,7 @@ namespace Main
 			this.btnChucNang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnChucNang.UseVisualStyleBackColor = false;
 			this.btnChucNang.Click += new System.EventHandler(this.btnChucNang_Click);
+			this.btnChucNang.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnChucNang.MouseEnter += new System.EventHandler(this.btnChucNang_MouseEnter);
 			this.btnChucNang.MouseLeave += new System.EventHandler(this.btnChucNang_MouseLeave);
 			// 
@@ -638,6 +743,7 @@ namespace Main
 			this.btnQuanLyDeThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyDeThi.UseVisualStyleBackColor = false;
 			this.btnQuanLyDeThi.Click += new System.EventHandler(this.btnQuanLyDeThi_Click);
+			this.btnQuanLyDeThi.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnQuanLyCauHoi
 			// 
@@ -662,6 +768,7 @@ namespace Main
 			this.btnQuanLyCauHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyCauHoi.UseVisualStyleBackColor = false;
 			this.btnQuanLyCauHoi.Click += new System.EventHandler(this.btnQuanLyCauHoi_Click);
+			this.btnQuanLyCauHoi.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnQuanLyMonThi
 			// 
@@ -686,6 +793,7 @@ namespace Main
 			this.btnQuanLyMonThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyMonThi.UseVisualStyleBackColor = false;
 			this.btnQuanLyMonThi.Click += new System.EventHandler(this.btnQuanLyMonThi_Click);
+			this.btnQuanLyMonThi.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlButtonDanhMuc
 			// 
@@ -718,6 +826,7 @@ namespace Main
 			this.btnArrowDanhMuc.TabIndex = 3;
 			this.btnArrowDanhMuc.UseVisualStyleBackColor = false;
 			this.btnArrowDanhMuc.Click += new System.EventHandler(this.btnArrowDanhMuc_Click);
+			this.btnArrowDanhMuc.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnArrowDanhMuc.MouseEnter += new System.EventHandler(this.btnArrowDanhMuc_MouseEnter);
 			this.btnArrowDanhMuc.MouseLeave += new System.EventHandler(this.btnArrowDanhMuc_MouseLeave);
 			// 
@@ -745,6 +854,7 @@ namespace Main
 			this.btnDanhMuc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnDanhMuc.UseVisualStyleBackColor = false;
 			this.btnDanhMuc.Click += new System.EventHandler(this.btnDanhMuc_Click);
+			this.btnDanhMuc.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnDanhMuc.MouseEnter += new System.EventHandler(this.btnDanhMuc_MouseEnter);
 			this.btnDanhMuc.MouseLeave += new System.EventHandler(this.btnDanhMuc_MouseLeave);
 			// 
@@ -793,6 +903,7 @@ namespace Main
 			this.btnPhucHoiDuLieu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnPhucHoiDuLieu.UseVisualStyleBackColor = false;
 			this.btnPhucHoiDuLieu.Click += new System.EventHandler(this.btnPhucHoiDuLieu_Click);
+			this.btnPhucHoiDuLieu.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlMenuQuanLy
 			// 
@@ -832,6 +943,7 @@ namespace Main
 			this.btnQLLop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQLLop.UseVisualStyleBackColor = false;
 			this.btnQLLop.Click += new System.EventHandler(this.btnQLSinhVien_Click);
+			this.btnQLLop.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnQLKhoaHoc
 			// 
@@ -856,6 +968,7 @@ namespace Main
 			this.btnQLKhoaHoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQLKhoaHoc.UseVisualStyleBackColor = false;
 			this.btnQLKhoaHoc.Click += new System.EventHandler(this.btnQLKhoaHoc_Click);
+			this.btnQLKhoaHoc.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnQLKhoa
 			// 
@@ -880,6 +993,7 @@ namespace Main
 			this.btnQLKhoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQLKhoa.UseVisualStyleBackColor = false;
 			this.btnQLKhoa.Click += new System.EventHandler(this.btnQLKhoa_Click);
+			this.btnQLKhoa.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// btnQLNguoiDung
 			// 
@@ -904,6 +1018,7 @@ namespace Main
 			this.btnQLNguoiDung.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQLNguoiDung.UseVisualStyleBackColor = false;
 			this.btnQLNguoiDung.Click += new System.EventHandler(this.btnQLNguoiDung_Click);
+			this.btnQLNguoiDung.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlButtonQuanLy
 			// 
@@ -936,6 +1051,7 @@ namespace Main
 			this.btnArrowQuanLy.TabIndex = 2;
 			this.btnArrowQuanLy.UseVisualStyleBackColor = false;
 			this.btnArrowQuanLy.Click += new System.EventHandler(this.btnArrowQuanLy_Click);
+			this.btnArrowQuanLy.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnArrowQuanLy.MouseEnter += new System.EventHandler(this.btnArrowQuanLy_MouseEnter);
 			this.btnArrowQuanLy.MouseLeave += new System.EventHandler(this.btnArrowQuanLy_MouseLeave);
 			// 
@@ -963,6 +1079,7 @@ namespace Main
 			this.btnQuanLy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLy.UseVisualStyleBackColor = false;
 			this.btnQuanLy.Click += new System.EventHandler(this.btnQuanLy_Click);
+			this.btnQuanLy.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnQuanLy.MouseEnter += new System.EventHandler(this.btnQuanLy_MouseEnter);
 			this.btnQuanLy.MouseLeave += new System.EventHandler(this.btnQuanLy_MouseLeave);
 			// 
@@ -1005,6 +1122,7 @@ namespace Main
 			this.btnArrowHeThong.TabIndex = 3;
 			this.btnArrowHeThong.UseVisualStyleBackColor = false;
 			this.btnArrowHeThong.Click += new System.EventHandler(this.btnArrowHeThong_Click);
+			this.btnArrowHeThong.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnArrowHeThong.MouseEnter += new System.EventHandler(this.btnArrowHeThong_MouseEnter);
 			this.btnArrowHeThong.MouseLeave += new System.EventHandler(this.btnArrowHeThong_MouseLeave);
 			// 
@@ -1032,6 +1150,7 @@ namespace Main
 			this.btnHeThong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnHeThong.UseVisualStyleBackColor = false;
 			this.btnHeThong.Click += new System.EventHandler(this.btnHeThong_Click);
+			this.btnHeThong.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnHeThong.MouseEnter += new System.EventHandler(this.btnHeThong_MouseEnter);
 			this.btnHeThong.MouseLeave += new System.EventHandler(this.btnHeThong_MouseLeave);
 			// 
@@ -1051,7 +1170,7 @@ namespace Main
 			this.pnlNavigation.Controls.Add(this.pnlBottomLine);
 			this.pnlNavigation.Controls.Add(this.btnThoat);
 			this.pnlNavigation.Controls.Add(this.pbLogo);
-			this.pnlNavigation.Location = new System.Drawing.Point(0, 28);
+			this.pnlNavigation.Location = new System.Drawing.Point(0, 31);
 			this.pnlNavigation.Name = "pnlNavigation";
 			this.pnlNavigation.Size = new System.Drawing.Size(350, 872);
 			this.pnlNavigation.TabIndex = 6;
@@ -1114,6 +1233,7 @@ namespace Main
 			this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThoat.UseVisualStyleBackColor = false;
 			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+			this.btnThoat.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			this.btnThoat.MouseLeave += new System.EventHandler(this.btnThoat_MouseLeave);
 			// 
 			// pbLogo
@@ -1174,22 +1294,22 @@ namespace Main
 			this.bP.Size = new System.Drawing.Size(1550, 822);
 			this.bP.TabIndex = 0;
 			this.bP.TabStop = false;
-			animation1.AnimateOnlyDifferences = false;
-			animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-			animation1.LeafCoeff = 0F;
-			animation1.MaxTime = 1F;
-			animation1.MinTime = 0F;
-			animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-			animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-			animation1.MosaicSize = 0;
-			animation1.Padding = new System.Windows.Forms.Padding(0);
-			animation1.RotateCoeff = 0F;
-			animation1.RotateLimit = 0F;
-			animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-			animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-			animation1.TimeCoeff = 0F;
-			animation1.TransparencyCoeff = 0F;
-			this.bP.Transition = animation1;
+			animation2.AnimateOnlyDifferences = false;
+			animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+			animation2.LeafCoeff = 0F;
+			animation2.MaxTime = 1F;
+			animation2.MinTime = 0F;
+			animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+			animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+			animation2.MosaicSize = 0;
+			animation2.Padding = new System.Windows.Forms.Padding(0);
+			animation2.RotateCoeff = 0F;
+			animation2.RotateLimit = 0F;
+			animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+			animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+			animation2.TimeCoeff = 0F;
+			animation2.TransparencyCoeff = 0F;
+			this.bP.Transition = animation2;
 			this.bP.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
 			// 
 			// tPMainMenu
@@ -1318,6 +1438,83 @@ namespace Main
 			this.tPAbout.Size = new System.Drawing.Size(1542, 793);
 			this.tPAbout.TabIndex = 17;
 			// 
+			// pnlTitle
+			// 
+			this.pnlTitle.BackColor = System.Drawing.Color.White;
+			this.pnlTitle.Controls.Add(this.btnHome);
+			this.pnlTitle.Controls.Add(this.pbTitleLogo);
+			this.pnlTitle.Controls.Add(this.lblTitle);
+			this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pnlTitle.Location = new System.Drawing.Point(0, 31);
+			this.pnlTitle.Name = "pnlTitle";
+			this.pnlTitle.Size = new System.Drawing.Size(1600, 50);
+			this.pnlTitle.TabIndex = 8;
+			// 
+			// btnHome
+			// 
+			this.btnHome.BackColor = System.Drawing.Color.White;
+			this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnHome.FlatAppearance.BorderSize = 0;
+			this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnHome.IconChar = FontAwesome.Sharp.IconChar.Home;
+			this.btnHome.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnHome.IconSize = 38;
+			this.btnHome.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnHome.Location = new System.Drawing.Point(1550, 0);
+			this.btnHome.Name = "btnHome";
+			this.btnHome.Size = new System.Drawing.Size(50, 50);
+			this.btnHome.TabIndex = 1;
+			this.btnHome.UseVisualStyleBackColor = false;
+			this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+			this.btnHome.Enter += new System.EventHandler(this.btnHeThong_Enter);
+			// 
+			// pbTitleLogo
+			// 
+			this.pbTitleLogo.BackColor = System.Drawing.Color.Transparent;
+			this.pbTitleLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.pbTitleLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbTitleLogo.Location = new System.Drawing.Point(0, 0);
+			this.pbTitleLogo.Name = "pbTitleLogo";
+			this.pbTitleLogo.Size = new System.Drawing.Size(1600, 50);
+			this.pbTitleLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pbTitleLogo.TabIndex = 3;
+			this.pbTitleLogo.TabStop = false;
+			// 
+			// lblTitle
+			// 
+			this.lblTitle.AutoSize = true;
+			this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+			this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.lblTitle.Location = new System.Drawing.Point(56, 12);
+			this.lblTitle.Name = "lblTitle";
+			this.lblTitle.Size = new System.Drawing.Size(62, 24);
+			this.lblTitle.TabIndex = 1;
+			this.lblTitle.Text = "Home";
+			this.lblTitle.Visible = false;
+			// 
+			// btnNav
+			// 
+			this.btnNav.BackColor = System.Drawing.Color.White;
+			this.btnNav.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnNav.FlatAppearance.BorderSize = 0;
+			this.btnNav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnNav.IconChar = FontAwesome.Sharp.IconChar.CaretRight;
+			this.btnNav.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.btnNav.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnNav.IconSize = 38;
+			this.btnNav.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnNav.Location = new System.Drawing.Point(0, 31);
+			this.btnNav.Name = "btnNav";
+			this.btnNav.Size = new System.Drawing.Size(50, 50);
+			this.btnNav.TabIndex = 0;
+			this.btnNav.TabStop = false;
+			this.btnNav.UseVisualStyleBackColor = false;
+			this.btnNav.Click += new System.EventHandler(this.btnNav_Click);
+			this.btnNav.Enter += new System.EventHandler(this.btnHeThong_Enter);
+			// 
 			// pnlNavigationMini
 			// 
 			this.pnlNavigationMini.BackColor = System.Drawing.Color.White;
@@ -1333,7 +1530,7 @@ namespace Main
 			this.pnlNavigationMini.Location = new System.Drawing.Point(0, 81);
 			this.pnlNavigationMini.Name = "pnlNavigationMini";
 			this.pnlNavigationMini.Size = new System.Drawing.Size(50, 819);
-			this.pnlNavigationMini.TabIndex = 0;
+			this.pnlNavigationMini.TabIndex = 10;
 			// 
 			// pnlTGMini
 			// 
@@ -1351,7 +1548,7 @@ namespace Main
 			this.btnTGMini.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.btnTGMini.FlatAppearance.BorderSize = 0;
 			this.btnTGMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnTGMini.IconChar = this.btnTroGiup.IconChar;
+			this.btnTGMini.IconChar = FontAwesome.Sharp.IconChar.QuestionCircle;
 			this.btnTGMini.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnTGMini.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnTGMini.IconSize = 38;
@@ -1363,8 +1560,7 @@ namespace Main
 			this.btnTGMini.TabStop = false;
 			this.btnTGMini.UseVisualStyleBackColor = true;
 			this.btnTGMini.Click += new System.EventHandler(this.btnTGMini_Click);
-			this.btnTGMini.MouseEnter += new System.EventHandler(this.btnTGMini_MouseEnter);
-			this.btnTGMini.MouseLeave += new System.EventHandler(this.btnTGMini_MouseLeave);
+			this.btnTGMini.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlTGMiniStatus
 			// 
@@ -1402,8 +1598,7 @@ namespace Main
 			this.btnTKMini.TabStop = false;
 			this.btnTKMini.UseVisualStyleBackColor = true;
 			this.btnTKMini.Click += new System.EventHandler(this.btnTKMini_Click);
-			this.btnTKMini.MouseEnter += new System.EventHandler(this.btnTKMini_MouseEnter);
-			this.btnTKMini.MouseLeave += new System.EventHandler(this.btnTKMini_MouseLeave);
+			this.btnTKMini.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlTKBCMiniStatus
 			// 
@@ -1441,8 +1636,7 @@ namespace Main
 			this.btnCNMini.TabStop = false;
 			this.btnCNMini.UseVisualStyleBackColor = true;
 			this.btnCNMini.Click += new System.EventHandler(this.btnCNMini_Click);
-			this.btnCNMini.MouseEnter += new System.EventHandler(this.btnCNMini_MouseEnter);
-			this.btnCNMini.MouseLeave += new System.EventHandler(this.btnCNMini_MouseLeave);
+			this.btnCNMini.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlCNMiniStatus
 			// 
@@ -1480,8 +1674,7 @@ namespace Main
 			this.btnDMMini.TabStop = false;
 			this.btnDMMini.UseVisualStyleBackColor = true;
 			this.btnDMMini.Click += new System.EventHandler(this.btnDMMini_Click);
-			this.btnDMMini.MouseEnter += new System.EventHandler(this.btnDMMini_MouseEnter);
-			this.btnDMMini.MouseLeave += new System.EventHandler(this.btnDMMini_MouseLeave);
+			this.btnDMMini.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlDMMiniStatus
 			// 
@@ -1527,8 +1720,7 @@ namespace Main
 			this.btnThoatMini.TabIndex = 0;
 			this.btnThoatMini.TabStop = false;
 			this.btnThoatMini.UseVisualStyleBackColor = true;
-			this.btnThoatMini.MouseEnter += new System.EventHandler(this.btnThoatMini_MouseEnter);
-			this.btnThoatMini.MouseLeave += new System.EventHandler(this.btnThoatMini_MouseLeave);
+			this.btnThoatMini.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlThoatMiniStatus
 			// 
@@ -1567,8 +1759,7 @@ namespace Main
 			this.btnHTMini.TabStop = false;
 			this.btnHTMini.UseVisualStyleBackColor = false;
 			this.btnHTMini.Click += new System.EventHandler(this.btnHTMini_Click);
-			this.btnHTMini.MouseEnter += new System.EventHandler(this.btnHTMini_MouseEnter);
-			this.btnHTMini.MouseLeave += new System.EventHandler(this.btnHTMini_MouseLeave);
+			this.btnHTMini.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlHTMiniStatus
 			// 
@@ -1587,85 +1778,6 @@ namespace Main
 			this.NavMiniTopLine.Size = new System.Drawing.Size(50, 1);
 			this.NavMiniTopLine.TabIndex = 6;
 			// 
-			// pnlTitle
-			// 
-			this.pnlTitle.BackColor = System.Drawing.Color.White;
-			this.pnlTitle.Controls.Add(this.btnHome);
-			this.pnlTitle.Controls.Add(this.pbTitleLogo);
-			this.pnlTitle.Controls.Add(this.lblTitle);
-			this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
-			this.pnlTitle.Location = new System.Drawing.Point(0, 31);
-			this.pnlTitle.Name = "pnlTitle";
-			this.pnlTitle.Size = new System.Drawing.Size(1600, 50);
-			this.pnlTitle.TabIndex = 8;
-			// 
-			// btnHome
-			// 
-			this.btnHome.BackColor = System.Drawing.Color.White;
-			this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnHome.FlatAppearance.BorderSize = 0;
-			this.btnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.btnHome.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnHome.IconChar = FontAwesome.Sharp.IconChar.Home;
-			this.btnHome.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnHome.IconSize = 38;
-			this.btnHome.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnHome.Location = new System.Drawing.Point(1550, 0);
-			this.btnHome.Name = "btnHome";
-			this.btnHome.Size = new System.Drawing.Size(50, 50);
-			this.btnHome.TabIndex = 1;
-			this.btnHome.UseVisualStyleBackColor = false;
-			this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
-			// 
-			// pbTitleLogo
-			// 
-			this.pbTitleLogo.BackColor = System.Drawing.Color.Transparent;
-			this.pbTitleLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.pbTitleLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pbTitleLogo.Location = new System.Drawing.Point(0, 0);
-			this.pbTitleLogo.Name = "pbTitleLogo";
-			this.pbTitleLogo.Size = new System.Drawing.Size(1600, 50);
-			this.pbTitleLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pbTitleLogo.TabIndex = 3;
-			this.pbTitleLogo.TabStop = false;
-			// 
-			// lblTitle
-			// 
-			this.lblTitle.AutoSize = true;
-			this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-			this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.lblTitle.Location = new System.Drawing.Point(56, 12);
-			this.lblTitle.Name = "lblTitle";
-			this.lblTitle.Size = new System.Drawing.Size(62, 24);
-			this.lblTitle.TabIndex = 1;
-			this.lblTitle.Text = "Home";
-			this.lblTitle.Visible = false;
-			// 
-			// btnNav
-			// 
-			this.btnNav.BackColor = System.Drawing.Color.White;
-			this.btnNav.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnNav.FlatAppearance.BorderSize = 0;
-			this.btnNav.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.btnNav.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.btnNav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnNav.IconChar = FontAwesome.Sharp.IconChar.CaretRight;
-			this.btnNav.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.btnNav.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnNav.IconSize = 38;
-			this.btnNav.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnNav.Location = new System.Drawing.Point(0, 28);
-			this.btnNav.Name = "btnNav";
-			this.btnNav.Size = new System.Drawing.Size(50, 50);
-			this.btnNav.TabIndex = 0;
-			this.btnNav.TabStop = false;
-			this.btnNav.UseVisualStyleBackColor = false;
-			this.btnNav.Click += new System.EventHandler(this.btnNav_Click);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1673,10 +1785,10 @@ namespace Main
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(251)))));
 			this.ClientSize = new System.Drawing.Size(1600, 900);
 			this.ControlBox = false;
-			this.Controls.Add(this.btnNav);
 			this.Controls.Add(this.pnlNavigation);
-			this.Controls.Add(this.pnlForm);
 			this.Controls.Add(this.pnlNavigationMini);
+			this.Controls.Add(this.btnNav);
+			this.Controls.Add(this.pnlForm);
 			this.Controls.Add(this.pnlTitle);
 			this.Controls.Add(this.pnlControlBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1690,6 +1802,9 @@ namespace Main
 			((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
 			this.pnlMenu.ResumeLayout(false);
 			this.pnlMenu.PerformLayout();
+			this.pnlMenuTroGiup.ResumeLayout(false);
+			this.pnlButtonTroGIup.ResumeLayout(false);
+			this.pnlButtonTroGIup.PerformLayout();
 			this.pnlMenuThongKe.ResumeLayout(false);
 			this.pnlButtonThongKe.ResumeLayout(false);
 			this.pnlButtonThongKe.PerformLayout();
@@ -1712,6 +1827,9 @@ namespace Main
 			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
 			this.pnlForm.ResumeLayout(false);
 			this.bP.ResumeLayout(false);
+			this.pnlTitle.ResumeLayout(false);
+			this.pnlTitle.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbTitleLogo)).EndInit();
 			this.pnlNavigationMini.ResumeLayout(false);
 			this.pnlTGMini.ResumeLayout(false);
 			this.pnlTKBCMini.ResumeLayout(false);
@@ -1719,9 +1837,6 @@ namespace Main
 			this.pnlDMMini.ResumeLayout(false);
 			this.pnlThoatMini.ResumeLayout(false);
 			this.pnlHTMini.ResumeLayout(false);
-			this.pnlTitle.ResumeLayout(false);
-			this.pnlTitle.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbTitleLogo)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1755,7 +1870,6 @@ namespace Main
 		private FontAwesome.Sharp.IconButton btnArrowDanhMuc;
 		private FontAwesome.Sharp.IconButton btnDanhMuc;
 		private System.Windows.Forms.Panel pnlDanhMucStatus;
-		private FontAwesome.Sharp.IconButton btnTroGiup;
 		private System.Windows.Forms.Panel pnlMenuChucNang;
 		private System.Windows.Forms.Panel pnlButtonChucNang;
 		private FontAwesome.Sharp.IconButton btnArrowChucNang;
@@ -1763,7 +1877,6 @@ namespace Main
 		private System.Windows.Forms.Panel pnlChucNangStatus;
 		private FontAwesome.Sharp.IconButton btnThongTinCaNhan;
 		private FontAwesome.Sharp.IconButton btnLichSuThi;
-		private FontAwesome.Sharp.IconButton btnHuongDanThi;
 		private FontAwesome.Sharp.IconButton btnThiNgay;
 		private FontAwesome.Sharp.IconButton btnThiThu;
 		private System.Windows.Forms.Panel pnlBottomLine;
@@ -1772,29 +1885,8 @@ namespace Main
 		private System.Windows.Forms.Panel TopLine;
 		private System.Windows.Forms.Panel pnlTitle;
 		private FontAwesome.Sharp.IconButton btnNav;
-		private System.Windows.Forms.Panel pnlNavigationMini;
-		private System.Windows.Forms.Panel pnlTKBCMini;
-		private FontAwesome.Sharp.IconButton btnTKMini;
-		private System.Windows.Forms.Panel pnlTKBCMiniStatus;
-		private System.Windows.Forms.Panel pnlHTMini;
-		private FontAwesome.Sharp.IconButton btnHTMini;
-		private System.Windows.Forms.Panel pnlHTMiniStatus;
-		private System.Windows.Forms.Panel pnlTGMini;
-		private FontAwesome.Sharp.IconButton btnTGMini;
-		private System.Windows.Forms.Panel pnlTGMiniStatus;
-		private System.Windows.Forms.Panel pnlThoatMini;
-		private FontAwesome.Sharp.IconButton btnThoatMini;
-		private System.Windows.Forms.Panel pnlThoatMiniStatus;
-		private System.Windows.Forms.Panel NavMiniTopLine;
-		private System.Windows.Forms.Panel NavMiniBottomLine;
 		private System.Windows.Forms.Label lblTitle;
 		private System.Windows.Forms.PictureBox pbTitleLogo;
-		private System.Windows.Forms.Panel pnlDMMini;
-		private FontAwesome.Sharp.IconButton btnDMMini;
-		private System.Windows.Forms.Panel pnlDMMiniStatus;
-		private System.Windows.Forms.Panel pnlCNMini;
-		private FontAwesome.Sharp.IconButton btnCNMini;
-		private System.Windows.Forms.Panel pnlCNMiniStatus;
 		public System.Windows.Forms.Panel pnlForm;
 		private System.Windows.Forms.Panel pnlMenuThongKe;
 		private FontAwesome.Sharp.IconButton btnXemTiemDoDaoTao;
@@ -1824,6 +1916,7 @@ namespace Main
 		private System.Windows.Forms.TabPage tPEduProg;
 		private System.Windows.Forms.TabPage tPGuide;
 		private System.Windows.Forms.TabPage tPAbout;
+		private Pages.About aboutUC;
 		private Pages.MainMenu mainMenuUC;
 		private Pages.ManageUser manageUserUC;
 		private Pages.ManageFaculty manageFacultyUC;
@@ -1840,9 +1933,38 @@ namespace Main
 		private Pages.Profile profileUC;
 		private Pages.Statistical statisticalUC;
 		private Pages.EduProg eduProgUC;
+		private Pages.Guide guideUC;
 		private FontAwesome.Sharp.IconButton btnExit;
 		public Bunifu.UI.WinForms.BunifuPages bP;
 		private FontAwesome.Sharp.IconButton btnMinimized;
-	}
+        private System.Windows.Forms.Panel pnlButtonTroGIup;
+        private FontAwesome.Sharp.IconButton btnArrowTroGiup;
+        private FontAwesome.Sharp.IconButton btnTroGiup;
+        private System.Windows.Forms.Panel pnlTroGiupStatus;
+        private System.Windows.Forms.Panel pnlMenuTroGiup;
+        private FontAwesome.Sharp.IconButton btnAboutUs;
+        private FontAwesome.Sharp.IconButton btnHuongDanThi;
+        private System.Windows.Forms.Panel pnlNavigationMini;
+        private System.Windows.Forms.Panel pnlTGMini;
+        private FontAwesome.Sharp.IconButton btnTGMini;
+        private System.Windows.Forms.Panel pnlTGMiniStatus;
+        private System.Windows.Forms.Panel pnlTKBCMini;
+        private FontAwesome.Sharp.IconButton btnTKMini;
+        private System.Windows.Forms.Panel pnlTKBCMiniStatus;
+        private System.Windows.Forms.Panel pnlCNMini;
+        private FontAwesome.Sharp.IconButton btnCNMini;
+        private System.Windows.Forms.Panel pnlCNMiniStatus;
+        private System.Windows.Forms.Panel pnlDMMini;
+        private FontAwesome.Sharp.IconButton btnDMMini;
+        private System.Windows.Forms.Panel pnlDMMiniStatus;
+        private System.Windows.Forms.Panel NavMiniBottomLine;
+        private System.Windows.Forms.Panel pnlThoatMini;
+        private FontAwesome.Sharp.IconButton btnThoatMini;
+        private System.Windows.Forms.Panel pnlThoatMiniStatus;
+        private System.Windows.Forms.Panel pnlHTMini;
+        private FontAwesome.Sharp.IconButton btnHTMini;
+        private System.Windows.Forms.Panel pnlHTMiniStatus;
+        private System.Windows.Forms.Panel NavMiniTopLine;
+    }
 }
 

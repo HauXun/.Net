@@ -31,14 +31,14 @@ namespace Main.Pages
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageQuestion));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.btnAdd = new FontAwesome.Sharp.IconButton();
@@ -68,6 +68,7 @@ namespace Main.Pages
 			this.lbNoiDung = new System.Windows.Forms.Label();
 			this.pnl1Shadow = new System.Windows.Forms.Panel();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
@@ -121,17 +122,19 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 23);
+			this.iconTitle.Location = new System.Drawing.Point(45, 21);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnAdd
 			// 
 			this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnAdd.FlatAppearance.BorderSize = 0;
 			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,6 +154,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnAdd, "Thêm câu hỏi");
 			this.btnAdd.UseVisualStyleBackColor = false;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			this.btnAdd.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlControls
 			// 
@@ -171,9 +175,9 @@ namespace Main.Pages
 			this.pnlDapAnDung.BackColor = System.Drawing.Color.White;
 			this.pnlDapAnDung.Controls.Add(this.tbAnswerCorrect);
 			this.pnlDapAnDung.Controls.Add(this.lbDapAnDung);
-			this.pnlDapAnDung.Location = new System.Drawing.Point(1113, 225);
+			this.pnlDapAnDung.Location = new System.Drawing.Point(1064, 225);
 			this.pnlDapAnDung.Name = "pnlDapAnDung";
-			this.pnlDapAnDung.Size = new System.Drawing.Size(359, 94);
+			this.pnlDapAnDung.Size = new System.Drawing.Size(409, 94);
 			this.pnlDapAnDung.TabIndex = 36;
 			// 
 			// tbAnswerCorrect
@@ -200,7 +204,7 @@ namespace Main.Pages
 			this.tbAnswerCorrect.PlaceholderText = "";
 			this.tbAnswerCorrect.SelectedText = "";
 			this.tbAnswerCorrect.ShadowDecoration.Parent = this.tbAnswerCorrect;
-			this.tbAnswerCorrect.Size = new System.Drawing.Size(316, 36);
+			this.tbAnswerCorrect.Size = new System.Drawing.Size(366, 36);
 			this.tbAnswerCorrect.TabIndex = 17;
 			// 
 			// lbDapAnDung
@@ -217,9 +221,9 @@ namespace Main.Pages
 			// 
 			this.pnlDapAnDungShadow.BackColor = System.Drawing.Color.Silver;
 			this.pnlDapAnDungShadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnlDapAnDungShadow.Location = new System.Drawing.Point(1116, 229);
+			this.pnlDapAnDungShadow.Location = new System.Drawing.Point(1067, 229);
 			this.pnlDapAnDungShadow.Name = "pnlDapAnDungShadow";
-			this.pnlDapAnDungShadow.Size = new System.Drawing.Size(359, 94);
+			this.pnlDapAnDungShadow.Size = new System.Drawing.Size(409, 94);
 			this.pnlDapAnDungShadow.TabIndex = 39;
 			// 
 			// pnlInfo2
@@ -231,9 +235,9 @@ namespace Main.Pages
 			this.pnlInfo2.Controls.Add(this.lbMaDe);
 			this.pnlInfo2.Controls.Add(this.lbMonThi);
 			this.pnlInfo2.Controls.Add(this.lbMaCauHoi);
-			this.pnlInfo2.Location = new System.Drawing.Point(1113, 24);
+			this.pnlInfo2.Location = new System.Drawing.Point(1064, 24);
 			this.pnlInfo2.Name = "pnlInfo2";
-			this.pnlInfo2.Size = new System.Drawing.Size(359, 167);
+			this.pnlInfo2.Size = new System.Drawing.Size(409, 167);
 			this.pnlInfo2.TabIndex = 35;
 			// 
 			// cbExamID
@@ -261,9 +265,9 @@ namespace Main.Pages
 			this.cbExamID.ItemForeColor = System.Drawing.Color.Black;
 			this.cbExamID.ItemHeight = 30;
 			this.cbExamID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbExamID.Location = new System.Drawing.Point(196, 38);
+			this.cbExamID.Location = new System.Drawing.Point(226, 38);
 			this.cbExamID.Name = "cbExamID";
-			this.cbExamID.Size = new System.Drawing.Size(145, 36);
+			this.cbExamID.Size = new System.Drawing.Size(165, 36);
 			this.cbExamID.TabIndex = 49;
 			this.cbExamID.Text = null;
 			// 
@@ -275,7 +279,7 @@ namespace Main.Pages
 			this.cbSubject.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbSubject.DisabledColor = System.Drawing.Color.Gray;
 			this.cbSubject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbSubject.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbSubject.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbSubject.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbSubject.FillDropDown = false;
@@ -294,7 +298,7 @@ namespace Main.Pages
 			this.cbSubject.ItemHighLightColor = System.Drawing.Color.GhostWhite;
 			this.cbSubject.Location = new System.Drawing.Point(25, 108);
 			this.cbSubject.Name = "cbSubject";
-			this.cbSubject.Size = new System.Drawing.Size(316, 36);
+			this.cbSubject.Size = new System.Drawing.Size(366, 36);
 			this.cbSubject.TabIndex = 47;
 			this.cbSubject.Text = null;
 			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
@@ -325,14 +329,14 @@ namespace Main.Pages
 			this.tbQuestionID.ReadOnly = true;
 			this.tbQuestionID.SelectedText = "";
 			this.tbQuestionID.ShadowDecoration.Parent = this.tbQuestionID;
-			this.tbQuestionID.Size = new System.Drawing.Size(143, 36);
+			this.tbQuestionID.Size = new System.Drawing.Size(165, 36);
 			this.tbQuestionID.TabIndex = 18;
 			// 
 			// lbMaDe
 			// 
 			this.lbMaDe.AutoSize = true;
 			this.lbMaDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMaDe.Location = new System.Drawing.Point(201, 14);
+			this.lbMaDe.Location = new System.Drawing.Point(231, 14);
 			this.lbMaDe.Name = "lbMaDe";
 			this.lbMaDe.Size = new System.Drawing.Size(57, 20);
 			this.lbMaDe.TabIndex = 5;
@@ -362,9 +366,9 @@ namespace Main.Pages
 			// 
 			this.pnl2Shadow.BackColor = System.Drawing.Color.Silver;
 			this.pnl2Shadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnl2Shadow.Location = new System.Drawing.Point(1116, 28);
+			this.pnl2Shadow.Location = new System.Drawing.Point(1067, 28);
 			this.pnl2Shadow.Name = "pnl2Shadow";
-			this.pnl2Shadow.Size = new System.Drawing.Size(359, 167);
+			this.pnl2Shadow.Size = new System.Drawing.Size(409, 167);
 			this.pnl2Shadow.TabIndex = 38;
 			// 
 			// pnlInfo1
@@ -382,7 +386,7 @@ namespace Main.Pages
 			this.pnlInfo1.Controls.Add(this.lbNoiDung);
 			this.pnlInfo1.Location = new System.Drawing.Point(24, 24);
 			this.pnlInfo1.Name = "pnlInfo1";
-			this.pnlInfo1.Size = new System.Drawing.Size(1053, 295);
+			this.pnlInfo1.Size = new System.Drawing.Size(1003, 295);
 			this.pnlInfo1.TabIndex = 34;
 			// 
 			// tbAnswerD
@@ -402,7 +406,7 @@ namespace Main.Pages
 			this.tbAnswerD.ForeColor = System.Drawing.Color.Black;
 			this.tbAnswerD.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbAnswerD.HoverState.Parent = this.tbAnswerD;
-			this.tbAnswerD.Location = new System.Drawing.Point(648, 242);
+			this.tbAnswerD.Location = new System.Drawing.Point(598, 242);
 			this.tbAnswerD.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbAnswerD.Name = "tbAnswerD";
 			this.tbAnswerD.PasswordChar = '\0';
@@ -429,7 +433,7 @@ namespace Main.Pages
 			this.tbAnswerC.ForeColor = System.Drawing.Color.Black;
 			this.tbAnswerC.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbAnswerC.HoverState.Parent = this.tbAnswerC;
-			this.tbAnswerC.Location = new System.Drawing.Point(648, 176);
+			this.tbAnswerC.Location = new System.Drawing.Point(598, 176);
 			this.tbAnswerC.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbAnswerC.Name = "tbAnswerC";
 			this.tbAnswerC.PasswordChar = '\0';
@@ -456,7 +460,7 @@ namespace Main.Pages
 			this.tbAnswerB.ForeColor = System.Drawing.Color.Black;
 			this.tbAnswerB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbAnswerB.HoverState.Parent = this.tbAnswerB;
-			this.tbAnswerB.Location = new System.Drawing.Point(648, 108);
+			this.tbAnswerB.Location = new System.Drawing.Point(598, 108);
 			this.tbAnswerB.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbAnswerB.Name = "tbAnswerB";
 			this.tbAnswerB.PasswordChar = '\0';
@@ -483,7 +487,7 @@ namespace Main.Pages
 			this.tbAnswerA.ForeColor = System.Drawing.Color.Black;
 			this.tbAnswerA.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbAnswerA.HoverState.Parent = this.tbAnswerA;
-			this.tbAnswerA.Location = new System.Drawing.Point(648, 38);
+			this.tbAnswerA.Location = new System.Drawing.Point(598, 38);
 			this.tbAnswerA.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbAnswerA.Name = "tbAnswerA";
 			this.tbAnswerA.PasswordChar = '\0';
@@ -518,14 +522,14 @@ namespace Main.Pages
 			this.tbContent.PlaceholderText = "";
 			this.tbContent.SelectedText = "";
 			this.tbContent.ShadowDecoration.Parent = this.tbContent;
-			this.tbContent.Size = new System.Drawing.Size(611, 240);
+			this.tbContent.Size = new System.Drawing.Size(550, 240);
 			this.tbContent.TabIndex = 0;
 			// 
 			// lbDapAnA
 			// 
 			this.lbDapAnA.AutoSize = true;
 			this.lbDapAnA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbDapAnA.Location = new System.Drawing.Point(654, 14);
+			this.lbDapAnA.Location = new System.Drawing.Point(604, 14);
 			this.lbDapAnA.Name = "lbDapAnA";
 			this.lbDapAnA.Size = new System.Drawing.Size(80, 20);
 			this.lbDapAnA.TabIndex = 12;
@@ -535,7 +539,7 @@ namespace Main.Pages
 			// 
 			this.lbDapAnB.AutoSize = true;
 			this.lbDapAnB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbDapAnB.Location = new System.Drawing.Point(654, 84);
+			this.lbDapAnB.Location = new System.Drawing.Point(604, 84);
 			this.lbDapAnB.Name = "lbDapAnB";
 			this.lbDapAnB.Size = new System.Drawing.Size(80, 20);
 			this.lbDapAnB.TabIndex = 5;
@@ -545,7 +549,7 @@ namespace Main.Pages
 			// 
 			this.lbDapAnC.AutoSize = true;
 			this.lbDapAnC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbDapAnC.Location = new System.Drawing.Point(654, 152);
+			this.lbDapAnC.Location = new System.Drawing.Point(604, 152);
 			this.lbDapAnC.Name = "lbDapAnC";
 			this.lbDapAnC.Size = new System.Drawing.Size(80, 20);
 			this.lbDapAnC.TabIndex = 4;
@@ -555,7 +559,7 @@ namespace Main.Pages
 			// 
 			this.lbDapAnD.AutoSize = true;
 			this.lbDapAnD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbDapAnD.Location = new System.Drawing.Point(654, 218);
+			this.lbDapAnD.Location = new System.Drawing.Point(604, 218);
 			this.lbDapAnD.Name = "lbDapAnD";
 			this.lbDapAnD.Size = new System.Drawing.Size(81, 20);
 			this.lbDapAnD.TabIndex = 3;
@@ -577,12 +581,13 @@ namespace Main.Pages
 			this.pnl1Shadow.ForeColor = System.Drawing.SystemColors.InfoText;
 			this.pnl1Shadow.Location = new System.Drawing.Point(27, 28);
 			this.pnl1Shadow.Name = "pnl1Shadow";
-			this.pnl1Shadow.Size = new System.Drawing.Size(1053, 295);
+			this.pnl1Shadow.Size = new System.Drawing.Size(1003, 295);
 			this.pnl1Shadow.TabIndex = 37;
 			// 
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.iconSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.tbSearch);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
@@ -596,6 +601,26 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 389);
 			this.pnlDataGridView.TabIndex = 38;
+			// 
+			// iconSearch
+			// 
+			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+			this.iconSearch.FlatAppearance.BorderSize = 0;
+			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconSearch.IconSize = 30;
+			this.iconSearch.Location = new System.Drawing.Point(283, 27);
+			this.iconSearch.Name = "iconSearch";
+			this.iconSearch.Size = new System.Drawing.Size(35, 30);
+			this.iconSearch.TabIndex = 15;
+			this.iconSearch.TabStop = false;
+			this.iconSearch.UseVisualStyleBackColor = false;
+			this.iconSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// bScrollBar
 			// 
@@ -686,22 +711,22 @@ namespace Main.Pages
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AllowUserToDeleteRows = false;
 			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
 			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
 			this.aDgvdata.ColumnHeadersHeight = 40;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -715,14 +740,14 @@ namespace Main.Pages
             this.OptionD,
             this.Answer});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle24;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(34, 79);
 			this.aDgvdata.Name = "aDgvdata";
@@ -743,8 +768,8 @@ namespace Main.Pages
 			// QuestionID
 			// 
 			this.QuestionID.DataPropertyName = "QuestionID";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QuestionID.DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QuestionID.DefaultCellStyle = dataGridViewCellStyle19;
 			this.QuestionID.FillWeight = 60F;
 			this.QuestionID.HeaderText = "Mã câu hỏi";
 			this.QuestionID.MinimumWidth = 22;
@@ -755,8 +780,8 @@ namespace Main.Pages
 			// ExamID
 			// 
 			this.ExamID.DataPropertyName = "ExamID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ExamID.DefaultCellStyle = dataGridViewCellStyle20;
 			this.ExamID.FillWeight = 60F;
 			this.ExamID.HeaderText = "Mã đề";
 			this.ExamID.MinimumWidth = 22;
@@ -767,8 +792,8 @@ namespace Main.Pages
 			// SubjectID
 			// 
 			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle21;
 			this.SubjectID.FillWeight = 60F;
 			this.SubjectID.HeaderText = "Mã môn thi";
 			this.SubjectID.MinimumWidth = 22;
@@ -779,10 +804,10 @@ namespace Main.Pages
 			// QContent
 			// 
 			this.QContent.DataPropertyName = "QContent";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle6.Format = "d";
-			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
-			this.QContent.DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle22.Format = "d";
+			dataGridViewCellStyle22.NullValue = "dd/MM/yyyy";
+			this.QContent.DefaultCellStyle = dataGridViewCellStyle22;
 			this.QContent.HeaderText = "Nội dung câu hỏi";
 			this.QContent.MinimumWidth = 22;
 			this.QContent.Name = "QContent";
@@ -792,8 +817,8 @@ namespace Main.Pages
 			// OptionA
 			// 
 			this.OptionA.DataPropertyName = "OptionA";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.OptionA.DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.OptionA.DefaultCellStyle = dataGridViewCellStyle23;
 			this.OptionA.FillWeight = 80F;
 			this.OptionA.HeaderText = "Đáp án A";
 			this.OptionA.MinimumWidth = 22;
@@ -863,11 +888,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
 			this.btnClearFilter.UseVisualStyleBackColor = false;
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnEdit
 			// 
 			this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnEdit.FlatAppearance.BorderSize = 0;
 			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -888,11 +915,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnEdit, "Sửa câu hỏi");
 			this.btnEdit.UseVisualStyleBackColor = false;
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			this.btnEdit.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnDelete
 			// 
 			this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
 			this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnDelete.FlatAppearance.BorderSize = 0;
 			this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -912,11 +941,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnDelete, "Xóa câu hỏi");
 			this.btnDelete.UseVisualStyleBackColor = false;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			this.btnDelete.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSave
 			// 
 			this.btnSave.BackColor = System.Drawing.Color.Green;
 			this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnSave.FlatAppearance.BorderSize = 0;
 			this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -938,11 +969,13 @@ namespace Main.Pages
 			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Visible = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			this.btnSave.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnCancle
 			// 
 			this.btnCancle.BackColor = System.Drawing.Color.DarkGray;
 			this.btnCancle.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnCancle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnCancle.FlatAppearance.BorderSize = 0;
 			this.btnCancle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -963,6 +996,7 @@ namespace Main.Pages
 			this.btnCancle.UseVisualStyleBackColor = false;
 			this.btnCancle.Visible = false;
 			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+			this.btnCancle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSearch
 			// 
@@ -988,6 +1022,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
 			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			this.btnSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlDataGridViewShadow
 			// 
@@ -1089,5 +1124,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionC;
 		private System.Windows.Forms.DataGridViewTextBoxColumn OptionD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
-	}
+        private FontAwesome.Sharp.IconButton iconSearch;
+    }
 }

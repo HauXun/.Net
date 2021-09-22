@@ -30,6 +30,7 @@ namespace Main.Pages
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageExam));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,11 +42,12 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageExam));
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.btnAdd = new FontAwesome.Sharp.IconButton();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
+			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +84,6 @@ namespace Main.Pages
 			this.pnl1Shadow = new System.Windows.Forms.Panel();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.pnlDataGridView.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.pnlControls.SuspendLayout();
@@ -117,17 +118,19 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 23);
+			this.iconTitle.Location = new System.Drawing.Point(45, 20);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnAdd
 			// 
 			this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnAdd.FlatAppearance.BorderSize = 0;
 			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -147,10 +150,12 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnAdd, "Thêm đề thi");
 			this.btnAdd.UseVisualStyleBackColor = false;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			this.btnAdd.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.iconSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.tbSearch);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
@@ -164,6 +169,80 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 518);
 			this.pnlDataGridView.TabIndex = 25;
+			// 
+			// iconSearch
+			// 
+			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+			this.iconSearch.FlatAppearance.BorderSize = 0;
+			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconSearch.IconSize = 30;
+			this.iconSearch.Location = new System.Drawing.Point(283, 27);
+			this.iconSearch.Name = "iconSearch";
+			this.iconSearch.Size = new System.Drawing.Size(35, 30);
+			this.iconSearch.TabIndex = 13;
+			this.iconSearch.TabStop = false;
+			this.iconSearch.UseVisualStyleBackColor = false;
+			this.iconSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
+			// 
+			// bScrollBar
+			// 
+			this.bScrollBar.AllowCursorChanges = true;
+			this.bScrollBar.AllowHomeEndKeysDetection = false;
+			this.bScrollBar.AllowIncrementalClickMoves = true;
+			this.bScrollBar.AllowMouseDownEffects = false;
+			this.bScrollBar.AllowMouseHoverEffects = false;
+			this.bScrollBar.AllowScrollingAnimations = true;
+			this.bScrollBar.AllowScrollKeysDetection = true;
+			this.bScrollBar.AllowScrollOptionsMenu = true;
+			this.bScrollBar.AllowShrinkingOnFocusLost = false;
+			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.bScrollBar.AutoScroll = true;
+			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
+			this.bScrollBar.BindingContainer = null;
+			this.bScrollBar.BorderRadius = 2;
+			this.bScrollBar.BorderThickness = 1;
+			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
+			this.bScrollBar.DrawThickBorder = false;
+			this.bScrollBar.DurationBeforeShrink = 2000;
+			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.LargeChange = 10;
+			this.bScrollBar.Location = new System.Drawing.Point(1492, 119);
+			this.bScrollBar.Maximum = 100;
+			this.bScrollBar.Minimum = 0;
+			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
+			this.bScrollBar.MinimumThumbLength = 18;
+			this.bScrollBar.Name = "bScrollBar";
+			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
+			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ShrinkSizeLimit = 3;
+			this.bScrollBar.Size = new System.Drawing.Size(31, 385);
+			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
+			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
+			this.bScrollBar.SmallChange = 1;
+			this.bScrollBar.TabIndex = 11;
+			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
+			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
+			this.bScrollBar.ThumbLength = 38;
+			this.bScrollBar.ThumbMargin = 1;
+			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
+			this.bScrollBar.Value = 100;
+			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
 			// 
 			// tbSearch
 			// 
@@ -369,11 +448,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
 			this.btnClearFilter.UseVisualStyleBackColor = false;
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnEdit
 			// 
 			this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnEdit.FlatAppearance.BorderSize = 0;
 			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,11 +475,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnEdit, "Sửa đề thi");
 			this.btnEdit.UseVisualStyleBackColor = false;
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			this.btnEdit.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnDelete
 			// 
 			this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
 			this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnDelete.FlatAppearance.BorderSize = 0;
 			this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -418,11 +501,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnDelete, "Xóa đề thi");
 			this.btnDelete.UseVisualStyleBackColor = false;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			this.btnDelete.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSave
 			// 
 			this.btnSave.BackColor = System.Drawing.Color.Green;
 			this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnSave.FlatAppearance.BorderSize = 0;
 			this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -444,11 +529,13 @@ namespace Main.Pages
 			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Visible = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			this.btnSave.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnCancle
 			// 
 			this.btnCancle.BackColor = System.Drawing.Color.DarkGray;
 			this.btnCancle.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnCancle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnCancle.FlatAppearance.BorderSize = 0;
 			this.btnCancle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -469,6 +556,7 @@ namespace Main.Pages
 			this.btnCancle.UseVisualStyleBackColor = false;
 			this.btnCancle.Visible = false;
 			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+			this.btnCancle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSearch
 			// 
@@ -494,6 +582,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
 			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			this.btnSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlDataGridViewShadow
 			// 
@@ -536,7 +625,7 @@ namespace Main.Pages
 			this.cbSubject.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbSubject.DisabledColor = System.Drawing.Color.Gray;
 			this.cbSubject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbSubject.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbSubject.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbSubject.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbSubject.FillDropDown = false;
@@ -553,9 +642,9 @@ namespace Main.Pages
 			this.cbSubject.ItemForeColor = System.Drawing.Color.Black;
 			this.cbSubject.ItemHeight = 30;
 			this.cbSubject.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbSubject.Location = new System.Drawing.Point(25, 36);
+			this.cbSubject.Location = new System.Drawing.Point(24, 40);
 			this.cbSubject.Name = "cbSubject";
-			this.cbSubject.Size = new System.Drawing.Size(447, 36);
+			this.cbSubject.Size = new System.Drawing.Size(450, 36);
 			this.cbSubject.TabIndex = 44;
 			this.cbSubject.Text = null;
 			// 
@@ -567,7 +656,7 @@ namespace Main.Pages
 			this.cbExamRole.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbExamRole.DisabledColor = System.Drawing.Color.Gray;
 			this.cbExamRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbExamRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbExamRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbExamRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbExamRole.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbExamRole.FillDropDown = false;
@@ -584,9 +673,9 @@ namespace Main.Pages
 			this.cbExamRole.ItemForeColor = System.Drawing.Color.Black;
 			this.cbExamRole.ItemHeight = 30;
 			this.cbExamRole.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbExamRole.Location = new System.Drawing.Point(25, 111);
+			this.cbExamRole.Location = new System.Drawing.Point(24, 115);
 			this.cbExamRole.Name = "cbExamRole";
-			this.cbExamRole.Size = new System.Drawing.Size(447, 36);
+			this.cbExamRole.Size = new System.Drawing.Size(450, 36);
 			this.cbExamRole.TabIndex = 44;
 			this.cbExamRole.Text = null;
 			// 
@@ -594,7 +683,7 @@ namespace Main.Pages
 			// 
 			this.lbLoaiDe.AutoSize = true;
 			this.lbLoaiDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbLoaiDe.Location = new System.Drawing.Point(32, 88);
+			this.lbLoaiDe.Location = new System.Drawing.Point(31, 92);
 			this.lbLoaiDe.Name = "lbLoaiDe";
 			this.lbLoaiDe.Size = new System.Drawing.Size(65, 20);
 			this.lbLoaiDe.TabIndex = 4;
@@ -604,7 +693,7 @@ namespace Main.Pages
 			// 
 			this.lbMonThi.AutoSize = true;
 			this.lbMonThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMonThi.Location = new System.Drawing.Point(32, 14);
+			this.lbMonThi.Location = new System.Drawing.Point(31, 18);
 			this.lbMonThi.Name = "lbMonThi";
 			this.lbMonThi.Size = new System.Drawing.Size(65, 20);
 			this.lbMonThi.TabIndex = 2;
@@ -645,7 +734,7 @@ namespace Main.Pages
 			this.nudQuizTimes.FocusedState.Parent = this.nudQuizTimes;
 			this.nudQuizTimes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudQuizTimes.ForeColor = System.Drawing.Color.Black;
-			this.nudQuizTimes.Location = new System.Drawing.Point(257, 36);
+			this.nudQuizTimes.Location = new System.Drawing.Point(258, 40);
 			this.nudQuizTimes.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.nudQuizTimes.Name = "nudQuizTimes";
 			this.nudQuizTimes.ShadowDecoration.Parent = this.nudQuizTimes;
@@ -657,7 +746,7 @@ namespace Main.Pages
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(264, 12);
+			this.label1.Location = new System.Drawing.Point(265, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(79, 20);
 			this.label1.TabIndex = 6;
@@ -673,7 +762,7 @@ namespace Main.Pages
 			this.nudQCount.FocusedState.Parent = this.nudQCount;
 			this.nudQCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudQCount.ForeColor = System.Drawing.Color.Black;
-			this.nudQCount.Location = new System.Drawing.Point(257, 112);
+			this.nudQCount.Location = new System.Drawing.Point(258, 116);
 			this.nudQCount.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.nudQCount.Name = "nudQCount";
 			this.nudQCount.ShadowDecoration.Parent = this.nudQCount;
@@ -698,7 +787,7 @@ namespace Main.Pages
 			this.tbExamID.ForeColor = System.Drawing.Color.Black;
 			this.tbExamID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbExamID.HoverState.Parent = this.tbExamID;
-			this.tbExamID.Location = new System.Drawing.Point(25, 36);
+			this.tbExamID.Location = new System.Drawing.Point(26, 40);
 			this.tbExamID.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbExamID.Name = "tbExamID";
 			this.tbExamID.PasswordChar = '\0';
@@ -712,7 +801,7 @@ namespace Main.Pages
 			// 
 			this.lbSoLuongCauHoi.AutoSize = true;
 			this.lbSoLuongCauHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbSoLuongCauHoi.Location = new System.Drawing.Point(264, 88);
+			this.lbSoLuongCauHoi.Location = new System.Drawing.Point(265, 92);
 			this.lbSoLuongCauHoi.Name = "lbSoLuongCauHoi";
 			this.lbSoLuongCauHoi.Size = new System.Drawing.Size(131, 20);
 			this.lbSoLuongCauHoi.TabIndex = 2;
@@ -722,7 +811,7 @@ namespace Main.Pages
 			// 
 			this.lbThoiGianLamBai.AutoSize = true;
 			this.lbThoiGianLamBai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbThoiGianLamBai.Location = new System.Drawing.Point(32, 88);
+			this.lbThoiGianLamBai.Location = new System.Drawing.Point(33, 92);
 			this.lbThoiGianLamBai.Name = "lbThoiGianLamBai";
 			this.lbThoiGianLamBai.Size = new System.Drawing.Size(131, 20);
 			this.lbThoiGianLamBai.TabIndex = 0;
@@ -738,7 +827,7 @@ namespace Main.Pages
 			this.nudExamTime.FocusedState.Parent = this.nudExamTime;
 			this.nudExamTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudExamTime.ForeColor = System.Drawing.Color.Black;
-			this.nudExamTime.Location = new System.Drawing.Point(25, 112);
+			this.nudExamTime.Location = new System.Drawing.Point(26, 116);
 			this.nudExamTime.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.nudExamTime.Name = "nudExamTime";
 			this.nudExamTime.ShadowDecoration.Parent = this.nudExamTime;
@@ -750,7 +839,7 @@ namespace Main.Pages
 			// 
 			this.lbMaDe.AutoSize = true;
 			this.lbMaDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMaDe.Location = new System.Drawing.Point(32, 14);
+			this.lbMaDe.Location = new System.Drawing.Point(33, 18);
 			this.lbMaDe.Name = "lbMaDe";
 			this.lbMaDe.Size = new System.Drawing.Size(57, 20);
 			this.lbMaDe.TabIndex = 0;
@@ -777,60 +866,6 @@ namespace Main.Pages
 			this.toolTip.ReshowDelay = 0;
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
-			// 
-			// bScrollBar
-			// 
-			this.bScrollBar.AllowCursorChanges = true;
-			this.bScrollBar.AllowHomeEndKeysDetection = false;
-			this.bScrollBar.AllowIncrementalClickMoves = true;
-			this.bScrollBar.AllowMouseDownEffects = false;
-			this.bScrollBar.AllowMouseHoverEffects = false;
-			this.bScrollBar.AllowScrollingAnimations = true;
-			this.bScrollBar.AllowScrollKeysDetection = true;
-			this.bScrollBar.AllowScrollOptionsMenu = true;
-			this.bScrollBar.AllowShrinkingOnFocusLost = false;
-			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.bScrollBar.AutoScroll = true;
-			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
-			this.bScrollBar.BindingContainer = null;
-			this.bScrollBar.BorderRadius = 2;
-			this.bScrollBar.BorderThickness = 1;
-			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
-			this.bScrollBar.DrawThickBorder = false;
-			this.bScrollBar.DurationBeforeShrink = 2000;
-			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1492, 119);
-			this.bScrollBar.Maximum = 100;
-			this.bScrollBar.Minimum = 0;
-			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
-			this.bScrollBar.MinimumThumbLength = 18;
-			this.bScrollBar.Name = "bScrollBar";
-			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
-			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 385);
-			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
-			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
-			this.bScrollBar.SmallChange = 1;
-			this.bScrollBar.TabIndex = 11;
-			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
-			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
-			this.bScrollBar.ThumbLength = 38;
-			this.bScrollBar.ThumbMargin = 1;
-			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
-			this.bScrollBar.Value = 100;
-			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
 			// 
 			// ManageExam
 			// 
@@ -902,5 +937,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCount;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCurrentCount;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
-	}
+        private FontAwesome.Sharp.IconButton iconSearch;
+    }
 }

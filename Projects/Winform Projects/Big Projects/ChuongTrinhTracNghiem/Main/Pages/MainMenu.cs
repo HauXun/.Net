@@ -40,5 +40,10 @@ namespace Main.Pages
             btnQuanLyCauHoi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnQuanLyCauHoi.Width, btnQuanLyCauHoi.Height, 10, 10));
         }
 		#endregion
+
+		private void btnQuanLyDeThi_Enter(object sender, System.EventArgs e)
+		{
+            pbBackground.Focus();
+		}
 	}
 }

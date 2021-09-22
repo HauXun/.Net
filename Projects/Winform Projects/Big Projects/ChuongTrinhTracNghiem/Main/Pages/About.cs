@@ -16,5 +16,10 @@ namespace Main.Pages
 		{
 			InitializeComponent();
 		}
+
+		private void iconTitle_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
+		}
 	}
 }

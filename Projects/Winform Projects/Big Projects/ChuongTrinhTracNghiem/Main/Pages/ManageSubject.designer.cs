@@ -31,14 +31,14 @@ namespace Main.Pages
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageSubject));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.btnAdd = new FontAwesome.Sharp.IconButton();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
@@ -64,6 +64,7 @@ namespace Main.Pages
 			this.pnl2Shadow = new System.Windows.Forms.Panel();
 			this.pnl3Shadow = new System.Windows.Forms.Panel();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
@@ -109,6 +110,7 @@ namespace Main.Pages
 			// 
 			this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnAdd.FlatAppearance.BorderSize = 0;
 			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,6 +130,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnAdd, "Thêm môn thi");
 			this.btnAdd.UseVisualStyleBackColor = false;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			this.btnAdd.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// iconTitle
 			// 
@@ -140,12 +143,13 @@ namespace Main.Pages
 			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 23);
+			this.iconTitle.Location = new System.Drawing.Point(45, 21);
 			this.iconTitle.Name = "iconTitle";
 			this.iconTitle.Size = new System.Drawing.Size(35, 37);
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlControls
 			// 
@@ -170,7 +174,7 @@ namespace Main.Pages
 			this.pnlInfo3.Controls.Add(this.lbMoTa);
 			this.pnlInfo3.Controls.Add(this.lbThuocHocKy);
 			this.pnlInfo3.Controls.Add(this.lbKieuMon);
-			this.pnlInfo3.Location = new System.Drawing.Point(1017, 23);
+			this.pnlInfo3.Location = new System.Drawing.Point(1016, 23);
 			this.pnlInfo3.Name = "pnlInfo3";
 			this.pnlInfo3.Size = new System.Drawing.Size(454, 168);
 			this.pnlInfo3.TabIndex = 23;
@@ -183,7 +187,7 @@ namespace Main.Pages
 			this.cbSemesterID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbSemesterID.DisabledColor = System.Drawing.Color.Gray;
 			this.cbSemesterID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbSemesterID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbSemesterID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbSemesterID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbSemesterID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbSemesterID.FillDropDown = false;
@@ -200,9 +204,9 @@ namespace Main.Pages
 			this.cbSemesterID.ItemForeColor = System.Drawing.Color.Black;
 			this.cbSemesterID.ItemHeight = 30;
 			this.cbSemesterID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbSemesterID.Location = new System.Drawing.Point(239, 37);
+			this.cbSemesterID.Location = new System.Drawing.Point(237, 41);
 			this.cbSemesterID.Name = "cbSemesterID";
-			this.cbSemesterID.Size = new System.Drawing.Size(192, 36);
+			this.cbSemesterID.Size = new System.Drawing.Size(190, 36);
 			this.cbSemesterID.TabIndex = 48;
 			this.cbSemesterID.Text = null;
 			// 
@@ -214,7 +218,7 @@ namespace Main.Pages
 			this.cbSubjectRole.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbSubjectRole.DisabledColor = System.Drawing.Color.Gray;
 			this.cbSubjectRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbSubjectRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbSubjectRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbSubjectRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbSubjectRole.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbSubjectRole.FillDropDown = false;
@@ -231,9 +235,9 @@ namespace Main.Pages
 			this.cbSubjectRole.ItemForeColor = System.Drawing.Color.Black;
 			this.cbSubjectRole.ItemHeight = 30;
 			this.cbSubjectRole.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbSubjectRole.Location = new System.Drawing.Point(25, 37);
+			this.cbSubjectRole.Location = new System.Drawing.Point(27, 41);
 			this.cbSubjectRole.Name = "cbSubjectRole";
-			this.cbSubjectRole.Size = new System.Drawing.Size(192, 36);
+			this.cbSubjectRole.Size = new System.Drawing.Size(190, 36);
 			this.cbSubjectRole.TabIndex = 47;
 			this.cbSubjectRole.Text = null;
 			// 
@@ -254,21 +258,21 @@ namespace Main.Pages
 			this.tbDescription.ForeColor = System.Drawing.Color.Black;
 			this.tbDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbDescription.HoverState.Parent = this.tbDescription;
-			this.tbDescription.Location = new System.Drawing.Point(25, 111);
+			this.tbDescription.Location = new System.Drawing.Point(27, 115);
 			this.tbDescription.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbDescription.Name = "tbDescription";
 			this.tbDescription.PasswordChar = '\0';
 			this.tbDescription.PlaceholderText = "";
 			this.tbDescription.SelectedText = "";
 			this.tbDescription.ShadowDecoration.Parent = this.tbDescription;
-			this.tbDescription.Size = new System.Drawing.Size(406, 36);
+			this.tbDescription.Size = new System.Drawing.Size(400, 35);
 			this.tbDescription.TabIndex = 7;
 			// 
 			// lbMoTa
 			// 
 			this.lbMoTa.AutoSize = true;
 			this.lbMoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMoTa.Location = new System.Drawing.Point(32, 88);
+			this.lbMoTa.Location = new System.Drawing.Point(34, 92);
 			this.lbMoTa.Name = "lbMoTa";
 			this.lbMoTa.Size = new System.Drawing.Size(53, 20);
 			this.lbMoTa.TabIndex = 4;
@@ -278,7 +282,7 @@ namespace Main.Pages
 			// 
 			this.lbThuocHocKy.AutoSize = true;
 			this.lbThuocHocKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbThuocHocKy.Location = new System.Drawing.Point(245, 14);
+			this.lbThuocHocKy.Location = new System.Drawing.Point(243, 18);
 			this.lbThuocHocKy.Name = "lbThuocHocKy";
 			this.lbThuocHocKy.Size = new System.Drawing.Size(106, 20);
 			this.lbThuocHocKy.TabIndex = 6;
@@ -288,7 +292,7 @@ namespace Main.Pages
 			// 
 			this.lbKieuMon.AutoSize = true;
 			this.lbKieuMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbKieuMon.Location = new System.Drawing.Point(32, 14);
+			this.lbKieuMon.Location = new System.Drawing.Point(34, 18);
 			this.lbKieuMon.Name = "lbKieuMon";
 			this.lbKieuMon.Size = new System.Drawing.Size(79, 20);
 			this.lbKieuMon.TabIndex = 4;
@@ -301,7 +305,7 @@ namespace Main.Pages
 			this.pnlInfo2.Controls.Add(this.cbFacultyID);
 			this.pnlInfo2.Controls.Add(this.lbDanhChoKhoa);
 			this.pnlInfo2.Controls.Add(this.lbThuocKhoa);
-			this.pnlInfo2.Location = new System.Drawing.Point(521, 23);
+			this.pnlInfo2.Location = new System.Drawing.Point(520, 23);
 			this.pnlInfo2.Name = "pnlInfo2";
 			this.pnlInfo2.Size = new System.Drawing.Size(454, 168);
 			this.pnlInfo2.TabIndex = 22;
@@ -314,7 +318,7 @@ namespace Main.Pages
 			this.cbCourseID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbCourseID.DisabledColor = System.Drawing.Color.Gray;
 			this.cbCourseID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbCourseID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbCourseID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbCourseID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbCourseID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbCourseID.FillDropDown = false;
@@ -331,9 +335,9 @@ namespace Main.Pages
 			this.cbCourseID.ItemForeColor = System.Drawing.Color.Black;
 			this.cbCourseID.ItemHeight = 30;
 			this.cbCourseID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbCourseID.Location = new System.Drawing.Point(25, 111);
+			this.cbCourseID.Location = new System.Drawing.Point(27, 115);
 			this.cbCourseID.Name = "cbCourseID";
-			this.cbCourseID.Size = new System.Drawing.Size(406, 36);
+			this.cbCourseID.Size = new System.Drawing.Size(400, 36);
 			this.cbCourseID.TabIndex = 46;
 			this.cbCourseID.Text = null;
 			// 
@@ -345,7 +349,7 @@ namespace Main.Pages
 			this.cbFacultyID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
 			this.cbFacultyID.DisabledColor = System.Drawing.Color.Gray;
 			this.cbFacultyID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbFacultyID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+			this.cbFacultyID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
 			this.cbFacultyID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbFacultyID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
 			this.cbFacultyID.FillDropDown = false;
@@ -362,9 +366,9 @@ namespace Main.Pages
 			this.cbFacultyID.ItemForeColor = System.Drawing.Color.Black;
 			this.cbFacultyID.ItemHeight = 30;
 			this.cbFacultyID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbFacultyID.Location = new System.Drawing.Point(25, 37);
+			this.cbFacultyID.Location = new System.Drawing.Point(27, 41);
 			this.cbFacultyID.Name = "cbFacultyID";
-			this.cbFacultyID.Size = new System.Drawing.Size(406, 36);
+			this.cbFacultyID.Size = new System.Drawing.Size(400, 36);
 			this.cbFacultyID.TabIndex = 45;
 			this.cbFacultyID.Text = null;
 			this.cbFacultyID.SelectedIndexChanged += new System.EventHandler(this.cbFacultyID_SelectedIndexChanged);
@@ -373,7 +377,7 @@ namespace Main.Pages
 			// 
 			this.lbDanhChoKhoa.AutoSize = true;
 			this.lbDanhChoKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbDanhChoKhoa.Location = new System.Drawing.Point(32, 88);
+			this.lbDanhChoKhoa.Location = new System.Drawing.Point(34, 92);
 			this.lbDanhChoKhoa.Name = "lbDanhChoKhoa";
 			this.lbDanhChoKhoa.Size = new System.Drawing.Size(117, 20);
 			this.lbDanhChoKhoa.TabIndex = 6;
@@ -383,7 +387,7 @@ namespace Main.Pages
 			// 
 			this.lbThuocKhoa.AutoSize = true;
 			this.lbThuocKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbThuocKhoa.Location = new System.Drawing.Point(32, 14);
+			this.lbThuocKhoa.Location = new System.Drawing.Point(34, 18);
 			this.lbThuocKhoa.Name = "lbThuocKhoa";
 			this.lbThuocKhoa.Size = new System.Drawing.Size(96, 20);
 			this.lbThuocKhoa.TabIndex = 2;
@@ -418,14 +422,14 @@ namespace Main.Pages
 			this.tbSubjectName.ForeColor = System.Drawing.Color.Black;
 			this.tbSubjectName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbSubjectName.HoverState.Parent = this.tbSubjectName;
-			this.tbSubjectName.Location = new System.Drawing.Point(25, 111);
+			this.tbSubjectName.Location = new System.Drawing.Point(27, 115);
 			this.tbSubjectName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbSubjectName.Name = "tbSubjectName";
 			this.tbSubjectName.PasswordChar = '\0';
 			this.tbSubjectName.PlaceholderText = "";
 			this.tbSubjectName.SelectedText = "";
 			this.tbSubjectName.ShadowDecoration.Parent = this.tbSubjectName;
-			this.tbSubjectName.Size = new System.Drawing.Size(406, 36);
+			this.tbSubjectName.Size = new System.Drawing.Size(400, 35);
 			this.tbSubjectName.TabIndex = 6;
 			// 
 			// tbSubjectID
@@ -445,21 +449,21 @@ namespace Main.Pages
 			this.tbSubjectID.ForeColor = System.Drawing.Color.Black;
 			this.tbSubjectID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbSubjectID.HoverState.Parent = this.tbSubjectID;
-			this.tbSubjectID.Location = new System.Drawing.Point(25, 37);
+			this.tbSubjectID.Location = new System.Drawing.Point(27, 41);
 			this.tbSubjectID.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.tbSubjectID.Name = "tbSubjectID";
 			this.tbSubjectID.PasswordChar = '\0';
 			this.tbSubjectID.PlaceholderText = "";
 			this.tbSubjectID.SelectedText = "";
 			this.tbSubjectID.ShadowDecoration.Parent = this.tbSubjectID;
-			this.tbSubjectID.Size = new System.Drawing.Size(406, 36);
+			this.tbSubjectID.Size = new System.Drawing.Size(400, 35);
 			this.tbSubjectID.TabIndex = 5;
 			// 
 			// lbMaMon
 			// 
 			this.lbMaMon.AutoSize = true;
 			this.lbMaMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMaMon.Location = new System.Drawing.Point(32, 14);
+			this.lbMaMon.Location = new System.Drawing.Point(34, 18);
 			this.lbMaMon.Name = "lbMaMon";
 			this.lbMaMon.Size = new System.Drawing.Size(70, 20);
 			this.lbMaMon.TabIndex = 0;
@@ -469,7 +473,7 @@ namespace Main.Pages
 			// 
 			this.lbTenMonThi.AutoSize = true;
 			this.lbTenMonThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTenMonThi.Location = new System.Drawing.Point(32, 88);
+			this.lbTenMonThi.Location = new System.Drawing.Point(34, 92);
 			this.lbTenMonThi.Name = "lbTenMonThi";
 			this.lbTenMonThi.Size = new System.Drawing.Size(96, 20);
 			this.lbTenMonThi.TabIndex = 4;
@@ -488,7 +492,7 @@ namespace Main.Pages
 			// 
 			this.pnl2Shadow.BackColor = System.Drawing.Color.Silver;
 			this.pnl2Shadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnl2Shadow.Location = new System.Drawing.Point(524, 26);
+			this.pnl2Shadow.Location = new System.Drawing.Point(523, 26);
 			this.pnl2Shadow.Name = "pnl2Shadow";
 			this.pnl2Shadow.Size = new System.Drawing.Size(454, 168);
 			this.pnl2Shadow.TabIndex = 25;
@@ -505,6 +509,7 @@ namespace Main.Pages
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.iconSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.tbSearch);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
@@ -518,6 +523,26 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 518);
 			this.pnlDataGridView.TabIndex = 38;
+			// 
+			// iconSearch
+			// 
+			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+			this.iconSearch.FlatAppearance.BorderSize = 0;
+			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconSearch.IconSize = 30;
+			this.iconSearch.Location = new System.Drawing.Point(283, 27);
+			this.iconSearch.Name = "iconSearch";
+			this.iconSearch.Size = new System.Drawing.Size(35, 30);
+			this.iconSearch.TabIndex = 16;
+			this.iconSearch.TabStop = false;
+			this.iconSearch.UseVisualStyleBackColor = false;
+			this.iconSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// bScrollBar
 			// 
@@ -608,22 +633,22 @@ namespace Main.Pages
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AllowUserToDeleteRows = false;
 			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
 			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
 			this.aDgvdata.ColumnHeadersHeight = 40;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -636,14 +661,14 @@ namespace Main.Pages
             this.SemesterID,
             this.Description});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle16;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(34, 79);
 			this.aDgvdata.Name = "aDgvdata";
@@ -665,8 +690,8 @@ namespace Main.Pages
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle11;
 			this.STT.FillWeight = 40F;
 			this.STT.HeaderText = "STT";
 			this.STT.MinimumWidth = 22;
@@ -687,8 +712,8 @@ namespace Main.Pages
 			// SubjectID
 			// 
 			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle12;
 			this.SubjectID.FillWeight = 50F;
 			this.SubjectID.HeaderText = "Mã môn thi";
 			this.SubjectID.MinimumWidth = 22;
@@ -699,10 +724,10 @@ namespace Main.Pages
 			// SubjectRole
 			// 
 			this.SubjectRole.DataPropertyName = "SubjectRole";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.Format = "d";
-			dataGridViewCellStyle5.NullValue = "dd/MM/yyyy";
-			this.SubjectRole.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle13.Format = "d";
+			dataGridViewCellStyle13.NullValue = "dd/MM/yyyy";
+			this.SubjectRole.DefaultCellStyle = dataGridViewCellStyle13;
 			this.SubjectRole.FillWeight = 50F;
 			this.SubjectRole.HeaderText = "Kiểu môn";
 			this.SubjectRole.MinimumWidth = 22;
@@ -723,8 +748,8 @@ namespace Main.Pages
 			// CourseID
 			// 
 			this.CourseID.DataPropertyName = "CourseID";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CourseID.DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CourseID.DefaultCellStyle = dataGridViewCellStyle14;
 			this.CourseID.FillWeight = 50F;
 			this.CourseID.HeaderText = "Dành cho khóa";
 			this.CourseID.MinimumWidth = 22;
@@ -735,8 +760,8 @@ namespace Main.Pages
 			// SemesterID
 			// 
 			this.SemesterID.DataPropertyName = "SemesterID";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SemesterID.DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SemesterID.DefaultCellStyle = dataGridViewCellStyle15;
 			this.SemesterID.FillWeight = 40F;
 			this.SemesterID.HeaderText = "Thuộc học kì";
 			this.SemesterID.MinimumWidth = 22;
@@ -776,11 +801,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
 			this.btnClearFilter.UseVisualStyleBackColor = false;
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnEdit
 			// 
 			this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnEdit.FlatAppearance.BorderSize = 0;
 			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -801,11 +828,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnEdit, "Sửa môn thi");
 			this.btnEdit.UseVisualStyleBackColor = false;
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			this.btnEdit.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnDelete
 			// 
 			this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
 			this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnDelete.FlatAppearance.BorderSize = 0;
 			this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -825,11 +854,13 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnDelete, "Xóa môn thi");
 			this.btnDelete.UseVisualStyleBackColor = false;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			this.btnDelete.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSave
 			// 
 			this.btnSave.BackColor = System.Drawing.Color.Green;
 			this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnSave.FlatAppearance.BorderSize = 0;
 			this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -851,11 +882,13 @@ namespace Main.Pages
 			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Visible = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			this.btnSave.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnCancle
 			// 
 			this.btnCancle.BackColor = System.Drawing.Color.DarkGray;
 			this.btnCancle.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnCancle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.btnCancle.FlatAppearance.BorderSize = 0;
 			this.btnCancle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -876,6 +909,7 @@ namespace Main.Pages
 			this.btnCancle.UseVisualStyleBackColor = false;
 			this.btnCancle.Visible = false;
 			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+			this.btnCancle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnSearch
 			// 
@@ -901,6 +935,7 @@ namespace Main.Pages
 			this.toolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
 			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			this.btnSearch.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlDataGridViewShadow
 			// 
@@ -997,5 +1032,6 @@ namespace Main.Pages
 		private Bunifu.UI.WinForms.BunifuDropdown cbFacultyID;
 		private System.Windows.Forms.ToolTip toolTip;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
-	}
+        private FontAwesome.Sharp.IconButton iconSearch;
+    }
 }

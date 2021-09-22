@@ -89,6 +89,7 @@ namespace Main
 			this.btnLogin.TabIndex = 3;
 			this.btnLogin.Text = "Login";
 			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+			this.btnLogin.Enter += new System.EventHandler(this.btnLogin_Enter);
 			// 
 			// errorProviderWar
 			// 
@@ -117,11 +118,13 @@ namespace Main
 			this.tbPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbPassword.FocusedState.Parent = this.tbPassword;
 			this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.tbPassword.ForeColor = System.Drawing.Color.Gray;
 			this.tbPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbPassword.HoverState.Parent = this.tbPassword;
 			this.tbPassword.Location = new System.Drawing.Point(49, 3);
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '\0';
+			this.tbPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.tbPassword.PlaceholderText = "Coi chừng lộ mật khẩu á ...";
 			this.tbPassword.SelectedText = "";
 			this.tbPassword.SelectionStart = 8;
@@ -146,6 +149,7 @@ namespace Main
 			this.passwordIcon.TabIndex = 1;
 			this.passwordIcon.TabStop = false;
 			this.passwordIcon.UseVisualStyleBackColor = true;
+			this.passwordIcon.Enter += new System.EventHandler(this.btnLogin_Enter);
 			// 
 			// lbTitle
 			// 
@@ -160,6 +164,7 @@ namespace Main
 			// 
 			// btnExit
 			// 
+			this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnExit.FlatAppearance.BorderSize = 0;
 			this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -172,6 +177,7 @@ namespace Main
 			this.btnExit.Text = "X";
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+			this.btnExit.Enter += new System.EventHandler(this.btnLogin_Enter);
 			// 
 			// pnlUsername
 			// 
@@ -197,6 +203,7 @@ namespace Main
 			this.usernameIcon.TabIndex = 0;
 			this.usernameIcon.TabStop = false;
 			this.usernameIcon.UseVisualStyleBackColor = true;
+			this.usernameIcon.Enter += new System.EventHandler(this.btnLogin_Enter);
 			// 
 			// tbUsername
 			// 
@@ -212,12 +219,13 @@ namespace Main
 			this.tbUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbUsername.FocusedState.Parent = this.tbUsername;
 			this.tbUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.tbUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
+			this.tbUsername.ForeColor = System.Drawing.Color.Gray;
 			this.tbUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbUsername.HoverState.Parent = this.tbUsername;
 			this.tbUsername.Location = new System.Drawing.Point(356, 148);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.PasswordChar = '\0';
+			this.tbUsername.PlaceholderForeColor = System.Drawing.Color.Silver;
 			this.tbUsername.PlaceholderText = "Nhập tài khoản đi ...";
 			this.tbUsername.SelectedText = "";
 			this.tbUsername.SelectionStart = 7;

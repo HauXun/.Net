@@ -515,6 +515,11 @@ namespace Main.Pages
 			}
 		}
 
+		private void iconTitle_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
+		}
+
 		private event EventHandler<AccountChanged> updateAccountInfo;
 		public event EventHandler<AccountChanged> UpdateAccountInfo
 		{

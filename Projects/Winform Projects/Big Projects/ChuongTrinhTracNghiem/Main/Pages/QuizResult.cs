@@ -195,6 +195,11 @@ namespace Main.Pages
 			LoadMark();
 		}
 
+		private void btnCheck_Enter(object sender, EventArgs e)
+		{
+			lbTitleResult.Focus();
+		}
+
 		#endregion
 	}
 }
