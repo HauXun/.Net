@@ -91,8 +91,9 @@ namespace Main.Pages
 		{
 			try
 			{
-				RoleBLL.Instance.GetAllRoleExam(cbExamRole);
 				SubjectBLL.Instance.GetAllSubject(cbSubject);
+				TestFormBLL.Instance.GetAllTestForm(cbTestFormID);
+				RoleBLL.Instance.GetAllRoleExam(cbExamRole);
 				ExamBLL.Instance.GetAllExam(aDgvdata);
 				if (aDgvdata.Rows.Count > 0)
 					DetailData(0);
@@ -112,10 +113,21 @@ namespace Main.Pages
 				Exam exam = new Exam();
 				exam.ExamID = tbExamID.Text.Trim();
 				exam.SubjectID = cbSubject.SelectedValue.ToString();
+				if (cbTestFormID.SelectedIndex == 0)
+				{
+					exam.TestFormID = null;
+					exam.PercentMark = null;
+				}
+				else
+				{
+					exam.TestFormID = cbTestFormID.SelectedValue.ToString();
+					exam.PercentMark = (byte)nudPercentMark.Value;
+				}
 				exam.ExamRole = cbExamRole.SelectedValue.ToString();
 				exam.ExamTime = (byte)nudExamTime.Value;
-				exam.QuizTimes = (byte)nudQuizTimes.Value;
 				exam.QCount = (ushort)nudQCount.Value;
+				exam.QuizTimes = (byte)nudQuizTimes.Value;
+				exam.Status = ckbStatus.Checked;
 				return exam;
 			}
 			catch (Exception ex)
@@ -136,11 +148,18 @@ namespace Main.Pages
 					DataGridViewRow row = aDgvdata.Rows[rowIndex];
 					tbExamID.Text = row.Cells["ExamID"].Value.ToString();
 					cbSubject.SelectedValue = row.Cells["SubjectID"].Value;
+					if (string.IsNullOrEmpty(row.Cells["TestFormID"].Value.ToString()))
+						cbTestFormID.SelectedIndex = 0;
+					else
+						cbTestFormID.SelectedValue = row.Cells["TestFormID"].Value;
+					ushort.TryParse(row.Cells["PercentMark"].Value.ToString(), out ushort percent);
+					nudPercentMark.Value = percent;
 					cbExamRole.SelectedValue = row.Cells["ExamRole"].Value;
 					nudExamTime.Value = ushort.Parse(row.Cells["ExamTime"].Value.ToString());
 					nudQuizTimes.Value = ushort.Parse(row.Cells["QuizTimes"].Value.ToString());
 					nudQCount.Value = ushort.Parse(row.Cells["QCount"].Value.ToString());
 					questionCurrentCount = ushort.Parse(row.Cells["QCurrentCount"].Value.ToString());
+					ckbStatus.Checked = (bool)row.Cells["Status"].Value;
 				}
 			}
 			catch (Exception ex)
@@ -244,19 +263,23 @@ namespace Main.Pages
 		{
 			foreach (Control control in pnlInfo1.Controls)
 			{
-				if (control is Guna2NumericUpDown)
+				if (control is BunifuDropdown)
 				{
-					(control as Guna2NumericUpDown).Value = 0;
+					(control as BunifuDropdown).SelectedIndex = -1;
 				}
 			}
 			tbExamID.Text = string.Empty;
 			foreach (Control control in pnlInfo2.Controls)
 			{
-				if (control is BunifuDropdown)
+				if (control is Guna2NumericUpDown)
 				{
-					(control as BunifuDropdown).SelectedIndex = -1;
-				}	
+					(control as Guna2NumericUpDown).Value = 1;
+				}
 			}
+			nudPercentMark.Value = 0;
+			cbTestFormID.SelectedIndex = -1;
+			ckbStatus.Checked = false;
+			lbCheckStatus.Text = "Đóng thi";
 		}
 
 		private void ClearError()
@@ -264,15 +287,32 @@ namespace Main.Pages
 			// Kiểm tra xem thông tin hợp lệ chưa?
 			// Xóa bỏ những thông báo lỗi nếu có
 			errorProviderWar.SetError(tbExamID, "");
-			errorProviderWar.SetError(nudQCount, "");
-			errorProviderWar.SetError(nudExamTime, "");
 			errorProviderWar.SetError(cbSubject, "");
+			errorProviderWar.SetError(cbTestFormID, "");
+			errorProviderWar.SetError(nudPercentMark, "");
 			errorProviderWar.SetError(cbExamRole, "");
+			errorProviderWar.SetError(nudExamTime, "");
+			errorProviderWar.SetError(nudQCount, "");
+			errorProviderWar.SetError(nudQuizTimes, "");
 		}
 
 		private bool IsValidComboBoxControl()
 		{
 			ClearError();
+
+			if (cbExamRole.Items.Count == 0)
+			{
+				errorProviderWar.SetError(cbExamRole, "Không có kiểu đề thi!\nVui lòng bổ sung");
+				return false;
+			}
+			else
+			{
+				if (cbExamRole.SelectedIndex == -1)
+				{
+					errorProviderWar.SetError(cbExamRole, "Vui lòng chọn kiểu đề thi!");
+					return false;
+				}
+			}
 
 			if (cbSubject.Items.Count == 0)
 			{
@@ -288,16 +328,16 @@ namespace Main.Pages
 				}
 			}
 
-			if (cbExamRole.Items.Count == 0)
+			if (cbTestFormID.Items.Count == 0)
 			{
-				errorProviderWar.SetError(cbExamRole, "Không có kiểu đề thi!\nVui lòng bổ sung");
+				errorProviderWar.SetError(cbTestFormID, "Không có hình thức đề thi!\nVui lòng bổ sung");
 				return false;
 			}
 			else
 			{
-				if (cbExamRole.SelectedIndex == -1)
+				if (cbTestFormID.SelectedIndex == -1)
 				{
-					errorProviderWar.SetError(cbExamRole, "Vui lòng chọn kiểu đề thi!");
+					errorProviderWar.SetError(cbTestFormID, "Vui lòng chọn hình thức đề thi!");
 					return false;
 				}
 			}
@@ -337,6 +377,18 @@ namespace Main.Pages
 				}
 			}
 
+			// Kiểm tra thời gian thi không được để trống
+			if (string.IsNullOrEmpty(nudExamTime.Text))
+			{
+				errorProviderWar.SetError(nudExamTime, "Thời gian của đề thi\nkhông được để trống!");
+				return false;
+			}
+			else if (nudExamTime.Value <= 0)
+			{
+				errorProviderWar.SetError(nudExamTime, "Thời gian của đề thi\nphải lớn hơn 0!");
+				return false;
+			}
+
 			// Kiểm tra số lượng câu hỏi của đề thi không được để trống
 			if (string.IsNullOrEmpty(nudQCount.Text))
 			{
@@ -345,7 +397,7 @@ namespace Main.Pages
 			}
 			else
 			{
-				if (nudQCount.Value.Equals(0))
+				if (nudQCount.Value <= 0)
 				{
 					errorProviderWar.SetError(nudQCount, "Số lượng câu hỏi của đề thi phải lớn hơn 0!");
 					return false;
@@ -357,16 +409,29 @@ namespace Main.Pages
 				}
 			}
 
-			// Kiểm tra thời gian thi không được để trống
-			if (string.IsNullOrEmpty(nudExamTime.Text))
+			if (string.IsNullOrEmpty(nudQuizTimes.Text))
 			{
-				errorProviderWar.SetError(nudExamTime, "Thời gian của đề thi\nkhông được để trống!");
+				errorProviderWar.SetError(nudQuizTimes, "Số lần thi không được để trống!");
 				return false;
 			}
-			else if (nudExamTime.Value <= 0)
+			else if (nudQuizTimes.Value <= 0)
 			{
-				errorProviderWar.SetError(nudExamTime, "Thời gian của đề thi\nphải lớn hơn 0!");
+				errorProviderWar.SetError(nudQuizTimes, "Số lần thi phải lớn hơn 0!");
 				return false;
+			}
+
+			if (cbTestFormID.SelectedIndex > 0)
+			{
+				if (string.IsNullOrEmpty(nudPercentMark.Text))
+				{
+					errorProviderWar.SetError(nudPercentMark, "Phần trăm điểm của đề thi\nkhông được để trống!");
+					return false;
+				}
+				else if (nudPercentMark.Value.Equals(0))
+				{
+					errorProviderWar.SetError(nudPercentMark, "Phần trăm điểm của đề thi phải lớn hơn 0!");
+					return false;
+				}
 			}
 
 			return true;
@@ -595,6 +660,65 @@ namespace Main.Pages
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
 			lbTitle.Focus();
+		}
+
+		private void cbTestFormID_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbTestFormID.SelectedIndex != -1)
+			{
+				if (cbTestFormID.SelectedIndex != 0)
+				{
+					lbPercentMark.Enabled = nudPercentMark.Enabled = true;
+				}
+				else
+				{
+					lbPercentMark.Enabled = nudPercentMark.Enabled = false;
+					nudPercentMark.Value = 0;
+				}
+			}
+		}
+
+		private void ckbStatus_CheckedChanged(object sender, BunifuCheckBox.CheckedChangedEventArgs e)
+		{
+			if (ckbStatus.Checked)
+			{
+				lbCheckStatus.Text = "Mở thi";
+			}
+			else
+			{
+				lbCheckStatus.Text = "Đóng thi";
+			}
+		}
+
+		private void cbExamRole_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbExamRole.SelectedIndex != -1)
+			{
+				if (cbExamRole.SelectedValue.ToString().Equals("mock-test"))
+				{
+					cbTestFormID.Enabled = lbTestFormID.Enabled = false;
+				}
+				else
+				{
+					cbTestFormID.Enabled = lbTestFormID.Enabled = true;
+				}
+				cbTestFormID.SelectedIndex = 0;
+			}
+		}
+
+		private void lbCheckStatus_Click(object sender, EventArgs e)
+		{
+			ckbStatus.Checked = !ckbStatus.Checked;
+		}
+
+		private void lbCheckStatus_MouseEnter(object sender, EventArgs e)
+		{
+			lbCheckStatus.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Underline);
+		}
+
+		private void lbCheckStatus_MouseLeave(object sender, EventArgs e)
+		{
+			lbCheckStatus.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
 		}
 
 		#endregion

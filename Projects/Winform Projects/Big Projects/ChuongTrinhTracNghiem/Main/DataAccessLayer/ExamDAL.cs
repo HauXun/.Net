@@ -70,20 +70,18 @@ namespace DataAccessLayer
 
 		public bool InsertExam(Exam exam)
 		{
+			string query = string.Empty;
+			if (string.IsNullOrEmpty(exam.TestFormID))
+			{
+				query = $"EXEC dbo.USP_InsertExam '{exam.ExamID}' , '{exam.SubjectID}' , NULL , NULL , '{exam.ExamRole}' , '{exam.ExamTime}' , '{exam.QCount}' , '{exam.QuizTimes}' , '{exam.Status}' , N'{exam.CreatedBy}' , N'{exam.ModifiedBy}'";
+			}
+			else
+			{
+				query = $"EXEC dbo.USP_InsertExam '{exam.ExamID}' , '{exam.SubjectID}' , '{exam.TestFormID}' , '{exam.PercentMark}' , '{exam.ExamRole}' , '{exam.ExamTime}' , '{exam.QCount}' , '{exam.QuizTimes}' , '{exam.Status}' , N'{exam.CreatedBy}' , N'{exam.ModifiedBy}'";
+			}
 			try
 			{
-				string query = "EXEC dbo.USP_InsertExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QuizTimes , @QCount , @CreatedBy , @ModifiedBy";
-				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
-					{
-						exam.ExamID,
-						exam.SubjectID,
-						exam.ExamRole,
-						exam.ExamTime,
-						exam.QuizTimes,
-						exam.QCount,
-						exam.CreatedBy,
-						exam.ModifiedBy
-					});
+				int isAccess = DataProvider.Instance.ExcuteNonQuery(query);
 				return isAccess > 0;
 			}
 			catch (SqlException se)
@@ -104,19 +102,18 @@ namespace DataAccessLayer
 
 		public bool UpdateExam(Exam exam)
 		{
+			string query = string.Empty;
+			if (string.IsNullOrEmpty(exam.TestFormID))
+			{
+				query = $"EXEC dbo.USP_UpdateExam '{exam.ExamID}' , '{exam.SubjectID}' , NULL , NULL , '{exam.ExamRole}' , '{exam.ExamTime}' , '{exam.QCount}' , '{exam.QuizTimes}' , '{exam.Status}' , N'{exam.ModifiedBy}'";
+			}
+			else
+			{
+				query = $"EXEC dbo.USP_UpdateExam '{exam.ExamID}' , '{exam.SubjectID}' , '{exam.TestFormID}' , '{exam.PercentMark}' , '{exam.ExamRole}' , '{exam.ExamTime}' , '{exam.QCount}' , '{exam.QuizTimes}' , '{exam.Status}' , N'{exam.ModifiedBy}'";
+			}
 			try
 			{
-				string query = "EXEC dbo.USP_UpdateExam @ExamID , @SubjectID , @ExamRole , @ExamTime , @QuizTimes , @QCount , @ModifiedBy";
-				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
-					{
-						exam.ExamID,
-						exam.SubjectID,
-						exam.ExamRole,
-						exam.ExamTime,
-						exam.QuizTimes,
-						exam.QCount,
-						exam.ModifiedBy
-					});
+				int isAccess = DataProvider.Instance.ExcuteNonQuery(query);
 				return isAccess > 0;
 			}
 			catch (SqlException se)

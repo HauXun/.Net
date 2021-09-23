@@ -391,6 +391,8 @@ namespace Main
 				this.BeginInvoke((MethodInvoker)delegate
 				{
 					Session.bP.SetPage((int)Session.TabPage.MainMenu);
+					Session.Exam = null;
+					Session.Data = null;
 				});
 				#endregion
 				if (pnlNavigation.Visible)
@@ -402,8 +404,6 @@ namespace Main
 				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
 			}
 		}
-
-
 
 		/// <summary>
 		/// Xác nhận nộp bài
@@ -486,6 +486,10 @@ namespace Main
 			{
 				Session.bP.SetPage((int)Session.TabPage.LeaderBoard);
 				MainAction = leaderBoardUC.HomeFunc;
+				if (Account.UserRole.ToLower().Equals("user"))
+					leaderBoardUC.lbTitle.Text = "Bảng xếp hạng";
+				else
+					leaderBoardUC.lbTitle.Text = "Thống kê điểm thi";
 				leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
 			});
 			#endregion
@@ -509,6 +513,8 @@ namespace Main
 		{
 			isNavigation = true;
 			selectExamForm.isMockTest = true;
+			if (pnlNavigation.Visible)
+				ShowHideSubMenu();
 			SelectExam(e);
 		}
 
@@ -579,12 +585,13 @@ namespace Main
 			quizResultUC.btnTrangChu.Click += btnTrangChu_Click;
 			quizTestUC.btnEnd.Click += btnNopBai_Click;
 			mainMenuUC.btnBangXepHang.Click += btnBangXepHang_Click;
-			mainMenuUC.btnThiThu.Click += BtnThiThu_Click;
+			mainMenuUC.btnThiNgay.Click += btnThiNgay_Click;
 			mainMenuUC.btnHuongDanThi.Click += BtnHuongDanThi_Click; ;
 			mainMenuUC.btnThongTinChiTiet.Click += BtnThongTinChiTiet_Click; ;
 			mainMenuUC.btnQuanLyMonThi.Click += BtnQuanLyMonThi_Click;
 			mainMenuUC.btnQuanLyCauHoi.Click += BtnQuanLyCauHoi_Click;
 			mainMenuUC.btnQuanLyDeThi.Click += BtnQuanLyDeThi_Click;
+			mainMenuUC.btnStatiscicalMark.Click += btnBangXepHang_Click;
 			mainMenuUC.btnTroGiup.Click += BtnTroGiup_Click;
 			mainMenuUC.btnQuanLyNguoiDung.Click += BtnQuanLyNguoiDung_Click;
 			mainMenuUC.btnQuanLyKhoaHoc.Click += BtnQuanLyKhoaHoc_Click;
@@ -1009,7 +1016,7 @@ namespace Main
 			this.guideUC.Size = new System.Drawing.Size(1536, 787);
 			this.guideUC.TabIndex = 0;
 
-			this.tPMainMenu.Controls.Add(this.aboutUC);
+			this.tPAbout.Controls.Add(this.aboutUC);
 			this.tPMainMenu.Controls.Add(this.mainMenuUC);
 			this.tPManageUser.Controls.Add(this.manageUserUC);
 			this.tPManageFaculty.Controls.Add(this.manageFacultyUC);
@@ -1026,7 +1033,7 @@ namespace Main
 			this.tPProfile.Controls.Add(this.profileUC);
 			this.tPStatistical.Controls.Add(this.statisticalUC);
 			this.tPEduProg.Controls.Add(this.eduProgUC);
-			this.tPMainMenu.Controls.Add(this.guideUC);
+			this.tPGuide.Controls.Add(this.guideUC);
 		}
 
 		/// <summary>

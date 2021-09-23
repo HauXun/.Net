@@ -26,7 +26,7 @@ namespace Main.Pages
             pnlThongTinShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlThongTinShadow.Width, pnlThongTinShadow.Height, 10, 10));
 
             //Buttons
-            btnThiThu.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnThiThu.Width, btnThiThu.Height, 10, 10));
+            btnThiNgay.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnThiNgay.Width, btnThiNgay.Height, 10, 10));
             btnHuongDanThi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnHuongDanThi.Width, btnHuongDanThi.Height, 10, 10));
             btnBangXepHang.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnBangXepHang.Width, btnBangXepHang.Height, 10, 10));
 

@@ -24,7 +24,7 @@ namespace Main
                 case MessageBoxButtons.OK:
                     using (OkMessageBox msgOk = new OkMessageBox())
                     {
-                        if (msgLine > 3)
+                        if (msgLine > 2)
                             msgOk.Size = new Size(msgOk.Size.Width, msgOk.Size.Height + msgLine * 16);
                         msgOk.lbTitle.Text = caption;
                         msgOk.lbMessage.Text = message;
@@ -53,7 +53,7 @@ namespace Main
                 case MessageBoxButtons.YesNo:
                     using (YesNoMessageBox msgYesNo = new YesNoMessageBox())
                     {
-                        if (msgLine > 3)
+                        if (msgLine > 2)
                             msgYesNo.Size = new Size(msgYesNo.Size.Width, msgYesNo.Size.Height - 5 + msgLine * 13);
                         msgYesNo.lbTitle.Text = caption;
                         msgYesNo.lbMessage.Text = message;

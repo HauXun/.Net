@@ -33,17 +33,19 @@ namespace Main.Pages
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LeaderBoard));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,6 +152,7 @@ namespace Main.Pages
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
+            this.UserID,
             this.FullName,
             this.SubjectName,
             this.SubjectID,
@@ -158,14 +161,14 @@ namespace Main.Pages
             this.TotalQuestion,
             this.Mark});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle10;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(33, 55);
 			this.aDgvdata.Name = "aDgvdata";
@@ -195,10 +198,22 @@ namespace Main.Pages
 			this.STT.ReadOnly = true;
 			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
+			// UserID
+			// 
+			this.UserID.DataPropertyName = "UserID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.UserID.FillWeight = 60F;
+			this.UserID.HeaderText = "Mã thí sinh";
+			this.UserID.MinimumWidth = 22;
+			this.UserID.Name = "UserID";
+			this.UserID.ReadOnly = true;
+			this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
 			// FullName
 			// 
 			this.FullName.DataPropertyName = "FullName";
-			this.FullName.FillWeight = 130F;
+			this.FullName.FillWeight = 80F;
 			this.FullName.HeaderText = "Tên thí sinh";
 			this.FullName.MinimumWidth = 22;
 			this.FullName.Name = "FullName";
@@ -208,7 +223,7 @@ namespace Main.Pages
 			// SubjectName
 			// 
 			this.SubjectName.DataPropertyName = "SubjectName";
-			this.SubjectName.FillWeight = 130F;
+			this.SubjectName.FillWeight = 120F;
 			this.SubjectName.HeaderText = "Tên môn thi";
 			this.SubjectName.MinimumWidth = 22;
 			this.SubjectName.Name = "SubjectName";
@@ -218,8 +233,8 @@ namespace Main.Pages
 			// SubjectID
 			// 
 			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
 			this.SubjectID.FillWeight = 60F;
 			this.SubjectID.HeaderText = "Mã môn";
 			this.SubjectID.MinimumWidth = 22;
@@ -230,10 +245,10 @@ namespace Main.Pages
 			// CreatedAt
 			// 
 			this.CreatedAt.DataPropertyName = "CreatedAt";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.Format = "d";
-			dataGridViewCellStyle5.NullValue = "dd/MM/yyyy";
-			this.CreatedAt.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.Format = "d";
+			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
+			this.CreatedAt.DefaultCellStyle = dataGridViewCellStyle6;
 			this.CreatedAt.FillWeight = 60F;
 			this.CreatedAt.HeaderText = "Ngày thi";
 			this.CreatedAt.MinimumWidth = 22;
@@ -244,8 +259,8 @@ namespace Main.Pages
 			// CorrectAnswer
 			// 
 			this.CorrectAnswer.DataPropertyName = "CorrectAnswer";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle7;
 			this.CorrectAnswer.FillWeight = 40F;
 			this.CorrectAnswer.HeaderText = "Số câu đúng";
 			this.CorrectAnswer.MinimumWidth = 22;
@@ -256,8 +271,8 @@ namespace Main.Pages
 			// TotalQuestion
 			// 
 			this.TotalQuestion.DataPropertyName = "TotalQuestion";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle8;
 			this.TotalQuestion.FillWeight = 40F;
 			this.TotalQuestion.HeaderText = "Tổng số câu";
 			this.TotalQuestion.MinimumWidth = 22;
@@ -268,8 +283,8 @@ namespace Main.Pages
 			// Mark
 			// 
 			this.Mark.DataPropertyName = "Mark";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Mark.DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Mark.DefaultCellStyle = dataGridViewCellStyle9;
 			this.Mark.FillWeight = 40F;
 			this.Mark.HeaderText = "Điểm";
 			this.Mark.MinimumWidth = 22;
@@ -373,11 +388,13 @@ namespace Main.Pages
 
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private FontAwesome.Sharp.IconButton iconTitle;
-		private System.Windows.Forms.Label lbTitle;
 		private System.Windows.Forms.Panel pnlDataGridViewShadow;
 		private ADGV.AdvancedDataGridView aDgvdata;
 		private FontAwesome.Sharp.IconButton btnClearFilter;
+		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
+		private System.Windows.Forms.ToolTip toolTip;
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+		private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
@@ -385,7 +402,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn CorrectAnswer;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuestion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Mark;
-		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
-		private System.Windows.Forms.ToolTip toolTip;
+		public System.Windows.Forms.Label lbTitle;
 	}
 }

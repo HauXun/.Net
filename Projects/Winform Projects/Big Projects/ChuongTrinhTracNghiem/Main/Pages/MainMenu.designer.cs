@@ -40,7 +40,7 @@ namespace Main.Pages
 			this.pnlTopNguoiDung = new System.Windows.Forms.Panel();
 			this.btnThongTinChiTiet = new Guna.UI2.WinForms.Guna2Button();
 			this.lbDieuHuong = new System.Windows.Forms.Label();
-			this.btnThiThu = new FontAwesome.Sharp.IconButton();
+			this.btnThiNgay = new FontAwesome.Sharp.IconButton();
 			this.btnHuongDanThi = new FontAwesome.Sharp.IconButton();
 			this.btnBangXepHang = new FontAwesome.Sharp.IconButton();
 			this.pnlThongTinShadow = new System.Windows.Forms.Panel();
@@ -72,6 +72,7 @@ namespace Main.Pages
 			this.btnQuanLyMonThi = new FontAwesome.Sharp.IconButton();
 			this.btnQuanLyDeThi = new FontAwesome.Sharp.IconButton();
 			this.btnQuanLyCauHoi = new FontAwesome.Sharp.IconButton();
+			this.btnStatiscicalMark = new FontAwesome.Sharp.IconButton();
 			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.pnlTopNguoiDung.SuspendLayout();
@@ -243,30 +244,30 @@ namespace Main.Pages
 			this.lbDieuHuong.TabIndex = 11;
 			this.lbDieuHuong.Text = "Điều Hướng";
 			// 
-			// btnThiThu
+			// btnThiNgay
 			// 
-			this.btnThiThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(147)))), ((int)(((byte)(230)))));
-			this.btnThiThu.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnThiThu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.btnThiThu.FlatAppearance.BorderSize = 0;
-			this.btnThiThu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnThiThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnThiThu.ForeColor = System.Drawing.Color.White;
-			this.btnThiThu.IconChar = FontAwesome.Sharp.IconChar.StickyNote;
-			this.btnThiThu.IconColor = System.Drawing.Color.White;
-			this.btnThiThu.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnThiThu.IconSize = 40;
-			this.btnThiThu.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnThiThu.Location = new System.Drawing.Point(25, 238);
-			this.btnThiThu.Name = "btnThiThu";
-			this.btnThiThu.Padding = new System.Windows.Forms.Padding(130, 0, 0, 0);
-			this.btnThiThu.Size = new System.Drawing.Size(600, 55);
-			this.btnThiThu.TabIndex = 22;
-			this.btnThiThu.TabStop = false;
-			this.btnThiThu.Text = "Thi thử";
-			this.btnThiThu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.btnThiThu.UseVisualStyleBackColor = false;
-			this.btnThiThu.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
+			this.btnThiNgay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(147)))), ((int)(((byte)(230)))));
+			this.btnThiNgay.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnThiNgay.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.btnThiNgay.FlatAppearance.BorderSize = 0;
+			this.btnThiNgay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnThiNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnThiNgay.ForeColor = System.Drawing.Color.White;
+			this.btnThiNgay.IconChar = FontAwesome.Sharp.IconChar.StickyNote;
+			this.btnThiNgay.IconColor = System.Drawing.Color.White;
+			this.btnThiNgay.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnThiNgay.IconSize = 40;
+			this.btnThiNgay.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnThiNgay.Location = new System.Drawing.Point(25, 238);
+			this.btnThiNgay.Name = "btnThiNgay";
+			this.btnThiNgay.Padding = new System.Windows.Forms.Padding(130, 0, 0, 0);
+			this.btnThiNgay.Size = new System.Drawing.Size(600, 55);
+			this.btnThiNgay.TabIndex = 22;
+			this.btnThiNgay.TabStop = false;
+			this.btnThiNgay.Text = "Thi ngay";
+			this.btnThiNgay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btnThiNgay.UseVisualStyleBackColor = false;
+			this.btnThiNgay.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// btnHuongDanThi
 			// 
@@ -330,7 +331,7 @@ namespace Main.Pages
 			this.pnlNguoiDung.Controls.Add(this.panel1);
 			this.pnlNguoiDung.Controls.Add(this.groupBox1);
 			this.pnlNguoiDung.Controls.Add(this.pnlTopNguoiDung);
-			this.pnlNguoiDung.Controls.Add(this.btnThiThu);
+			this.pnlNguoiDung.Controls.Add(this.btnThiNgay);
 			this.pnlNguoiDung.Controls.Add(this.btnHuongDanThi);
 			this.pnlNguoiDung.Controls.Add(this.btnBangXepHang);
 			this.pnlNguoiDung.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -629,6 +630,7 @@ namespace Main.Pages
 			// pnlGiaoVien
 			// 
 			this.pnlGiaoVien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.pnlGiaoVien.Controls.Add(this.btnStatiscicalMark);
 			this.pnlGiaoVien.Controls.Add(this.pnlBottomGiaoVien);
 			this.pnlGiaoVien.Controls.Add(this.groupBox3);
 			this.pnlGiaoVien.Controls.Add(this.pnlTopGiaoVien);
@@ -683,7 +685,7 @@ namespace Main.Pages
 			// 
 			this.groupBox3.Controls.Add(this.tbManager);
 			this.groupBox3.Controls.Add(this.lbManager);
-			this.groupBox3.Location = new System.Drawing.Point(25, 75);
+			this.groupBox3.Location = new System.Drawing.Point(25, 61);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(600, 116);
 			this.groupBox3.TabIndex = 20;
@@ -794,7 +796,7 @@ namespace Main.Pages
 			this.btnQuanLyMonThi.IconColor = System.Drawing.Color.White;
 			this.btnQuanLyMonThi.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnQuanLyMonThi.IconSize = 40;
-			this.btnQuanLyMonThi.Location = new System.Drawing.Point(25, 236);
+			this.btnQuanLyMonThi.Location = new System.Drawing.Point(25, 192);
 			this.btnQuanLyMonThi.Name = "btnQuanLyMonThi";
 			this.btnQuanLyMonThi.Padding = new System.Windows.Forms.Padding(125, 0, 0, 0);
 			this.btnQuanLyMonThi.Size = new System.Drawing.Size(600, 55);
@@ -817,7 +819,7 @@ namespace Main.Pages
 			this.btnQuanLyDeThi.IconColor = System.Drawing.Color.White;
 			this.btnQuanLyDeThi.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnQuanLyDeThi.IconSize = 40;
-			this.btnQuanLyDeThi.Location = new System.Drawing.Point(25, 358);
+			this.btnQuanLyDeThi.Location = new System.Drawing.Point(25, 314);
 			this.btnQuanLyDeThi.Name = "btnQuanLyDeThi";
 			this.btnQuanLyDeThi.Padding = new System.Windows.Forms.Padding(120, 0, 0, 0);
 			this.btnQuanLyDeThi.Size = new System.Drawing.Size(600, 55);
@@ -840,7 +842,7 @@ namespace Main.Pages
 			this.btnQuanLyCauHoi.IconColor = System.Drawing.Color.White;
 			this.btnQuanLyCauHoi.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnQuanLyCauHoi.IconSize = 40;
-			this.btnQuanLyCauHoi.Location = new System.Drawing.Point(25, 297);
+			this.btnQuanLyCauHoi.Location = new System.Drawing.Point(25, 253);
 			this.btnQuanLyCauHoi.Name = "btnQuanLyCauHoi";
 			this.btnQuanLyCauHoi.Padding = new System.Windows.Forms.Padding(126, 0, 0, 0);
 			this.btnQuanLyCauHoi.Size = new System.Drawing.Size(600, 55);
@@ -850,6 +852,29 @@ namespace Main.Pages
 			this.btnQuanLyCauHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyCauHoi.UseVisualStyleBackColor = false;
 			this.btnQuanLyCauHoi.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
+			// 
+			// btnStatiscicalMark
+			// 
+			this.btnStatiscicalMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(87)))), ((int)(((byte)(170)))));
+			this.btnStatiscicalMark.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnStatiscicalMark.FlatAppearance.BorderSize = 0;
+			this.btnStatiscicalMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnStatiscicalMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnStatiscicalMark.ForeColor = System.Drawing.Color.White;
+			this.btnStatiscicalMark.IconChar = FontAwesome.Sharp.IconChar.ListOl;
+			this.btnStatiscicalMark.IconColor = System.Drawing.Color.White;
+			this.btnStatiscicalMark.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnStatiscicalMark.IconSize = 40;
+			this.btnStatiscicalMark.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnStatiscicalMark.Location = new System.Drawing.Point(25, 375);
+			this.btnStatiscicalMark.Name = "btnStatiscicalMark";
+			this.btnStatiscicalMark.Padding = new System.Windows.Forms.Padding(137, 0, 0, 0);
+			this.btnStatiscicalMark.Size = new System.Drawing.Size(600, 55);
+			this.btnStatiscicalMark.TabIndex = 28;
+			this.btnStatiscicalMark.TabStop = false;
+			this.btnStatiscicalMark.Text = "Thống kê điểm thi";
+			this.btnStatiscicalMark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btnStatiscicalMark.UseVisualStyleBackColor = false;
 			// 
 			// MainMenu
 			// 
@@ -892,7 +917,7 @@ namespace Main.Pages
 		private System.Windows.Forms.Label lbDieuHuong;
 		private System.Windows.Forms.Panel pnlTopNguoiDung;
 		private System.Windows.Forms.GroupBox groupBox1;
-		public FontAwesome.Sharp.IconButton btnThiThu;
+		public FontAwesome.Sharp.IconButton btnThiNgay;
 		public FontAwesome.Sharp.IconButton btnHuongDanThi;
 		public FontAwesome.Sharp.IconButton btnBangXepHang;
 		private System.Windows.Forms.Panel pnlThongTinShadow;
@@ -928,5 +953,6 @@ namespace Main.Pages
 		public Guna.UI2.WinForms.Guna2TextBox tbTaiKhoan;
 		public Guna.UI2.WinForms.Guna2TextBox tbAdmin;
 		public Guna.UI2.WinForms.Guna2TextBox tbManager;
+		public FontAwesome.Sharp.IconButton btnStatiscicalMark;
 	}
 }

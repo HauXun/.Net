@@ -16,11 +16,14 @@ namespace Entities
     {
         public string ExamID { get; set; }
 		public string SubjectID { get; set; }
+		public string TestFormID { get; set; }
+		public byte? PercentMark { get; set; }
 		public string ExamRole { get; set; }
 		public byte ExamTime { get; set; }
-		public byte QuizTimes { get; set; }
 		public int QCount { get; set; }
         public int QCurrentCount { get; set; }
+		public byte QuizTimes { get; set; }
+		public bool Status { get; set; }
 		public string CreatedBy { get; set; }
 		public DateTime CreatedAt { get; set; }
         public string ModifiedBy { get; set; }
@@ -30,14 +33,19 @@ namespace Entities
 		{
 
 		}
+
 		public Exam(DataRow row)
 		{
 			ExamID = row["ExamID"].ToString();
 			SubjectID = row["SubjectID"].ToString();
+			TestFormID = row["TestFormID"].ToString();
+			byte.TryParse(row["PercentMark"].ToString(), out byte percent);
+			PercentMark = percent;
 			ExamTime = byte.Parse(row["ExamTime"].ToString());
-			QuizTimes = byte.Parse(row["QuizTimes"].ToString());
 			QCount = int.Parse(row["QCount"].ToString());
 			QCurrentCount = int.Parse(row["QCurrentCount"].ToString());
+			QuizTimes = byte.Parse(row["QuizTimes"].ToString());
+			Status = bool.Parse(row["Status"].ToString());
 		}
 	}
 }

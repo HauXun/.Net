@@ -112,12 +112,7 @@ namespace Main
 					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
 				return;
 			}
-			else if (Exam.QCurrentCount == 0)
-			{
-				MsgBox.ShowMessage($"Hiện tại không có câu hỏi cho {test} của môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. Thử lại khi khác nhé! 🚀🚀🚀",
-					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
-				return;
-			}
+
 			Session.Exam = this.Exam;
 		}
 

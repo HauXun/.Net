@@ -29,7 +29,7 @@ namespace Main
 		/// </summary>
 		private void InitializeComponent()
 		{
-			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation2 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
+			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.pnlControlBox = new System.Windows.Forms.Panel();
 			this.btnMinimized = new FontAwesome.Sharp.IconButton();
@@ -632,7 +632,7 @@ namespace Main
 			this.btnThiThu.Text = "Thi thử luyện tập";
 			this.btnThiThu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnThiThu.UseVisualStyleBackColor = false;
-			this.btnThiThu.Click += new System.EventHandler(this.btnThiNgay_Click);
+			this.btnThiThu.Click += new System.EventHandler(this.BtnThiThu_Click);
 			this.btnThiThu.Enter += new System.EventHandler(this.btnHeThong_Enter);
 			// 
 			// pnlButtonChucNang
@@ -1294,22 +1294,22 @@ namespace Main
 			this.bP.Size = new System.Drawing.Size(1550, 822);
 			this.bP.TabIndex = 0;
 			this.bP.TabStop = false;
-			animation2.AnimateOnlyDifferences = false;
-			animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-			animation2.LeafCoeff = 0F;
-			animation2.MaxTime = 1F;
-			animation2.MinTime = 0F;
-			animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-			animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-			animation2.MosaicSize = 0;
-			animation2.Padding = new System.Windows.Forms.Padding(0);
-			animation2.RotateCoeff = 0F;
-			animation2.RotateLimit = 0F;
-			animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-			animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-			animation2.TimeCoeff = 0F;
-			animation2.TransparencyCoeff = 0F;
-			this.bP.Transition = animation2;
+			animation1.AnimateOnlyDifferences = false;
+			animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+			animation1.LeafCoeff = 0F;
+			animation1.MaxTime = 1F;
+			animation1.MinTime = 0F;
+			animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+			animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+			animation1.MosaicSize = 0;
+			animation1.Padding = new System.Windows.Forms.Padding(0);
+			animation1.RotateCoeff = 0F;
+			animation1.RotateLimit = 0F;
+			animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+			animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+			animation1.TimeCoeff = 0F;
+			animation1.TransparencyCoeff = 0F;
+			this.bP.Transition = animation1;
 			this.bP.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
 			// 
 			// tPMainMenu
