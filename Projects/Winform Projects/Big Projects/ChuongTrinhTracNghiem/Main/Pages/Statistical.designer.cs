@@ -342,7 +342,6 @@ namespace Main.Pages
 		private FontAwesome.Sharp.IconButton iconTitle;
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private System.Windows.Forms.Panel pnlDataGridViewShadow;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SemesterID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
@@ -352,5 +351,6 @@ namespace Main.Pages
 		private FontAwesome.Sharp.IconButton btnClearFilter;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.ToolTip toolTip;
+		public ADGV.AdvancedDataGridView aDgvdata;
 	}
 }

@@ -76,9 +76,9 @@ namespace BusinessLogicLayer
 			return ExamDAL.Instance.DeleteExam(examID, subjectID);
 		}
 
-		public void SearchExam(DataGridView data, string keyword, string subjectID = "", string examRole = "")
+		public void SearchExam(DataGridView data, string keyword)
 		{
-			data.DataSource = ExamDAL.Instance.SearchExam(keyword, subjectID, examRole);
+			data.DataSource = ExamDAL.Instance.SearchExam(keyword);
 		}
 
 		public bool CancleQuizTimes(string examID, string subjectID)

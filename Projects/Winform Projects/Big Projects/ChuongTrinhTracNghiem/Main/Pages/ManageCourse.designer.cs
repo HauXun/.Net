@@ -793,7 +793,6 @@ namespace Main.Pages
 		private FontAwesome.Sharp.IconButton iconTitle;
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private FontAwesome.Sharp.IconButton btnClearFilter;
 		private FontAwesome.Sharp.IconButton btnEdit;
 		private FontAwesome.Sharp.IconButton btnDelete;
@@ -823,5 +822,6 @@ namespace Main.Pages
 		private System.Windows.Forms.ToolTip toolTip;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
         private FontAwesome.Sharp.IconButton iconSearch;
-    }
+		public ADGV.AdvancedDataGridView aDgvdata;
+	}
 }

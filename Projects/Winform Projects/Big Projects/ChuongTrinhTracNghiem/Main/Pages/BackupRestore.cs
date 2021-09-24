@@ -16,7 +16,7 @@ namespace Main.Pages
 	public partial class BackupRestore : UserControl
 	{
 		public Action HomeFunc;
-		DatabaseConnection databaseConnection;
+		public DatabaseConnection DatabaseConnection;
 		SqlConnection connection;
 		string database;
 
@@ -33,15 +33,15 @@ namespace Main.Pages
 				if (btnSave.Visible && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
 						MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 				{
-					if (!databaseConnection.IsDisposed)
-						databaseConnection.Dispose();
+					if (!DatabaseConnection.IsDisposed)
+						DatabaseConnection.Dispose();
 					Session.bP.SetPage((int)Session.TabPage.MainMenu);
 					btnCancle_Click(this, new EventArgs());
 				}
 				else if (!btnSave.Visible)
 				{
-					if (!databaseConnection.IsDisposed)
-						databaseConnection.Dispose();
+					if (!DatabaseConnection.IsDisposed)
+						DatabaseConnection.Dispose();
 					Session.bP.SetPage((int)Session.TabPage.MainMenu);
 				}
 			};
@@ -306,7 +306,7 @@ namespace Main.Pages
 
 		private void btnRestore_Click(object sender, EventArgs e)
 		{
-			if (!databaseConnection.Connected)
+			if (!DatabaseConnection.Connected)
 			{
 				btnConnect_Click(this, e);
 				btnRestore_Click(sender, e);
@@ -323,7 +323,7 @@ namespace Main.Pages
 
 		private void btnSaoLuu_Click(object sender, EventArgs e)
 		{
-			if (!databaseConnection.Connected)
+			if (!DatabaseConnection.Connected)
 			{
 				btnConnect_Click(this, e);
 				btnSaoLuu_Click(sender, e);
@@ -411,7 +411,7 @@ namespace Main.Pages
 
 		public void BackupRestore_Load(object sender, EventArgs e)
 		{
-			databaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
+			DatabaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
 			EnableControl(false);
 			EnableProcess(false);
 			DefaultSettings();
@@ -421,11 +421,11 @@ namespace Main.Pages
 		{
 			try
 			{
-				databaseConnection.ShowDialog();
-				if (databaseConnection.Connected)
+				DatabaseConnection.ShowDialog();
+				if (DatabaseConnection.Connected)
 				{
-					tbServer.Text = databaseConnection.cbServer.SelectedItem.ToString();
-					connection = new SqlConnection(databaseConnection.ConnectionString);
+					tbServer.Text = DatabaseConnection.cbServer.SelectedItem.ToString();
+					connection = new SqlConnection(DatabaseConnection.ConnectionString);
 					database = connection.Database;
 					EnableControl();
 				}

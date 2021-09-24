@@ -19,6 +19,7 @@ namespace Entities
 		public string FacultyID { get; set; }
         public byte Semester { get; set; }
 		public string SubjectID { get; set; }
+		public float TotalMark { get; set; }
 		public bool Success { get; set; }
 	}
 }

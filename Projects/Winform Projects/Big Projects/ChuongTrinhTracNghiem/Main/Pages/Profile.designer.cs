@@ -530,13 +530,14 @@ namespace Main.Pages
 			this.dtpNgaySinh.BorderThickness = 1;
 			this.dtpNgaySinh.CheckedState.Parent = this.dtpNgaySinh;
 			this.dtpNgaySinh.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.dtpNgaySinh.CustomFormat = "dd/MM/yyyy";
 			this.dtpNgaySinh.Enabled = false;
 			this.dtpNgaySinh.FillColor = System.Drawing.Color.White;
 			this.dtpNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpNgaySinh.HoverState.Parent = this.dtpNgaySinh;
 			this.dtpNgaySinh.Location = new System.Drawing.Point(474, 253);
-			this.dtpNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+			this.dtpNgaySinh.MaxDate = new System.DateTime(9998, 12, 12, 0, 0, 0, 0);
 			this.dtpNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
 			this.dtpNgaySinh.Name = "dtpNgaySinh";
 			this.dtpNgaySinh.ShadowDecoration.Parent = this.dtpNgaySinh;

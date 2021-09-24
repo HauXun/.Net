@@ -389,7 +389,6 @@ namespace Main.Pages
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private FontAwesome.Sharp.IconButton iconTitle;
 		private System.Windows.Forms.Panel pnlDataGridViewShadow;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private FontAwesome.Sharp.IconButton btnClearFilter;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.ToolTip toolTip;
@@ -403,5 +402,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuestion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Mark;
 		public System.Windows.Forms.Label lbTitle;
+		public ADGV.AdvancedDataGridView aDgvdata;
 	}
 }

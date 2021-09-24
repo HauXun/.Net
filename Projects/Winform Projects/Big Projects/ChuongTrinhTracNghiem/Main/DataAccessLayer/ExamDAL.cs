@@ -146,12 +146,12 @@ namespace DataAccessLayer
 			}
 		}
 
-		public DataTable SearchExam(string keyword, string subjectID = "", string examRole = "")
+		public DataTable SearchExam(string keyword)
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_SearchExam @keyword , @SubjectID , @ExamRole";
-				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword, subjectID, examRole });
+				string query = "EXEC dbo.USP_SearchExam @keyword";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
 				return data;
 			}
 			catch (Exception e)

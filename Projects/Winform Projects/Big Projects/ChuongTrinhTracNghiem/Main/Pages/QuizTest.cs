@@ -232,7 +232,6 @@ namespace Main.Pages
 				CorrectAnswer = correctAnswer,
 				TotalQuestion = Exam.QCount,
 				Mark = mark,
-				Success = (mark <= 2) ? false : true,
 				CreatedBy = Account.FullName
 			};
 

@@ -189,6 +189,7 @@ namespace Main.Pages
 					MsgBox.ShowMessage("Thêm thành công!", "Amazing Quiz Application",
 						   MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
 					isAddnew = false;
+					cbCourseID.SelectedIndex = -1;
 					LoadData();
 				}
 			}
@@ -196,6 +197,8 @@ namespace Main.Pages
 			{
 				MsgBox.ShowMessage("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Amazing Quiz Application",
 					   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				cbCourseID.SelectedIndex = -1;
+				DetailData(rowIndex);
 			}
 		}
 
@@ -225,6 +228,7 @@ namespace Main.Pages
 				{
 					MsgBox.ShowMessage("Cập nhập thành công!", "Amazing Quiz Application",
 						   MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
+					cbCourseID.SelectedIndex = -1;
 					LoadData();
 				}
 			}
@@ -232,6 +236,8 @@ namespace Main.Pages
 			{
 				MsgBox.ShowMessage("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Amazing Quiz Application",
 					   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				cbCourseID.SelectedIndex = -1;
+				DetailData(rowIndex);
 			}
 		}
 
@@ -514,15 +520,23 @@ namespace Main.Pages
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			string keyword = tbSearch.Text.Trim();
-			if (keyword.Equals("Nhập từ khóa ..."))
-				keyword = string.Empty;
+			try
+			{
+				string keyword = tbSearch.Text.Trim();
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
 
-			string roleFilter = "ALL";
-			if (cbFilter.SelectedValue != null)
-				roleFilter = cbFilter.SelectedValue.ToString();
+				string roleFilter = "ALL";
+				if (cbFilter.SelectedValue != null)
+					roleFilter = cbFilter.SelectedValue.ToString();
 
-			AccountBLL.Instance.SearchAccount(aDgvdata, keyword, roleFilter);
+				AccountBLL.Instance.SearchAccount(aDgvdata, keyword, roleFilter);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
@@ -556,10 +570,18 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(tbSearch.Text))
-				AccountBLL.Instance.SearchAccount(aDgvdata, "");
-			aDgvdata.ClearFilter();
-			aDgvdata_FilterStringChanged(sender, e);
+			try
+			{
+				if (!string.IsNullOrEmpty(tbSearch.Text))
+					AccountBLL.Instance.SearchAccount(aDgvdata, "");
+				aDgvdata.ClearFilter();
+				aDgvdata_FilterStringChanged(sender, e);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -621,7 +643,6 @@ namespace Main.Pages
 			}
 			VisibleButton(isEnable);
 			EnableControl(isEnable);
-			cbCourseID.SelectedIndex = -1;
 		}
 
 		private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
@@ -668,6 +689,7 @@ namespace Main.Pages
 				{
 					MsgBox.ShowMessage("Thay đổi không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Amazing Quiz Application",
 						   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+					DetailData(rowIndex);
 				}
 			}
 		}

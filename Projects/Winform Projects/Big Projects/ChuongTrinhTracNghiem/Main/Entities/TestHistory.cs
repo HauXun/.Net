@@ -21,7 +21,6 @@ namespace Entities
         public int CorrectAnswer { get; set; }
         public int TotalQuestion { get; set; }
         public double Mark { get; set; }
-		public bool Success { get; set; }
 		public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
         public string ModifiedBy { get; set; }

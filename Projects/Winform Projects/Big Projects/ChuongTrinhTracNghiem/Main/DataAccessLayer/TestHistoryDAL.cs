@@ -35,7 +35,6 @@ namespace DataAccessLayer
 						history.CorrectAnswer,
 						history.TotalQuestion,
 						history.Mark,
-						history.Success,
 						history.CreatedBy
 					});
 			}

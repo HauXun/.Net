@@ -68,7 +68,6 @@ namespace Main.Pages
 			}
 			catch (Exception ex)
 			{
-
 				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
 			}
 		}

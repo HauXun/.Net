@@ -31,15 +31,15 @@ namespace Main.Pages
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageUser));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.btnAdd = new FontAwesome.Sharp.IconButton();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
@@ -77,15 +77,6 @@ namespace Main.Pages
 			this.cbFilter = new Bunifu.UI.WinForms.BunifuDropdown();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
-			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
-			this.btnEdit = new FontAwesome.Sharp.IconButton();
-			this.btnDelete = new FontAwesome.Sharp.IconButton();
-			this.btnSave = new FontAwesome.Sharp.IconButton();
-			this.btnCancle = new FontAwesome.Sharp.IconButton();
-			this.btnSearch = new FontAwesome.Sharp.IconButton();
-			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
-			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.UserRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ClassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +86,15 @@ namespace Main.Pages
 			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
+			this.btnEdit = new FontAwesome.Sharp.IconButton();
+			this.btnDelete = new FontAwesome.Sharp.IconButton();
+			this.btnSave = new FontAwesome.Sharp.IconButton();
+			this.btnCancle = new FontAwesome.Sharp.IconButton();
+			this.btnSearch = new FontAwesome.Sharp.IconButton();
+			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
+			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlControls.SuspendLayout();
 			this.pnlInfo3.SuspendLayout();
 			this.pnlInfo2.SuspendLayout();
@@ -252,12 +252,13 @@ namespace Main.Pages
 			this.dtpDob.BorderRadius = 5;
 			this.dtpDob.BorderThickness = 1;
 			this.dtpDob.CheckedState.Parent = this.dtpDob;
+			this.dtpDob.CustomFormat = "dd/MM/yyyy";
 			this.dtpDob.FillColor = System.Drawing.Color.White;
 			this.dtpDob.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpDob.HoverState.Parent = this.dtpDob;
 			this.dtpDob.Location = new System.Drawing.Point(29, 117);
-			this.dtpDob.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+			this.dtpDob.MaxDate = new System.DateTime(9998, 12, 12, 0, 0, 0, 0);
 			this.dtpDob.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
 			this.dtpDob.Name = "dtpDob";
 			this.dtpDob.ShadowDecoration.Parent = this.dtpDob;
@@ -822,22 +823,22 @@ namespace Main.Pages
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AllowUserToDeleteRows = false;
 			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
 			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			this.aDgvdata.ColumnHeadersHeight = 40;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -851,14 +852,14 @@ namespace Main.Pages
             this.Address,
             this.Birthday});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle18;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(38, 79);
 			this.aDgvdata.Name = "aDgvdata";
@@ -875,6 +876,111 @@ namespace Main.Pages
 			this.aDgvdata.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.aDgvdata_RowEnter);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			// 
+			// UserRole
+			// 
+			this.UserRole.DataPropertyName = "UserRole";
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserRole.DefaultCellStyle = dataGridViewCellStyle12;
+			this.UserRole.FillWeight = 40F;
+			this.UserRole.HeaderText = "Vai trò";
+			this.UserRole.MinimumWidth = 22;
+			this.UserRole.Name = "UserRole";
+			this.UserRole.ReadOnly = true;
+			this.UserRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// FullName
+			// 
+			this.FullName.DataPropertyName = "FullName";
+			this.FullName.FillWeight = 80F;
+			this.FullName.HeaderText = "Họ và tên";
+			this.FullName.MinimumWidth = 22;
+			this.FullName.Name = "FullName";
+			this.FullName.ReadOnly = true;
+			this.FullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ClassID
+			// 
+			this.ClassID.DataPropertyName = "ClassID";
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle13.NullValue = "NULL";
+			this.ClassID.DefaultCellStyle = dataGridViewCellStyle13;
+			this.ClassID.FillWeight = 50F;
+			this.ClassID.HeaderText = "Lớp (user)";
+			this.ClassID.MinimumWidth = 22;
+			this.ClassID.Name = "ClassID";
+			this.ClassID.ReadOnly = true;
+			this.ClassID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Username
+			// 
+			this.Username.DataPropertyName = "Username";
+			this.Username.FillWeight = 50F;
+			this.Username.HeaderText = "Tài khoản";
+			this.Username.MinimumWidth = 22;
+			this.Username.Name = "Username";
+			this.Username.ReadOnly = true;
+			this.Username.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// UserID
+			// 
+			this.UserID.DataPropertyName = "UserID";
+			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserID.DefaultCellStyle = dataGridViewCellStyle14;
+			this.UserID.FillWeight = 50F;
+			this.UserID.HeaderText = "Mã định danh";
+			this.UserID.MinimumWidth = 22;
+			this.UserID.Name = "UserID";
+			this.UserID.ReadOnly = true;
+			this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// PhoneNumber
+			// 
+			this.PhoneNumber.DataPropertyName = "PhoneNumber";
+			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.PhoneNumber.DefaultCellStyle = dataGridViewCellStyle15;
+			this.PhoneNumber.FillWeight = 50F;
+			this.PhoneNumber.HeaderText = "Điện thoại";
+			this.PhoneNumber.MinimumWidth = 22;
+			this.PhoneNumber.Name = "PhoneNumber";
+			this.PhoneNumber.ReadOnly = true;
+			this.PhoneNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Email
+			// 
+			this.Email.DataPropertyName = "Email";
+			this.Email.FillWeight = 90F;
+			this.Email.HeaderText = "Email";
+			this.Email.MinimumWidth = 22;
+			this.Email.Name = "Email";
+			this.Email.ReadOnly = true;
+			this.Email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Address
+			// 
+			this.Address.DataPropertyName = "Address";
+			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Address.DefaultCellStyle = dataGridViewCellStyle16;
+			this.Address.FillWeight = 50F;
+			this.Address.HeaderText = "Địa chỉ";
+			this.Address.MinimumWidth = 22;
+			this.Address.Name = "Address";
+			this.Address.ReadOnly = true;
+			this.Address.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Birthday
+			// 
+			this.Birthday.DataPropertyName = "Birthday";
+			dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle17.Format = "d";
+			dataGridViewCellStyle17.NullValue = "dd/MM/yyyy";
+			this.Birthday.DefaultCellStyle = dataGridViewCellStyle17;
+			this.Birthday.FillWeight = 60F;
+			this.Birthday.HeaderText = "Ngày sinh";
+			this.Birthday.MinimumWidth = 22;
+			this.Birthday.Name = "Birthday";
+			this.Birthday.ReadOnly = true;
+			this.Birthday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// btnClearFilter
 			// 
@@ -1056,111 +1162,6 @@ namespace Main.Pages
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
 			// 
-			// UserRole
-			// 
-			this.UserRole.DataPropertyName = "UserRole";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.UserRole.DefaultCellStyle = dataGridViewCellStyle3;
-			this.UserRole.FillWeight = 40F;
-			this.UserRole.HeaderText = "Vai trò";
-			this.UserRole.MinimumWidth = 22;
-			this.UserRole.Name = "UserRole";
-			this.UserRole.ReadOnly = true;
-			this.UserRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// FullName
-			// 
-			this.FullName.DataPropertyName = "FullName";
-			this.FullName.FillWeight = 80F;
-			this.FullName.HeaderText = "Họ và tên";
-			this.FullName.MinimumWidth = 22;
-			this.FullName.Name = "FullName";
-			this.FullName.ReadOnly = true;
-			this.FullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ClassID
-			// 
-			this.ClassID.DataPropertyName = "ClassID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle4.NullValue = "NULL";
-			this.ClassID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.ClassID.FillWeight = 50F;
-			this.ClassID.HeaderText = "Lớp (user)";
-			this.ClassID.MinimumWidth = 22;
-			this.ClassID.Name = "ClassID";
-			this.ClassID.ReadOnly = true;
-			this.ClassID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Username
-			// 
-			this.Username.DataPropertyName = "Username";
-			this.Username.FillWeight = 50F;
-			this.Username.HeaderText = "Tài khoản";
-			this.Username.MinimumWidth = 22;
-			this.Username.Name = "Username";
-			this.Username.ReadOnly = true;
-			this.Username.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// UserID
-			// 
-			this.UserID.DataPropertyName = "UserID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.UserID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.UserID.FillWeight = 50F;
-			this.UserID.HeaderText = "Mã định danh";
-			this.UserID.MinimumWidth = 22;
-			this.UserID.Name = "UserID";
-			this.UserID.ReadOnly = true;
-			this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// PhoneNumber
-			// 
-			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.PhoneNumber.DefaultCellStyle = dataGridViewCellStyle6;
-			this.PhoneNumber.FillWeight = 50F;
-			this.PhoneNumber.HeaderText = "Điện thoại";
-			this.PhoneNumber.MinimumWidth = 22;
-			this.PhoneNumber.Name = "PhoneNumber";
-			this.PhoneNumber.ReadOnly = true;
-			this.PhoneNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.FillWeight = 90F;
-			this.Email.HeaderText = "Email";
-			this.Email.MinimumWidth = 22;
-			this.Email.Name = "Email";
-			this.Email.ReadOnly = true;
-			this.Email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Address
-			// 
-			this.Address.DataPropertyName = "Address";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Address.DefaultCellStyle = dataGridViewCellStyle7;
-			this.Address.FillWeight = 50F;
-			this.Address.HeaderText = "Địa chỉ";
-			this.Address.MinimumWidth = 22;
-			this.Address.Name = "Address";
-			this.Address.ReadOnly = true;
-			this.Address.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Birthday
-			// 
-			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle8.Format = "d";
-			dataGridViewCellStyle8.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle8;
-			this.Birthday.FillWeight = 60F;
-			this.Birthday.HeaderText = "Ngày sinh";
-			this.Birthday.MinimumWidth = 22;
-			this.Birthday.Name = "Birthday";
-			this.Birthday.ReadOnly = true;
-			this.Birthday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
 			// ManageUser
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1220,7 +1221,6 @@ namespace Main.Pages
 		private System.Windows.Forms.Panel pnl3Shadow;
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private FontAwesome.Sharp.IconButton btnEdit;
 		private FontAwesome.Sharp.IconButton btnDelete;
 		public FontAwesome.Sharp.IconButton btnSave;
@@ -1246,5 +1246,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn Email;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Address;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
+		public ADGV.AdvancedDataGridView aDgvdata;
 	}
 }

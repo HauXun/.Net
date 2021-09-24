@@ -33,13 +33,14 @@ namespace Main.Pages
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EduProg));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
@@ -52,6 +53,7 @@ namespace Main.Pages
 			this.CourseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FacultyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TotalMark = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Success = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
 			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
@@ -186,16 +188,17 @@ namespace Main.Pages
             this.CourseID,
             this.FacultyID,
             this.FacultyName,
+            this.TotalMark,
             this.Success});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle10;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(33, 55);
 			this.aDgvdata.Name = "aDgvdata";
@@ -229,7 +232,7 @@ namespace Main.Pages
 			this.SubjectID.DataPropertyName = "SubjectID";
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.SubjectID.FillWeight = 60F;
+			this.SubjectID.FillWeight = 50F;
 			this.SubjectID.HeaderText = "Mã môn";
 			this.SubjectID.MinimumWidth = 22;
 			this.SubjectID.Name = "SubjectID";
@@ -239,7 +242,7 @@ namespace Main.Pages
 			// SubjectName
 			// 
 			this.SubjectName.DataPropertyName = "SubjectName";
-			this.SubjectName.FillWeight = 110F;
+			this.SubjectName.FillWeight = 120F;
 			this.SubjectName.HeaderText = "Tên môn";
 			this.SubjectName.MinimumWidth = 22;
 			this.SubjectName.Name = "SubjectName";
@@ -251,7 +254,7 @@ namespace Main.Pages
 			this.RoleName.DataPropertyName = "RoleName";
 			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			this.RoleName.DefaultCellStyle = dataGridViewCellStyle5;
-			this.RoleName.FillWeight = 60F;
+			this.RoleName.FillWeight = 50F;
 			this.RoleName.HeaderText = "Loại môn";
 			this.RoleName.MinimumWidth = 22;
 			this.RoleName.Name = "RoleName";
@@ -263,7 +266,7 @@ namespace Main.Pages
 			this.CourseID.DataPropertyName = "CourseID";
 			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			this.CourseID.DefaultCellStyle = dataGridViewCellStyle6;
-			this.CourseID.FillWeight = 60F;
+			this.CourseID.FillWeight = 50F;
 			this.CourseID.HeaderText = "Khóa";
 			this.CourseID.MinimumWidth = 22;
 			this.CourseID.Name = "CourseID";
@@ -275,7 +278,7 @@ namespace Main.Pages
 			this.FacultyID.DataPropertyName = "FacultyID";
 			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle7;
-			this.FacultyID.FillWeight = 60F;
+			this.FacultyID.FillWeight = 50F;
 			this.FacultyID.HeaderText = "Mã khoa";
 			this.FacultyID.MinimumWidth = 22;
 			this.FacultyID.Name = "FacultyID";
@@ -287,17 +290,29 @@ namespace Main.Pages
 			this.FacultyName.DataPropertyName = "FacultyName";
 			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle8;
-			this.FacultyName.FillWeight = 110F;
+			this.FacultyName.FillWeight = 120F;
 			this.FacultyName.HeaderText = "Tên khoa";
 			this.FacultyName.MinimumWidth = 22;
 			this.FacultyName.Name = "FacultyName";
 			this.FacultyName.ReadOnly = true;
 			this.FacultyName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
+			// TotalMark
+			// 
+			this.TotalMark.FillWeight = 40F;
+			this.TotalMark.HeaderText = "Tổng điểm";
+			this.TotalMark.MinimumWidth = 22;
+			this.TotalMark.Name = "TotalMark";
+			this.TotalMark.ReadOnly = true;
+			this.TotalMark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
 			// Success
 			// 
 			this.Success.DataPropertyName = "Success";
-			this.Success.FillWeight = 50F;
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle9.NullValue = "Indeterminate";
+			this.Success.DefaultCellStyle = dataGridViewCellStyle9;
+			this.Success.FillWeight = 30F;
 			this.Success.HeaderText = "Trạng thái";
 			this.Success.MinimumWidth = 22;
 			this.Success.Name = "Success";
@@ -370,8 +385,8 @@ namespace Main.Pages
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private FontAwesome.Sharp.IconButton btnClearFilter;
 		private System.Windows.Forms.Panel pnlDataGridViewShadow;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private System.Windows.Forms.ToolTip toolTip;
+		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SemesterID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectName;
@@ -379,7 +394,8 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn CourseID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TotalMark;
 		private System.Windows.Forms.DataGridViewCheckBoxColumn Success;
-		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
+		public ADGV.AdvancedDataGridView aDgvdata;
 	}
 }

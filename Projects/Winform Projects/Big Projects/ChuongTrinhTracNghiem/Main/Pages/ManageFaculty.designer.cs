@@ -31,14 +31,14 @@ namespace Main.Pages
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageFaculty));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.btnAdd = new FontAwesome.Sharp.IconButton();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
@@ -196,12 +196,13 @@ namespace Main.Pages
 			this.dtpFoundingDate.BorderRadius = 5;
 			this.dtpFoundingDate.BorderThickness = 1;
 			this.dtpFoundingDate.CheckedState.Parent = this.dtpFoundingDate;
+			this.dtpFoundingDate.CustomFormat = "dd/MM/yyyy";
 			this.dtpFoundingDate.FillColor = System.Drawing.Color.White;
 			this.dtpFoundingDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtpFoundingDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpFoundingDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpFoundingDate.HoverState.Parent = this.dtpFoundingDate;
 			this.dtpFoundingDate.Location = new System.Drawing.Point(24, 115);
-			this.dtpFoundingDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+			this.dtpFoundingDate.MaxDate = new System.DateTime(9998, 12, 12, 0, 0, 0, 0);
 			this.dtpFoundingDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
 			this.dtpFoundingDate.Name = "dtpFoundingDate";
 			this.dtpFoundingDate.ShadowDecoration.Parent = this.dtpFoundingDate;
@@ -460,22 +461,22 @@ namespace Main.Pages
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AllowUserToDeleteRows = false;
 			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
 			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.aDgvdata.ColumnHeadersHeight = 40;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -485,14 +486,14 @@ namespace Main.Pages
             this.FoundingDate,
             this.Description});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle16;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle8;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(34, 79);
 			this.aDgvdata.Name = "aDgvdata";
@@ -513,8 +514,8 @@ namespace Main.Pages
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle11;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
 			this.STT.FillWeight = 40F;
 			this.STT.HeaderText = "STT";
 			this.STT.MinimumWidth = 22;
@@ -525,8 +526,8 @@ namespace Main.Pages
 			// FacultyName
 			// 
 			this.FacultyName.DataPropertyName = "FacultyName";
-			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle12;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle4;
 			this.FacultyName.HeaderText = "Tên khoa";
 			this.FacultyName.MinimumWidth = 22;
 			this.FacultyName.Name = "FacultyName";
@@ -536,8 +537,8 @@ namespace Main.Pages
 			// FacultyID
 			// 
 			this.FacultyID.DataPropertyName = "FacultyID";
-			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle13;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle5;
 			this.FacultyID.FillWeight = 60F;
 			this.FacultyID.HeaderText = "Mã khoa";
 			this.FacultyID.MinimumWidth = 22;
@@ -548,10 +549,10 @@ namespace Main.Pages
 			// FoundingDate
 			// 
 			this.FoundingDate.DataPropertyName = "FoundingDate";
-			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle14.Format = "d";
-			dataGridViewCellStyle14.NullValue = "dd/MM/yyyy";
-			this.FoundingDate.DefaultCellStyle = dataGridViewCellStyle14;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.Format = "d";
+			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
+			this.FoundingDate.DefaultCellStyle = dataGridViewCellStyle6;
 			this.FoundingDate.FillWeight = 60F;
 			this.FoundingDate.HeaderText = "Ngày thành lập";
 			this.FoundingDate.MinimumWidth = 22;
@@ -562,8 +563,8 @@ namespace Main.Pages
 			// Description
 			// 
 			this.Description.DataPropertyName = "Description";
-			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Description.DefaultCellStyle = dataGridViewCellStyle15;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Description.DefaultCellStyle = dataGridViewCellStyle7;
 			this.Description.HeaderText = "Mô tả";
 			this.Description.MinimumWidth = 22;
 			this.Description.Name = "Description";
@@ -794,7 +795,6 @@ namespace Main.Pages
 		private System.Windows.Forms.Panel pnl1Shadow;
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private FontAwesome.Sharp.IconButton btnClearFilter;
 		private FontAwesome.Sharp.IconButton btnEdit;
 		private FontAwesome.Sharp.IconButton btnDelete;
@@ -811,5 +811,6 @@ namespace Main.Pages
 		private System.Windows.Forms.ToolTip toolTip;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
         private FontAwesome.Sharp.IconButton iconSearch;
-    }
+		public ADGV.AdvancedDataGridView aDgvdata;
+	}
 }

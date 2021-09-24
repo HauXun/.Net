@@ -112,6 +112,24 @@ namespace Main
 					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
 				return;
 			}
+			if (Exam.QCurrentCount <= 0)
+			{
+				MsgBox.ShowMessage($"Hiện tại không có câu hỏi cho {test} của môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. Thử lại khi khác nhé! 🚀🚀🚀",
+					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
+				return;
+			}
+			if (Exam.QuizTimes <= 0)
+			{
+				MsgBox.ShowMessage($"Số lần thi bị hạn chế!. Thử lại khi khác nhé! 🚀🚀🚀",
+					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
+				return;
+			}
+			if (Exam.Status == false)
+			{
+				MsgBox.ShowMessage($"Bài thi chưa được mở!. Thử lại khi khác nhé! 🚀🚀🚀",
+					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
+				return;
+			}
 
 			Session.Exam = this.Exam;
 		}

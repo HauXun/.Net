@@ -36,10 +36,11 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.ManageUser);
 					manageUserUC.Account = this.Account;
 					MainAction = manageUserUC.HomeFunc;
-					manageUserUC.FrmManageUser_Load(manageUserUC, e);
+					if (manageUserUC.aDgvdata.Rows.Count > 0)
+						manageUserUC.FrmManageUser_Load(manageUserUC, e);
+					Session.bP.SetPage((int)Session.TabPage.ManageUser);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -58,9 +59,10 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.ManageFaculty);
 					MainAction = manageFacultyUC.HomeFunc;
-					manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
+					if (manageFacultyUC.aDgvdata.Rows.Count > 0)
+						manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
+					Session.bP.SetPage((int)Session.TabPage.ManageFaculty);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -79,9 +81,10 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.ManageCourse);
 					MainAction = manageCourseUC.HomeFunc;
-					manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
+					if (manageCourseUC.aDgvdata.Rows.Count > 0)
+						manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
+					Session.bP.SetPage((int)Session.TabPage.ManageCourse);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -100,9 +103,10 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.ManageClass);
 					MainAction = manageClassUC.HomeFunc;
-					manageClassUC.ManageClass_Load(manageClassUC, e);
+					if (manageClassUC.aDgvdata.Rows.Count > 0)
+						manageClassUC.ManageClass_Load(manageClassUC, e);
+					Session.bP.SetPage((int)Session.TabPage.ManageClass);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -119,46 +123,49 @@ namespace Main
 			#region MultiThreading
 			this.BeginInvoke((MethodInvoker)delegate
 			{
-				Session.bP.SetPage((int)Session.TabPage.BackupRestore);
 				MainAction = backupRestoreUC.HomeFunc;
-				backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
+				if (backupRestoreUC.DatabaseConnection != null)
+					backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
+				Session.bP.SetPage((int)Session.TabPage.BackupRestore);
 			});
 			#endregion
 			ShowHideSubMenu();
 		}
 
-        private void btnThongKeCTDT_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                #region MultiThreading
-                this.BeginInvoke((MethodInvoker)delegate
-                {
-                    Session.bP.SetPage((int)Session.TabPage.Statistical);
-                    MainAction = statisticalUC.HomeFunc;
-                    statisticalUC.FrmStatistical_Load(statisticalUC, e);
-                });
-                #endregion
-                ShowHideSubMenu();
-            }
-            catch (Exception ex)
-            {
-                MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-                MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
-            }
-        }
-
-        private void btnQuanLyMonThi_Click(object sender, EventArgs e)
+		private void btnThongKeCTDT_Click(object sender, EventArgs e)
 		{
 			try
 			{
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.ManageSubject);
+					MainAction = statisticalUC.HomeFunc;
+					if (statisticalUC.aDgvdata.Rows.Count > 0)
+						statisticalUC.FrmStatistical_Load(statisticalUC, e);
+					Session.bP.SetPage((int)Session.TabPage.Statistical);
+				});
+				#endregion
+				ShowHideSubMenu();
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+			}
+		}
+
+		private void btnQuanLyMonThi_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				#region MultiThreading
+				this.BeginInvoke((MethodInvoker)delegate
+				{
 					manageSubjectUC.Account = this.Account;
 					MainAction = manageSubjectUC.HomeFunc;
-					manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
+					if (manageSubjectUC.aDgvdata.Rows.Count > 0)
+						manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
+					Session.bP.SetPage((int)Session.TabPage.ManageSubject);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -177,10 +184,11 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.ManageQuestion);
 					manageQuestionUC.Account = this.Account;
 					MainAction = manageQuestionUC.HomeFunc;
-					manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
+					if (manageQuestionUC.aDgvdata.Rows.Count > 0)
+						manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
+					Session.bP.SetPage((int)Session.TabPage.ManageQuestion);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -199,10 +207,11 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.ManageExam);
 					manageExamUC.Account = this.Account;
 					MainAction = manageExamUC.HomeFunc;
-					manageExamUC.FrmManageExam_Load(manageExamUC, e);
+					if (manageExamUC.aDgvdata.Rows.Count > 0)
+						manageExamUC.FrmManageExam_Load(manageExamUC, e);
+					Session.bP.SetPage((int)Session.TabPage.ManageExam);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -261,10 +270,11 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.TestHistory);
 					testHistoryUC.Account = this.Account;
 					MainAction = testHistoryUC.HomeFunc;
-					testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
+					if (testHistoryUC.aDgvdata.Rows.Count > 0)
+						testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
+					Session.bP.SetPage((int)Session.TabPage.TestHistory);
 				});
 				#endregion
 				ShowHideSubMenu();
@@ -276,38 +286,39 @@ namespace Main
 			}
 		}
 
-        private void btnXemTiemDoDaoTao_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                #region MultiThreading
-                this.BeginInvoke((MethodInvoker)delegate
-                {
-                    Session.bP.SetPage((int)Session.TabPage.EduProg);
-                    eduProgUC.Account = this.Account;
-                    MainAction = eduProgUC.HomeFunc;
-                    eduProgUC.FrmEduProg_Load(eduProgUC, e);
-                });
-                #endregion
-                ShowHideSubMenu();
-            }
-            catch (Exception ex)
-            {
-                MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-                MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
-            }
-        }
-
-        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+		private void btnXemTiemDoDaoTao_Click(object sender, EventArgs e)
 		{
 			try
 			{
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					Session.bP.SetPage((int)Session.TabPage.Profile);
+					eduProgUC.Account = this.Account;
+					MainAction = eduProgUC.HomeFunc;
+					if (eduProgUC.aDgvdata.Rows.Count > 0)
+						eduProgUC.FrmEduProg_Load(eduProgUC, e);
+					Session.bP.SetPage((int)Session.TabPage.EduProg);
+				});
+				#endregion
+				ShowHideSubMenu();
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+			}
+		}
+
+		private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				#region MultiThreading
+				this.BeginInvoke((MethodInvoker)delegate
+				{
 					profileUC.Account = this.Account;
 					MainAction = profileUC.HomeFunc;
+					Session.bP.SetPage((int)Session.TabPage.Profile);
 				});
 				#endregion
 				if (pnlNavigation.Visible)
@@ -326,16 +337,16 @@ namespace Main
 			Account = e.Account;
 		}
 
-        private void btnHuongDan_Click(object sender, EventArgs e)
-        {
-            #region MultiThreading
-            this.BeginInvoke((MethodInvoker)delegate
-            {
-                Session.bP.SetPage((int)Session.TabPage.Guide);
-            });
-            #endregion
-            if (pnlNavigation.Visible)
-                ShowHideSubMenu();
+		private void btnHuongDan_Click(object sender, EventArgs e)
+		{
+			#region MultiThreading
+			this.BeginInvoke((MethodInvoker)delegate
+			{
+				Session.bP.SetPage((int)Session.TabPage.Guide);
+			});
+			#endregion
+			if (pnlNavigation.Visible)
+				ShowHideSubMenu();
 		}
 
 		private void btnAboutUs_Click(object sender, EventArgs e)
@@ -484,13 +495,14 @@ namespace Main
 			#region MultiThreading
 			this.BeginInvoke((MethodInvoker)delegate
 			{
+				if (leaderBoardUC.aDgvdata.Rows.Count > 0)
+					leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
 				Session.bP.SetPage((int)Session.TabPage.LeaderBoard);
 				MainAction = leaderBoardUC.HomeFunc;
 				if (Account.UserRole.ToLower().Equals("user"))
 					leaderBoardUC.lbTitle.Text = "Bảng xếp hạng";
 				else
 					leaderBoardUC.lbTitle.Text = "Thống kê điểm thi";
-				leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
 			});
 			#endregion
 			if (pnlNavigation.Visible)

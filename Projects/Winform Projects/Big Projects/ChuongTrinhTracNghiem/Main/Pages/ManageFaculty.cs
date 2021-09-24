@@ -369,10 +369,18 @@ namespace Main.Pages
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			string keyword = tbSearch.Text;
-			if (keyword.Equals("Nhập từ khóa ..."))
-				keyword = string.Empty;
-			FacultyBLL.Instance.SearchFaculty(aDgvdata, keyword);
+			try
+			{
+				string keyword = tbSearch.Text;
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
+				FacultyBLL.Instance.SearchFaculty(aDgvdata, keyword);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
@@ -406,10 +414,18 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(tbSearch.Text))
-				FacultyBLL.Instance.SearchFaculty(aDgvdata, "");
-			aDgvdata.ClearFilter();
-			aDgvdata_FilterStringChanged(sender, e);
+			try
+			{
+				if (!string.IsNullOrEmpty(tbSearch.Text))
+					FacultyBLL.Instance.SearchFaculty(aDgvdata, "");
+				aDgvdata.ClearFilter();
+				aDgvdata_FilterStringChanged(sender, e);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)

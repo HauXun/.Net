@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Entities;
+using Main.Partial;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DataAccessLayer
@@ -22,10 +26,12 @@ namespace DataAccessLayer
 
 		public DataTable GetAllEduProg()
 		{
+			List<EduProg> eduProgs = new List<EduProg>();
 			try
 			{
 				string query = "EXEC dbo.USP_SelectEduProg";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query);
+				eduProgs=  Session.ConvertDataTable<EduProg>(data);
 				return data;
 			}
 			catch (Exception e)

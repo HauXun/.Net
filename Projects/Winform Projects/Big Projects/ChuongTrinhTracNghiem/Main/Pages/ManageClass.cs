@@ -340,6 +340,21 @@ namespace Main.Pages
 				}
 			}
 
+			// Kiểm tra năm nhập học không được để trống
+			if (string.IsNullOrEmpty(nudAdmissionYear.Text))
+			{
+				errorProviderWar.SetError(nudAdmissionYear, "Năm nhập học không được để trống!");
+				return false;
+			}
+			else
+			{
+				if (nudAdmissionYear.Value <= 0)
+				{
+					errorProviderWar.SetError(nudAdmissionYear, "Năm nhập học phải lớn hơn 0!");
+					return false;
+				}
+			}
+
 			// Kiểm tra số học kì đào tạo không được để trống
 			if (cbNumberOfTrainingSemester.Items.Count == 0)
 			{
@@ -392,21 +407,6 @@ namespace Main.Pages
 						errorProviderWar.SetError(tbClassID, "Mã lớp không được chứa ký tự đặc biệt!");
 						return false;
 					}
-				}
-			}
-
-			// Kiểm tra năm nhập học không được để trống
-			if (string.IsNullOrEmpty(nudAdmissionYear.Text))
-			{
-				errorProviderWar.SetError(nudAdmissionYear, "Năm nhập học không được để trống!");
-				return false;
-			}
-			else
-			{
-				if (nudAdmissionYear.Value <= 0)
-				{
-					errorProviderWar.SetError(nudAdmissionYear, "Năm nhập học phải lớn hơn 0!");
-					return false;
 				}
 			}
 
@@ -535,10 +535,18 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(tbSearch.Text))
-				UserClassBLL.Instance.SearchClass(aDgvdata, "");
-			aDgvdata.ClearFilter();
-			aDgvdata_FilterStringChanged(sender, e);
+			try
+			{
+				if (!string.IsNullOrEmpty(tbSearch.Text))
+					UserClassBLL.Instance.SearchClass(aDgvdata, "");
+				aDgvdata.ClearFilter();
+				aDgvdata_FilterStringChanged(sender, e);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -559,10 +567,18 @@ namespace Main.Pages
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			string keyword = tbSearch.Text;
-			if (keyword.Equals("Nhập từ khóa ..."))
-				keyword = string.Empty;
-			UserClassBLL.Instance.SearchClass(aDgvdata, keyword);
+			try
+			{
+				string keyword = tbSearch.Text;
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
+				UserClassBLL.Instance.SearchClass(aDgvdata, keyword);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)

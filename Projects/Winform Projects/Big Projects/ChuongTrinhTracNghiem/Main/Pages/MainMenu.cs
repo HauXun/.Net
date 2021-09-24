@@ -38,6 +38,7 @@ namespace Main.Pages
             btnQuanLyMonThi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnQuanLyMonThi.Width, btnQuanLyMonThi.Height, 10, 10));
             btnQuanLyDeThi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnQuanLyDeThi.Width, btnQuanLyDeThi.Height, 10, 10));
             btnQuanLyCauHoi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnQuanLyCauHoi.Width, btnQuanLyCauHoi.Height, 10, 10));
+            btnStatiscicalMark.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnStatiscicalMark.Width, btnStatiscicalMark.Height, 10, 10));
         }
 		#endregion
 

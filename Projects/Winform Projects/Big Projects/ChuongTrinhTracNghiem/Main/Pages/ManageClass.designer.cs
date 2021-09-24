@@ -932,7 +932,6 @@ namespace Main.Pages
 		private FontAwesome.Sharp.IconButton btnDelete;
 		private FontAwesome.Sharp.IconButton btnEdit;
 		private FontAwesome.Sharp.IconButton btnClearFilter;
-		private ADGV.AdvancedDataGridView aDgvdata;
 		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
 		private System.Windows.Forms.Panel pnlDataGridView;
 		private System.Windows.Forms.Panel pnlControls;
@@ -964,5 +963,6 @@ namespace Main.Pages
 		private Bunifu.UI.WinForms.BunifuDropdown cbCourseID;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
         private FontAwesome.Sharp.IconButton iconSearch;
-    }
+		public ADGV.AdvancedDataGridView aDgvdata;
+	}
 }
