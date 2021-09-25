@@ -42,6 +42,9 @@ namespace Main.Pages
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
+			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
+			this.btnSearch = new FontAwesome.Sharp.IconButton();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.SemesterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +94,9 @@ namespace Main.Pages
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.iconSearch);
+			this.pnlDataGridView.Controls.Add(this.tbSearch);
+			this.pnlDataGridView.Controls.Add(this.btnSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
 			this.pnlDataGridView.Controls.Add(this.btnClearFilter);
@@ -98,6 +104,77 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridView.TabIndex = 38;
+			// 
+			// iconSearch
+			// 
+			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+			this.iconSearch.FlatAppearance.BorderSize = 0;
+			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconSearch.IconSize = 30;
+			this.iconSearch.Location = new System.Drawing.Point(283, 15);
+			this.iconSearch.Name = "iconSearch";
+			this.iconSearch.Size = new System.Drawing.Size(35, 30);
+			this.iconSearch.TabIndex = 24;
+			this.iconSearch.TabStop = false;
+			this.iconSearch.UseVisualStyleBackColor = false;
+			// 
+			// tbSearch
+			// 
+			this.tbSearch.BorderColor = System.Drawing.Color.Gray;
+			this.tbSearch.BorderRadius = 5;
+			this.tbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.tbSearch.DefaultText = "";
+			this.tbSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+			this.tbSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+			this.tbSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.tbSearch.DisabledState.Parent = this.tbSearch;
+			this.tbSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.tbSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.tbSearch.FocusedState.Parent = this.tbSearch;
+			this.tbSearch.Font = new System.Drawing.Font("Arial", 12F);
+			this.tbSearch.ForeColor = System.Drawing.Color.Black;
+			this.tbSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.tbSearch.HoverState.Parent = this.tbSearch;
+			this.tbSearch.Location = new System.Drawing.Point(39, 12);
+			this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
+			this.tbSearch.Name = "tbSearch";
+			this.tbSearch.PasswordChar = '\0';
+			this.tbSearch.PlaceholderText = "Nhập từ khóa ...";
+			this.tbSearch.SelectedText = "";
+			this.tbSearch.ShadowDecoration.Parent = this.tbSearch;
+			this.tbSearch.Size = new System.Drawing.Size(281, 35);
+			this.tbSearch.TabIndex = 23;
+			// 
+			// btnSearch
+			// 
+			this.btnSearch.BackColor = System.Drawing.Color.White;
+			this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.btnSearch.FlatAppearance.BorderSize = 0;
+			this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSearch.ForeColor = System.Drawing.Color.Gray;
+			this.btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.btnSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnSearch.IconSize = 30;
+			this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnSearch.Location = new System.Drawing.Point(293, 14);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(30, 30);
+			this.btnSearch.TabIndex = 22;
+			this.btnSearch.TabStop = false;
+			this.toolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
+			this.btnSearch.UseVisualStyleBackColor = false;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// bScrollBar
 			// 
@@ -291,7 +368,7 @@ namespace Main.Pages
 			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnClearFilter.IconSize = 25;
 			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(1430, 9);
+			this.btnClearFilter.Location = new System.Drawing.Point(325, 9);
 			this.btnClearFilter.Name = "btnClearFilter";
 			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
 			this.btnClearFilter.TabIndex = 11;
@@ -352,5 +429,8 @@ namespace Main.Pages
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.ToolTip toolTip;
 		public ADGV.AdvancedDataGridView aDgvdata;
+		private FontAwesome.Sharp.IconButton iconSearch;
+		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
+		private FontAwesome.Sharp.IconButton btnSearch;
 	}
 }

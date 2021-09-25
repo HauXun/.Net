@@ -53,14 +53,6 @@ namespace Main.Pages
 
 		private void LoadStateQuestion(CheckState check, ref ushort i, string answer)
 		{
-			ToolTip tip = new ToolTip()
-			{
-				AutomaticDelay = 0,
-				AutoPopDelay = 10000,
-				InitialDelay = 0,
-				ToolTipTitle = "Đáp án đúng"
-			};
-
 			Button button = new Button()
 			{
 				AutoSize = true,
@@ -75,24 +67,26 @@ namespace Main.Pages
 
 			button.FlatAppearance.BorderSize = 0;
 			button.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+			button.FlatAppearance.MouseDownBackColor = button.FlatAppearance.MouseOverBackColor = Color.White;
+			button.Enter += btnCheck_Enter;
 
 			switch (check)
 			{
 				case CheckState.Unchecked:
 					button.Image = new Bitmap(Properties.Resources.cancel, new Size(40, 40));
-					tip.ToolTipIcon = ToolTipIcon.Error;
+					toolTip.ToolTipIcon = ToolTipIcon.Error;
 					break;
 				case CheckState.Checked:
 					button.Image = new Bitmap(Properties.Resources._checked, new Size(40, 40));
-					tip.ToolTipIcon = ToolTipIcon.Info;
+					toolTip.ToolTipIcon = ToolTipIcon.Info;
 					break;
 				case CheckState.Indeterminate:
 					button.Image = new Bitmap(Properties.Resources.warning, new Size(40, 40));
-					tip.ToolTipIcon = ToolTipIcon.Warning;
+					toolTip.ToolTipIcon = ToolTipIcon.Warning;
 					break;
 			}
 
-			tip.SetToolTip(button, answer);
+			toolTip.SetToolTip(button, answer);
 			fLPdata.Controls.Add(button);
 		}
 
@@ -109,19 +103,19 @@ namespace Main.Pages
 
 			switch (state)
 			{
-				case State.Check:
-					btnCheck.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-					btnCheck.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
-					btnCheck.Image = new Bitmap(Properties.Resources._checked, new Size(25, 25));
-					barCheck.Value = value * 10 / Exam.QCount * 10;
-					lbCheck.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
-					break;
 				case State.Uncheck:
 					btnUncheck.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 					btnUncheck.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
 					btnUncheck.Image = new Bitmap(Properties.Resources.cancel, new Size(25, 25));
 					barUncheck.Value = value * 10 / Exam.QCount * 10;
 					lbUncheck.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
+					break;
+				case State.Check:
+					btnCheck.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+					btnCheck.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
+					btnCheck.Image = new Bitmap(Properties.Resources._checked, new Size(25, 25));
+					barCheck.Value = value * 10 / Exam.QCount * 10;
+					lbCheck.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
 					break;
 				case State.Indeterminate:
 					btnIndeterminate.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);

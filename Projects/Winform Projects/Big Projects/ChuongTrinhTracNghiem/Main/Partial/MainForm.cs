@@ -103,6 +103,7 @@ namespace Main
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
+					manageClassUC.Account = this.Account;
 					MainAction = manageClassUC.HomeFunc;
 					if (manageClassUC.aDgvdata.Rows.Count > 0)
 						manageClassUC.ManageClass_Load(manageClassUC, e);

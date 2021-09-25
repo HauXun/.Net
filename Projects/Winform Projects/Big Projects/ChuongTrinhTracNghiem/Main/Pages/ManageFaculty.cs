@@ -40,8 +40,18 @@ namespace Main.Pages
 			};
 		}
 
-        // -------------- Set color for background gradient ---------------
-        protected override void OnPaintBackground(PaintEventArgs e)
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.Enter)
+			{
+				btnSearch_Click(this, new EventArgs());
+				return true;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
+		// -------------- Set color for background gradient ---------------
+		protected override void OnPaintBackground(PaintEventArgs e)
         {
             Rectangle rectangle = ClientRectangle;
             if (rectangle.IsEmpty)
@@ -164,6 +174,7 @@ namespace Main.Pages
 			{
 				MsgBox.ShowMessage("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				DetailData(rowIndex);
 			}
 		}
 
@@ -191,6 +202,7 @@ namespace Main.Pages
 			{
 				MsgBox.ShowMessage("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				DetailData(rowIndex);
 			}
 		}
 
@@ -310,7 +322,6 @@ namespace Main.Pages
 
 		public void FrmManageFaculty_Load(object sender, EventArgs e)
 		{
-			this.FindForm().AcceptButton = btnSearch;
 			LoadData();
 			EnableControl(false);
 		}

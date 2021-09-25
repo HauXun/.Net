@@ -44,6 +44,16 @@ namespace Main.Pages
 			};
 		}
 
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.Enter)
+			{
+				btnSearch_Click(this, new EventArgs());
+				return true;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
 		// -------------- Set color for background gradient ---------------
 		protected override void OnPaintBackground(PaintEventArgs e)
 		{
@@ -466,7 +476,6 @@ namespace Main.Pages
 
 		public void FrmManageUser_Load(object sender, EventArgs e)
 		{
-			this.FindForm().AcceptButton = btnSearch;
 			LoadData();
 			EnableControl(false);
 		}

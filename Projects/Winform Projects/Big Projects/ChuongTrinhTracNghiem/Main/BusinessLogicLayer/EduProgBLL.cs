@@ -1,4 +1,6 @@
 ﻿using DataAccessLayer;
+using System.Collections;
+using System.Data;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -21,15 +23,19 @@ namespace BusinessLogicLayer
         private EduProgBLL() { }
 
         public void GetAllEduProg(DataGridView data)
-		{
+        {
             data.AutoGenerateColumns = false;
             data.DataSource = EduProgDAL.Instance.GetAllEduProg();
         }
 
-        public void GetEduProgUser(DataGridView data, int userID)
+        public IEnumerable GetEduProgUser(int userID)
         {
-            data.AutoGenerateColumns = false;
-            data.DataSource = EduProgDAL.Instance.GetEduProgUser(userID);
+            return EduProgDAL.Instance.GetEduProgUser(userID);
+        }
+
+        public void SearchEduProg(DataGridView data, string keyword)
+        {
+            data.DataSource = EduProgDAL.Instance.SearchEduProg(keyword);
         }
     }
 }

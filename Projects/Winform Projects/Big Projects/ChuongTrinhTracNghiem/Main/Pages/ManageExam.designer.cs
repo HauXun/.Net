@@ -53,6 +53,17 @@ namespace Main.Pages
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TestFormID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PercentMark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QuizTimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QCurrentCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
 			this.btnEdit = new FontAwesome.Sharp.IconButton();
 			this.btnDelete = new FontAwesome.Sharp.IconButton();
@@ -62,6 +73,7 @@ namespace Main.Pages
 			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
 			this.pnlControls = new System.Windows.Forms.Panel();
 			this.pnlInfo2 = new System.Windows.Forms.Panel();
+			this.ckbStatus = new Guna.UI2.WinForms.Guna2CustomCheckBox();
 			this.cbTestFormID = new Bunifu.UI.WinForms.BunifuDropdown();
 			this.nudPercentMark = new Guna.UI2.WinForms.Guna2NumericUpDown();
 			this.lbPercentMark = new System.Windows.Forms.Label();
@@ -72,7 +84,6 @@ namespace Main.Pages
 			this.nudQCount = new Guna.UI2.WinForms.Guna2NumericUpDown();
 			this.lbStatus = new System.Windows.Forms.Label();
 			this.nudExamTime = new Guna.UI2.WinForms.Guna2NumericUpDown();
-			this.ckbStatus = new Bunifu.UI.WinForms.BunifuCheckBox();
 			this.lbThoiGianLamBai = new System.Windows.Forms.Label();
 			this.lbSoLuongCauHoi = new System.Windows.Forms.Label();
 			this.pnl2Shadow = new System.Windows.Forms.Panel();
@@ -86,17 +97,6 @@ namespace Main.Pages
 			this.pnl1Shadow = new System.Windows.Forms.Panel();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TestFormID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PercentMark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QuizTimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QCurrentCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pnlDataGridView.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.pnlControls.SuspendLayout();
@@ -349,6 +349,139 @@ namespace Main.Pages
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
 			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
+			this.STT.FillWeight = 60F;
+			this.STT.HeaderText = "STT";
+			this.STT.MinimumWidth = 22;
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.ExamID.FillWeight = 70F;
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.MinimumWidth = 22;
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
+			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
+			this.SubjectID.FillWeight = 70F;
+			this.SubjectID.HeaderText = "Môn thi";
+			this.SubjectID.MinimumWidth = 22;
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// TestFormID
+			// 
+			this.TestFormID.DataPropertyName = "TestFormID";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.NullValue = "NULL";
+			this.TestFormID.DefaultCellStyle = dataGridViewCellStyle6;
+			this.TestFormID.FillWeight = 70F;
+			this.TestFormID.HeaderText = "Hình thức đề thi";
+			this.TestFormID.MinimumWidth = 22;
+			this.TestFormID.Name = "TestFormID";
+			this.TestFormID.ReadOnly = true;
+			this.TestFormID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// PercentMark
+			// 
+			this.PercentMark.DataPropertyName = "PercentMark";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle7.NullValue = "NULL";
+			this.PercentMark.DefaultCellStyle = dataGridViewCellStyle7;
+			this.PercentMark.FillWeight = 70F;
+			this.PercentMark.HeaderText = "Phần trăm điểm";
+			this.PercentMark.MinimumWidth = 22;
+			this.PercentMark.Name = "PercentMark";
+			this.PercentMark.ReadOnly = true;
+			this.PercentMark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamRole
+			// 
+			this.ExamRole.DataPropertyName = "ExamRole";
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ExamRole.DefaultCellStyle = dataGridViewCellStyle8;
+			this.ExamRole.FillWeight = 50F;
+			this.ExamRole.HeaderText = "Loại đề";
+			this.ExamRole.MinimumWidth = 22;
+			this.ExamRole.Name = "ExamRole";
+			this.ExamRole.ReadOnly = true;
+			this.ExamRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamTime
+			// 
+			this.ExamTime.DataPropertyName = "ExamTime";
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ExamTime.DefaultCellStyle = dataGridViewCellStyle9;
+			this.ExamTime.FillWeight = 80F;
+			this.ExamTime.HeaderText = "Thời gian làm bài";
+			this.ExamTime.MinimumWidth = 22;
+			this.ExamTime.Name = "ExamTime";
+			this.ExamTime.ReadOnly = true;
+			this.ExamTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QuizTimes
+			// 
+			this.QuizTimes.DataPropertyName = "QuizTimes";
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QuizTimes.DefaultCellStyle = dataGridViewCellStyle10;
+			this.QuizTimes.FillWeight = 50F;
+			this.QuizTimes.HeaderText = "Số lần thi";
+			this.QuizTimes.MinimumWidth = 22;
+			this.QuizTimes.Name = "QuizTimes";
+			this.QuizTimes.ReadOnly = true;
+			this.QuizTimes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QCount
+			// 
+			this.QCount.DataPropertyName = "QCount";
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QCount.DefaultCellStyle = dataGridViewCellStyle11;
+			this.QCount.FillWeight = 80F;
+			this.QCount.HeaderText = "Số lượng câu hỏi";
+			this.QCount.MinimumWidth = 22;
+			this.QCount.Name = "QCount";
+			this.QCount.ReadOnly = true;
+			this.QCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QCurrentCount
+			// 
+			this.QCurrentCount.DataPropertyName = "QCurrentCount";
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QCurrentCount.DefaultCellStyle = dataGridViewCellStyle12;
+			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiện tại";
+			this.QCurrentCount.MinimumWidth = 22;
+			this.QCurrentCount.Name = "QCurrentCount";
+			this.QCurrentCount.ReadOnly = true;
+			this.QCurrentCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Status
+			// 
+			this.Status.DataPropertyName = "Status";
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Status.DefaultCellStyle = dataGridViewCellStyle13;
+			this.Status.FillWeight = 60F;
+			this.Status.HeaderText = "Trạng thái";
+			this.Status.MinimumWidth = 22;
+			this.Status.Name = "Status";
+			this.Status.ReadOnly = true;
+			this.Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
 			// btnClearFilter
 			// 
 			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
@@ -531,6 +664,7 @@ namespace Main.Pages
 			// pnlInfo2
 			// 
 			this.pnlInfo2.BackColor = System.Drawing.Color.White;
+			this.pnlInfo2.Controls.Add(this.ckbStatus);
 			this.pnlInfo2.Controls.Add(this.cbTestFormID);
 			this.pnlInfo2.Controls.Add(this.nudPercentMark);
 			this.pnlInfo2.Controls.Add(this.lbPercentMark);
@@ -541,13 +675,34 @@ namespace Main.Pages
 			this.pnlInfo2.Controls.Add(this.nudQCount);
 			this.pnlInfo2.Controls.Add(this.lbStatus);
 			this.pnlInfo2.Controls.Add(this.nudExamTime);
-			this.pnlInfo2.Controls.Add(this.ckbStatus);
 			this.pnlInfo2.Controls.Add(this.lbThoiGianLamBai);
 			this.pnlInfo2.Controls.Add(this.lbSoLuongCauHoi);
 			this.pnlInfo2.Location = new System.Drawing.Point(783, 23);
 			this.pnlInfo2.Name = "pnlInfo2";
 			this.pnlInfo2.Size = new System.Drawing.Size(498, 168);
 			this.pnlInfo2.TabIndex = 23;
+			// 
+			// ckbStatus
+			// 
+			this.ckbStatus.Animated = true;
+			this.ckbStatus.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.ckbStatus.CheckedState.BorderRadius = 2;
+			this.ckbStatus.CheckedState.BorderThickness = 0;
+			this.ckbStatus.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.ckbStatus.CheckedState.Parent = this.ckbStatus;
+			this.ckbStatus.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ckbStatus.Location = new System.Drawing.Point(355, 121);
+			this.ckbStatus.Name = "ckbStatus";
+			this.ckbStatus.ShadowDecoration.Parent = this.ckbStatus;
+			this.ckbStatus.Size = new System.Drawing.Size(25, 25);
+			this.ckbStatus.TabIndex = 49;
+			this.ckbStatus.Text = "guna2CustomCheckBox1";
+			this.ckbStatus.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+			this.ckbStatus.UncheckedState.BorderRadius = 2;
+			this.ckbStatus.UncheckedState.BorderThickness = 0;
+			this.ckbStatus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+			this.ckbStatus.UncheckedState.Parent = this.ckbStatus;
+			this.ckbStatus.CheckedChanged += new System.EventHandler(this.ckbStatus_CheckedChanged);
 			// 
 			// cbTestFormID
 			// 
@@ -754,60 +909,6 @@ namespace Main.Pages
             0,
             0});
 			// 
-			// ckbStatus
-			// 
-			this.ckbStatus.AllowBindingControlAnimation = true;
-			this.ckbStatus.AllowBindingControlColorChanges = false;
-			this.ckbStatus.AllowBindingControlLocation = true;
-			this.ckbStatus.AllowCheckBoxAnimation = false;
-			this.ckbStatus.AllowCheckmarkAnimation = true;
-			this.ckbStatus.AllowOnHoverStates = true;
-			this.ckbStatus.AutoCheck = true;
-			this.ckbStatus.BackColor = System.Drawing.Color.Transparent;
-			this.ckbStatus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ckbStatus.BackgroundImage")));
-			this.ckbStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.ckbStatus.BindingControl = null;
-			this.ckbStatus.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right;
-			this.ckbStatus.Checked = false;
-			this.ckbStatus.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked;
-			this.ckbStatus.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.ckbStatus.CustomCheckmarkImage = null;
-			this.ckbStatus.Location = new System.Drawing.Point(355, 121);
-			this.ckbStatus.MinimumSize = new System.Drawing.Size(17, 17);
-			this.ckbStatus.Name = "ckbStatus";
-			this.ckbStatus.OnCheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(69)))), ((int)(((byte)(155)))));
-			this.ckbStatus.OnCheck.BorderRadius = 2;
-			this.ckbStatus.OnCheck.BorderThickness = 2;
-			this.ckbStatus.OnCheck.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(69)))), ((int)(((byte)(155)))));
-			this.ckbStatus.OnCheck.CheckmarkColor = System.Drawing.Color.White;
-			this.ckbStatus.OnCheck.CheckmarkThickness = 2;
-			this.ckbStatus.OnDisable.BorderColor = System.Drawing.Color.LightGray;
-			this.ckbStatus.OnDisable.BorderRadius = 2;
-			this.ckbStatus.OnDisable.BorderThickness = 2;
-			this.ckbStatus.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent;
-			this.ckbStatus.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray;
-			this.ckbStatus.OnDisable.CheckmarkThickness = 2;
-			this.ckbStatus.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(131)))), ((int)(((byte)(188)))));
-			this.ckbStatus.OnHoverChecked.BorderRadius = 2;
-			this.ckbStatus.OnHoverChecked.BorderThickness = 2;
-			this.ckbStatus.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(131)))), ((int)(((byte)(188)))));
-			this.ckbStatus.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White;
-			this.ckbStatus.OnHoverChecked.CheckmarkThickness = 2;
-			this.ckbStatus.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(131)))), ((int)(((byte)(188)))));
-			this.ckbStatus.OnHoverUnchecked.BorderRadius = 2;
-			this.ckbStatus.OnHoverUnchecked.BorderThickness = 2;
-			this.ckbStatus.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent;
-			this.ckbStatus.OnUncheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(69)))), ((int)(((byte)(155)))));
-			this.ckbStatus.OnUncheck.BorderRadius = 2;
-			this.ckbStatus.OnUncheck.BorderThickness = 2;
-			this.ckbStatus.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent;
-			this.ckbStatus.Size = new System.Drawing.Size(25, 25);
-			this.ckbStatus.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu;
-			this.ckbStatus.TabIndex = 45;
-			this.ckbStatus.ThreeState = false;
-			this.ckbStatus.ToolTipText = null;
-			this.ckbStatus.CheckedChanged += new System.EventHandler<Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs>(this.ckbStatus_CheckedChanged);
-			// 
 			// lbThoiGianLamBai
 			// 
 			this.lbThoiGianLamBai.AutoSize = true;
@@ -993,139 +1094,6 @@ namespace Main.Pages
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
 			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
-			this.STT.FillWeight = 60F;
-			this.STT.HeaderText = "STT";
-			this.STT.MinimumWidth = 22;
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamID
-			// 
-			this.ExamID.DataPropertyName = "ExamID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.ExamID.FillWeight = 70F;
-			this.ExamID.HeaderText = "Mã đề";
-			this.ExamID.MinimumWidth = 22;
-			this.ExamID.Name = "ExamID";
-			this.ExamID.ReadOnly = true;
-			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.SubjectID.FillWeight = 70F;
-			this.SubjectID.HeaderText = "Môn thi";
-			this.SubjectID.MinimumWidth = 22;
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// TestFormID
-			// 
-			this.TestFormID.DataPropertyName = "TestFormID";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle6.NullValue = "NULL";
-			this.TestFormID.DefaultCellStyle = dataGridViewCellStyle6;
-			this.TestFormID.FillWeight = 70F;
-			this.TestFormID.HeaderText = "Hình thức đề thi";
-			this.TestFormID.MinimumWidth = 22;
-			this.TestFormID.Name = "TestFormID";
-			this.TestFormID.ReadOnly = true;
-			this.TestFormID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// PercentMark
-			// 
-			this.PercentMark.DataPropertyName = "PercentMark";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle7.NullValue = "NULL";
-			this.PercentMark.DefaultCellStyle = dataGridViewCellStyle7;
-			this.PercentMark.FillWeight = 70F;
-			this.PercentMark.HeaderText = "Phần trăm điểm";
-			this.PercentMark.MinimumWidth = 22;
-			this.PercentMark.Name = "PercentMark";
-			this.PercentMark.ReadOnly = true;
-			this.PercentMark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamRole
-			// 
-			this.ExamRole.DataPropertyName = "ExamRole";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ExamRole.DefaultCellStyle = dataGridViewCellStyle8;
-			this.ExamRole.FillWeight = 50F;
-			this.ExamRole.HeaderText = "Loại đề";
-			this.ExamRole.MinimumWidth = 22;
-			this.ExamRole.Name = "ExamRole";
-			this.ExamRole.ReadOnly = true;
-			this.ExamRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamTime
-			// 
-			this.ExamTime.DataPropertyName = "ExamTime";
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ExamTime.DefaultCellStyle = dataGridViewCellStyle9;
-			this.ExamTime.FillWeight = 80F;
-			this.ExamTime.HeaderText = "Thời gian làm bài";
-			this.ExamTime.MinimumWidth = 22;
-			this.ExamTime.Name = "ExamTime";
-			this.ExamTime.ReadOnly = true;
-			this.ExamTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QuizTimes
-			// 
-			this.QuizTimes.DataPropertyName = "QuizTimes";
-			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QuizTimes.DefaultCellStyle = dataGridViewCellStyle10;
-			this.QuizTimes.FillWeight = 50F;
-			this.QuizTimes.HeaderText = "Số lần thi";
-			this.QuizTimes.MinimumWidth = 22;
-			this.QuizTimes.Name = "QuizTimes";
-			this.QuizTimes.ReadOnly = true;
-			this.QuizTimes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QCount
-			// 
-			this.QCount.DataPropertyName = "QCount";
-			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QCount.DefaultCellStyle = dataGridViewCellStyle11;
-			this.QCount.FillWeight = 80F;
-			this.QCount.HeaderText = "Số lượng câu hỏi";
-			this.QCount.MinimumWidth = 22;
-			this.QCount.Name = "QCount";
-			this.QCount.ReadOnly = true;
-			this.QCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QCurrentCount
-			// 
-			this.QCurrentCount.DataPropertyName = "QCurrentCount";
-			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QCurrentCount.DefaultCellStyle = dataGridViewCellStyle12;
-			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiện tại";
-			this.QCurrentCount.MinimumWidth = 22;
-			this.QCurrentCount.Name = "QCurrentCount";
-			this.QCurrentCount.ReadOnly = true;
-			this.QCurrentCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Status
-			// 
-			this.Status.DataPropertyName = "Status";
-			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Status.DefaultCellStyle = dataGridViewCellStyle13;
-			this.Status.FillWeight = 60F;
-			this.Status.HeaderText = "Trạng thái";
-			this.Status.MinimumWidth = 22;
-			this.Status.Name = "Status";
-			this.Status.ReadOnly = true;
-			this.Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
 			// ManageExam
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1191,7 +1159,6 @@ namespace Main.Pages
         private FontAwesome.Sharp.IconButton iconSearch;
 		private System.Windows.Forms.Label lbCheckStatus;
 		private System.Windows.Forms.Label lbStatus;
-		private Bunifu.UI.WinForms.BunifuCheckBox ckbStatus;
 		private System.Windows.Forms.Label lbTestFormID;
 		private Guna.UI2.WinForms.Guna2NumericUpDown nudPercentMark;
 		private System.Windows.Forms.Label lbPercentMark;
@@ -1208,5 +1175,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCount;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCurrentCount;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+		private Guna.UI2.WinForms.Guna2CustomCheckBox ckbStatus;
 	}
 }

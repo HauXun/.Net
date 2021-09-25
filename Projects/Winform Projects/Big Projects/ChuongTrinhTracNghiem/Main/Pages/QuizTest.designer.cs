@@ -557,6 +557,7 @@ namespace Main.Pages
 			this.btnFlags.TabIndex = 2;
 			this.toolTip.SetToolTip(this.btnFlags, "Cắm cờ (Đánh dấu) câu hỏi hiện tại");
 			this.btnFlags.UseVisualStyleBackColor = true;
+			this.btnFlags.Click += new System.EventHandler(this.btnFlags_Click);
 			this.btnFlags.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
 			// 
 			// pnlDieuKhienShadow

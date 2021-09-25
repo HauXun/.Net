@@ -29,6 +29,7 @@ namespace Main.Pages
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuizResult));
 			this.pnlLineDSCH = new System.Windows.Forms.Panel();
 			this.Line = new System.Windows.Forms.Panel();
@@ -51,6 +52,7 @@ namespace Main.Pages
 			this.lbCongratulation = new System.Windows.Forms.Label();
 			this.pnlKetQuaShadow = new System.Windows.Forms.Panel();
 			this.pnlDataShadow = new System.Windows.Forms.Panel();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlLineDSCH.SuspendLayout();
 			this.pnlResult.SuspendLayout();
 			this.SuspendLayout();
@@ -69,7 +71,7 @@ namespace Main.Pages
 			// Line
 			// 
 			this.Line.BackColor = System.Drawing.Color.Black;
-			this.Line.Location = new System.Drawing.Point(52, 47);
+			this.Line.Location = new System.Drawing.Point(26, 47);
 			this.Line.Name = "Line";
 			this.Line.Size = new System.Drawing.Size(350, 1);
 			this.Line.TabIndex = 0;
@@ -159,6 +161,8 @@ namespace Main.Pages
 			// 
 			this.btnIndeterminate.BackColor = System.Drawing.Color.Transparent;
 			this.btnIndeterminate.FlatAppearance.BorderSize = 0;
+			this.btnIndeterminate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+			this.btnIndeterminate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.btnIndeterminate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnIndeterminate.Font = new System.Drawing.Font("Arial", 14F);
 			this.btnIndeterminate.Location = new System.Drawing.Point(21, 178);
@@ -185,6 +189,8 @@ namespace Main.Pages
 			// 
 			this.btnUncheck.BackColor = System.Drawing.Color.Transparent;
 			this.btnUncheck.FlatAppearance.BorderSize = 0;
+			this.btnUncheck.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+			this.btnUncheck.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.btnUncheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnUncheck.Font = new System.Drawing.Font("Arial", 14F);
 			this.btnUncheck.Location = new System.Drawing.Point(21, 98);
@@ -231,6 +237,8 @@ namespace Main.Pages
 			// 
 			this.btnCheck.BackColor = System.Drawing.Color.Transparent;
 			this.btnCheck.FlatAppearance.BorderSize = 0;
+			this.btnCheck.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+			this.btnCheck.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
 			this.btnCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCheck.Font = new System.Drawing.Font("Arial", 14F);
 			this.btnCheck.Location = new System.Drawing.Point(21, 18);
@@ -361,6 +369,15 @@ namespace Main.Pages
 			this.pnlDataShadow.Size = new System.Drawing.Size(400, 738);
 			this.pnlDataShadow.TabIndex = 36;
 			// 
+			// toolTip
+			// 
+			this.toolTip.AutomaticDelay = 0;
+			this.toolTip.AutoPopDelay = 10000;
+			this.toolTip.InitialDelay = 0;
+			this.toolTip.ReshowDelay = 0;
+			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip.ToolTipTitle = "Đáp án đúng";
+			// 
 			// QuizResult
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -408,5 +425,6 @@ namespace Main.Pages
 		private System.Windows.Forms.Label lbCongratulation;
 		private System.Windows.Forms.Panel pnlKetQuaShadow;
 		private System.Windows.Forms.Panel pnlDataShadow;
+		private System.Windows.Forms.ToolTip toolTip;
 	}
 }

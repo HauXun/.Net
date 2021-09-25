@@ -40,5 +40,10 @@ namespace BusinessLogicLayer
 			data.AutoGenerateColumns = false;
 			data.DataSource = TestHistoryDAL.Instance.GetLeaderBoard();
 		}
+
+		public void SearchHistory(DataGridView data, string keyword)
+		{
+			data.DataSource = TestHistoryDAL.Instance.SearchHistory(keyword);
+		}
 	}
 }

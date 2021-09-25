@@ -42,8 +42,16 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
+			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
+			this.btnSearch = new FontAwesome.Sharp.IconButton();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
+			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
+			this.iconTitle = new FontAwesome.Sharp.IconButton();
+			this.lbTitle = new System.Windows.Forms.Label();
+			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,11 +61,6 @@ namespace Main.Pages
 			this.CorrectAnswer = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TotalQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
-			this.iconTitle = new FontAwesome.Sharp.IconButton();
-			this.lbTitle = new System.Windows.Forms.Label();
-			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlDataGridView.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.SuspendLayout();
@@ -65,6 +68,9 @@ namespace Main.Pages
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Controls.Add(this.iconSearch);
+			this.pnlDataGridView.Controls.Add(this.tbSearch);
+			this.pnlDataGridView.Controls.Add(this.btnSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
 			this.pnlDataGridView.Controls.Add(this.btnClearFilter);
@@ -72,6 +78,77 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridView.TabIndex = 34;
+			// 
+			// iconSearch
+			// 
+			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+			this.iconSearch.FlatAppearance.BorderSize = 0;
+			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconSearch.IconSize = 30;
+			this.iconSearch.Location = new System.Drawing.Point(283, 15);
+			this.iconSearch.Name = "iconSearch";
+			this.iconSearch.Size = new System.Drawing.Size(35, 30);
+			this.iconSearch.TabIndex = 20;
+			this.iconSearch.TabStop = false;
+			this.iconSearch.UseVisualStyleBackColor = false;
+			// 
+			// tbSearch
+			// 
+			this.tbSearch.BorderColor = System.Drawing.Color.Gray;
+			this.tbSearch.BorderRadius = 5;
+			this.tbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.tbSearch.DefaultText = "";
+			this.tbSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+			this.tbSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+			this.tbSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.tbSearch.DisabledState.Parent = this.tbSearch;
+			this.tbSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.tbSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.tbSearch.FocusedState.Parent = this.tbSearch;
+			this.tbSearch.Font = new System.Drawing.Font("Arial", 12F);
+			this.tbSearch.ForeColor = System.Drawing.Color.Black;
+			this.tbSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.tbSearch.HoverState.Parent = this.tbSearch;
+			this.tbSearch.Location = new System.Drawing.Point(39, 12);
+			this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
+			this.tbSearch.Name = "tbSearch";
+			this.tbSearch.PasswordChar = '\0';
+			this.tbSearch.PlaceholderText = "Nhập từ khóa ...";
+			this.tbSearch.SelectedText = "";
+			this.tbSearch.ShadowDecoration.Parent = this.tbSearch;
+			this.tbSearch.Size = new System.Drawing.Size(281, 35);
+			this.tbSearch.TabIndex = 19;
+			// 
+			// btnSearch
+			// 
+			this.btnSearch.BackColor = System.Drawing.Color.White;
+			this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.btnSearch.FlatAppearance.BorderSize = 0;
+			this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSearch.ForeColor = System.Drawing.Color.Gray;
+			this.btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+			this.btnSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnSearch.IconSize = 30;
+			this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnSearch.Location = new System.Drawing.Point(289, 14);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(30, 30);
+			this.btnSearch.TabIndex = 18;
+			this.btnSearch.TabStop = false;
+			this.toolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
+			this.btnSearch.UseVisualStyleBackColor = false;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// bScrollBar
 			// 
@@ -186,113 +263,6 @@ namespace Main.Pages
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
 			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
-			this.STT.FillWeight = 40F;
-			this.STT.HeaderText = "STT";
-			this.STT.MinimumWidth = 22;
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// UserID
-			// 
-			this.UserID.DataPropertyName = "UserID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.UserID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.UserID.FillWeight = 60F;
-			this.UserID.HeaderText = "Mã thí sinh";
-			this.UserID.MinimumWidth = 22;
-			this.UserID.Name = "UserID";
-			this.UserID.ReadOnly = true;
-			this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// FullName
-			// 
-			this.FullName.DataPropertyName = "FullName";
-			this.FullName.FillWeight = 80F;
-			this.FullName.HeaderText = "Tên thí sinh";
-			this.FullName.MinimumWidth = 22;
-			this.FullName.Name = "FullName";
-			this.FullName.ReadOnly = true;
-			this.FullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectName
-			// 
-			this.SubjectName.DataPropertyName = "SubjectName";
-			this.SubjectName.FillWeight = 120F;
-			this.SubjectName.HeaderText = "Tên môn thi";
-			this.SubjectName.MinimumWidth = 22;
-			this.SubjectName.Name = "SubjectName";
-			this.SubjectName.ReadOnly = true;
-			this.SubjectName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.SubjectID.FillWeight = 60F;
-			this.SubjectID.HeaderText = "Mã môn";
-			this.SubjectID.MinimumWidth = 22;
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// CreatedAt
-			// 
-			this.CreatedAt.DataPropertyName = "CreatedAt";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle6.Format = "d";
-			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
-			this.CreatedAt.DefaultCellStyle = dataGridViewCellStyle6;
-			this.CreatedAt.FillWeight = 60F;
-			this.CreatedAt.HeaderText = "Ngày thi";
-			this.CreatedAt.MinimumWidth = 22;
-			this.CreatedAt.Name = "CreatedAt";
-			this.CreatedAt.ReadOnly = true;
-			this.CreatedAt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// CorrectAnswer
-			// 
-			this.CorrectAnswer.DataPropertyName = "CorrectAnswer";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle7;
-			this.CorrectAnswer.FillWeight = 40F;
-			this.CorrectAnswer.HeaderText = "Số câu đúng";
-			this.CorrectAnswer.MinimumWidth = 22;
-			this.CorrectAnswer.Name = "CorrectAnswer";
-			this.CorrectAnswer.ReadOnly = true;
-			this.CorrectAnswer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// TotalQuestion
-			// 
-			this.TotalQuestion.DataPropertyName = "TotalQuestion";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle8;
-			this.TotalQuestion.FillWeight = 40F;
-			this.TotalQuestion.HeaderText = "Tổng số câu";
-			this.TotalQuestion.MinimumWidth = 22;
-			this.TotalQuestion.Name = "TotalQuestion";
-			this.TotalQuestion.ReadOnly = true;
-			this.TotalQuestion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Mark
-			// 
-			this.Mark.DataPropertyName = "Mark";
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Mark.DefaultCellStyle = dataGridViewCellStyle9;
-			this.Mark.FillWeight = 40F;
-			this.Mark.HeaderText = "Điểm";
-			this.Mark.MinimumWidth = 22;
-			this.Mark.Name = "Mark";
-			this.Mark.ReadOnly = true;
-			this.Mark.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			this.Mark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
 			// btnClearFilter
 			// 
 			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
@@ -307,7 +277,7 @@ namespace Main.Pages
 			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnClearFilter.IconSize = 25;
 			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(1430, 9);
+			this.btnClearFilter.Location = new System.Drawing.Point(325, 9);
 			this.btnClearFilter.Name = "btnClearFilter";
 			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
 			this.btnClearFilter.TabIndex = 9;
@@ -367,6 +337,113 @@ namespace Main.Pages
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
 			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
+			this.STT.FillWeight = 40F;
+			this.STT.HeaderText = "STT";
+			this.STT.MinimumWidth = 22;
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// UserID
+			// 
+			this.UserID.DataPropertyName = "UserID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.UserID.FillWeight = 50F;
+			this.UserID.HeaderText = "Mã thí sinh";
+			this.UserID.MinimumWidth = 22;
+			this.UserID.Name = "UserID";
+			this.UserID.ReadOnly = true;
+			this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// FullName
+			// 
+			this.FullName.DataPropertyName = "FullName";
+			this.FullName.FillWeight = 80F;
+			this.FullName.HeaderText = "Tên thí sinh";
+			this.FullName.MinimumWidth = 22;
+			this.FullName.Name = "FullName";
+			this.FullName.ReadOnly = true;
+			this.FullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectName
+			// 
+			this.SubjectName.DataPropertyName = "SubjectName";
+			this.SubjectName.FillWeight = 120F;
+			this.SubjectName.HeaderText = "Tên môn thi";
+			this.SubjectName.MinimumWidth = 22;
+			this.SubjectName.Name = "SubjectName";
+			this.SubjectName.ReadOnly = true;
+			this.SubjectName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
+			this.SubjectID.FillWeight = 50F;
+			this.SubjectID.HeaderText = "Mã môn";
+			this.SubjectID.MinimumWidth = 22;
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// CreatedAt
+			// 
+			this.CreatedAt.DataPropertyName = "CreatedAt";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.Format = "d";
+			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
+			this.CreatedAt.DefaultCellStyle = dataGridViewCellStyle6;
+			this.CreatedAt.FillWeight = 60F;
+			this.CreatedAt.HeaderText = "Ngày thi";
+			this.CreatedAt.MinimumWidth = 22;
+			this.CreatedAt.Name = "CreatedAt";
+			this.CreatedAt.ReadOnly = true;
+			this.CreatedAt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// CorrectAnswer
+			// 
+			this.CorrectAnswer.DataPropertyName = "CorrectAnswer";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle7;
+			this.CorrectAnswer.FillWeight = 50F;
+			this.CorrectAnswer.HeaderText = "Số câu đúng";
+			this.CorrectAnswer.MinimumWidth = 22;
+			this.CorrectAnswer.Name = "CorrectAnswer";
+			this.CorrectAnswer.ReadOnly = true;
+			this.CorrectAnswer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// TotalQuestion
+			// 
+			this.TotalQuestion.DataPropertyName = "TotalQuestion";
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle8;
+			this.TotalQuestion.FillWeight = 50F;
+			this.TotalQuestion.HeaderText = "Tổng số câu";
+			this.TotalQuestion.MinimumWidth = 22;
+			this.TotalQuestion.Name = "TotalQuestion";
+			this.TotalQuestion.ReadOnly = true;
+			this.TotalQuestion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Mark
+			// 
+			this.Mark.DataPropertyName = "Mark";
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Mark.DefaultCellStyle = dataGridViewCellStyle9;
+			this.Mark.FillWeight = 40F;
+			this.Mark.HeaderText = "Điểm";
+			this.Mark.MinimumWidth = 22;
+			this.Mark.Name = "Mark";
+			this.Mark.ReadOnly = true;
+			this.Mark.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.Mark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
 			// LeaderBoard
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -392,6 +469,11 @@ namespace Main.Pages
 		private FontAwesome.Sharp.IconButton btnClearFilter;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.ToolTip toolTip;
+		public System.Windows.Forms.Label lbTitle;
+		public ADGV.AdvancedDataGridView aDgvdata;
+		private FontAwesome.Sharp.IconButton iconSearch;
+		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
+		private FontAwesome.Sharp.IconButton btnSearch;
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
@@ -401,7 +483,5 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn CorrectAnswer;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuestion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Mark;
-		public System.Windows.Forms.Label lbTitle;
-		public ADGV.AdvancedDataGridView aDgvdata;
 	}
 }

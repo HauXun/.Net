@@ -1,9 +1,7 @@
-﻿using Entities;
-using Main.Partial;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Linq;
 using System.Data;
+using System.Collections;
 
 namespace DataAccessLayer
 {
@@ -26,12 +24,10 @@ namespace DataAccessLayer
 
 		public DataTable GetAllEduProg()
 		{
-			List<EduProg> eduProgs = new List<EduProg>();
 			try
 			{
 				string query = "EXEC dbo.USP_SelectEduProg";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query);
-				eduProgs=  Session.ConvertDataTable<EduProg>(data);
 				return data;
 			}
 			catch (Exception e)
@@ -40,12 +36,40 @@ namespace DataAccessLayer
 			}
 		}
 
-		public DataTable GetEduProgUser(int userID)
+		public IEnumerable GetEduProgUser(int userID)
 		{
 			try
 			{
 				string query = "EXEC dbo.USP_SelectEduProgUser @UserID";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { userID });
+
+				var a = (from DataRow dr in data.Rows
+						 select new
+						 {
+							 SemesterID = Convert.ToInt32(dr["SemesterID"]),
+							 SubjectID = dr["SubjectID"].ToString(),
+							 SubjectName = dr["SubjectName"].ToString(),
+							 RoleName = dr["RoleName"].ToString(),
+							 CourseID = dr["CourseID"].ToString(),
+							 FacultyID = dr["FacultyID"].ToString(),
+							 FacultyName = dr["FacultyName"].ToString(),
+							 TotalMark = dr["TotalMark"],
+							 Success = dr["Success"]
+						 });
+				return a;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable SearchEduProg(string keyword)
+		{
+			try
+			{
+				string query = "EXEC dbo.USP_SearchEduProg @keyword";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
 				return data;
 			}
 			catch (Exception e)

@@ -350,9 +350,6 @@
     <Compile Include="Partial\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Partial\RJProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Partial\Session.cs" />
     <Compile Include="Partial\SqlHelper.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -480,6 +477,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

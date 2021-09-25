@@ -25,7 +25,7 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_InsertTestHistory @ExamID , @SubjectID , @UserID , @SemesterID , @CorrectAnswer , @TotalQuestion , @MARK , @Success , @CreatedBy";
+				string query = "EXEC dbo.USP_InsertTestHistory @ExamID , @SubjectID , @UserID , @SemesterID , @CorrectAnswer , @TotalQuestion , @MARK , @CreatedBy";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[]
 					{
 						history.ExamID,
@@ -64,6 +64,20 @@ namespace DataAccessLayer
 			{
 				string query = "EXEC dbo.USP_SelectLeaderBoard";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query);
+				return data;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable SearchHistory(string keyword)
+		{
+			try
+			{
+				string query = "EXEC dbo.USP_SearchHistory @keyword";
+				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
 				return data;
 			}
 			catch (Exception e)

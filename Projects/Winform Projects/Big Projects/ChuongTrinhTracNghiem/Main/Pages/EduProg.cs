@@ -2,9 +2,14 @@
 using Entities;
 using Main.Partial;
 using System;
+using System.Linq;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Main.Pages
 {
@@ -23,6 +28,17 @@ namespace Main.Pages
 			{
 				Session.bP.SetPage((int)Session.TabPage.MainMenu);
 			};
+			((DataGridViewImageColumn)this.aDgvdata.Columns["Success"]).DefaultCellStyle.NullValue = imageList.Images[3];
+		}
+
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.Enter)
+			{
+				btnSearch_Click(this, new EventArgs());
+				return true;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -64,7 +80,32 @@ namespace Main.Pages
 			try
 			{
 				if (Account != null)
-					EduProgBLL.Instance.GetEduProgUser(aDgvdata, Account.UserID);
+				{
+					if (aDgvdata.Rows.Count > 0)
+						aDgvdata.Rows.Clear();
+					var success = imageList.Images[3];
+					aDgvdata.AutoGenerateColumns = false;
+					IEnumerable a = EduProgBLL.Instance.GetEduProgUser(Account.UserID);
+					foreach (dynamic item in a)
+					{
+						if (!string.IsNullOrEmpty(item.Success.ToString()))
+							success = (bool)item.Success == true ? imageList.Images[1] : imageList.Images[0];
+						else
+							success = imageList.Images[3];
+						aDgvdata.Rows.Add(new object[]
+							{
+								item.SemesterID,
+								item.SubjectID,
+								item.SubjectName,
+								item.RoleName,
+								item.CourseID,
+								item.FacultyID,
+								item.FacultyName,
+								item.TotalMark,
+								success
+							});
+					}
+				}
 			}
 			catch (Exception ex)
 			{
@@ -95,15 +136,41 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
-			aDgvdata.ClearFilter();
-			aDgvdata_FilterStringChanged(sender, e);
+			try
+			{
+				if (!string.IsNullOrEmpty(tbSearch.Text))
+					EduProgBLL.Instance.SearchEduProg(aDgvdata, "");
+				aDgvdata.ClearFilter();
+				aDgvdata_FilterStringChanged(sender, e);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
+		}
+
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string keyword = tbSearch.Text;
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
+				EduProgBLL.Instance.SearchEduProg(aDgvdata, keyword);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
 		{
 			try
 			{
-				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Maximum = aDgvdata.RowCount - 12;
 			}
 			catch { }
 		}
@@ -112,7 +179,7 @@ namespace Main.Pages
 		{
 			try
 			{
-				bScrollBar.Maximum = aDgvdata.RowCount - 11;
+				bScrollBar.Maximum = aDgvdata.RowCount - 12;
 			}
 			catch { }
 		}
@@ -121,12 +188,12 @@ namespace Main.Pages
 		{
 			try
 			{
-				if (e.Value > 10)
-					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - e.Value - 10].Index;
+				if (e.Value > 11)
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - e.Value - 11].Index;
 				else if (e.Value == 0)
 					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1)].Index;
 				else
-					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - 11].Index;
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - 12].Index;
 			}
 			catch { }
 		}

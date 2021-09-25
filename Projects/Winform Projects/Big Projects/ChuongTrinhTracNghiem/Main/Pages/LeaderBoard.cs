@@ -21,6 +21,16 @@ namespace Main.Pages
 			};
         }
 
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.Enter)
+			{
+				btnSearch_Click(this, new EventArgs());
+				return true;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
 		// -------------- Set color for background gradient ---------------
 		protected override void OnPaintBackground(PaintEventArgs e)
 		{
@@ -94,15 +104,41 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
-			aDgvdata.ClearFilter();
-			aDgvdata_FilterStringChanged(sender, e);
+			try
+			{
+				if (!string.IsNullOrEmpty(tbSearch.Text))
+					TestHistoryBLL.Instance.SearchHistory(aDgvdata, "");
+				aDgvdata.ClearFilter();
+				aDgvdata_FilterStringChanged(sender, e);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
+		}
+
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string keyword = tbSearch.Text;
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
+				TestHistoryBLL.Instance.SearchHistory(aDgvdata, keyword);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
 		{
 			try
 			{
-				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Maximum = aDgvdata.RowCount - 12;
 			}
 			catch { }
 		}
@@ -111,7 +147,7 @@ namespace Main.Pages
 		{
 			try
 			{
-				bScrollBar.Maximum = aDgvdata.RowCount - 11;
+				bScrollBar.Maximum = aDgvdata.RowCount - 12;
 			}
 			catch { }
 		}
@@ -120,12 +156,12 @@ namespace Main.Pages
 		{
 			try
 			{
-				if (e.Value > 10)
-					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - e.Value - 10].Index;
+				if (e.Value > 11)
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - e.Value - 11].Index;
 				else if (e.Value == 0)
 					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1)].Index;
 				else
-					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - 11].Index;
+					aDgvdata.FirstDisplayedScrollingRowIndex = aDgvdata.Rows[(aDgvdata.RowCount - 1) - 12].Index;
 			}
 			catch { }
 		}

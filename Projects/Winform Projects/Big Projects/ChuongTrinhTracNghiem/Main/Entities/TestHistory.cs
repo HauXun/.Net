@@ -16,8 +16,8 @@ namespace Entities
         public int TestID { get; set; }
 		public string ExamID { get; set; }
 		public string SubjectID { get; set; }
-		public int UserID { get; set; }
         public byte SemesterID { get; set; }
+        public int UserID { get; set; }
         public int CorrectAnswer { get; set; }
         public int TotalQuestion { get; set; }
         public double Mark { get; set; }
