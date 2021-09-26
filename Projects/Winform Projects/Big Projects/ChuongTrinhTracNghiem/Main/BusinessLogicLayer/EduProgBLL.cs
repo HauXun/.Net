@@ -28,7 +28,7 @@ namespace BusinessLogicLayer
             data.DataSource = EduProgDAL.Instance.GetAllEduProg();
         }
 
-        public IEnumerable GetEduProgUser(int userID)
+        public DataTable GetEduProgUser(int userID)
         {
             return EduProgDAL.Instance.GetEduProgUser(userID);
         }

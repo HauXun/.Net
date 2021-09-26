@@ -61,6 +61,7 @@ namespace Main.Pages
 			this.btnQuanLyKhoaHoc = new FontAwesome.Sharp.IconButton();
 			this.btnQuanLyKhoa = new FontAwesome.Sharp.IconButton();
 			this.pnlGiaoVien = new System.Windows.Forms.Panel();
+			this.btnStatiscicalMark = new FontAwesome.Sharp.IconButton();
 			this.pnlBottomGiaoVien = new System.Windows.Forms.Panel();
 			this.btnDangXuatGiaoVien = new Guna.UI2.WinForms.Guna2Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -72,7 +73,6 @@ namespace Main.Pages
 			this.btnQuanLyMonThi = new FontAwesome.Sharp.IconButton();
 			this.btnQuanLyDeThi = new FontAwesome.Sharp.IconButton();
 			this.btnQuanLyCauHoi = new FontAwesome.Sharp.IconButton();
-			this.btnStatiscicalMark = new FontAwesome.Sharp.IconButton();
 			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.pnlTopNguoiDung.SuspendLayout();
@@ -643,6 +643,29 @@ namespace Main.Pages
 			this.pnlGiaoVien.Size = new System.Drawing.Size(650, 488);
 			this.pnlGiaoVien.TabIndex = 38;
 			// 
+			// btnStatiscicalMark
+			// 
+			this.btnStatiscicalMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(87)))), ((int)(((byte)(170)))));
+			this.btnStatiscicalMark.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnStatiscicalMark.FlatAppearance.BorderSize = 0;
+			this.btnStatiscicalMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnStatiscicalMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnStatiscicalMark.ForeColor = System.Drawing.Color.White;
+			this.btnStatiscicalMark.IconChar = FontAwesome.Sharp.IconChar.ListOl;
+			this.btnStatiscicalMark.IconColor = System.Drawing.Color.White;
+			this.btnStatiscicalMark.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnStatiscicalMark.IconSize = 40;
+			this.btnStatiscicalMark.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnStatiscicalMark.Location = new System.Drawing.Point(25, 375);
+			this.btnStatiscicalMark.Name = "btnStatiscicalMark";
+			this.btnStatiscicalMark.Padding = new System.Windows.Forms.Padding(137, 0, 0, 0);
+			this.btnStatiscicalMark.Size = new System.Drawing.Size(600, 55);
+			this.btnStatiscicalMark.TabIndex = 28;
+			this.btnStatiscicalMark.TabStop = false;
+			this.btnStatiscicalMark.Text = "Thống kê điểm thi";
+			this.btnStatiscicalMark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btnStatiscicalMark.UseVisualStyleBackColor = false;
+			// 
 			// pnlBottomGiaoVien
 			// 
 			this.pnlBottomGiaoVien.BackColor = System.Drawing.Color.White;
@@ -852,29 +875,6 @@ namespace Main.Pages
 			this.btnQuanLyCauHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnQuanLyCauHoi.UseVisualStyleBackColor = false;
 			this.btnQuanLyCauHoi.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
-			// 
-			// btnStatiscicalMark
-			// 
-			this.btnStatiscicalMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(87)))), ((int)(((byte)(170)))));
-			this.btnStatiscicalMark.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnStatiscicalMark.FlatAppearance.BorderSize = 0;
-			this.btnStatiscicalMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnStatiscicalMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnStatiscicalMark.ForeColor = System.Drawing.Color.White;
-			this.btnStatiscicalMark.IconChar = FontAwesome.Sharp.IconChar.ListOl;
-			this.btnStatiscicalMark.IconColor = System.Drawing.Color.White;
-			this.btnStatiscicalMark.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnStatiscicalMark.IconSize = 40;
-			this.btnStatiscicalMark.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnStatiscicalMark.Location = new System.Drawing.Point(25, 375);
-			this.btnStatiscicalMark.Name = "btnStatiscicalMark";
-			this.btnStatiscicalMark.Padding = new System.Windows.Forms.Padding(137, 0, 0, 0);
-			this.btnStatiscicalMark.Size = new System.Drawing.Size(600, 55);
-			this.btnStatiscicalMark.TabIndex = 28;
-			this.btnStatiscicalMark.TabStop = false;
-			this.btnStatiscicalMark.Text = "Thống kê điểm thi";
-			this.btnStatiscicalMark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.btnStatiscicalMark.UseVisualStyleBackColor = false;
 			// 
 			// MainMenu
 			// 

@@ -28,7 +28,7 @@ namespace Main.Pages
 			{
 				Session.bP.SetPage((int)Session.TabPage.MainMenu);
 			};
-			((DataGridViewImageColumn)this.aDgvdata.Columns["Success"]).DefaultCellStyle.NullValue = imageList.Images[3];
+			((DataGridViewImageColumn)this.aDgvdata.Columns["Status"]).DefaultCellStyle.NullValue = imageList.Images[3];
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -85,25 +85,17 @@ namespace Main.Pages
 						aDgvdata.Rows.Clear();
 					var success = imageList.Images[3];
 					aDgvdata.AutoGenerateColumns = false;
-					IEnumerable a = EduProgBLL.Instance.GetEduProgUser(Account.UserID);
-					foreach (dynamic item in a)
+					DataColumn column = new DataColumn("Status");
+					DataTable data = EduProgBLL.Instance.GetEduProgUser(Account.UserID);
+					data.Columns.Add(column);
+					aDgvdata.DataSource = data;
+					int i = 0;
+					foreach (DataRow item in data.Rows)
 					{
-						if (!string.IsNullOrEmpty(item.Success.ToString()))
-							success = (bool)item.Success == true ? imageList.Images[1] : imageList.Images[0];
+						if (!string.IsNullOrEmpty(item["Success"].ToString()))
+							data.Rows[i++]["Status"] = (bool)item["Success"] == true ? imageList.Images[1] : imageList.Images[0];
 						else
-							success = imageList.Images[3];
-						aDgvdata.Rows.Add(new object[]
-							{
-								item.SemesterID,
-								item.SubjectID,
-								item.SubjectName,
-								item.RoleName,
-								item.CourseID,
-								item.FacultyID,
-								item.FacultyName,
-								item.TotalMark,
-								success
-							});
+							data.Rows[i++]["Status"] = imageList.Images[3];
 					}
 				}
 			}
@@ -119,7 +111,32 @@ namespace Main.Pages
 
 		public void FrmEduProg_Load(object sender, EventArgs e)
 		{
-			LoadData();
+			try
+			{
+				if (Account != null)
+				{
+					if (aDgvdata.Rows.Count > 0)
+						aDgvdata.Rows.Clear();
+					var success = imageList.Images[3];
+					aDgvdata.AutoGenerateColumns = false;
+					DataColumn column = new DataColumn("Status");
+					DataTable data = EduProgBLL.Instance.GetEduProgUser(Account.UserID);
+					data.Columns.Add(column);
+					aDgvdata.DataSource = data;
+					int i = 0;
+					foreach (DataRow item in data.Rows)
+					{
+						if (!string.IsNullOrEmpty(item["Success"].ToString()))
+							data.Rows[i++]["Status"] = (bool)item["Success"] == true ? imageList.Images[1] : imageList.Images[0];
+						else
+							data.Rows[i++]["Status"] = imageList.Images[3];
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void aDgvdata_SortStringChanged(object sender, EventArgs e)

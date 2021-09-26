@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -91,24 +92,32 @@ namespace Main.Partial
 			return obj;
 		}
 
-		public static DataTable ConvertToDataTable<T>(IList<T> data)
+		public static DataTable GetDataTableFromObjects(List<object> objects)
 		{
-			PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
-			DataTable table = new DataTable();
-			foreach (PropertyDescriptor prop in properties)
+			if (objects != null && objects.Count > 0)
 			{
-				table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-			}
-			foreach (T item in data)
-			{
-				DataRow row = table.NewRow();
-				foreach (PropertyDescriptor prop in properties)
+
+				Type t = objects[0].GetType();
+				DataTable dt = new DataTable(t.Name);
+				foreach (PropertyInfo pi in t.GetProperties())
 				{
-					row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+					dt.Columns.Add(new DataColumn(pi.Name));
 				}
-				table.Rows.Add(row);
+				foreach (var o in objects)
+				{
+					DataRow dr = dt.NewRow();
+					foreach (DataColumn dc in dt.Columns)
+					{
+						dr[dc.ColumnName] = o.GetType().GetProperty(dc.ColumnName).GetValue(o, null);
+
+					}
+					dt.Rows.Add(dr);
+				}
+
+				return dt;
 			}
-			return table;
+
+			return null;
 		}
 	}
 }

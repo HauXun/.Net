@@ -227,6 +227,7 @@ namespace Main.Pages
 		private void DefaultSettings()
 		{
 			tbServer.Text = string.Empty;
+			DatabaseConnection.Connected = false;
 			tbFunc.Text = @"C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\Backup";
 		}
 
@@ -309,7 +310,8 @@ namespace Main.Pages
 			if (!DatabaseConnection.Connected)
 			{
 				btnConnect_Click(this, e);
-				btnRestore_Click(sender, e);
+				if (DatabaseConnection.Connected)
+					btnRestore_Click(sender, e);
 			}
 			else
 			{
@@ -326,7 +328,8 @@ namespace Main.Pages
 			if (!DatabaseConnection.Connected)
 			{
 				btnConnect_Click(this, e);
-				btnSaoLuu_Click(sender, e);
+				if (DatabaseConnection.Connected)
+					btnSaoLuu_Click(sender, e);
 			}
 			else
 			{
@@ -443,6 +446,7 @@ namespace Main.Pages
 			EnableControl(false);
 			ClearError();
 			DefaultSettings();
+			btnCancle_Click(this, e);
 		}
 
 		private void btnRestore_Enter(object sender, EventArgs e)

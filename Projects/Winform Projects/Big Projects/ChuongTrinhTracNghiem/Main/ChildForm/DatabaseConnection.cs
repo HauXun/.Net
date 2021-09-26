@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -23,6 +24,19 @@ namespace Main
 			GetDataSources();
 			Connected = false;
 			Database = database;
+		}
+
+		private void Pnl1_Paint(object sender, PaintEventArgs e)
+		{
+			Rectangle rectangle = pnl1.ClientRectangle;
+			if (rectangle.IsEmpty)
+				return;
+			if (rectangle.Width == 0 || rectangle.Height == 0)
+				return;
+			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 90F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
+			{
+				e.Graphics.FillRectangle(brush, rectangle);
+			}
 		}
 
 		//Bo tròn góc các control
@@ -225,6 +239,7 @@ namespace Main
 		{
 			if (!IsValidData())
 				return;
+			Connected = false;
 			TestConnection();
 		}
 

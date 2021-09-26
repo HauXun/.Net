@@ -31,21 +31,28 @@ namespace Main.Pages
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EduProg));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.iconSearch = new FontAwesome.Sharp.IconButton();
+			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
+			this.btnSearch = new FontAwesome.Sharp.IconButton();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
+			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
+			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.imageList = new System.Windows.Forms.ImageList(this.components);
 			this.SemesterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,14 +61,7 @@ namespace Main.Pages
 			this.FacultyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TotalMark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Success = new System.Windows.Forms.DataGridViewImageColumn();
-			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
-			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.imageList = new System.Windows.Forms.ImageList(this.components);
-			this.iconSearch = new FontAwesome.Sharp.IconButton();
-			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
-			this.btnSearch = new FontAwesome.Sharp.IconButton();
+			this.Status = new System.Windows.Forms.DataGridViewImageColumn();
 			this.pnlDataGridView.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.SuspendLayout();
@@ -109,274 +109,6 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridView.TabIndex = 38;
-			// 
-			// bScrollBar
-			// 
-			this.bScrollBar.AllowCursorChanges = true;
-			this.bScrollBar.AllowHomeEndKeysDetection = false;
-			this.bScrollBar.AllowIncrementalClickMoves = true;
-			this.bScrollBar.AllowMouseDownEffects = false;
-			this.bScrollBar.AllowMouseHoverEffects = false;
-			this.bScrollBar.AllowScrollingAnimations = true;
-			this.bScrollBar.AllowScrollKeysDetection = true;
-			this.bScrollBar.AllowScrollOptionsMenu = true;
-			this.bScrollBar.AllowShrinkingOnFocusLost = false;
-			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.bScrollBar.AutoScroll = true;
-			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
-			this.bScrollBar.BindingContainer = null;
-			this.bScrollBar.BorderRadius = 2;
-			this.bScrollBar.BorderThickness = 1;
-			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
-			this.bScrollBar.DrawThickBorder = false;
-			this.bScrollBar.DurationBeforeShrink = 2000;
-			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1492, 95);
-			this.bScrollBar.Maximum = 100;
-			this.bScrollBar.Minimum = 0;
-			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
-			this.bScrollBar.MinimumThumbLength = 18;
-			this.bScrollBar.Name = "bScrollBar";
-			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
-			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
-			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
-			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 625);
-			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
-			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
-			this.bScrollBar.SmallChange = 1;
-			this.bScrollBar.TabIndex = 12;
-			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
-			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
-			this.bScrollBar.ThumbLength = 61;
-			this.bScrollBar.ThumbMargin = 1;
-			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
-			this.bScrollBar.Value = 100;
-			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
-			// 
-			// aDgvdata
-			// 
-			this.aDgvdata.AllowUserToAddRows = false;
-			this.aDgvdata.AllowUserToDeleteRows = false;
-			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
-			this.aDgvdata.AutoGenerateContextFilters = true;
-			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
-			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
-			this.aDgvdata.ColumnHeadersHeight = 40;
-			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SemesterID,
-            this.SubjectID,
-            this.SubjectName,
-            this.RoleName,
-            this.CourseID,
-            this.FacultyID,
-            this.FacultyName,
-            this.TotalMark,
-            this.Success});
-			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle30;
-			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(33, 55);
-			this.aDgvdata.Name = "aDgvdata";
-			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			this.aDgvdata.RowHeadersVisible = false;
-			this.aDgvdata.RowTemplate.Height = 50;
-			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1456, 665);
-			this.aDgvdata.TabIndex = 8;
-			this.aDgvdata.TimeFilter = false;
-			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
-			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
-			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
-			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
-			// 
-			// SemesterID
-			// 
-			this.SemesterID.DataPropertyName = "SemesterID";
-			dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SemesterID.DefaultCellStyle = dataGridViewCellStyle23;
-			this.SemesterID.FillWeight = 30F;
-			this.SemesterID.HeaderText = "Học kì";
-			this.SemesterID.MinimumWidth = 22;
-			this.SemesterID.Name = "SemesterID";
-			this.SemesterID.ReadOnly = true;
-			this.SemesterID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle24;
-			this.SubjectID.FillWeight = 50F;
-			this.SubjectID.HeaderText = "Mã môn";
-			this.SubjectID.MinimumWidth = 22;
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectName
-			// 
-			this.SubjectName.DataPropertyName = "SubjectName";
-			this.SubjectName.FillWeight = 110F;
-			this.SubjectName.HeaderText = "Tên môn";
-			this.SubjectName.MinimumWidth = 22;
-			this.SubjectName.Name = "SubjectName";
-			this.SubjectName.ReadOnly = true;
-			this.SubjectName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// RoleName
-			// 
-			this.RoleName.DataPropertyName = "RoleName";
-			dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.RoleName.DefaultCellStyle = dataGridViewCellStyle25;
-			this.RoleName.FillWeight = 50F;
-			this.RoleName.HeaderText = "Loại môn";
-			this.RoleName.MinimumWidth = 22;
-			this.RoleName.Name = "RoleName";
-			this.RoleName.ReadOnly = true;
-			this.RoleName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// CourseID
-			// 
-			this.CourseID.DataPropertyName = "CourseID";
-			dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CourseID.DefaultCellStyle = dataGridViewCellStyle26;
-			this.CourseID.FillWeight = 50F;
-			this.CourseID.HeaderText = "Khóa";
-			this.CourseID.MinimumWidth = 22;
-			this.CourseID.Name = "CourseID";
-			this.CourseID.ReadOnly = true;
-			this.CourseID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// FacultyID
-			// 
-			this.FacultyID.DataPropertyName = "FacultyID";
-			dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle27;
-			this.FacultyID.FillWeight = 50F;
-			this.FacultyID.HeaderText = "Mã khoa";
-			this.FacultyID.MinimumWidth = 22;
-			this.FacultyID.Name = "FacultyID";
-			this.FacultyID.ReadOnly = true;
-			this.FacultyID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// FacultyName
-			// 
-			this.FacultyName.DataPropertyName = "FacultyName";
-			dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle28;
-			this.FacultyName.FillWeight = 110F;
-			this.FacultyName.HeaderText = "Tên khoa";
-			this.FacultyName.MinimumWidth = 22;
-			this.FacultyName.Name = "FacultyName";
-			this.FacultyName.ReadOnly = true;
-			this.FacultyName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// TotalMark
-			// 
-			dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.TotalMark.DefaultCellStyle = dataGridViewCellStyle29;
-			this.TotalMark.FillWeight = 40F;
-			this.TotalMark.HeaderText = "Tổng điểm";
-			this.TotalMark.MinimumWidth = 22;
-			this.TotalMark.Name = "TotalMark";
-			this.TotalMark.ReadOnly = true;
-			this.TotalMark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Success
-			// 
-			this.Success.DataPropertyName = "Success";
-			this.Success.FillWeight = 50F;
-			this.Success.HeaderText = "Trạng thái";
-			this.Success.MinimumWidth = 22;
-			this.Success.Name = "Success";
-			this.Success.ReadOnly = true;
-			this.Success.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			this.Success.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// btnClearFilter
-			// 
-			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnClearFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.btnClearFilter.FlatAppearance.BorderSize = 0;
-			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnClearFilter.ForeColor = System.Drawing.Color.White;
-			this.btnClearFilter.IconChar = FontAwesome.Sharp.IconChar.FunnelDollar;
-			this.btnClearFilter.IconColor = System.Drawing.SystemColors.WindowText;
-			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnClearFilter.IconSize = 25;
-			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(325, 9);
-			this.btnClearFilter.Name = "btnClearFilter";
-			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
-			this.btnClearFilter.TabIndex = 0;
-			this.btnClearFilter.TabStop = false;
-			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
-			this.btnClearFilter.UseVisualStyleBackColor = false;
-			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
-			this.btnClearFilter.Enter += new System.EventHandler(this.btnClearFilter_Enter);
-			// 
-			// pnlDataGridViewShadow
-			// 
-			this.pnlDataGridViewShadow.BackColor = System.Drawing.Color.Silver;
-			this.pnlDataGridViewShadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnlDataGridViewShadow.Location = new System.Drawing.Point(14, 84);
-			this.pnlDataGridViewShadow.Name = "pnlDataGridViewShadow";
-			this.pnlDataGridViewShadow.Size = new System.Drawing.Size(1526, 729);
-			this.pnlDataGridViewShadow.TabIndex = 39;
-			// 
-			// toolTip
-			// 
-			this.toolTip.AutomaticDelay = 0;
-			this.toolTip.AutoPopDelay = 1000;
-			this.toolTip.InitialDelay = 0;
-			this.toolTip.ReshowDelay = 0;
-			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-			this.toolTip.ToolTipTitle = "Suggest";
-			// 
-			// imageList
-			// 
-			this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-			this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageList.Images.SetKeyName(0, "cancel.png");
-			this.imageList.Images.SetKeyName(1, "checked.png");
-			this.imageList.Images.SetKeyName(2, "warning.png");
-			this.imageList.Images.SetKeyName(3, "information.png");
 			// 
 			// iconSearch
 			// 
@@ -449,6 +181,274 @@ namespace Main.Pages
 			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
+			// bScrollBar
+			// 
+			this.bScrollBar.AllowCursorChanges = true;
+			this.bScrollBar.AllowHomeEndKeysDetection = false;
+			this.bScrollBar.AllowIncrementalClickMoves = true;
+			this.bScrollBar.AllowMouseDownEffects = false;
+			this.bScrollBar.AllowMouseHoverEffects = false;
+			this.bScrollBar.AllowScrollingAnimations = true;
+			this.bScrollBar.AllowScrollKeysDetection = true;
+			this.bScrollBar.AllowScrollOptionsMenu = true;
+			this.bScrollBar.AllowShrinkingOnFocusLost = false;
+			this.bScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.bScrollBar.AutoScroll = true;
+			this.bScrollBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bScrollBar.BackgroundImage")));
+			this.bScrollBar.BindingContainer = null;
+			this.bScrollBar.BorderRadius = 2;
+			this.bScrollBar.BorderThickness = 1;
+			this.bScrollBar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.bScrollBar.DirectionalScroll = Utilities.BunifuSlider.BunifuVScrollBar.DirectionalMovements.BottomUp;
+			this.bScrollBar.DrawThickBorder = false;
+			this.bScrollBar.DurationBeforeShrink = 2000;
+			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.LargeChange = 10;
+			this.bScrollBar.Location = new System.Drawing.Point(1492, 95);
+			this.bScrollBar.Maximum = 100;
+			this.bScrollBar.Minimum = 0;
+			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
+			this.bScrollBar.MinimumThumbLength = 18;
+			this.bScrollBar.Name = "bScrollBar";
+			this.bScrollBar.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+			this.bScrollBar.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.ElapsedColor = System.Drawing.Color.Silver;
+			this.bScrollBar.OnDisableSlider.SliderColor = System.Drawing.Color.Gainsboro;
+			this.bScrollBar.OnDisableSlider.ThumbColor = System.Drawing.Color.Silver;
+			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.ShrinkSizeLimit = 3;
+			this.bScrollBar.Size = new System.Drawing.Size(31, 625);
+			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
+			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
+			this.bScrollBar.SmallChange = 1;
+			this.bScrollBar.TabIndex = 12;
+			this.bScrollBar.ThumbColor = System.Drawing.Color.DodgerBlue;
+			this.bScrollBar.ThumbFillColor = System.Drawing.Color.White;
+			this.bScrollBar.ThumbLength = 61;
+			this.bScrollBar.ThumbMargin = 1;
+			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
+			this.bScrollBar.Value = 100;
+			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			// 
+			// aDgvdata
+			// 
+			this.aDgvdata.AllowUserToAddRows = false;
+			this.aDgvdata.AllowUserToDeleteRows = false;
+			this.aDgvdata.AllowUserToResizeRows = false;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.aDgvdata.AutoGenerateContextFilters = true;
+			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
+			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.aDgvdata.ColumnHeadersHeight = 40;
+			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SemesterID,
+            this.SubjectID,
+            this.SubjectName,
+            this.RoleName,
+            this.CourseID,
+            this.FacultyID,
+            this.FacultyName,
+            this.TotalMark,
+            this.Status});
+			this.aDgvdata.DateWithTime = false;
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle10;
+			this.aDgvdata.EnableHeadersVisualStyles = false;
+			this.aDgvdata.Location = new System.Drawing.Point(33, 55);
+			this.aDgvdata.Name = "aDgvdata";
+			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			this.aDgvdata.RowHeadersVisible = false;
+			this.aDgvdata.RowTemplate.Height = 50;
+			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
+			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.aDgvdata.Size = new System.Drawing.Size(1456, 665);
+			this.aDgvdata.TabIndex = 8;
+			this.aDgvdata.TimeFilter = false;
+			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
+			this.aDgvdata.FilterStringChanged += new System.EventHandler(this.aDgvdata_FilterStringChanged);
+			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
+			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			// 
+			// btnClearFilter
+			// 
+			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnClearFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.btnClearFilter.FlatAppearance.BorderSize = 0;
+			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnClearFilter.ForeColor = System.Drawing.Color.White;
+			this.btnClearFilter.IconChar = FontAwesome.Sharp.IconChar.FunnelDollar;
+			this.btnClearFilter.IconColor = System.Drawing.SystemColors.WindowText;
+			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnClearFilter.IconSize = 25;
+			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnClearFilter.Location = new System.Drawing.Point(325, 9);
+			this.btnClearFilter.Name = "btnClearFilter";
+			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
+			this.btnClearFilter.TabIndex = 0;
+			this.btnClearFilter.TabStop = false;
+			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
+			this.btnClearFilter.UseVisualStyleBackColor = false;
+			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.btnClearFilter_Enter);
+			// 
+			// pnlDataGridViewShadow
+			// 
+			this.pnlDataGridViewShadow.BackColor = System.Drawing.Color.Silver;
+			this.pnlDataGridViewShadow.ForeColor = System.Drawing.SystemColors.InfoText;
+			this.pnlDataGridViewShadow.Location = new System.Drawing.Point(14, 84);
+			this.pnlDataGridViewShadow.Name = "pnlDataGridViewShadow";
+			this.pnlDataGridViewShadow.Size = new System.Drawing.Size(1526, 729);
+			this.pnlDataGridViewShadow.TabIndex = 39;
+			// 
+			// toolTip
+			// 
+			this.toolTip.AutomaticDelay = 0;
+			this.toolTip.AutoPopDelay = 1000;
+			this.toolTip.InitialDelay = 0;
+			this.toolTip.ReshowDelay = 0;
+			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip.ToolTipTitle = "Suggest";
+			// 
+			// imageList
+			// 
+			this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+			this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+			this.imageList.Images.SetKeyName(0, "cancel.png");
+			this.imageList.Images.SetKeyName(1, "checked.png");
+			this.imageList.Images.SetKeyName(2, "warning.png");
+			this.imageList.Images.SetKeyName(3, "information.png");
+			// 
+			// SemesterID
+			// 
+			this.SemesterID.DataPropertyName = "SemesterID";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SemesterID.DefaultCellStyle = dataGridViewCellStyle3;
+			this.SemesterID.FillWeight = 30F;
+			this.SemesterID.HeaderText = "Học kì";
+			this.SemesterID.MinimumWidth = 22;
+			this.SemesterID.Name = "SemesterID";
+			this.SemesterID.ReadOnly = true;
+			this.SemesterID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.SubjectID.FillWeight = 50F;
+			this.SubjectID.HeaderText = "Mã môn";
+			this.SubjectID.MinimumWidth = 22;
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectName
+			// 
+			this.SubjectName.DataPropertyName = "SubjectName";
+			this.SubjectName.FillWeight = 110F;
+			this.SubjectName.HeaderText = "Tên môn";
+			this.SubjectName.MinimumWidth = 22;
+			this.SubjectName.Name = "SubjectName";
+			this.SubjectName.ReadOnly = true;
+			this.SubjectName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// RoleName
+			// 
+			this.RoleName.DataPropertyName = "RoleName";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.RoleName.DefaultCellStyle = dataGridViewCellStyle5;
+			this.RoleName.FillWeight = 50F;
+			this.RoleName.HeaderText = "Loại môn";
+			this.RoleName.MinimumWidth = 22;
+			this.RoleName.Name = "RoleName";
+			this.RoleName.ReadOnly = true;
+			this.RoleName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// CourseID
+			// 
+			this.CourseID.DataPropertyName = "CourseID";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CourseID.DefaultCellStyle = dataGridViewCellStyle6;
+			this.CourseID.FillWeight = 50F;
+			this.CourseID.HeaderText = "Khóa";
+			this.CourseID.MinimumWidth = 22;
+			this.CourseID.Name = "CourseID";
+			this.CourseID.ReadOnly = true;
+			this.CourseID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// FacultyID
+			// 
+			this.FacultyID.DataPropertyName = "FacultyID";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle7;
+			this.FacultyID.FillWeight = 50F;
+			this.FacultyID.HeaderText = "Mã khoa";
+			this.FacultyID.MinimumWidth = 22;
+			this.FacultyID.Name = "FacultyID";
+			this.FacultyID.ReadOnly = true;
+			this.FacultyID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// FacultyName
+			// 
+			this.FacultyName.DataPropertyName = "FacultyName";
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle8;
+			this.FacultyName.FillWeight = 110F;
+			this.FacultyName.HeaderText = "Tên khoa";
+			this.FacultyName.MinimumWidth = 22;
+			this.FacultyName.Name = "FacultyName";
+			this.FacultyName.ReadOnly = true;
+			this.FacultyName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// TotalMark
+			// 
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.TotalMark.DefaultCellStyle = dataGridViewCellStyle9;
+			this.TotalMark.FillWeight = 40F;
+			this.TotalMark.HeaderText = "Tổng điểm";
+			this.TotalMark.MinimumWidth = 22;
+			this.TotalMark.Name = "TotalMark";
+			this.TotalMark.ReadOnly = true;
+			this.TotalMark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Status
+			// 
+			this.Status.DataPropertyName = "Status";
+			this.Status.FillWeight = 50F;
+			this.Status.HeaderText = "Trạng thái";
+			this.Status.MinimumWidth = 22;
+			this.Status.Name = "Status";
+			this.Status.ReadOnly = true;
+			this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
 			// EduProg
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -476,6 +476,9 @@ namespace Main.Pages
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		public ADGV.AdvancedDataGridView aDgvdata;
 		private System.Windows.Forms.ImageList imageList;
+		private FontAwesome.Sharp.IconButton iconSearch;
+		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
+		private FontAwesome.Sharp.IconButton btnSearch;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SemesterID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectName;
@@ -484,9 +487,6 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FacultyName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TotalMark;
-		private System.Windows.Forms.DataGridViewImageColumn Success;
-		private FontAwesome.Sharp.IconButton iconSearch;
-		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
-		private FontAwesome.Sharp.IconButton btnSearch;
+		private System.Windows.Forms.DataGridViewImageColumn Status;
 	}
 }

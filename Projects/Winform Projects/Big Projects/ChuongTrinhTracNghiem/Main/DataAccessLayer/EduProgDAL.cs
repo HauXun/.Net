@@ -36,27 +36,27 @@ namespace DataAccessLayer
 			}
 		}
 
-		public IEnumerable GetEduProgUser(int userID)
+		public DataTable GetEduProgUser(int userID)
 		{
 			try
 			{
 				string query = "EXEC dbo.USP_SelectEduProgUser @UserID";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { userID });
 
-				var a = (from DataRow dr in data.Rows
-						 select new
-						 {
-							 SemesterID = Convert.ToInt32(dr["SemesterID"]),
-							 SubjectID = dr["SubjectID"].ToString(),
-							 SubjectName = dr["SubjectName"].ToString(),
-							 RoleName = dr["RoleName"].ToString(),
-							 CourseID = dr["CourseID"].ToString(),
-							 FacultyID = dr["FacultyID"].ToString(),
-							 FacultyName = dr["FacultyName"].ToString(),
-							 TotalMark = dr["TotalMark"],
-							 Success = dr["Success"]
-						 });
-				return a;
+				//var a = (from DataRow dr in data.Rows
+				//		 select new
+				//		 {
+				//			 SemesterID = Convert.ToInt32(dr["SemesterID"]),
+				//			 SubjectID = dr["SubjectID"].ToString(),
+				//			 SubjectName = dr["SubjectName"].ToString(),
+				//			 RoleName = dr["RoleName"].ToString(),
+				//			 CourseID = dr["CourseID"].ToString(),
+				//			 FacultyID = dr["FacultyID"].ToString(),
+				//			 FacultyName = dr["FacultyName"].ToString(),
+				//			 TotalMark = dr["TotalMark"],
+				//			 Success = dr["Success"]
+				//		 });
+				return data;
 			}
 			catch (Exception e)
 			{

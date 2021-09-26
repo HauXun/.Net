@@ -31,14 +31,14 @@ namespace Main
         {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseConnection));
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
 			this.pnlTitleBar = new System.Windows.Forms.Panel();
 			this.lbFormTitle = new System.Windows.Forms.Label();
 			this.formIcon = new FontAwesome.Sharp.IconButton();
@@ -217,6 +217,7 @@ namespace Main
 			// lbServerName
 			// 
 			this.lbServerName.AutoSize = true;
+			this.lbServerName.BackColor = System.Drawing.Color.Transparent;
 			this.lbServerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbServerName.Location = new System.Drawing.Point(30, 94);
 			this.lbServerName.Name = "lbServerName";
@@ -227,6 +228,7 @@ namespace Main
 			// lbAuthentication
 			// 
 			this.lbAuthentication.AutoSize = true;
+			this.lbAuthentication.BackColor = System.Drawing.Color.Transparent;
 			this.lbAuthentication.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbAuthentication.Location = new System.Drawing.Point(30, 152);
 			this.lbAuthentication.Name = "lbAuthentication";
@@ -245,7 +247,6 @@ namespace Main
 			// pnl1
 			// 
 			this.pnl1.BackColor = System.Drawing.Color.White;
-			this.pnl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnl1.Controls.Add(this.wP);
 			this.pnl1.Controls.Add(this.panel1);
 			this.pnl1.Controls.Add(this.pnlAccount);
@@ -261,6 +262,7 @@ namespace Main
 			this.pnl1.Name = "pnl1";
 			this.pnl1.Size = new System.Drawing.Size(460, 386);
 			this.pnl1.TabIndex = 8;
+			this.pnl1.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl1_Paint);
 			// 
 			// wP
 			// 
@@ -283,6 +285,7 @@ namespace Main
 			// 
 			// pnlAccount
 			// 
+			this.pnlAccount.BackColor = System.Drawing.Color.Transparent;
 			this.pnlAccount.Controls.Add(this.tbUsername);
 			this.pnlAccount.Controls.Add(this.tbPassword);
 			this.pnlAccount.Controls.Add(this.lbUsername);
@@ -325,26 +328,26 @@ namespace Main
 			this.tbUsername.Modified = false;
 			this.tbUsername.Multiline = false;
 			this.tbUsername.Name = "tbUsername";
-			stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			stateProperties9.FillColor = System.Drawing.Color.Empty;
-			stateProperties9.ForeColor = System.Drawing.Color.Empty;
-			stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbUsername.OnActiveState = stateProperties9;
-			stateProperties10.BorderColor = System.Drawing.Color.Empty;
-			stateProperties10.FillColor = System.Drawing.Color.White;
-			stateProperties10.ForeColor = System.Drawing.Color.Empty;
-			stateProperties10.PlaceholderForeColor = System.Drawing.Color.Silver;
-			this.tbUsername.OnDisabledState = stateProperties10;
-			stateProperties11.BorderColor = System.Drawing.Color.Gray;
-			stateProperties11.FillColor = System.Drawing.Color.Empty;
-			stateProperties11.ForeColor = System.Drawing.Color.Empty;
-			stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbUsername.OnHoverState = stateProperties11;
-			stateProperties12.BorderColor = System.Drawing.Color.Gray;
-			stateProperties12.FillColor = System.Drawing.Color.White;
-			stateProperties12.ForeColor = System.Drawing.Color.Empty;
-			stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbUsername.OnIdleState = stateProperties12;
+			stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			stateProperties1.FillColor = System.Drawing.Color.Empty;
+			stateProperties1.ForeColor = System.Drawing.Color.Empty;
+			stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbUsername.OnActiveState = stateProperties1;
+			stateProperties2.BorderColor = System.Drawing.Color.Empty;
+			stateProperties2.FillColor = System.Drawing.Color.White;
+			stateProperties2.ForeColor = System.Drawing.Color.Empty;
+			stateProperties2.PlaceholderForeColor = System.Drawing.Color.Silver;
+			this.tbUsername.OnDisabledState = stateProperties2;
+			stateProperties3.BorderColor = System.Drawing.Color.Gray;
+			stateProperties3.FillColor = System.Drawing.Color.Empty;
+			stateProperties3.ForeColor = System.Drawing.Color.Empty;
+			stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbUsername.OnHoverState = stateProperties3;
+			stateProperties4.BorderColor = System.Drawing.Color.Gray;
+			stateProperties4.FillColor = System.Drawing.Color.White;
+			stateProperties4.ForeColor = System.Drawing.Color.Empty;
+			stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbUsername.OnIdleState = stateProperties4;
 			this.tbUsername.PasswordChar = '\0';
 			this.tbUsername.PlaceholderForeColor = System.Drawing.Color.Silver;
 			this.tbUsername.PlaceholderText = "";
@@ -398,26 +401,26 @@ namespace Main
 			this.tbPassword.Modified = false;
 			this.tbPassword.Multiline = false;
 			this.tbPassword.Name = "tbPassword";
-			stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			stateProperties13.FillColor = System.Drawing.Color.Empty;
-			stateProperties13.ForeColor = System.Drawing.Color.Empty;
-			stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbPassword.OnActiveState = stateProperties13;
-			stateProperties14.BorderColor = System.Drawing.Color.Empty;
-			stateProperties14.FillColor = System.Drawing.Color.White;
-			stateProperties14.ForeColor = System.Drawing.Color.Empty;
-			stateProperties14.PlaceholderForeColor = System.Drawing.Color.Silver;
-			this.tbPassword.OnDisabledState = stateProperties14;
-			stateProperties15.BorderColor = System.Drawing.Color.Gray;
-			stateProperties15.FillColor = System.Drawing.Color.Empty;
-			stateProperties15.ForeColor = System.Drawing.Color.Empty;
-			stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbPassword.OnHoverState = stateProperties15;
-			stateProperties16.BorderColor = System.Drawing.Color.Gray;
-			stateProperties16.FillColor = System.Drawing.Color.White;
-			stateProperties16.ForeColor = System.Drawing.Color.Empty;
-			stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbPassword.OnIdleState = stateProperties16;
+			stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			stateProperties5.FillColor = System.Drawing.Color.Empty;
+			stateProperties5.ForeColor = System.Drawing.Color.Empty;
+			stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbPassword.OnActiveState = stateProperties5;
+			stateProperties6.BorderColor = System.Drawing.Color.Empty;
+			stateProperties6.FillColor = System.Drawing.Color.White;
+			stateProperties6.ForeColor = System.Drawing.Color.Empty;
+			stateProperties6.PlaceholderForeColor = System.Drawing.Color.Silver;
+			this.tbPassword.OnDisabledState = stateProperties6;
+			stateProperties7.BorderColor = System.Drawing.Color.Gray;
+			stateProperties7.FillColor = System.Drawing.Color.Empty;
+			stateProperties7.ForeColor = System.Drawing.Color.Empty;
+			stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbPassword.OnHoverState = stateProperties7;
+			stateProperties8.BorderColor = System.Drawing.Color.Gray;
+			stateProperties8.FillColor = System.Drawing.Color.White;
+			stateProperties8.ForeColor = System.Drawing.Color.Empty;
+			stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbPassword.OnIdleState = stateProperties8;
 			this.tbPassword.PasswordChar = '●';
 			this.tbPassword.PlaceholderForeColor = System.Drawing.Color.Silver;
 			this.tbPassword.PlaceholderText = "";
@@ -441,6 +444,7 @@ namespace Main
 			// lbUsername
 			// 
 			this.lbUsername.AutoSize = true;
+			this.lbUsername.BackColor = System.Drawing.Color.Transparent;
 			this.lbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbUsername.Location = new System.Drawing.Point(25, 21);
 			this.lbUsername.Name = "lbUsername";
@@ -451,6 +455,7 @@ namespace Main
 			// lbPassword
 			// 
 			this.lbPassword.AutoSize = true;
+			this.lbPassword.BackColor = System.Drawing.Color.Transparent;
 			this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbPassword.Location = new System.Drawing.Point(25, 79);
 			this.lbPassword.Name = "lbPassword";
