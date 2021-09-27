@@ -44,7 +44,7 @@ namespace Main.Pages
 		{
 			if (keyData == Keys.Enter)
 			{
-				btnSearch_Click(this, new EventArgs());
+				tbSearch_IconRightClick(this, new EventArgs());
 				return true;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
@@ -378,22 +378,6 @@ namespace Main.Pages
 			}
 		}
 
-		private void btnSearch_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				string keyword = tbSearch.Text;
-				if (keyword.Equals("Nhập từ khóa ..."))
-					keyword = string.Empty;
-				FacultyBLL.Instance.SearchFaculty(aDgvdata, keyword);
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
-			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			}
-		}
-
 		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
 		{
 			if (!aDgvdata.SortString.Contains("STT"))
@@ -539,6 +523,22 @@ namespace Main.Pages
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
 			lbTitle.Focus();
+		}
+
+		private void tbSearch_IconRightClick(object sender, EventArgs e)
+		{
+			try
+			{
+				string keyword = tbSearch.Text;
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
+				FacultyBLL.Instance.SearchFaculty(aDgvdata, keyword);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		#endregion

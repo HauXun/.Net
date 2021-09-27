@@ -60,7 +60,7 @@ namespace Main.Pages
 				Height = 55,
 				Text = $"Câu {i++}",
 				TextImageRelation = TextImageRelation.TextAboveImage,
-				Font = new Font("Arial", 8, FontStyle.Regular),
+				Font = new Font("Verdana", 8, FontStyle.Regular),
 				BackColor = Color.Transparent,
 				FlatStyle = FlatStyle.Flat
 			};

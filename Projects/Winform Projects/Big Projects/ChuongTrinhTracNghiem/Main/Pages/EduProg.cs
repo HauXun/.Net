@@ -28,14 +28,14 @@ namespace Main.Pages
 			{
 				Session.bP.SetPage((int)Session.TabPage.MainMenu);
 			};
-			((DataGridViewImageColumn)this.aDgvdata.Columns["Status"]).DefaultCellStyle.NullValue = imageList.Images[3];
+			((DataGridViewImageColumn)this.aDgvdata.Columns["Success"]).DefaultCellStyle.NullValue = imageList.Images[3];
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			if (keyData == Keys.Enter)
 			{
-				btnSearch_Click(this, new EventArgs());
+				tbSearch_IconRightClick(this, new EventArgs());
 				return true;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
@@ -72,7 +72,6 @@ namespace Main.Pages
 
 		#endregion
 
-
 		#region Methods
 
 		private void LoadData()
@@ -83,20 +82,33 @@ namespace Main.Pages
 				{
 					if (aDgvdata.Rows.Count > 0)
 						aDgvdata.Rows.Clear();
-					var success = imageList.Images[3];
 					aDgvdata.AutoGenerateColumns = false;
-					DataColumn column = new DataColumn("Status");
-					DataTable data = EduProgBLL.Instance.GetEduProgUser(Account.UserID);
-					data.Columns.Add(column);
-					aDgvdata.DataSource = data;
-					int i = 0;
-					foreach (DataRow item in data.Rows)
+					//BindingList<Script>  source = new BindingList<Script>();
+					//List<Script> scripts = Enumerable.Cast<Script>(EduProgBLL.Instance.GetEduProgUser(Account.UserID)).ToList();
+					IEnumerable<Script> a = EduProgBLL.Instance.GetEduProgUser(Account.UserID);
+					foreach (var item in a)
 					{
-						if (!string.IsNullOrEmpty(item["Success"].ToString()))
-							data.Rows[i++]["Status"] = (bool)item["Success"] == true ? imageList.Images[1] : imageList.Images[0];
+						if (!string.IsNullOrEmpty(item.TempSuccess.ToString()))
+							item.Success = (bool)item.TempSuccess == true ? imageList.Images[1] : imageList.Images[0];
 						else
-							data.Rows[i++]["Status"] = imageList.Images[3];
-					}
+							item.Success = imageList.Images[3];
+						//source.Add(x);
+						aDgvdata.Rows.Add(new object[]
+							{
+								item.SemesterID,
+								item.SubjectID,
+								item.SubjectName,
+								item.RoleName,
+								item.CourseID,
+								item.FacultyID,
+								item.FacultyName,
+								item.TotalMark,
+								item.Success
+							});
+					};
+
+					//source.DataSource = scripts;
+					//aDgvdata.DataSource = a;
 				}
 			}
 			catch (Exception ex)
@@ -111,44 +123,7 @@ namespace Main.Pages
 
 		public void FrmEduProg_Load(object sender, EventArgs e)
 		{
-			try
-			{
-				if (Account != null)
-				{
-					if (aDgvdata.Rows.Count > 0)
-						aDgvdata.Rows.Clear();
-					var success = imageList.Images[3];
-					aDgvdata.AutoGenerateColumns = false;
-					DataColumn column = new DataColumn("Status");
-					DataTable data = EduProgBLL.Instance.GetEduProgUser(Account.UserID);
-					data.Columns.Add(column);
-					aDgvdata.DataSource = data;
-					int i = 0;
-					foreach (DataRow item in data.Rows)
-					{
-						if (!string.IsNullOrEmpty(item["Success"].ToString()))
-							data.Rows[i++]["Status"] = (bool)item["Success"] == true ? imageList.Images[1] : imageList.Images[0];
-						else
-							data.Rows[i++]["Status"] = imageList.Images[3];
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			}
-		}
-
-		private void aDgvdata_SortStringChanged(object sender, EventArgs e)
-		{
-			BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Sort = aDgvdata.SortString };
-			aDgvdata.DataSource = source.DataSource;
-		}
-
-		private void aDgvdata_FilterStringChanged(object sender, EventArgs e)
-		{
-			BindingSource source = new BindingSource() { DataSource = aDgvdata.DataSource, Filter = aDgvdata.FilterString };
-			aDgvdata.DataSource = source.DataSource;
+			LoadData();
 		}
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
@@ -156,25 +131,7 @@ namespace Main.Pages
 			try
 			{
 				if (!string.IsNullOrEmpty(tbSearch.Text))
-					EduProgBLL.Instance.SearchEduProg(aDgvdata, "");
-				aDgvdata.ClearFilter();
-				aDgvdata_FilterStringChanged(sender, e);
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
-			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			}
-		}
-
-		private void btnSearch_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				string keyword = tbSearch.Text;
-				if (keyword.Equals("Nhập từ khóa ..."))
-					keyword = string.Empty;
-				EduProgBLL.Instance.SearchEduProg(aDgvdata, keyword);
+					EduProgBLL.Instance.SearchEduProg(aDgvdata, "", imageList);
 			}
 			catch (Exception ex)
 			{
@@ -218,6 +175,40 @@ namespace Main.Pages
 		private void btnClearFilter_Enter(object sender, EventArgs e)
 		{
 			lbTitle.Focus();
+		}
+
+		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			tbSearch.Clear();
+		}
+
+		private void tbSearch_MouseLeave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(tbSearch.Text))
+			{
+				tbSearch.Text = "Nhập từ khóa ...";
+			}
+		}
+
+		private void tbSearch_Enter(object sender, EventArgs e)
+		{
+			tbSearch.Clear();
+		}
+
+		private void tbSearch_IconRightClick(object sender, EventArgs e)
+		{
+			try
+			{
+				string keyword = tbSearch.Text;
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
+				EduProgBLL.Instance.SearchEduProg(aDgvdata, keyword, imageList);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		#endregion

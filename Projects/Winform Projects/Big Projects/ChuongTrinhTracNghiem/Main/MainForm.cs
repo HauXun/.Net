@@ -95,7 +95,7 @@ namespace Main
 		{
 			if (quizTestUC.fLPdata.Controls.Count > 0)
 			{
-				MsgBox.ShowMessage("Đang làm thi. Không thể thoát", "Amazing Quiz Application",
+				MsgBox.ShowMessage("Đang làm bài thi. Không thể thoát", "Amazing Quiz Application",
 				MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
 				e.Cancel = true;
 			}
@@ -488,7 +488,7 @@ namespace Main
 			{
 				pnlNavigation.Visible = false;
 				btnNav.IconChar = IconChar.CaretRight;
-				btnNav.Location = new Point(0, 31);
+				btnNav.Location = new Point(0, 30);
 				btnNav.BringToFront();
 			}
 			else if (!pnlNavigation.Visible && !isNavigation)
@@ -496,7 +496,7 @@ namespace Main
 				isNavigation = false;
 				pnlNavigation.Show();
 				btnNav.IconChar = IconChar.CaretLeft;
-				btnNav.Location = new Point(350, 31);
+				btnNav.Location = new Point(350, 30);
 			}
 		}
 

@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Data;
 using System.Collections;
+using Main.Partial;
+using System.Collections.Generic;
 
 namespace DataAccessLayer
 {
@@ -36,27 +38,26 @@ namespace DataAccessLayer
 			}
 		}
 
-		public DataTable GetEduProgUser(int userID)
+		public IEnumerable<Script> GetEduProgUser(int userID)
 		{
 			try
 			{
 				string query = "EXEC dbo.USP_SelectEduProgUser @UserID";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { userID });
-
-				//var a = (from DataRow dr in data.Rows
-				//		 select new
-				//		 {
-				//			 SemesterID = Convert.ToInt32(dr["SemesterID"]),
-				//			 SubjectID = dr["SubjectID"].ToString(),
-				//			 SubjectName = dr["SubjectName"].ToString(),
-				//			 RoleName = dr["RoleName"].ToString(),
-				//			 CourseID = dr["CourseID"].ToString(),
-				//			 FacultyID = dr["FacultyID"].ToString(),
-				//			 FacultyName = dr["FacultyName"].ToString(),
-				//			 TotalMark = dr["TotalMark"],
-				//			 Success = dr["Success"]
-				//		 });
-				return data;
+				var a = (from DataRow dr in data.Rows
+						 select new Script()
+						 {
+							 SemesterID = Convert.ToByte(dr["SemesterID"]),
+							 SubjectID = dr["SubjectID"].ToString(),
+							 SubjectName = dr["SubjectName"].ToString(),
+							 RoleName = dr["RoleName"].ToString(),
+							 CourseID = dr["CourseID"].ToString(),
+							 FacultyID = dr["FacultyID"].ToString(),
+							 FacultyName = dr["FacultyName"].ToString(),
+							 TotalMark = dr["TotalMark"].ToString(),
+							 TempSuccess = dr["Success"]
+						 });
+				return a;
 			}
 			catch (Exception e)
 			{
@@ -64,13 +65,26 @@ namespace DataAccessLayer
 			}
 		}
 
-		public DataTable SearchEduProg(string keyword)
+		public IEnumerable<Script> SearchEduProg(string keyword)
 		{
 			try
 			{
 				string query = "EXEC dbo.USP_SearchEduProg @keyword";
 				DataTable data = DataProvider.Instance.ExcuteQuery(query, new object[] { keyword });
-				return data;
+				var a = (from DataRow dr in data.Rows
+						 select new Script()
+						 {
+							 SemesterID = Convert.ToByte(dr["SemesterID"]),
+							 SubjectID = dr["SubjectID"].ToString(),
+							 SubjectName = dr["SubjectName"].ToString(),
+							 RoleName = dr["RoleName"].ToString(),
+							 CourseID = dr["CourseID"].ToString(),
+							 FacultyID = dr["FacultyID"].ToString(),
+							 FacultyName = dr["FacultyName"].ToString(),
+							 TotalMark = dr["TotalMark"].ToString(),
+							 TempSuccess = dr["Success"]
+						 });
+				return a;
 			}
 			catch (Exception e)
 			{

@@ -163,7 +163,7 @@ namespace Main.Pages
 						ReplaceDatabase = true,
 						NoRecovery = false
 					};
-					dbRestore.Devices.AddDevice($"{tbFunc.Text.Trim()}\\{database}_BACKUP({RandomString(5)}).bak", DeviceType.File);
+					dbRestore.Devices.AddDevice($"{tbFunc.Text.Trim()}", DeviceType.File);
 					dbRestore.PercentComplete += DbRestore_PercentComplete;
 					dbRestore.Complete += DbRestore_Complete;
 					dbRestore.SqlRestoreAsync(dbServer);

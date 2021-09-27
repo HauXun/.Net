@@ -31,18 +31,19 @@ namespace Main.Pages
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestHistory));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
+			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,9 +56,6 @@ namespace Main.Pages
 			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
 			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.iconSearch = new FontAwesome.Sharp.IconButton();
-			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
-			this.btnSearch = new FontAwesome.Sharp.IconButton();
 			this.pnlDataGridView.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.SuspendLayout();
@@ -85,20 +83,18 @@ namespace Main.Pages
 			// 
 			this.lbTitle.AutoSize = true;
 			this.lbTitle.BackColor = System.Drawing.Color.Transparent;
-			this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.lbTitle.Location = new System.Drawing.Point(85, 20);
 			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(162, 37);
+			this.lbTitle.Size = new System.Drawing.Size(165, 35);
 			this.lbTitle.TabIndex = 31;
 			this.lbTitle.Text = "Lịch sử thi";
 			// 
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
-			this.pnlDataGridView.Controls.Add(this.iconSearch);
 			this.pnlDataGridView.Controls.Add(this.tbSearch);
-			this.pnlDataGridView.Controls.Add(this.btnSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
 			this.pnlDataGridView.Controls.Add(this.aDgvdata);
 			this.pnlDataGridView.Controls.Add(this.btnClearFilter);
@@ -106,6 +102,40 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridView.TabIndex = 40;
+			// 
+			// tbSearch
+			// 
+			this.tbSearch.BorderColor = System.Drawing.Color.Gray;
+			this.tbSearch.BorderRadius = 5;
+			this.tbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.tbSearch.DefaultText = "";
+			this.tbSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+			this.tbSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+			this.tbSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.tbSearch.DisabledState.Parent = this.tbSearch;
+			this.tbSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.tbSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.tbSearch.FocusedState.Parent = this.tbSearch;
+			this.tbSearch.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbSearch.ForeColor = System.Drawing.Color.Black;
+			this.tbSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.tbSearch.HoverState.Parent = this.tbSearch;
+			this.tbSearch.IconRight = global::Main.Properties.Resources.searchIcon;
+			this.tbSearch.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+			this.tbSearch.Location = new System.Drawing.Point(40, 12);
+			this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
+			this.tbSearch.Name = "tbSearch";
+			this.tbSearch.PasswordChar = '\0';
+			this.tbSearch.PlaceholderText = "Nhập từ khóa ...";
+			this.tbSearch.SelectedText = "";
+			this.tbSearch.ShadowDecoration.Parent = this.tbSearch;
+			this.tbSearch.Size = new System.Drawing.Size(281, 35);
+			this.tbSearch.TabIndex = 23;
+			this.tbSearch.TabStop = false;
+			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
+			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
+			this.tbSearch.MouseLeave += new System.EventHandler(this.tbSearch_MouseLeave);
 			// 
 			// bScrollBar
 			// 
@@ -166,22 +196,22 @@ namespace Main.Pages
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AllowUserToDeleteRows = false;
 			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
 			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.aDgvdata.ColumnHeadersHeight = 40;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -193,14 +223,14 @@ namespace Main.Pages
             this.TotalQuestion,
             this.Mark});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle27;
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
 			this.aDgvdata.Location = new System.Drawing.Point(33, 55);
 			this.aDgvdata.Name = "aDgvdata";
@@ -221,8 +251,8 @@ namespace Main.Pages
 			// STT
 			// 
 			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle21;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
 			this.STT.FillWeight = 40F;
 			this.STT.HeaderText = "STT";
 			this.STT.MinimumWidth = 22;
@@ -243,8 +273,8 @@ namespace Main.Pages
 			// SubjectID
 			// 
 			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle22;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
 			this.SubjectID.FillWeight = 80F;
 			this.SubjectID.HeaderText = "Mã môn";
 			this.SubjectID.MinimumWidth = 22;
@@ -255,10 +285,10 @@ namespace Main.Pages
 			// CreatedAt
 			// 
 			this.CreatedAt.DataPropertyName = "CreatedAt";
-			dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle23.Format = "d";
-			dataGridViewCellStyle23.NullValue = "dd/MM/yyyy";
-			this.CreatedAt.DefaultCellStyle = dataGridViewCellStyle23;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle5.Format = "d";
+			dataGridViewCellStyle5.NullValue = "dd/MM/yyyy";
+			this.CreatedAt.DefaultCellStyle = dataGridViewCellStyle5;
 			this.CreatedAt.FillWeight = 80F;
 			this.CreatedAt.HeaderText = "Ngày thi";
 			this.CreatedAt.MinimumWidth = 22;
@@ -269,8 +299,8 @@ namespace Main.Pages
 			// CorrectAnswer
 			// 
 			this.CorrectAnswer.DataPropertyName = "CorrectAnswer";
-			dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle24;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CorrectAnswer.DefaultCellStyle = dataGridViewCellStyle6;
 			this.CorrectAnswer.FillWeight = 60F;
 			this.CorrectAnswer.HeaderText = "Số câu đúng";
 			this.CorrectAnswer.MinimumWidth = 22;
@@ -281,8 +311,8 @@ namespace Main.Pages
 			// TotalQuestion
 			// 
 			this.TotalQuestion.DataPropertyName = "TotalQuestion";
-			dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle25;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.TotalQuestion.DefaultCellStyle = dataGridViewCellStyle7;
 			this.TotalQuestion.FillWeight = 60F;
 			this.TotalQuestion.HeaderText = "Tổng số câu";
 			this.TotalQuestion.MinimumWidth = 22;
@@ -293,8 +323,8 @@ namespace Main.Pages
 			// Mark
 			// 
 			this.Mark.DataPropertyName = "Mark";
-			dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Mark.DefaultCellStyle = dataGridViewCellStyle26;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Mark.DefaultCellStyle = dataGridViewCellStyle8;
 			this.Mark.FillWeight = 60F;
 			this.Mark.HeaderText = "Điểm";
 			this.Mark.MinimumWidth = 22;
@@ -316,9 +346,9 @@ namespace Main.Pages
 			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnClearFilter.IconSize = 25;
 			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(325, 9);
+			this.btnClearFilter.Location = new System.Drawing.Point(326, 12);
 			this.btnClearFilter.Name = "btnClearFilter";
-			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
+			this.btnClearFilter.Size = new System.Drawing.Size(35, 35);
 			this.btnClearFilter.TabIndex = 11;
 			this.btnClearFilter.TabStop = false;
 			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -344,77 +374,6 @@ namespace Main.Pages
 			this.toolTip.ReshowDelay = 0;
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
-			// 
-			// iconSearch
-			// 
-			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
-			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
-			this.iconSearch.FlatAppearance.BorderSize = 0;
-			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
-			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.iconSearch.IconSize = 30;
-			this.iconSearch.Location = new System.Drawing.Point(283, 15);
-			this.iconSearch.Name = "iconSearch";
-			this.iconSearch.Size = new System.Drawing.Size(35, 30);
-			this.iconSearch.TabIndex = 24;
-			this.iconSearch.TabStop = false;
-			this.iconSearch.UseVisualStyleBackColor = false;
-			// 
-			// tbSearch
-			// 
-			this.tbSearch.BorderColor = System.Drawing.Color.Gray;
-			this.tbSearch.BorderRadius = 5;
-			this.tbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.tbSearch.DefaultText = "";
-			this.tbSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-			this.tbSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-			this.tbSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.tbSearch.DisabledState.Parent = this.tbSearch;
-			this.tbSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.tbSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.tbSearch.FocusedState.Parent = this.tbSearch;
-			this.tbSearch.Font = new System.Drawing.Font("Arial", 12F);
-			this.tbSearch.ForeColor = System.Drawing.Color.Black;
-			this.tbSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.tbSearch.HoverState.Parent = this.tbSearch;
-			this.tbSearch.Location = new System.Drawing.Point(39, 12);
-			this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
-			this.tbSearch.Name = "tbSearch";
-			this.tbSearch.PasswordChar = '\0';
-			this.tbSearch.PlaceholderText = "Nhập từ khóa ...";
-			this.tbSearch.SelectedText = "";
-			this.tbSearch.ShadowDecoration.Parent = this.tbSearch;
-			this.tbSearch.Size = new System.Drawing.Size(281, 35);
-			this.tbSearch.TabIndex = 23;
-			// 
-			// btnSearch
-			// 
-			this.btnSearch.BackColor = System.Drawing.Color.White;
-			this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.btnSearch.FlatAppearance.BorderSize = 0;
-			this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnSearch.ForeColor = System.Drawing.Color.Gray;
-			this.btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
-			this.btnSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnSearch.IconSize = 30;
-			this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnSearch.Location = new System.Drawing.Point(289, 14);
-			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.Size = new System.Drawing.Size(30, 30);
-			this.btnSearch.TabIndex = 22;
-			this.btnSearch.TabStop = false;
-			this.toolTip.SetToolTip(this.btnSearch, "Tìm kiếm");
-			this.btnSearch.UseVisualStyleBackColor = false;
-			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// TestHistory
 			// 
@@ -450,8 +409,6 @@ namespace Main.Pages
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.ToolTip toolTip;
 		public ADGV.AdvancedDataGridView aDgvdata;
-		private FontAwesome.Sharp.IconButton iconSearch;
 		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
-		private FontAwesome.Sharp.IconButton btnSearch;
 	}
 }

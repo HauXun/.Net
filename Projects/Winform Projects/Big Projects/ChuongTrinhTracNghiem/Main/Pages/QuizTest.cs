@@ -124,7 +124,7 @@ namespace Main.Pages
 					button.Image = null;
 					button.TextImageRelation = TextImageRelation.Overlay;
 					button.BackColor = Color.White;
-					button.Font = new Font("Arial", 9, FontStyle.Regular);
+					button.Font = new Font("Verdana", 9, FontStyle.Regular);
 					button.FlatAppearance.BorderSize = 1;
 					if (answer.Equals(string.Empty))
 					{
@@ -156,7 +156,7 @@ namespace Main.Pages
 					Name = i.ToString(),
 					Text = $"Câu {i++}",
 					TextAlign = ContentAlignment.MiddleCenter,
-					Font = new Font("Arial", 9, FontStyle.Regular),
+					Font = new Font("Verdana", 9, FontStyle.Regular),
 					Tag = question,
 					CausesValidation = false
 				};
@@ -376,7 +376,7 @@ namespace Main.Pages
 					button.Image = new Bitmap(Properties.Resources.flags, new Size(15, 15));
 					button.TextImageRelation = TextImageRelation.ImageAboveText;
 					button.BackColor = Color.MistyRose;
-					button.Font = new Font("Arial", 7, FontStyle.Regular);
+					button.Font = new Font("Verdana", 7, FontStyle.Regular);
 					button.FlatStyle = FlatStyle.Flat;
 					button.FlatAppearance.BorderSize = 2;
 					button.FlatAppearance.BorderColor = Color.Red;

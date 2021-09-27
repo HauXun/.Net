@@ -171,6 +171,40 @@ namespace Main.Pages
 			lbTitle.Focus();
 		}
 
+		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			tbSearch.Clear();
+		}
+
+		private void tbSearch_MouseLeave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(tbSearch.Text))
+			{
+				tbSearch.Text = "Nhập từ khóa ...";
+			}
+		}
+
+		private void tbSearch_Enter(object sender, EventArgs e)
+		{
+			tbSearch.Clear();
+		}
+
+		private void tbSearch_IconRightClick(object sender, EventArgs e)
+		{
+			try
+			{
+				string keyword = tbSearch.Text;
+				if (keyword.Equals("Nhập từ khóa ..."))
+					keyword = string.Empty;
+				TestHistoryBLL.Instance.SearchHistory(aDgvdata, keyword);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
+		}
+
 		#endregion
 	}
 }

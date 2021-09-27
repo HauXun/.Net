@@ -600,6 +600,7 @@ namespace Main
 			mainMenuUC.btnBangXepHang.Click += btnBangXepHang_Click;
 			mainMenuUC.btnThiNgay.Click += btnThiNgay_Click;
 			mainMenuUC.btnHuongDanThi.Click += BtnHuongDanThi_Click; ;
+			mainMenuUC.btnTroGiup.Click += btnHuongDan_Click;
 			mainMenuUC.btnThongTinChiTiet.Click += BtnThongTinChiTiet_Click; ;
 			mainMenuUC.btnQuanLyMonThi.Click += BtnQuanLyMonThi_Click;
 			mainMenuUC.btnQuanLyCauHoi.Click += BtnQuanLyCauHoi_Click;

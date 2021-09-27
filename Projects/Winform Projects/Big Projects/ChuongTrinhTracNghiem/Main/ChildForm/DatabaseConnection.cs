@@ -225,14 +225,7 @@ namespace Main
 		private void cbAuthentication_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			tbPassword.Text = tbUsername.Text = string.Empty;
-			if (cbAuthentication.SelectedIndex == 1)
-			{
-				pnlAccount.Enabled = true;
-			}
-			else
-			{
-				pnlAccount.Enabled = false;
-			}
+			pnlAccount.Enabled = cbAuthentication.SelectedIndex == 1 ? true : false;
 		}
 
 		private void btnTestConnect_Click(object sender, EventArgs e)
@@ -250,6 +243,11 @@ namespace Main
 
 			Connected = true;
 			TestConnection();
+		}
+
+		private void btnTestConnect_Enter(object sender, EventArgs e)
+		{
+			lbTitle.Focus();
 		}
 
 		#endregion

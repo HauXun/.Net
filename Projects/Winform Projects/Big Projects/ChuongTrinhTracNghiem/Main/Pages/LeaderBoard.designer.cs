@@ -34,6 +34,7 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,16 +43,10 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pnlDataGridView = new System.Windows.Forms.Panel();
-			this.iconSearch = new FontAwesome.Sharp.IconButton();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.btnSearch = new FontAwesome.Sharp.IconButton();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
-			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
-			this.iconTitle = new FontAwesome.Sharp.IconButton();
-			this.lbTitle = new System.Windows.Forms.Label();
-			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +56,11 @@ namespace Main.Pages
 			this.CorrectAnswer = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TotalQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
+			this.iconTitle = new FontAwesome.Sharp.IconButton();
+			this.lbTitle = new System.Windows.Forms.Label();
+			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlDataGridView.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.SuspendLayout();
@@ -68,7 +68,6 @@ namespace Main.Pages
 			// pnlDataGridView
 			// 
 			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
-			this.pnlDataGridView.Controls.Add(this.iconSearch);
 			this.pnlDataGridView.Controls.Add(this.tbSearch);
 			this.pnlDataGridView.Controls.Add(this.btnSearch);
 			this.pnlDataGridView.Controls.Add(this.bScrollBar);
@@ -78,25 +77,6 @@ namespace Main.Pages
 			this.pnlDataGridView.Name = "pnlDataGridView";
 			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
 			this.pnlDataGridView.TabIndex = 34;
-			// 
-			// iconSearch
-			// 
-			this.iconSearch.BackColor = System.Drawing.Color.Transparent;
-			this.iconSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
-			this.iconSearch.FlatAppearance.BorderSize = 0;
-			this.iconSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.iconSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.iconSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.iconSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
-			this.iconSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.iconSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.iconSearch.IconSize = 30;
-			this.iconSearch.Location = new System.Drawing.Point(283, 15);
-			this.iconSearch.Name = "iconSearch";
-			this.iconSearch.Size = new System.Drawing.Size(35, 30);
-			this.iconSearch.TabIndex = 20;
-			this.iconSearch.TabStop = false;
-			this.iconSearch.UseVisualStyleBackColor = false;
 			// 
 			// tbSearch
 			// 
@@ -111,11 +91,13 @@ namespace Main.Pages
 			this.tbSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
 			this.tbSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbSearch.FocusedState.Parent = this.tbSearch;
-			this.tbSearch.Font = new System.Drawing.Font("Arial", 12F);
+			this.tbSearch.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbSearch.ForeColor = System.Drawing.Color.Black;
 			this.tbSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.tbSearch.HoverState.Parent = this.tbSearch;
-			this.tbSearch.Location = new System.Drawing.Point(39, 12);
+			this.tbSearch.IconRight = global::Main.Properties.Resources.searchIcon;
+			this.tbSearch.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+			this.tbSearch.Location = new System.Drawing.Point(40, 12);
 			this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.PasswordChar = '\0';
@@ -124,6 +106,11 @@ namespace Main.Pages
 			this.tbSearch.ShadowDecoration.Parent = this.tbSearch;
 			this.tbSearch.Size = new System.Drawing.Size(281, 35);
 			this.tbSearch.TabIndex = 19;
+			this.tbSearch.TabStop = false;
+			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
+			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
+			this.tbSearch.MouseLeave += new System.EventHandler(this.tbSearch_MouseLeave);
 			// 
 			// btnSearch
 			// 
@@ -250,6 +237,14 @@ namespace Main.Pages
 			this.aDgvdata.Location = new System.Drawing.Point(33, 55);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+			dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -262,80 +257,6 @@ namespace Main.Pages
 			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
-			// 
-			// btnClearFilter
-			// 
-			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
-			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnClearFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.btnClearFilter.FlatAppearance.BorderSize = 0;
-			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnClearFilter.ForeColor = System.Drawing.Color.White;
-			this.btnClearFilter.IconChar = FontAwesome.Sharp.IconChar.FunnelDollar;
-			this.btnClearFilter.IconColor = System.Drawing.SystemColors.WindowText;
-			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnClearFilter.IconSize = 25;
-			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(325, 9);
-			this.btnClearFilter.Name = "btnClearFilter";
-			this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
-			this.btnClearFilter.TabIndex = 9;
-			this.btnClearFilter.TabStop = false;
-			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
-			this.btnClearFilter.UseVisualStyleBackColor = false;
-			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
-			this.btnClearFilter.Enter += new System.EventHandler(this.btnClearFilter_Enter);
-			// 
-			// iconTitle
-			// 
-			this.iconTitle.BackColor = System.Drawing.Color.Transparent;
-			this.iconTitle.FlatAppearance.BorderSize = 0;
-			this.iconTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.iconTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.iconTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.iconTitle.IconChar = FontAwesome.Sharp.IconChar.Leanpub;
-			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(45, 21);
-			this.iconTitle.Name = "iconTitle";
-			this.iconTitle.Size = new System.Drawing.Size(35, 37);
-			this.iconTitle.TabIndex = 36;
-			this.iconTitle.TabStop = false;
-			this.iconTitle.UseVisualStyleBackColor = false;
-			this.iconTitle.Enter += new System.EventHandler(this.btnClearFilter_Enter);
-			// 
-			// lbTitle
-			// 
-			this.lbTitle.AutoSize = true;
-			this.lbTitle.BackColor = System.Drawing.Color.Transparent;
-			this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.lbTitle.Location = new System.Drawing.Point(85, 20);
-			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(232, 37);
-			this.lbTitle.TabIndex = 35;
-			this.lbTitle.Text = "Bảng xếp hạng";
-			// 
-			// pnlDataGridViewShadow
-			// 
-			this.pnlDataGridViewShadow.BackColor = System.Drawing.Color.Silver;
-			this.pnlDataGridViewShadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnlDataGridViewShadow.Location = new System.Drawing.Point(15, 84);
-			this.pnlDataGridViewShadow.Name = "pnlDataGridViewShadow";
-			this.pnlDataGridViewShadow.Size = new System.Drawing.Size(1526, 729);
-			this.pnlDataGridViewShadow.TabIndex = 37;
-			// 
-			// toolTip
-			// 
-			this.toolTip.AutomaticDelay = 0;
-			this.toolTip.AutoPopDelay = 10000;
-			this.toolTip.InitialDelay = 0;
-			this.toolTip.ReshowDelay = 0;
-			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-			this.toolTip.ToolTipTitle = "Suggest";
 			// 
 			// STT
 			// 
@@ -444,6 +365,80 @@ namespace Main.Pages
 			this.Mark.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.Mark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
+			// btnClearFilter
+			// 
+			this.btnClearFilter.BackColor = System.Drawing.Color.Gainsboro;
+			this.btnClearFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnClearFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.btnClearFilter.FlatAppearance.BorderSize = 0;
+			this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnClearFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnClearFilter.ForeColor = System.Drawing.Color.White;
+			this.btnClearFilter.IconChar = FontAwesome.Sharp.IconChar.FunnelDollar;
+			this.btnClearFilter.IconColor = System.Drawing.SystemColors.WindowText;
+			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnClearFilter.IconSize = 25;
+			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnClearFilter.Location = new System.Drawing.Point(326, 12);
+			this.btnClearFilter.Name = "btnClearFilter";
+			this.btnClearFilter.Size = new System.Drawing.Size(35, 35);
+			this.btnClearFilter.TabIndex = 9;
+			this.btnClearFilter.TabStop = false;
+			this.btnClearFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.toolTip.SetToolTip(this.btnClearFilter, "Hủy thao tác lọc dữ liệu");
+			this.btnClearFilter.UseVisualStyleBackColor = false;
+			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+			this.btnClearFilter.Enter += new System.EventHandler(this.btnClearFilter_Enter);
+			// 
+			// iconTitle
+			// 
+			this.iconTitle.BackColor = System.Drawing.Color.Transparent;
+			this.iconTitle.FlatAppearance.BorderSize = 0;
+			this.iconTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.iconTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.iconTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconTitle.IconChar = FontAwesome.Sharp.IconChar.Leanpub;
+			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconTitle.IconSize = 35;
+			this.iconTitle.Location = new System.Drawing.Point(45, 21);
+			this.iconTitle.Name = "iconTitle";
+			this.iconTitle.Size = new System.Drawing.Size(35, 37);
+			this.iconTitle.TabIndex = 36;
+			this.iconTitle.TabStop = false;
+			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.btnClearFilter_Enter);
+			// 
+			// lbTitle
+			// 
+			this.lbTitle.AutoSize = true;
+			this.lbTitle.BackColor = System.Drawing.Color.Transparent;
+			this.lbTitle.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.lbTitle.Location = new System.Drawing.Point(85, 20);
+			this.lbTitle.Name = "lbTitle";
+			this.lbTitle.Size = new System.Drawing.Size(231, 35);
+			this.lbTitle.TabIndex = 35;
+			this.lbTitle.Text = "Bảng xếp hạng";
+			// 
+			// pnlDataGridViewShadow
+			// 
+			this.pnlDataGridViewShadow.BackColor = System.Drawing.Color.Silver;
+			this.pnlDataGridViewShadow.ForeColor = System.Drawing.SystemColors.InfoText;
+			this.pnlDataGridViewShadow.Location = new System.Drawing.Point(15, 84);
+			this.pnlDataGridViewShadow.Name = "pnlDataGridViewShadow";
+			this.pnlDataGridViewShadow.Size = new System.Drawing.Size(1526, 729);
+			this.pnlDataGridViewShadow.TabIndex = 37;
+			// 
+			// toolTip
+			// 
+			this.toolTip.AutomaticDelay = 0;
+			this.toolTip.AutoPopDelay = 10000;
+			this.toolTip.InitialDelay = 0;
+			this.toolTip.ReshowDelay = 0;
+			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip.ToolTipTitle = "Suggest";
+			// 
 			// LeaderBoard
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -471,7 +466,6 @@ namespace Main.Pages
 		private System.Windows.Forms.ToolTip toolTip;
 		public System.Windows.Forms.Label lbTitle;
 		public ADGV.AdvancedDataGridView aDgvdata;
-		private FontAwesome.Sharp.IconButton iconSearch;
 		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
 		private FontAwesome.Sharp.IconButton btnSearch;
 		private System.Windows.Forms.DataGridViewTextBoxColumn STT;
