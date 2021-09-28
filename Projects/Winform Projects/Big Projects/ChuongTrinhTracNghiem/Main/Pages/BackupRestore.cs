@@ -15,7 +15,7 @@ namespace Main.Pages
 {
 	public partial class BackupRestore : UserControl
 	{
-		public Action HomeFunc;
+		public Action CancleAction;
 		public DatabaseConnection DatabaseConnection;
 		SqlConnection connection;
 		string database;
@@ -28,22 +28,25 @@ namespace Main.Pages
 		{
 			InitializeComponent();
 			RoundedControls();
-			HomeFunc = () =>
+			DatabaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
+			CancleAction = () =>
 			{
 				if (btnSave.Visible && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
-						MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
+					   MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 				{
 					if (!DatabaseConnection.IsDisposed)
 						DatabaseConnection.Dispose();
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
 					btnCancle_Click(this, new EventArgs());
+					Session.Cancle = true;
 				}
 				else if (!btnSave.Visible)
 				{
 					if (!DatabaseConnection.IsDisposed)
 						DatabaseConnection.Dispose();
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
+					Session.Cancle = true;
 				}
+				else
+					Session.Cancle = false;
 			};
 		}
 
@@ -55,7 +58,7 @@ namespace Main.Pages
 				return;
 			if (rectangle.Width == 0 || rectangle.Height == 0)
 				return;
-			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 90F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
+			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 240F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
 			{
 				e.Graphics.FillRectangle(brush, rectangle);
 			}
@@ -414,16 +417,19 @@ namespace Main.Pages
 
 		public void BackupRestore_Load(object sender, EventArgs e)
 		{
-			DatabaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
 			EnableControl(false);
 			EnableProcess(false);
 			DefaultSettings();
+			if (!DatabaseConnection.IsDisposed)
+				DatabaseConnection.Dispose();
 		}
 
 		private void btnConnect_Click(object sender, EventArgs e)
 		{
 			try
 			{
+				if (DatabaseConnection != null)
+					DatabaseConnection = new DatabaseConnection(new SqlConnection(DataProvider.connectionString).Database);
 				DatabaseConnection.ShowDialog();
 				if (DatabaseConnection.Connected)
 				{

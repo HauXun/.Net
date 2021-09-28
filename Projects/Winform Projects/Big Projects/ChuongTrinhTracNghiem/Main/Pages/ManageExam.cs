@@ -22,7 +22,7 @@ namespace Main.Pages
 		private int questionCurrentCount = 0;
 
 		private UserAccount account;
-		public Action HomeFunc;
+		public Action CancleAction;
 
 		public UserAccount Account { get => account; set => account = value; }
 
@@ -30,18 +30,18 @@ namespace Main.Pages
 		{
 			InitializeComponent();
 			RoundedControls();
-			HomeFunc = () =>
+			CancleAction = () =>
 			{
 				if (btnSave.Visible && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
-					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
+					   MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 				{
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
 					btnCancle_Click(this, new EventArgs());
+					Session.Cancle = true;
 				}
 				else if (!btnSave.Visible)
-				{
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
-				}
+					Session.Cancle = true;
+				else
+					Session.Cancle = false;
 			};
 		}
 
@@ -695,7 +695,7 @@ namespace Main.Pages
 
 		private void cbExamRole_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbExamRole.SelectedIndex != -1)
+			if (!isFunc && cbExamRole.SelectedValue != null)
 			{
 				if (cbExamRole.SelectedValue.ToString().Equals("mock-test"))
 				{
@@ -705,7 +705,7 @@ namespace Main.Pages
 				{
 					cbTestFormID.Enabled = lbTestFormID.Enabled = true;
 				}
-				cbTestFormID.SelectedIndex = 0;
+				cbTestFormID.SelectedIndex = -1;
 			}
 		}
 
@@ -716,12 +716,12 @@ namespace Main.Pages
 
 		private void lbCheckStatus_MouseEnter(object sender, EventArgs e)
 		{
-			lbCheckStatus.Font = new Font("Verdana", 12, FontStyle.Underline);
+			lbCheckStatus.LinkBehavior = LinkBehavior.SystemDefault;
 		}
 
 		private void lbCheckStatus_MouseLeave(object sender, EventArgs e)
 		{
-			lbCheckStatus.Font = new Font("Verdana", 12, FontStyle.Regular);
+			lbCheckStatus.LinkBehavior = LinkBehavior.NeverUnderline;
 		}
 
 		private void tbSearch_IconRightClick(object sender, EventArgs e)

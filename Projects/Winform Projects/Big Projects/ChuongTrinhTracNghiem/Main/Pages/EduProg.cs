@@ -2,14 +2,10 @@
 using Entities;
 using Main.Partial;
 using System;
-using System.Linq;
-using System.Data;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Main.Pages
 {
@@ -18,17 +14,17 @@ namespace Main.Pages
 		private UserAccount account;
 
 		public UserAccount Account { get => account; set => account = value; }
-		public Action HomeFunc;
+		public Action CancleAction;
 
 		public EduProg()
 		{
 			InitializeComponent();
 			RoundedControls();
-			HomeFunc = () =>
-			{
-				Session.bP.SetPage((int)Session.TabPage.MainMenu);
-			};
 			((DataGridViewImageColumn)this.aDgvdata.Columns["Success"]).DefaultCellStyle.NullValue = imageList.Images[3];
+			CancleAction = () =>
+			{
+				Session.Cancle = true;
+			};
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

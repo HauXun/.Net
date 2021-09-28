@@ -31,196 +31,249 @@ namespace Main
 
 		private void btnQLNguoiDung_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					manageUserUC.Account = this.Account;
-					MainAction = manageUserUC.HomeFunc;
-					if (manageUserUC.aDgvdata.Rows.Count > 0)
-						manageUserUC.FrmManageUser_Load(manageUserUC, e);
-					Session.bP.SetPage((int)Session.TabPage.ManageUser);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						manageUserUC.Account = this.Account;
+						Session.CancleAction = manageUserUC.CancleAction;
+						if (manageUserUC.aDgvdata.Rows.Count > 0)
+							manageUserUC.FrmManageUser_Load(manageUserUC, e);
+						Session.bP.SetPage((int)Session.TabPage.ManageUser);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnQLKhoa_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					MainAction = manageFacultyUC.HomeFunc;
-					if (manageFacultyUC.aDgvdata.Rows.Count > 0)
-						manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
-					Session.bP.SetPage((int)Session.TabPage.ManageFaculty);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						Session.CancleAction = manageFacultyUC.CancleAction;
+						if (manageFacultyUC.aDgvdata.Rows.Count > 0)
+							manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
+						Session.bP.SetPage((int)Session.TabPage.ManageFaculty);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnQLKhoaHoc_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					MainAction = manageCourseUC.HomeFunc;
-					if (manageCourseUC.aDgvdata.Rows.Count > 0)
-						manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
-					Session.bP.SetPage((int)Session.TabPage.ManageCourse);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						Session.CancleAction = manageCourseUC.CancleAction;
+						if (manageCourseUC.aDgvdata.Rows.Count > 0)
+							manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
+						Session.bP.SetPage((int)Session.TabPage.ManageCourse);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnQLSinhVien_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					manageClassUC.Account = this.Account;
-					MainAction = manageClassUC.HomeFunc;
-					if (manageClassUC.aDgvdata.Rows.Count > 0)
-						manageClassUC.ManageClass_Load(manageClassUC, e);
-					Session.bP.SetPage((int)Session.TabPage.ManageClass);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						manageClassUC.Account = this.Account;
+						Session.CancleAction = manageClassUC.CancleAction;
+						if (manageClassUC.aDgvdata.Rows.Count > 0)
+							manageClassUC.ManageClass_Load(manageClassUC, e);
+						Session.bP.SetPage((int)Session.TabPage.ManageClass);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnPhucHoiDuLieu_Click(object sender, EventArgs e)
 		{
-			#region MultiThreading
-			this.BeginInvoke((MethodInvoker)delegate
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				MainAction = backupRestoreUC.HomeFunc;
-				if (backupRestoreUC.DatabaseConnection != null)
-					backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
-				Session.bP.SetPage((int)Session.TabPage.BackupRestore);
-			});
-			#endregion
-			ShowHideSubMenu();
+				Session.CancleAction = null;
+				try
+				{
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						Session.CancleAction = backupRestoreUC.CancleAction;
+						if (backupRestoreUC.DatabaseConnection != null)
+							backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
+						Session.bP.SetPage((int)Session.TabPage.BackupRestore);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
+			}
 		}
 
 		private void btnThongKeCTDT_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					MainAction = statisticalUC.HomeFunc;
-					if (statisticalUC.aDgvdata.Rows.Count > 0)
-						statisticalUC.FrmStatistical_Load(statisticalUC, e);
-					Session.bP.SetPage((int)Session.TabPage.Statistical);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						Session.CancleAction = statisticalUC.CancleAction;
+						if (statisticalUC.aDgvdata.Rows.Count > 0)
+							statisticalUC.FrmStatistical_Load(statisticalUC, e);
+						Session.bP.SetPage((int)Session.TabPage.Statistical);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnQuanLyMonThi_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					manageSubjectUC.Account = this.Account;
-					MainAction = manageSubjectUC.HomeFunc;
-					if (manageSubjectUC.aDgvdata.Rows.Count > 0)
-						manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
-					Session.bP.SetPage((int)Session.TabPage.ManageSubject);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						manageSubjectUC.Account = this.Account;
+						Session.CancleAction = manageSubjectUC.CancleAction;
+						if (manageSubjectUC.aDgvdata.Rows.Count > 0)
+							manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
+						Session.bP.SetPage((int)Session.TabPage.ManageSubject);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnQuanLyCauHoi_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					manageQuestionUC.Account = this.Account;
-					MainAction = manageQuestionUC.HomeFunc;
-					if (manageQuestionUC.aDgvdata.Rows.Count > 0)
-						manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
-					Session.bP.SetPage((int)Session.TabPage.ManageQuestion);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						manageQuestionUC.Account = this.Account;
+						Session.CancleAction = manageQuestionUC.CancleAction;
+						if (manageQuestionUC.aDgvdata.Rows.Count > 0)
+							manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
+						Session.bP.SetPage((int)Session.TabPage.ManageQuestion);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnQuanLyDeThi_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					manageExamUC.Account = this.Account;
-					MainAction = manageExamUC.HomeFunc;
-					if (manageExamUC.aDgvdata.Rows.Count > 0)
-						manageExamUC.FrmManageExam_Load(manageExamUC, e);
-					Session.bP.SetPage((int)Session.TabPage.ManageExam);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						manageExamUC.Account = this.Account;
+						Session.CancleAction = manageExamUC.CancleAction;
+						if (manageExamUC.aDgvdata.Rows.Count > 0)
+							manageExamUC.FrmManageExam_Load(manageExamUC, e);
+						Session.bP.SetPage((int)Session.TabPage.ManageExam);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
@@ -266,69 +319,84 @@ namespace Main
 
 		private void btnLichSuThi_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					testHistoryUC.Account = this.Account;
-					MainAction = testHistoryUC.HomeFunc;
-					if (testHistoryUC.aDgvdata.Rows.Count > 0)
-						testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
-					Session.bP.SetPage((int)Session.TabPage.TestHistory);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						testHistoryUC.Account = this.Account;
+						Session.CancleAction = testHistoryUC.CancleAction;
+						if (testHistoryUC.aDgvdata.Rows.Count > 0)
+							testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
+						Session.bP.SetPage((int)Session.TabPage.TestHistory);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnXemTiemDoDaoTao_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					eduProgUC.Account = this.Account;
-					MainAction = eduProgUC.HomeFunc;
-					if (eduProgUC.aDgvdata.Rows.Count > 0)
-						eduProgUC.FrmEduProg_Load(eduProgUC, e);
-					Session.bP.SetPage((int)Session.TabPage.EduProg);
-				});
-				#endregion
-				ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						eduProgUC.Account = this.Account;
+						Session.CancleAction = eduProgUC.CancleAction;
+						if (eduProgUC.aDgvdata.Rows.Count > 0)
+							eduProgUC.FrmEduProg_Load(eduProgUC, e);
+						Session.bP.SetPage((int)Session.TabPage.EduProg);
+					});
+					#endregion
+					ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
 		private void btnThongTinCaNhan_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					profileUC.Account = this.Account;
-					MainAction = profileUC.HomeFunc;
-					Session.bP.SetPage((int)Session.TabPage.Profile);
-				});
-				#endregion
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						profileUC.Account = this.Account;
+						Session.CancleAction = profileUC.CancleAction;
+						Session.bP.SetPage((int)Session.TabPage.Profile);
+					});
+					#endregion
+					if (pnlNavigation.Visible)
+						ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
@@ -369,24 +437,26 @@ namespace Main
 		/// <param name="e"></param>
 		private void btnHome_Click(object sender, EventArgs e)
 		{
-			try
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				#region MultiThreading
-				this.BeginInvoke((MethodInvoker)delegate
+				Session.CancleAction = null;
+				try
 				{
-					if (MainAction != null)
-						MainAction.Invoke();
-					else
-						Session.bP.SetPage((int)Session.TabPage.MainMenu);
-				});
-				#endregion
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+							Session.bP.SetPage((int)Session.TabPage.MainMenu);
+					});
+					#endregion
+					if (pnlNavigation.Visible)
+						ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
 			}
 		}
 
@@ -492,22 +562,35 @@ namespace Main
 
 		private void btnBangXepHang_Click(object sender, EventArgs e)
 		{
-			isNavigation = true;
-			#region MultiThreading
-			this.BeginInvoke((MethodInvoker)delegate
+			Session.CancleAction?.Invoke();
+			if (Session.Cancle)
 			{
-				if (leaderBoardUC.aDgvdata.Rows.Count > 0)
-					leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
-				Session.bP.SetPage((int)Session.TabPage.LeaderBoard);
-				MainAction = leaderBoardUC.HomeFunc;
-				if (Account.UserRole.ToLower().Equals("user"))
-					leaderBoardUC.lbTitle.Text = "Bảng xếp hạng";
-				else
-					leaderBoardUC.lbTitle.Text = "Thống kê điểm thi";
-			});
-			#endregion
-			if (pnlNavigation.Visible)
-				ShowHideSubMenu();
+				Session.CancleAction = null;
+				try
+				{
+					isNavigation = true;
+					#region MultiThreading
+					this.BeginInvoke((MethodInvoker)delegate
+					{
+						if (leaderBoardUC.aDgvdata.Rows.Count > 0)
+							leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
+						Session.bP.SetPage((int)Session.TabPage.LeaderBoard);
+						Session.CancleAction = leaderBoardUC.CancleAction;
+						if (Account.UserRole.ToLower().Equals("user"))
+							leaderBoardUC.lbTitle.Text = "Bảng xếp hạng";
+						else
+							leaderBoardUC.lbTitle.Text = "Thống kê điểm thi";
+					});
+					#endregion
+					if (pnlNavigation.Visible)
+						ShowHideSubMenu();
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+				}
+			}
 		}
 
 		private void BtnHuongDanThi_Click(object sender, EventArgs e)

@@ -30,18 +30,19 @@ namespace Main
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectExamForm));
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.pbExam = new System.Windows.Forms.PictureBox();
 			this.pnlChonMonThi = new System.Windows.Forms.Panel();
+			this.cbSubject = new Guna.UI2.WinForms.Guna2ComboBox();
 			this.btnStartQuiz = new Guna.UI2.WinForms.Guna2Button();
 			this.btnThoat = new Guna.UI2.WinForms.Guna2Button();
 			this.lbMonThi = new System.Windows.Forms.Label();
 			this.lbInform = new System.Windows.Forms.Label();
 			this.pnlChonMonThiShadow = new System.Windows.Forms.Panel();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.cbSubject = new Guna.UI2.WinForms.Guna2ComboBox();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbExam)).BeginInit();
@@ -104,6 +105,28 @@ namespace Main
 			this.pnlChonMonThi.Name = "pnlChonMonThi";
 			this.pnlChonMonThi.Size = new System.Drawing.Size(445, 190);
 			this.pnlChonMonThi.TabIndex = 1;
+			// 
+			// cbSubject
+			// 
+			this.cbSubject.BackColor = System.Drawing.Color.Transparent;
+			this.cbSubject.BorderRadius = 5;
+			this.cbSubject.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.cbSubject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.cbSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbSubject.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.cbSubject.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.cbSubject.FocusedState.Parent = this.cbSubject;
+			this.cbSubject.Font = new System.Drawing.Font("Segoe UI", 10F);
+			this.cbSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+			this.cbSubject.HoverState.Parent = this.cbSubject;
+			this.cbSubject.ItemHeight = 30;
+			this.cbSubject.ItemsAppearance.Parent = this.cbSubject;
+			this.cbSubject.Location = new System.Drawing.Point(16, 96);
+			this.cbSubject.Name = "cbSubject";
+			this.cbSubject.ShadowDecoration.Parent = this.cbSubject;
+			this.cbSubject.Size = new System.Drawing.Size(416, 36);
+			this.cbSubject.TabIndex = 6;
+			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
 			// 
 			// btnStartQuiz
 			// 
@@ -191,28 +214,6 @@ namespace Main
 			// 
 			this.errorProviderWar.ContainerControl = this;
 			// 
-			// cbSubject
-			// 
-			this.cbSubject.BackColor = System.Drawing.Color.Transparent;
-			this.cbSubject.BorderRadius = 5;
-			this.cbSubject.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.cbSubject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbSubject.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.cbSubject.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.cbSubject.FocusedState.Parent = this.cbSubject;
-			this.cbSubject.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.cbSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-			this.cbSubject.HoverState.Parent = this.cbSubject;
-			this.cbSubject.ItemHeight = 30;
-			this.cbSubject.ItemsAppearance.Parent = this.cbSubject;
-			this.cbSubject.Location = new System.Drawing.Point(16, 96);
-			this.cbSubject.Name = "cbSubject";
-			this.cbSubject.ShadowDecoration.Parent = this.cbSubject;
-			this.cbSubject.Size = new System.Drawing.Size(416, 36);
-			this.cbSubject.TabIndex = 6;
-			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
-			// 
 			// SelectExamForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +223,7 @@ namespace Main
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SelectExamForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "SelectExamForm";

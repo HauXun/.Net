@@ -12,6 +12,8 @@ namespace Main.Partial
 	public static class Session
 	{
 		public static Action Submit;
+		public static Action CancleAction;
+		public static bool Cancle = true;
 
 		public static DataTable Data;
 		public static Exam Exam;

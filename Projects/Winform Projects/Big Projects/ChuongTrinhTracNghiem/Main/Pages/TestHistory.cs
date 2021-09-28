@@ -19,14 +19,15 @@ namespace Main.Pages
 		private UserAccount account;
 
 		public UserAccount Account { get => account; set => account = value; }
-		public Action HomeFunc;
+		public Action CancleAction;
+
 		public TestHistory()
 		{
 			InitializeComponent();
 			RoundedControls();
-			HomeFunc = () =>
+			CancleAction = () =>
 			{
-				Session.bP.SetPage((int)Session.TabPage.MainMenu);
+				Session.Cancle = true;
 			};
 		}
 

@@ -31,17 +31,16 @@ namespace Main
         {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseConnection));
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
 			this.pnlTitleBar = new System.Windows.Forms.Panel();
 			this.lbFormTitle = new System.Windows.Forms.Label();
-			this.formIcon = new FontAwesome.Sharp.IconButton();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.cbServer = new Bunifu.UI.WinForms.BunifuDropdown();
 			this.cbAuthentication = new Bunifu.UI.WinForms.BunifuDropdown();
@@ -52,15 +51,16 @@ namespace Main
 			this.wP = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pnlAccount = new System.Windows.Forms.Panel();
-			this.tbUsername = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-			this.tbPassword = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
 			this.lbUsername = new System.Windows.Forms.Label();
 			this.lbPassword = new System.Windows.Forms.Label();
-			this.btnTestConnect = new FontAwesome.Sharp.IconButton();
-			this.btnConnect = new FontAwesome.Sharp.IconButton();
 			this.pnl2 = new System.Windows.Forms.Panel();
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.tbUsername = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+			this.tbPassword = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+			this.btnTestConnect = new FontAwesome.Sharp.IconButton();
+			this.btnConnect = new FontAwesome.Sharp.IconButton();
 			this.btnExit = new FontAwesome.Sharp.IconButton();
+			this.formIcon = new FontAwesome.Sharp.IconButton();
 			this.pnlTitleBar.SuspendLayout();
 			this.pnl1.SuspendLayout();
 			this.pnlAccount.SuspendLayout();
@@ -89,28 +89,6 @@ namespace Main
 			this.lbFormTitle.Size = new System.Drawing.Size(130, 16);
 			this.lbFormTitle.TabIndex = 8;
 			this.lbFormTitle.Text = "Connect to Server";
-			// 
-			// formIcon
-			// 
-			this.formIcon.BackColor = System.Drawing.Color.Transparent;
-			this.formIcon.Dock = System.Windows.Forms.DockStyle.Left;
-			this.formIcon.FlatAppearance.BorderSize = 0;
-			this.formIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
-			this.formIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
-			this.formIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.formIcon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.formIcon.IconChar = FontAwesome.Sharp.IconChar.Coins;
-			this.formIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(180)))), ((int)(((byte)(0)))));
-			this.formIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.formIcon.IconSize = 20;
-			this.formIcon.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.formIcon.Location = new System.Drawing.Point(0, 0);
-			this.formIcon.Name = "formIcon";
-			this.formIcon.Size = new System.Drawing.Size(30, 30);
-			this.formIcon.TabIndex = 0;
-			this.formIcon.TabStop = false;
-			this.formIcon.UseVisualStyleBackColor = false;
-			this.formIcon.Enter += new System.EventHandler(this.btnTestConnect_Enter);
 			// 
 			// lbTitle
 			// 
@@ -199,6 +177,7 @@ namespace Main
 			// lbServerName
 			// 
 			this.lbServerName.AutoSize = true;
+			this.lbServerName.BackColor = System.Drawing.Color.Transparent;
 			this.lbServerName.Font = new System.Drawing.Font("Verdana", 10F);
 			this.lbServerName.Location = new System.Drawing.Point(30, 97);
 			this.lbServerName.Name = "lbServerName";
@@ -209,6 +188,7 @@ namespace Main
 			// lbAuthentication
 			// 
 			this.lbAuthentication.AutoSize = true;
+			this.lbAuthentication.BackColor = System.Drawing.Color.Transparent;
 			this.lbAuthentication.Font = new System.Drawing.Font("Verdana", 10F);
 			this.lbAuthentication.Location = new System.Drawing.Point(30, 154);
 			this.lbAuthentication.Name = "lbAuthentication";
@@ -227,7 +207,6 @@ namespace Main
 			// pnl1
 			// 
 			this.pnl1.BackColor = System.Drawing.Color.White;
-			this.pnl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnl1.Controls.Add(this.wP);
 			this.pnl1.Controls.Add(this.panel1);
 			this.pnl1.Controls.Add(this.pnlAccount);
@@ -243,6 +222,7 @@ namespace Main
 			this.pnl1.Name = "pnl1";
 			this.pnl1.Size = new System.Drawing.Size(460, 386);
 			this.pnl1.TabIndex = 8;
+			this.pnl1.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl1_Paint);
 			// 
 			// wP
 			// 
@@ -265,6 +245,7 @@ namespace Main
 			// 
 			// pnlAccount
 			// 
+			this.pnlAccount.BackColor = System.Drawing.Color.Transparent;
 			this.pnlAccount.Controls.Add(this.tbUsername);
 			this.pnlAccount.Controls.Add(this.tbPassword);
 			this.pnlAccount.Controls.Add(this.lbUsername);
@@ -273,6 +254,40 @@ namespace Main
 			this.pnlAccount.Name = "pnlAccount";
 			this.pnlAccount.Size = new System.Drawing.Size(450, 118);
 			this.pnlAccount.TabIndex = 8;
+			// 
+			// lbUsername
+			// 
+			this.lbUsername.AutoSize = true;
+			this.lbUsername.BackColor = System.Drawing.Color.Transparent;
+			this.lbUsername.Font = new System.Drawing.Font("Verdana", 10F);
+			this.lbUsername.Location = new System.Drawing.Point(25, 22);
+			this.lbUsername.Name = "lbUsername";
+			this.lbUsername.Size = new System.Drawing.Size(84, 17);
+			this.lbUsername.TabIndex = 4;
+			this.lbUsername.Text = "Username:";
+			// 
+			// lbPassword
+			// 
+			this.lbPassword.AutoSize = true;
+			this.lbPassword.BackColor = System.Drawing.Color.Transparent;
+			this.lbPassword.Font = new System.Drawing.Font("Verdana", 10F);
+			this.lbPassword.Location = new System.Drawing.Point(25, 80);
+			this.lbPassword.Name = "lbPassword";
+			this.lbPassword.Size = new System.Drawing.Size(81, 17);
+			this.lbPassword.TabIndex = 5;
+			this.lbPassword.Text = "Password:";
+			// 
+			// pnl2
+			// 
+			this.pnl2.BackColor = System.Drawing.Color.Gray;
+			this.pnl2.Location = new System.Drawing.Point(33, 62);
+			this.pnl2.Name = "pnl2";
+			this.pnl2.Size = new System.Drawing.Size(460, 386);
+			this.pnl2.TabIndex = 10;
+			// 
+			// errorProviderWar
+			// 
+			this.errorProviderWar.ContainerControl = this;
 			// 
 			// tbUsername
 			// 
@@ -307,26 +322,26 @@ namespace Main
 			this.tbUsername.Modified = false;
 			this.tbUsername.Multiline = false;
 			this.tbUsername.Name = "tbUsername";
-			stateProperties17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			stateProperties17.FillColor = System.Drawing.Color.Empty;
-			stateProperties17.ForeColor = System.Drawing.Color.Empty;
-			stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbUsername.OnActiveState = stateProperties17;
-			stateProperties18.BorderColor = System.Drawing.Color.Empty;
-			stateProperties18.FillColor = System.Drawing.Color.White;
-			stateProperties18.ForeColor = System.Drawing.Color.Empty;
-			stateProperties18.PlaceholderForeColor = System.Drawing.Color.Silver;
-			this.tbUsername.OnDisabledState = stateProperties18;
-			stateProperties19.BorderColor = System.Drawing.Color.Gray;
-			stateProperties19.FillColor = System.Drawing.Color.Empty;
-			stateProperties19.ForeColor = System.Drawing.Color.Empty;
-			stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbUsername.OnHoverState = stateProperties19;
-			stateProperties20.BorderColor = System.Drawing.Color.Gray;
-			stateProperties20.FillColor = System.Drawing.Color.White;
-			stateProperties20.ForeColor = System.Drawing.Color.Empty;
-			stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbUsername.OnIdleState = stateProperties20;
+			stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			stateProperties1.FillColor = System.Drawing.Color.Empty;
+			stateProperties1.ForeColor = System.Drawing.Color.Empty;
+			stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbUsername.OnActiveState = stateProperties1;
+			stateProperties2.BorderColor = System.Drawing.Color.Empty;
+			stateProperties2.FillColor = System.Drawing.Color.White;
+			stateProperties2.ForeColor = System.Drawing.Color.Empty;
+			stateProperties2.PlaceholderForeColor = System.Drawing.Color.Silver;
+			this.tbUsername.OnDisabledState = stateProperties2;
+			stateProperties3.BorderColor = System.Drawing.Color.Gray;
+			stateProperties3.FillColor = System.Drawing.Color.Empty;
+			stateProperties3.ForeColor = System.Drawing.Color.Empty;
+			stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbUsername.OnHoverState = stateProperties3;
+			stateProperties4.BorderColor = System.Drawing.Color.Gray;
+			stateProperties4.FillColor = System.Drawing.Color.White;
+			stateProperties4.ForeColor = System.Drawing.Color.Empty;
+			stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbUsername.OnIdleState = stateProperties4;
 			this.tbUsername.PasswordChar = '\0';
 			this.tbUsername.PlaceholderForeColor = System.Drawing.Color.Silver;
 			this.tbUsername.PlaceholderText = "";
@@ -380,26 +395,26 @@ namespace Main
 			this.tbPassword.Modified = false;
 			this.tbPassword.Multiline = false;
 			this.tbPassword.Name = "tbPassword";
-			stateProperties21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			stateProperties21.FillColor = System.Drawing.Color.Empty;
-			stateProperties21.ForeColor = System.Drawing.Color.Empty;
-			stateProperties21.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbPassword.OnActiveState = stateProperties21;
-			stateProperties22.BorderColor = System.Drawing.Color.Empty;
-			stateProperties22.FillColor = System.Drawing.Color.White;
-			stateProperties22.ForeColor = System.Drawing.Color.Empty;
-			stateProperties22.PlaceholderForeColor = System.Drawing.Color.Silver;
-			this.tbPassword.OnDisabledState = stateProperties22;
-			stateProperties23.BorderColor = System.Drawing.Color.Gray;
-			stateProperties23.FillColor = System.Drawing.Color.Empty;
-			stateProperties23.ForeColor = System.Drawing.Color.Empty;
-			stateProperties23.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbPassword.OnHoverState = stateProperties23;
-			stateProperties24.BorderColor = System.Drawing.Color.Gray;
-			stateProperties24.FillColor = System.Drawing.Color.White;
-			stateProperties24.ForeColor = System.Drawing.Color.Empty;
-			stateProperties24.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.tbPassword.OnIdleState = stateProperties24;
+			stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			stateProperties5.FillColor = System.Drawing.Color.Empty;
+			stateProperties5.ForeColor = System.Drawing.Color.Empty;
+			stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbPassword.OnActiveState = stateProperties5;
+			stateProperties6.BorderColor = System.Drawing.Color.Empty;
+			stateProperties6.FillColor = System.Drawing.Color.White;
+			stateProperties6.ForeColor = System.Drawing.Color.Empty;
+			stateProperties6.PlaceholderForeColor = System.Drawing.Color.Silver;
+			this.tbPassword.OnDisabledState = stateProperties6;
+			stateProperties7.BorderColor = System.Drawing.Color.Gray;
+			stateProperties7.FillColor = System.Drawing.Color.Empty;
+			stateProperties7.ForeColor = System.Drawing.Color.Empty;
+			stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbPassword.OnHoverState = stateProperties7;
+			stateProperties8.BorderColor = System.Drawing.Color.Gray;
+			stateProperties8.FillColor = System.Drawing.Color.White;
+			stateProperties8.ForeColor = System.Drawing.Color.Empty;
+			stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.tbPassword.OnIdleState = stateProperties8;
 			this.tbPassword.PasswordChar = '●';
 			this.tbPassword.PlaceholderForeColor = System.Drawing.Color.Silver;
 			this.tbPassword.PlaceholderText = "";
@@ -419,26 +434,6 @@ namespace Main
 			this.tbPassword.TextPlaceholder = "";
 			this.tbPassword.UseSystemPasswordChar = true;
 			this.tbPassword.WordWrap = true;
-			// 
-			// lbUsername
-			// 
-			this.lbUsername.AutoSize = true;
-			this.lbUsername.Font = new System.Drawing.Font("Verdana", 10F);
-			this.lbUsername.Location = new System.Drawing.Point(25, 22);
-			this.lbUsername.Name = "lbUsername";
-			this.lbUsername.Size = new System.Drawing.Size(84, 17);
-			this.lbUsername.TabIndex = 4;
-			this.lbUsername.Text = "Username:";
-			// 
-			// lbPassword
-			// 
-			this.lbPassword.AutoSize = true;
-			this.lbPassword.Font = new System.Drawing.Font("Verdana", 10F);
-			this.lbPassword.Location = new System.Drawing.Point(25, 80);
-			this.lbPassword.Name = "lbPassword";
-			this.lbPassword.Size = new System.Drawing.Size(81, 17);
-			this.lbPassword.TabIndex = 5;
-			this.lbPassword.Text = "Password:";
 			// 
 			// btnTestConnect
 			// 
@@ -482,18 +477,6 @@ namespace Main
 			this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
 			this.btnConnect.Enter += new System.EventHandler(this.btnTestConnect_Enter);
 			// 
-			// pnl2
-			// 
-			this.pnl2.BackColor = System.Drawing.Color.Gray;
-			this.pnl2.Location = new System.Drawing.Point(33, 62);
-			this.pnl2.Name = "pnl2";
-			this.pnl2.Size = new System.Drawing.Size(460, 386);
-			this.pnl2.TabIndex = 10;
-			// 
-			// errorProviderWar
-			// 
-			this.errorProviderWar.ContainerControl = this;
-			// 
 			// btnExit
 			// 
 			this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
@@ -514,17 +497,42 @@ namespace Main
 			this.btnExit.Click += new System.EventHandler(this.btnClose_Click);
 			this.btnExit.Enter += new System.EventHandler(this.btnTestConnect_Enter);
 			// 
+			// formIcon
+			// 
+			this.formIcon.BackColor = System.Drawing.Color.Transparent;
+			this.formIcon.Dock = System.Windows.Forms.DockStyle.Left;
+			this.formIcon.FlatAppearance.BorderSize = 0;
+			this.formIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
+			this.formIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
+			this.formIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.formIcon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.formIcon.IconChar = FontAwesome.Sharp.IconChar.Coins;
+			this.formIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(180)))), ((int)(((byte)(0)))));
+			this.formIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.formIcon.IconSize = 20;
+			this.formIcon.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.formIcon.Location = new System.Drawing.Point(0, 0);
+			this.formIcon.Name = "formIcon";
+			this.formIcon.Size = new System.Drawing.Size(30, 30);
+			this.formIcon.TabIndex = 0;
+			this.formIcon.TabStop = false;
+			this.formIcon.UseVisualStyleBackColor = false;
+			this.formIcon.Enter += new System.EventHandler(this.btnTestConnect_Enter);
+			// 
 			// DatabaseConnection
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
+			this.BackgroundImage = global::Main.Properties.Resources.TestConnectionBackgound;
 			this.ClientSize = new System.Drawing.Size(520, 475);
 			this.Controls.Add(this.pnl1);
 			this.Controls.Add(this.pnl2);
 			this.Controls.Add(this.pnlTitleBar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "DatabaseConnection";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "DatabaseConnection";
 			this.Shown += new System.EventHandler(this.DatabaseConnection_Shown);

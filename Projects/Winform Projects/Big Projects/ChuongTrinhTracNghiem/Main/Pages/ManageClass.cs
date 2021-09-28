@@ -22,26 +22,24 @@ namespace Main.Pages
 
 		private UserAccount account;
 		public UserAccount Account { get => account; set => account = value; }
-
-		public Action HomeFunc;
+		public Action CancleAction;
 
 		public ManageClass()
 		{
 			InitializeComponent();
-			HomeFunc = () =>
+			CancleAction = () =>
 			{
 				if (btnSave.Visible && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
-					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
+					   MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 				{
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
 					btnCancle_Click(this, new EventArgs());
+					Session.Cancle = true;
 				}
 				else if (!btnSave.Visible)
-				{
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
-				}
+					Session.Cancle = true;
+				else
+					Session.Cancle = false;
 			};
-			
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

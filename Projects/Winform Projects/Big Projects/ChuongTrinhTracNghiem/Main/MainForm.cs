@@ -4,7 +4,6 @@ using Main.Partial;
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Main
@@ -16,7 +15,6 @@ namespace Main
 		private bool isNavigation = true;
 
 		private Color mainColor = Color.FromArgb(83, 107, 190);
-		private Action MainAction;
 		private Action Submit;
 		private UserAccount account;
 		public UserAccount Account

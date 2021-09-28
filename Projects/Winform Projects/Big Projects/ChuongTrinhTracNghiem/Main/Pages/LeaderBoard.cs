@@ -9,15 +9,15 @@ namespace Main.Pages
 {
 	public partial class LeaderBoard : UserControl
 	{
-		public Action HomeFunc;
+		public Action CancleAction;
 
 		public LeaderBoard()
 		{
 			InitializeComponent();
             RoundedControls();
-			HomeFunc = () =>
+			CancleAction = () =>
 			{
-				Session.bP.SetPage((int)Session.TabPage.MainMenu);
+				Session.Cancle = true;
 			};
         }
 

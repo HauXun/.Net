@@ -211,6 +211,7 @@ namespace Main.Pages
 			SaveTestHistory();
 
 			Session.Data = this.Data;
+			fLPdata.Controls.Clear();
 		}
 
 		private void SavePoint()

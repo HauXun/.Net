@@ -27,7 +27,7 @@ namespace Main.Pages
 			}
 		}
 
-		public Action HomeFunc;
+		public Action CancleAction;
 
 		#endregion
 
@@ -35,12 +35,11 @@ namespace Main.Pages
 		{
 			InitializeComponent();
 			RoundedControl();
-			HomeFunc = () =>
+			CancleAction = () =>
 			{
 				if ((btnLuuMatKhau.Visible || btnLuuThongTin.Visible) && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
 					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 				{
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
 					if (!btnChinhSua.Enabled)
 					{
 						btnHuyLuu_Click(this, new EventArgs());
@@ -51,11 +50,12 @@ namespace Main.Pages
 						btnHuyMatKhau_Click(this, new EventArgs());
 						DisableRemainFunc(false);
 					}
+					Session.Cancle = true;
 				}
 				else if (!btnLuuMatKhau.Visible && !btnLuuThongTin.Visible)
-				{
-					Session.bP.SetPage((int)Session.TabPage.MainMenu);
-				}
+					Session.Cancle = true;
+				else
+					Session.Cancle = false;
 			};
 		}
 

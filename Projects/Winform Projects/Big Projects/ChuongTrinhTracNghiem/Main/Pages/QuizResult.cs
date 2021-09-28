@@ -56,8 +56,8 @@ namespace Main.Pages
 			Button button = new Button()
 			{
 				AutoSize = true,
-				Width = 55,
-				Height = 55,
+				Width = 60,
+				Height = 60,
 				Text = $"Câu {i++}",
 				TextImageRelation = TextImageRelation.TextAboveImage,
 				Font = new Font("Verdana", 8, FontStyle.Regular),

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Main
@@ -80,7 +81,7 @@ namespace Main
 			else
 				ConnectionString = $@"Data Source = {cbServer.SelectedItem}; Initial Catalog = {Database}; User Id = {tbUsername.Text.Trim()}; Password = {tbPassword.Text.Trim()};";
 			wP.Visible = true;
-			new Thread(() =>
+			Task.Run(() =>
 			{
 				try
 				{
@@ -103,19 +104,20 @@ namespace Main
 				}
 				catch (Exception e)
 				{
-					this.BeginInvoke((MethodInvoker)delegate
-					{
-						MsgBox.ShowMessage(e.Message, "Sql Connect", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-						wP.Visible = Connected = false;
-						EnableControl();
-					});
+					if (InvokeRequired)
+						this.BeginInvoke((MethodInvoker)delegate
+						{
+							MsgBox.ShowMessage(e.Message, "Sql Connect", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+							EnableControl();
+							wP.Visible = Connected = false;
+						});
 				}
-			}).Start();
+			});
 		}
 
 		private void EnableControl(bool isEnable = true)
 		{
-			btnConnect.Enabled = btnTestConnect.Enabled = isEnable;
+			btnConnect.Enabled = btnTestConnect.Enabled = btnExit.Enabled = isEnable;
 		}
 
 		private void DefaultSettings()
