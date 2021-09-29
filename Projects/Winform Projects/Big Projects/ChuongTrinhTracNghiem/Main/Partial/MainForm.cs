@@ -34,20 +34,20 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				manageUserUC.Account = this.Account;
+				Session.CancleAction = manageUserUC.CancleAction;
+				if (manageUserUC.aDgvdata.Rows.Count > 0)
+					manageUserUC.FrmManageUser_Load(manageUserUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						manageUserUC.Account = this.Account;
-						Session.CancleAction = manageUserUC.CancleAction;
-						if (manageUserUC.aDgvdata.Rows.Count > 0)
-							manageUserUC.FrmManageUser_Load(manageUserUC, e);
 						Session.bP.SetPage((int)Session.TabPage.ManageUser);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -62,19 +62,19 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				Session.CancleAction = manageFacultyUC.CancleAction;
+				if (manageFacultyUC.aDgvdata.Rows.Count > 0)
+					manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						Session.CancleAction = manageFacultyUC.CancleAction;
-						if (manageFacultyUC.aDgvdata.Rows.Count > 0)
-							manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
 						Session.bP.SetPage((int)Session.TabPage.ManageFaculty);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -89,19 +89,19 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				Session.CancleAction = manageCourseUC.CancleAction;
+				if (manageCourseUC.aDgvdata.Rows.Count > 0)
+					manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						Session.CancleAction = manageCourseUC.CancleAction;
-						if (manageCourseUC.aDgvdata.Rows.Count > 0)
-							manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
 						Session.bP.SetPage((int)Session.TabPage.ManageCourse);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -116,20 +116,20 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				manageClassUC.Account = this.Account;
+				Session.CancleAction = manageClassUC.CancleAction;
+				if (manageClassUC.aDgvdata.Rows.Count > 0)
+					manageClassUC.ManageClass_Load(manageClassUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						manageClassUC.Account = this.Account;
-						Session.CancleAction = manageClassUC.CancleAction;
-						if (manageClassUC.aDgvdata.Rows.Count > 0)
-							manageClassUC.ManageClass_Load(manageClassUC, e);
 						Session.bP.SetPage((int)Session.TabPage.ManageClass);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -144,19 +144,19 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				Session.CancleAction = backupRestoreUC.CancleAction;
+				if (backupRestoreUC.DatabaseConnection != null)
+					backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						Session.CancleAction = backupRestoreUC.CancleAction;
-						if (backupRestoreUC.DatabaseConnection != null)
-							backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
 						Session.bP.SetPage((int)Session.TabPage.BackupRestore);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -171,19 +171,19 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				Session.CancleAction = statisticalUC.CancleAction;
+				if (statisticalUC.aDgvdata.Rows.Count > 0)
+					statisticalUC.FrmStatistical_Load(statisticalUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						Session.CancleAction = statisticalUC.CancleAction;
-						if (statisticalUC.aDgvdata.Rows.Count > 0)
-							statisticalUC.FrmStatistical_Load(statisticalUC, e);
 						Session.bP.SetPage((int)Session.TabPage.Statistical);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -198,20 +198,20 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				manageSubjectUC.Account = this.Account;
+				Session.CancleAction = manageSubjectUC.CancleAction;
+				if (manageSubjectUC.aDgvdata.Rows.Count > 0)
+					manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						manageSubjectUC.Account = this.Account;
-						Session.CancleAction = manageSubjectUC.CancleAction;
-						if (manageSubjectUC.aDgvdata.Rows.Count > 0)
-							manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
 						Session.bP.SetPage((int)Session.TabPage.ManageSubject);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -226,20 +226,20 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				manageQuestionUC.Account = this.Account;
+				Session.CancleAction = manageQuestionUC.CancleAction;
+				if (manageQuestionUC.aDgvdata.Rows.Count > 0)
+					manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						manageQuestionUC.Account = this.Account;
-						Session.CancleAction = manageQuestionUC.CancleAction;
-						if (manageQuestionUC.aDgvdata.Rows.Count > 0)
-							manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
 						Session.bP.SetPage((int)Session.TabPage.ManageQuestion);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -254,20 +254,20 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				manageExamUC.Account = this.Account;
+				Session.CancleAction = manageExamUC.CancleAction;
+				if (manageExamUC.aDgvdata.Rows.Count > 0)
+					manageExamUC.FrmManageExam_Load(manageExamUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						manageExamUC.Account = this.Account;
-						Session.CancleAction = manageExamUC.CancleAction;
-						if (manageExamUC.aDgvdata.Rows.Count > 0)
-							manageExamUC.FrmManageExam_Load(manageExamUC, e);
 						Session.bP.SetPage((int)Session.TabPage.ManageExam);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -281,23 +281,23 @@ namespace Main
 		{
 			if (Session.Exam != null && selectExamForm.IsValidComboBoxControl())
 			{
+				if (pnlNavigation.Visible)
+					ShowHideSubMenu();
+				quizTestUC.Account = this.Account;
+				quizTestUC.Exam = Session.Exam;
+				quizTestUC.Data = Session.Data;
+				if (quizTestUC.fLPdata.Controls.Count > 0)
+					quizTestUC.FrmQuiz_Load(quizTestUC, e);
+				selectExamForm.Hide();
+				if (!selectExamForm.isMockTest && this.Account.UserRole.ToLower().Equals("user"))
+					ExamBLL.Instance.CancleQuizTimes(this.Account.UserID, Session.Exam.ExamID, Session.Exam.SubjectID);
+				btnHome.Enabled = btnNav.Enabled = pnlNavigationMini.Enabled = selectExamForm.Visible = false;
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					quizTestUC.Account = this.Account;
-					quizTestUC.Exam = Session.Exam;
-					quizTestUC.Data = Session.Data;
-					if (quizTestUC.fLPdata.Controls.Count > 0)
-						quizTestUC.FrmQuiz_Load(quizTestUC, e);
 					Session.bP.SetPage((int)Session.TabPage.QuizTest);
 				});
 				#endregion
-				selectExamForm.Hide();
-				if (!selectExamForm.isMockTest)
-					ExamBLL.Instance.CancleQuizTimes(Session.Exam.ExamID, Session.Exam.SubjectID);
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
-				btnHome.Enabled = btnNav.Enabled = pnlNavigationMini.Enabled = selectExamForm.Visible = false;
 			}
 		}
 
@@ -322,20 +322,20 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
+				testHistoryUC.Account = this.Account;
+				Session.CancleAction = testHistoryUC.CancleAction;
+				if (testHistoryUC.aDgvdata.Rows.Count > 0)
+					testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						testHistoryUC.Account = this.Account;
-						Session.CancleAction = testHistoryUC.CancleAction;
-						if (testHistoryUC.aDgvdata.Rows.Count > 0)
-							testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
 						Session.bP.SetPage((int)Session.TabPage.TestHistory);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -351,19 +351,19 @@ namespace Main
 			if (Session.Cancle)
 			{
 				Session.CancleAction = null;
+				eduProgUC.Account = this.Account;
+				Session.CancleAction = eduProgUC.CancleAction;
+				if (eduProgUC.aDgvdata.Rows.Count > 0)
+					eduProgUC.FrmEduProg_Load(eduProgUC, e);
+				ShowHideSubMenu();
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						eduProgUC.Account = this.Account;
-						Session.CancleAction = eduProgUC.CancleAction;
-						if (eduProgUC.aDgvdata.Rows.Count > 0)
-							eduProgUC.FrmEduProg_Load(eduProgUC, e);
 						Session.bP.SetPage((int)Session.TabPage.EduProg);
 					});
 					#endregion
-					ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -378,19 +378,19 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				if (pnlNavigation.Visible)
+					ShowHideSubMenu();
 				Session.CancleAction = null;
+				profileUC.Account = this.Account;
+				Session.CancleAction = profileUC.CancleAction;
 				try
 				{
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						profileUC.Account = this.Account;
-						Session.CancleAction = profileUC.CancleAction;
 						Session.bP.SetPage((int)Session.TabPage.Profile);
 					});
 					#endregion
-					if (pnlNavigation.Visible)
-						ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -408,26 +408,43 @@ namespace Main
 
 		private void btnHuongDan_Click(object sender, EventArgs e)
 		{
-			#region MultiThreading
-			this.BeginInvoke((MethodInvoker)delegate
+			try
 			{
-				Session.bP.SetPage((int)Session.TabPage.Guide);
-			});
-			#endregion
-			if (pnlNavigation.Visible)
-				ShowHideSubMenu();
+				if (pnlNavigation.Visible)
+					ShowHideSubMenu();
+				#region MultiThreading
+				this.BeginInvoke((MethodInvoker)delegate
+				{
+					guideUC.Role = this.Account.UserRole;
+					Session.bP.SetPage((int)Session.TabPage.Guide);
+				});
+				#endregion
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+			}
 		}
 
 		private void btnAboutUs_Click(object sender, EventArgs e)
 		{
-			#region MultiThreading
-			this.BeginInvoke((MethodInvoker)delegate
+			try
 			{
-				Session.bP.SetPage((int)Session.TabPage.About);
-			});
-			#endregion
-			if (pnlNavigation.Visible)
-				ShowHideSubMenu();
+				if (pnlNavigation.Visible)
+					ShowHideSubMenu();
+				#region MultiThreading
+				this.BeginInvoke((MethodInvoker)delegate
+				{
+					Session.bP.SetPage((int)Session.TabPage.About);
+				});
+				#endregion
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+			}
 		}
 
 		/// <summary>
@@ -440,6 +457,8 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				if (pnlNavigation.Visible)
+					ShowHideSubMenu();
 				Session.CancleAction = null;
 				try
 				{
@@ -449,8 +468,6 @@ namespace Main
 							Session.bP.SetPage((int)Session.TabPage.MainMenu);
 					});
 					#endregion
-					if (pnlNavigation.Visible)
-						ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -469,16 +486,16 @@ namespace Main
 		{
 			try
 			{
+				if (pnlNavigation.Visible)
+					ShowHideSubMenu();
+				Session.Exam = null;
+				Session.Data = null;
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
 					Session.bP.SetPage((int)Session.TabPage.MainMenu);
-					Session.Exam = null;
-					Session.Data = null;
 				});
 				#endregion
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
 			}
 			catch (Exception ex)
 			{
@@ -565,25 +582,25 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				if (pnlNavigation.Visible)
+					ShowHideSubMenu();
 				Session.CancleAction = null;
+				if (leaderBoardUC.aDgvdata.Rows.Count > 0)
+					leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
+				Session.CancleAction = leaderBoardUC.CancleAction;
+				if (Account.UserRole.ToLower().Equals("user"))
+					leaderBoardUC.lbTitle.Text = "Bảng xếp hạng";
+				else
+					leaderBoardUC.lbTitle.Text = "Thống kê điểm thi";
 				try
 				{
 					isNavigation = true;
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						if (leaderBoardUC.aDgvdata.Rows.Count > 0)
-							leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
 						Session.bP.SetPage((int)Session.TabPage.LeaderBoard);
-						Session.CancleAction = leaderBoardUC.CancleAction;
-						if (Account.UserRole.ToLower().Equals("user"))
-							leaderBoardUC.lbTitle.Text = "Bảng xếp hạng";
-						else
-							leaderBoardUC.lbTitle.Text = "Thống kê điểm thi";
 					});
 					#endregion
-					if (pnlNavigation.Visible)
-						ShowHideSubMenu();
 				}
 				catch (Exception ex)
 				{
@@ -1139,10 +1156,18 @@ namespace Main
 		/// <param name="e"></param>
 		private void SelectExam(EventArgs e)
 		{
-			selectExamForm.Account = this.Account;
-			if (selectExamForm.Exam != null)
-				selectExamForm.FrmSelectExam_Load(null, null);
-			selectExamForm.ShowDialog();
+			try
+			{
+				selectExamForm.Account = this.Account;
+				if (selectExamForm.Exam != null)
+					selectExamForm.FrmSelectExam_Load(null, null);
+				selectExamForm.ShowDialog();
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application",
+				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle);
+			}
 		}
 
 		#endregion
@@ -1161,18 +1186,18 @@ namespace Main
 			{
 				if (Session.Data != null)
 				{
+					quizResultUC.cPBCountDownTime.Text = (!quizTestUC.timer.MustStop) ? quizTestUC.cPBCountDownTime.Text : "Finished";
+					quizResultUC.Data = Session.Data;
+					quizResultUC.Exam = Session.Exam;
+					if (quizResultUC.fLPdata.Controls.Count > 0)
+						quizResultUC.FrmQuizResult_Load(quizResultUC, e);
+					pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						quizResultUC.cPBCountDownTime.Text = (!quizTestUC.timer.MustStop) ? quizTestUC.cPBCountDownTime.Text : "Finished";
-						quizResultUC.Data = Session.Data;
-						quizResultUC.Exam = Session.Exam;
-						if (quizResultUC.fLPdata.Controls.Count > 0)
-							quizResultUC.FrmQuizResult_Load(quizResultUC, e);
 						Session.bP.SetPage((int)Session.TabPage.QuizResult);
 					});
 					#endregion
-					pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
 				}
 			};
 			Session.Submit = this.Submit;

@@ -29,6 +29,7 @@ namespace Main
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OkMessageBox));
 			this.pnlTitle = new System.Windows.Forms.Panel();
 			this.lbTitle = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@ namespace Main
 			this.iconMessage = new FontAwesome.Sharp.IconPictureBox();
 			this.btnOk = new FontAwesome.Sharp.IconButton();
 			this.label1 = new System.Windows.Forms.Label();
+			this.guna2ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
 			this.pnlTitle.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.iconMessage)).BeginInit();
 			this.SuspendLayout();
@@ -106,6 +108,7 @@ namespace Main
 			this.btnOk.TabIndex = 0;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
+			this.btnOk.Enter += new System.EventHandler(this.btnOk_Enter);
 			// 
 			// label1
 			// 
@@ -117,6 +120,10 @@ namespace Main
 			this.label1.Size = new System.Drawing.Size(100, 18);
 			this.label1.TabIndex = 8;
 			this.label1.Text = "Thông báo!";
+			// 
+			// guna2ShadowForm
+			// 
+			this.guna2ShadowForm.TargetForm = this;
 			// 
 			// OkMessageBox
 			// 
@@ -151,5 +158,6 @@ namespace Main
 		public FontAwesome.Sharp.IconPictureBox iconMessage;
 		public FontAwesome.Sharp.IconButton btnOk;
 		private System.Windows.Forms.Label label1;
+		private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm;
 	}
 }

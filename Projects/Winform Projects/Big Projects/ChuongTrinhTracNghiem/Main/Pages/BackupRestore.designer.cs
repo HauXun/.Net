@@ -77,7 +77,7 @@ namespace Main.Pages
 			// 
 			// pnlSaoLuu
 			// 
-			this.pnlSaoLuu.BackColor = System.Drawing.Color.GhostWhite;
+			this.pnlSaoLuu.BackColor = System.Drawing.Color.White;
 			this.pnlSaoLuu.Controls.Add(this.barFunc);
 			this.pnlSaoLuu.Controls.Add(this.lbPercent);
 			this.pnlSaoLuu.Controls.Add(this.gpDB);
@@ -131,7 +131,6 @@ namespace Main.Pages
 			this.gpDB.Controls.Add(this.btnBrowser);
 			this.gpDB.Controls.Add(this.tbFunc);
 			this.gpDB.Controls.Add(this.lbFunc);
-			this.gpDB.FillColor = System.Drawing.Color.GhostWhite;
 			this.gpDB.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.gpDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.gpDB.Location = new System.Drawing.Point(4, 197);
@@ -204,7 +203,6 @@ namespace Main.Pages
 			this.gpServer.Controls.Add(this.btnConnect);
 			this.gpServer.Controls.Add(this.btnDisconnect);
 			this.gpServer.Controls.Add(this.lbServer);
-			this.gpServer.FillColor = System.Drawing.Color.GhostWhite;
 			this.gpServer.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.gpServer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.gpServer.Location = new System.Drawing.Point(4, 53);
@@ -363,6 +361,7 @@ namespace Main.Pages
 			// 
 			// label1
 			// 
+			this.label1.BackColor = System.Drawing.Color.White;
 			this.label1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label1.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));

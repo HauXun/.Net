@@ -488,5 +488,38 @@
   <ItemGroup>
     <None Include="Resources\TestConnectionBackgound.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutUs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddAdmin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Backup1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Backup2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditAdmin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tutorial1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tutorial2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tutorial3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tutorial4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

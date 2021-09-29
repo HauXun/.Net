@@ -40,5 +40,10 @@ namespace Main
 		}
 
 		#endregion
+
+		private void btnNo_Enter(object sender, System.EventArgs e)
+		{
+			lbTitle.Focus();
+		}
 	}
 }

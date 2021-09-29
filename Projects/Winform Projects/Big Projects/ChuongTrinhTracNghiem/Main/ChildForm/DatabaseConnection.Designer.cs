@@ -40,7 +40,9 @@ namespace Main
 			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
 			this.pnlTitleBar = new System.Windows.Forms.Panel();
+			this.btnExit = new FontAwesome.Sharp.IconButton();
 			this.lbFormTitle = new System.Windows.Forms.Label();
+			this.formIcon = new FontAwesome.Sharp.IconButton();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.cbServer = new Bunifu.UI.WinForms.BunifuDropdown();
 			this.cbAuthentication = new Bunifu.UI.WinForms.BunifuDropdown();
@@ -51,16 +53,15 @@ namespace Main
 			this.wP = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pnlAccount = new System.Windows.Forms.Panel();
-			this.lbUsername = new System.Windows.Forms.Label();
-			this.lbPassword = new System.Windows.Forms.Label();
-			this.pnl2 = new System.Windows.Forms.Panel();
-			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.tbUsername = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
 			this.tbPassword = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+			this.lbUsername = new System.Windows.Forms.Label();
+			this.lbPassword = new System.Windows.Forms.Label();
 			this.btnTestConnect = new FontAwesome.Sharp.IconButton();
 			this.btnConnect = new FontAwesome.Sharp.IconButton();
-			this.btnExit = new FontAwesome.Sharp.IconButton();
-			this.formIcon = new FontAwesome.Sharp.IconButton();
+			this.pnl2 = new System.Windows.Forms.Panel();
+			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.guna2ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
 			this.pnlTitleBar.SuspendLayout();
 			this.pnl1.SuspendLayout();
 			this.pnlAccount.SuspendLayout();
@@ -79,6 +80,26 @@ namespace Main
 			this.pnlTitleBar.Size = new System.Drawing.Size(520, 30);
 			this.pnlTitleBar.TabIndex = 0;
 			// 
+			// btnExit
+			// 
+			this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
+			this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnExit.FlatAppearance.BorderSize = 0;
+			this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnExit.IconChar = FontAwesome.Sharp.IconChar.Times;
+			this.btnExit.IconColor = System.Drawing.Color.White;
+			this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.btnExit.IconSize = 20;
+			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.btnExit.Location = new System.Drawing.Point(492, 3);
+			this.btnExit.Name = "btnExit";
+			this.btnExit.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+			this.btnExit.Size = new System.Drawing.Size(25, 25);
+			this.btnExit.TabIndex = 11;
+			this.btnExit.UseVisualStyleBackColor = false;
+			this.btnExit.Click += new System.EventHandler(this.btnClose_Click);
+			this.btnExit.Enter += new System.EventHandler(this.btnTestConnect_Enter);
+			// 
 			// lbFormTitle
 			// 
 			this.lbFormTitle.AutoSize = true;
@@ -89,6 +110,28 @@ namespace Main
 			this.lbFormTitle.Size = new System.Drawing.Size(130, 16);
 			this.lbFormTitle.TabIndex = 8;
 			this.lbFormTitle.Text = "Connect to Server";
+			// 
+			// formIcon
+			// 
+			this.formIcon.BackColor = System.Drawing.Color.Transparent;
+			this.formIcon.Dock = System.Windows.Forms.DockStyle.Left;
+			this.formIcon.FlatAppearance.BorderSize = 0;
+			this.formIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
+			this.formIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
+			this.formIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.formIcon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.formIcon.IconChar = FontAwesome.Sharp.IconChar.Coins;
+			this.formIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(180)))), ((int)(((byte)(0)))));
+			this.formIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.formIcon.IconSize = 20;
+			this.formIcon.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.formIcon.Location = new System.Drawing.Point(0, 0);
+			this.formIcon.Name = "formIcon";
+			this.formIcon.Size = new System.Drawing.Size(30, 30);
+			this.formIcon.TabIndex = 0;
+			this.formIcon.TabStop = false;
+			this.formIcon.UseVisualStyleBackColor = false;
+			this.formIcon.Enter += new System.EventHandler(this.btnTestConnect_Enter);
 			// 
 			// lbTitle
 			// 
@@ -255,40 +298,6 @@ namespace Main
 			this.pnlAccount.Size = new System.Drawing.Size(450, 118);
 			this.pnlAccount.TabIndex = 8;
 			// 
-			// lbUsername
-			// 
-			this.lbUsername.AutoSize = true;
-			this.lbUsername.BackColor = System.Drawing.Color.Transparent;
-			this.lbUsername.Font = new System.Drawing.Font("Verdana", 10F);
-			this.lbUsername.Location = new System.Drawing.Point(25, 22);
-			this.lbUsername.Name = "lbUsername";
-			this.lbUsername.Size = new System.Drawing.Size(84, 17);
-			this.lbUsername.TabIndex = 4;
-			this.lbUsername.Text = "Username:";
-			// 
-			// lbPassword
-			// 
-			this.lbPassword.AutoSize = true;
-			this.lbPassword.BackColor = System.Drawing.Color.Transparent;
-			this.lbPassword.Font = new System.Drawing.Font("Verdana", 10F);
-			this.lbPassword.Location = new System.Drawing.Point(25, 80);
-			this.lbPassword.Name = "lbPassword";
-			this.lbPassword.Size = new System.Drawing.Size(81, 17);
-			this.lbPassword.TabIndex = 5;
-			this.lbPassword.Text = "Password:";
-			// 
-			// pnl2
-			// 
-			this.pnl2.BackColor = System.Drawing.Color.Gray;
-			this.pnl2.Location = new System.Drawing.Point(33, 62);
-			this.pnl2.Name = "pnl2";
-			this.pnl2.Size = new System.Drawing.Size(460, 386);
-			this.pnl2.TabIndex = 10;
-			// 
-			// errorProviderWar
-			// 
-			this.errorProviderWar.ContainerControl = this;
-			// 
 			// tbUsername
 			// 
 			this.tbUsername.AcceptsReturn = false;
@@ -435,6 +444,28 @@ namespace Main
 			this.tbPassword.UseSystemPasswordChar = true;
 			this.tbPassword.WordWrap = true;
 			// 
+			// lbUsername
+			// 
+			this.lbUsername.AutoSize = true;
+			this.lbUsername.BackColor = System.Drawing.Color.Transparent;
+			this.lbUsername.Font = new System.Drawing.Font("Verdana", 10F);
+			this.lbUsername.Location = new System.Drawing.Point(25, 22);
+			this.lbUsername.Name = "lbUsername";
+			this.lbUsername.Size = new System.Drawing.Size(84, 17);
+			this.lbUsername.TabIndex = 4;
+			this.lbUsername.Text = "Username:";
+			// 
+			// lbPassword
+			// 
+			this.lbPassword.AutoSize = true;
+			this.lbPassword.BackColor = System.Drawing.Color.Transparent;
+			this.lbPassword.Font = new System.Drawing.Font("Verdana", 10F);
+			this.lbPassword.Location = new System.Drawing.Point(25, 80);
+			this.lbPassword.Name = "lbPassword";
+			this.lbPassword.Size = new System.Drawing.Size(81, 17);
+			this.lbPassword.TabIndex = 5;
+			this.lbPassword.Text = "Password:";
+			// 
 			// btnTestConnect
 			// 
 			this.btnTestConnect.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -477,47 +508,21 @@ namespace Main
 			this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
 			this.btnConnect.Enter += new System.EventHandler(this.btnTestConnect_Enter);
 			// 
-			// btnExit
+			// pnl2
 			// 
-			this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
-			this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnExit.FlatAppearance.BorderSize = 0;
-			this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnExit.IconChar = FontAwesome.Sharp.IconChar.Times;
-			this.btnExit.IconColor = System.Drawing.Color.White;
-			this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.btnExit.IconSize = 20;
-			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.btnExit.Location = new System.Drawing.Point(492, 3);
-			this.btnExit.Name = "btnExit";
-			this.btnExit.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-			this.btnExit.Size = new System.Drawing.Size(25, 25);
-			this.btnExit.TabIndex = 11;
-			this.btnExit.UseVisualStyleBackColor = false;
-			this.btnExit.Click += new System.EventHandler(this.btnClose_Click);
-			this.btnExit.Enter += new System.EventHandler(this.btnTestConnect_Enter);
+			this.pnl2.BackColor = System.Drawing.Color.Gray;
+			this.pnl2.Location = new System.Drawing.Point(33, 62);
+			this.pnl2.Name = "pnl2";
+			this.pnl2.Size = new System.Drawing.Size(460, 386);
+			this.pnl2.TabIndex = 10;
 			// 
-			// formIcon
+			// errorProviderWar
 			// 
-			this.formIcon.BackColor = System.Drawing.Color.Transparent;
-			this.formIcon.Dock = System.Windows.Forms.DockStyle.Left;
-			this.formIcon.FlatAppearance.BorderSize = 0;
-			this.formIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
-			this.formIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(196)))), ((int)(((byte)(126)))));
-			this.formIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.formIcon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.formIcon.IconChar = FontAwesome.Sharp.IconChar.Coins;
-			this.formIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(180)))), ((int)(((byte)(0)))));
-			this.formIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.formIcon.IconSize = 20;
-			this.formIcon.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.formIcon.Location = new System.Drawing.Point(0, 0);
-			this.formIcon.Name = "formIcon";
-			this.formIcon.Size = new System.Drawing.Size(30, 30);
-			this.formIcon.TabIndex = 0;
-			this.formIcon.TabStop = false;
-			this.formIcon.UseVisualStyleBackColor = false;
-			this.formIcon.Enter += new System.EventHandler(this.btnTestConnect_Enter);
+			this.errorProviderWar.ContainerControl = this;
+			// 
+			// guna2ShadowForm
+			// 
+			this.guna2ShadowForm.TargetForm = this;
 			// 
 			// DatabaseConnection
 			// 
@@ -571,5 +576,6 @@ namespace Main
 		private Guna.UI2.WinForms.Guna2WinProgressIndicator wP;
 		public FontAwesome.Sharp.IconButton btnConnect;
 		private FontAwesome.Sharp.IconButton btnExit;
+		private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm;
 	}
 }

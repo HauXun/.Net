@@ -29,6 +29,7 @@ namespace Main
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YesNoMessageBox));
 			this.pnlTitle = new System.Windows.Forms.Panel();
 			this.lbTitle = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@ namespace Main
 			this.label1 = new System.Windows.Forms.Label();
 			this.iconMessage = new FontAwesome.Sharp.IconPictureBox();
 			this.lbMessage = new System.Windows.Forms.Label();
+			this.guna2ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
 			this.pnlTitle.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.iconMessage)).BeginInit();
 			this.SuspendLayout();
@@ -84,6 +86,7 @@ namespace Main
 			this.btnYes.Text = "Yes";
 			this.btnYes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnYes.UseVisualStyleBackColor = false;
+			this.btnYes.Enter += new System.EventHandler(this.btnNo_Enter);
 			// 
 			// btnNo
 			// 
@@ -106,6 +109,7 @@ namespace Main
 			this.btnNo.Text = "No";
 			this.btnNo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnNo.UseVisualStyleBackColor = false;
+			this.btnNo.Enter += new System.EventHandler(this.btnNo_Enter);
 			// 
 			// label1
 			// 
@@ -144,6 +148,10 @@ namespace Main
 			this.lbMessage.Size = new System.Drawing.Size(426, 55);
 			this.lbMessage.TabIndex = 4;
 			// 
+			// guna2ShadowForm
+			// 
+			this.guna2ShadowForm.TargetForm = this;
+			// 
 			// YesNoMessageBox
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,5 +186,6 @@ namespace Main
 		private System.Windows.Forms.Label label1;
 		public FontAwesome.Sharp.IconPictureBox iconMessage;
 		public System.Windows.Forms.Label lbMessage;
+		private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm;
 	}
 }

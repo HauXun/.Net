@@ -160,12 +160,12 @@ namespace DataAccessLayer
 			}
 		}
 
-		public bool CancleQuizTimes(string examID, string subjectID)
+		public bool CancleQuizTimes(int userID, string examID, string subjectID)
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_CancleQuizTimes @ExamID , @SubjectID";
-				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { examID, subjectID });
+				string query = "EXEC dbo.USP_CancleQuizTimes @UserID @ExamID , @SubjectID";
+				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { userID, examID, subjectID });
 				return isAccess > 0;
 			}
 			catch (Exception e)
