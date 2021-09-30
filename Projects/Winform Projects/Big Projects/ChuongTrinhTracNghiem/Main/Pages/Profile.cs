@@ -66,10 +66,6 @@ namespace Main.Pages
 		/// </summary>
 		private void RoundedControl()
 		{
-			//Panel
-			pnlThongTin.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlThongTin.Width, pnlThongTin.Height, 10, 10));
-			//Panel Shadow
-			pnlThongTinShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlThongTinShadow.Width, pnlThongTinShadow.Height, 10, 10));
 			//Buttons
 			btnChinhSua.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnChinhSua.Width, btnChinhSua.Height, 6, 6));
 			btnLuuThongTin.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnLuuThongTin.Width, btnLuuThongTin.Height, 6, 6));

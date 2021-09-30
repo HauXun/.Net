@@ -350,12 +350,12 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				ShowHideSubMenu();
 				Session.CancleAction = null;
 				eduProgUC.Account = this.Account;
 				Session.CancleAction = eduProgUC.CancleAction;
 				if (eduProgUC.aDgvdata.Rows.Count > 0)
 					eduProgUC.FrmEduProg_Load(eduProgUC, e);
-				ShowHideSubMenu();
 				try
 				{
 					#region MultiThreading
@@ -381,7 +381,8 @@ namespace Main
 				if (pnlNavigation.Visible)
 					ShowHideSubMenu();
 				Session.CancleAction = null;
-				profileUC.Account = this.Account;
+				if (profileUC.Account != this.Account)
+					profileUC.Account = this.Account;
 				Session.CancleAction = profileUC.CancleAction;
 				try
 				{
@@ -412,10 +413,10 @@ namespace Main
 			{
 				if (pnlNavigation.Visible)
 					ShowHideSubMenu();
+				guideUC.Role = this.Account.UserRole;
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
-					guideUC.Role = this.Account.UserRole;
 					Session.bP.SetPage((int)Session.TabPage.Guide);
 				});
 				#endregion
@@ -465,7 +466,7 @@ namespace Main
 					#region MultiThreading
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-							Session.bP.SetPage((int)Session.TabPage.MainMenu);
+						Session.bP.SetPage((int)Session.TabPage.MainMenu);
 					});
 					#endregion
 				}
@@ -726,9 +727,9 @@ namespace Main
 		/// <param name="roleID"></param>
 		private void ChangeRole(string roleID)
 		{
-			switch (roleID.ToLower())
+			switch (roleID)
 			{
-				case "admin":
+				case "Admin":
 					pnlButtonChucNang.Enabled = false;
 					btnCNMini.Enabled = false;
 					pnlButtonDanhMuc.Enabled = false;
@@ -739,7 +740,7 @@ namespace Main
 					mainMenuUC.pnlNguoiDung.Visible = false;
 					mainMenuUC.tbAdmin.Text = Account.FullName;
 					break;
-				case "user":
+				case "User":
 					pnlButtonHeThong.Enabled = false;
 					btnHTMini.Enabled = false;
 					pnlButtonDanhMuc.Enabled = false;
@@ -755,7 +756,7 @@ namespace Main
 					mainMenuUC.pnlAdmin.Visible = false;
 					mainMenuUC.pnlGiaoVien.Visible = false;
 					break;
-				case "teacher":
+				case "Teacher":
 					pnlButtonHeThong.Enabled = false;
 					btnHTMini.Enabled = false;
 					pnlButtonChucNang.Enabled = false;
@@ -1179,28 +1180,33 @@ namespace Main
 			this.BeginInvoke((MethodInvoker)delegate
 			{
 				SettingControls();
-				Session.bP = this.bP;
+				Submit = () =>
+				{
+					if (Session.Data != null)
+					{
+						quizResultUC.cPBCountDownTime.Text = (!quizTestUC.timer.MustStop) ? quizTestUC.cPBCountDownTime.Text : "Finished";
+						quizResultUC.Data = Session.Data;
+						quizResultUC.Exam = Session.Exam;
+						if (quizResultUC.fLPdata.Controls.Count > 0)
+							quizResultUC.FrmQuizResult_Load(quizResultUC, e);
+						pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
+						#region MultiThreading
+						this.BeginInvoke((MethodInvoker)delegate
+						{
+							Session.bP.SetPage((int)Session.TabPage.QuizResult);
+						});
+						#endregion
+					}
+				};
+				Session.Submit = this.Submit;
 			});
 
-			Submit = () =>
+			for (int i = 0; i < this.bP.TabPages.Count - 1; i++)
 			{
-				if (Session.Data != null)
-				{
-					quizResultUC.cPBCountDownTime.Text = (!quizTestUC.timer.MustStop) ? quizTestUC.cPBCountDownTime.Text : "Finished";
-					quizResultUC.Data = Session.Data;
-					quizResultUC.Exam = Session.Exam;
-					if (quizResultUC.fLPdata.Controls.Count > 0)
-						quizResultUC.FrmQuizResult_Load(quizResultUC, e);
-					pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
-					#region MultiThreading
-					this.BeginInvoke((MethodInvoker)delegate
-					{
-						Session.bP.SetPage((int)Session.TabPage.QuizResult);
-					});
-					#endregion
-				}
-			};
-			Session.Submit = this.Submit;
+				this.bP.SelectedIndex = i;
+			}
+			this.bP.SetPage((int)Session.TabPage.MainMenu);
+			Session.bP = this.bP;
 		}
 
 		private void btnHeThong_Enter(object sender, EventArgs e)

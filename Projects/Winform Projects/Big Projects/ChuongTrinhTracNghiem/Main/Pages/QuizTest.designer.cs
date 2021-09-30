@@ -30,70 +30,52 @@ namespace Main.Pages
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.pnlAnswer = new System.Windows.Forms.Panel();
 			this.rbAnswerD = new System.Windows.Forms.RadioButton();
 			this.rbAnswerC = new System.Windows.Forms.RadioButton();
 			this.rbAnswerB = new System.Windows.Forms.RadioButton();
 			this.rbAnswerA = new System.Windows.Forms.RadioButton();
-			this.pnlCauHoi = new System.Windows.Forms.Panel();
 			this.lbNumberQuestion = new System.Windows.Forms.Label();
 			this.lbNoiDungCauHoi = new System.Windows.Forms.Label();
 			this.rtbQuestionContent = new System.Windows.Forms.RichTextBox();
-			this.pnlCauHoiShadow = new System.Windows.Forms.Panel();
-			this.pnlDapAnShadow = new System.Windows.Forms.Panel();
-			this.pnlDanhSachCauHoi = new System.Windows.Forms.Panel();
 			this.pnlLineDSCH = new System.Windows.Forms.Panel();
 			this.Line = new System.Windows.Forms.Panel();
 			this.fLPdata = new System.Windows.Forms.FlowLayoutPanel();
 			this.lbDanhSachCauHoi = new System.Windows.Forms.Label();
-			this.pnlNopBai = new System.Windows.Forms.Panel();
 			this.btnReset = new FontAwesome.Sharp.IconButton();
 			this.btnEnd = new FontAwesome.Sharp.IconButton();
-			this.pnlThoiGian = new System.Windows.Forms.Panel();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.cPBCountDownTime = new CircularProgressBar.CircularProgressBar();
-			this.pnlNopBaiShadow = new System.Windows.Forms.Panel();
-			this.pnlThoiGianShadow = new System.Windows.Forms.Panel();
-			this.pnlDanhSachCauHoiShadow = new System.Windows.Forms.Panel();
-			this.pNavigation = new System.Windows.Forms.Panel();
 			this.btnPreviousQuestion = new FontAwesome.Sharp.IconButton();
 			this.btnNextQuestion = new FontAwesome.Sharp.IconButton();
 			this.btnLastQuestion = new FontAwesome.Sharp.IconButton();
 			this.btnFirstQuestion = new FontAwesome.Sharp.IconButton();
 			this.lLuncheck = new System.Windows.Forms.LinkLabel();
 			this.btnFlags = new FontAwesome.Sharp.IconButton();
-			this.pnlDieuKhienShadow = new System.Windows.Forms.Panel();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.pnlAnswer.SuspendLayout();
-			this.pnlCauHoi.SuspendLayout();
-			this.pnlDanhSachCauHoi.SuspendLayout();
+			this.pnlCauHoi = new Guna.UI2.WinForms.Guna2ShadowPanel();
+			this.pnlAnswer = new Guna.UI2.WinForms.Guna2ShadowPanel();
+			this.pNavigation = new Guna.UI2.WinForms.Guna2ShadowPanel();
+			this.pnlNopBai = new Guna.UI2.WinForms.Guna2ShadowPanel();
+			this.pnlThoiGian = new Guna.UI2.WinForms.Guna2ShadowPanel();
+			this.pnlDanhSachCauHoi = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			this.pnlLineDSCH.SuspendLayout();
+			this.panel1.SuspendLayout();
+			this.pnlCauHoi.SuspendLayout();
+			this.pnlAnswer.SuspendLayout();
+			this.pNavigation.SuspendLayout();
 			this.pnlNopBai.SuspendLayout();
 			this.pnlThoiGian.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.pNavigation.SuspendLayout();
+			this.pnlDanhSachCauHoi.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// pnlAnswer
-			// 
-			this.pnlAnswer.BackColor = System.Drawing.Color.White;
-			this.pnlAnswer.Controls.Add(this.rbAnswerD);
-			this.pnlAnswer.Controls.Add(this.rbAnswerC);
-			this.pnlAnswer.Controls.Add(this.rbAnswerB);
-			this.pnlAnswer.Controls.Add(this.rbAnswerA);
-			this.pnlAnswer.Location = new System.Drawing.Point(12, 430);
-			this.pnlAnswer.Name = "pnlAnswer";
-			this.pnlAnswer.Size = new System.Drawing.Size(1200, 300);
-			this.pnlAnswer.TabIndex = 8;
 			// 
 			// rbAnswerD
 			// 
 			this.rbAnswerD.AutoSize = true;
 			this.rbAnswerD.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.rbAnswerD.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rbAnswerD.Location = new System.Drawing.Point(24, 219);
+			this.rbAnswerD.Location = new System.Drawing.Point(25, 215);
 			this.rbAnswerD.Name = "rbAnswerD";
 			this.rbAnswerD.Size = new System.Drawing.Size(83, 18);
 			this.rbAnswerD.TabIndex = 3;
@@ -105,7 +87,7 @@ namespace Main.Pages
 			this.rbAnswerC.AutoSize = true;
 			this.rbAnswerC.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.rbAnswerC.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rbAnswerC.Location = new System.Drawing.Point(24, 156);
+			this.rbAnswerC.Location = new System.Drawing.Point(25, 152);
 			this.rbAnswerC.Name = "rbAnswerC";
 			this.rbAnswerC.Size = new System.Drawing.Size(83, 18);
 			this.rbAnswerC.TabIndex = 2;
@@ -117,7 +99,7 @@ namespace Main.Pages
 			this.rbAnswerB.AutoSize = true;
 			this.rbAnswerB.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.rbAnswerB.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rbAnswerB.Location = new System.Drawing.Point(24, 93);
+			this.rbAnswerB.Location = new System.Drawing.Point(25, 89);
 			this.rbAnswerB.Name = "rbAnswerB";
 			this.rbAnswerB.Size = new System.Drawing.Size(82, 18);
 			this.rbAnswerB.TabIndex = 1;
@@ -129,29 +111,18 @@ namespace Main.Pages
 			this.rbAnswerA.AutoSize = true;
 			this.rbAnswerA.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.rbAnswerA.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rbAnswerA.Location = new System.Drawing.Point(24, 30);
+			this.rbAnswerA.Location = new System.Drawing.Point(25, 26);
 			this.rbAnswerA.Name = "rbAnswerA";
 			this.rbAnswerA.Size = new System.Drawing.Size(82, 18);
 			this.rbAnswerA.TabIndex = 0;
 			this.rbAnswerA.Text = "Đáp án A";
 			this.rbAnswerA.UseVisualStyleBackColor = true;
 			// 
-			// pnlCauHoi
-			// 
-			this.pnlCauHoi.BackColor = System.Drawing.Color.White;
-			this.pnlCauHoi.Controls.Add(this.lbNumberQuestion);
-			this.pnlCauHoi.Controls.Add(this.lbNoiDungCauHoi);
-			this.pnlCauHoi.Controls.Add(this.rtbQuestionContent);
-			this.pnlCauHoi.Location = new System.Drawing.Point(12, 12);
-			this.pnlCauHoi.Name = "pnlCauHoi";
-			this.pnlCauHoi.Size = new System.Drawing.Size(1200, 400);
-			this.pnlCauHoi.TabIndex = 7;
-			// 
 			// lbNumberQuestion
 			// 
 			this.lbNumberQuestion.AutoSize = true;
 			this.lbNumberQuestion.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbNumberQuestion.Location = new System.Drawing.Point(1075, 12);
+			this.lbNumberQuestion.Location = new System.Drawing.Point(1075, 14);
 			this.lbNumberQuestion.Name = "lbNumberQuestion";
 			this.lbNumberQuestion.Size = new System.Drawing.Size(73, 25);
 			this.lbNumberQuestion.TabIndex = 2;
@@ -174,39 +145,12 @@ namespace Main.Pages
 			// 
 			this.rtbQuestionContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.rtbQuestionContent.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rtbQuestionContent.Location = new System.Drawing.Point(15, 47);
+			this.rtbQuestionContent.Location = new System.Drawing.Point(15, 49);
 			this.rtbQuestionContent.Name = "rtbQuestionContent";
 			this.rtbQuestionContent.Size = new System.Drawing.Size(1171, 337);
 			this.rtbQuestionContent.TabIndex = 0;
 			this.rtbQuestionContent.TabStop = false;
 			this.rtbQuestionContent.Text = "";
-			// 
-			// pnlCauHoiShadow
-			// 
-			this.pnlCauHoiShadow.BackColor = System.Drawing.Color.Gray;
-			this.pnlCauHoiShadow.Location = new System.Drawing.Point(15, 15);
-			this.pnlCauHoiShadow.Name = "pnlCauHoiShadow";
-			this.pnlCauHoiShadow.Size = new System.Drawing.Size(1200, 400);
-			this.pnlCauHoiShadow.TabIndex = 9;
-			// 
-			// pnlDapAnShadow
-			// 
-			this.pnlDapAnShadow.BackColor = System.Drawing.Color.Gray;
-			this.pnlDapAnShadow.Location = new System.Drawing.Point(15, 433);
-			this.pnlDapAnShadow.Name = "pnlDapAnShadow";
-			this.pnlDapAnShadow.Size = new System.Drawing.Size(1200, 300);
-			this.pnlDapAnShadow.TabIndex = 10;
-			// 
-			// pnlDanhSachCauHoi
-			// 
-			this.pnlDanhSachCauHoi.BackColor = System.Drawing.Color.White;
-			this.pnlDanhSachCauHoi.Controls.Add(this.pnlLineDSCH);
-			this.pnlDanhSachCauHoi.Controls.Add(this.fLPdata);
-			this.pnlDanhSachCauHoi.Controls.Add(this.lbDanhSachCauHoi);
-			this.pnlDanhSachCauHoi.Location = new System.Drawing.Point(1238, 12);
-			this.pnlDanhSachCauHoi.Name = "pnlDanhSachCauHoi";
-			this.pnlDanhSachCauHoi.Size = new System.Drawing.Size(300, 400);
-			this.pnlDanhSachCauHoi.TabIndex = 13;
 			// 
 			// pnlLineDSCH
 			// 
@@ -220,7 +164,7 @@ namespace Main.Pages
 			// Line
 			// 
 			this.Line.BackColor = System.Drawing.Color.Black;
-			this.Line.Location = new System.Drawing.Point(27, 2);
+			this.Line.Location = new System.Drawing.Point(25, 2);
 			this.Line.Name = "Line";
 			this.Line.Size = new System.Drawing.Size(250, 1);
 			this.Line.TabIndex = 0;
@@ -230,7 +174,7 @@ namespace Main.Pages
 			this.fLPdata.AutoScroll = true;
 			this.fLPdata.Location = new System.Drawing.Point(0, 49);
 			this.fLPdata.Name = "fLPdata";
-			this.fLPdata.Size = new System.Drawing.Size(300, 351);
+			this.fLPdata.Size = new System.Drawing.Size(294, 345);
 			this.fLPdata.TabIndex = 1;
 			// 
 			// lbDanhSachCauHoi
@@ -244,16 +188,6 @@ namespace Main.Pages
 			this.lbDanhSachCauHoi.TabIndex = 0;
 			this.lbDanhSachCauHoi.Text = "Sơ đồ câu hỏi";
 			this.lbDanhSachCauHoi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// pnlNopBai
-			// 
-			this.pnlNopBai.BackColor = System.Drawing.Color.White;
-			this.pnlNopBai.Controls.Add(this.btnReset);
-			this.pnlNopBai.Controls.Add(this.btnEnd);
-			this.pnlNopBai.Location = new System.Drawing.Point(1238, 746);
-			this.pnlNopBai.Name = "pnlNopBai";
-			this.pnlNopBai.Size = new System.Drawing.Size(300, 60);
-			this.pnlNopBai.TabIndex = 12;
 			// 
 			// btnReset
 			// 
@@ -269,7 +203,7 @@ namespace Main.Pages
 			this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnReset.IconSize = 25;
 			this.btnReset.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnReset.Location = new System.Drawing.Point(12, 11);
+			this.btnReset.Location = new System.Drawing.Point(10, 8);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
 			this.btnReset.Size = new System.Drawing.Size(100, 40);
@@ -295,7 +229,7 @@ namespace Main.Pages
 			this.btnEnd.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnEnd.IconSize = 25;
 			this.btnEnd.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnEnd.Location = new System.Drawing.Point(190, 11);
+			this.btnEnd.Location = new System.Drawing.Point(188, 8);
 			this.btnEnd.Name = "btnEnd";
 			this.btnEnd.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
 			this.btnEnd.Size = new System.Drawing.Size(100, 40);
@@ -306,17 +240,6 @@ namespace Main.Pages
 			this.btnEnd.UseVisualStyleBackColor = false;
 			this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
 			this.btnEnd.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
-			// 
-			// pnlThoiGian
-			// 
-			this.pnlThoiGian.BackColor = System.Drawing.Color.White;
-			this.pnlThoiGian.Controls.Add(this.panel1);
-			this.pnlThoiGian.Controls.Add(this.label1);
-			this.pnlThoiGian.Controls.Add(this.cPBCountDownTime);
-			this.pnlThoiGian.Location = new System.Drawing.Point(1238, 430);
-			this.pnlThoiGian.Name = "pnlThoiGian";
-			this.pnlThoiGian.Size = new System.Drawing.Size(300, 300);
-			this.pnlThoiGian.TabIndex = 11;
 			// 
 			// panel1
 			// 
@@ -330,7 +253,7 @@ namespace Main.Pages
 			// panel2
 			// 
 			this.panel2.BackColor = System.Drawing.Color.Black;
-			this.panel2.Location = new System.Drawing.Point(27, 2);
+			this.panel2.Location = new System.Drawing.Point(25, 2);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(250, 1);
 			this.panel2.TabIndex = 0;
@@ -357,7 +280,7 @@ namespace Main.Pages
 			this.cPBCountDownTime.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
 			this.cPBCountDownTime.InnerMargin = 2;
 			this.cPBCountDownTime.InnerWidth = -1;
-			this.cPBCountDownTime.Location = new System.Drawing.Point(40, 65);
+			this.cPBCountDownTime.Location = new System.Drawing.Point(40, 63);
 			this.cPBCountDownTime.MarqueeAnimationSpeed = 2000;
 			this.cPBCountDownTime.Name = "cPBCountDownTime";
 			this.cPBCountDownTime.OuterColor = System.Drawing.Color.Gray;
@@ -380,44 +303,6 @@ namespace Main.Pages
 			this.cPBCountDownTime.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
 			this.cPBCountDownTime.Value = 68;
 			// 
-			// pnlNopBaiShadow
-			// 
-			this.pnlNopBaiShadow.BackColor = System.Drawing.Color.Gray;
-			this.pnlNopBaiShadow.Location = new System.Drawing.Point(1241, 749);
-			this.pnlNopBaiShadow.Name = "pnlNopBaiShadow";
-			this.pnlNopBaiShadow.Size = new System.Drawing.Size(300, 60);
-			this.pnlNopBaiShadow.TabIndex = 14;
-			// 
-			// pnlThoiGianShadow
-			// 
-			this.pnlThoiGianShadow.BackColor = System.Drawing.Color.Gray;
-			this.pnlThoiGianShadow.Location = new System.Drawing.Point(1241, 433);
-			this.pnlThoiGianShadow.Name = "pnlThoiGianShadow";
-			this.pnlThoiGianShadow.Size = new System.Drawing.Size(300, 300);
-			this.pnlThoiGianShadow.TabIndex = 15;
-			// 
-			// pnlDanhSachCauHoiShadow
-			// 
-			this.pnlDanhSachCauHoiShadow.BackColor = System.Drawing.Color.Gray;
-			this.pnlDanhSachCauHoiShadow.Location = new System.Drawing.Point(1241, 15);
-			this.pnlDanhSachCauHoiShadow.Name = "pnlDanhSachCauHoiShadow";
-			this.pnlDanhSachCauHoiShadow.Size = new System.Drawing.Size(300, 400);
-			this.pnlDanhSachCauHoiShadow.TabIndex = 16;
-			// 
-			// pNavigation
-			// 
-			this.pNavigation.BackColor = System.Drawing.Color.White;
-			this.pNavigation.Controls.Add(this.btnPreviousQuestion);
-			this.pNavigation.Controls.Add(this.btnNextQuestion);
-			this.pNavigation.Controls.Add(this.btnLastQuestion);
-			this.pNavigation.Controls.Add(this.btnFirstQuestion);
-			this.pNavigation.Controls.Add(this.lLuncheck);
-			this.pNavigation.Controls.Add(this.btnFlags);
-			this.pNavigation.Location = new System.Drawing.Point(12, 746);
-			this.pNavigation.Name = "pNavigation";
-			this.pNavigation.Size = new System.Drawing.Size(1200, 60);
-			this.pNavigation.TabIndex = 8;
-			// 
 			// btnPreviousQuestion
 			// 
 			this.btnPreviousQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
@@ -433,7 +318,7 @@ namespace Main.Pages
 			this.btnPreviousQuestion.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnPreviousQuestion.IconSize = 25;
 			this.btnPreviousQuestion.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnPreviousQuestion.Location = new System.Drawing.Point(15, 11);
+			this.btnPreviousQuestion.Location = new System.Drawing.Point(15, 8);
 			this.btnPreviousQuestion.Name = "btnPreviousQuestion";
 			this.btnPreviousQuestion.Size = new System.Drawing.Size(50, 40);
 			this.btnPreviousQuestion.TabIndex = 0;
@@ -459,7 +344,7 @@ namespace Main.Pages
 			this.btnNextQuestion.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnNextQuestion.IconSize = 25;
 			this.btnNextQuestion.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnNextQuestion.Location = new System.Drawing.Point(71, 11);
+			this.btnNextQuestion.Location = new System.Drawing.Point(71, 8);
 			this.btnNextQuestion.Name = "btnNextQuestion";
 			this.btnNextQuestion.Size = new System.Drawing.Size(50, 40);
 			this.btnNextQuestion.TabIndex = 1;
@@ -485,7 +370,7 @@ namespace Main.Pages
 			this.btnLastQuestion.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnLastQuestion.IconSize = 25;
 			this.btnLastQuestion.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnLastQuestion.Location = new System.Drawing.Point(1136, 11);
+			this.btnLastQuestion.Location = new System.Drawing.Point(1136, 8);
 			this.btnLastQuestion.Name = "btnLastQuestion";
 			this.btnLastQuestion.Size = new System.Drawing.Size(50, 40);
 			this.btnLastQuestion.TabIndex = 5;
@@ -510,7 +395,7 @@ namespace Main.Pages
 			this.btnFirstQuestion.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnFirstQuestion.IconSize = 25;
 			this.btnFirstQuestion.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnFirstQuestion.Location = new System.Drawing.Point(1080, 11);
+			this.btnFirstQuestion.Location = new System.Drawing.Point(1080, 8);
 			this.btnFirstQuestion.Name = "btnFirstQuestion";
 			this.btnFirstQuestion.Size = new System.Drawing.Size(50, 40);
 			this.btnFirstQuestion.TabIndex = 4;
@@ -529,7 +414,7 @@ namespace Main.Pages
 			this.lLuncheck.ForeColor = System.Drawing.Color.DimGray;
 			this.lLuncheck.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
 			this.lLuncheck.LinkColor = System.Drawing.Color.DimGray;
-			this.lLuncheck.Location = new System.Drawing.Point(173, 23);
+			this.lLuncheck.Location = new System.Drawing.Point(173, 20);
 			this.lLuncheck.Name = "lLuncheck";
 			this.lLuncheck.Size = new System.Drawing.Size(78, 18);
 			this.lLuncheck.TabIndex = 3;
@@ -550,7 +435,7 @@ namespace Main.Pages
 			this.btnFlags.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnFlags.IconSize = 30;
 			this.btnFlags.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnFlags.Location = new System.Drawing.Point(127, 11);
+			this.btnFlags.Location = new System.Drawing.Point(127, 8);
 			this.btnFlags.Name = "btnFlags";
 			this.btnFlags.Size = new System.Drawing.Size(40, 40);
 			this.btnFlags.TabIndex = 2;
@@ -559,14 +444,6 @@ namespace Main.Pages
 			this.btnFlags.UseVisualStyleBackColor = true;
 			this.btnFlags.Click += new System.EventHandler(this.btnFlags_Click);
 			this.btnFlags.Enter += new System.EventHandler(this.btnPreviousQuestion_Enter);
-			// 
-			// pnlDieuKhienShadow
-			// 
-			this.pnlDieuKhienShadow.BackColor = System.Drawing.Color.Gray;
-			this.pnlDieuKhienShadow.Location = new System.Drawing.Point(15, 749);
-			this.pnlDieuKhienShadow.Name = "pnlDieuKhienShadow";
-			this.pnlDieuKhienShadow.Size = new System.Drawing.Size(1200, 60);
-			this.pnlDieuKhienShadow.TabIndex = 9;
 			// 
 			// toolTip
 			// 
@@ -577,66 +454,144 @@ namespace Main.Pages
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
 			// 
+			// pnlCauHoi
+			// 
+			this.pnlCauHoi.BackColor = System.Drawing.Color.Transparent;
+			this.pnlCauHoi.Controls.Add(this.lbNumberQuestion);
+			this.pnlCauHoi.Controls.Add(this.lbNoiDungCauHoi);
+			this.pnlCauHoi.Controls.Add(this.rtbQuestionContent);
+			this.pnlCauHoi.FillColor = System.Drawing.Color.White;
+			this.pnlCauHoi.Location = new System.Drawing.Point(12, 12);
+			this.pnlCauHoi.Name = "pnlCauHoi";
+			this.pnlCauHoi.Radius = 5;
+			this.pnlCauHoi.ShadowColor = System.Drawing.Color.Black;
+			this.pnlCauHoi.ShadowDepth = 255;
+			this.pnlCauHoi.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+			this.pnlCauHoi.Size = new System.Drawing.Size(1200, 400);
+			this.pnlCauHoi.TabIndex = 17;
+			// 
+			// pnlAnswer
+			// 
+			this.pnlAnswer.BackColor = System.Drawing.Color.Transparent;
+			this.pnlAnswer.Controls.Add(this.rbAnswerD);
+			this.pnlAnswer.Controls.Add(this.rbAnswerA);
+			this.pnlAnswer.Controls.Add(this.rbAnswerC);
+			this.pnlAnswer.Controls.Add(this.rbAnswerB);
+			this.pnlAnswer.FillColor = System.Drawing.Color.White;
+			this.pnlAnswer.Location = new System.Drawing.Point(12, 430);
+			this.pnlAnswer.Name = "pnlAnswer";
+			this.pnlAnswer.Radius = 5;
+			this.pnlAnswer.ShadowColor = System.Drawing.Color.Black;
+			this.pnlAnswer.ShadowDepth = 255;
+			this.pnlAnswer.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+			this.pnlAnswer.Size = new System.Drawing.Size(1200, 300);
+			this.pnlAnswer.TabIndex = 3;
+			// 
+			// pNavigation
+			// 
+			this.pNavigation.BackColor = System.Drawing.Color.Transparent;
+			this.pNavigation.Controls.Add(this.btnPreviousQuestion);
+			this.pNavigation.Controls.Add(this.btnNextQuestion);
+			this.pNavigation.Controls.Add(this.btnFlags);
+			this.pNavigation.Controls.Add(this.btnLastQuestion);
+			this.pNavigation.Controls.Add(this.lLuncheck);
+			this.pNavigation.Controls.Add(this.btnFirstQuestion);
+			this.pNavigation.FillColor = System.Drawing.Color.White;
+			this.pNavigation.Location = new System.Drawing.Point(12, 746);
+			this.pNavigation.Name = "pNavigation";
+			this.pNavigation.Radius = 5;
+			this.pNavigation.ShadowColor = System.Drawing.Color.Black;
+			this.pNavigation.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+			this.pNavigation.Size = new System.Drawing.Size(1200, 60);
+			this.pNavigation.TabIndex = 3;
+			// 
+			// pnlNopBai
+			// 
+			this.pnlNopBai.BackColor = System.Drawing.Color.Transparent;
+			this.pnlNopBai.Controls.Add(this.btnReset);
+			this.pnlNopBai.Controls.Add(this.btnEnd);
+			this.pnlNopBai.FillColor = System.Drawing.Color.White;
+			this.pnlNopBai.Location = new System.Drawing.Point(1238, 746);
+			this.pnlNopBai.Name = "pnlNopBai";
+			this.pnlNopBai.Radius = 5;
+			this.pnlNopBai.ShadowColor = System.Drawing.Color.Black;
+			this.pnlNopBai.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+			this.pnlNopBai.Size = new System.Drawing.Size(300, 60);
+			this.pnlNopBai.TabIndex = 3;
+			// 
+			// pnlThoiGian
+			// 
+			this.pnlThoiGian.BackColor = System.Drawing.Color.Transparent;
+			this.pnlThoiGian.Controls.Add(this.panel1);
+			this.pnlThoiGian.Controls.Add(this.cPBCountDownTime);
+			this.pnlThoiGian.Controls.Add(this.label1);
+			this.pnlThoiGian.FillColor = System.Drawing.Color.White;
+			this.pnlThoiGian.Location = new System.Drawing.Point(1238, 430);
+			this.pnlThoiGian.Name = "pnlThoiGian";
+			this.pnlThoiGian.Radius = 5;
+			this.pnlThoiGian.ShadowColor = System.Drawing.Color.Black;
+			this.pnlThoiGian.ShadowDepth = 150;
+			this.pnlThoiGian.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+			this.pnlThoiGian.Size = new System.Drawing.Size(300, 300);
+			this.pnlThoiGian.TabIndex = 3;
+			// 
+			// pnlDanhSachCauHoi
+			// 
+			this.pnlDanhSachCauHoi.BackColor = System.Drawing.Color.Transparent;
+			this.pnlDanhSachCauHoi.Controls.Add(this.fLPdata);
+			this.pnlDanhSachCauHoi.Controls.Add(this.pnlLineDSCH);
+			this.pnlDanhSachCauHoi.Controls.Add(this.lbDanhSachCauHoi);
+			this.pnlDanhSachCauHoi.FillColor = System.Drawing.Color.White;
+			this.pnlDanhSachCauHoi.Location = new System.Drawing.Point(1238, 12);
+			this.pnlDanhSachCauHoi.Name = "pnlDanhSachCauHoi";
+			this.pnlDanhSachCauHoi.Radius = 5;
+			this.pnlDanhSachCauHoi.ShadowColor = System.Drawing.Color.Black;
+			this.pnlDanhSachCauHoi.ShadowDepth = 150;
+			this.pnlDanhSachCauHoi.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+			this.pnlDanhSachCauHoi.Size = new System.Drawing.Size(300, 400);
+			this.pnlDanhSachCauHoi.TabIndex = 3;
+			// 
 			// QuizTest
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.Controls.Add(this.pNavigation);
-			this.Controls.Add(this.pnlDieuKhienShadow);
 			this.Controls.Add(this.pnlDanhSachCauHoi);
-			this.Controls.Add(this.pnlNopBai);
 			this.Controls.Add(this.pnlThoiGian);
-			this.Controls.Add(this.pnlNopBaiShadow);
-			this.Controls.Add(this.pnlThoiGianShadow);
-			this.Controls.Add(this.pnlDanhSachCauHoiShadow);
+			this.Controls.Add(this.pnlNopBai);
+			this.Controls.Add(this.pNavigation);
 			this.Controls.Add(this.pnlAnswer);
 			this.Controls.Add(this.pnlCauHoi);
-			this.Controls.Add(this.pnlCauHoiShadow);
-			this.Controls.Add(this.pnlDapAnShadow);
 			this.Name = "QuizTest";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmQuiz_Load);
-			this.pnlAnswer.ResumeLayout(false);
-			this.pnlAnswer.PerformLayout();
+			this.pnlLineDSCH.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
 			this.pnlCauHoi.ResumeLayout(false);
 			this.pnlCauHoi.PerformLayout();
-			this.pnlDanhSachCauHoi.ResumeLayout(false);
-			this.pnlLineDSCH.ResumeLayout(false);
-			this.pnlNopBai.ResumeLayout(false);
-			this.pnlThoiGian.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
+			this.pnlAnswer.ResumeLayout(false);
+			this.pnlAnswer.PerformLayout();
 			this.pNavigation.ResumeLayout(false);
 			this.pNavigation.PerformLayout();
+			this.pnlNopBai.ResumeLayout(false);
+			this.pnlThoiGian.ResumeLayout(false);
+			this.pnlDanhSachCauHoi.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Panel pnlAnswer;
 		private System.Windows.Forms.RadioButton rbAnswerD;
 		private System.Windows.Forms.RadioButton rbAnswerC;
 		private System.Windows.Forms.RadioButton rbAnswerB;
 		private System.Windows.Forms.RadioButton rbAnswerA;
-		private System.Windows.Forms.Panel pnlCauHoi;
 		private System.Windows.Forms.Label lbNoiDungCauHoi;
 		private System.Windows.Forms.RichTextBox rtbQuestionContent;
-		private System.Windows.Forms.Panel pnlCauHoiShadow;
-		private System.Windows.Forms.Panel pnlDapAnShadow;
-		private System.Windows.Forms.Panel pnlDanhSachCauHoi;
 		private System.Windows.Forms.Panel pnlLineDSCH;
 		private System.Windows.Forms.Panel Line;
 		private System.Windows.Forms.Label lbDanhSachCauHoi;
-		private System.Windows.Forms.Panel pnlNopBai;
 		public FontAwesome.Sharp.IconButton btnEnd;
 		private FontAwesome.Sharp.IconButton btnReset;
-		private System.Windows.Forms.Panel pnlThoiGian;
-		private System.Windows.Forms.Panel pnlNopBaiShadow;
-		private System.Windows.Forms.Panel pnlThoiGianShadow;
-		private System.Windows.Forms.Panel pnlDanhSachCauHoiShadow;
-		private System.Windows.Forms.Panel pNavigation;
 		private System.Windows.Forms.LinkLabel lLuncheck;
 		private FontAwesome.Sharp.IconButton btnFlags;
-		private System.Windows.Forms.Panel pnlDieuKhienShadow;
         private FontAwesome.Sharp.IconButton btnLastQuestion;
         private FontAwesome.Sharp.IconButton btnFirstQuestion;
 		private FontAwesome.Sharp.IconButton btnPreviousQuestion;
@@ -648,5 +603,11 @@ namespace Main.Pages
 		public System.Windows.Forms.FlowLayoutPanel fLPdata;
 		public CircularProgressBar.CircularProgressBar cPBCountDownTime;
 		private System.Windows.Forms.ToolTip toolTip;
-	}
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlCauHoi;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlAnswer;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pNavigation;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlNopBai;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlThoiGian;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlDanhSachCauHoi;
+    }
 }

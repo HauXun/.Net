@@ -11,23 +11,23 @@ using System.Windows.Forms;
 namespace Main.Pages
 {
 	public partial class QuizTest : UserControl
-    {
-        private string selectedIndex = "1";
+	{
+		private string selectedIndex = "1";
 
-        private int correctAnswer = 0;
-        private float mark = 0;
+		private int correctAnswer = 0;
+		private float mark = 0;
 
-        private DataTable data;
-        public CountDownTimer timer = new CountDownTimer();
+		private DataTable data;
+		public CountDownTimer timer = new CountDownTimer();
 
 		public Exam Exam;
 		public UserAccount Account;
-        public DataTable Data { get => data; set => data = value; }
+		public DataTable Data { get => data; set => data = value; }
 
-        public QuizTest()
+		public QuizTest()
 		{
 			InitializeComponent();
-            RoundedControls();
+			RoundedControls();
 		}
 
 		// -------------- Set color for background gradient ---------------
@@ -48,30 +48,15 @@ namespace Main.Pages
 		#region Rounded Controls
 
 		private void RoundedControls()
-        {
-            //Panels
-            pnlCauHoi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlCauHoi.Width, pnlCauHoi.Height, 5, 5));
-            pnlAnswer.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlAnswer.Width, pnlAnswer.Height, 5, 5));
-            pNavigation.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pNavigation.Width, pNavigation.Height, 5, 5));
-            pnlDanhSachCauHoi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDanhSachCauHoi.Width, pnlDanhSachCauHoi.Height, 5, 5));
-            pnlThoiGian.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlThoiGian.Width, pnlThoiGian.Height, 5, 5));
-            pnlNopBai.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlNopBai.Width, pnlNopBai.Height, 5, 5));
-            rtbQuestionContent.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, rtbQuestionContent.Width, rtbQuestionContent.Height, 5, 5));
-            //Panels Shadow
-            pnlCauHoiShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlCauHoiShadow.Width, pnlCauHoiShadow.Height, 5, 5));
-            pnlDapAnShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDapAnShadow.Width, pnlDapAnShadow.Height, 5, 5));
-            pnlDieuKhienShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDieuKhienShadow.Width, pnlDieuKhienShadow.Height, 5, 5));
-            pnlDanhSachCauHoiShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDanhSachCauHoiShadow.Width, pnlDanhSachCauHoiShadow.Height, 5, 5));
-            pnlThoiGianShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlThoiGianShadow.Width, pnlThoiGianShadow.Height, 5, 5));
-            pnlNopBaiShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlNopBaiShadow.Width, pnlNopBaiShadow.Height, 5, 5));
-            //Buttons
-            btnReset.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnReset.Width, btnReset.Height, 5, 5));
-            btnEnd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEnd.Width, btnEnd.Height, 5, 5));
-            btnNextQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextQuestion.Width, btnNextQuestion.Height, 5, 5));
-            btnFirstQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnFirstQuestion.Width, btnFirstQuestion.Height, 5, 5));
-            btnLastQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnLastQuestion.Width, btnLastQuestion.Height, 5, 5));
-            btnPreviousQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnPreviousQuestion.Width, btnPreviousQuestion.Height, 5, 5));
-            btnNextQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextQuestion.Width, btnNextQuestion.Height, 5, 5));
+		{
+			//Buttons
+			btnReset.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnReset.Width, btnReset.Height, 5, 5));
+			btnEnd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEnd.Width, btnEnd.Height, 5, 5));
+			btnNextQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextQuestion.Width, btnNextQuestion.Height, 5, 5));
+			btnFirstQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnFirstQuestion.Width, btnFirstQuestion.Height, 5, 5));
+			btnLastQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnLastQuestion.Width, btnLastQuestion.Height, 5, 5));
+			btnPreviousQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnPreviousQuestion.Width, btnPreviousQuestion.Height, 5, 5));
+			btnNextQuestion.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextQuestion.Width, btnNextQuestion.Height, 5, 5));
 			btnFlags.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnFlags.Width, btnFlags.Height, 5, 5));
 		}
 
@@ -284,9 +269,12 @@ namespace Main.Pages
 
 		public void FrmQuiz_Load(object sender, EventArgs e)
 		{
-			timer = new CountDownTimer();
-			LoadData(e);
-			CountDownTimer();
+			if (Exam != null)
+			{
+				timer = new CountDownTimer();
+				LoadData(e);
+				CountDownTimer();
+			}
 		}
 
 		private void Button_Click(object sender, EventArgs e)

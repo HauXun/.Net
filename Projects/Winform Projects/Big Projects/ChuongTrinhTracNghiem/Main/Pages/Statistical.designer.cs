@@ -41,7 +41,6 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
-			this.pnlDataGridView = new System.Windows.Forms.Panel();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
@@ -52,10 +51,10 @@ namespace Main.Pages
 			this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CourseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
-			this.pnlDataGridViewShadow = new System.Windows.Forms.Panel();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.pnlDataGridView.SuspendLayout();
+			this.pnlDataGridView = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
+			this.pnlDataGridView.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbTitle
@@ -89,18 +88,6 @@ namespace Main.Pages
 			this.iconTitle.UseVisualStyleBackColor = false;
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
-			// pnlDataGridView
-			// 
-			this.pnlDataGridView.BackColor = System.Drawing.Color.White;
-			this.pnlDataGridView.Controls.Add(this.tbSearch);
-			this.pnlDataGridView.Controls.Add(this.bScrollBar);
-			this.pnlDataGridView.Controls.Add(this.aDgvdata);
-			this.pnlDataGridView.Controls.Add(this.btnClearFilter);
-			this.pnlDataGridView.Location = new System.Drawing.Point(11, 80);
-			this.pnlDataGridView.Name = "pnlDataGridView";
-			this.pnlDataGridView.Size = new System.Drawing.Size(1526, 729);
-			this.pnlDataGridView.TabIndex = 38;
-			// 
 			// tbSearch
 			// 
 			this.tbSearch.BorderColor = System.Drawing.Color.Gray;
@@ -120,7 +107,7 @@ namespace Main.Pages
 			this.tbSearch.HoverState.Parent = this.tbSearch;
 			this.tbSearch.IconRight = global::Main.Properties.Resources.searchIcon;
 			this.tbSearch.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-			this.tbSearch.Location = new System.Drawing.Point(40, 12);
+			this.tbSearch.Location = new System.Drawing.Point(35, 10);
 			this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.PasswordChar = '\0';
@@ -160,7 +147,7 @@ namespace Main.Pages
 			this.bScrollBar.DurationBeforeShrink = 2000;
 			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1492, 95);
+			this.bScrollBar.Location = new System.Drawing.Point(1482, 87);
 			this.bScrollBar.Maximum = 100;
 			this.bScrollBar.Minimum = 0;
 			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
@@ -229,14 +216,14 @@ namespace Main.Pages
 			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle8;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(33, 55);
+			this.aDgvdata.Location = new System.Drawing.Point(18, 53);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1456, 665);
+			this.aDgvdata.Size = new System.Drawing.Size(1456, 660);
 			this.aDgvdata.TabIndex = 12;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -327,7 +314,7 @@ namespace Main.Pages
 			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnClearFilter.IconSize = 25;
 			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(329, 12);
+			this.btnClearFilter.Location = new System.Drawing.Point(320, 10);
 			this.btnClearFilter.Name = "btnClearFilter";
 			this.btnClearFilter.Size = new System.Drawing.Size(35, 35);
 			this.btnClearFilter.TabIndex = 11;
@@ -338,15 +325,6 @@ namespace Main.Pages
 			this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
 			this.btnClearFilter.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
-			// pnlDataGridViewShadow
-			// 
-			this.pnlDataGridViewShadow.BackColor = System.Drawing.Color.Silver;
-			this.pnlDataGridViewShadow.ForeColor = System.Drawing.SystemColors.InfoText;
-			this.pnlDataGridViewShadow.Location = new System.Drawing.Point(14, 83);
-			this.pnlDataGridViewShadow.Name = "pnlDataGridViewShadow";
-			this.pnlDataGridViewShadow.Size = new System.Drawing.Size(1526, 729);
-			this.pnlDataGridViewShadow.TabIndex = 39;
-			// 
 			// toolTip
 			// 
 			this.toolTip.AutomaticDelay = 0;
@@ -356,18 +334,34 @@ namespace Main.Pages
 			this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			this.toolTip.ToolTipTitle = "Suggest";
 			// 
+			// pnlDataGridView
+			// 
+			this.pnlDataGridView.BackColor = System.Drawing.Color.Transparent;
+			this.pnlDataGridView.Controls.Add(this.tbSearch);
+			this.pnlDataGridView.Controls.Add(this.bScrollBar);
+			this.pnlDataGridView.Controls.Add(this.btnClearFilter);
+			this.pnlDataGridView.Controls.Add(this.aDgvdata);
+			this.pnlDataGridView.FillColor = System.Drawing.Color.White;
+			this.pnlDataGridView.Location = new System.Drawing.Point(13, 80);
+			this.pnlDataGridView.Name = "pnlDataGridView";
+			this.pnlDataGridView.Radius = 5;
+			this.pnlDataGridView.ShadowColor = System.Drawing.Color.Black;
+			this.pnlDataGridView.ShadowDepth = 255;
+			this.pnlDataGridView.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+			this.pnlDataGridView.Size = new System.Drawing.Size(1525, 730);
+			this.pnlDataGridView.TabIndex = 40;
+			// 
 			// Statistical
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.Controls.Add(this.pnlDataGridView);
-			this.Controls.Add(this.pnlDataGridViewShadow);
 			this.Controls.Add(this.iconTitle);
 			this.Controls.Add(this.lbTitle);
+			this.Controls.Add(this.pnlDataGridView);
 			this.Name = "Statistical";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmStatistical_Load);
-			this.pnlDataGridView.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
+			this.pnlDataGridView.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -376,8 +370,6 @@ namespace Main.Pages
 		#endregion
 		private System.Windows.Forms.Label lbTitle;
 		private FontAwesome.Sharp.IconButton iconTitle;
-		private System.Windows.Forms.Panel pnlDataGridView;
-		private System.Windows.Forms.Panel pnlDataGridViewShadow;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SemesterID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
@@ -389,5 +381,6 @@ namespace Main.Pages
 		private System.Windows.Forms.ToolTip toolTip;
 		public ADGV.AdvancedDataGridView aDgvdata;
 		private Guna.UI2.WinForms.Guna2TextBox tbSearch;
-	}
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlDataGridView;
+    }
 }

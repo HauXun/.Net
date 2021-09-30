@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Main.Partial;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Main.Pages
@@ -15,6 +10,7 @@ namespace Main.Pages
 		public About()
 		{
 			InitializeComponent();
+			pictureBox.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pictureBox.Width, pictureBox.Height, 6, 6));
 		}
 
 		private void iconTitle_Enter(object sender, EventArgs e)

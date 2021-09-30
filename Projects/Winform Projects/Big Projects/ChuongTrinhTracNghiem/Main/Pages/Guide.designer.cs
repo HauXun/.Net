@@ -31,47 +31,87 @@ namespace Main.Pages
 		{
 			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Guide));
-			this.pnlHuongDanShadow = new System.Windows.Forms.Panel();
-			this.pnlHuongDan = new System.Windows.Forms.Panel();
+			this.pbBackground = new System.Windows.Forms.PictureBox();
+			this.iconTitle = new FontAwesome.Sharp.IconButton();
+			this.lbTitle = new System.Windows.Forms.Label();
+			this.pnlHuongDan = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			this.btnPreviousHelp = new FontAwesome.Sharp.IconButton();
 			this.btnNextHelp = new FontAwesome.Sharp.IconButton();
 			this.bP = new Bunifu.UI.WinForms.BunifuPages();
 			this.addAdmin = new System.Windows.Forms.TabPage();
 			this.editAdmin = new System.Windows.Forms.TabPage();
-			this.bkPage1 = new System.Windows.Forms.TabPage();
-			this.bkPage2 = new System.Windows.Forms.TabPage();
 			this.addManager = new System.Windows.Forms.TabPage();
 			this.editManager = new System.Windows.Forms.TabPage();
 			this.guide1 = new System.Windows.Forms.TabPage();
 			this.guide2 = new System.Windows.Forms.TabPage();
 			this.guide3 = new System.Windows.Forms.TabPage();
 			this.guide4 = new System.Windows.Forms.TabPage();
-			this.lbTitle = new System.Windows.Forms.Label();
-			this.iconTitle = new FontAwesome.Sharp.IconButton();
-			this.pbBackground = new System.Windows.Forms.PictureBox();
+			this.bkPage1 = new System.Windows.Forms.TabPage();
+			this.bkPage2 = new System.Windows.Forms.TabPage();
+			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
 			this.pnlHuongDan.SuspendLayout();
 			this.bP.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// pnlHuongDanShadow
+			// pbBackground
 			// 
-			this.pnlHuongDanShadow.BackColor = System.Drawing.Color.DarkGray;
-			this.pnlHuongDanShadow.Location = new System.Drawing.Point(818, 78);
-			this.pnlHuongDanShadow.Name = "pnlHuongDanShadow";
-			this.pnlHuongDanShadow.Size = new System.Drawing.Size(700, 700);
-			this.pnlHuongDanShadow.TabIndex = 2;
+			this.pbBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.pbBackground.Cursor = System.Windows.Forms.Cursors.Arrow;
+			this.pbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbBackground.Image = global::Main.Properties.Resources.Background;
+			this.pbBackground.Location = new System.Drawing.Point(0, 0);
+			this.pbBackground.Name = "pbBackground";
+			this.pbBackground.Size = new System.Drawing.Size(1550, 822);
+			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbBackground.TabIndex = 1;
+			this.pbBackground.TabStop = false;
+			// 
+			// iconTitle
+			// 
+			this.iconTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.iconTitle.FlatAppearance.BorderSize = 0;
+			this.iconTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.iconTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.iconTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconTitle.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
+			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconTitle.IconSize = 35;
+			this.iconTitle.Location = new System.Drawing.Point(1060, 24);
+			this.iconTitle.Name = "iconTitle";
+			this.iconTitle.Size = new System.Drawing.Size(35, 37);
+			this.iconTitle.TabIndex = 26;
+			this.iconTitle.TabStop = false;
+			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
+			// 
+			// lbTitle
+			// 
+			this.lbTitle.AutoSize = true;
+			this.lbTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.lbTitle.Location = new System.Drawing.Point(1100, 21);
+			this.lbTitle.Name = "lbTitle";
+			this.lbTitle.Size = new System.Drawing.Size(175, 37);
+			this.lbTitle.TabIndex = 27;
+			this.lbTitle.Text = "Hướng dẫn";
 			// 
 			// pnlHuongDan
 			// 
-			this.pnlHuongDan.BackColor = System.Drawing.Color.White;
+			this.pnlHuongDan.BackColor = System.Drawing.Color.Transparent;
 			this.pnlHuongDan.Controls.Add(this.btnPreviousHelp);
 			this.pnlHuongDan.Controls.Add(this.btnNextHelp);
 			this.pnlHuongDan.Controls.Add(this.bP);
+			this.pnlHuongDan.FillColor = System.Drawing.Color.White;
 			this.pnlHuongDan.Location = new System.Drawing.Point(815, 75);
 			this.pnlHuongDan.Name = "pnlHuongDan";
+			this.pnlHuongDan.Radius = 5;
+			this.pnlHuongDan.ShadowColor = System.Drawing.Color.Black;
+			this.pnlHuongDan.ShadowDepth = 255;
+			this.pnlHuongDan.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlHuongDan.Size = new System.Drawing.Size(700, 700);
-			this.pnlHuongDan.TabIndex = 3;
+			this.pnlHuongDan.TabIndex = 28;
 			// 
 			// btnPreviousHelp
 			// 
@@ -88,10 +128,10 @@ namespace Main.Pages
 			this.btnPreviousHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnPreviousHelp.IconSize = 25;
 			this.btnPreviousHelp.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnPreviousHelp.Location = new System.Drawing.Point(297, 641);
+			this.btnPreviousHelp.Location = new System.Drawing.Point(297, 637);
 			this.btnPreviousHelp.Name = "btnPreviousHelp";
 			this.btnPreviousHelp.Size = new System.Drawing.Size(50, 40);
-			this.btnPreviousHelp.TabIndex = 2;
+			this.btnPreviousHelp.TabIndex = 4;
 			this.btnPreviousHelp.TabStop = false;
 			this.btnPreviousHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnPreviousHelp.UseVisualStyleBackColor = false;
@@ -113,10 +153,10 @@ namespace Main.Pages
 			this.btnNextHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnNextHelp.IconSize = 25;
 			this.btnNextHelp.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnNextHelp.Location = new System.Drawing.Point(353, 641);
+			this.btnNextHelp.Location = new System.Drawing.Point(353, 637);
 			this.btnNextHelp.Name = "btnNextHelp";
 			this.btnNextHelp.Size = new System.Drawing.Size(50, 40);
-			this.btnNextHelp.TabIndex = 3;
+			this.btnNextHelp.TabIndex = 5;
 			this.btnNextHelp.TabStop = false;
 			this.btnNextHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
 			this.btnNextHelp.UseVisualStyleBackColor = false;
@@ -137,16 +177,16 @@ namespace Main.Pages
 			this.bP.Controls.Add(this.guide2);
 			this.bP.Controls.Add(this.guide3);
 			this.bP.Controls.Add(this.guide4);
-			this.bP.Location = new System.Drawing.Point(6, 6);
+			this.bP.Location = new System.Drawing.Point(2, 2);
 			this.bP.Multiline = true;
 			this.bP.Name = "bP";
-			this.bP.Page = this.addAdmin;
-			this.bP.PageIndex = 0;
-			this.bP.PageName = "addAdmin";
-			this.bP.PageTitle = "AddAdmin";
+			this.bP.Page = this.bkPage1;
+			this.bP.PageIndex = 2;
+			this.bP.PageName = "bkPage1";
+			this.bP.PageTitle = "BkPage1";
 			this.bP.SelectedIndex = 0;
 			this.bP.Size = new System.Drawing.Size(691, 629);
-			this.bP.TabIndex = 0;
+			this.bP.TabIndex = 1;
 			animation1.AnimateOnlyDifferences = false;
 			animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
 			animation1.LeafCoeff = 0F;
@@ -180,7 +220,7 @@ namespace Main.Pages
 			// editAdmin
 			// 
 			this.editAdmin.BackgroundImage = global::Main.Properties.Resources.EditAdmin;
-			this.editAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.editAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.editAdmin.Location = new System.Drawing.Point(4, 4);
 			this.editAdmin.Name = "editAdmin";
 			this.editAdmin.Padding = new System.Windows.Forms.Padding(3);
@@ -189,34 +229,10 @@ namespace Main.Pages
 			this.editAdmin.Text = "EditAdmin";
 			this.editAdmin.UseVisualStyleBackColor = true;
 			// 
-			// bkPage1
-			// 
-			this.bkPage1.BackgroundImage = global::Main.Properties.Resources.Backup1;
-			this.bkPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.bkPage1.Location = new System.Drawing.Point(4, 4);
-			this.bkPage1.Name = "bkPage1";
-			this.bkPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.bkPage1.Size = new System.Drawing.Size(683, 603);
-			this.bkPage1.TabIndex = 4;
-			this.bkPage1.Text = "BkPage1";
-			this.bkPage1.UseVisualStyleBackColor = true;
-			// 
-			// bkPage2
-			// 
-			this.bkPage2.BackgroundImage = global::Main.Properties.Resources.Backup2;
-			this.bkPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.bkPage2.Location = new System.Drawing.Point(4, 4);
-			this.bkPage2.Name = "bkPage2";
-			this.bkPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.bkPage2.Size = new System.Drawing.Size(683, 603);
-			this.bkPage2.TabIndex = 5;
-			this.bkPage2.Text = "BkPage2";
-			this.bkPage2.UseVisualStyleBackColor = true;
-			// 
 			// addManager
 			// 
 			this.addManager.BackgroundImage = global::Main.Properties.Resources.AddManager;
-			this.addManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.addManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.addManager.Location = new System.Drawing.Point(4, 4);
 			this.addManager.Name = "addManager";
 			this.addManager.Padding = new System.Windows.Forms.Padding(3);
@@ -228,7 +244,7 @@ namespace Main.Pages
 			// editManager
 			// 
 			this.editManager.BackgroundImage = global::Main.Properties.Resources.EditAdmin;
-			this.editManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.editManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.editManager.Location = new System.Drawing.Point(4, 4);
 			this.editManager.Name = "editManager";
 			this.editManager.Padding = new System.Windows.Forms.Padding(3);
@@ -240,7 +256,7 @@ namespace Main.Pages
 			// guide1
 			// 
 			this.guide1.BackgroundImage = global::Main.Properties.Resources.Tutorial1;
-			this.guide1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.guide1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.guide1.Location = new System.Drawing.Point(4, 4);
 			this.guide1.Name = "guide1";
 			this.guide1.Padding = new System.Windows.Forms.Padding(3);
@@ -252,7 +268,7 @@ namespace Main.Pages
 			// guide2
 			// 
 			this.guide2.BackgroundImage = global::Main.Properties.Resources.Tutorial2;
-			this.guide2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.guide2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.guide2.Location = new System.Drawing.Point(4, 4);
 			this.guide2.Name = "guide2";
 			this.guide2.Padding = new System.Windows.Forms.Padding(3);
@@ -264,7 +280,7 @@ namespace Main.Pages
 			// guide3
 			// 
 			this.guide3.BackgroundImage = global::Main.Properties.Resources.Tutorial3;
-			this.guide3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.guide3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.guide3.Location = new System.Drawing.Point(4, 4);
 			this.guide3.Name = "guide3";
 			this.guide3.Padding = new System.Windows.Forms.Padding(3);
@@ -276,7 +292,7 @@ namespace Main.Pages
 			// guide4
 			// 
 			this.guide4.BackgroundImage = global::Main.Properties.Resources.Tutorial4;
-			this.guide4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.guide4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.guide4.Location = new System.Drawing.Point(4, 4);
 			this.guide4.Name = "guide4";
 			this.guide4.Padding = new System.Windows.Forms.Padding(3);
@@ -285,62 +301,43 @@ namespace Main.Pages
 			this.guide4.Text = "Guide4";
 			this.guide4.UseVisualStyleBackColor = true;
 			// 
-			// lbTitle
+			// bkPage1
 			// 
-			this.lbTitle.AutoSize = true;
-			this.lbTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-			this.lbTitle.Font = new System.Drawing.Font("Verdana", 24F);
-			this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.lbTitle.Location = new System.Drawing.Point(1100, 20);
-			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(191, 38);
-			this.lbTitle.TabIndex = 27;
-			this.lbTitle.Text = "Hướng dẫn";
+			this.bkPage1.BackgroundImage = global::Main.Properties.Resources.Backup1;
+			this.bkPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.bkPage1.Location = new System.Drawing.Point(4, 4);
+			this.bkPage1.Name = "bkPage1";
+			this.bkPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.bkPage1.Size = new System.Drawing.Size(683, 603);
+			this.bkPage1.TabIndex = 10;
+			this.bkPage1.Text = "BkPage1";
+			this.bkPage1.UseVisualStyleBackColor = true;
 			// 
-			// iconTitle
+			// bkPage2
 			// 
-			this.iconTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-			this.iconTitle.FlatAppearance.BorderSize = 0;
-			this.iconTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.iconTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.iconTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.iconTitle.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
-			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(1060, 24);
-			this.iconTitle.Name = "iconTitle";
-			this.iconTitle.Size = new System.Drawing.Size(35, 37);
-			this.iconTitle.TabIndex = 26;
-			this.iconTitle.TabStop = false;
-			this.iconTitle.UseVisualStyleBackColor = false;
-			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
-			// 
-			// pbBackground
-			// 
-			this.pbBackground.Cursor = System.Windows.Forms.Cursors.Arrow;
-			this.pbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pbBackground.Image = global::Main.Properties.Resources.Background;
-			this.pbBackground.Location = new System.Drawing.Point(0, 0);
-			this.pbBackground.Name = "pbBackground";
-			this.pbBackground.Size = new System.Drawing.Size(1550, 822);
-			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pbBackground.TabIndex = 1;
-			this.pbBackground.TabStop = false;
+			this.bkPage2.BackgroundImage = global::Main.Properties.Resources.Backup2;
+			this.bkPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.bkPage2.Location = new System.Drawing.Point(4, 4);
+			this.bkPage2.Name = "bkPage2";
+			this.bkPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.bkPage2.Size = new System.Drawing.Size(683, 603);
+			this.bkPage2.TabIndex = 11;
+			this.bkPage2.Text = "BkPage2";
+			this.bkPage2.UseVisualStyleBackColor = true;
 			// 
 			// Guide
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.Controls.Add(this.pnlHuongDan);
 			this.Controls.Add(this.iconTitle);
 			this.Controls.Add(this.lbTitle);
-			this.Controls.Add(this.pnlHuongDan);
-			this.Controls.Add(this.pnlHuongDanShadow);
 			this.Controls.Add(this.pbBackground);
 			this.Name = "Guide";
 			this.Size = new System.Drawing.Size(1550, 822);
+			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
 			this.pnlHuongDan.ResumeLayout(false);
 			this.bP.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -349,22 +346,21 @@ namespace Main.Pages
         #endregion
 
         private System.Windows.Forms.PictureBox pbBackground;
-        private System.Windows.Forms.Panel pnlHuongDanShadow;
-        private System.Windows.Forms.Panel pnlHuongDan;
         private FontAwesome.Sharp.IconButton iconTitle;
         private System.Windows.Forms.Label lbTitle;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlHuongDan;
+		private FontAwesome.Sharp.IconButton btnPreviousHelp;
+		private FontAwesome.Sharp.IconButton btnNextHelp;
 		private Bunifu.UI.WinForms.BunifuPages bP;
 		private System.Windows.Forms.TabPage addAdmin;
 		private System.Windows.Forms.TabPage editAdmin;
 		private System.Windows.Forms.TabPage addManager;
 		private System.Windows.Forms.TabPage editManager;
-		private System.Windows.Forms.TabPage bkPage1;
-		private System.Windows.Forms.TabPage bkPage2;
 		private System.Windows.Forms.TabPage guide1;
 		private System.Windows.Forms.TabPage guide2;
 		private System.Windows.Forms.TabPage guide3;
 		private System.Windows.Forms.TabPage guide4;
-		private FontAwesome.Sharp.IconButton btnPreviousHelp;
-		private FontAwesome.Sharp.IconButton btnNextHelp;
+		private System.Windows.Forms.TabPage bkPage1;
+		private System.Windows.Forms.TabPage bkPage2;
 	}
 }

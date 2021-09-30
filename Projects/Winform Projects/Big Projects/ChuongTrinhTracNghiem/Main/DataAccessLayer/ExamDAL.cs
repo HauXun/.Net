@@ -164,7 +164,7 @@ namespace DataAccessLayer
 		{
 			try
 			{
-				string query = "EXEC dbo.USP_CancleQuizTimes @UserID @ExamID , @SubjectID";
+				string query = "EXEC dbo.USP_CancleQuizTimes @UserID , @ExamID , @SubjectID";
 				int isAccess = DataProvider.Instance.ExcuteNonQuery(query, new object[] { userID, examID, subjectID });
 				return isAccess > 0;
 			}

@@ -42,10 +42,7 @@ namespace Main.Pages
         private void RoundedControls()
         {
 			//Panels
-			pnlResult.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlResult.Width, pnlResult.Height, 10, 10));
             fLPdata.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, fLPdata.Width, fLPdata.Height, 10, 10));
-            //Panels Shadow
-            pnlKetQuaShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlKetQuaShadow.Width, pnlKetQuaShadow.Height, 10, 10));
         }
 		#endregion
 
@@ -184,9 +181,12 @@ namespace Main.Pages
 
 		public void FrmQuizResult_Load(object sender, EventArgs e)
 		{
-			fLPdata.Controls.Clear();
-			LoadState();
-			LoadMark();
+			if (Exam != null && Data != null)
+			{
+				fLPdata.Controls.Clear();
+				LoadState();
+				LoadMark();
+			}
 		}
 
 		private void btnCheck_Enter(object sender, EventArgs e)

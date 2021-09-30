@@ -17,7 +17,7 @@ namespace Main.Partial
 
 		public static DataTable Data;
 		public static Exam Exam;
-		public static BunifuPages bP = new BunifuPages();
+		public static BunifuPages bP;
 
 		public enum TabPage
 		{

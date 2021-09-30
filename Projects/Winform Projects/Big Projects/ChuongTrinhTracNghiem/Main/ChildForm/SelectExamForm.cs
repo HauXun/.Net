@@ -23,23 +23,9 @@ namespace Main
 		public SelectExamForm()
 		{
 			InitializeComponent();
-			RoundedControls();
+			this.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+
 		}
-
-		//Bo tròn góc các Control
-		#region Rounded Controls
-
-		private void RoundedControls()
-		{
-			Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
-			//Panel
-			pnlChonMonThi.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlChonMonThi.Width, pnlChonMonThi.Height, 10, 10));
-			//Panel Shadow
-			pnlChonMonThiShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlChonMonThiShadow.Width, pnlChonMonThiShadow.Height, 10, 10));
-		}
-
-		#endregion
-
 
 		#region Methods
 
@@ -139,6 +125,6 @@ namespace Main
 			this.Close();
 		}
 
-		#endregion
-	}
+        #endregion
+    }
 }

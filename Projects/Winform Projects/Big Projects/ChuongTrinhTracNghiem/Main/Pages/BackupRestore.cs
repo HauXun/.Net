@@ -50,29 +50,11 @@ namespace Main.Pages
 			};
 		}
 
-		// -------------- Set color for background gradient ---------------
-		protected override void OnPaintBackground(PaintEventArgs e)
-		{
-			Rectangle rectangle = ClientRectangle;
-			if (rectangle.IsEmpty)
-				return;
-			if (rectangle.Width == 0 || rectangle.Height == 0)
-				return;
-			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 240F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
-			{
-				e.Graphics.FillRectangle(brush, rectangle);
-			}
-		}
-
 		//Bo tròn góc các Control
 		#region Rounded Controls
 
 		private void RoundedControls()
 		{
-			//Panel
-			pnlSaoLuu.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlSaoLuu.Width, pnlSaoLuu.Height, 10, 10));
-			//Panel Shadow
-			pnlSaoLuuShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlSaoLuuShadow.Width, pnlSaoLuuShadow.Height, 10, 10));
 			//Button
 			btnBackup.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnBackup.Width, btnBackup.Height, 6, 6));
 			btnRestore.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnRestore.Width, btnRestore.Height, 6, 6));
@@ -290,19 +272,6 @@ namespace Main.Pages
 
 			return true;
 		}
-
-		private bool IsUnicode(string input)
-		{
-			var asciiBytesCount = Encoding.ASCII.GetByteCount(input);
-			var unicodBytesCount = Encoding.UTF8.GetByteCount(input);
-			return asciiBytesCount != unicodBytesCount;
-		}
-
-		private bool IsSpecialCharacters(string input) => input.Any(p => !char.IsLetterOrDigit(p));
-
-		private bool IsSpaceCharacters(string input) => input.Any(char.IsWhiteSpace);
-
-		private bool IsDigit(string input) => input.All(char.IsDigit);
 
 		#endregion
 

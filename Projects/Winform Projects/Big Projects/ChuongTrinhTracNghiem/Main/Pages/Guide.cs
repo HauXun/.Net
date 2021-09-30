@@ -30,7 +30,8 @@ namespace Main.Pages
 		private void RoundedControl()
 		{
 			btnPreviousHelp.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnPreviousHelp.Width, btnPreviousHelp.Height, 6, 6));
-			btnNextHelp.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextHelp.Width, btnNextHelp.Height, 6, 6));
+			btnNextHelp.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextHelp.Width, btnNextHelp.Height, 6, 6));			btnNextHelp.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnNextHelp.Width, btnNextHelp.Height, 6, 6));
+			bP.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, bP.Width, bP.Height, 6, 6));
 		}
 
 		private void iconTitle_Enter(object sender, EventArgs e)
@@ -62,12 +63,16 @@ namespace Main.Pages
 		{
 			if (this.bP.SelectedIndex > minPage)
 				this.bP.SelectedIndex -= 1;
+			else
+				this.bP.SelectedIndex = maxPage;
 		}
 
 		private void btnNextHelp_Click(object sender, EventArgs e)
 		{
 			if (this.bP.SelectedIndex < maxPage)
 				this.bP.SelectedIndex += 1;
+			else
+				this.bP.SelectedIndex = minPage;
 		}
 	}
 }

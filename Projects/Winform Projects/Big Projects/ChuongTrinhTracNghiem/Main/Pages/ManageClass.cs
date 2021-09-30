@@ -73,16 +73,6 @@ namespace Main.Pages
 		/// </summary>
 		private void RoundedControls()
 		{
-			//Panels
-			pnlDataGridView.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDataGridView.Width, pnlDataGridView.Height, 10, 10));
-			pnlInfo1.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlInfo1.Width, pnlInfo1.Height, 10, 10));
-			pnlInfo2.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlInfo2.Width, pnlInfo2.Height, 10, 10));
-			pnlInfo3.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlInfo3.Width, pnlInfo3.Height, 10, 10));
-			//Panels Shadow
-			pnlDataGridViewShadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnlDataGridViewShadow.Width, pnlDataGridViewShadow.Height, 10, 10));
-			pnl1Shadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnl1Shadow.Width, pnl1Shadow.Height, 10, 10));
-			pnl2Shadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnl2Shadow.Width, pnl2Shadow.Height, 10, 10));
-			pnl3Shadow.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, pnl3Shadow.Width, pnl3Shadow.Height, 10, 10));
 			//Buttons
 			btnAdd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, 6, 6));
 			btnEdit.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 6, 6));

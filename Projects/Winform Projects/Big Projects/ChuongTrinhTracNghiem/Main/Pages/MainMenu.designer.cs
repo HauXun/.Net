@@ -700,6 +700,7 @@ namespace Main.Pages
 			this.btnStatiscicalMark.Text = "Thống kê điểm thi";
 			this.btnStatiscicalMark.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnStatiscicalMark.UseVisualStyleBackColor = false;
+			this.btnStatiscicalMark.Enter += new System.EventHandler(this.btnQuanLyDeThi_Enter);
 			// 
 			// tbManager
 			// 
