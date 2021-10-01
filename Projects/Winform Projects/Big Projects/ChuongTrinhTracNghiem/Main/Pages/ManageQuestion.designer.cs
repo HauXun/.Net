@@ -67,14 +67,6 @@ namespace Main.Pages
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
-			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
-			this.btnEdit = new FontAwesome.Sharp.IconButton();
-			this.btnDelete = new FontAwesome.Sharp.IconButton();
-			this.btnSave = new FontAwesome.Sharp.IconButton();
-			this.btnCancle = new FontAwesome.Sharp.IconButton();
-			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			this.QuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +76,14 @@ namespace Main.Pages
 			this.OptionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.OptionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
+			this.btnEdit = new FontAwesome.Sharp.IconButton();
+			this.btnDelete = new FontAwesome.Sharp.IconButton();
+			this.btnSave = new FontAwesome.Sharp.IconButton();
+			this.btnCancle = new FontAwesome.Sharp.IconButton();
+			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			this.pnlControls.SuspendLayout();
 			this.pnlInfo3.SuspendLayout();
 			this.pnlInfo2.SuspendLayout();
@@ -104,6 +104,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(242, 35);
 			this.lbTitle.TabIndex = 14;
 			this.lbTitle.Text = "Quản lý câu hỏi";
+			this.lbTitle.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// iconTitle
 			// 
@@ -122,6 +123,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.ManageQuestion_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnAdd
@@ -160,6 +162,7 @@ namespace Main.Pages
 			this.pnlControls.Name = "pnlControls";
 			this.pnlControls.Size = new System.Drawing.Size(1500, 340);
 			this.pnlControls.TabIndex = 36;
+			this.pnlControls.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// pnlInfo3
 			// 
@@ -174,6 +177,7 @@ namespace Main.Pages
 			this.pnlInfo3.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo3.Size = new System.Drawing.Size(400, 90);
 			this.pnlInfo3.TabIndex = 40;
+			this.pnlInfo3.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbAnswerCorrect
 			// 
@@ -201,6 +205,7 @@ namespace Main.Pages
 			this.tbAnswerCorrect.ShadowDecoration.Parent = this.tbAnswerCorrect;
 			this.tbAnswerCorrect.Size = new System.Drawing.Size(366, 36);
 			this.tbAnswerCorrect.TabIndex = 17;
+			this.tbAnswerCorrect.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbDapAnDung
 			// 
@@ -211,6 +216,7 @@ namespace Main.Pages
 			this.lbDapAnDung.Size = new System.Drawing.Size(119, 18);
 			this.lbDapAnDung.TabIndex = 2;
 			this.lbDapAnDung.Text = "Đáp án đúng:";
+			this.lbDapAnDung.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// pnlInfo2
 			// 
@@ -230,6 +236,7 @@ namespace Main.Pages
 			this.pnlInfo2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo2.Size = new System.Drawing.Size(400, 170);
 			this.pnlInfo2.TabIndex = 40;
+			this.pnlInfo2.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// cbExamID
 			// 
@@ -261,6 +268,7 @@ namespace Main.Pages
 			this.cbExamID.Size = new System.Drawing.Size(165, 36);
 			this.cbExamID.TabIndex = 49;
 			this.cbExamID.Text = null;
+			this.cbExamID.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbMaDe
 			// 
@@ -271,6 +279,7 @@ namespace Main.Pages
 			this.lbMaDe.Size = new System.Drawing.Size(64, 18);
 			this.lbMaDe.TabIndex = 5;
 			this.lbMaDe.Text = "Mã đề:";
+			this.lbMaDe.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// cbSubject
 			// 
@@ -303,6 +312,7 @@ namespace Main.Pages
 			this.cbSubject.TabIndex = 47;
 			this.cbSubject.Text = null;
 			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
+			this.cbSubject.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbMaCauHoi
 			// 
@@ -313,6 +323,7 @@ namespace Main.Pages
 			this.lbMaCauHoi.Size = new System.Drawing.Size(103, 18);
 			this.lbMaCauHoi.TabIndex = 3;
 			this.lbMaCauHoi.Text = "Mã câu hỏi:";
+			this.lbMaCauHoi.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbQuestionID
 			// 
@@ -342,6 +353,7 @@ namespace Main.Pages
 			this.tbQuestionID.ShadowDecoration.Parent = this.tbQuestionID;
 			this.tbQuestionID.Size = new System.Drawing.Size(165, 36);
 			this.tbQuestionID.TabIndex = 18;
+			this.tbQuestionID.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbMonThi
 			// 
@@ -352,6 +364,7 @@ namespace Main.Pages
 			this.lbMonThi.Size = new System.Drawing.Size(76, 18);
 			this.lbMonThi.TabIndex = 4;
 			this.lbMonThi.Text = "Môn thi:";
+			this.lbMonThi.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// pnlInfo1
 			// 
@@ -375,6 +388,7 @@ namespace Main.Pages
 			this.pnlInfo1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo1.Size = new System.Drawing.Size(981, 295);
 			this.pnlInfo1.TabIndex = 40;
+			this.pnlInfo1.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbAnswerD
 			// 
@@ -402,6 +416,7 @@ namespace Main.Pages
 			this.tbAnswerD.ShadowDecoration.Parent = this.tbAnswerD;
 			this.tbAnswerD.Size = new System.Drawing.Size(385, 36);
 			this.tbAnswerD.TabIndex = 16;
+			this.tbAnswerD.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbNoiDung
 			// 
@@ -412,6 +427,7 @@ namespace Main.Pages
 			this.lbNoiDung.Size = new System.Drawing.Size(88, 18);
 			this.lbNoiDung.TabIndex = 0;
 			this.lbNoiDung.Text = "Nội dung:";
+			this.lbNoiDung.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbAnswerC
 			// 
@@ -439,6 +455,7 @@ namespace Main.Pages
 			this.tbAnswerC.ShadowDecoration.Parent = this.tbAnswerC;
 			this.tbAnswerC.Size = new System.Drawing.Size(385, 36);
 			this.tbAnswerC.TabIndex = 15;
+			this.tbAnswerC.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbDapAnD
 			// 
@@ -449,6 +466,7 @@ namespace Main.Pages
 			this.lbDapAnD.Size = new System.Drawing.Size(91, 18);
 			this.lbDapAnD.TabIndex = 3;
 			this.lbDapAnD.Text = "Đáp án D:";
+			this.lbDapAnD.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbAnswerB
 			// 
@@ -476,6 +494,7 @@ namespace Main.Pages
 			this.tbAnswerB.ShadowDecoration.Parent = this.tbAnswerB;
 			this.tbAnswerB.Size = new System.Drawing.Size(385, 36);
 			this.tbAnswerB.TabIndex = 14;
+			this.tbAnswerB.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbDapAnC
 			// 
@@ -486,6 +505,7 @@ namespace Main.Pages
 			this.lbDapAnC.Size = new System.Drawing.Size(90, 18);
 			this.lbDapAnC.TabIndex = 4;
 			this.lbDapAnC.Text = "Đáp án C:";
+			this.lbDapAnC.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbAnswerA
 			// 
@@ -513,6 +533,7 @@ namespace Main.Pages
 			this.tbAnswerA.ShadowDecoration.Parent = this.tbAnswerA;
 			this.tbAnswerA.Size = new System.Drawing.Size(385, 36);
 			this.tbAnswerA.TabIndex = 13;
+			this.tbAnswerA.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbDapAnB
 			// 
@@ -523,6 +544,7 @@ namespace Main.Pages
 			this.lbDapAnB.Size = new System.Drawing.Size(90, 18);
 			this.lbDapAnB.TabIndex = 5;
 			this.lbDapAnB.Text = "Đáp án B:";
+			this.lbDapAnB.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbContent
 			// 
@@ -551,6 +573,7 @@ namespace Main.Pages
 			this.tbContent.ShadowDecoration.Parent = this.tbContent;
 			this.tbContent.Size = new System.Drawing.Size(550, 240);
 			this.tbContent.TabIndex = 0;
+			this.tbContent.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// lbDapAnA
 			// 
@@ -561,6 +584,7 @@ namespace Main.Pages
 			this.lbDapAnA.Size = new System.Drawing.Size(90, 18);
 			this.lbDapAnA.TabIndex = 12;
 			this.lbDapAnA.Text = "Đáp án A:";
+			this.lbDapAnA.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// bScrollBar
 			// 
@@ -587,7 +611,7 @@ namespace Main.Pages
 			this.bScrollBar.DurationBeforeShrink = 2000;
 			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1488, 98);
+			this.bScrollBar.Location = new System.Drawing.Point(1481, 96);
 			this.bScrollBar.Maximum = 100;
 			this.bScrollBar.Minimum = 0;
 			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
@@ -602,7 +626,7 @@ namespace Main.Pages
 			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 270);
+			this.bScrollBar.Size = new System.Drawing.Size(31, 272);
 			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
 			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
@@ -615,6 +639,7 @@ namespace Main.Pages
 			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
 			this.bScrollBar.Value = 100;
 			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			this.bScrollBar.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// tbSearch
 			// 
@@ -645,6 +670,7 @@ namespace Main.Pages
 			this.tbSearch.Size = new System.Drawing.Size(281, 35);
 			this.tbSearch.TabIndex = 8;
 			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Click += new System.EventHandler(this.ManageQuestion_Click);
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
@@ -692,14 +718,14 @@ namespace Main.Pages
 			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle8;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(18, 56);
+			this.aDgvdata.Location = new System.Drawing.Point(45, 56);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1469, 312);
+			this.aDgvdata.Size = new System.Drawing.Size(1430, 312);
 			this.aDgvdata.TabIndex = 7;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -707,6 +733,110 @@ namespace Main.Pages
 			this.aDgvdata.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.aDgvdata_RowEnter);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			this.aDgvdata.Click += new System.EventHandler(this.ManageQuestion_Click);
+			// 
+			// QuestionID
+			// 
+			this.QuestionID.DataPropertyName = "QuestionID";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QuestionID.DefaultCellStyle = dataGridViewCellStyle3;
+			this.QuestionID.FillWeight = 60F;
+			this.QuestionID.HeaderText = "Mã câu hỏi";
+			this.QuestionID.MinimumWidth = 22;
+			this.QuestionID.Name = "QuestionID";
+			this.QuestionID.ReadOnly = true;
+			this.QuestionID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.NullValue = "NULL";
+			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.ExamID.FillWeight = 60F;
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.MinimumWidth = 22;
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
+			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle5.NullValue = "NULL";
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
+			this.SubjectID.FillWeight = 60F;
+			this.SubjectID.HeaderText = "Mã môn thi";
+			this.SubjectID.MinimumWidth = 22;
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QContent
+			// 
+			this.QContent.DataPropertyName = "QContent";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.Format = "d";
+			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
+			this.QContent.DefaultCellStyle = dataGridViewCellStyle6;
+			this.QContent.HeaderText = "Nội dung câu hỏi";
+			this.QContent.MinimumWidth = 22;
+			this.QContent.Name = "QContent";
+			this.QContent.ReadOnly = true;
+			this.QContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionA
+			// 
+			this.OptionA.DataPropertyName = "OptionA";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.OptionA.DefaultCellStyle = dataGridViewCellStyle7;
+			this.OptionA.FillWeight = 80F;
+			this.OptionA.HeaderText = "Đáp án A";
+			this.OptionA.MinimumWidth = 22;
+			this.OptionA.Name = "OptionA";
+			this.OptionA.ReadOnly = true;
+			this.OptionA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionB
+			// 
+			this.OptionB.DataPropertyName = "OptionB";
+			this.OptionB.FillWeight = 80F;
+			this.OptionB.HeaderText = "Đáp án B";
+			this.OptionB.MinimumWidth = 22;
+			this.OptionB.Name = "OptionB";
+			this.OptionB.ReadOnly = true;
+			this.OptionB.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionC
+			// 
+			this.OptionC.DataPropertyName = "OptionC";
+			this.OptionC.FillWeight = 80F;
+			this.OptionC.HeaderText = "Đáp án C";
+			this.OptionC.MinimumWidth = 22;
+			this.OptionC.Name = "OptionC";
+			this.OptionC.ReadOnly = true;
+			this.OptionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// OptionD
+			// 
+			this.OptionD.DataPropertyName = "OptionD";
+			this.OptionD.FillWeight = 80F;
+			this.OptionD.HeaderText = "Đáp án D";
+			this.OptionD.MinimumWidth = 22;
+			this.OptionD.Name = "OptionD";
+			this.OptionD.ReadOnly = true;
+			this.OptionD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Answer
+			// 
+			this.Answer.DataPropertyName = "Answer";
+			this.Answer.FillWeight = 80F;
+			this.Answer.HeaderText = "Đáp án đúng";
+			this.Answer.MinimumWidth = 22;
+			this.Answer.Name = "Answer";
+			this.Answer.ReadOnly = true;
+			this.Answer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// btnClearFilter
 			// 
@@ -873,109 +1003,7 @@ namespace Main.Pages
 			this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.guna2ShadowPanel1.Size = new System.Drawing.Size(1525, 385);
 			this.guna2ShadowPanel1.TabIndex = 40;
-			// 
-			// QuestionID
-			// 
-			this.QuestionID.DataPropertyName = "QuestionID";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QuestionID.DefaultCellStyle = dataGridViewCellStyle3;
-			this.QuestionID.FillWeight = 60F;
-			this.QuestionID.HeaderText = "Mã câu hỏi";
-			this.QuestionID.MinimumWidth = 22;
-			this.QuestionID.Name = "QuestionID";
-			this.QuestionID.ReadOnly = true;
-			this.QuestionID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamID
-			// 
-			this.ExamID.DataPropertyName = "ExamID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle4.NullValue = "NULL";
-			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.ExamID.FillWeight = 60F;
-			this.ExamID.HeaderText = "Mã đề";
-			this.ExamID.MinimumWidth = 22;
-			this.ExamID.Name = "ExamID";
-			this.ExamID.ReadOnly = true;
-			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.NullValue = "NULL";
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.SubjectID.FillWeight = 60F;
-			this.SubjectID.HeaderText = "Mã môn thi";
-			this.SubjectID.MinimumWidth = 22;
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QContent
-			// 
-			this.QContent.DataPropertyName = "QContent";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle6.Format = "d";
-			dataGridViewCellStyle6.NullValue = "dd/MM/yyyy";
-			this.QContent.DefaultCellStyle = dataGridViewCellStyle6;
-			this.QContent.HeaderText = "Nội dung câu hỏi";
-			this.QContent.MinimumWidth = 22;
-			this.QContent.Name = "QContent";
-			this.QContent.ReadOnly = true;
-			this.QContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionA
-			// 
-			this.OptionA.DataPropertyName = "OptionA";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.OptionA.DefaultCellStyle = dataGridViewCellStyle7;
-			this.OptionA.FillWeight = 80F;
-			this.OptionA.HeaderText = "Đáp án A";
-			this.OptionA.MinimumWidth = 22;
-			this.OptionA.Name = "OptionA";
-			this.OptionA.ReadOnly = true;
-			this.OptionA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionB
-			// 
-			this.OptionB.DataPropertyName = "OptionB";
-			this.OptionB.FillWeight = 80F;
-			this.OptionB.HeaderText = "Đáp án B";
-			this.OptionB.MinimumWidth = 22;
-			this.OptionB.Name = "OptionB";
-			this.OptionB.ReadOnly = true;
-			this.OptionB.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionC
-			// 
-			this.OptionC.DataPropertyName = "OptionC";
-			this.OptionC.FillWeight = 80F;
-			this.OptionC.HeaderText = "Đáp án C";
-			this.OptionC.MinimumWidth = 22;
-			this.OptionC.Name = "OptionC";
-			this.OptionC.ReadOnly = true;
-			this.OptionC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// OptionD
-			// 
-			this.OptionD.DataPropertyName = "OptionD";
-			this.OptionD.FillWeight = 80F;
-			this.OptionD.HeaderText = "Đáp án D";
-			this.OptionD.MinimumWidth = 22;
-			this.OptionD.Name = "OptionD";
-			this.OptionD.ReadOnly = true;
-			this.OptionD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Answer
-			// 
-			this.Answer.DataPropertyName = "Answer";
-			this.Answer.FillWeight = 80F;
-			this.Answer.HeaderText = "Đáp án đúng";
-			this.Answer.MinimumWidth = 22;
-			this.Answer.Name = "Answer";
-			this.Answer.ReadOnly = true;
-			this.Answer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.guna2ShadowPanel1.Click += new System.EventHandler(this.ManageQuestion_Click);
 			// 
 			// ManageQuestion
 			// 
@@ -988,6 +1016,7 @@ namespace Main.Pages
 			this.Name = "ManageQuestion";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmManageUser_Load);
+			this.Click += new System.EventHandler(this.ManageQuestion_Click);
 			this.pnlControls.ResumeLayout(false);
 			this.pnlInfo3.ResumeLayout(false);
 			this.pnlInfo3.PerformLayout();

@@ -75,6 +75,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(269, 35);
 			this.lbTitle.TabIndex = 0;
 			this.lbTitle.Text = "Khôi phục dữ liệu";
+			this.lbTitle.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// barFunc
 			// 
@@ -95,6 +96,7 @@ namespace Main.Pages
 			this.barFunc.Size = new System.Drawing.Size(318, 23);
 			this.barFunc.TabIndex = 49;
 			this.barFunc.Value = 100;
+			this.barFunc.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// lbPercent
 			// 
@@ -106,6 +108,7 @@ namespace Main.Pages
 			this.lbPercent.Size = new System.Drawing.Size(63, 23);
 			this.lbPercent.TabIndex = 50;
 			this.lbPercent.Text = "-10%";
+			this.lbPercent.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnSave
 			// 
@@ -169,6 +172,7 @@ namespace Main.Pages
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(561, 5);
 			this.panel1.TabIndex = 25;
+			this.panel1.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// panel2
 			// 
@@ -177,6 +181,7 @@ namespace Main.Pages
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(250, 1);
 			this.panel2.TabIndex = 0;
+			this.panel2.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// label1
 			// 
@@ -189,6 +194,7 @@ namespace Main.Pages
 			this.label1.TabIndex = 24;
 			this.label1.Text = "Backup && Restore";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.label1.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnBackup
 			// 
@@ -252,6 +258,7 @@ namespace Main.Pages
 			this.lbStatus.Size = new System.Drawing.Size(506, 49);
 			this.lbStatus.TabIndex = 4;
 			this.lbStatus.Text = "Status:";
+			this.lbStatus.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// errorProviderWar
 			// 
@@ -334,6 +341,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.pbBackground_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.btnRestore_Enter);
 			// 
 			// pnlSaoLuu
@@ -359,6 +367,7 @@ namespace Main.Pages
 			this.pnlSaoLuu.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlSaoLuu.Size = new System.Drawing.Size(660, 550);
 			this.pnlSaoLuu.TabIndex = 34;
+			this.pnlSaoLuu.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// gpDB
 			// 
@@ -374,6 +383,7 @@ namespace Main.Pages
 			this.gpDB.Size = new System.Drawing.Size(643, 138);
 			this.gpDB.TabIndex = 1;
 			this.gpDB.Text = "Database Section:";
+			this.gpDB.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// tbFunc
 			// 
@@ -402,6 +412,7 @@ namespace Main.Pages
 			this.tbFunc.Size = new System.Drawing.Size(391, 36);
 			this.tbFunc.TabIndex = 0;
 			this.tbFunc.TabStop = false;
+			this.tbFunc.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// lbFunc
 			// 
@@ -413,6 +424,7 @@ namespace Main.Pages
 			this.lbFunc.Size = new System.Drawing.Size(136, 23);
 			this.lbFunc.TabIndex = 40;
 			this.lbFunc.Text = "Backup Path:";
+			this.lbFunc.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// gpServer
 			// 
@@ -429,6 +441,7 @@ namespace Main.Pages
 			this.gpServer.Size = new System.Drawing.Size(643, 138);
 			this.gpServer.TabIndex = 0;
 			this.gpServer.Text = "SQL Server Authentication";
+			this.gpServer.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// tbServer
 			// 
@@ -459,6 +472,7 @@ namespace Main.Pages
 			this.tbServer.Size = new System.Drawing.Size(391, 36);
 			this.tbServer.TabIndex = 0;
 			this.tbServer.TabStop = false;
+			this.tbServer.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// lbServer
 			// 
@@ -470,6 +484,7 @@ namespace Main.Pages
 			this.lbServer.Size = new System.Drawing.Size(81, 23);
 			this.lbServer.TabIndex = 37;
 			this.lbServer.Text = "Server:";
+			this.lbServer.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pbBackground
 			// 
@@ -483,6 +498,7 @@ namespace Main.Pages
 			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pbBackground.TabIndex = 35;
 			this.pbBackground.TabStop = false;
+			this.pbBackground.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// BackupRestore
 			// 

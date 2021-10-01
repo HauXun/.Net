@@ -50,6 +50,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(145, 37);
 			this.lbTitle.TabIndex = 29;
 			this.lbTitle.Text = "About us";
+			this.lbTitle.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlAboutUs
 			// 
@@ -65,6 +66,7 @@ namespace Main.Pages
 			this.pnlAboutUs.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlAboutUs.Size = new System.Drawing.Size(700, 700);
 			this.pnlAboutUs.TabIndex = 30;
+			this.pnlAboutUs.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pictureBox
 			// 
@@ -75,6 +77,7 @@ namespace Main.Pages
 			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox.TabIndex = 0;
 			this.pictureBox.TabStop = false;
+			this.pictureBox.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// iconTitle
 			// 
@@ -93,6 +96,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 28;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.pbBackground_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pbBackground
@@ -106,6 +110,7 @@ namespace Main.Pages
 			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pbBackground.TabIndex = 1;
 			this.pbBackground.TabStop = false;
+			this.pbBackground.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// About
 			// 

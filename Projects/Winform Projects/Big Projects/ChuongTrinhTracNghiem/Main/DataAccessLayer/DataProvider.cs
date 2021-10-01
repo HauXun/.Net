@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 
 namespace DataAccessLayer
@@ -23,8 +24,11 @@ namespace DataAccessLayer
 		private DataProvider() { }
 
 		// Thực hiện kết nối tới cơ sở dữ liệu và kiểm tra
+		static string path = Path.GetFullPath(Environment.CurrentDirectory);
+		static string database = "TestProjectDB.mdf";
+		// AttachDbFilename={path}\{database}
 		public static string connectionString
-				= @"server=.\SQLEXPRESS; database=TestProjectDB; integrated security=true;";
+				= $@"server=(local)\SQLEXPRESS; Database=TestProjectDB; integrated security=true;";
 		public DataTable ExcuteQuery(string query, object[] parameter = null)
 		{
 			DataTable data = new DataTable();

@@ -408,6 +408,7 @@ namespace Main.Pages
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isAddnew = true;
 			isFunc = false;
 			VisibleButton(true);
@@ -418,6 +419,7 @@ namespace Main.Pages
 
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			//isAddnew = false;
 			isFunc = false;
 			VisibleButton(true);
@@ -426,6 +428,7 @@ namespace Main.Pages
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (!IsValidQuestion())
 				return;
 			if (!int.TryParse(tbQuestionID.Text, out int questionID))
@@ -468,6 +471,7 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			try
 			{
 				if (!string.IsNullOrEmpty(tbSearch.Text))
@@ -484,6 +488,7 @@ namespace Main.Pages
 
 		private void aDgvdata_RowEnter(object sender, DataGridViewCellEventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (isFunc)
 			{
 				if (e.RowIndex < 0)
@@ -513,6 +518,7 @@ namespace Main.Pages
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isAddnew = false;
 			isFunc = true;
 			cbSubject.SelectedIndex = -1;
@@ -525,6 +531,7 @@ namespace Main.Pages
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isEnable = false;
 			isFunc = true;
 			try
@@ -591,6 +598,11 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageQuestion_GotFocus;
+		}
+
+		private void ManageQuestion_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 
@@ -611,6 +623,11 @@ namespace Main.Pages
 			}
 		}
 
-        #endregion
-    }
+		private void ManageQuestion_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
+		}
+
+		#endregion
+	}
 }

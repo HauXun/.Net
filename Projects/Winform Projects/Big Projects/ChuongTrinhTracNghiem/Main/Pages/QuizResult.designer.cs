@@ -67,6 +67,7 @@ namespace Main.Pages
 			this.pnlLineDSCH.Name = "pnlLineDSCH";
 			this.pnlLineDSCH.Size = new System.Drawing.Size(403, 51);
 			this.pnlLineDSCH.TabIndex = 35;
+			this.pnlLineDSCH.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// Line
 			// 
@@ -75,6 +76,7 @@ namespace Main.Pages
 			this.Line.Name = "Line";
 			this.Line.Size = new System.Drawing.Size(350, 1);
 			this.Line.TabIndex = 0;
+			this.Line.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// lbDanhSachCauHoi
 			// 
@@ -88,6 +90,7 @@ namespace Main.Pages
 			this.lbDanhSachCauHoi.TabIndex = 25;
 			this.lbDanhSachCauHoi.Text = "Sơ đồ câu hỏi";
 			this.lbDanhSachCauHoi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbDanhSachCauHoi.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// barIndeterminate
 			// 
@@ -108,6 +111,7 @@ namespace Main.Pages
 			this.barIndeterminate.Size = new System.Drawing.Size(317, 23);
 			this.barIndeterminate.TabIndex = 29;
 			this.barIndeterminate.Value = 100;
+			this.barIndeterminate.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// barUncheck
 			// 
@@ -128,6 +132,7 @@ namespace Main.Pages
 			this.barUncheck.Size = new System.Drawing.Size(317, 23);
 			this.barUncheck.TabIndex = 28;
 			this.barUncheck.Value = 100;
+			this.barUncheck.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// lbIndeterminate
 			// 
@@ -139,6 +144,7 @@ namespace Main.Pages
 			this.lbIndeterminate.Size = new System.Drawing.Size(63, 23);
 			this.lbIndeterminate.TabIndex = 27;
 			this.lbIndeterminate.Text = "-10%";
+			this.lbIndeterminate.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// btnIndeterminate
 			// 
@@ -155,6 +161,7 @@ namespace Main.Pages
 			this.btnIndeterminate.Text = "Indeterminate";
 			this.btnIndeterminate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnIndeterminate.UseVisualStyleBackColor = false;
+			this.btnIndeterminate.Click += new System.EventHandler(this.QuizResult_Click);
 			this.btnIndeterminate.Enter += new System.EventHandler(this.btnCheck_Enter);
 			// 
 			// lbUncheck
@@ -167,6 +174,7 @@ namespace Main.Pages
 			this.lbUncheck.Size = new System.Drawing.Size(63, 23);
 			this.lbUncheck.TabIndex = 24;
 			this.lbUncheck.Text = "-10%";
+			this.lbUncheck.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// btnUncheck
 			// 
@@ -183,6 +191,7 @@ namespace Main.Pages
 			this.btnUncheck.Text = "Uncheck";
 			this.btnUncheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnUncheck.UseVisualStyleBackColor = false;
+			this.btnUncheck.Click += new System.EventHandler(this.QuizResult_Click);
 			this.btnUncheck.Enter += new System.EventHandler(this.btnCheck_Enter);
 			// 
 			// barCheck
@@ -204,6 +213,7 @@ namespace Main.Pages
 			this.barCheck.Size = new System.Drawing.Size(318, 23);
 			this.barCheck.TabIndex = 20;
 			this.barCheck.Value = 100;
+			this.barCheck.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// lbCheck
 			// 
@@ -215,6 +225,7 @@ namespace Main.Pages
 			this.lbCheck.Size = new System.Drawing.Size(63, 23);
 			this.lbCheck.TabIndex = 21;
 			this.lbCheck.Text = "-10%";
+			this.lbCheck.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// btnCheck
 			// 
@@ -231,6 +242,7 @@ namespace Main.Pages
 			this.btnCheck.Text = "Check";
 			this.btnCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnCheck.UseVisualStyleBackColor = false;
+			this.btnCheck.Click += new System.EventHandler(this.QuizResult_Click);
 			this.btnCheck.Enter += new System.EventHandler(this.btnCheck_Enter);
 			// 
 			// cPBCountDownTime
@@ -265,6 +277,7 @@ namespace Main.Pages
 			this.cPBCountDownTime.Text = "00:00:00";
 			this.cPBCountDownTime.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
 			this.cPBCountDownTime.Value = 68;
+			this.cPBCountDownTime.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// lbCorrectNumber
 			// 
@@ -276,6 +289,7 @@ namespace Main.Pages
 			this.lbCorrectNumber.Size = new System.Drawing.Size(86, 25);
 			this.lbCorrectNumber.TabIndex = 32;
 			this.lbCorrectNumber.Text = "06/82";
+			this.lbCorrectNumber.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// lbTitleResult
 			// 
@@ -287,6 +301,7 @@ namespace Main.Pages
 			this.lbTitleResult.Size = new System.Drawing.Size(190, 23);
 			this.lbTitleResult.TabIndex = 31;
 			this.lbTitleResult.Text = "Số câu hoàn thành";
+			this.lbTitleResult.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// btnTrangChu
 			// 
@@ -314,7 +329,7 @@ namespace Main.Pages
 			this.btnTrangChu.TabIndex = 28;
 			this.btnTrangChu.TabStop = false;
 			this.btnTrangChu.Text = "Trang chủ";
-			this.btnTrangChu.Enter += new System.EventHandler(this.btnCheck_Enter);
+			this.btnTrangChu.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// lbCongratulation
 			// 
@@ -327,6 +342,7 @@ namespace Main.Pages
 			this.lbCongratulation.Size = new System.Drawing.Size(472, 29);
 			this.lbCongratulation.TabIndex = 30;
 			this.lbCongratulation.Text = "Chúc mừng bạn đã hoàn thành bài thi!";
+			this.lbCongratulation.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// toolTip
 			// 
@@ -358,6 +374,7 @@ namespace Main.Pages
 			this.pnlResult.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlResult.Size = new System.Drawing.Size(560, 240);
 			this.pnlResult.TabIndex = 37;
+			this.pnlResult.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// pnlThoiGian
 			// 
@@ -372,6 +389,7 @@ namespace Main.Pages
 			this.pnlThoiGian.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlThoiGian.Size = new System.Drawing.Size(400, 738);
 			this.pnlThoiGian.TabIndex = 38;
+			this.pnlThoiGian.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// fLPdata
 			// 
@@ -380,6 +398,7 @@ namespace Main.Pages
 			this.fLPdata.Name = "fLPdata";
 			this.fLPdata.Size = new System.Drawing.Size(392, 729);
 			this.fLPdata.TabIndex = 28;
+			this.fLPdata.Click += new System.EventHandler(this.QuizResult_Click);
 			// 
 			// QuizResult
 			// 
@@ -395,6 +414,7 @@ namespace Main.Pages
 			this.Name = "QuizResult";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmQuizResult_Load);
+			this.Click += new System.EventHandler(this.QuizResult_Click);
 			this.pnlLineDSCH.ResumeLayout(false);
 			this.pnlResult.ResumeLayout(false);
 			this.pnlResult.PerformLayout();

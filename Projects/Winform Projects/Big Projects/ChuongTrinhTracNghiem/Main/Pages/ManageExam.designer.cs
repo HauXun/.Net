@@ -51,6 +51,17 @@ namespace Main.Pages
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TestFormID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PercentMark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ExamTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QuizTimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QCurrentCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
 			this.btnEdit = new FontAwesome.Sharp.IconButton();
 			this.btnDelete = new FontAwesome.Sharp.IconButton();
@@ -81,17 +92,6 @@ namespace Main.Pages
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlDataGridView = new Guna.UI2.WinForms.Guna2ShadowPanel();
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TestFormID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PercentMark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ExamTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QuizTimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QCurrentCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.pnlControls.SuspendLayout();
 			this.pnlInfo2.SuspendLayout();
@@ -115,6 +115,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(220, 35);
 			this.lbTitle.TabIndex = 24;
 			this.lbTitle.Text = "Quản lý đề thi";
+			this.lbTitle.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// iconTitle
 			// 
@@ -133,6 +134,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.ManageExam_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// btnAdd
@@ -186,7 +188,7 @@ namespace Main.Pages
 			this.bScrollBar.DurationBeforeShrink = 2000;
 			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1488, 98);
+			this.bScrollBar.Location = new System.Drawing.Point(1481, 96);
 			this.bScrollBar.Maximum = 100;
 			this.bScrollBar.Minimum = 0;
 			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
@@ -201,7 +203,7 @@ namespace Main.Pages
 			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 385);
+			this.bScrollBar.Size = new System.Drawing.Size(31, 387);
 			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
 			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
@@ -214,6 +216,7 @@ namespace Main.Pages
 			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
 			this.bScrollBar.Value = 100;
 			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			this.bScrollBar.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// tbSearch
 			// 
@@ -244,6 +247,7 @@ namespace Main.Pages
 			this.tbSearch.Size = new System.Drawing.Size(281, 35);
 			this.tbSearch.TabIndex = 0;
 			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Click += new System.EventHandler(this.ManageExam_Click);
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
@@ -293,13 +297,13 @@ namespace Main.Pages
 			dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle14;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(18, 56);
+			this.aDgvdata.Location = new System.Drawing.Point(45, 56);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1469, 427);
+			this.aDgvdata.Size = new System.Drawing.Size(1430, 427);
 			this.aDgvdata.TabIndex = 7;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -308,6 +312,141 @@ namespace Main.Pages
 			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			this.aDgvdata.Click += new System.EventHandler(this.ManageExam_Click);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
+			this.STT.FillWeight = 60F;
+			this.STT.HeaderText = "STT";
+			this.STT.MinimumWidth = 22;
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamID
+			// 
+			this.ExamID.DataPropertyName = "ExamID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.ExamID.FillWeight = 70F;
+			this.ExamID.HeaderText = "Mã đề";
+			this.ExamID.MinimumWidth = 22;
+			this.ExamID.Name = "ExamID";
+			this.ExamID.ReadOnly = true;
+			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle5.NullValue = "NULL";
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
+			this.SubjectID.FillWeight = 70F;
+			this.SubjectID.HeaderText = "Môn thi";
+			this.SubjectID.MinimumWidth = 22;
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// TestFormID
+			// 
+			this.TestFormID.DataPropertyName = "TestFormID";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle6.NullValue = "NULL";
+			this.TestFormID.DefaultCellStyle = dataGridViewCellStyle6;
+			this.TestFormID.FillWeight = 70F;
+			this.TestFormID.HeaderText = "Hình thức đề thi";
+			this.TestFormID.MinimumWidth = 22;
+			this.TestFormID.Name = "TestFormID";
+			this.TestFormID.ReadOnly = true;
+			this.TestFormID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// PercentMark
+			// 
+			this.PercentMark.DataPropertyName = "PercentMark";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle7.NullValue = "NULL";
+			this.PercentMark.DefaultCellStyle = dataGridViewCellStyle7;
+			this.PercentMark.FillWeight = 70F;
+			this.PercentMark.HeaderText = "Phần trăm điểm";
+			this.PercentMark.MinimumWidth = 22;
+			this.PercentMark.Name = "PercentMark";
+			this.PercentMark.ReadOnly = true;
+			this.PercentMark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamRole
+			// 
+			this.ExamRole.DataPropertyName = "ExamRole";
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ExamRole.DefaultCellStyle = dataGridViewCellStyle8;
+			this.ExamRole.FillWeight = 50F;
+			this.ExamRole.HeaderText = "Loại đề";
+			this.ExamRole.MinimumWidth = 22;
+			this.ExamRole.Name = "ExamRole";
+			this.ExamRole.ReadOnly = true;
+			this.ExamRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// ExamTime
+			// 
+			this.ExamTime.DataPropertyName = "ExamTime";
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.ExamTime.DefaultCellStyle = dataGridViewCellStyle9;
+			this.ExamTime.FillWeight = 80F;
+			this.ExamTime.HeaderText = "Thời gian làm bài";
+			this.ExamTime.MinimumWidth = 22;
+			this.ExamTime.Name = "ExamTime";
+			this.ExamTime.ReadOnly = true;
+			this.ExamTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QuizTimes
+			// 
+			this.QuizTimes.DataPropertyName = "QuizTimes";
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QuizTimes.DefaultCellStyle = dataGridViewCellStyle10;
+			this.QuizTimes.FillWeight = 50F;
+			this.QuizTimes.HeaderText = "Số lần thi";
+			this.QuizTimes.MinimumWidth = 22;
+			this.QuizTimes.Name = "QuizTimes";
+			this.QuizTimes.ReadOnly = true;
+			this.QuizTimes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QCount
+			// 
+			this.QCount.DataPropertyName = "QCount";
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QCount.DefaultCellStyle = dataGridViewCellStyle11;
+			this.QCount.FillWeight = 80F;
+			this.QCount.HeaderText = "Số lượng câu hỏi";
+			this.QCount.MinimumWidth = 22;
+			this.QCount.Name = "QCount";
+			this.QCount.ReadOnly = true;
+			this.QCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// QCurrentCount
+			// 
+			this.QCurrentCount.DataPropertyName = "QCurrentCount";
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.QCurrentCount.DefaultCellStyle = dataGridViewCellStyle12;
+			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiện tại";
+			this.QCurrentCount.MinimumWidth = 22;
+			this.QCurrentCount.Name = "QCurrentCount";
+			this.QCurrentCount.ReadOnly = true;
+			this.QCurrentCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Status
+			// 
+			this.Status.DataPropertyName = "Status";
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Status.DefaultCellStyle = dataGridViewCellStyle13;
+			this.Status.FillWeight = 60F;
+			this.Status.HeaderText = "Trạng thái";
+			this.Status.MinimumWidth = 22;
+			this.Status.Name = "Status";
+			this.Status.ReadOnly = true;
+			this.Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// btnClearFilter
 			// 
@@ -450,6 +589,7 @@ namespace Main.Pages
 			this.pnlControls.Name = "pnlControls";
 			this.pnlControls.Size = new System.Drawing.Size(1500, 210);
 			this.pnlControls.TabIndex = 0;
+			this.pnlControls.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// pnlInfo2
 			// 
@@ -476,6 +616,7 @@ namespace Main.Pages
 			this.pnlInfo2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo2.Size = new System.Drawing.Size(500, 170);
 			this.pnlInfo2.TabIndex = 27;
+			this.pnlInfo2.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbCheckStatus
 			// 
@@ -489,7 +630,7 @@ namespace Main.Pages
 			this.lbCheckStatus.TabIndex = 47;
 			this.lbCheckStatus.TabStop = true;
 			this.lbCheckStatus.Text = "Đóng thi";
-			this.lbCheckStatus.Click += new System.EventHandler(this.lbCheckStatus_Click);
+			this.lbCheckStatus.Click += new System.EventHandler(this.ManageExam_Click);
 			this.lbCheckStatus.MouseEnter += new System.EventHandler(this.lbCheckStatus_MouseEnter);
 			this.lbCheckStatus.MouseLeave += new System.EventHandler(this.lbCheckStatus_MouseLeave);
 			// 
@@ -525,6 +666,7 @@ namespace Main.Pages
             0,
             0,
             0});
+			this.nudExamTime.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// ckbStatus
 			// 
@@ -547,6 +689,7 @@ namespace Main.Pages
 			this.ckbStatus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
 			this.ckbStatus.UncheckedState.Parent = this.ckbStatus;
 			this.ckbStatus.CheckedChanged += new System.EventHandler(this.ckbStatus_CheckedChanged);
+			this.ckbStatus.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbSoLuongCauHoi
 			// 
@@ -557,6 +700,7 @@ namespace Main.Pages
 			this.lbSoLuongCauHoi.Size = new System.Drawing.Size(152, 18);
 			this.lbSoLuongCauHoi.TabIndex = 2;
 			this.lbSoLuongCauHoi.Text = "Số lượng câu hỏi:";
+			this.lbSoLuongCauHoi.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// cbTestFormID
 			// 
@@ -589,6 +733,7 @@ namespace Main.Pages
 			this.cbTestFormID.TabIndex = 3;
 			this.cbTestFormID.Text = null;
 			this.cbTestFormID.SelectedIndexChanged += new System.EventHandler(this.cbTestFormID_SelectedIndexChanged);
+			this.cbTestFormID.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbThoiGianLamBai
 			// 
@@ -599,6 +744,7 @@ namespace Main.Pages
 			this.lbThoiGianLamBai.Size = new System.Drawing.Size(158, 18);
 			this.lbThoiGianLamBai.TabIndex = 0;
 			this.lbThoiGianLamBai.Text = "Thời gian làm bài:";
+			this.lbThoiGianLamBai.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// nudPercentMark
 			// 
@@ -618,6 +764,7 @@ namespace Main.Pages
 			this.nudPercentMark.Size = new System.Drawing.Size(139, 36);
 			this.nudPercentMark.TabIndex = 4;
 			this.nudPercentMark.UpDownButtonFillColor = System.Drawing.Color.DarkGray;
+			this.nudPercentMark.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbStatus
 			// 
@@ -628,6 +775,7 @@ namespace Main.Pages
 			this.lbStatus.Size = new System.Drawing.Size(97, 18);
 			this.lbStatus.TabIndex = 46;
 			this.lbStatus.Text = "Trạng thái:";
+			this.lbStatus.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbPercentMark
 			// 
@@ -639,6 +787,7 @@ namespace Main.Pages
 			this.lbPercentMark.Size = new System.Drawing.Size(134, 18);
 			this.lbPercentMark.TabIndex = 12;
 			this.lbPercentMark.Text = "Tỉ lệ điểm (%):";
+			this.lbPercentMark.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// nudQCount
 			// 
@@ -672,6 +821,7 @@ namespace Main.Pages
             0,
             0,
             0});
+			this.nudQCount.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbTestFormID
 			// 
@@ -682,6 +832,7 @@ namespace Main.Pages
 			this.lbTestFormID.Size = new System.Drawing.Size(148, 18);
 			this.lbTestFormID.TabIndex = 10;
 			this.lbTestFormID.Text = "Hình thức đề thi:";
+			this.lbTestFormID.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// label1
 			// 
@@ -692,6 +843,7 @@ namespace Main.Pages
 			this.label1.Size = new System.Drawing.Size(94, 18);
 			this.label1.TabIndex = 6;
 			this.label1.Text = "Số lần thi:";
+			this.label1.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// nudQuizTimes
 			// 
@@ -725,6 +877,7 @@ namespace Main.Pages
             0,
             0,
             0});
+			this.nudQuizTimes.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// pnlInfo1
 			// 
@@ -744,6 +897,7 @@ namespace Main.Pages
 			this.pnlInfo1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo1.Size = new System.Drawing.Size(500, 170);
 			this.pnlInfo1.TabIndex = 27;
+			this.pnlInfo1.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// cbExamRole
 			// 
@@ -776,6 +930,7 @@ namespace Main.Pages
 			this.cbExamRole.TabIndex = 1;
 			this.cbExamRole.Text = null;
 			this.cbExamRole.SelectedIndexChanged += new System.EventHandler(this.cbExamRole_SelectedIndexChanged);
+			this.cbExamRole.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbLoaiDe
 			// 
@@ -786,6 +941,7 @@ namespace Main.Pages
 			this.lbLoaiDe.Size = new System.Drawing.Size(75, 18);
 			this.lbLoaiDe.TabIndex = 4;
 			this.lbLoaiDe.Text = "Loại đề:";
+			this.lbLoaiDe.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbMonThi
 			// 
@@ -796,6 +952,7 @@ namespace Main.Pages
 			this.lbMonThi.Size = new System.Drawing.Size(76, 18);
 			this.lbMonThi.TabIndex = 2;
 			this.lbMonThi.Text = "Môn thi:";
+			this.lbMonThi.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// tbExamID
 			// 
@@ -823,6 +980,7 @@ namespace Main.Pages
 			this.tbExamID.ShadowDecoration.Parent = this.tbExamID;
 			this.tbExamID.Size = new System.Drawing.Size(215, 36);
 			this.tbExamID.TabIndex = 0;
+			this.tbExamID.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// cbSubject
 			// 
@@ -854,6 +1012,7 @@ namespace Main.Pages
 			this.cbSubject.Size = new System.Drawing.Size(447, 36);
 			this.cbSubject.TabIndex = 2;
 			this.cbSubject.Text = null;
+			this.cbSubject.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbMaDe
 			// 
@@ -864,6 +1023,7 @@ namespace Main.Pages
 			this.lbMaDe.Size = new System.Drawing.Size(64, 18);
 			this.lbMaDe.TabIndex = 0;
 			this.lbMaDe.Text = "Mã đề:";
+			this.lbMaDe.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// errorProviderWar
 			// 
@@ -898,140 +1058,7 @@ namespace Main.Pages
 			this.pnlDataGridView.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlDataGridView.Size = new System.Drawing.Size(1525, 500);
 			this.pnlDataGridView.TabIndex = 27;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
-			this.STT.FillWeight = 60F;
-			this.STT.HeaderText = "STT";
-			this.STT.MinimumWidth = 22;
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamID
-			// 
-			this.ExamID.DataPropertyName = "ExamID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ExamID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.ExamID.FillWeight = 70F;
-			this.ExamID.HeaderText = "Mã đề";
-			this.ExamID.MinimumWidth = 22;
-			this.ExamID.Name = "ExamID";
-			this.ExamID.ReadOnly = true;
-			this.ExamID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.NullValue = "NULL";
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.SubjectID.FillWeight = 70F;
-			this.SubjectID.HeaderText = "Môn thi";
-			this.SubjectID.MinimumWidth = 22;
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			this.SubjectID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// TestFormID
-			// 
-			this.TestFormID.DataPropertyName = "TestFormID";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle6.NullValue = "NULL";
-			this.TestFormID.DefaultCellStyle = dataGridViewCellStyle6;
-			this.TestFormID.FillWeight = 70F;
-			this.TestFormID.HeaderText = "Hình thức đề thi";
-			this.TestFormID.MinimumWidth = 22;
-			this.TestFormID.Name = "TestFormID";
-			this.TestFormID.ReadOnly = true;
-			this.TestFormID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// PercentMark
-			// 
-			this.PercentMark.DataPropertyName = "PercentMark";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle7.NullValue = "NULL";
-			this.PercentMark.DefaultCellStyle = dataGridViewCellStyle7;
-			this.PercentMark.FillWeight = 70F;
-			this.PercentMark.HeaderText = "Phần trăm điểm";
-			this.PercentMark.MinimumWidth = 22;
-			this.PercentMark.Name = "PercentMark";
-			this.PercentMark.ReadOnly = true;
-			this.PercentMark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamRole
-			// 
-			this.ExamRole.DataPropertyName = "ExamRole";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ExamRole.DefaultCellStyle = dataGridViewCellStyle8;
-			this.ExamRole.FillWeight = 50F;
-			this.ExamRole.HeaderText = "Loại đề";
-			this.ExamRole.MinimumWidth = 22;
-			this.ExamRole.Name = "ExamRole";
-			this.ExamRole.ReadOnly = true;
-			this.ExamRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// ExamTime
-			// 
-			this.ExamTime.DataPropertyName = "ExamTime";
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.ExamTime.DefaultCellStyle = dataGridViewCellStyle9;
-			this.ExamTime.FillWeight = 80F;
-			this.ExamTime.HeaderText = "Thời gian làm bài";
-			this.ExamTime.MinimumWidth = 22;
-			this.ExamTime.Name = "ExamTime";
-			this.ExamTime.ReadOnly = true;
-			this.ExamTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QuizTimes
-			// 
-			this.QuizTimes.DataPropertyName = "QuizTimes";
-			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QuizTimes.DefaultCellStyle = dataGridViewCellStyle10;
-			this.QuizTimes.FillWeight = 50F;
-			this.QuizTimes.HeaderText = "Số lần thi";
-			this.QuizTimes.MinimumWidth = 22;
-			this.QuizTimes.Name = "QuizTimes";
-			this.QuizTimes.ReadOnly = true;
-			this.QuizTimes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QCount
-			// 
-			this.QCount.DataPropertyName = "QCount";
-			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QCount.DefaultCellStyle = dataGridViewCellStyle11;
-			this.QCount.FillWeight = 80F;
-			this.QCount.HeaderText = "Số lượng câu hỏi";
-			this.QCount.MinimumWidth = 22;
-			this.QCount.Name = "QCount";
-			this.QCount.ReadOnly = true;
-			this.QCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// QCurrentCount
-			// 
-			this.QCurrentCount.DataPropertyName = "QCurrentCount";
-			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.QCurrentCount.DefaultCellStyle = dataGridViewCellStyle12;
-			this.QCurrentCount.HeaderText = "Số lượng câu hỏi hiện tại";
-			this.QCurrentCount.MinimumWidth = 22;
-			this.QCurrentCount.Name = "QCurrentCount";
-			this.QCurrentCount.ReadOnly = true;
-			this.QCurrentCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Status
-			// 
-			this.Status.DataPropertyName = "Status";
-			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Status.DefaultCellStyle = dataGridViewCellStyle13;
-			this.Status.FillWeight = 60F;
-			this.Status.HeaderText = "Trạng thái";
-			this.Status.MinimumWidth = 22;
-			this.Status.Name = "Status";
-			this.Status.ReadOnly = true;
-			this.Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.pnlDataGridView.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// ManageExam
 			// 
@@ -1044,6 +1071,7 @@ namespace Main.Pages
 			this.Name = "ManageExam";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmManageExam_Load);
+			this.Click += new System.EventHandler(this.ManageExam_Click);
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
 			this.pnlControls.ResumeLayout(false);
 			this.pnlInfo2.ResumeLayout(false);

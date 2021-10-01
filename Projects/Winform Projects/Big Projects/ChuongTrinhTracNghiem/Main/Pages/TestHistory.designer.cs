@@ -76,6 +76,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 32;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.TestHistory_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// lbTitle
@@ -89,6 +90,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(165, 35);
 			this.lbTitle.TabIndex = 31;
 			this.lbTitle.Text = "Lịch sử thi";
+			this.lbTitle.Click += new System.EventHandler(this.TestHistory_Click);
 			// 
 			// tbSearch
 			// 
@@ -109,7 +111,7 @@ namespace Main.Pages
 			this.tbSearch.HoverState.Parent = this.tbSearch;
 			this.tbSearch.IconRight = global::Main.Properties.Resources.searchIcon;
 			this.tbSearch.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-			this.tbSearch.Location = new System.Drawing.Point(35, 10);
+			this.tbSearch.Location = new System.Drawing.Point(65, 10);
 			this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.tbSearch.Name = "tbSearch";
 			this.tbSearch.PasswordChar = '\0';
@@ -120,6 +122,7 @@ namespace Main.Pages
 			this.tbSearch.TabIndex = 23;
 			this.tbSearch.TabStop = false;
 			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Click += new System.EventHandler(this.TestHistory_Click);
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
 			this.tbSearch.MouseLeave += new System.EventHandler(this.tbSearch_MouseLeave);
@@ -149,7 +152,7 @@ namespace Main.Pages
 			this.bScrollBar.DurationBeforeShrink = 2000;
 			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1482, 87);
+			this.bScrollBar.Location = new System.Drawing.Point(1480, 93);
 			this.bScrollBar.Maximum = 100;
 			this.bScrollBar.Minimum = 0;
 			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
@@ -164,7 +167,7 @@ namespace Main.Pages
 			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 625);
+			this.bScrollBar.Size = new System.Drawing.Size(31, 620);
 			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
 			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
@@ -177,6 +180,7 @@ namespace Main.Pages
 			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
 			this.bScrollBar.Value = 100;
 			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			this.bScrollBar.Click += new System.EventHandler(this.TestHistory_Click);
 			// 
 			// aDgvdata
 			// 
@@ -219,14 +223,14 @@ namespace Main.Pages
 			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(18, 53);
+			this.aDgvdata.Location = new System.Drawing.Point(45, 53);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1456, 660);
+			this.aDgvdata.Size = new System.Drawing.Size(1429, 660);
 			this.aDgvdata.TabIndex = 12;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -234,6 +238,7 @@ namespace Main.Pages
 			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			this.aDgvdata.Click += new System.EventHandler(this.TestHistory_Click);
 			// 
 			// STT
 			// 
@@ -333,7 +338,7 @@ namespace Main.Pages
 			this.btnClearFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnClearFilter.IconSize = 25;
 			this.btnClearFilter.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnClearFilter.Location = new System.Drawing.Point(320, 10);
+			this.btnClearFilter.Location = new System.Drawing.Point(350, 10);
 			this.btnClearFilter.Name = "btnClearFilter";
 			this.btnClearFilter.Size = new System.Drawing.Size(35, 35);
 			this.btnClearFilter.TabIndex = 11;
@@ -369,6 +374,7 @@ namespace Main.Pages
 			this.pnlDataGridView.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlDataGridView.Size = new System.Drawing.Size(1525, 730);
 			this.pnlDataGridView.TabIndex = 42;
+			this.pnlDataGridView.Click += new System.EventHandler(this.TestHistory_Click);
 			// 
 			// TestHistory
 			// 
@@ -379,6 +385,7 @@ namespace Main.Pages
 			this.Name = "TestHistory";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmTestHistory_Load);
+			this.Click += new System.EventHandler(this.TestHistory_Click);
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
 			this.pnlDataGridView.ResumeLayout(false);
 			this.ResumeLayout(false);

@@ -36,6 +36,11 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += Guide_GotFocus;
+		}
+
+		private void Guide_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 
@@ -61,6 +66,7 @@ namespace Main.Pages
 
 		private void btnPreviousHelp_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (this.bP.SelectedIndex > minPage)
 				this.bP.SelectedIndex -= 1;
 			else
@@ -69,10 +75,16 @@ namespace Main.Pages
 
 		private void btnNextHelp_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (this.bP.SelectedIndex < maxPage)
 				this.bP.SelectedIndex += 1;
 			else
 				this.bP.SelectedIndex = minPage;
+		}
+
+		private void pbBackground_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 	}
 }

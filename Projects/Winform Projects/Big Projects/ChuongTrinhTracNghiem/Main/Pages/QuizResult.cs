@@ -53,8 +53,8 @@ namespace Main.Pages
 			Button button = new Button()
 			{
 				AutoSize = true,
-				Width = 60,
-				Height = 60,
+				Width = 65,
+				Height = 65,
 				Text = $"Câu {i++}",
 				TextImageRelation = TextImageRelation.TextAboveImage,
 				Font = new Font("Verdana", 8, FontStyle.Regular),
@@ -66,6 +66,7 @@ namespace Main.Pages
 			button.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 			button.FlatAppearance.MouseDownBackColor = button.FlatAppearance.MouseOverBackColor = Color.White;
 			button.Enter += btnCheck_Enter;
+			button.Click += QuizResult_Click;
 
 			switch (check)
 			{
@@ -191,7 +192,20 @@ namespace Main.Pages
 
 		private void btnCheck_Enter(object sender, EventArgs e)
 		{
+			if (sender is FontAwesome.Sharp.IconButton)
+				(sender as FontAwesome.Sharp.IconButton).GotFocus += QuizResult_GotFocus;
+			else
+				(sender as Button).GotFocus += QuizResult_GotFocus;
+		}
+
+		private void QuizResult_GotFocus(object sender, EventArgs e)
+		{
 			lbTitleResult.Focus();
+		}
+
+		private void QuizResult_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		#endregion

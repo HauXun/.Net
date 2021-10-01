@@ -15,7 +15,17 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += About_GotFocus;
+		}
+
+		private void About_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
+		}
+
+		private void pbBackground_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 	}
 }

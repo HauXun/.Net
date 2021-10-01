@@ -122,7 +122,7 @@ namespace Main.Pages
 				account.FullName = tbFullName.Text;
 				account.Email = tbEmail.Text;
 				account.PhoneNumber = tbPhone.Text;
-				account.Birthday = dtpDob.Value;
+				account.Birthday = Convert.ToDateTime(dtpDob.Value.ToString("dd/MM/yyyy"));
 				account.Address = tbAddress.Text;
 				return account;
 			}
@@ -180,7 +180,7 @@ namespace Main.Pages
 			UserAccount account = GetUserInfo();
 			account.CreatedBy = $"{Account.UserRole} - {Account.FullName}";
 			account.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
-			account.Note = $"Đã được tạo bởi {Account.UserRole} - {Account.FullName} vào {DateTime.Now}";
+			account.Note = $"Đã được tạo bởi {Account.UserRole} - {Account.FullName} vào {DateTime.Now.ToString("dd/MM/yyyy")}";
 
 			try
 			{
@@ -220,7 +220,7 @@ namespace Main.Pages
 
 			UserAccount account = GetUserInfo();
 			account.ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
-			account.Note = $"Đã được sửa bởi {Account.UserRole} - {Account.FullName} vào {DateTime.Now}";
+			account.Note = $"Đã được sửa bởi {Account.UserRole} - {Account.FullName} vào {DateTime.Now.ToString("dd/MM/yyyy")}";
 
 			try
 			{
@@ -271,7 +271,7 @@ namespace Main.Pages
 				if (control is Guna2TextBox)
 					(control as Guna2TextBox).Text = "";
 				if (control is Guna2DateTimePicker)
-					(control as Guna2DateTimePicker).Value = DateTime.Today;
+					(control as Guna2DateTimePicker).Value = Convert.ToDateTime(DateTime.Today.ToString("dd/MM/yyyy"));
 			}
 		}
 
@@ -472,6 +472,7 @@ namespace Main.Pages
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isAddnew = true;
 			isFunc = false;
 			tbUserID.Text = AccountBLL.Instance.GetIDMissing().ToString();
@@ -482,6 +483,7 @@ namespace Main.Pages
 
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			//isAddnew = false;
 			isFunc = false;
 			VisibleButton(true);
@@ -490,6 +492,7 @@ namespace Main.Pages
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (int.Parse(tbUserID.Text) == 0)
 			{
 				MsgBox.ShowMessage("Vui lòng chọn người dùng cần xóa!", "Amazing Quiz Application",
@@ -548,6 +551,7 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			try
 			{
 				if (!string.IsNullOrEmpty(tbSearch.Text))
@@ -593,6 +597,7 @@ namespace Main.Pages
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isAddnew = false;
 			isFunc = true;
 			cbCourseID.SelectedIndex = -1;
@@ -605,6 +610,7 @@ namespace Main.Pages
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isFunc = true;
 			isEnable = false;
 			try
@@ -651,6 +657,7 @@ namespace Main.Pages
 
 		private void btnResetPassword_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (MsgBox.ShowMessage("Xác nhận thay đổi!", "Amazing Quiz Application",
 				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 			{
@@ -712,6 +719,11 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageUser_GotFocus;
+		}
+
+		private void ManageUser_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 
@@ -734,6 +746,11 @@ namespace Main.Pages
 				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
 			}
+		}
+
+		private void ManageUser_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		#endregion

@@ -426,6 +426,7 @@ namespace Main.Pages
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isAddnew = true;
 			isFunc = false;
 			VisibleButton(true);
@@ -436,6 +437,7 @@ namespace Main.Pages
 
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			//isAddnew = false;
 			isFunc = false;
 			VisibleButton(true);
@@ -445,6 +447,7 @@ namespace Main.Pages
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			string subjectID = tbSubjectID.Text.Trim();
 			if (!IsValidSubject())
 				return;
@@ -507,6 +510,7 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			try
 			{
 				if (!string.IsNullOrEmpty(tbSearch.Text))
@@ -557,6 +561,7 @@ namespace Main.Pages
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isAddnew = false;
 			isFunc = true;
 			cbFacultyID.SelectedIndex = -1;
@@ -569,6 +574,7 @@ namespace Main.Pages
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isEnable = false;
 			isFunc = true;
 			try
@@ -634,6 +640,11 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageSubject_GotFocus;
+		}
+
+		private void ManageSubject_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 
@@ -651,6 +662,11 @@ namespace Main.Pages
 				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
 			}
+		}
+
+		private void ManageSubject_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		#endregion

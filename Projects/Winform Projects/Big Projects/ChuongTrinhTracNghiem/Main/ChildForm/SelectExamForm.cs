@@ -125,6 +125,12 @@ namespace Main
 			this.Close();
 		}
 
-        #endregion
-    }
+		private void SelectExamForm_Shown(object sender, EventArgs e)
+		{
+			this.Activate();
+			btnThoat.Focus();
+		}
+
+		#endregion
+	}
 }

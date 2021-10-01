@@ -44,7 +44,17 @@ namespace Main.Pages
 
 		private void btnQuanLyDeThi_Enter(object sender, System.EventArgs e)
 		{
-            pbBackground.Focus();
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += MainMenu_GotFocus;
+		}
+
+		private void MainMenu_GotFocus(object sender, System.EventArgs e)
+        {
+			pbBackground.Focus();
+		}
+
+		private void pbBackground_Click(object sender, System.EventArgs e)
+		{
+            Session.ShowHideMenu?.Invoke();
 		}
 	}
 }

@@ -98,6 +98,7 @@ namespace Main.Pages
 			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pbBackground.TabIndex = 0;
 			this.pbBackground.TabStop = false;
+			this.pbBackground.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// tbID
 			// 
@@ -128,6 +129,7 @@ namespace Main.Pages
 			this.tbID.Size = new System.Drawing.Size(300, 36);
 			this.tbID.TabIndex = 16;
 			this.tbID.TabStop = false;
+			this.tbID.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// tbTaiKhoan
 			// 
@@ -158,6 +160,7 @@ namespace Main.Pages
 			this.tbTaiKhoan.Size = new System.Drawing.Size(300, 36);
 			this.tbTaiKhoan.TabIndex = 15;
 			this.tbTaiKhoan.TabStop = false;
+			this.tbTaiKhoan.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// lbTaiKhoanNguoiDung
 			// 
@@ -170,6 +173,7 @@ namespace Main.Pages
 			this.lbTaiKhoanNguoiDung.Size = new System.Drawing.Size(125, 25);
 			this.lbTaiKhoanNguoiDung.TabIndex = 12;
 			this.lbTaiKhoanNguoiDung.Text = "Tài khoản:";
+			this.lbTaiKhoanNguoiDung.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlTopNguoiDung
 			// 
@@ -182,6 +186,7 @@ namespace Main.Pages
 			this.pnlTopNguoiDung.Name = "pnlTopNguoiDung";
 			this.pnlTopNguoiDung.Size = new System.Drawing.Size(650, 48);
 			this.pnlTopNguoiDung.TabIndex = 18;
+			this.pnlTopNguoiDung.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnThongTinChiTiet
 			// 
@@ -209,6 +214,7 @@ namespace Main.Pages
 			this.btnThongTinChiTiet.TabIndex = 0;
 			this.btnThongTinChiTiet.TabStop = false;
 			this.btnThongTinChiTiet.Text = "Thông tin chi tiết";
+			this.btnThongTinChiTiet.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// lbDieuHuong
 			// 
@@ -222,6 +228,7 @@ namespace Main.Pages
 			this.lbDieuHuong.Size = new System.Drawing.Size(174, 32);
 			this.lbDieuHuong.TabIndex = 11;
 			this.lbDieuHuong.Text = "Điều Hướng";
+			this.lbDieuHuong.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnThiNgay
 			// 
@@ -303,6 +310,7 @@ namespace Main.Pages
 			this.pnlThongTinShadow.Name = "pnlThongTinShadow";
 			this.pnlThongTinShadow.Size = new System.Drawing.Size(654, 492);
 			this.pnlThongTinShadow.TabIndex = 2;
+			this.pnlThongTinShadow.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlNguoiDung
 			// 
@@ -315,6 +323,7 @@ namespace Main.Pages
 			this.pnlNguoiDung.Name = "pnlNguoiDung";
 			this.pnlNguoiDung.Size = new System.Drawing.Size(650, 488);
 			this.pnlNguoiDung.TabIndex = 1;
+			this.pnlNguoiDung.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// gbUser
 			// 
@@ -336,6 +345,7 @@ namespace Main.Pages
 			this.gbUser.Size = new System.Drawing.Size(600, 374);
 			this.gbUser.TabIndex = 29;
 			this.gbUser.Text = "User";
+			this.gbUser.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// panel1
 			// 
@@ -347,6 +357,7 @@ namespace Main.Pages
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(650, 48);
 			this.panel1.TabIndex = 28;
+			this.panel1.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnDangXuatNguoiDung
 			// 
@@ -374,6 +385,7 @@ namespace Main.Pages
 			this.btnDangXuatNguoiDung.TabIndex = 0;
 			this.btnDangXuatNguoiDung.TabStop = false;
 			this.btnDangXuatNguoiDung.Text = "Đăng xuất";
+			this.btnDangXuatNguoiDung.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlAdmin
 			// 
@@ -386,6 +398,7 @@ namespace Main.Pages
 			this.pnlAdmin.Name = "pnlAdmin";
 			this.pnlAdmin.Size = new System.Drawing.Size(650, 488);
 			this.pnlAdmin.TabIndex = 37;
+			this.pnlAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// gbAdmin
 			// 
@@ -407,6 +420,7 @@ namespace Main.Pages
 			this.gbAdmin.Size = new System.Drawing.Size(600, 374);
 			this.gbAdmin.TabIndex = 28;
 			this.gbAdmin.Text = "Admin";
+			this.gbAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// tbAdmin
 			// 
@@ -437,6 +451,7 @@ namespace Main.Pages
 			this.tbAdmin.Size = new System.Drawing.Size(300, 36);
 			this.tbAdmin.TabIndex = 14;
 			this.tbAdmin.TabStop = false;
+			this.tbAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// lbTaiKhoanAdmin
 			// 
@@ -449,6 +464,7 @@ namespace Main.Pages
 			this.lbTaiKhoanAdmin.Size = new System.Drawing.Size(125, 25);
 			this.lbTaiKhoanAdmin.TabIndex = 12;
 			this.lbTaiKhoanAdmin.Text = "Tài khoản:";
+			this.lbTaiKhoanAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnQuanLyLop
 			// 
@@ -553,6 +569,7 @@ namespace Main.Pages
 			this.pnlBottomAdmin.Name = "pnlBottomAdmin";
 			this.pnlBottomAdmin.Size = new System.Drawing.Size(650, 48);
 			this.pnlBottomAdmin.TabIndex = 27;
+			this.pnlBottomAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnDangXuatAdmin
 			// 
@@ -580,6 +597,7 @@ namespace Main.Pages
 			this.btnDangXuatAdmin.TabIndex = 0;
 			this.btnDangXuatAdmin.TabStop = false;
 			this.btnDangXuatAdmin.Text = "Đăng xuất";
+			this.btnDangXuatAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlTopAdmin
 			// 
@@ -592,6 +610,7 @@ namespace Main.Pages
 			this.pnlTopAdmin.Name = "pnlTopAdmin";
 			this.pnlTopAdmin.Size = new System.Drawing.Size(650, 48);
 			this.pnlTopAdmin.TabIndex = 18;
+			this.pnlTopAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnKhoiPhucDuLieu
 			// 
@@ -619,6 +638,7 @@ namespace Main.Pages
 			this.btnKhoiPhucDuLieu.TabIndex = 0;
 			this.btnKhoiPhucDuLieu.TabStop = false;
 			this.btnKhoiPhucDuLieu.Text = "Khôi phục dữ liệu";
+			this.btnKhoiPhucDuLieu.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// label2
 			// 
@@ -632,6 +652,7 @@ namespace Main.Pages
 			this.label2.Size = new System.Drawing.Size(174, 32);
 			this.label2.TabIndex = 11;
 			this.label2.Text = "Điều Hướng";
+			this.label2.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlGiaoVien
 			// 
@@ -644,6 +665,7 @@ namespace Main.Pages
 			this.pnlGiaoVien.Name = "pnlGiaoVien";
 			this.pnlGiaoVien.Size = new System.Drawing.Size(650, 488);
 			this.pnlGiaoVien.TabIndex = 38;
+			this.pnlGiaoVien.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// gbManager
 			// 
@@ -665,6 +687,7 @@ namespace Main.Pages
 			this.gbManager.Size = new System.Drawing.Size(600, 374);
 			this.gbManager.TabIndex = 39;
 			this.gbManager.Text = "Manager";
+			this.gbManager.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// lbTaiKhoanManager
 			// 
@@ -677,6 +700,7 @@ namespace Main.Pages
 			this.lbTaiKhoanManager.Size = new System.Drawing.Size(125, 25);
 			this.lbTaiKhoanManager.TabIndex = 14;
 			this.lbTaiKhoanManager.Text = "Tài khoản:";
+			this.lbTaiKhoanManager.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnStatiscicalMark
 			// 
@@ -733,6 +757,7 @@ namespace Main.Pages
 			this.tbManager.Size = new System.Drawing.Size(300, 36);
 			this.tbManager.TabIndex = 13;
 			this.tbManager.TabStop = false;
+			this.tbManager.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnQuanLyMonThi
 			// 
@@ -814,6 +839,7 @@ namespace Main.Pages
 			this.pnlBottomGiaoVien.Name = "pnlBottomGiaoVien";
 			this.pnlBottomGiaoVien.Size = new System.Drawing.Size(650, 48);
 			this.pnlBottomGiaoVien.TabIndex = 27;
+			this.pnlBottomGiaoVien.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnDangXuatGiaoVien
 			// 
@@ -841,6 +867,7 @@ namespace Main.Pages
 			this.btnDangXuatGiaoVien.TabIndex = 0;
 			this.btnDangXuatGiaoVien.TabStop = false;
 			this.btnDangXuatGiaoVien.Text = "Đăng xuất";
+			this.btnDangXuatGiaoVien.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlTopGiaoVien
 			// 
@@ -853,6 +880,7 @@ namespace Main.Pages
 			this.pnlTopGiaoVien.Name = "pnlTopGiaoVien";
 			this.pnlTopGiaoVien.Size = new System.Drawing.Size(650, 48);
 			this.pnlTopGiaoVien.TabIndex = 18;
+			this.pnlTopGiaoVien.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnTroGiup
 			// 
@@ -880,6 +908,7 @@ namespace Main.Pages
 			this.btnTroGiup.TabIndex = 0;
 			this.btnTroGiup.TabStop = false;
 			this.btnTroGiup.Text = "Trợ giúp";
+			this.btnTroGiup.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// label3
 			// 
@@ -893,6 +922,7 @@ namespace Main.Pages
 			this.label3.Size = new System.Drawing.Size(174, 32);
 			this.label3.TabIndex = 11;
 			this.label3.Text = "Điều Hướng";
+			this.label3.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// MainMenu
 			// 

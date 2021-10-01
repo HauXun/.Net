@@ -81,6 +81,7 @@ namespace Main.Pages
 			this.rbAnswerD.TabIndex = 3;
 			this.rbAnswerD.Text = "Đáp án D";
 			this.rbAnswerD.UseVisualStyleBackColor = true;
+			this.rbAnswerD.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// rbAnswerC
 			// 
@@ -93,6 +94,7 @@ namespace Main.Pages
 			this.rbAnswerC.TabIndex = 2;
 			this.rbAnswerC.Text = "Đáp án C";
 			this.rbAnswerC.UseVisualStyleBackColor = true;
+			this.rbAnswerC.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// rbAnswerB
 			// 
@@ -105,6 +107,7 @@ namespace Main.Pages
 			this.rbAnswerB.TabIndex = 1;
 			this.rbAnswerB.Text = "Đáp án B";
 			this.rbAnswerB.UseVisualStyleBackColor = true;
+			this.rbAnswerB.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// rbAnswerA
 			// 
@@ -117,6 +120,7 @@ namespace Main.Pages
 			this.rbAnswerA.TabIndex = 0;
 			this.rbAnswerA.Text = "Đáp án A";
 			this.rbAnswerA.UseVisualStyleBackColor = true;
+			this.rbAnswerA.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// lbNumberQuestion
 			// 
@@ -127,6 +131,7 @@ namespace Main.Pages
 			this.lbNumberQuestion.Size = new System.Drawing.Size(73, 25);
 			this.lbNumberQuestion.TabIndex = 2;
 			this.lbNumberQuestion.Text = "Câu 1";
+			this.lbNumberQuestion.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// lbNoiDungCauHoi
 			// 
@@ -140,6 +145,7 @@ namespace Main.Pages
 			this.lbNoiDungCauHoi.Size = new System.Drawing.Size(209, 35);
 			this.lbNoiDungCauHoi.TabIndex = 1;
 			this.lbNoiDungCauHoi.Text = "Nội dung câu hỏi:";
+			this.lbNoiDungCauHoi.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// rtbQuestionContent
 			// 
@@ -151,6 +157,7 @@ namespace Main.Pages
 			this.rtbQuestionContent.TabIndex = 0;
 			this.rtbQuestionContent.TabStop = false;
 			this.rtbQuestionContent.Text = "";
+			this.rtbQuestionContent.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// pnlLineDSCH
 			// 
@@ -160,6 +167,7 @@ namespace Main.Pages
 			this.pnlLineDSCH.Name = "pnlLineDSCH";
 			this.pnlLineDSCH.Size = new System.Drawing.Size(300, 5);
 			this.pnlLineDSCH.TabIndex = 3;
+			this.pnlLineDSCH.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// Line
 			// 
@@ -168,6 +176,7 @@ namespace Main.Pages
 			this.Line.Name = "Line";
 			this.Line.Size = new System.Drawing.Size(250, 1);
 			this.Line.TabIndex = 0;
+			this.Line.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// fLPdata
 			// 
@@ -176,6 +185,7 @@ namespace Main.Pages
 			this.fLPdata.Name = "fLPdata";
 			this.fLPdata.Size = new System.Drawing.Size(294, 345);
 			this.fLPdata.TabIndex = 1;
+			this.fLPdata.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// lbDanhSachCauHoi
 			// 
@@ -188,6 +198,7 @@ namespace Main.Pages
 			this.lbDanhSachCauHoi.TabIndex = 0;
 			this.lbDanhSachCauHoi.Text = "Sơ đồ câu hỏi";
 			this.lbDanhSachCauHoi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbDanhSachCauHoi.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// btnReset
 			// 
@@ -249,6 +260,7 @@ namespace Main.Pages
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(300, 5);
 			this.panel1.TabIndex = 5;
+			this.panel1.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// panel2
 			// 
@@ -257,6 +269,7 @@ namespace Main.Pages
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(250, 1);
 			this.panel2.TabIndex = 0;
+			this.panel2.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// label1
 			// 
@@ -269,6 +282,7 @@ namespace Main.Pages
 			this.label1.TabIndex = 4;
 			this.label1.Text = "Thời gian làm bài";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.label1.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// cPBCountDownTime
 			// 
@@ -302,6 +316,7 @@ namespace Main.Pages
 			this.cPBCountDownTime.Text = "00:00:00";
 			this.cPBCountDownTime.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
 			this.cPBCountDownTime.Value = 68;
+			this.cPBCountDownTime.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// btnPreviousQuestion
 			// 
@@ -469,6 +484,7 @@ namespace Main.Pages
 			this.pnlCauHoi.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlCauHoi.Size = new System.Drawing.Size(1200, 400);
 			this.pnlCauHoi.TabIndex = 17;
+			this.pnlCauHoi.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// pnlAnswer
 			// 
@@ -486,6 +502,7 @@ namespace Main.Pages
 			this.pnlAnswer.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlAnswer.Size = new System.Drawing.Size(1200, 300);
 			this.pnlAnswer.TabIndex = 3;
+			this.pnlAnswer.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// pNavigation
 			// 
@@ -504,6 +521,7 @@ namespace Main.Pages
 			this.pNavigation.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pNavigation.Size = new System.Drawing.Size(1200, 60);
 			this.pNavigation.TabIndex = 3;
+			this.pNavigation.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// pnlNopBai
 			// 
@@ -518,6 +536,7 @@ namespace Main.Pages
 			this.pnlNopBai.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlNopBai.Size = new System.Drawing.Size(300, 60);
 			this.pnlNopBai.TabIndex = 3;
+			this.pnlNopBai.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// pnlThoiGian
 			// 
@@ -534,6 +553,7 @@ namespace Main.Pages
 			this.pnlThoiGian.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlThoiGian.Size = new System.Drawing.Size(300, 300);
 			this.pnlThoiGian.TabIndex = 3;
+			this.pnlThoiGian.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// pnlDanhSachCauHoi
 			// 
@@ -550,6 +570,7 @@ namespace Main.Pages
 			this.pnlDanhSachCauHoi.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlDanhSachCauHoi.Size = new System.Drawing.Size(300, 400);
 			this.pnlDanhSachCauHoi.TabIndex = 3;
+			this.pnlDanhSachCauHoi.Click += new System.EventHandler(this.QuizTest_Click);
 			// 
 			// QuizTest
 			// 
@@ -563,6 +584,7 @@ namespace Main.Pages
 			this.Name = "QuizTest";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmQuiz_Load);
+			this.Click += new System.EventHandler(this.QuizTest_Click);
 			this.pnlLineDSCH.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
 			this.pnlCauHoi.ResumeLayout(false);

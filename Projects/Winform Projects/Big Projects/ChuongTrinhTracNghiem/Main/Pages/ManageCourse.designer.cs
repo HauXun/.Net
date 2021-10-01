@@ -44,6 +44,11 @@ namespace Main.Pages
 			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
 			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
 			this.aDgvdata = new ADGV.AdvancedDataGridView();
+			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CourseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.FacultyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TrainingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
 			this.btnEdit = new FontAwesome.Sharp.IconButton();
 			this.btnDelete = new FontAwesome.Sharp.IconButton();
@@ -63,11 +68,6 @@ namespace Main.Pages
 			this.errorProviderWar = new System.Windows.Forms.ErrorProvider(this.components);
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pnlDataGridView = new Guna.UI2.WinForms.Guna2ShadowPanel();
-			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CourseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FacultyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TrainingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.pnlControls.SuspendLayout();
 			this.pnlInfo2.SuspendLayout();
@@ -113,6 +113,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(268, 35);
 			this.lbTitle.TabIndex = 13;
 			this.lbTitle.Text = "Quản lý khóa học";
+			this.lbTitle.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// iconTitle
 			// 
@@ -131,6 +132,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.ManageCourse_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// bScrollBar
@@ -158,7 +160,7 @@ namespace Main.Pages
 			this.bScrollBar.DurationBeforeShrink = 2000;
 			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1488, 98);
+			this.bScrollBar.Location = new System.Drawing.Point(1481, 96);
 			this.bScrollBar.Maximum = 100;
 			this.bScrollBar.Minimum = 0;
 			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
@@ -173,7 +175,7 @@ namespace Main.Pages
 			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 385);
+			this.bScrollBar.Size = new System.Drawing.Size(31, 387);
 			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
 			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
@@ -186,6 +188,7 @@ namespace Main.Pages
 			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
 			this.bScrollBar.Value = 100;
 			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			this.bScrollBar.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// tbSearch
 			// 
@@ -216,6 +219,7 @@ namespace Main.Pages
 			this.tbSearch.Size = new System.Drawing.Size(281, 35);
 			this.tbSearch.TabIndex = 8;
 			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Click += new System.EventHandler(this.ManageCourse_Click);
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
@@ -259,13 +263,13 @@ namespace Main.Pages
 			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle7;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(18, 56);
+			this.aDgvdata.Location = new System.Drawing.Point(45, 56);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1469, 427);
+			this.aDgvdata.Size = new System.Drawing.Size(1430, 427);
 			this.aDgvdata.TabIndex = 7;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -274,6 +278,65 @@ namespace Main.Pages
 			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			this.aDgvdata.Click += new System.EventHandler(this.ManageCourse_Click);
+			// 
+			// STT
+			// 
+			this.STT.DataPropertyName = "STT";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
+			this.STT.FillWeight = 40F;
+			this.STT.HeaderText = "STT";
+			this.STT.MinimumWidth = 22;
+			this.STT.Name = "STT";
+			this.STT.ReadOnly = true;
+			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// CourseID
+			// 
+			this.CourseID.DataPropertyName = "CourseID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CourseID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.CourseID.FillWeight = 60F;
+			this.CourseID.HeaderText = "Mã khóa";
+			this.CourseID.MinimumWidth = 22;
+			this.CourseID.Name = "CourseID";
+			this.CourseID.ReadOnly = true;
+			this.CourseID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// FacultyID
+			// 
+			this.FacultyID.DataPropertyName = "FacultyID";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle5.NullValue = "NULL";
+			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle5;
+			this.FacultyID.FillWeight = 60F;
+			this.FacultyID.HeaderText = "Mã khoa";
+			this.FacultyID.MinimumWidth = 22;
+			this.FacultyID.Name = "FacultyID";
+			this.FacultyID.ReadOnly = true;
+			this.FacultyID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// TrainingID
+			// 
+			this.TrainingID.DataPropertyName = "TrainingID";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.TrainingID.DefaultCellStyle = dataGridViewCellStyle6;
+			this.TrainingID.FillWeight = 60F;
+			this.TrainingID.HeaderText = "Hình thức đào tạo";
+			this.TrainingID.MinimumWidth = 22;
+			this.TrainingID.Name = "TrainingID";
+			this.TrainingID.ReadOnly = true;
+			this.TrainingID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			// 
+			// Description
+			// 
+			this.Description.DataPropertyName = "Description";
+			this.Description.HeaderText = "Mô tả";
+			this.Description.MinimumWidth = 22;
+			this.Description.Name = "Description";
+			this.Description.ReadOnly = true;
+			this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
 			// 
 			// btnClearFilter
 			// 
@@ -416,6 +479,7 @@ namespace Main.Pages
 			this.pnlControls.Name = "pnlControls";
 			this.pnlControls.Size = new System.Drawing.Size(1500, 210);
 			this.pnlControls.TabIndex = 33;
+			this.pnlControls.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// pnlInfo2
 			// 
@@ -433,6 +497,7 @@ namespace Main.Pages
 			this.pnlInfo2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo2.Size = new System.Drawing.Size(500, 170);
 			this.pnlInfo2.TabIndex = 35;
+			this.pnlInfo2.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// cbTrainingRole
 			// 
@@ -464,6 +529,7 @@ namespace Main.Pages
 			this.cbTrainingRole.Size = new System.Drawing.Size(450, 36);
 			this.cbTrainingRole.TabIndex = 42;
 			this.cbTrainingRole.Text = null;
+			this.cbTrainingRole.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// cbFaculty
 			// 
@@ -495,6 +561,7 @@ namespace Main.Pages
 			this.cbFaculty.Size = new System.Drawing.Size(450, 36);
 			this.cbFaculty.TabIndex = 41;
 			this.cbFaculty.Text = null;
+			this.cbFaculty.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// lbKhoa
 			// 
@@ -505,6 +572,7 @@ namespace Main.Pages
 			this.lbKhoa.Size = new System.Drawing.Size(56, 18);
 			this.lbKhoa.TabIndex = 0;
 			this.lbKhoa.Text = "Khoa:";
+			this.lbKhoa.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// lbHinhThucDaoTao
 			// 
@@ -515,6 +583,7 @@ namespace Main.Pages
 			this.lbHinhThucDaoTao.Size = new System.Drawing.Size(163, 18);
 			this.lbHinhThucDaoTao.TabIndex = 2;
 			this.lbHinhThucDaoTao.Text = "Hình thức đào tạo:";
+			this.lbHinhThucDaoTao.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// pnlInfo1
 			// 
@@ -532,6 +601,7 @@ namespace Main.Pages
 			this.pnlInfo1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo1.Size = new System.Drawing.Size(500, 170);
 			this.pnlInfo1.TabIndex = 35;
+			this.pnlInfo1.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// tbDescription
 			// 
@@ -559,6 +629,7 @@ namespace Main.Pages
 			this.tbDescription.ShadowDecoration.Parent = this.tbDescription;
 			this.tbDescription.Size = new System.Drawing.Size(450, 35);
 			this.tbDescription.TabIndex = 5;
+			this.tbDescription.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// tbCourseID
 			// 
@@ -586,6 +657,7 @@ namespace Main.Pages
 			this.tbCourseID.ShadowDecoration.Parent = this.tbCourseID;
 			this.tbCourseID.Size = new System.Drawing.Size(450, 35);
 			this.tbCourseID.TabIndex = 4;
+			this.tbCourseID.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// lbMaKhoa
 			// 
@@ -596,6 +668,7 @@ namespace Main.Pages
 			this.lbMaKhoa.Size = new System.Drawing.Size(83, 18);
 			this.lbMaKhoa.TabIndex = 0;
 			this.lbMaKhoa.Text = "Mã khóa:";
+			this.lbMaKhoa.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// lbMoTa
 			// 
@@ -606,6 +679,7 @@ namespace Main.Pages
 			this.lbMoTa.Size = new System.Drawing.Size(61, 18);
 			this.lbMoTa.TabIndex = 2;
 			this.lbMoTa.Text = "Mô tả:";
+			this.lbMoTa.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// errorProviderWar
 			// 
@@ -640,64 +714,7 @@ namespace Main.Pages
 			this.pnlDataGridView.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlDataGridView.Size = new System.Drawing.Size(1525, 500);
 			this.pnlDataGridView.TabIndex = 34;
-			// 
-			// STT
-			// 
-			this.STT.DataPropertyName = "STT";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.STT.DefaultCellStyle = dataGridViewCellStyle3;
-			this.STT.FillWeight = 40F;
-			this.STT.HeaderText = "STT";
-			this.STT.MinimumWidth = 22;
-			this.STT.Name = "STT";
-			this.STT.ReadOnly = true;
-			this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// CourseID
-			// 
-			this.CourseID.DataPropertyName = "CourseID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CourseID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.CourseID.FillWeight = 60F;
-			this.CourseID.HeaderText = "Mã khóa";
-			this.CourseID.MinimumWidth = 22;
-			this.CourseID.Name = "CourseID";
-			this.CourseID.ReadOnly = true;
-			this.CourseID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// FacultyID
-			// 
-			this.FacultyID.DataPropertyName = "FacultyID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle5.NullValue = "NULL";
-			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle5;
-			this.FacultyID.FillWeight = 60F;
-			this.FacultyID.HeaderText = "Mã khoa";
-			this.FacultyID.MinimumWidth = 22;
-			this.FacultyID.Name = "FacultyID";
-			this.FacultyID.ReadOnly = true;
-			this.FacultyID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// TrainingID
-			// 
-			this.TrainingID.DataPropertyName = "TrainingID";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.TrainingID.DefaultCellStyle = dataGridViewCellStyle6;
-			this.TrainingID.FillWeight = 60F;
-			this.TrainingID.HeaderText = "Hình thức đào tạo";
-			this.TrainingID.MinimumWidth = 22;
-			this.TrainingID.Name = "TrainingID";
-			this.TrainingID.ReadOnly = true;
-			this.TrainingID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			// 
-			// Description
-			// 
-			this.Description.DataPropertyName = "Description";
-			this.Description.HeaderText = "Mô tả";
-			this.Description.MinimumWidth = 22;
-			this.Description.Name = "Description";
-			this.Description.ReadOnly = true;
-			this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.pnlDataGridView.Click += new System.EventHandler(this.ManageCourse_Click);
 			// 
 			// ManageCourse
 			// 
@@ -710,6 +727,7 @@ namespace Main.Pages
 			this.Name = "ManageCourse";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmManageCourse_Load);
+			this.Click += new System.EventHandler(this.ManageCourse_Click);
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).EndInit();
 			this.pnlControls.ResumeLayout(false);
 			this.pnlInfo2.ResumeLayout(false);

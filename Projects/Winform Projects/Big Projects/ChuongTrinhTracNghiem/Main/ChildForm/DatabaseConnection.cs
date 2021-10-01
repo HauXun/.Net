@@ -249,6 +249,11 @@ namespace Main
 
 		private void btnTestConnect_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += DatabaseConnection_GotFocus;
+		}
+
+		private void DatabaseConnection_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 

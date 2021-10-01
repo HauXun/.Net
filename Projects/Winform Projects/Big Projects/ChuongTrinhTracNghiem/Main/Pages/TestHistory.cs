@@ -127,6 +127,7 @@ namespace Main.Pages
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			try
 			{
 				string keyword = tbSearch.Text;
@@ -175,6 +176,11 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += TestHistory_GotFocus;
+		}
+
+		private void TestHistory_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 
@@ -210,6 +216,11 @@ namespace Main.Pages
 				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
 			}
+		}
+
+		private void TestHistory_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		#endregion

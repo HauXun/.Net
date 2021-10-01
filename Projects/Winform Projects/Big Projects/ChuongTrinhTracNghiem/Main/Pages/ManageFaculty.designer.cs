@@ -88,6 +88,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(207, 35);
 			this.lbTitle.TabIndex = 14;
 			this.lbTitle.Text = "Quản lý khoa";
+			this.lbTitle.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// btnAdd
 			// 
@@ -132,6 +133,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.ManageFaculty_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlControls
@@ -143,6 +145,7 @@ namespace Main.Pages
 			this.pnlControls.Name = "pnlControls";
 			this.pnlControls.Size = new System.Drawing.Size(1500, 210);
 			this.pnlControls.TabIndex = 35;
+			this.pnlControls.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// pnlInfo2
 			// 
@@ -160,6 +163,7 @@ namespace Main.Pages
 			this.pnlInfo2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo2.Size = new System.Drawing.Size(500, 170);
 			this.pnlInfo2.TabIndex = 38;
+			this.pnlInfo2.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// tbFacultyName
 			// 
@@ -187,6 +191,7 @@ namespace Main.Pages
 			this.tbFacultyName.ShadowDecoration.Parent = this.tbFacultyName;
 			this.tbFacultyName.Size = new System.Drawing.Size(450, 35);
 			this.tbFacultyName.TabIndex = 5;
+			this.tbFacultyName.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// dtpFoundingDate
 			// 
@@ -207,6 +212,7 @@ namespace Main.Pages
 			this.dtpFoundingDate.Size = new System.Drawing.Size(450, 35);
 			this.dtpFoundingDate.TabIndex = 1;
 			this.dtpFoundingDate.Value = new System.DateTime(2021, 9, 6, 0, 2, 13, 728);
+			this.dtpFoundingDate.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// lbTenKhoa
 			// 
@@ -217,6 +223,7 @@ namespace Main.Pages
 			this.lbTenKhoa.Size = new System.Drawing.Size(90, 18);
 			this.lbTenKhoa.TabIndex = 0;
 			this.lbTenKhoa.Text = "Tên khoa:";
+			this.lbTenKhoa.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// lbNgayThanhLap
 			// 
@@ -227,6 +234,7 @@ namespace Main.Pages
 			this.lbNgayThanhLap.Size = new System.Drawing.Size(140, 18);
 			this.lbNgayThanhLap.TabIndex = 2;
 			this.lbNgayThanhLap.Text = "Ngày thành lập:";
+			this.lbNgayThanhLap.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// pnlInfo1
 			// 
@@ -244,6 +252,7 @@ namespace Main.Pages
 			this.pnlInfo1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo1.Size = new System.Drawing.Size(500, 170);
 			this.pnlInfo1.TabIndex = 38;
+			this.pnlInfo1.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// tbDescription
 			// 
@@ -271,6 +280,7 @@ namespace Main.Pages
 			this.tbDescription.ShadowDecoration.Parent = this.tbDescription;
 			this.tbDescription.Size = new System.Drawing.Size(450, 35);
 			this.tbDescription.TabIndex = 5;
+			this.tbDescription.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// lbMaKhoa
 			// 
@@ -281,6 +291,7 @@ namespace Main.Pages
 			this.lbMaKhoa.Size = new System.Drawing.Size(83, 18);
 			this.lbMaKhoa.TabIndex = 0;
 			this.lbMaKhoa.Text = "Mã khoa:";
+			this.lbMaKhoa.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// tbFacultyID
 			// 
@@ -308,6 +319,7 @@ namespace Main.Pages
 			this.tbFacultyID.ShadowDecoration.Parent = this.tbFacultyID;
 			this.tbFacultyID.Size = new System.Drawing.Size(450, 35);
 			this.tbFacultyID.TabIndex = 4;
+			this.tbFacultyID.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// lbMoTa
 			// 
@@ -318,6 +330,7 @@ namespace Main.Pages
 			this.lbMoTa.Size = new System.Drawing.Size(61, 18);
 			this.lbMoTa.TabIndex = 2;
 			this.lbMoTa.Text = "Mô tả:";
+			this.lbMoTa.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// bScrollBar
 			// 
@@ -344,7 +357,7 @@ namespace Main.Pages
 			this.bScrollBar.DurationBeforeShrink = 2000;
 			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1488, 98);
+			this.bScrollBar.Location = new System.Drawing.Point(1481, 96);
 			this.bScrollBar.Maximum = 100;
 			this.bScrollBar.Minimum = 0;
 			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
@@ -359,7 +372,7 @@ namespace Main.Pages
 			this.bScrollBar.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.ShrinkSizeLimit = 3;
-			this.bScrollBar.Size = new System.Drawing.Size(31, 385);
+			this.bScrollBar.Size = new System.Drawing.Size(31, 387);
 			this.bScrollBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.SliderStyle = Bunifu.UI.WinForms.BunifuVSlider.SliderStyles.Thin;
 			this.bScrollBar.SliderThumbStyle = Utilities.BunifuSlider.BunifuVScrollBar.SliderThumbStyles.Circular;
@@ -372,6 +385,7 @@ namespace Main.Pages
 			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
 			this.bScrollBar.Value = 100;
 			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			this.bScrollBar.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// tbSearch
 			// 
@@ -402,6 +416,7 @@ namespace Main.Pages
 			this.tbSearch.Size = new System.Drawing.Size(281, 35);
 			this.tbSearch.TabIndex = 8;
 			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Click += new System.EventHandler(this.ManageFaculty_Click);
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
@@ -445,13 +460,13 @@ namespace Main.Pages
 			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle8;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(18, 56);
+			this.aDgvdata.Location = new System.Drawing.Point(45, 56);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1469, 427);
+			this.aDgvdata.Size = new System.Drawing.Size(1430, 427);
 			this.aDgvdata.TabIndex = 7;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -460,6 +475,7 @@ namespace Main.Pages
 			this.aDgvdata.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.aDgvdata_RowPrePaint);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			this.aDgvdata.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// STT
 			// 
@@ -686,6 +702,7 @@ namespace Main.Pages
 			this.pnlDataGridView.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlDataGridView.Size = new System.Drawing.Size(1525, 500);
 			this.pnlDataGridView.TabIndex = 38;
+			this.pnlDataGridView.Click += new System.EventHandler(this.ManageFaculty_Click);
 			// 
 			// ManageFaculty
 			// 
@@ -698,6 +715,7 @@ namespace Main.Pages
 			this.Name = "ManageFaculty";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmManageFaculty_Load);
+			this.Click += new System.EventHandler(this.ManageFaculty_Click);
 			this.pnlControls.ResumeLayout(false);
 			this.pnlInfo2.ResumeLayout(false);
 			this.pnlInfo2.PerformLayout();

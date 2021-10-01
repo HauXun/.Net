@@ -66,11 +66,18 @@ namespace Main.Pages
 
 		private void LoadData(EventArgs e)
 		{
-			fLPdata.Controls.Clear();
-			LoadQuestion();
-			btnFirstQuestion_Click(this, e);
-			NavigationButton();
-			pNavigation.Enabled = fLPdata.Controls.Count > 0;
+			try
+			{
+				fLPdata.Controls.Clear();
+				LoadQuestion();
+				btnFirstQuestion_Click(this, e);
+				NavigationButton();
+				pNavigation.Enabled = fLPdata.Controls.Count > 0;
+			}
+			catch (Exception ex)
+			{
+				MsgBox.ShowMessage(ex.Message, "Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void ShowQuestion(int questionID)
@@ -191,12 +198,19 @@ namespace Main.Pages
 		private void FinishQuiz()
 		{
 			timer.Stop();
-			SaveCurrentSelected();
-			SavePoint();
-			SaveTestHistory();
+			if (Exam != null && Data != null)
+			{
+				SaveCurrentSelected();
+				SavePoint();
+				SaveTestHistory();
 
-			Session.Data = this.Data;
-			fLPdata.Controls.Clear();
+				Session.Data = this.Data;
+			}
+			else
+			{
+				MsgBox.ShowMessage("Xung đột dữ liệu, không thể kết thúc!", "Amazing Quiz Application", 
+					MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
 		}
 
 		private void SavePoint()
@@ -218,20 +232,20 @@ namespace Main.Pages
 
 		private void SaveTestHistory()
 		{
-			Entities.TestHistory history = new Entities.TestHistory()
-			{
-				ExamID = Exam.ExamID,
-				SubjectID = Exam.SubjectID,
-				UserID = Account.UserID,
-				SemesterID = SubjectBLL.Instance.GetSubjectByID(Exam.SubjectID).SemesterID,
-				CorrectAnswer = correctAnswer,
-				TotalQuestion = Exam.QCount,
-				Mark = mark,
-				CreatedBy = Account.FullName
-			};
-
 			try
 			{
+				Entities.TestHistory history = new Entities.TestHistory()
+				{
+					ExamID = Exam.ExamID,
+					SubjectID = Exam.SubjectID,
+					UserID = Account.UserID,
+					SemesterID = SubjectBLL.Instance.GetSubjectByID(Exam.SubjectID).SemesterID,
+					CorrectAnswer = correctAnswer,
+					TotalQuestion = Exam.QCount,
+					Mark = mark,
+					CreatedBy = Account.FullName
+				};
+
 				TestHistoryBLL.Instance.SaveTestHistory(history);
 			}
 			catch (Exception e)
@@ -279,6 +293,7 @@ namespace Main.Pages
 
 		private void Button_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			try
 			{
 				ShowDetailQuestion(sender, e);
@@ -292,6 +307,7 @@ namespace Main.Pages
 
 		private void btnFirstQuestion_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (fLPdata.Controls.Count > 0)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals("1")).FirstOrDefault();
@@ -301,6 +317,7 @@ namespace Main.Pages
 
 		private void btnLastQuestion_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (fLPdata.Controls.Count > 0)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals(Exam.QCount.ToString())).FirstOrDefault();
@@ -310,6 +327,7 @@ namespace Main.Pages
 
 		private void btnPreviousQuestion_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (int.TryParse(selectedIndex, out int idx) && idx - 1 > 0 && fLPdata.Controls.Count > 0)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx - 1).ToString())).FirstOrDefault();
@@ -319,6 +337,7 @@ namespace Main.Pages
 
 		private void btnNextQuestion_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (int.TryParse(selectedIndex, out int idx) && idx + 1 <= Exam.QCount && fLPdata.Controls.Count > 0)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx + 1).ToString())).FirstOrDefault();
@@ -328,6 +347,7 @@ namespace Main.Pages
 
 		private void btnEnd_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (MsgBox.ShowMessage("Bạn có chắn chắn muốn nộp bài!", "Amazing Quiz Application",
 				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.No)
 			{
@@ -345,6 +365,7 @@ namespace Main.Pages
 
 		private void lLuncheck_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			ClearChecked();
 			SaveCurrentSelected();
 		}
@@ -356,6 +377,7 @@ namespace Main.Pages
 
 		private void btnFlags_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCount)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx).ToString())).FirstOrDefault();
@@ -382,18 +404,40 @@ namespace Main.Pages
 
 		private void btnReset_Click(object sender, EventArgs e)
 		{
-			if (MsgBox.ShowMessage("Bạn có chắn chắn muốn làm lại bài thi không? Đáp án trước đó sẽ được hủy!", "Amazing Quiz Application",
-				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
+			Session.ShowHideMenu?.Invoke();
+			if (Exam != null && Data != null)
 			{
-				ClearAnswerData();
-				ClearChecked();
-				LoadData(e);
+				if (MsgBox.ShowMessage("Bạn có chắn chắn muốn làm lại bài thi không? Đáp án trước đó sẽ được hủy!", "Amazing Quiz Application",
+					MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
+				{
+					ClearAnswerData();
+					ClearChecked();
+					LoadData(e);
+				}
+			}
+			else
+			{
+				MsgBox.ShowMessage("Xung đột dữ liệu, không thể đặt lại!", "Amazing Quiz Application",
+					MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
 			}
 		}
 
 		private void btnPreviousQuestion_Enter(object sender, EventArgs e)
 		{
+			if (sender is FontAwesome.Sharp.IconButton)
+				(sender as FontAwesome.Sharp.IconButton).GotFocus += QuizTest_GotFocus;
+			else
+				(sender as Button).GotFocus += QuizTest_GotFocus;
+		}
+
+		private void QuizTest_GotFocus(object sender, EventArgs e)
+		{
 			lbNoiDungCauHoi.Focus();
+		}
+
+		private void QuizTest_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		#endregion

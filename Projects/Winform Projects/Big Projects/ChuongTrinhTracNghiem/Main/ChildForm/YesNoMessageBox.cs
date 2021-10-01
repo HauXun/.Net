@@ -43,7 +43,18 @@ namespace Main
 
 		private void btnNo_Enter(object sender, System.EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += YesNoMessageBox_GotFocus;
+		}
+
+		private void YesNoMessageBox_GotFocus(object sender, System.EventArgs e)
+		{
 			lbTitle.Focus();
+		}
+
+		private void YesNoMessageBox_Shown(object sender, System.EventArgs e)
+		{
+			this.Activate();
+			btnNo.Focus();
 		}
 	}
 }

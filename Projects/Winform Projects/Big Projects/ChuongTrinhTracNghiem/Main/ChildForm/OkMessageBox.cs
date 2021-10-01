@@ -43,7 +43,18 @@ namespace Main
 
 		private void btnOk_Enter(object sender, System.EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += OkMessageBox_GotFocus;
+		}
+
+		private void OkMessageBox_GotFocus(object sender, System.EventArgs e)
+		{
 			lbTitle.Focus();
+		}
+
+		private void OkMessageBox_Shown(object sender, System.EventArgs e)
+		{
+			this.Activate();
+			btnOk.Focus();
 		}
 	}
 }

@@ -5,8 +5,6 @@ using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -279,6 +277,7 @@ namespace Main.Pages
 
 		private void btnRestore_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (!DatabaseConnection.Connected)
 			{
 				btnConnect_Click(this, e);
@@ -297,6 +296,7 @@ namespace Main.Pages
 
 		private void btnSaoLuu_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (!DatabaseConnection.Connected)
 			{
 				btnConnect_Click(this, e);
@@ -314,6 +314,7 @@ namespace Main.Pages
 
 		private void btnCancle_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isRestore = false;
 			VisibleButton(false);
 			ClearControl();
@@ -323,6 +324,7 @@ namespace Main.Pages
 
 		private void btnBrowser_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			Thread thread = new Thread((ThreadStart)(() =>
 			{
 				if (isRestore)
@@ -367,6 +369,7 @@ namespace Main.Pages
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			isEnable = false;
 			try
 			{
@@ -395,6 +398,7 @@ namespace Main.Pages
 
 		private void btnConnect_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			try
 			{
 				if (DatabaseConnection != null)
@@ -417,6 +421,7 @@ namespace Main.Pages
 
 		private void btnDisconnect_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			ClearControl();
 			EnableControl(false);
 			ClearError();
@@ -426,7 +431,17 @@ namespace Main.Pages
 
 		private void btnRestore_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += BackupRestore_GotFocus;
+		}
+
+		private void BackupRestore_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
+		}
+
+		private void pbBackground_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		#endregion

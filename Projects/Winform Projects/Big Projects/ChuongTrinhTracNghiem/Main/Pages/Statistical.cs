@@ -96,6 +96,7 @@ namespace Main.Pages
 
 		private void btnClearFilter_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			try
 			{
 				if (!string.IsNullOrEmpty(tbSearch.Text))
@@ -162,6 +163,11 @@ namespace Main.Pages
 
 		private void tbSearch_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += Statistical_GotFocus;
+		}
+
+		private void Statistical_GotFocus(object sender, EventArgs e)
+		{
 			tbSearch.Clear();
 		}
 
@@ -179,6 +185,11 @@ namespace Main.Pages
 				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
 			}
+		}
+
+		private void Statistical_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		#endregion

@@ -91,7 +91,10 @@ namespace Main.Pages
 			string password = tbMatKhau.Text;
 
 			if (!IsValidUpdateInfo())
+			{
+				isSuccess = false;
 				return;
+			}
 
 			Update(password, account);
 		}
@@ -103,13 +106,21 @@ namespace Main.Pages
 		{
 			UserAccount account = new UserAccount()
 			{
-				Username = tbTaiKhoan.Text
+				Username = tbTaiKhoan.Text,
+				FullName = tbFullName.Text,
+				Address = tbDiaChi.Text,
+				PhoneNumber = tbSoDienThoai.Text,
+				Email = tbEmail.Text,
+				Birthday = dtpNgaySinh.Value
 			};
 			string password = tbMatKhau.Text;
 			string newPassword = tbMatKhauMoi.Text;
 
 			if (!IsValidUpdatePassword())
+			{
+				isSuccess = false;
 				return;
+			}
 
 			Update(password, account, newPassword);
 		}
@@ -125,7 +136,7 @@ namespace Main.Pages
 		/// <param name="ngaysinh"></param>
 		/// <param name="password"></param>
 		/// <param name="newPassword"></param>
-		private void Update(string password, UserAccount account = null, string newPassword = "")
+		private void Update(string password, UserAccount account, string newPassword = "")
 		{
 			try
 			{
@@ -134,7 +145,7 @@ namespace Main.Pages
 					MsgBox.ShowMessage("Cập nhập thành công!", "Amazing Quiz Application",
 						MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
 					Account = AccountBLL.Instance.GetAccountByUserName(account.Username);
-					isSuccess = !isSuccess;
+					isSuccess = true;
 					if (updateAccountInfo != null)
 					{
 						updateAccountInfo(this, new AccountChanged(Account));
@@ -166,7 +177,7 @@ namespace Main.Pages
 			tbClass.Text = account.ClassID;
 			tbSoDienThoai.Text = account.PhoneNumber;
 			tbEmail.Text = account.Email;
-			dtpNgaySinh.Value = account.Birthday;
+			dtpNgaySinh.Value = Convert.ToDateTime(account.Birthday.ToString("dd/MM/yyyy"));
 		}
 
 		/// <summary>
@@ -232,10 +243,10 @@ namespace Main.Pages
 		/// <summary>
 		/// 2 tính năng không được hoạt động cung 1 lúc
 		/// </summary>
-		/// <param name="isFunc1"></param>
-		private void DisableRemainFunc(bool isFunc1)
+		/// <param name="isFunc"></param>
+		private void DisableRemainFunc(bool isFunc)
 		{
-			if (isFunc1)
+			if (isFunc)
 			{
 				tbMatKhau.Text = string.Empty;
 				tbMatKhau.Enabled = !tbMatKhau.Enabled;
@@ -449,6 +460,7 @@ namespace Main.Pages
 
 		private void btnChinhSua_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (btnChinhSua.Enabled)
 			{
 				EnableControlInfo(true);
@@ -460,6 +472,7 @@ namespace Main.Pages
 
 		private void btnLuuThongTin_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			UpdateInfo();
 			if (!btnChinhSua.Enabled && isSuccess)
 			{
@@ -470,6 +483,7 @@ namespace Main.Pages
 
 		private void btnHuyLuu_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (!btnChinhSua.Enabled)
 			{
 				EnableControlInfo(false);
@@ -482,6 +496,7 @@ namespace Main.Pages
 
 		private void btnDoiMatKhau_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (btnDoiMatKhau.Enabled)
 			{
 				EnableControlPassword(true);
@@ -491,6 +506,7 @@ namespace Main.Pages
 
 		private void btnLuuMatKhau_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			UpdatePassword();
 			if (!btnDoiMatKhau.Enabled && isSuccess)
 			{
@@ -501,6 +517,7 @@ namespace Main.Pages
 
 		private void btnHuyMatKhau_Click(object sender, EventArgs e)
 		{
+			Session.ShowHideMenu?.Invoke();
 			if (!btnDoiMatKhau.Enabled)
 			{
 				EnableControlPassword(false);
@@ -513,7 +530,17 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += Profile_GotFocus;
+		}
+
+		private void Profile_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
+		}
+
+		private void pbBackground_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
 		}
 
 		private event EventHandler<AccountChanged> updateAccountInfo;

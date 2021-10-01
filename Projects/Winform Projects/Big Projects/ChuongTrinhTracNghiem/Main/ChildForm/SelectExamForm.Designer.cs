@@ -221,8 +221,9 @@ namespace Main
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SelectExamForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "SelectExamForm";
+			this.Text = "Amazing Quiz Application";
 			this.Load += new System.EventHandler(this.FrmSelectExam_Load);
+			this.Shown += new System.EventHandler(this.SelectExamForm_Shown);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);

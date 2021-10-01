@@ -48,7 +48,6 @@ namespace Main
                                 break;
                         }
                         result = msgOk.ShowDialog();
-                        msgOk.Activate();
                     }
                     break;
                 case MessageBoxButtons.YesNo:
@@ -78,7 +77,6 @@ namespace Main
                                 break;
                         }
                         result = msgYesNo.ShowDialog();
-                        msgYesNo.Activate();
                     }
                     break;
             }

@@ -40,14 +40,14 @@ namespace Main.Pages
 			this.bP = new Bunifu.UI.WinForms.BunifuPages();
 			this.addAdmin = new System.Windows.Forms.TabPage();
 			this.editAdmin = new System.Windows.Forms.TabPage();
+			this.bkPage1 = new System.Windows.Forms.TabPage();
+			this.bkPage2 = new System.Windows.Forms.TabPage();
 			this.addManager = new System.Windows.Forms.TabPage();
 			this.editManager = new System.Windows.Forms.TabPage();
 			this.guide1 = new System.Windows.Forms.TabPage();
 			this.guide2 = new System.Windows.Forms.TabPage();
 			this.guide3 = new System.Windows.Forms.TabPage();
 			this.guide4 = new System.Windows.Forms.TabPage();
-			this.bkPage1 = new System.Windows.Forms.TabPage();
-			this.bkPage2 = new System.Windows.Forms.TabPage();
 			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
 			this.pnlHuongDan.SuspendLayout();
 			this.bP.SuspendLayout();
@@ -65,6 +65,7 @@ namespace Main.Pages
 			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pbBackground.TabIndex = 1;
 			this.pbBackground.TabStop = false;
+			this.pbBackground.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// iconTitle
 			// 
@@ -83,6 +84,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 26;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.pbBackground_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// lbTitle
@@ -96,6 +98,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(175, 37);
 			this.lbTitle.TabIndex = 27;
 			this.lbTitle.Text = "Hướng dẫn";
+			this.lbTitle.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// pnlHuongDan
 			// 
@@ -112,6 +115,7 @@ namespace Main.Pages
 			this.pnlHuongDan.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlHuongDan.Size = new System.Drawing.Size(700, 700);
 			this.pnlHuongDan.TabIndex = 28;
+			this.pnlHuongDan.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// btnPreviousHelp
 			// 
@@ -180,10 +184,10 @@ namespace Main.Pages
 			this.bP.Location = new System.Drawing.Point(2, 2);
 			this.bP.Multiline = true;
 			this.bP.Name = "bP";
-			this.bP.Page = this.bkPage1;
-			this.bP.PageIndex = 2;
-			this.bP.PageName = "bkPage1";
-			this.bP.PageTitle = "BkPage1";
+			this.bP.Page = this.addAdmin;
+			this.bP.PageIndex = 0;
+			this.bP.PageName = "addAdmin";
+			this.bP.PageTitle = "AddAdmin";
 			this.bP.SelectedIndex = 0;
 			this.bP.Size = new System.Drawing.Size(691, 629);
 			this.bP.TabIndex = 1;
@@ -204,9 +208,11 @@ namespace Main.Pages
 			animation1.TransparencyCoeff = 0F;
 			this.bP.Transition = animation1;
 			this.bP.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
+			this.bP.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// addAdmin
 			// 
+			this.addAdmin.BackColor = System.Drawing.Color.White;
 			this.addAdmin.BackgroundImage = global::Main.Properties.Resources.AddAdmin;
 			this.addAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.addAdmin.Location = new System.Drawing.Point(4, 4);
@@ -215,10 +221,11 @@ namespace Main.Pages
 			this.addAdmin.Size = new System.Drawing.Size(683, 603);
 			this.addAdmin.TabIndex = 0;
 			this.addAdmin.Text = "AddAdmin";
-			this.addAdmin.UseVisualStyleBackColor = true;
+			this.addAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// editAdmin
 			// 
+			this.editAdmin.BackColor = System.Drawing.Color.White;
 			this.editAdmin.BackgroundImage = global::Main.Properties.Resources.EditAdmin;
 			this.editAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.editAdmin.Location = new System.Drawing.Point(4, 4);
@@ -227,82 +234,11 @@ namespace Main.Pages
 			this.editAdmin.Size = new System.Drawing.Size(683, 603);
 			this.editAdmin.TabIndex = 1;
 			this.editAdmin.Text = "EditAdmin";
-			this.editAdmin.UseVisualStyleBackColor = true;
-			// 
-			// addManager
-			// 
-			this.addManager.BackgroundImage = global::Main.Properties.Resources.AddManager;
-			this.addManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.addManager.Location = new System.Drawing.Point(4, 4);
-			this.addManager.Name = "addManager";
-			this.addManager.Padding = new System.Windows.Forms.Padding(3);
-			this.addManager.Size = new System.Drawing.Size(683, 603);
-			this.addManager.TabIndex = 2;
-			this.addManager.Text = "AddManager";
-			this.addManager.UseVisualStyleBackColor = true;
-			// 
-			// editManager
-			// 
-			this.editManager.BackgroundImage = global::Main.Properties.Resources.EditAdmin;
-			this.editManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.editManager.Location = new System.Drawing.Point(4, 4);
-			this.editManager.Name = "editManager";
-			this.editManager.Padding = new System.Windows.Forms.Padding(3);
-			this.editManager.Size = new System.Drawing.Size(683, 603);
-			this.editManager.TabIndex = 3;
-			this.editManager.Text = "EditManager";
-			this.editManager.UseVisualStyleBackColor = true;
-			// 
-			// guide1
-			// 
-			this.guide1.BackgroundImage = global::Main.Properties.Resources.Tutorial1;
-			this.guide1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.guide1.Location = new System.Drawing.Point(4, 4);
-			this.guide1.Name = "guide1";
-			this.guide1.Padding = new System.Windows.Forms.Padding(3);
-			this.guide1.Size = new System.Drawing.Size(683, 603);
-			this.guide1.TabIndex = 6;
-			this.guide1.Text = "Guide1";
-			this.guide1.UseVisualStyleBackColor = true;
-			// 
-			// guide2
-			// 
-			this.guide2.BackgroundImage = global::Main.Properties.Resources.Tutorial2;
-			this.guide2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.guide2.Location = new System.Drawing.Point(4, 4);
-			this.guide2.Name = "guide2";
-			this.guide2.Padding = new System.Windows.Forms.Padding(3);
-			this.guide2.Size = new System.Drawing.Size(683, 603);
-			this.guide2.TabIndex = 7;
-			this.guide2.Text = "Guide2";
-			this.guide2.UseVisualStyleBackColor = true;
-			// 
-			// guide3
-			// 
-			this.guide3.BackgroundImage = global::Main.Properties.Resources.Tutorial3;
-			this.guide3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.guide3.Location = new System.Drawing.Point(4, 4);
-			this.guide3.Name = "guide3";
-			this.guide3.Padding = new System.Windows.Forms.Padding(3);
-			this.guide3.Size = new System.Drawing.Size(683, 603);
-			this.guide3.TabIndex = 8;
-			this.guide3.Text = "Guide3";
-			this.guide3.UseVisualStyleBackColor = true;
-			// 
-			// guide4
-			// 
-			this.guide4.BackgroundImage = global::Main.Properties.Resources.Tutorial4;
-			this.guide4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.guide4.Location = new System.Drawing.Point(4, 4);
-			this.guide4.Name = "guide4";
-			this.guide4.Padding = new System.Windows.Forms.Padding(3);
-			this.guide4.Size = new System.Drawing.Size(683, 603);
-			this.guide4.TabIndex = 9;
-			this.guide4.Text = "Guide4";
-			this.guide4.UseVisualStyleBackColor = true;
+			this.editAdmin.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// bkPage1
 			// 
+			this.bkPage1.BackColor = System.Drawing.Color.White;
 			this.bkPage1.BackgroundImage = global::Main.Properties.Resources.Backup1;
 			this.bkPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.bkPage1.Location = new System.Drawing.Point(4, 4);
@@ -311,10 +247,11 @@ namespace Main.Pages
 			this.bkPage1.Size = new System.Drawing.Size(683, 603);
 			this.bkPage1.TabIndex = 10;
 			this.bkPage1.Text = "BkPage1";
-			this.bkPage1.UseVisualStyleBackColor = true;
+			this.bkPage1.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// bkPage2
 			// 
+			this.bkPage2.BackColor = System.Drawing.Color.White;
 			this.bkPage2.BackgroundImage = global::Main.Properties.Resources.Backup2;
 			this.bkPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.bkPage2.Location = new System.Drawing.Point(4, 4);
@@ -323,7 +260,85 @@ namespace Main.Pages
 			this.bkPage2.Size = new System.Drawing.Size(683, 603);
 			this.bkPage2.TabIndex = 11;
 			this.bkPage2.Text = "BkPage2";
-			this.bkPage2.UseVisualStyleBackColor = true;
+			this.bkPage2.Click += new System.EventHandler(this.pbBackground_Click);
+			// 
+			// addManager
+			// 
+			this.addManager.BackColor = System.Drawing.Color.White;
+			this.addManager.BackgroundImage = global::Main.Properties.Resources.AddManager;
+			this.addManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.addManager.Location = new System.Drawing.Point(4, 4);
+			this.addManager.Name = "addManager";
+			this.addManager.Padding = new System.Windows.Forms.Padding(3);
+			this.addManager.Size = new System.Drawing.Size(683, 603);
+			this.addManager.TabIndex = 2;
+			this.addManager.Text = "AddManager";
+			this.addManager.Click += new System.EventHandler(this.pbBackground_Click);
+			// 
+			// editManager
+			// 
+			this.editManager.BackColor = System.Drawing.Color.White;
+			this.editManager.BackgroundImage = global::Main.Properties.Resources.EditAdmin;
+			this.editManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.editManager.Location = new System.Drawing.Point(4, 4);
+			this.editManager.Name = "editManager";
+			this.editManager.Padding = new System.Windows.Forms.Padding(3);
+			this.editManager.Size = new System.Drawing.Size(683, 603);
+			this.editManager.TabIndex = 3;
+			this.editManager.Text = "EditManager";
+			this.editManager.Click += new System.EventHandler(this.pbBackground_Click);
+			// 
+			// guide1
+			// 
+			this.guide1.BackColor = System.Drawing.Color.White;
+			this.guide1.BackgroundImage = global::Main.Properties.Resources.Tutorial1;
+			this.guide1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.guide1.Location = new System.Drawing.Point(4, 4);
+			this.guide1.Name = "guide1";
+			this.guide1.Padding = new System.Windows.Forms.Padding(3);
+			this.guide1.Size = new System.Drawing.Size(683, 603);
+			this.guide1.TabIndex = 6;
+			this.guide1.Text = "Guide1";
+			this.guide1.Click += new System.EventHandler(this.pbBackground_Click);
+			// 
+			// guide2
+			// 
+			this.guide2.BackColor = System.Drawing.Color.White;
+			this.guide2.BackgroundImage = global::Main.Properties.Resources.Tutorial2;
+			this.guide2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.guide2.Location = new System.Drawing.Point(4, 4);
+			this.guide2.Name = "guide2";
+			this.guide2.Padding = new System.Windows.Forms.Padding(3);
+			this.guide2.Size = new System.Drawing.Size(683, 603);
+			this.guide2.TabIndex = 7;
+			this.guide2.Text = "Guide2";
+			this.guide2.Click += new System.EventHandler(this.pbBackground_Click);
+			// 
+			// guide3
+			// 
+			this.guide3.BackColor = System.Drawing.Color.White;
+			this.guide3.BackgroundImage = global::Main.Properties.Resources.Tutorial3;
+			this.guide3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.guide3.Location = new System.Drawing.Point(4, 4);
+			this.guide3.Name = "guide3";
+			this.guide3.Padding = new System.Windows.Forms.Padding(3);
+			this.guide3.Size = new System.Drawing.Size(683, 603);
+			this.guide3.TabIndex = 8;
+			this.guide3.Text = "Guide3";
+			this.guide3.Click += new System.EventHandler(this.pbBackground_Click);
+			// 
+			// guide4
+			// 
+			this.guide4.BackColor = System.Drawing.Color.White;
+			this.guide4.BackgroundImage = global::Main.Properties.Resources.Tutorial4;
+			this.guide4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.guide4.Location = new System.Drawing.Point(4, 4);
+			this.guide4.Name = "guide4";
+			this.guide4.Padding = new System.Windows.Forms.Padding(3);
+			this.guide4.Size = new System.Drawing.Size(683, 603);
+			this.guide4.TabIndex = 9;
+			this.guide4.Text = "Guide4";
+			this.guide4.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
 			// Guide
 			// 

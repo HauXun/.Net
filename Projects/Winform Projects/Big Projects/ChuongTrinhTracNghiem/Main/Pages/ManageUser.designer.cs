@@ -31,15 +31,15 @@ namespace Main.Pages
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageUser));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.btnAdd = new FontAwesome.Sharp.IconButton();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
@@ -109,6 +109,7 @@ namespace Main.Pages
 			this.lbTitle.Size = new System.Drawing.Size(301, 35);
 			this.lbTitle.TabIndex = 0;
 			this.lbTitle.Text = "Quản lý người dùng";
+			this.lbTitle.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// btnAdd
 			// 
@@ -125,7 +126,7 @@ namespace Main.Pages
 			this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnAdd.IconSize = 28;
 			this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnAdd.Location = new System.Drawing.Point(1365, 23);
+			this.btnAdd.Location = new System.Drawing.Point(1371, 23);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
 			this.btnAdd.Size = new System.Drawing.Size(110, 40);
@@ -154,6 +155,7 @@ namespace Main.Pages
 			this.iconTitle.TabIndex = 0;
 			this.iconTitle.TabStop = false;
 			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.ManageUser_Click);
 			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// pnlControls
@@ -166,6 +168,7 @@ namespace Main.Pages
 			this.pnlControls.Name = "pnlControls";
 			this.pnlControls.Size = new System.Drawing.Size(1500, 290);
 			this.pnlControls.TabIndex = 0;
+			this.pnlControls.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// pnlInfo3
 			// 
@@ -185,6 +188,7 @@ namespace Main.Pages
 			this.pnlInfo3.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo3.Size = new System.Drawing.Size(450, 245);
 			this.pnlInfo3.TabIndex = 42;
+			this.pnlInfo3.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// tbPhone
 			// 
@@ -212,6 +216,7 @@ namespace Main.Pages
 			this.tbPhone.ShadowDecoration.Parent = this.tbPhone;
 			this.tbPhone.Size = new System.Drawing.Size(400, 35);
 			this.tbPhone.TabIndex = 0;
+			this.tbPhone.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// tbAddress
 			// 
@@ -239,6 +244,7 @@ namespace Main.Pages
 			this.tbAddress.ShadowDecoration.Parent = this.tbAddress;
 			this.tbAddress.Size = new System.Drawing.Size(400, 35);
 			this.tbAddress.TabIndex = 2;
+			this.tbAddress.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbDienThoai
 			// 
@@ -249,6 +255,7 @@ namespace Main.Pages
 			this.lbDienThoai.Size = new System.Drawing.Size(100, 18);
 			this.lbDienThoai.TabIndex = 0;
 			this.lbDienThoai.Text = "Điện thoại:";
+			this.lbDienThoai.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// dtpDob
 			// 
@@ -269,6 +276,7 @@ namespace Main.Pages
 			this.dtpDob.Size = new System.Drawing.Size(400, 35);
 			this.dtpDob.TabIndex = 1;
 			this.dtpDob.Value = new System.DateTime(2021, 9, 6, 0, 2, 13, 728);
+			this.dtpDob.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbNgaySinh
 			// 
@@ -279,6 +287,7 @@ namespace Main.Pages
 			this.lbNgaySinh.Size = new System.Drawing.Size(96, 18);
 			this.lbNgaySinh.TabIndex = 0;
 			this.lbNgaySinh.Text = "Ngày sinh:";
+			this.lbNgaySinh.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbDiaChi
 			// 
@@ -289,6 +298,7 @@ namespace Main.Pages
 			this.lbDiaChi.Size = new System.Drawing.Size(71, 18);
 			this.lbDiaChi.TabIndex = 0;
 			this.lbDiaChi.Text = "Địa chỉ:";
+			this.lbDiaChi.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// pnlInfo2
 			// 
@@ -308,6 +318,7 @@ namespace Main.Pages
 			this.pnlInfo2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo2.Size = new System.Drawing.Size(450, 245);
 			this.pnlInfo2.TabIndex = 42;
+			this.pnlInfo2.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// tbEmail
 			// 
@@ -335,6 +346,7 @@ namespace Main.Pages
 			this.tbEmail.ShadowDecoration.Parent = this.tbEmail;
 			this.tbEmail.Size = new System.Drawing.Size(400, 35);
 			this.tbEmail.TabIndex = 2;
+			this.tbEmail.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// tbAccount
 			// 
@@ -362,6 +374,7 @@ namespace Main.Pages
 			this.tbAccount.ShadowDecoration.Parent = this.tbAccount;
 			this.tbAccount.Size = new System.Drawing.Size(400, 35);
 			this.tbAccount.TabIndex = 0;
+			this.tbAccount.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// tbFullName
 			// 
@@ -389,6 +402,7 @@ namespace Main.Pages
 			this.tbFullName.ShadowDecoration.Parent = this.tbFullName;
 			this.tbFullName.Size = new System.Drawing.Size(400, 35);
 			this.tbFullName.TabIndex = 1;
+			this.tbFullName.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbTaiKhoan
 			// 
@@ -399,6 +413,7 @@ namespace Main.Pages
 			this.lbTaiKhoan.Size = new System.Drawing.Size(95, 18);
 			this.lbTaiKhoan.TabIndex = 0;
 			this.lbTaiKhoan.Text = "Tài khoản:";
+			this.lbTaiKhoan.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbHoVaTen
 			// 
@@ -409,6 +424,7 @@ namespace Main.Pages
 			this.lbHoVaTen.Size = new System.Drawing.Size(95, 18);
 			this.lbHoVaTen.TabIndex = 0;
 			this.lbHoVaTen.Text = "Họ và tên:";
+			this.lbHoVaTen.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbEmail
 			// 
@@ -419,6 +435,7 @@ namespace Main.Pages
 			this.lbEmail.Size = new System.Drawing.Size(67, 18);
 			this.lbEmail.TabIndex = 0;
 			this.lbEmail.Text = "E-mail:";
+			this.lbEmail.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// pnlInfo1
 			// 
@@ -440,6 +457,7 @@ namespace Main.Pages
 			this.pnlInfo1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlInfo1.Size = new System.Drawing.Size(450, 245);
 			this.pnlInfo1.TabIndex = 42;
+			this.pnlInfo1.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// cbRole
 			// 
@@ -472,6 +490,7 @@ namespace Main.Pages
 			this.cbRole.TabIndex = 1;
 			this.cbRole.Text = null;
 			this.cbRole.SelectedIndexChanged += new System.EventHandler(this.cbRole_SelectedIndexChanged);
+			this.cbRole.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbChucVu
 			// 
@@ -482,6 +501,7 @@ namespace Main.Pages
 			this.lbChucVu.Size = new System.Drawing.Size(80, 18);
 			this.lbChucVu.TabIndex = 0;
 			this.lbChucVu.Text = "Chức vụ:";
+			this.lbChucVu.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// cbClassID
 			// 
@@ -513,6 +533,7 @@ namespace Main.Pages
 			this.cbClassID.Size = new System.Drawing.Size(400, 36);
 			this.cbClassID.TabIndex = 3;
 			this.cbClassID.Text = null;
+			this.cbClassID.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbMaNguoiDung
 			// 
@@ -523,6 +544,7 @@ namespace Main.Pages
 			this.lbMaNguoiDung.Size = new System.Drawing.Size(136, 18);
 			this.lbMaNguoiDung.TabIndex = 0;
 			this.lbMaNguoiDung.Text = "Mã người dùng:";
+			this.lbMaNguoiDung.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// cbCourseID
 			// 
@@ -555,6 +577,7 @@ namespace Main.Pages
 			this.cbCourseID.TabIndex = 2;
 			this.cbCourseID.Text = null;
 			this.cbCourseID.SelectedIndexChanged += new System.EventHandler(this.cbCourseID_SelectedIndexChanged);
+			this.cbCourseID.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbLop
 			// 
@@ -565,6 +588,7 @@ namespace Main.Pages
 			this.lbLop.Size = new System.Drawing.Size(44, 18);
 			this.lbLop.TabIndex = 0;
 			this.lbLop.Text = "Lớp:";
+			this.lbLop.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// tbUserID
 			// 
@@ -593,6 +617,7 @@ namespace Main.Pages
 			this.tbUserID.ShadowDecoration.Parent = this.tbUserID;
 			this.tbUserID.Size = new System.Drawing.Size(180, 35);
 			this.tbUserID.TabIndex = 0;
+			this.tbUserID.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// lbKhoa
 			// 
@@ -603,6 +628,7 @@ namespace Main.Pages
 			this.lbKhoa.Size = new System.Drawing.Size(56, 18);
 			this.lbKhoa.TabIndex = 0;
 			this.lbKhoa.Text = "Khóa:";
+			this.lbKhoa.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// bScrollBar
 			// 
@@ -629,7 +655,7 @@ namespace Main.Pages
 			this.bScrollBar.DurationBeforeShrink = 2000;
 			this.bScrollBar.ElapsedColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
 			this.bScrollBar.LargeChange = 10;
-			this.bScrollBar.Location = new System.Drawing.Point(1488, 98);
+			this.bScrollBar.Location = new System.Drawing.Point(1481, 96);
 			this.bScrollBar.Maximum = 100;
 			this.bScrollBar.Minimum = 0;
 			this.bScrollBar.MinimumSize = new System.Drawing.Size(31, 0);
@@ -657,6 +683,7 @@ namespace Main.Pages
 			this.bScrollBar.ThumbStyle = Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline;
 			this.bScrollBar.Value = 100;
 			this.bScrollBar.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuVScrollBar.ScrollEventArgs>(this.bScrollBar_Scroll);
+			this.bScrollBar.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// btnResetPassword
 			// 
@@ -714,6 +741,7 @@ namespace Main.Pages
 			this.cbFilter.TabIndex = 0;
 			this.cbFilter.Text = null;
 			this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
+			this.cbFilter.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// tbSearch
 			// 
@@ -744,6 +772,7 @@ namespace Main.Pages
 			this.tbSearch.Size = new System.Drawing.Size(281, 35);
 			this.tbSearch.TabIndex = 1;
 			this.tbSearch.IconRightClick += new System.EventHandler(this.tbSearch_IconRightClick);
+			this.tbSearch.Click += new System.EventHandler(this.ManageUser_Click);
 			this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
 			this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
 			this.tbSearch.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseDoubleClick);
@@ -753,22 +782,22 @@ namespace Main.Pages
 			this.aDgvdata.AllowUserToAddRows = false;
 			this.aDgvdata.AllowUserToDeleteRows = false;
 			this.aDgvdata.AllowUserToResizeRows = false;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
-			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(86)))));
+			this.aDgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
 			this.aDgvdata.AutoGenerateContextFilters = true;
 			this.aDgvdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.aDgvdata.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
 			this.aDgvdata.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.aDgvdata.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			this.aDgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(14)))), ((int)(((byte)(56)))));
+			dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(24)))), ((int)(((byte)(66)))));
+			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.aDgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			this.aDgvdata.ColumnHeadersHeight = 40;
 			this.aDgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.aDgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -782,23 +811,23 @@ namespace Main.Pages
             this.Address,
             this.Birthday});
 			this.aDgvdata.DateWithTime = false;
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
-			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
-			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(34)))), ((int)(((byte)(76)))));
+			dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
+			dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.aDgvdata.DefaultCellStyle = dataGridViewCellStyle18;
 			this.aDgvdata.EnableHeadersVisualStyles = false;
-			this.aDgvdata.Location = new System.Drawing.Point(18, 56);
+			this.aDgvdata.Location = new System.Drawing.Point(45, 56);
 			this.aDgvdata.Name = "aDgvdata";
 			this.aDgvdata.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.aDgvdata.RowHeadersVisible = false;
 			this.aDgvdata.RowTemplate.Height = 50;
 			this.aDgvdata.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.aDgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.aDgvdata.Size = new System.Drawing.Size(1469, 368);
+			this.aDgvdata.Size = new System.Drawing.Size(1430, 368);
 			this.aDgvdata.TabIndex = 7;
 			this.aDgvdata.TimeFilter = false;
 			this.aDgvdata.SortStringChanged += new System.EventHandler(this.aDgvdata_SortStringChanged);
@@ -806,12 +835,13 @@ namespace Main.Pages
 			this.aDgvdata.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.aDgvdata_RowEnter);
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
+			this.aDgvdata.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// UserRole
 			// 
 			this.UserRole.DataPropertyName = "UserRole";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.UserRole.DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserRole.DefaultCellStyle = dataGridViewCellStyle12;
 			this.UserRole.FillWeight = 40F;
 			this.UserRole.HeaderText = "Vai trò";
 			this.UserRole.MinimumWidth = 22;
@@ -832,9 +862,9 @@ namespace Main.Pages
 			// ClassID
 			// 
 			this.ClassID.DataPropertyName = "ClassID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle4.NullValue = "NULL";
-			this.ClassID.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle13.NullValue = "NULL";
+			this.ClassID.DefaultCellStyle = dataGridViewCellStyle13;
 			this.ClassID.FillWeight = 50F;
 			this.ClassID.HeaderText = "Lớp (user)";
 			this.ClassID.MinimumWidth = 22;
@@ -855,8 +885,8 @@ namespace Main.Pages
 			// UserID
 			// 
 			this.UserID.DataPropertyName = "UserID";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.UserID.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.UserID.DefaultCellStyle = dataGridViewCellStyle14;
 			this.UserID.FillWeight = 50F;
 			this.UserID.HeaderText = "Mã định danh";
 			this.UserID.MinimumWidth = 22;
@@ -867,8 +897,8 @@ namespace Main.Pages
 			// PhoneNumber
 			// 
 			this.PhoneNumber.DataPropertyName = "PhoneNumber";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.PhoneNumber.DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.PhoneNumber.DefaultCellStyle = dataGridViewCellStyle15;
 			this.PhoneNumber.FillWeight = 50F;
 			this.PhoneNumber.HeaderText = "Điện thoại";
 			this.PhoneNumber.MinimumWidth = 22;
@@ -889,8 +919,8 @@ namespace Main.Pages
 			// Address
 			// 
 			this.Address.DataPropertyName = "Address";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Address.DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Address.DefaultCellStyle = dataGridViewCellStyle16;
 			this.Address.FillWeight = 50F;
 			this.Address.HeaderText = "Địa chỉ";
 			this.Address.MinimumWidth = 22;
@@ -901,10 +931,10 @@ namespace Main.Pages
 			// Birthday
 			// 
 			this.Birthday.DataPropertyName = "Birthday";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle8.Format = "d";
-			dataGridViewCellStyle8.NullValue = "dd/MM/yyyy";
-			this.Birthday.DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle17.Format = "d";
+			dataGridViewCellStyle17.NullValue = "dd/MM/yyyy";
+			this.Birthday.DefaultCellStyle = dataGridViewCellStyle17;
 			this.Birthday.FillWeight = 60F;
 			this.Birthday.HeaderText = "Ngày sinh";
 			this.Birthday.MinimumWidth = 22;
@@ -1079,6 +1109,7 @@ namespace Main.Pages
 			this.pnlDataGridView.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
 			this.pnlDataGridView.Size = new System.Drawing.Size(1525, 440);
 			this.pnlDataGridView.TabIndex = 0;
+			this.pnlDataGridView.Click += new System.EventHandler(this.ManageUser_Click);
 			// 
 			// ManageUser
 			// 
@@ -1093,6 +1124,7 @@ namespace Main.Pages
 			this.Name = "ManageUser";
 			this.Size = new System.Drawing.Size(1550, 822);
 			this.Load += new System.EventHandler(this.FrmManageUser_Load);
+			this.Click += new System.EventHandler(this.ManageUser_Click);
 			this.pnlControls.ResumeLayout(false);
 			this.pnlInfo3.ResumeLayout(false);
 			this.pnlInfo3.PerformLayout();

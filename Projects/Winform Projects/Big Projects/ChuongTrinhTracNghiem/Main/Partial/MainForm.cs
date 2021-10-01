@@ -1,6 +1,8 @@
 ﻿using BusinessLogicLayer;
+using FontAwesome.Sharp;
 using Main.Partial;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Main
@@ -38,8 +40,7 @@ namespace Main
 				Session.CancleAction = null;
 				manageUserUC.Account = this.Account;
 				Session.CancleAction = manageUserUC.CancleAction;
-				if (manageUserUC.aDgvdata.Rows.Count > 0)
-					manageUserUC.FrmManageUser_Load(manageUserUC, e);
+				manageUserUC.FrmManageUser_Load(manageUserUC, e);
 				try
 				{
 					#region MultiThreading
@@ -65,8 +66,7 @@ namespace Main
 				ShowHideSubMenu();
 				Session.CancleAction = null;
 				Session.CancleAction = manageFacultyUC.CancleAction;
-				if (manageFacultyUC.aDgvdata.Rows.Count > 0)
-					manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
+				manageFacultyUC.FrmManageFaculty_Load(manageFacultyUC, e);
 				try
 				{
 					#region MultiThreading
@@ -92,8 +92,7 @@ namespace Main
 				ShowHideSubMenu();
 				Session.CancleAction = null;
 				Session.CancleAction = manageCourseUC.CancleAction;
-				if (manageCourseUC.aDgvdata.Rows.Count > 0)
-					manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
+				manageCourseUC.FrmManageCourse_Load(manageCourseUC, e);
 				try
 				{
 					#region MultiThreading
@@ -120,8 +119,7 @@ namespace Main
 				Session.CancleAction = null;
 				manageClassUC.Account = this.Account;
 				Session.CancleAction = manageClassUC.CancleAction;
-				if (manageClassUC.aDgvdata.Rows.Count > 0)
-					manageClassUC.ManageClass_Load(manageClassUC, e);
+				manageClassUC.ManageClass_Load(manageClassUC, e);
 				try
 				{
 					#region MultiThreading
@@ -147,8 +145,7 @@ namespace Main
 				ShowHideSubMenu();
 				Session.CancleAction = null;
 				Session.CancleAction = backupRestoreUC.CancleAction;
-				if (backupRestoreUC.DatabaseConnection != null)
-					backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
+				backupRestoreUC.BackupRestore_Load(backupRestoreUC, e);
 				try
 				{
 					#region MultiThreading
@@ -174,8 +171,7 @@ namespace Main
 				ShowHideSubMenu();
 				Session.CancleAction = null;
 				Session.CancleAction = statisticalUC.CancleAction;
-				if (statisticalUC.aDgvdata.Rows.Count > 0)
-					statisticalUC.FrmStatistical_Load(statisticalUC, e);
+				statisticalUC.FrmStatistical_Load(statisticalUC, e);
 				try
 				{
 					#region MultiThreading
@@ -202,8 +198,7 @@ namespace Main
 				Session.CancleAction = null;
 				manageSubjectUC.Account = this.Account;
 				Session.CancleAction = manageSubjectUC.CancleAction;
-				if (manageSubjectUC.aDgvdata.Rows.Count > 0)
-					manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
+				manageSubjectUC.FrmManageSubject_Load(manageSubjectUC, e);
 				try
 				{
 					#region MultiThreading
@@ -230,8 +225,7 @@ namespace Main
 				Session.CancleAction = null;
 				manageQuestionUC.Account = this.Account;
 				Session.CancleAction = manageQuestionUC.CancleAction;
-				if (manageQuestionUC.aDgvdata.Rows.Count > 0)
-					manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
+				manageQuestionUC.FrmManageUser_Load(manageQuestionUC, e);
 				try
 				{
 					#region MultiThreading
@@ -258,8 +252,7 @@ namespace Main
 				Session.CancleAction = null;
 				manageExamUC.Account = this.Account;
 				Session.CancleAction = manageExamUC.CancleAction;
-				if (manageExamUC.aDgvdata.Rows.Count > 0)
-					manageExamUC.FrmManageExam_Load(manageExamUC, e);
+				manageExamUC.FrmManageExam_Load(manageExamUC, e);
 				try
 				{
 					#region MultiThreading
@@ -281,13 +274,11 @@ namespace Main
 		{
 			if (Session.Exam != null && selectExamForm.IsValidComboBoxControl())
 			{
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				quizTestUC.Account = this.Account;
 				quizTestUC.Exam = Session.Exam;
 				quizTestUC.Data = Session.Data;
-				if (quizTestUC.fLPdata.Controls.Count > 0)
-					quizTestUC.FrmQuiz_Load(quizTestUC, e);
+				quizTestUC.FrmQuiz_Load(quizTestUC, e);
 				selectExamForm.Hide();
 				if (!selectExamForm.isMockTest && this.Account.UserRole.ToLower().Equals("user"))
 					ExamBLL.Instance.CancleQuizTimes(this.Account.UserID, Session.Exam.ExamID, Session.Exam.SubjectID);
@@ -306,8 +297,7 @@ namespace Main
 			try
 			{
 				selectExamForm.isMockTest = false;
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				SelectExam(e);
 			}
 			catch (Exception ex)
@@ -326,8 +316,7 @@ namespace Main
 				Session.CancleAction = null;
 				testHistoryUC.Account = this.Account;
 				Session.CancleAction = testHistoryUC.CancleAction;
-				if (testHistoryUC.aDgvdata.Rows.Count > 0)
-					testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
+				testHistoryUC.FrmTestHistory_Load(testHistoryUC, e);
 				try
 				{
 					#region MultiThreading
@@ -354,8 +343,7 @@ namespace Main
 				Session.CancleAction = null;
 				eduProgUC.Account = this.Account;
 				Session.CancleAction = eduProgUC.CancleAction;
-				if (eduProgUC.aDgvdata.Rows.Count > 0)
-					eduProgUC.FrmEduProg_Load(eduProgUC, e);
+				eduProgUC.FrmEduProg_Load(eduProgUC, e);
 				try
 				{
 					#region MultiThreading
@@ -378,8 +366,7 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				Session.CancleAction = null;
 				if (profileUC.Account != this.Account)
 					profileUC.Account = this.Account;
@@ -411,8 +398,7 @@ namespace Main
 		{
 			try
 			{
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				guideUC.Role = this.Account.UserRole;
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
@@ -432,8 +418,7 @@ namespace Main
 		{
 			try
 			{
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
@@ -458,8 +443,7 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				Session.CancleAction = null;
 				try
 				{
@@ -487,8 +471,7 @@ namespace Main
 		{
 			try
 			{
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				Session.Exam = null;
 				Session.Data = null;
 				#region MultiThreading
@@ -583,11 +566,9 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
-				if (pnlNavigation.Visible)
-					ShowHideSubMenu();
+				ShowHideSubMenu();
 				Session.CancleAction = null;
-				if (leaderBoardUC.aDgvdata.Rows.Count > 0)
-					leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
+				leaderBoardUC.FrmLeaderBoard_Load(leaderBoardUC, e);
 				Session.CancleAction = leaderBoardUC.CancleAction;
 				if (Account.UserRole.ToLower().Equals("user"))
 					leaderBoardUC.lbTitle.Text = "Bảng xếp hạng";
@@ -627,8 +608,7 @@ namespace Main
 		{
 			isNavigation = true;
 			selectExamForm.isMockTest = true;
-			if (pnlNavigation.Visible)
-				ShowHideSubMenu();
+			ShowHideSubMenu();
 			SelectExam(e);
 		}
 
@@ -769,7 +749,7 @@ namespace Main
 					mainMenuUC.pnlNguoiDung.Visible = false;
 					break;
 			}
-			btnTroGiup.Text = $"{btnTroGiup.Text} ({Account.FullName})";
+			btnTroGiup.Text = $"{"Trợ giúp"} ({Account.FullName})";
 		}
 
 		/// <summary>
@@ -1187,9 +1167,9 @@ namespace Main
 						quizResultUC.cPBCountDownTime.Text = (!quizTestUC.timer.MustStop) ? quizTestUC.cPBCountDownTime.Text : "Finished";
 						quizResultUC.Data = Session.Data;
 						quizResultUC.Exam = Session.Exam;
-						if (quizResultUC.fLPdata.Controls.Count > 0)
-							quizResultUC.FrmQuizResult_Load(quizResultUC, e);
+						quizResultUC.FrmQuizResult_Load(quizResultUC, e);
 						pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
+						quizTestUC.fLPdata.Controls.Clear();
 						#region MultiThreading
 						this.BeginInvoke((MethodInvoker)delegate
 						{
@@ -1198,18 +1178,33 @@ namespace Main
 						#endregion
 					}
 				};
+				Session.ShowHideMenu = () =>
+				{
+					if (pnlNavigation.Visible)
+					{
+						pnlNavigation.Visible = false;
+						btnNav.IconChar = IconChar.CaretRight;
+						btnNav.Location = new Point(0, 30);
+						btnNav.BringToFront();
+					}
+				};
 				Session.Submit = this.Submit;
 			});
 
 			for (int i = 0; i < this.bP.TabPages.Count - 1; i++)
 			{
-				this.bP.SelectedIndex = i;
+				this.bP.SetPage(i);
 			}
 			this.bP.SetPage((int)Session.TabPage.MainMenu);
 			Session.bP = this.bP;
 		}
 
 		private void btnHeThong_Enter(object sender, EventArgs e)
+		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += MainForm_GotFocus;
+		}
+
+		private void MainForm_GotFocus(object sender, EventArgs e)
 		{
 			pbIcon.Focus();
 		}
