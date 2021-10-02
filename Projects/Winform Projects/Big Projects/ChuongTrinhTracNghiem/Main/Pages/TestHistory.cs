@@ -125,23 +125,6 @@ namespace Main.Pages
 			}
 		}
 
-		private void btnSearch_Click(object sender, EventArgs e)
-		{
-			Session.ShowHideMenu?.Invoke();
-			try
-			{
-				string keyword = tbSearch.Text;
-				if (keyword.Equals("Nhập từ khóa ..."))
-					keyword = string.Empty;
-				TestHistoryBLL.Instance.SearchHistory(aDgvdata, keyword);
-			}
-			catch (Exception ex)
-			{
-				MsgBox.ShowMessage("Tìm kiếm thất bại! " + ex.Message, "Amazing Quiz Application",
-			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-			}
-		}
-
 		private void aDgvdata_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
 		{
 			try
@@ -177,6 +160,11 @@ namespace Main.Pages
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
 			(sender as FontAwesome.Sharp.IconButton).GotFocus += TestHistory_GotFocus;
+		}
+
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += TestHistory_GotFocus;
 		}
 
 		private void TestHistory_GotFocus(object sender, EventArgs e)

@@ -185,6 +185,7 @@ namespace Main.Pages
 			if (Exam != null && Data != null)
 			{
 				fLPdata.Controls.Clear();
+				correctAnswer = 0;
 				LoadState();
 				LoadMark();
 			}

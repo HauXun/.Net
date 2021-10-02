@@ -136,6 +136,7 @@ namespace Main
 			// lbTitle
 			// 
 			this.lbTitle.AutoSize = true;
+			this.lbTitle.BackColor = System.Drawing.Color.Transparent;
 			this.lbTitle.Font = new System.Drawing.Font("Verdana", 26.25F);
 			this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
 			this.lbTitle.Location = new System.Drawing.Point(120, 15);

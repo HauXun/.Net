@@ -34,7 +34,6 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EduProg));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,15 +41,10 @@ namespace Main.Pages
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EduProg));
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.aDgvdata = new System.Windows.Forms.DataGridView();
-			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
-			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
-			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.imageList = new System.Windows.Forms.ImageList(this.components);
-			this.pnlDataGridView = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			this.SemesterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +54,12 @@ namespace Main.Pages
 			this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TotalMark = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Success = new System.Windows.Forms.DataGridViewImageColumn();
+			this.tbSearch = new Guna.UI2.WinForms.Guna2TextBox();
+			this.bScrollBar = new Bunifu.UI.WinForms.BunifuVSlider();
+			this.btnClearFilter = new FontAwesome.Sharp.IconButton();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.imageList = new System.Windows.Forms.ImageList(this.components);
+			this.pnlDataGridView = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.pnlDataGridView.SuspendLayout();
 			this.SuspendLayout();
@@ -159,6 +159,93 @@ namespace Main.Pages
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
 			this.aDgvdata.Click += new System.EventHandler(this.EduProg_Click);
+			this.aDgvdata.Enter += new System.EventHandler(this.aDgvdata_Enter);
+			// 
+			// SemesterID
+			// 
+			this.SemesterID.DataPropertyName = "SemesterID";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SemesterID.DefaultCellStyle = dataGridViewCellStyle3;
+			this.SemesterID.FillWeight = 30F;
+			this.SemesterID.HeaderText = "  Học kì";
+			this.SemesterID.Name = "SemesterID";
+			this.SemesterID.ReadOnly = true;
+			// 
+			// SubjectID
+			// 
+			this.SubjectID.DataPropertyName = "SubjectID";
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
+			this.SubjectID.FillWeight = 50F;
+			this.SubjectID.HeaderText = "Mã môn";
+			this.SubjectID.Name = "SubjectID";
+			this.SubjectID.ReadOnly = true;
+			// 
+			// SubjectName
+			// 
+			this.SubjectName.DataPropertyName = "SubjectName";
+			this.SubjectName.FillWeight = 110F;
+			this.SubjectName.HeaderText = "Tên môn";
+			this.SubjectName.Name = "SubjectName";
+			this.SubjectName.ReadOnly = true;
+			// 
+			// RoleName
+			// 
+			this.RoleName.DataPropertyName = "RoleName";
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.RoleName.DefaultCellStyle = dataGridViewCellStyle5;
+			this.RoleName.FillWeight = 50F;
+			this.RoleName.HeaderText = "Loại môn";
+			this.RoleName.Name = "RoleName";
+			this.RoleName.ReadOnly = true;
+			// 
+			// CourseID
+			// 
+			this.CourseID.DataPropertyName = "CourseID";
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.CourseID.DefaultCellStyle = dataGridViewCellStyle6;
+			this.CourseID.FillWeight = 50F;
+			this.CourseID.HeaderText = "Khóa";
+			this.CourseID.Name = "CourseID";
+			this.CourseID.ReadOnly = true;
+			// 
+			// FacultyID
+			// 
+			this.FacultyID.DataPropertyName = "FacultyID";
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle7;
+			this.FacultyID.FillWeight = 50F;
+			this.FacultyID.HeaderText = "Mã khoa";
+			this.FacultyID.Name = "FacultyID";
+			this.FacultyID.ReadOnly = true;
+			// 
+			// FacultyName
+			// 
+			this.FacultyName.DataPropertyName = "FacultyName";
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle8;
+			this.FacultyName.FillWeight = 110F;
+			this.FacultyName.HeaderText = "Tên khoa";
+			this.FacultyName.Name = "FacultyName";
+			this.FacultyName.ReadOnly = true;
+			// 
+			// TotalMark
+			// 
+			this.TotalMark.DataPropertyName = "TotalMark";
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.TotalMark.DefaultCellStyle = dataGridViewCellStyle9;
+			this.TotalMark.FillWeight = 40F;
+			this.TotalMark.HeaderText = "Tổng điểm";
+			this.TotalMark.Name = "TotalMark";
+			this.TotalMark.ReadOnly = true;
+			// 
+			// Success
+			// 
+			this.Success.DataPropertyName = "Success";
+			this.Success.FillWeight = 50F;
+			this.Success.HeaderText = "Trạng thái";
+			this.Success.Name = "Success";
+			this.Success.ReadOnly = true;
 			// 
 			// tbSearch
 			// 
@@ -310,92 +397,6 @@ namespace Main.Pages
 			this.pnlDataGridView.Size = new System.Drawing.Size(1525, 730);
 			this.pnlDataGridView.TabIndex = 40;
 			this.pnlDataGridView.Click += new System.EventHandler(this.EduProg_Click);
-			// 
-			// SemesterID
-			// 
-			this.SemesterID.DataPropertyName = "SemesterID";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SemesterID.DefaultCellStyle = dataGridViewCellStyle3;
-			this.SemesterID.FillWeight = 30F;
-			this.SemesterID.HeaderText = "  Học kì";
-			this.SemesterID.Name = "SemesterID";
-			this.SemesterID.ReadOnly = true;
-			// 
-			// SubjectID
-			// 
-			this.SubjectID.DataPropertyName = "SubjectID";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.SubjectID.DefaultCellStyle = dataGridViewCellStyle4;
-			this.SubjectID.FillWeight = 50F;
-			this.SubjectID.HeaderText = "Mã môn";
-			this.SubjectID.Name = "SubjectID";
-			this.SubjectID.ReadOnly = true;
-			// 
-			// SubjectName
-			// 
-			this.SubjectName.DataPropertyName = "SubjectName";
-			this.SubjectName.FillWeight = 110F;
-			this.SubjectName.HeaderText = "Tên môn";
-			this.SubjectName.Name = "SubjectName";
-			this.SubjectName.ReadOnly = true;
-			// 
-			// RoleName
-			// 
-			this.RoleName.DataPropertyName = "RoleName";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.RoleName.DefaultCellStyle = dataGridViewCellStyle5;
-			this.RoleName.FillWeight = 50F;
-			this.RoleName.HeaderText = "Loại môn";
-			this.RoleName.Name = "RoleName";
-			this.RoleName.ReadOnly = true;
-			// 
-			// CourseID
-			// 
-			this.CourseID.DataPropertyName = "CourseID";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.CourseID.DefaultCellStyle = dataGridViewCellStyle6;
-			this.CourseID.FillWeight = 50F;
-			this.CourseID.HeaderText = "Khóa";
-			this.CourseID.Name = "CourseID";
-			this.CourseID.ReadOnly = true;
-			// 
-			// FacultyID
-			// 
-			this.FacultyID.DataPropertyName = "FacultyID";
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.FacultyID.DefaultCellStyle = dataGridViewCellStyle7;
-			this.FacultyID.FillWeight = 50F;
-			this.FacultyID.HeaderText = "Mã khoa";
-			this.FacultyID.Name = "FacultyID";
-			this.FacultyID.ReadOnly = true;
-			// 
-			// FacultyName
-			// 
-			this.FacultyName.DataPropertyName = "FacultyName";
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.FacultyName.DefaultCellStyle = dataGridViewCellStyle8;
-			this.FacultyName.FillWeight = 110F;
-			this.FacultyName.HeaderText = "Tên khoa";
-			this.FacultyName.Name = "FacultyName";
-			this.FacultyName.ReadOnly = true;
-			// 
-			// TotalMark
-			// 
-			this.TotalMark.DataPropertyName = "TotalMark";
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.TotalMark.DefaultCellStyle = dataGridViewCellStyle9;
-			this.TotalMark.FillWeight = 40F;
-			this.TotalMark.HeaderText = "Tổng điểm";
-			this.TotalMark.Name = "TotalMark";
-			this.TotalMark.ReadOnly = true;
-			// 
-			// Success
-			// 
-			this.Success.DataPropertyName = "Success";
-			this.Success.FillWeight = 50F;
-			this.Success.HeaderText = "Trạng thái";
-			this.Success.Name = "Success";
-			this.Success.ReadOnly = true;
 			// 
 			// EduProg
 			// 

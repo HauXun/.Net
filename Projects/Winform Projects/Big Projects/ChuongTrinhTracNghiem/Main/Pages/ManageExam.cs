@@ -115,7 +115,7 @@ namespace Main.Pages
 				Exam exam = new Exam();
 				exam.ExamID = tbExamID.Text.Trim();
 				exam.SubjectID = cbSubject.SelectedValue.ToString();
-				if (cbTestFormID.SelectedIndex == 0)
+				if (cbTestFormID.SelectedIndex == 0 || cbTestFormID.SelectedIndex == -1)
 				{
 					exam.TestFormID = null;
 					exam.PercentMark = null;
@@ -257,6 +257,11 @@ namespace Main.Pages
 			pnlControls.Enabled = isEnable;
 		}
 
+		private void EnableMark(bool isEnable = true)
+		{
+			gbMark.Enabled = isEnable;
+		}
+
 		private void EnablePrimaryKey(bool isEnable = true)
 		{
 			tbExamID.Enabled = isEnable;
@@ -332,17 +337,20 @@ namespace Main.Pages
 				}
 			}
 
-			if (cbTestFormID.Items.Count == 0)
+			if (!cbExamRole.SelectedValue.ToString().Equals("mock-test"))
 			{
-				errorProviderWar.SetError(cbTestFormID, "Không có hình thức đề thi!\nVui lòng bổ sung");
-				return false;
-			}
-			else
-			{
-				if (cbTestFormID.SelectedIndex == -1)
+				if (cbTestFormID.Items.Count == 0)
 				{
-					errorProviderWar.SetError(cbTestFormID, "Vui lòng chọn hình thức đề thi!");
+					errorProviderWar.SetError(cbTestFormID, "Không có hình thức đề thi!\nVui lòng bổ sung");
 					return false;
+				}
+				else
+				{
+					if (cbTestFormID.SelectedIndex == -1)
+					{
+						errorProviderWar.SetError(cbTestFormID, "Vui lòng chọn hình thức đề thi!");
+						return false;
+					}
 				}
 			}
 
@@ -406,7 +414,7 @@ namespace Main.Pages
 					errorProviderWar.SetError(nudQCount, "Số lượng câu hỏi của đề thi phải lớn hơn 0!");
 					return false;
 				}
-				else if (nudQCount.Value < questionCurrentCount)
+				if (!isAddnew && nudQCount.Value < questionCurrentCount)
 				{
 					errorProviderWar.SetError(nudQCount, "Số lượng câu hỏi của đề thi\nphải lớn hơn mức câu hỏi hiện có!");
 					return false;
@@ -670,6 +678,11 @@ namespace Main.Pages
 			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageExam_GotFocus;
 		}
 
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += ManageExam_GotFocus;
+		}
+
 		private void ManageExam_GotFocus(object sender, EventArgs e)
 		{
 			lbTitle.Focus();
@@ -702,11 +715,11 @@ namespace Main.Pages
 			{
 				if (cbExamRole.SelectedValue.ToString().Equals("mock-test"))
 				{
-					cbTestFormID.Enabled = lbTestFormID.Enabled = false;
+					EnableMark(false);
 				}
 				else
 				{
-					cbTestFormID.Enabled = lbTestFormID.Enabled = true;
+					EnableMark();
 				}
 				cbTestFormID.SelectedIndex = -1;
 			}

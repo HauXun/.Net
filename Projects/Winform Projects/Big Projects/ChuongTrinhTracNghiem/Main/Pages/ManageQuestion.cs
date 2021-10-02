@@ -9,6 +9,7 @@ using Bunifu.UI.WinForms;
 using Guna.UI2.WinForms;
 using System.Text;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Main.Pages
 {
@@ -19,6 +20,7 @@ namespace Main.Pages
 		private bool isFunc = true;
 		private int rowIndex = 0;
 		private UserAccount account;
+		private string[] answer = new string[4];
 
 		public UserAccount Account { get => account; set => account = value; }
 		public Action CancleAction;
@@ -318,21 +320,6 @@ namespace Main.Pages
 		{
 			ClearError();
 
-			// Kiểm tra mã câu hỏi không được để trống
-			if (string.IsNullOrEmpty(tbQuestionID.Text))
-			{
-				errorProviderWar.SetError(tbQuestionID, "Mã câu hỏi không được để trống!");
-				return false;
-			}
-			else
-			{
-				if (!IsDigit(tbQuestionID.Text))
-				{
-					errorProviderWar.SetError(tbQuestionID, "Mã câu hỏi không được\nchứa ký tự khác ngoài số!");
-					return false;
-				}
-			}
-
 			// Kiểm tra nội dung câu hỏi không được để trống
 			if (string.IsNullOrEmpty(tbContent.Text))
 			{
@@ -374,6 +361,11 @@ namespace Main.Pages
 									errorProviderWar.SetError(tbAnswerCorrect, "Nội dung đáp án không được để trống!");
 									return false;
 								}
+								else if (!answer.Contains(tbAnswerCorrect.Text))
+								{
+									errorProviderWar.SetError(tbAnswerCorrect, "Nội dung đáp án phải khớp với\n1 trong những câu trả lời!");
+									return false;
+								}	
 							}
 						}
 					}
@@ -382,19 +374,6 @@ namespace Main.Pages
 
 			return true;
 		}
-
-		private bool IsUnicode(string input)
-		{
-			var asciiBytesCount = Encoding.ASCII.GetByteCount(input);
-			var unicodBytesCount = Encoding.UTF8.GetByteCount(input);
-			return asciiBytesCount != unicodBytesCount;
-		}
-
-		private bool IsSpecialCharacters(string input) => input.Any(p => !char.IsLetterOrDigit(p));
-
-		private bool IsSpaceCharacters(string input) => input.Any(char.IsWhiteSpace);
-
-		private bool IsDigit(string input) => input.All(char.IsDigit);
 
 		#endregion
 
@@ -601,6 +580,11 @@ namespace Main.Pages
 			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageQuestion_GotFocus;
 		}
 
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += ManageQuestion_GotFocus;
+		}
+
 		private void ManageQuestion_GotFocus(object sender, EventArgs e)
 		{
 			lbTitle.Focus();
@@ -626,6 +610,23 @@ namespace Main.Pages
 		private void ManageQuestion_Click(object sender, EventArgs e)
 		{
 			Session.ShowHideMenu?.Invoke();
+		}
+
+		private void TbAnswerA_LostFocus(object sender, EventArgs e)
+		{
+			answer[0] = tbAnswerA.Text;
+		}
+		private void TbAnswerB_LostFocus(object sender, EventArgs e)
+		{
+			answer[1] = tbAnswerB.Text;
+		}
+		private void TbAnswerC_LostFocus(object sender, EventArgs e)
+		{
+			answer[2] = tbAnswerC.Text;
+		}
+		private void TbAnswerD_LostFocus(object sender, EventArgs e)
+		{
+			answer[3] = tbAnswerD.Text;
 		}
 
 		#endregion

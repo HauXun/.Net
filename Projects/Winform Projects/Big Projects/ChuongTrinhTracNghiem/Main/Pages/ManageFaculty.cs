@@ -444,7 +444,7 @@ namespace Main.Pages
 		{
 			if (string.IsNullOrEmpty(tbSearch.Text))
 			{
-				tbSearch.Text = "Nhập tên khoa/Mã khoa ...";
+				tbSearch.Text = "Nhập từ khóa ...";
 			}
 		}
 
@@ -521,6 +521,11 @@ namespace Main.Pages
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
 			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageFaculty_GotFocus;
+		}
+
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += ManageFaculty_GotFocus;
 		}
 
 		private void ManageFaculty_GotFocus(object sender, EventArgs e)

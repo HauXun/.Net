@@ -148,10 +148,15 @@ namespace Main.Pages
 					Name = i.ToString(),
 					Text = $"Câu {i++}",
 					TextAlign = ContentAlignment.MiddleCenter,
+					TextImageRelation = TextImageRelation.Overlay,
 					Font = new Font("Verdana", 9, FontStyle.Regular),
 					Tag = question,
+					BackColor = Color.White,
+					FlatStyle = FlatStyle.Standard,
 					CausesValidation = false
 				};
+				button.FlatAppearance.BorderSize = 1;
+				button.FlatAppearance.BorderColor = Color.Blue;
 				button.Click += Button_Click;
 				button.Enter += btnPreviousQuestion_Enter;
 				fLPdata.Controls.Add(button);

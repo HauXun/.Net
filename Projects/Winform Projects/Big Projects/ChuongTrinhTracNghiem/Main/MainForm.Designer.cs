@@ -191,7 +191,7 @@ namespace Main
 			this.btnMinimized.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnMinimized.IconSize = 20;
 			this.btnMinimized.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.btnMinimized.Location = new System.Drawing.Point(1540, 3);
+			this.btnMinimized.Location = new System.Drawing.Point(1541, 3);
 			this.btnMinimized.Name = "btnMinimized";
 			this.btnMinimized.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
 			this.btnMinimized.Size = new System.Drawing.Size(25, 25);
@@ -211,7 +211,7 @@ namespace Main
 			this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnExit.IconSize = 20;
 			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.btnExit.Location = new System.Drawing.Point(1571, 3);
+			this.btnExit.Location = new System.Drawing.Point(1572, 3);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
 			this.btnExit.Size = new System.Drawing.Size(25, 25);

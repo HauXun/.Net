@@ -1,7 +1,6 @@
 ﻿using BusinessLogicLayer;
 using Main.Partial;
 using System;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -145,6 +144,16 @@ namespace Main.Pages
 
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += Statistical_GotFocus;
+		}
+
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += Statistical_GotFocus;
+		}
+
+		private void Statistical_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 
@@ -162,11 +171,6 @@ namespace Main.Pages
 		}
 
 		private void tbSearch_Enter(object sender, EventArgs e)
-		{
-			(sender as FontAwesome.Sharp.IconButton).GotFocus += Statistical_GotFocus;
-		}
-
-		private void Statistical_GotFocus(object sender, EventArgs e)
 		{
 			tbSearch.Clear();
 		}

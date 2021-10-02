@@ -643,6 +643,11 @@ namespace Main.Pages
 			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageSubject_GotFocus;
 		}
 
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += ManageSubject_GotFocus;
+		}
+
 		private void ManageSubject_GotFocus(object sender, EventArgs e)
 		{
 			lbTitle.Focus();

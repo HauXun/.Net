@@ -153,14 +153,25 @@ namespace Main.Pages
 				}
 				else
 				{
-					MsgBox.ShowMessage("Cập nhập không thành công! Vui lòng kiểm tra lại dữ liệu!", "Amazing Quiz Application",
+					MsgBox.ShowMessage("Cập nhập không thành công! Vui lòng kiểm tra lại tài khoản hoặc mật khẩu!", "Amazing Quiz Application",
 						MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
+					isSuccess = false;
 				}
 			}
 			catch (Exception e)
 			{
 				MsgBox.ShowMessage(e.Message, "Amazing Quiz Application",
 					MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				if (!btnChinhSua.Enabled)
+				{
+					btnHuyLuu_Click(this, new EventArgs());
+					DisableRemainFunc(true);
+				}
+				if (!btnDoiMatKhau.Enabled)
+				{
+					btnHuyMatKhau_Click(this, new EventArgs());
+					DisableRemainFunc(false);
+				}
 			}
 		}
 
@@ -177,7 +188,7 @@ namespace Main.Pages
 			tbClass.Text = account.ClassID;
 			tbSoDienThoai.Text = account.PhoneNumber;
 			tbEmail.Text = account.Email;
-			dtpNgaySinh.Value = Convert.ToDateTime(account.Birthday.ToString("dd/MM/yyyy"));
+			dtpNgaySinh.Value = account.Birthday;
 		}
 
 		/// <summary>
@@ -193,24 +204,6 @@ namespace Main.Pages
 			errorProviderWar.SetError(tbMatKhau, "");
 			errorProviderWar.SetError(tbMatKhauMoi, "");
 			errorProviderWar.SetError(tbNhapLaiMatKhauMoi, "");
-		}
-
-		/// <summary>
-		/// Xóa dữ liệu các control
-		/// </summary>
-		private void ClearControlData()
-		{
-			foreach (Control control in pnlThongTin.Controls)
-			{
-				if (control is Guna2TextBox)
-				{
-					(control as Guna2TextBox).Text = string.Empty;
-				}
-				if (control is Guna2DateTimePicker)
-				{
-					(control as Guna2DateTimePicker).Value = DateTime.Today;
-				}
-			}
 		}
 
 		/// <summary>
@@ -411,7 +404,7 @@ namespace Main.Pages
 			}
 
 			// Kiểm tra ngày sinh toàn vẹn giá trị
-			if (dtpNgaySinh.Value.Year >= DateTime.Now.Year)
+			if (DateTime.Now.Year - dtpNgaySinh.Value.Year < 18)
 			{
 				errorProviderWar.SetError(dtpNgaySinh, "Ngày tháng năm sinh có vấn đề!");
 				return false;
@@ -488,7 +481,6 @@ namespace Main.Pages
 			{
 				EnableControlInfo(false);
 				DisableRemainFunc(true);
-				ClearControlData();
 				ClearError();
 				ChangeRole(Account);
 			}
@@ -522,7 +514,6 @@ namespace Main.Pages
 			{
 				EnableControlPassword(false);
 				DisableRemainFunc(false);
-				ClearControlData();
 				ClearError();
 				ChangeRole(Account);
 			}

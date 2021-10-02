@@ -166,10 +166,20 @@ namespace Main.Pages
 
 		private void btnClearFilter_Enter(object sender, EventArgs e)
 		{
-			lbTitle.Focus();
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += EduProg_GotFocus;
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			tbSearch.Clear();
+		}
+
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += EduProg_GotFocus;
+		}
+
+		private void EduProg_GotFocus(object sender, EventArgs e)
 		{
 			tbSearch.Clear();
 		}
@@ -183,11 +193,6 @@ namespace Main.Pages
 		}
 
 		private void tbSearch_Enter(object sender, EventArgs e)
-		{
-			(sender as FontAwesome.Sharp.IconButton).GotFocus += EduProg_GotFocus;
-		}
-
-		private void EduProg_GotFocus(object sender, EventArgs e)
 		{
 			tbSearch.Clear();
 		}

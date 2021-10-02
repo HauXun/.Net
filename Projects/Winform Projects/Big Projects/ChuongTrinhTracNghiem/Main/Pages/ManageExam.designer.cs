@@ -69,17 +69,18 @@ namespace Main.Pages
 			this.btnCancle = new FontAwesome.Sharp.IconButton();
 			this.pnlControls = new System.Windows.Forms.Panel();
 			this.pnlInfo2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+			this.gbMark = new System.Windows.Forms.Panel();
+			this.cbTestFormID = new Bunifu.UI.WinForms.BunifuDropdown();
+			this.nudPercentMark = new Guna.UI2.WinForms.Guna2NumericUpDown();
+			this.lbPercentMark = new System.Windows.Forms.Label();
+			this.lbTestFormID = new System.Windows.Forms.Label();
 			this.lbCheckStatus = new System.Windows.Forms.LinkLabel();
 			this.nudExamTime = new Guna.UI2.WinForms.Guna2NumericUpDown();
 			this.ckbStatus = new Guna.UI2.WinForms.Guna2CustomCheckBox();
 			this.lbSoLuongCauHoi = new System.Windows.Forms.Label();
-			this.cbTestFormID = new Bunifu.UI.WinForms.BunifuDropdown();
 			this.lbThoiGianLamBai = new System.Windows.Forms.Label();
-			this.nudPercentMark = new Guna.UI2.WinForms.Guna2NumericUpDown();
 			this.lbStatus = new System.Windows.Forms.Label();
-			this.lbPercentMark = new System.Windows.Forms.Label();
 			this.nudQCount = new Guna.UI2.WinForms.Guna2NumericUpDown();
-			this.lbTestFormID = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.nudQuizTimes = new Guna.UI2.WinForms.Guna2NumericUpDown();
 			this.pnlInfo1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -95,8 +96,9 @@ namespace Main.Pages
 			((System.ComponentModel.ISupportInitialize)(this.aDgvdata)).BeginInit();
 			this.pnlControls.SuspendLayout();
 			this.pnlInfo2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudExamTime)).BeginInit();
+			this.gbMark.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudPercentMark)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudExamTime)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudQCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudQuizTimes)).BeginInit();
 			this.pnlInfo1.SuspendLayout();
@@ -313,6 +315,7 @@ namespace Main.Pages
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
 			this.aDgvdata.Click += new System.EventHandler(this.ManageExam_Click);
+			this.aDgvdata.Enter += new System.EventHandler(this.aDgvdata_Enter);
 			// 
 			// STT
 			// 
@@ -594,17 +597,14 @@ namespace Main.Pages
 			// pnlInfo2
 			// 
 			this.pnlInfo2.BackColor = System.Drawing.Color.Transparent;
+			this.pnlInfo2.Controls.Add(this.gbMark);
 			this.pnlInfo2.Controls.Add(this.lbCheckStatus);
 			this.pnlInfo2.Controls.Add(this.nudExamTime);
 			this.pnlInfo2.Controls.Add(this.ckbStatus);
 			this.pnlInfo2.Controls.Add(this.lbSoLuongCauHoi);
-			this.pnlInfo2.Controls.Add(this.cbTestFormID);
 			this.pnlInfo2.Controls.Add(this.lbThoiGianLamBai);
-			this.pnlInfo2.Controls.Add(this.nudPercentMark);
 			this.pnlInfo2.Controls.Add(this.lbStatus);
-			this.pnlInfo2.Controls.Add(this.lbPercentMark);
 			this.pnlInfo2.Controls.Add(this.nudQCount);
-			this.pnlInfo2.Controls.Add(this.lbTestFormID);
 			this.pnlInfo2.Controls.Add(this.label1);
 			this.pnlInfo2.Controls.Add(this.nudQuizTimes);
 			this.pnlInfo2.FillColor = System.Drawing.Color.White;
@@ -618,6 +618,94 @@ namespace Main.Pages
 			this.pnlInfo2.TabIndex = 27;
 			this.pnlInfo2.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
+			// gbMark
+			// 
+			this.gbMark.Controls.Add(this.cbTestFormID);
+			this.gbMark.Controls.Add(this.nudPercentMark);
+			this.gbMark.Controls.Add(this.lbPercentMark);
+			this.gbMark.Controls.Add(this.lbTestFormID);
+			this.gbMark.Location = new System.Drawing.Point(15, 80);
+			this.gbMark.Name = "gbMark";
+			this.gbMark.Size = new System.Drawing.Size(325, 77);
+			this.gbMark.TabIndex = 28;
+			this.gbMark.Click += new System.EventHandler(this.ManageExam_Click);
+			// 
+			// cbTestFormID
+			// 
+			this.cbTestFormID.BackColor = System.Drawing.Color.Transparent;
+			this.cbTestFormID.BorderRadius = 4;
+			this.cbTestFormID.Color = System.Drawing.Color.Gray;
+			this.cbTestFormID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+			this.cbTestFormID.DisabledColor = System.Drawing.Color.Gray;
+			this.cbTestFormID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.cbTestFormID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+			this.cbTestFormID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbTestFormID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+			this.cbTestFormID.FillDropDown = false;
+			this.cbTestFormID.FillIndicator = false;
+			this.cbTestFormID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cbTestFormID.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbTestFormID.ForeColor = System.Drawing.Color.Black;
+			this.cbTestFormID.FormattingEnabled = true;
+			this.cbTestFormID.Icon = null;
+			this.cbTestFormID.IndicatorColor = System.Drawing.Color.Black;
+			this.cbTestFormID.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+			this.cbTestFormID.ItemBackColor = System.Drawing.Color.White;
+			this.cbTestFormID.ItemBorderColor = System.Drawing.Color.White;
+			this.cbTestFormID.ItemForeColor = System.Drawing.Color.Black;
+			this.cbTestFormID.ItemHeight = 30;
+			this.cbTestFormID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
+			this.cbTestFormID.Location = new System.Drawing.Point(10, 31);
+			this.cbTestFormID.Name = "cbTestFormID";
+			this.cbTestFormID.Size = new System.Drawing.Size(139, 36);
+			this.cbTestFormID.TabIndex = 13;
+			this.cbTestFormID.Text = null;
+			this.cbTestFormID.SelectedIndexChanged += new System.EventHandler(this.cbTestFormID_SelectedIndexChanged);
+			this.cbTestFormID.Click += new System.EventHandler(this.ManageExam_Click);
+			// 
+			// nudPercentMark
+			// 
+			this.nudPercentMark.BackColor = System.Drawing.Color.White;
+			this.nudPercentMark.BorderColor = System.Drawing.Color.Gray;
+			this.nudPercentMark.BorderRadius = 5;
+			this.nudPercentMark.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.nudPercentMark.DisabledState.Parent = this.nudPercentMark;
+			this.nudPercentMark.Enabled = false;
+			this.nudPercentMark.FocusedState.Parent = this.nudPercentMark;
+			this.nudPercentMark.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nudPercentMark.ForeColor = System.Drawing.Color.Black;
+			this.nudPercentMark.Location = new System.Drawing.Point(165, 31);
+			this.nudPercentMark.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+			this.nudPercentMark.Name = "nudPercentMark";
+			this.nudPercentMark.ShadowDecoration.Parent = this.nudPercentMark;
+			this.nudPercentMark.Size = new System.Drawing.Size(139, 36);
+			this.nudPercentMark.TabIndex = 14;
+			this.nudPercentMark.UpDownButtonFillColor = System.Drawing.Color.DarkGray;
+			this.nudPercentMark.Click += new System.EventHandler(this.ManageExam_Click);
+			// 
+			// lbPercentMark
+			// 
+			this.lbPercentMark.AutoSize = true;
+			this.lbPercentMark.Enabled = false;
+			this.lbPercentMark.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbPercentMark.Location = new System.Drawing.Point(162, 9);
+			this.lbPercentMark.Name = "lbPercentMark";
+			this.lbPercentMark.Size = new System.Drawing.Size(134, 18);
+			this.lbPercentMark.TabIndex = 16;
+			this.lbPercentMark.Text = "Tỉ lệ điểm (%):";
+			this.lbPercentMark.Click += new System.EventHandler(this.ManageExam_Click);
+			// 
+			// lbTestFormID
+			// 
+			this.lbTestFormID.AutoSize = true;
+			this.lbTestFormID.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTestFormID.Location = new System.Drawing.Point(7, 9);
+			this.lbTestFormID.Name = "lbTestFormID";
+			this.lbTestFormID.Size = new System.Drawing.Size(148, 18);
+			this.lbTestFormID.TabIndex = 15;
+			this.lbTestFormID.Text = "Hình thức đề thi:";
+			this.lbTestFormID.Click += new System.EventHandler(this.ManageExam_Click);
+			// 
 			// lbCheckStatus
 			// 
 			this.lbCheckStatus.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -630,7 +718,7 @@ namespace Main.Pages
 			this.lbCheckStatus.TabIndex = 47;
 			this.lbCheckStatus.TabStop = true;
 			this.lbCheckStatus.Text = "Đóng thi";
-			this.lbCheckStatus.Click += new System.EventHandler(this.ManageExam_Click);
+			this.lbCheckStatus.Click += new System.EventHandler(this.lbCheckStatus_Click);
 			this.lbCheckStatus.MouseEnter += new System.EventHandler(this.lbCheckStatus_MouseEnter);
 			this.lbCheckStatus.MouseLeave += new System.EventHandler(this.lbCheckStatus_MouseLeave);
 			// 
@@ -695,76 +783,23 @@ namespace Main.Pages
 			// 
 			this.lbSoLuongCauHoi.AutoSize = true;
 			this.lbSoLuongCauHoi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbSoLuongCauHoi.Location = new System.Drawing.Point(188, 13);
+			this.lbSoLuongCauHoi.Location = new System.Drawing.Point(178, 13);
 			this.lbSoLuongCauHoi.Name = "lbSoLuongCauHoi";
 			this.lbSoLuongCauHoi.Size = new System.Drawing.Size(152, 18);
 			this.lbSoLuongCauHoi.TabIndex = 2;
 			this.lbSoLuongCauHoi.Text = "Số lượng câu hỏi:";
 			this.lbSoLuongCauHoi.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
-			// cbTestFormID
-			// 
-			this.cbTestFormID.BackColor = System.Drawing.Color.Transparent;
-			this.cbTestFormID.BorderRadius = 4;
-			this.cbTestFormID.Color = System.Drawing.Color.Gray;
-			this.cbTestFormID.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
-			this.cbTestFormID.DisabledColor = System.Drawing.Color.Gray;
-			this.cbTestFormID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbTestFormID.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
-			this.cbTestFormID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbTestFormID.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-			this.cbTestFormID.FillDropDown = false;
-			this.cbTestFormID.FillIndicator = false;
-			this.cbTestFormID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.cbTestFormID.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cbTestFormID.ForeColor = System.Drawing.Color.Black;
-			this.cbTestFormID.FormattingEnabled = true;
-			this.cbTestFormID.Icon = null;
-			this.cbTestFormID.IndicatorColor = System.Drawing.Color.Black;
-			this.cbTestFormID.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-			this.cbTestFormID.ItemBackColor = System.Drawing.Color.White;
-			this.cbTestFormID.ItemBorderColor = System.Drawing.Color.White;
-			this.cbTestFormID.ItemForeColor = System.Drawing.Color.Black;
-			this.cbTestFormID.ItemHeight = 30;
-			this.cbTestFormID.ItemHighLightColor = System.Drawing.Color.GhostWhite;
-			this.cbTestFormID.Location = new System.Drawing.Point(25, 112);
-			this.cbTestFormID.Name = "cbTestFormID";
-			this.cbTestFormID.Size = new System.Drawing.Size(139, 36);
-			this.cbTestFormID.TabIndex = 3;
-			this.cbTestFormID.Text = null;
-			this.cbTestFormID.SelectedIndexChanged += new System.EventHandler(this.cbTestFormID_SelectedIndexChanged);
-			this.cbTestFormID.Click += new System.EventHandler(this.ManageExam_Click);
-			// 
 			// lbThoiGianLamBai
 			// 
 			this.lbThoiGianLamBai.AutoSize = true;
 			this.lbThoiGianLamBai.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbThoiGianLamBai.Location = new System.Drawing.Point(32, 13);
+			this.lbThoiGianLamBai.Location = new System.Drawing.Point(22, 13);
 			this.lbThoiGianLamBai.Name = "lbThoiGianLamBai";
 			this.lbThoiGianLamBai.Size = new System.Drawing.Size(158, 18);
 			this.lbThoiGianLamBai.TabIndex = 0;
 			this.lbThoiGianLamBai.Text = "Thời gian làm bài:";
 			this.lbThoiGianLamBai.Click += new System.EventHandler(this.ManageExam_Click);
-			// 
-			// nudPercentMark
-			// 
-			this.nudPercentMark.BackColor = System.Drawing.Color.White;
-			this.nudPercentMark.BorderColor = System.Drawing.Color.Gray;
-			this.nudPercentMark.BorderRadius = 5;
-			this.nudPercentMark.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.nudPercentMark.DisabledState.Parent = this.nudPercentMark;
-			this.nudPercentMark.Enabled = false;
-			this.nudPercentMark.FocusedState.Parent = this.nudPercentMark;
-			this.nudPercentMark.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.nudPercentMark.ForeColor = System.Drawing.Color.Black;
-			this.nudPercentMark.Location = new System.Drawing.Point(180, 112);
-			this.nudPercentMark.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-			this.nudPercentMark.Name = "nudPercentMark";
-			this.nudPercentMark.ShadowDecoration.Parent = this.nudPercentMark;
-			this.nudPercentMark.Size = new System.Drawing.Size(139, 36);
-			this.nudPercentMark.TabIndex = 4;
-			this.nudPercentMark.UpDownButtonFillColor = System.Drawing.Color.DarkGray;
-			this.nudPercentMark.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// lbStatus
 			// 
@@ -776,18 +811,6 @@ namespace Main.Pages
 			this.lbStatus.TabIndex = 46;
 			this.lbStatus.Text = "Trạng thái:";
 			this.lbStatus.Click += new System.EventHandler(this.ManageExam_Click);
-			// 
-			// lbPercentMark
-			// 
-			this.lbPercentMark.AutoSize = true;
-			this.lbPercentMark.Enabled = false;
-			this.lbPercentMark.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbPercentMark.Location = new System.Drawing.Point(187, 88);
-			this.lbPercentMark.Name = "lbPercentMark";
-			this.lbPercentMark.Size = new System.Drawing.Size(134, 18);
-			this.lbPercentMark.TabIndex = 12;
-			this.lbPercentMark.Text = "Tỉ lệ điểm (%):";
-			this.lbPercentMark.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// nudQCount
 			// 
@@ -822,17 +845,6 @@ namespace Main.Pages
             0,
             0});
 			this.nudQCount.Click += new System.EventHandler(this.ManageExam_Click);
-			// 
-			// lbTestFormID
-			// 
-			this.lbTestFormID.AutoSize = true;
-			this.lbTestFormID.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTestFormID.Location = new System.Drawing.Point(32, 88);
-			this.lbTestFormID.Name = "lbTestFormID";
-			this.lbTestFormID.Size = new System.Drawing.Size(148, 18);
-			this.lbTestFormID.TabIndex = 10;
-			this.lbTestFormID.Text = "Hình thức đề thi:";
-			this.lbTestFormID.Click += new System.EventHandler(this.ManageExam_Click);
 			// 
 			// label1
 			// 
@@ -1076,8 +1088,10 @@ namespace Main.Pages
 			this.pnlControls.ResumeLayout(false);
 			this.pnlInfo2.ResumeLayout(false);
 			this.pnlInfo2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudExamTime)).EndInit();
+			this.gbMark.ResumeLayout(false);
+			this.gbMark.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudPercentMark)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudExamTime)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudQCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudQuizTimes)).EndInit();
 			this.pnlInfo1.ResumeLayout(false);
@@ -1116,10 +1130,6 @@ namespace Main.Pages
 		private System.Windows.Forms.Label label1;
 		private Bunifu.UI.WinForms.BunifuVSlider bScrollBar;
 		private System.Windows.Forms.Label lbStatus;
-		private System.Windows.Forms.Label lbTestFormID;
-		private Guna.UI2.WinForms.Guna2NumericUpDown nudPercentMark;
-		private System.Windows.Forms.Label lbPercentMark;
-		private Bunifu.UI.WinForms.BunifuDropdown cbTestFormID;
 		public ADGV.AdvancedDataGridView aDgvdata;
 		private Guna.UI2.WinForms.Guna2CustomCheckBox ckbStatus;
 		private System.Windows.Forms.LinkLabel lbCheckStatus;
@@ -1137,5 +1147,10 @@ namespace Main.Pages
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCount;
 		private System.Windows.Forms.DataGridViewTextBoxColumn QCurrentCount;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+		private System.Windows.Forms.Panel gbMark;
+		private Bunifu.UI.WinForms.BunifuDropdown cbTestFormID;
+		private Guna.UI2.WinForms.Guna2NumericUpDown nudPercentMark;
+		private System.Windows.Forms.Label lbPercentMark;
+		private System.Windows.Forms.Label lbTestFormID;
 	}
 }

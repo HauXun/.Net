@@ -122,7 +122,7 @@ namespace Main.Pages
 				account.FullName = tbFullName.Text;
 				account.Email = tbEmail.Text;
 				account.PhoneNumber = tbPhone.Text;
-				account.Birthday = Convert.ToDateTime(dtpDob.Value.ToString("dd/MM/yyyy"));
+				account.Birthday = dtpDob.Value;
 				account.Address = tbAddress.Text;
 				return account;
 			}
@@ -271,7 +271,7 @@ namespace Main.Pages
 				if (control is Guna2TextBox)
 					(control as Guna2TextBox).Text = "";
 				if (control is Guna2DateTimePicker)
-					(control as Guna2DateTimePicker).Value = Convert.ToDateTime(DateTime.Today.ToString("dd/MM/yyyy"));
+					(control as Guna2DateTimePicker).Value = DateTime.Today;
 			}
 		}
 
@@ -720,6 +720,11 @@ namespace Main.Pages
 		private void iconTitle_Enter(object sender, EventArgs e)
 		{
 			(sender as FontAwesome.Sharp.IconButton).GotFocus += ManageUser_GotFocus;
+		}
+
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += ManageUser_GotFocus;
 		}
 
 		private void ManageUser_GotFocus(object sender, EventArgs e)

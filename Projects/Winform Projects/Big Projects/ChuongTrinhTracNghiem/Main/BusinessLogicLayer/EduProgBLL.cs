@@ -2,7 +2,9 @@
 using Main.Partial;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BusinessLogicLayer
@@ -63,7 +65,12 @@ namespace BusinessLogicLayer
 				};
 			}
 			else
-				data.DataSource = EduProgDAL.Instance.SearchEduProg(keyword);
+			{
+				BindingSource scripts = new BindingSource();
+				List<Script> list = Enumerable.Cast<Script>(EduProgDAL.Instance.SearchEduProg(keyword)).ToList();
+				scripts.DataSource = list;
+				data.DataSource = scripts;
+			}
 		}
 	}
 }

@@ -165,6 +165,16 @@ namespace Main.Pages
 
 		private void btnClearFilter_Enter(object sender, EventArgs e)
 		{
+			(sender as FontAwesome.Sharp.IconButton).GotFocus += LeaderBoard_GotFocus;
+		}
+
+		private void aDgvdata_Enter(object sender, EventArgs e)
+		{
+			(sender as ADGV.AdvancedDataGridView).GotFocus += LeaderBoard_GotFocus;
+		}
+
+		private void LeaderBoard_GotFocus(object sender, EventArgs e)
+		{
 			lbTitle.Focus();
 		}
 
@@ -182,11 +192,6 @@ namespace Main.Pages
 		}
 
 		private void tbSearch_Enter(object sender, EventArgs e)
-		{
-			(sender as FontAwesome.Sharp.IconButton).GotFocus += LeaderBoard_GotFocus;
-		}
-
-		private void LeaderBoard_GotFocus(object sender, EventArgs e)
 		{
 			tbSearch.Clear();
 		}

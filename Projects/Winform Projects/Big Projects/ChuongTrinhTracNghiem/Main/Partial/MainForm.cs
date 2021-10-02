@@ -390,7 +390,6 @@ namespace Main
 
 		private void ProfileUC_UpdateAccountInfo(object sender, Pages.AccountChanged e)
 		{
-			btnTroGiup.Text = $"{"Trợ giúp"} ({e.Account.FullName})";
 			Account = e.Account;
 		}
 
@@ -623,6 +622,8 @@ namespace Main
 		{
 			//Rounded Form
 			Region = System.Drawing.Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+			btnExit.Region = System.Drawing.Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnExit.Width, btnExit.Height, 6, 6));
+			btnMinimized.Region = System.Drawing.Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnMinimized.Width, btnMinimized.Height, 6, 6));
 
 			Subscribe();
 		}

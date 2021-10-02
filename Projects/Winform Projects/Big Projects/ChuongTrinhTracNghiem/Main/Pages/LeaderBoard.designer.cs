@@ -131,6 +131,7 @@ namespace Main.Pages
 			this.aDgvdata.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.aDgvdata_RowsAdded);
 			this.aDgvdata.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.aDgvdata_RowsRemoved);
 			this.aDgvdata.Click += new System.EventHandler(this.LeaderBoard_Click);
+			this.aDgvdata.Enter += new System.EventHandler(this.aDgvdata_Enter);
 			// 
 			// STT
 			// 

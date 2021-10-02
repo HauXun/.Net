@@ -28,7 +28,7 @@ namespace Main
 		private void GetRounded()
 		{
 			Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
-			panel1.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 10, 10));
+			btnExit.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnExit.Width, btnExit.Height, 6, 6));
 		}
 
 		/// <summary>

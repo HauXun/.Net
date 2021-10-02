@@ -3,6 +3,7 @@ using Entities;
 using Main.Partial;
 using System;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Main
@@ -91,29 +92,20 @@ namespace Main
 		{
 			if (!IsValidComboBoxControl())
 				return;
-
+			StringBuilder @string = new StringBuilder();
 			if (Exam == null)
-			{
-				MsgBox.ShowMessage($"Hiện tại không có {test} cho môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. Thử môn khác xem nào! 🚀🚀🚀",
-					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
-				return;
-			}
+				@string.Append($"Tạm thời không có {test} cho môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. ");
 			if (Exam.QCurrentCount <= 0)
-			{
-				MsgBox.ShowMessage($"Hiện tại không có câu hỏi cho {test} của môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. Thử lại khi khác nhé! 🚀🚀🚀",
-					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
-				return;
-			}
+				@string.Append($"Hiện tại không có câu hỏi cho {test} của môn {SubjectBLL.Instance.GetSubjectByID(subjectID).SubjectName}!. ");
 			if (Exam.QuizTimes <= 0)
-			{
-				MsgBox.ShowMessage($"Số lần thi bị hạn chế!. Thử lại khi khác nhé! 🚀🚀🚀",
-					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
-				return;
-			}
+				@string.Append($"Số lần thi bị hạn chế!. ");
 			if (Exam.Status == false)
+				@string.Append($"Bài thi chưa được mở!. ");
+
+			if (@string.Length > 0)
 			{
-				MsgBox.ShowMessage($"Bài thi chưa được mở!. Thử lại khi khác nhé! 🚀🚀🚀",
-					"Amazing Quiz Application", MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
+				MsgBox.ShowMessage(@string.ToString() + "Thử lại khi khác nhé! 🚀🚀🚀", "Amazing Quiz Application",
+					MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
 				return;
 			}
 
