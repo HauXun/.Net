@@ -105,7 +105,7 @@ namespace Main.Pages
 
 		private void SaveCurrentSelected()
 		{
-			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCount)
+			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCurrentCount)
 			{
 				string answer = GetSelectedOption();
 				Data.Rows[idx - 1]["SelectedOption"] = answer;
@@ -135,31 +135,34 @@ namespace Main.Pages
 		private void LoadQuestion()
 		{
 			Data = QuestionBLL.Instance.GetQuestionByRequest(Exam.ExamID, Exam.SubjectID);
-			Data.Columns.Add("SelectedOption");
-			int i = 1;
-			foreach (DataRow row in Data.Rows)
+			if (Data != null)
 			{
-				Question question = new Question(row);
-				question.QuestionIdx = row["QuestionIdx"].ToString();
-				Button button = new Button()
+				Data.Columns.Add("SelectedOption");
+				int i = 1;
+				foreach (DataRow row in Data.Rows)
 				{
-					Width = 50,
-					Height = 50,
-					Name = i.ToString(),
-					Text = $"Câu {i++}",
-					TextAlign = ContentAlignment.MiddleCenter,
-					TextImageRelation = TextImageRelation.Overlay,
-					Font = new Font("Verdana", 9, FontStyle.Regular),
-					Tag = question,
-					BackColor = Color.White,
-					FlatStyle = FlatStyle.Standard,
-					CausesValidation = false
-				};
-				button.FlatAppearance.BorderSize = 1;
-				button.FlatAppearance.BorderColor = Color.Blue;
-				button.Click += Button_Click;
-				button.Enter += btnPreviousQuestion_Enter;
-				fLPdata.Controls.Add(button);
+					Question question = new Question(row);
+					question.QuestionIdx = row["QuestionIdx"].ToString();
+					Button button = new Button()
+					{
+						Width = 50,
+						Height = 50,
+						Name = i.ToString(),
+						Text = $"Câu {i++}",
+						TextAlign = ContentAlignment.MiddleCenter,
+						TextImageRelation = TextImageRelation.Overlay,
+						Font = new Font("Verdana", 9, FontStyle.Regular),
+						Tag = question,
+						BackColor = Color.White,
+						FlatStyle = FlatStyle.Standard,
+						CausesValidation = false
+					};
+					button.FlatAppearance.BorderSize = 1;
+					button.FlatAppearance.BorderColor = Color.Blue;
+					button.Click += Button_Click;
+					button.Enter += btnPreviousQuestion_Enter;
+					fLPdata.Controls.Add(button);
+				}
 			}
 		}
 
@@ -197,7 +200,7 @@ namespace Main.Pages
 		private void NavigationButton()
 		{
 			btnFirstQuestion.Enabled = btnPreviousQuestion.Enabled = (int.TryParse(selectedIndex, out int idx) && idx - 1 > 0);
-			btnLastQuestion.Enabled = btnNextQuestion.Enabled = (int.TryParse(selectedIndex, out idx) && idx + 1 <= Exam.QCount);
+			btnLastQuestion.Enabled = btnNextQuestion.Enabled = (int.TryParse(selectedIndex, out idx) && idx + 1 <= Exam.QCurrentCount);
 		}
 
 		private void FinishQuiz()
@@ -206,6 +209,7 @@ namespace Main.Pages
 			if (Exam != null && Data != null)
 			{
 				SaveCurrentSelected();
+				ClearChecked();
 				SavePoint();
 				SaveTestHistory();
 
@@ -221,6 +225,7 @@ namespace Main.Pages
 		private void SavePoint()
 		{
 			correctAnswer = 0;
+			mark = 0;
 			foreach (DataRow row in Data.Rows)
 			{
 				string answer = row["Answer"].ToString();
@@ -232,7 +237,7 @@ namespace Main.Pages
 				}
 			}
 
-			mark = (float)correctAnswer * 10 / Exam.QCount;
+			mark = (float)correctAnswer * 10 / Exam.QCurrentCount;
 		}
 
 		private void SaveTestHistory()
@@ -246,7 +251,7 @@ namespace Main.Pages
 					UserID = Account.UserID,
 					SemesterID = SubjectBLL.Instance.GetSubjectByID(Exam.SubjectID).SemesterID,
 					CorrectAnswer = correctAnswer,
-					TotalQuestion = Exam.QCount,
+					TotalQuestion = Exam.QCurrentCount,
 					Mark = mark,
 					CreatedBy = Account.FullName
 				};
@@ -290,7 +295,8 @@ namespace Main.Pages
 		{
 			if (Exam != null)
 			{
-				timer = new CountDownTimer();
+				timer = new CountDownTimer(); 
+				selectedIndex = "1";
 				LoadData(e);
 				CountDownTimer();
 			}
@@ -325,7 +331,7 @@ namespace Main.Pages
 			Session.ShowHideMenu?.Invoke();
 			if (fLPdata.Controls.Count > 0)
 			{
-				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals(Exam.QCount.ToString())).FirstOrDefault();
+				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals(Exam.QCurrentCount.ToString())).FirstOrDefault();
 				Button_Click(button, e);
 			}
 		}
@@ -343,7 +349,7 @@ namespace Main.Pages
 		private void btnNextQuestion_Click(object sender, EventArgs e)
 		{
 			Session.ShowHideMenu?.Invoke();
-			if (int.TryParse(selectedIndex, out int idx) && idx + 1 <= Exam.QCount && fLPdata.Controls.Count > 0)
+			if (int.TryParse(selectedIndex, out int idx) && idx + 1 <= Exam.QCurrentCount && fLPdata.Controls.Count > 0)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx + 1).ToString())).FirstOrDefault();
 				Button_Click(button, e);
@@ -383,7 +389,7 @@ namespace Main.Pages
 		private void btnFlags_Click(object sender, EventArgs e)
 		{
 			Session.ShowHideMenu?.Invoke();
-			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCount)
+			if (int.TryParse(selectedIndex, out int idx) && idx > 0 && idx <= Exam.QCurrentCount)
 			{
 				Button button = fLPdata.Controls.Cast<Button>().Where(x => x.Name.Equals((idx).ToString())).FirstOrDefault();
 

@@ -114,10 +114,10 @@ namespace Main
 			this.cbSubject.HoverState.Parent = this.cbSubject;
 			this.cbSubject.ItemHeight = 30;
 			this.cbSubject.ItemsAppearance.Parent = this.cbSubject;
-			this.cbSubject.Location = new System.Drawing.Point(13, 98);
+			this.cbSubject.Location = new System.Drawing.Point(20, 98);
 			this.cbSubject.Name = "cbSubject";
 			this.cbSubject.ShadowDecoration.Parent = this.cbSubject;
-			this.cbSubject.Size = new System.Drawing.Size(416, 36);
+			this.cbSubject.Size = new System.Drawing.Size(400, 36);
 			this.cbSubject.TabIndex = 6;
 			this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
 			// 
@@ -162,7 +162,7 @@ namespace Main
 			// 
 			this.lbMonThi.AutoSize = true;
 			this.lbMonThi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMonThi.Location = new System.Drawing.Point(9, 75);
+			this.lbMonThi.Location = new System.Drawing.Point(17, 75);
 			this.lbMonThi.Name = "lbMonThi";
 			this.lbMonThi.Size = new System.Drawing.Size(78, 18);
 			this.lbMonThi.TabIndex = 3;

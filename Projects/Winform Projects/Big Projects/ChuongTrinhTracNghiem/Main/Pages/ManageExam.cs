@@ -43,6 +43,7 @@ namespace Main.Pages
 				else
 					Session.Cancle = false;
 			};
+			this.lbCheckStatus.TabStop = false;
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

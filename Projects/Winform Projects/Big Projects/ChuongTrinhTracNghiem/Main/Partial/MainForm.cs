@@ -277,10 +277,9 @@ namespace Main
 				ShowHideSubMenu();
 				quizTestUC.Account = this.Account;
 				quizTestUC.Exam = Session.Exam;
-				quizTestUC.Data = Session.Data;
 				quizTestUC.FrmQuiz_Load(quizTestUC, e);
 				selectExamForm.Hide();
-				if (!selectExamForm.isMockTest && this.Account.UserRole.ToLower().Equals("user"))
+				if (/*!selectExamForm.isMockTest && */this.Account.UserRole.Equals("User"))
 					ExamBLL.Instance.CancleQuizTimes(this.Account.UserID, Session.Exam.ExamID, Session.Exam.SubjectID);
 				btnHome.Enabled = btnNav.Enabled = pnlNavigationMini.Enabled = selectExamForm.Visible = false;
 				#region MultiThreading

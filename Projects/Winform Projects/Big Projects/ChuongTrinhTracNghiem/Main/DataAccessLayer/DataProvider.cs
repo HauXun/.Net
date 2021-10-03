@@ -28,7 +28,7 @@ namespace DataAccessLayer
 		static string database = "TestProjectDB.mdf";
 		// AttachDbFilename={path}\{database}
 		public static string connectionString
-				= $@"server=(local)\SQLEXPRESS; Database=TestProjectDB; integrated security=true;";
+				= $@"server=(local)\SQLEXPRESS; AttachDbFilename={path}\{database}; integrated security=true;";
 		public DataTable ExcuteQuery(string query, object[] parameter = null)
 		{
 			DataTable data = new DataTable();

@@ -247,6 +247,9 @@
     <Compile Include="Pages\BackupRestore.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Pages\BackupRestore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Pages\BackupRestore.designer.cs">
       <DependentUpon>BackupRestore.cs</DependentUpon>
     </Compile>

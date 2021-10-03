@@ -105,22 +105,22 @@ namespace Main.Pages
 					btnUncheck.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 					btnUncheck.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
 					btnUncheck.Image = new Bitmap(Properties.Resources.cancel, new Size(25, 25));
-					barUncheck.Value = value * 10 / Exam.QCount * 10;
-					lbUncheck.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
+					barUncheck.Value = value * 10 / Exam.QCurrentCount * 10;
+					lbUncheck.Text = Math.Round(value * 10 / (float)Exam.QCurrentCount * 10, 1).ToString() + "%";
 					break;
 				case State.Check:
 					btnCheck.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 					btnCheck.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
 					btnCheck.Image = new Bitmap(Properties.Resources._checked, new Size(25, 25));
-					barCheck.Value = value * 10 / Exam.QCount * 10;
-					lbCheck.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
+					barCheck.Value = value * 10 / Exam.QCurrentCount * 10;
+					lbCheck.Text = Math.Round(value * 10 / (float)Exam.QCurrentCount * 10, 1).ToString() + "%";
 					break;
 				case State.Indeterminate:
 					btnIndeterminate.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 					btnIndeterminate.Text = " ".PadRight(length - vLength > 0 ? length - vLength + 1 : 0) + $"{value} Câu";
 					btnIndeterminate.Image = new Bitmap(Properties.Resources.warning, new Size(25, 25));
-					barIndeterminate.Value = value * 10 / Exam.QCount * 10;
-					lbIndeterminate.Text = Math.Round(value * 10 / (float)Exam.QCount * 10, 1).ToString() + "%";
+					barIndeterminate.Value = value * 10 / Exam.QCurrentCount * 10;
+					lbIndeterminate.Text = Math.Round(value * 10 / (float)Exam.QCurrentCount * 10, 1).ToString() + "%";
 					break;
 			}
 		}
@@ -172,7 +172,7 @@ namespace Main.Pages
 		private void LoadMark()
 		{
 			string sCorrect = (correctAnswer < 9) ? $"0{correctAnswer}" : correctAnswer.ToString();
-			string sQCount = (Exam.QCount < 9) ? $"0{Exam.QCount}" : Exam.QCount.ToString();
+			string sQCount = (Exam.QCurrentCount < 9) ? $"0{Exam.QCurrentCount}" : Exam.QCurrentCount.ToString();
 			lbCorrectNumber.Text = $"{sCorrect}/{sQCount}";
 		}
 
