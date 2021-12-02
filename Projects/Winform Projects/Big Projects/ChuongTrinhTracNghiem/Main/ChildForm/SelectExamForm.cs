@@ -106,7 +106,6 @@ namespace Main
 			{
 				MsgBox.ShowMessage(@string.ToString() + "Thử lại khi khác nhé! 🚀🚀🚀", "Amazing Quiz Application",
 					MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-				return;
 			}
 
 			Session.Exam = this.Exam;

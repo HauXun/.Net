@@ -14,6 +14,7 @@ namespace Main.Partial
 		public static Action Submit;
 		public static Action CancleAction;
 		public static Action ShowHideMenu;
+		public static Action<bool> AntiPopup;
 		public static bool Cancle = true;
 
 		public static DataTable Data;

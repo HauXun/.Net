@@ -31,8 +31,6 @@ namespace Main.Pages
 		{
 			Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Guide));
-			this.pbBackground = new System.Windows.Forms.PictureBox();
-			this.iconTitle = new FontAwesome.Sharp.IconButton();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.pnlHuongDan = new Guna.UI2.WinForms.Guna2ShadowPanel();
 			this.btnPreviousHelp = new FontAwesome.Sharp.IconButton();
@@ -42,50 +40,20 @@ namespace Main.Pages
 			this.editAdmin = new System.Windows.Forms.TabPage();
 			this.bkPage1 = new System.Windows.Forms.TabPage();
 			this.bkPage2 = new System.Windows.Forms.TabPage();
+			this.bkPage3 = new System.Windows.Forms.TabPage();
+			this.bkPage4 = new System.Windows.Forms.TabPage();
 			this.addManager = new System.Windows.Forms.TabPage();
 			this.editManager = new System.Windows.Forms.TabPage();
 			this.guide1 = new System.Windows.Forms.TabPage();
 			this.guide2 = new System.Windows.Forms.TabPage();
 			this.guide3 = new System.Windows.Forms.TabPage();
 			this.guide4 = new System.Windows.Forms.TabPage();
-			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
+			this.iconTitle = new FontAwesome.Sharp.IconButton();
+			this.pbBackground = new System.Windows.Forms.PictureBox();
 			this.pnlHuongDan.SuspendLayout();
 			this.bP.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// pbBackground
-			// 
-			this.pbBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-			this.pbBackground.Cursor = System.Windows.Forms.Cursors.Arrow;
-			this.pbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pbBackground.Image = global::Main.Properties.Resources.Background;
-			this.pbBackground.Location = new System.Drawing.Point(0, 0);
-			this.pbBackground.Name = "pbBackground";
-			this.pbBackground.Size = new System.Drawing.Size(1550, 822);
-			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pbBackground.TabIndex = 1;
-			this.pbBackground.TabStop = false;
-			this.pbBackground.Click += new System.EventHandler(this.pbBackground_Click);
-			// 
-			// iconTitle
-			// 
-			this.iconTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-			this.iconTitle.FlatAppearance.BorderSize = 0;
-			this.iconTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-			this.iconTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-			this.iconTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.iconTitle.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
-			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
-			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.iconTitle.IconSize = 35;
-			this.iconTitle.Location = new System.Drawing.Point(1060, 24);
-			this.iconTitle.Name = "iconTitle";
-			this.iconTitle.Size = new System.Drawing.Size(35, 37);
-			this.iconTitle.TabIndex = 26;
-			this.iconTitle.TabStop = false;
-			this.iconTitle.UseVisualStyleBackColor = false;
-			this.iconTitle.Click += new System.EventHandler(this.pbBackground_Click);
-			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
 			// 
 			// lbTitle
 			// 
@@ -175,6 +143,8 @@ namespace Main.Pages
 			this.bP.Controls.Add(this.editAdmin);
 			this.bP.Controls.Add(this.bkPage1);
 			this.bP.Controls.Add(this.bkPage2);
+			this.bP.Controls.Add(this.bkPage3);
+			this.bP.Controls.Add(this.bkPage4);
 			this.bP.Controls.Add(this.addManager);
 			this.bP.Controls.Add(this.editManager);
 			this.bP.Controls.Add(this.guide1);
@@ -262,6 +232,30 @@ namespace Main.Pages
 			this.bkPage2.Text = "BkPage2";
 			this.bkPage2.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
+			// bkPage3
+			// 
+			this.bkPage3.BackgroundImage = global::Main.Properties.Resources.Backup3;
+			this.bkPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.bkPage3.Location = new System.Drawing.Point(4, 4);
+			this.bkPage3.Name = "bkPage3";
+			this.bkPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.bkPage3.Size = new System.Drawing.Size(683, 603);
+			this.bkPage3.TabIndex = 12;
+			this.bkPage3.Text = "BkPage3";
+			this.bkPage3.UseVisualStyleBackColor = true;
+			// 
+			// bkPage4
+			// 
+			this.bkPage4.BackgroundImage = global::Main.Properties.Resources.Backup4;
+			this.bkPage4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.bkPage4.Location = new System.Drawing.Point(4, 4);
+			this.bkPage4.Name = "bkPage4";
+			this.bkPage4.Padding = new System.Windows.Forms.Padding(3);
+			this.bkPage4.Size = new System.Drawing.Size(683, 603);
+			this.bkPage4.TabIndex = 13;
+			this.bkPage4.Text = "BkPage4";
+			this.bkPage4.UseVisualStyleBackColor = true;
+			// 
 			// addManager
 			// 
 			this.addManager.BackColor = System.Drawing.Color.White;
@@ -278,7 +272,7 @@ namespace Main.Pages
 			// editManager
 			// 
 			this.editManager.BackColor = System.Drawing.Color.White;
-			this.editManager.BackgroundImage = global::Main.Properties.Resources.EditAdmin;
+			this.editManager.BackgroundImage = global::Main.Properties.Resources.EditManager;
 			this.editManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.editManager.Location = new System.Drawing.Point(4, 4);
 			this.editManager.Name = "editManager";
@@ -340,6 +334,40 @@ namespace Main.Pages
 			this.guide4.Text = "Guide4";
 			this.guide4.Click += new System.EventHandler(this.pbBackground_Click);
 			// 
+			// iconTitle
+			// 
+			this.iconTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.iconTitle.FlatAppearance.BorderSize = 0;
+			this.iconTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.iconTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.iconTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconTitle.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
+			this.iconTitle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(107)))), ((int)(((byte)(190)))));
+			this.iconTitle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+			this.iconTitle.IconSize = 35;
+			this.iconTitle.Location = new System.Drawing.Point(1060, 24);
+			this.iconTitle.Name = "iconTitle";
+			this.iconTitle.Size = new System.Drawing.Size(35, 37);
+			this.iconTitle.TabIndex = 26;
+			this.iconTitle.TabStop = false;
+			this.iconTitle.UseVisualStyleBackColor = false;
+			this.iconTitle.Click += new System.EventHandler(this.pbBackground_Click);
+			this.iconTitle.Enter += new System.EventHandler(this.iconTitle_Enter);
+			// 
+			// pbBackground
+			// 
+			this.pbBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+			this.pbBackground.Cursor = System.Windows.Forms.Cursors.Arrow;
+			this.pbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbBackground.Image = global::Main.Properties.Resources.Background;
+			this.pbBackground.Location = new System.Drawing.Point(0, 0);
+			this.pbBackground.Name = "pbBackground";
+			this.pbBackground.Size = new System.Drawing.Size(1550, 822);
+			this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbBackground.TabIndex = 1;
+			this.pbBackground.TabStop = false;
+			this.pbBackground.Click += new System.EventHandler(this.pbBackground_Click);
+			// 
 			// Guide
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -350,9 +378,9 @@ namespace Main.Pages
 			this.Controls.Add(this.pbBackground);
 			this.Name = "Guide";
 			this.Size = new System.Drawing.Size(1550, 822);
-			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
 			this.pnlHuongDan.ResumeLayout(false);
 			this.bP.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pbBackground)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -377,5 +405,7 @@ namespace Main.Pages
 		private System.Windows.Forms.TabPage guide4;
 		private System.Windows.Forms.TabPage bkPage1;
 		private System.Windows.Forms.TabPage bkPage2;
+		private System.Windows.Forms.TabPage bkPage3;
+		private System.Windows.Forms.TabPage bkPage4;
 	}
 }

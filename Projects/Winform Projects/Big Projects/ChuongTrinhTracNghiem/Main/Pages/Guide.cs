@@ -50,15 +50,15 @@ namespace Main.Pages
 			{
 				case "Admin":
 					minPage = 0;
-					maxPage = 3;
-					break;
-				case "Teacher":
-					minPage = 4;
 					maxPage = 5;
 					break;
-				case "User":
+				case "Manager":
 					minPage = 6;
-					maxPage = 9;
+					maxPage = 7;
+					break;
+				case "User":
+					minPage = 8;
+					maxPage = 11;
 					break;
 			}
 			this.bP.SelectedIndex = minPage;

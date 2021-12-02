@@ -7,9 +7,12 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 using Guna.UI2.WinForms;
+using System.Data;
+using System.Data.OleDb;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Main.Pages
 {
@@ -21,6 +24,7 @@ namespace Main.Pages
 		private int rowIndex = 0;
 		private UserAccount account;
 		private string[] answer = new string[4];
+		string selectedPath = "";
 
 		public UserAccount Account { get => account; set => account = value; }
 		public Action CancleAction;
@@ -74,6 +78,7 @@ namespace Main.Pages
 		private void RoundedControls()
 		{
 			//Buttons
+			btnImportFiles.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnImportFiles.Width, btnImportFiles.Height, 6, 6));
 			btnAdd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, 6, 6));
 			btnEdit.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 6, 6));
 			btnDelete.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 6, 6));
@@ -111,8 +116,8 @@ namespace Main.Pages
 			try
 			{
 				Question question = new Question();
-				int.TryParse(tbQuestionID.Text.Trim(), out int userId);
-				question.QuestionID = userId;
+				int.TryParse(tbQuestionID.Text.Trim(), out int questionID);
+				question.QuestionID = questionID;
 				question.SubjectID = cbSubject.SelectedValue.ToString();
 				question.ExamID = cbExamID.SelectedValue.ToString();
 				question.QContent = tbContent.Text.Trim();
@@ -184,15 +189,17 @@ namespace Main.Pages
 				{
 					MsgBox.ShowMessage("Thêm thành công!", "Amazing Quiz Application",
 				   MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
-					isAddnew = false;
-					LoadData();
+					isFunc = false;
+					QuestionBLL.Instance.GetAllQuestion(aDgvdata);
+					NextAdditional();
 				}
 			}
 			catch (Exception e)
 			{
 				MsgBox.ShowMessage("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-				DetailData(rowIndex);
+				isFunc = false;
+				NextAdditional();
 			}
 		}
 
@@ -361,11 +368,18 @@ namespace Main.Pages
 									errorProviderWar.SetError(tbAnswerCorrect, "Nội dung đáp án không được để trống!");
 									return false;
 								}
-								else if (!answer.Contains(tbAnswerCorrect.Text))
+								else
 								{
-									errorProviderWar.SetError(tbAnswerCorrect, "Nội dung đáp án phải khớp với\n1 trong những câu trả lời!");
-									return false;
-								}	
+									answer[0] = tbAnswerA.Text;
+									answer[1] = tbAnswerB.Text;
+									answer[2] = tbAnswerC.Text;
+									answer[3] = tbAnswerD.Text;
+									if (!answer.Contains(tbAnswerCorrect.Text))
+									{
+										errorProviderWar.SetError(tbAnswerCorrect, "Nội dung đáp án phải khớp với\n1 trong những câu trả lời!");
+										return false;
+									}
+								}
 							}
 						}
 					}
@@ -373,6 +387,103 @@ namespace Main.Pages
 			}
 
 			return true;
+		}
+
+		private void NextAdditional()
+		{
+			isAddnew = isEnable = true;
+			foreach (Control control in pnlInfo1.Controls)
+			{
+				if (control is Guna2TextBox)
+				{
+					(control as Guna2TextBox).Text = "";
+				}
+			}
+			tbAnswerCorrect.Text = "";
+			tbQuestionID.Text = QuestionBLL.Instance.GetIDMissing().ToString();
+		}
+
+		private DataRowCollection ExcelAikenFormat(string path)
+		{
+			DataRowCollection dataRow = null;
+			OleDbConnection MyConnection;
+			DataTable dataTable;
+			OleDbDataAdapter MyCommand;
+			MyConnection = new OleDbConnection($"provider=Microsoft.Jet.OLEDB.4.0;Data Source='{path}'; Extended Properties = Excel 8.0");
+			MyCommand = new OleDbDataAdapter("select * from [sheet1$]", MyConnection);
+			MyCommand.TableMappings.Add("Table", "TestTable");
+			dataTable = new DataTable();
+			MyCommand.Fill(dataTable);
+			dataRow = dataTable.Rows;
+			return dataRow;
+		}
+
+		private void ReadExcel()
+		{
+			Thread thread = new Thread((ThreadStart)(() =>
+			{
+				OpenFileDialog dialog = new OpenFileDialog();
+				dialog.InitialDirectory = @"C:\Users\Administrator\Documents";
+				dialog.CheckFileExists = true;
+				dialog.CheckPathExists = true;
+				dialog.DefaultExt = "xls";
+				dialog.Filter = "AikenQuiz Files(*.xls)|*.xls|AikenQuiz Files(*.xlsx)|*.xlsx";
+				dialog.Title = "AikenQuiz Excel Import";
+				dialog.FilterIndex = 0;
+				dialog.RestoreDirectory = true;
+				dialog.ReadOnlyChecked = true;
+				dialog.ShowReadOnly = true;
+				selectedPath = string.Empty;
+				if (dialog.ShowDialog() == DialogResult.OK)
+				{
+					if (dialog.FileName != null)
+					{
+						selectedPath = dialog.FileName;
+					}
+				}
+			}));
+			thread.SetApartmentState(ApartmentState.STA);
+			thread.Start();
+			thread.Join();
+			if (!string.IsNullOrEmpty(selectedPath))
+				CallAiken(selectedPath);
+		}
+
+		private void CallAiken(string path)
+		{
+			try
+			{
+				AikenFormat aikenFormat = new AikenFormat(ExcelAikenFormat(path));
+				PushAikenQuestions(aikenFormat);
+			}
+			catch (Exception e)
+			{
+				MsgBox.ShowMessage("Thao tác thất bại! " + e.Message, "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+			}
+		}
+
+		private void PushAikenQuestions(AikenFormat aikenFormat)
+		{
+			string subjectID = aikenFormat.SubjectID;
+			string examID = aikenFormat.ExamID;
+			int qCount = aikenFormat.Questions.Count; ;
+			for (int i = 0; i < qCount; i++)
+			{
+				if (i < aikenFormat.LimitPush)
+				{
+					int.TryParse(QuestionBLL.Instance.GetIDMissing().ToString(), out int questionID);
+					aikenFormat.Questions[i].QuestionID = questionID;
+					aikenFormat.Questions[i].SubjectID = subjectID;
+					aikenFormat.Questions[i].ExamID = examID;
+					aikenFormat.Questions[i].CreatedBy = $"{Account.UserRole} - {Account.FullName}";
+					aikenFormat.Questions[i].ModifiedBy = $"{Account.UserRole} - {Account.FullName}";
+					QuestionBLL.Instance.InsertQuestion(aikenFormat.Questions[i]);
+				}
+			}
+			MsgBox.ShowMessage("Nạp dữ liệu câu hỏi hoàn tất. Mời bạn xem lại dữ liệu!", "Amazing Quiz Application",
+			   MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
+			QuestionBLL.Instance.GetAllQuestion(aDgvdata);
 		}
 
 		#endregion
@@ -475,6 +586,10 @@ namespace Main.Pages
 				rowIndex = e.RowIndex;
 				DetailData(rowIndex);
 			}
+			else
+			{
+				rowIndex = e.RowIndex;
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -534,7 +649,17 @@ namespace Main.Pages
 		{
 			if (!isFunc && cbSubject.SelectedValue != null)
 			{
-				ExamBLL.Instance.GetExamByIDSubject(cbExamID, cbSubject.SelectedValue.ToString());
+				DataTable data = ExamBLL.Instance.GetExamByIDSubject(cbSubject.SelectedValue.ToString());
+				if (data.Rows.Count > 0)
+				{
+					cbExamID.DisplayMember = "ExamID";
+					cbExamID.ValueMember = "ExamID";
+					cbExamID.DataSource = data;
+				}
+				else
+				{
+					cbExamID.DataSource = null;
+				}
 				cbExamID.SelectedIndex = -1;
 			}
 			else if (!isAddnew)
@@ -548,6 +673,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 4;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}
@@ -557,6 +683,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 4;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}
@@ -607,26 +734,15 @@ namespace Main.Pages
 			}
 		}
 
+		private void btnImportFiles_Click(object sender, EventArgs e)
+		{
+			Session.ShowHideMenu?.Invoke();
+			ReadExcel();
+		}
+
 		private void ManageQuestion_Click(object sender, EventArgs e)
 		{
 			Session.ShowHideMenu?.Invoke();
-		}
-
-		private void TbAnswerA_LostFocus(object sender, EventArgs e)
-		{
-			answer[0] = tbAnswerA.Text;
-		}
-		private void TbAnswerB_LostFocus(object sender, EventArgs e)
-		{
-			answer[1] = tbAnswerB.Text;
-		}
-		private void TbAnswerC_LostFocus(object sender, EventArgs e)
-		{
-			answer[2] = tbAnswerC.Text;
-		}
-		private void TbAnswerD_LostFocus(object sender, EventArgs e)
-		{
-			answer[3] = tbAnswerD.Text;
 		}
 
 		#endregion

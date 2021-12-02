@@ -542,6 +542,7 @@ namespace Main
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Database Connection";
+			this.TopMost = true;
 			this.Shown += new System.EventHandler(this.DatabaseConnection_Shown);
 			this.pnlTitleBar.ResumeLayout(false);
 			this.pnlTitleBar.PerformLayout();

@@ -13,6 +13,33 @@ namespace Main.Pages
         private ushort correctAnswer;
         private DataTable data;
         private Exam exam;
+		private ToolTip toolTipUnchecked = new ToolTip()
+		{
+			AutomaticDelay = 0,
+			AutoPopDelay = 10000,
+			InitialDelay = 0,
+			ReshowDelay = 0,
+			ToolTipTitle = "Đáp án đúng",
+			ToolTipIcon = ToolTipIcon.Error
+		};
+		private ToolTip toolTipChecked = new ToolTip()
+		{
+			AutomaticDelay = 0,
+			AutoPopDelay = 10000,
+			InitialDelay = 0,
+			ReshowDelay = 0,
+			ToolTipTitle = "Đáp án đúng",
+			ToolTipIcon = ToolTipIcon.Info
+		};
+		private ToolTip toolTipIndeterminate = new ToolTip()
+		{
+			AutomaticDelay = 0,
+			AutoPopDelay = 10000,
+			InitialDelay = 0,
+			ReshowDelay = 0,
+			ToolTipTitle = "Đáp án đúng",
+			ToolTipIcon = ToolTipIcon.Warning
+		};
 
         public DataTable Data { get => data; set => data = value; }
         public Exam Exam { get => exam; set => exam = value; }
@@ -72,19 +99,21 @@ namespace Main.Pages
 			{
 				case CheckState.Unchecked:
 					button.Image = new Bitmap(Properties.Resources.cancel, new Size(40, 40));
-					toolTip.ToolTipIcon = ToolTipIcon.Error;
+					toolTipUnchecked.ToolTipIcon = ToolTipIcon.Error;
+					toolTipUnchecked.SetToolTip(button, answer);
 					break;
 				case CheckState.Checked:
 					button.Image = new Bitmap(Properties.Resources._checked, new Size(40, 40));
-					toolTip.ToolTipIcon = ToolTipIcon.Info;
+					toolTipChecked.ToolTipIcon = ToolTipIcon.Info;
+					toolTipChecked.SetToolTip(button, answer);
 					break;
 				case CheckState.Indeterminate:
 					button.Image = new Bitmap(Properties.Resources.warning, new Size(40, 40));
-					toolTip.ToolTipIcon = ToolTipIcon.Warning;
+					toolTipIndeterminate.ToolTipIcon = ToolTipIcon.Warning;
+					toolTipIndeterminate.SetToolTip(button, answer);
 					break;
 			}
 
-			toolTip.SetToolTip(button, answer);
 			fLPdata.Controls.Add(button);
 		}
 
@@ -188,6 +217,7 @@ namespace Main.Pages
 				correctAnswer = 0;
 				LoadState();
 				LoadMark();
+				Session.AntiPopup?.Invoke(false);
 			}
 		}
 

@@ -44,7 +44,6 @@ namespace Main
 			this.background = new System.Windows.Forms.PictureBox();
 			this.wPB = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
 			this.pControl = new System.Windows.Forms.Panel();
-			this.panel1 = new System.Windows.Forms.Panel();
 			this.btnExit = new FontAwesome.Sharp.IconButton();
 			this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProviderWar)).BeginInit();
@@ -52,7 +51,6 @@ namespace Main
 			this.pnlUsername.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
 			this.pControl.SuspendLayout();
-			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// errorProviderWar
@@ -65,7 +63,7 @@ namespace Main
 			this.pnlPassword.Controls.Add(this.passwordIcon);
 			this.pnlPassword.Location = new System.Drawing.Point(307, 193);
 			this.pnlPassword.Name = "pnlPassword";
-			this.pnlPassword.Size = new System.Drawing.Size(274, 42);
+			this.pnlPassword.Size = new System.Drawing.Size(290, 42);
 			this.pnlPassword.TabIndex = 0;
 			// 
 			// tbPassword
@@ -90,7 +88,7 @@ namespace Main
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '•';
 			this.tbPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.tbPassword.PlaceholderText = "Coi chừng lộ mật khẩu á ...";
+			this.tbPassword.PlaceholderText = "Mật khẩu";
 			this.tbPassword.SelectedText = "";
 			this.tbPassword.ShadowDecoration.Parent = this.tbPassword;
 			this.tbPassword.Size = new System.Drawing.Size(222, 36);
@@ -119,7 +117,7 @@ namespace Main
 			this.lbTitle.AutoSize = true;
 			this.lbTitle.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbTitle.ForeColor = System.Drawing.Color.Black;
-			this.lbTitle.Location = new System.Drawing.Point(386, 92);
+			this.lbTitle.Location = new System.Drawing.Point(402, 92);
 			this.lbTitle.Name = "lbTitle";
 			this.lbTitle.Size = new System.Drawing.Size(126, 25);
 			this.lbTitle.TabIndex = 1;
@@ -130,7 +128,7 @@ namespace Main
 			this.pnlUsername.Controls.Add(this.usernameIcon);
 			this.pnlUsername.Location = new System.Drawing.Point(307, 145);
 			this.pnlUsername.Name = "pnlUsername";
-			this.pnlUsername.Size = new System.Drawing.Size(274, 42);
+			this.pnlUsername.Size = new System.Drawing.Size(290, 42);
 			this.pnlUsername.TabIndex = 0;
 			// 
 			// usernameIcon
@@ -173,7 +171,7 @@ namespace Main
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.PasswordChar = '\0';
 			this.tbUsername.PlaceholderForeColor = System.Drawing.Color.Silver;
-			this.tbUsername.PlaceholderText = "Nhập tài khoản đi ...";
+			this.tbUsername.PlaceholderText = "Tài khoản";
 			this.tbUsername.SelectedText = "";
 			this.tbUsername.ShadowDecoration.Parent = this.tbUsername;
 			this.tbUsername.Size = new System.Drawing.Size(222, 36);
@@ -203,7 +201,7 @@ namespace Main
 			// 
 			// pControl
 			// 
-			this.pControl.Controls.Add(this.panel1);
+			this.pControl.Controls.Add(this.btnExit);
 			this.pControl.Controls.Add(this.btnLogin);
 			this.pControl.Controls.Add(this.tbUsername);
 			this.pControl.Controls.Add(this.pnlUsername);
@@ -216,22 +214,11 @@ namespace Main
 			this.pControl.Size = new System.Drawing.Size(600, 400);
 			this.pControl.TabIndex = 1;
 			// 
-			// panel1
-			// 
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
-			this.panel1.Controls.Add(this.btnExit);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(600, 25);
-			this.panel1.TabIndex = 5;
-			// 
 			// btnExit
 			// 
 			this.btnExit.BackColor = System.Drawing.Color.Transparent;
 			this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
 			this.btnExit.FlatAppearance.BorderSize = 0;
 			this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -241,7 +228,7 @@ namespace Main
 			this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
 			this.btnExit.IconSize = 20;
 			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.btnExit.Location = new System.Drawing.Point(575, 0);
+			this.btnExit.Location = new System.Drawing.Point(572, 3);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(25, 25);
 			this.btnExit.TabIndex = 0;
@@ -269,7 +256,7 @@ namespace Main
 			this.btnLogin.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnLogin.ForeColor = System.Drawing.Color.White;
 			this.btnLogin.HoverState.Parent = this.btnLogin;
-			this.btnLogin.Location = new System.Drawing.Point(342, 251);
+			this.btnLogin.Location = new System.Drawing.Point(358, 251);
 			this.btnLogin.Name = "btnLogin";
 			this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
 			this.btnLogin.Size = new System.Drawing.Size(217, 38);
@@ -298,7 +285,6 @@ namespace Main
 			((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();
 			this.pControl.ResumeLayout(false);
 			this.pControl.PerformLayout();
-			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -317,7 +303,6 @@ namespace Main
 		private FontAwesome.Sharp.IconButton btnExit;
 		private Guna.UI2.WinForms.Guna2Button btnLogin;
 		private Guna.UI2.WinForms.Guna2TextBox tbPassword;
-		private Panel panel1;
 	}
 }
 

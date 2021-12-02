@@ -199,15 +199,17 @@ namespace Main.Pages
 				{
 					MsgBox.ShowMessage("Thêm thành công!", "Amazing Quiz Application",
 				   MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
-					isAddnew = false;
-					LoadData();
+					isFunc = false;
+					ExamBLL.Instance.GetAllExam(aDgvdata);
+					NextAdditional();
 				}
 			}
 			catch (Exception e)
 			{
 				MsgBox.ShowMessage("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-				DetailData(rowIndex);
+				isFunc = false;
+				NextAdditional();
 			}
 		}
 
@@ -463,6 +465,12 @@ namespace Main.Pages
 
 		private bool IsDigit(string input) => input.All(char.IsDigit);
 
+		private void NextAdditional()
+		{
+			isAddnew = isEnable = true;
+			tbExamID.Text = "";
+		}
+
 		#endregion
 
 		#region Events
@@ -589,6 +597,10 @@ namespace Main.Pages
 				rowIndex = e.RowIndex;
 				DetailData(rowIndex);
 			}
+			else
+			{
+				rowIndex = e.RowIndex;
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -647,6 +659,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}
@@ -656,6 +669,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}

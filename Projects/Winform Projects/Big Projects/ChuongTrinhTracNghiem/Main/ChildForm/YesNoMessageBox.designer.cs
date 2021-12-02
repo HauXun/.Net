@@ -171,6 +171,7 @@ namespace Main
 			this.Name = "YesNoMessageBox";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Amazing Quiz Application";
+			this.TopMost = true;
 			this.Shown += new System.EventHandler(this.YesNoMessageBox_Shown);
 			this.pnlTitle.ResumeLayout(false);
 			this.pnlTitle.PerformLayout();

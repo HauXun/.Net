@@ -175,6 +175,7 @@ namespace Main.Pages
 			if (!IsValidComboBoxControl())
 			{
 				isEnable = true;
+				isFunc = false;
 				return;
 			}
 
@@ -188,17 +189,17 @@ namespace Main.Pages
 				{
 					MsgBox.ShowMessage("Thêm thành công!", "Amazing Quiz Application",
 						MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
-					isAddnew = false;
-					cbFaculty.SelectedIndex = -1;
-					LoadData();
+					isFunc = false;
+					UserClassBLL.Instance.GetAllClass(aDgvdata);
+					NextAdditional();
 				}
 			}
 			catch (Exception e)
 			{
 				MsgBox.ShowMessage("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Amazing Quiz Application",
 					MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-				cbFaculty.SelectedIndex = -1;
-				DetailData(rowIndex);
+				isFunc = false;
+				NextAdditional();
 			}
 		}
 
@@ -450,6 +451,13 @@ namespace Main.Pages
 		/// <returns></returns>
 		private bool IsDigit(string input) => input.All(char.IsDigit);
 
+		private void NextAdditional()
+		{
+			isAddnew = isEnable = true;
+			tbDescription.Text = "";
+			tbClassID.Text = "";
+		}
+
 		#endregion
 
 		#region Events
@@ -487,26 +495,30 @@ namespace Main.Pages
 			Session.ShowHideMenu?.Invoke();
 			string idClass = tbClassID.Text;
 
-			try
+			if (string.IsNullOrEmpty(idClass) || rowIndex < 0)
 			{
-				if (string.IsNullOrEmpty(idClass) || rowIndex < 0)
-				{
-					MsgBox.ShowMessage("Vui lòng chọn lớp học cần xóa!", "Amazing Quiz Application",
-						MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
-					return;
-				}
-
-				if (UserClassBLL.Instance.DeleteClass(idClass))
-				{
-					MsgBox.ShowMessage("Xóa thành công!", "Amazing Quiz Application",
-						MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
-					LoadData();
-				}
+				MsgBox.ShowMessage("Vui lòng chọn lớp học cần xóa!", "Amazing Quiz Application",
+					MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationTriangle);
+				return;
 			}
-			catch (Exception ex)
+
+			if (MsgBox.ShowMessage("Xác nhận xóa!", "Amazing Quiz Application",
+					   MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 			{
-				MsgBox.ShowMessage("Xóa không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Amazing Quiz Application",
-					MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				try
+				{
+					if (UserClassBLL.Instance.DeleteClass(idClass))
+					{
+						MsgBox.ShowMessage("Xóa thành công!", "Amazing Quiz Application",
+							MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
+						LoadData();
+					}
+				}
+				catch (Exception ex)
+				{
+					MsgBox.ShowMessage("Xóa không thành công! Vui lòng kiểm tra lại!\n" + ex.Message, "Amazing Quiz Application",
+						MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
+				}
 			}
 		}
 
@@ -569,6 +581,10 @@ namespace Main.Pages
 					return;
 				rowIndex = e.RowIndex;
 				DetailData(rowIndex);
+			}
+			else
+			{
+				rowIndex = e.RowIndex;
 			}
 		}
 
@@ -658,6 +674,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}
@@ -667,6 +684,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}

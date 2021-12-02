@@ -14,17 +14,17 @@ namespace Main.Pages
 {
 	public partial class ManageFaculty : UserControl
 	{
-        private bool isAddnew = false;
-        private bool isEnable = false;
-        private bool isFunc = true;
-        private int rowIndex = 0;
+		private bool isAddnew = false;
+		private bool isEnable = false;
+		private bool isFunc = true;
+		private int rowIndex = 0;
 
 		public Action CancleAction;
 
 		public ManageFaculty()
 		{
 			InitializeComponent();
-            RoundedControls();
+			RoundedControls();
 			CancleAction = () =>
 			{
 				if (btnSave.Visible && MsgBox.ShowMessage("Dữ liệu chưa được lưu!. Tiếp tục thoát ?", "Amazing Quiz Application",
@@ -52,33 +52,33 @@ namespace Main.Pages
 
 		// -------------- Set color for background gradient ---------------
 		protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            Rectangle rectangle = ClientRectangle;
-            if (rectangle.IsEmpty)
-                return;
-            if (rectangle.Width == 0 || rectangle.Height == 0)
-                return;
-            using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 240F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
-            {
-                e.Graphics.FillRectangle(brush, rectangle);
-            }
-        }
+		{
+			Rectangle rectangle = ClientRectangle;
+			if (rectangle.IsEmpty)
+				return;
+			if (rectangle.Width == 0 || rectangle.Height == 0)
+				return;
+			using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, Color.White, Color.FromArgb(187, 202, 255), 240F)) // 196, 232, 250 || //FromArgb(230, 110, 130)
+			{
+				e.Graphics.FillRectangle(brush, rectangle);
+			}
+		}
 
-        //Bo tròn góc các Control
-        #region Rounded Controls
+		//Bo tròn góc các Control
+		#region Rounded Controls
 
-        private void RoundedControls()
-        {
-            //Buttons
-            btnAdd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, 6, 6));
-            btnEdit.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 6, 6));
-            btnDelete.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 6, 6));
-            btnSave.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnSave.Width, btnSave.Height, 6, 6));
-            btnCancle.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnCancle.Width, btnCancle.Height, 6, 6));
-            btnClearFilter.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnClearFilter.Width, btnClearFilter.Height, 6, 6));
-            //DataGridView
-            aDgvdata.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, aDgvdata.Width, aDgvdata.Height, 15, 15));
-        }
+		private void RoundedControls()
+		{
+			//Buttons
+			btnAdd.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, 6, 6));
+			btnEdit.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 6, 6));
+			btnDelete.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 6, 6));
+			btnSave.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnSave.Width, btnSave.Height, 6, 6));
+			btnCancle.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnCancle.Width, btnCancle.Height, 6, 6));
+			btnClearFilter.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, btnClearFilter.Width, btnClearFilter.Height, 6, 6));
+			//DataGridView
+			aDgvdata.Region = Region.FromHrgn(Session.CreateRoundRectRgn(0, 0, aDgvdata.Width, aDgvdata.Height, 15, 15));
+		}
 
 		#endregion
 
@@ -107,7 +107,7 @@ namespace Main.Pages
 				Faculty faculty = new Faculty();
 				faculty.FacultyID = tbFacultyID.Text.Trim();
 				faculty.FacultyName = tbFacultyName.Text.Trim();
-				faculty.FoundingDate = Convert.ToDateTime(dtpFoundingDate.Value.ToString("dd/MM/yyyy"));
+				faculty.FoundingDate = dtpFoundingDate.Value;
 				faculty.Description = tbDescription.Text.Trim();
 				return faculty;
 			}
@@ -158,15 +158,17 @@ namespace Main.Pages
 				{
 					MsgBox.ShowMessage("Thêm thành công!", "Amazing Quiz Application",
 				   MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
-					isAddnew = false;
-					LoadData();
+					isFunc = false;
+					FacultyBLL.Instance.GetAllFaculty(aDgvdata);
+					NextAdditional();
 				}
 			}
 			catch (Exception e)
 			{
 				MsgBox.ShowMessage("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!\n" + e.Message, "Amazing Quiz Application",
 			   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-				DetailData(rowIndex);
+				isFunc = false;
+				NextAdditional();
 			}
 		}
 
@@ -308,6 +310,12 @@ namespace Main.Pages
 
 		private bool IsDigit(string input) => input.All(char.IsDigit);
 
+		private void NextAdditional()
+		{
+			isAddnew = isEnable = true;
+			ClearControl();
+		}
+
 		#endregion
 
 		#region Events
@@ -354,7 +362,7 @@ namespace Main.Pages
 			}
 
 			if (MsgBox.ShowMessage("Xác nhận xóa!", "Amazing Quiz Application",
-			   MessageBoxButtons.YesNo, MsgBox.MessageIcon.ExclamationTriangle) == DialogResult.Yes)
+			   MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.Yes)
 			{
 				try
 				{
@@ -433,6 +441,10 @@ namespace Main.Pages
 				rowIndex = e.RowIndex;
 				DetailData(rowIndex);
 			}
+			else
+			{
+				rowIndex = e.RowIndex;
+			}
 		}
 
 		private void tbSearch_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -491,6 +503,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}
@@ -500,6 +513,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 7;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}

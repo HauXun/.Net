@@ -272,7 +272,8 @@ namespace Main
 
 		private void BatDauThi(object sender, EventArgs e)
 		{
-			if (Session.Exam != null && selectExamForm.IsValidComboBoxControl())
+			if (Session.Exam != null && selectExamForm.IsValidComboBoxControl()
+			&& Session.Exam.QCurrentCount > 0 && Session.Exam.QuizTimes > 0 && Session.Exam.Status)
 			{
 				ShowHideSubMenu();
 				quizTestUC.Account = this.Account;
@@ -281,7 +282,8 @@ namespace Main
 				selectExamForm.Hide();
 				if (/*!selectExamForm.isMockTest && */this.Account.UserRole.Equals("User"))
 					ExamBLL.Instance.CancleQuizTimes(this.Account.UserID, Session.Exam.ExamID, Session.Exam.SubjectID);
-				btnHome.Enabled = btnNav.Enabled = pnlNavigationMini.Enabled = selectExamForm.Visible = false;
+				btnHome.Enabled = btnNav.Enabled = pnlNavigationMini.Enabled = btnMinimized.Enabled = selectExamForm.Visible = false;
+				Session.AntiPopup?.Invoke(true);
 				#region MultiThreading
 				this.BeginInvoke((MethodInvoker)delegate
 				{
@@ -441,6 +443,7 @@ namespace Main
 			Session.CancleAction?.Invoke();
 			if (Session.Cancle)
 			{
+				isNavigation = true;
 				ShowHideSubMenu();
 				Session.CancleAction = null;
 				try
@@ -736,7 +739,7 @@ namespace Main
 					mainMenuUC.pnlAdmin.Visible = false;
 					mainMenuUC.pnlGiaoVien.Visible = false;
 					break;
-				case "Teacher":
+				case "Manager":
 					pnlButtonHeThong.Enabled = false;
 					btnHTMini.Enabled = false;
 					pnlButtonChucNang.Enabled = false;
@@ -1168,7 +1171,7 @@ namespace Main
 						quizResultUC.Data = Session.Data;
 						quizResultUC.Exam = Session.Exam;
 						quizResultUC.FrmQuizResult_Load(quizResultUC, e);
-						pnlNavigationMini.Enabled = btnHome.Enabled = btnNav.Enabled = true;
+						btnHome.Enabled = btnNav.Enabled = pnlNavigationMini.Enabled = btnMinimized.Enabled = true;
 						quizTestUC.fLPdata.Controls.Clear();
 						#region MultiThreading
 						this.BeginInvoke((MethodInvoker)delegate
@@ -1187,6 +1190,10 @@ namespace Main
 						btnNav.Location = new Point(0, 30);
 						btnNav.BringToFront();
 					}
+				};
+				Session.AntiPopup = (status) =>
+				{
+					this.TopMost = status;
 				};
 				Session.Submit = this.Submit;
 			});

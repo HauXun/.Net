@@ -188,17 +188,19 @@ namespace Main.Pages
 				{
 					MsgBox.ShowMessage("Thêm thành công!", "Amazing Quiz Application",
 						   MessageBoxButtons.OK, MsgBox.MessageIcon.ExclamationCircle);
-					isAddnew = false;
-					cbCourseID.SelectedIndex = -1;
-					LoadData();
+					//cbCourseID.SelectedIndex = -1;
+					isFunc = false;
+					AccountBLL.Instance.GetAllAccount(aDgvdata);
+					NextAdditional();
 				}
 			}
 			catch (Exception e)
 			{
 				MsgBox.ShowMessage("Thêm không thành công! Vui lòng kiểm tra lại dữ liệu!" + e.Message, "Amazing Quiz Application",
 					   MessageBoxButtons.OK, MsgBox.MessageIcon.TimesCircle);
-				cbCourseID.SelectedIndex = -1;
-				DetailData(rowIndex);
+				//cbCourseID.SelectedIndex = -1;
+				isFunc = false;
+				NextAdditional();
 			}
 		}
 
@@ -460,6 +462,24 @@ namespace Main.Pages
 
 		private bool IsDigit(string input) => input.All(char.IsDigit);
 
+		private void NextAdditional()
+		{
+			isAddnew = isEnable = true;
+			foreach (Control control in pnlInfo2.Controls)
+			{
+				if (control is Guna2TextBox)
+					(control as Guna2TextBox).Text = "";
+			}
+			foreach (Control control in pnlInfo3.Controls)
+			{
+				if (control is Guna2TextBox)
+					(control as Guna2TextBox).Text = "";
+				if (control is Guna2DateTimePicker)
+					(control as Guna2DateTimePicker).Value = DateTime.Today;
+			}
+			tbUserID.Text = AccountBLL.Instance.GetIDMissing().ToString();
+		}
+
 		#endregion
 
 		#region Events
@@ -574,6 +594,10 @@ namespace Main.Pages
 					return;
 				rowIndex = e.RowIndex;
 				DetailData(rowIndex);
+			}
+			else
+			{
+				rowIndex = e.RowIndex;
 			}
 		}
 
@@ -690,6 +714,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 5;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}
@@ -699,6 +724,7 @@ namespace Main.Pages
 			try
 			{
 				bScrollBar.Maximum = aDgvdata.RowCount - 5;
+				bScrollBar.Value = bScrollBar.Maximum;
 			}
 			catch { }
 		}

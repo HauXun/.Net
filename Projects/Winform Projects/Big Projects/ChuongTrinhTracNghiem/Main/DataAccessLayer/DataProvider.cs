@@ -27,6 +27,7 @@ namespace DataAccessLayer
 		static string path = Path.GetFullPath(Environment.CurrentDirectory);
 		static string database = "TestProjectDB.mdf";
 		// AttachDbFilename={path}\{database}
+		// Database=TestProjectDB
 		public static string connectionString
 				= $@"server=(local)\SQLEXPRESS; AttachDbFilename={path}\{database}; integrated security=true;";
 		public DataTable ExcuteQuery(string query, object[] parameter = null)

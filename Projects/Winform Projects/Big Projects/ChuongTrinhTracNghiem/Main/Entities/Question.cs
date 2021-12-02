@@ -10,6 +10,7 @@
 namespace Entities
 {
 	using System;
+	using System.Collections.Generic;
 	using System.Data;
 
 	public partial class Question
@@ -31,8 +32,7 @@ namespace Entities
 
 		public Question()
 		{
-
-		}
+        }
 
 		public Question(DataRow row)
         {

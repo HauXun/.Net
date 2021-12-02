@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Main.Partial;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Main
@@ -47,7 +48,12 @@ namespace Main
                                 msgOk.iconMessage.IconColor = Color.DimGray;
                                 break;
                         }
-                        result = msgOk.ShowDialog();
+						Session.AntiPopup?.Invoke(true);
+						result = msgOk.ShowDialog();
+                        if (result == DialogResult.No || result == DialogResult.OK || result == DialogResult.Yes)
+						{
+                            Session.AntiPopup?.Invoke(false);
+                        }
                     }
                     break;
                 case MessageBoxButtons.YesNo:
@@ -76,7 +82,12 @@ namespace Main
                                 msgYesNo.iconMessage.IconColor = Color.DimGray;
                                 break;
                         }
+                        Session.AntiPopup?.Invoke(true);
                         result = msgYesNo.ShowDialog();
+                        if (result == DialogResult.No || result == DialogResult.OK || result == DialogResult.Yes)
+                        {
+                            Session.AntiPopup?.Invoke(false);
+                        }
                     }
                     break;
             }

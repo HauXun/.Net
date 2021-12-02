@@ -135,7 +135,7 @@ namespace Main.Pages
 		private void LoadQuestion()
 		{
 			Data = QuestionBLL.Instance.GetQuestionByRequest(Exam.ExamID, Exam.SubjectID);
-			if (Data != null)
+			if (Data.Rows.Count > 0)
 			{
 				Data.Columns.Add("SelectedOption");
 				int i = 1;
@@ -295,7 +295,7 @@ namespace Main.Pages
 		{
 			if (Exam != null)
 			{
-				timer = new CountDownTimer(); 
+				timer = new CountDownTimer();
 				selectedIndex = "1";
 				LoadData(e);
 				CountDownTimer();
@@ -363,6 +363,7 @@ namespace Main.Pages
 				MessageBoxButtons.YesNo, MsgBox.MessageIcon.QuestionCircle) == DialogResult.No)
 			{
 				Session.Data = null;
+				Session.AntiPopup?.Invoke(true);
 				return;
 			}
 
@@ -425,6 +426,7 @@ namespace Main.Pages
 					ClearChecked();
 					LoadData(e);
 				}
+				Session.AntiPopup?.Invoke(true);
 			}
 			else
 			{

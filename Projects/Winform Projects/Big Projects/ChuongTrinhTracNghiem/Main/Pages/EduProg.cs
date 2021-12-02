@@ -176,7 +176,7 @@ namespace Main.Pages
 
 		private void aDgvdata_Enter(object sender, EventArgs e)
 		{
-			(sender as ADGV.AdvancedDataGridView).GotFocus += EduProg_GotFocus;
+			(sender as DataGridView).GotFocus += EduProg_GotFocus;
 		}
 
 		private void EduProg_GotFocus(object sender, EventArgs e)
